@@ -1,0 +1,38 @@
+<meta charset = "utf-8">
+<meta http-equiv = "X-UA-Compatible" content = "IE=edge">
+<meta name = "viewport" content = "width=device-width, initial-scale=1">
+{% if page.excerpt %}
+<meta name = "description" content = "{{ page.excerpt | strip_html }}">{% endif %}
+<meta name = "keywords" content = "{{ page.tags | join: ', ' }}">
+
+<!-- Facebook -->
+<meta property = "og:title" content = "{{ site.title }}{% if page.title %} - {{ page.title }}{% endif %}">
+<meta property = "og:description" content = "{{ site.description }}">
+<meta property = "og:image" content = "https://shokoanime.com/files/other/favicon.png">
+<meta property = "og:url" content = "https://docs.shokoanime.com">
+<meta name = "twitter:card" content = "https://shokoanime.com/files/other/favicon.png">
+
+<!-- Bootstrap CSS -->
+<link rel = "stylesheet"
+		href = "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+		integrity = "sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+		crossorigin = "anonymous">
+
+<!-- Custom CSS -->
+<link href = "{{  '/assets/css/style.css' | absolute_url }}" rel = "stylesheet" type = "text/css">
+
+<!-- Font Awesome -->
+<link rel = "stylesheet"
+		href = "https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+		integrity = "sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+		crossorigin = "anonymous">
+
+<!--Google Fonts -->
+<link href = "https://fonts.googleapis.com/css?family=Montserrat:400,500, 600|Raleway:400,500,600" rel = "stylesheet">
+
+<!-- Favicons -->
+<link rel = "apple-touch-icon" href = "{{ ' /assets/img/favicon.png' | relative_url }}">
+<link rel = "icon" href = "{{ '/assets/img/favicon.png' | relative_url }}">
+
+<title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
+

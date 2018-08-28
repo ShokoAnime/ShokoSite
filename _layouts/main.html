@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+	{% include _head.html %}
+</head>
+
+<body>
+
+{% include _navbar.html %}
+
+<!-- Image Banner -->
+
+{% if page.url == "/" %}
+
+<section class = "banner-container shadow"></section>
+
+{% elsif page.url == "/category/" %}
+
+
+{% else %}
+
+<section class = "banner-container shadow">
+
+	<div class = "page-header">
+		<div class = "page-wrapper">
+			<div>
+
+				<h1 class = "page-header-color">{{ page.title }}</h1>
+				<h5 class = "page-header-second-color">{{ page.subtitle }}</h5>
+
+			</div>
+			<div class = "breadcrumbs">
+
+				{% for breadcrumb in page.url %}
+				<h1>{{ breadcrumb | replace: '/' , ' /' | split: '/'}}</h1>
+				<h1>{{ breadcrumb | replace: 'index.html', 'page' | replace: '/' , ' /' | split: '/'}}</h1>
+				{% endfor %}
+
+				<a class = "breadcrumbs-leading" href = "/">Shoko</a>
+				<span class = "breadcrumbs-spacer">>></span>
+				<span class = "breadcrumbs-active">{{ page.title }}</span>
+
+			</div>
+		</div>
+	</div>
+
+</section>
+
+{% endif %}
+
+{{ content }}
+
+{% include _footer.html %}
+{% include _scripts_include.html %}
+
+</body>
+</html>

@@ -1,0 +1,203 @@
+---
+layout: main
+excerpt: The best and easiest way to manage your anime collection.
+---
+
+<!-- Content Block 1-->
+
+<section class = "section-spacer">
+	<div class = "container">
+		<div class = "row">
+			<div class = "col-xl-6">
+
+				<h1>Automate Your Anime Collection</h1>
+
+				<p>Shoko, previously known as JMM (Japanese Media Manager) is an anime cataloging program designed to automate the cataloging of your anime
+					collection regardless of the size and number of files in your collection, it’s even able to connect with some of the most popular media
+					center programs out there. Unlike other anime cataloging programs which rely on perfectly named files or force you to manually link the file
+					with a series and episode, Shoko does this all automatically with minimal user intervention. Let Shoko do all the heavy lifting by removing
+					these tedious and time consuming tasks so you actually watch your collection instead of just maintaining it.
+				</p>
+
+				<h1>Open-Source and Free</h1>
+
+				<p>With Shoko it was decided in the very beginning that Shoko will always remain free with no “Pro” version or donation requests, we don’t even
+					take donations as we don’t want there to be any question as to where the money is going. We also offer complete transparency with our users
+					hosting the entire Shoko Suite on GitHub for anyone to view and even help develop. The reason we do this is simple, we want to provide the
+					best anime cataloging / anime manager program there is at no cost to the our users. Passion and support is what fuels us and our continued
+					drive for constant improvement.
+				</p>
+
+			</div>
+
+			<div class = "col-xl-6 image-padding">
+
+				<img class = "rounded image-container shadow" src = "assets/images/server/Web-UI-Example.png" alt = "Shoko Image 1">
+
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Features -->
+
+<section class = "section-spacer color-main">
+	<div class = "container">
+		<div class = "row">
+			<div class = "col-xl-12 text-center">
+
+				<h1 class = "section-header-center section-header-light">Jam Packed With Features</h1>
+
+			</div>
+		</div>
+
+		<div class = "row">
+
+			{% for feature in site.data.features %}
+
+			<div class = "col-xl-3">
+				<div class = "feature-container">
+					<div class = "card-body">
+
+						<div class = "feature-icon">
+							<i class = "{{ feature.icon }}"></i>
+						</div>
+
+						<h5 class = "feature-title">{{ feature.header }}</h5>
+						<p>{{ feature.text }}</p>
+
+					</div>
+				</div>
+			</div>
+
+			{% endfor %}
+
+		</div>
+	</div>
+</section>
+
+<section class = "section-spacer">
+	<div class = "container">
+		<div class = "row">
+			<div class = "col-xl-12 text-center">
+				<h1 class = "section-header-center ">The Latest From The Shoko Blog</h1>
+			</div>
+		</div>
+
+		<div class = "row">
+
+			{% for post in site.posts limit:4 %}
+
+			<div class = "col-xl-3 row-spacer">
+				<div class = "card shadow blog">
+
+					<img class = "card-img-top blog-image" src = "{{ post.img }}" alt = " {{ post.title }}">
+
+					<div class = "card-body">
+
+						<span class = "blog-date">Posted on {{ post.date | date: '%B %d, %Y' }} in
+
+							{% for category in post.categories %}
+							<span class = "blog-cat">{{ category }}</span>
+							{% endfor %}
+
+						</span>
+						<h5 class = "blog-title">{{ post.title }}</h5>
+						<hr class = "blog-hr">
+						<p class = "blog-text">
+
+							{% if post.title.size > 33 %}
+							{{ post.content | strip_html | truncatewords:40 }}
+							{% else %}
+							{{ post.content | strip_html | truncatewords:50 }}
+							{% endif %}
+
+						</p>
+						<a class = "blog-readmore" href = "{{ post.url }}">Read More →</a>
+
+					</div>
+				</div>
+			</div>
+
+			{% endfor %}
+
+		</div>
+	</div>
+</section>
+
+<!-- Content Block 2-->
+
+<section class = "section-spacer color-main">
+	<div class = "container">
+		<div class = "row">
+			<div class = "col-xl-6 image-padding">
+
+				<img class = "rounded image-container shadow" src = "assets/images/desktop/Shoko-Desktop-2.png" alt = "Shoko Image 1">
+
+			</div>
+
+			<div class = "col-xl-6 section-header-light">
+
+				<h1 class = "section-header-light">Let Shoko Handle Everything</h1>
+
+				<p>Shoko, previously known as JMM (Japanese Media Manager) is an anime cataloging program designed to automate the cataloging of your anime
+					collection regardless of the size and number of files in your collection, it’s even able to connect with some of the most popular media
+					center programs out there. Unlike other anime cataloging programs which rely on perfectly named files or force you to manually link the file
+					with a series and episode, Shoko does this all automatically with minimal user intervention. Let Shoko do all the heavy lifting. by removing
+					these tedious and time consuming tasks so you actually watch your collection instead of just maintaining it.
+				</p>
+
+				<h1 class = "section-header-light">Introducing Shoko Desktop 2</h1>
+
+				<p>Most cataloging programs cost money and rightfully so, they are powerful services that offer a lot of functionality and need some way to
+					recoup their costs and development time. Even free cataloging programs often times have a “Pro” version which you can buy or ask for
+					donations to continue development. With Shoko it was decided in the very beginning that Shoko will always remain free with no “Pro” version
+					or donation requests, we don’t even take donations as we don’t want there to be any question as to where the money is going. We also offer
+					complete transparency with our users hosting the entire Shoko Suite on GitHub for anyone to view and even help develop. The reason we do
+					this is simple, we want to provide the best anime cataloging / anime manager program there is at no cost to the our users. Passion and
+					support is what fuels us and our continued drive for constant improvement.
+				</p>
+
+			</div>
+
+		</div>
+	</div>
+</section>
+
+<!-- Content Block 3-->
+
+<section class = "section-spacer">
+	<div class = "container">
+		<div class = "row">
+			<div class = "col-xl-6">
+
+				<h1>Plugins For Plex, Kodi and MediaPortal!</h1>
+
+				<p>Shoko, previously known as JMM (Japanese Media Manager) is an anime cataloging program designed to automate the cataloging of your anime
+					collection regardless of the size and number of files in your collection, it’s even able to connect with some of the most popular media
+					center programs out there. Unlike other anime cataloging programs which rely on perfectly named files or force you to manually link the file
+					with a series and episode, Shoko does this all automatically with minimal user intervention. Let Shoko do all the heavy lifting. by removing
+					these tedious and time consuming tasks so you actually watch your collection instead of just maintaining it.
+				</p>
+
+				<h1>Nakamori - A Kodi Plugin</h1>
+
+				<p>Most cataloging programs cost money and rightfully so, they are powerful services that offer a lot of functionality and need some way to
+					recoup their costs and development time. Even free cataloging programs often times have a “Pro” version which you can buy or ask for
+					donations to continue development. With Shoko it was decided in the very beginning that Shoko will always remain free with no “Pro” version
+					or donation requests, we don’t even take donations as we don’t want there to be any question as to where the money is going. We also offer
+					complete transparency with our users hosting the entire Shoko Suite on GitHub for anyone to view and even help develop. The reason we do
+					this is simple, we want to provide the best anime cataloging / anime manager program there is at no cost to the our users. Passion and
+					support is what fuels us and our continued drive for constant improvement.
+				</p>
+
+			</div>
+
+			<div class = "col-xl-6 image-padding">
+
+				<img class = "rounded image-container shadow" src = "assets/images/nakamori/Nakamori-Coverflow.jpg" alt = "Shoko Image 1">
+
+			</div>
+		</div>
+	</div>
+</section>

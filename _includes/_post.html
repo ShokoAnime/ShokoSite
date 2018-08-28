@@ -1,0 +1,67 @@
+<div class = "row">
+
+	{% if page.url == "/blog/index.html" %}
+
+	{% assign offsetNumber = 1 %}
+
+	{% else %}
+
+	{% assign offsetNumber = 0 %}
+
+	{% endif %}
+
+	{% for post in paginator.posts offset:offsetNumber %}
+
+	<div class = "col-xl-3 row-spacer">
+		<div class = "card shadow blog">
+
+			<a href = "{{ post.url | absolute_url }}"><img class = "card-img-top blog-image"
+					src = "{{ post.img | absolute_url }}"
+					alt = " {{ post.title }}"></a>
+
+			<div class = "card-body">
+
+					<span class = "blog-date">Posted on {{ post.date | date: '%B %d, %Y' }} in
+
+							{% for category in post.categories %}
+							<a class = "blog-cat" href="/category/{{ category }}">{{ category }}</a>
+							{% endfor %}
+
+				</span>
+
+				<h5 class = "blog-title">{{ post.title }}</h5>
+				<hr class = "blog-hr">
+				<p class = "blog-text">
+
+					{% if post.title.size > 33 %}
+					{{ post.content | strip_html | truncatewords:40 }}
+					{% else %}
+					{{ post.content | strip_html | truncatewords:50 }}
+					{% endif %}
+
+				</p>
+				<a class = "blog-readmore" href = "{{ post.url | absolute_url }}">Read More →</a>
+
+			</div>
+		</div>
+	</div>
+
+	{% endfor %}
+
+</div>
+<div class = "row">
+	{% if paginator.total_pages > 1 %}
+	<ul class = "pager">
+		{% if paginator.previous_page %}
+		<li class = "previous">
+			<a href = "{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr; Newer Posts</a>
+		</li>
+		{% endif %}
+		{% if paginator.next_page %}
+		<li class = "next">
+			<a href = "{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Older Posts &rarr;</a>
+		</li>
+		{% endif %}
+	</ul>
+	{% endif %}
+</div>

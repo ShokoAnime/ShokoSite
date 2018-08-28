@@ -1,0 +1,512 @@
+/*
+----------------------------------------
+General CSS
+----------------------------------------
+*/
+
+body {
+    background-image: url('../images/background.png');
+    color: #333333;
+    font-family: 'Raleway', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    height: 100%;
+}
+
+a:hover {
+    color: #ffeb3b !important;
+    transition: .3s color ease-out;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: 'Montserrat', sans-serif;
+    margin: 20px 0 20px 0;
+}
+
+h1, h2, h3 {
+    color: #006CAB;
+}
+
+h1 {
+    font-size: 34px;
+}
+
+p {
+    font-weight: 600;
+    line-height: 1.9;
+}
+
+.color-main {
+    background-color: #2E406F;
+}
+
+.section-spacer {
+    overflow-x: hidden;
+    padding: 60px 15px;
+}
+
+.row-spacer {
+    padding-bottom: 30px;
+}
+
+/*
+----------------------------------------
+Header CSS
+----------------------------------------
+*/
+
+.navbar {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    padding: 15px 0;
+}
+
+.navbar-brand {
+    font-size: 32px;
+    font-variant: small-caps;
+    font-weight: 600;
+    margin-bottom: auto;
+    margin-top: auto;
+}
+
+.nav-link {
+    color: #FFFFFF !important;
+    font-weight: 600;
+    padding-left: 10px !important;
+    text-transform: uppercase;
+}
+
+a.nav-link:hover {
+    text-decoration: underline;
+}
+
+/*
+----------------------------------------
+Image Banner CSS
+----------------------------------------
+*/
+
+.banner-container {
+    /*background: url("../images/banners/Banner-1.jpg") 50% 20%;*/
+    background-size: cover;
+    height: 400px;
+    position: relative;
+}
+
+.banner-image {
+    display: none;
+}
+
+/* Page / Post Overlay*/
+
+.page-header {
+    background-color: #282a2d;
+    bottom: 0;
+    opacity: 0.9;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+}
+
+.page-wrapper {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1720px;
+    padding: 0 15px;
+    width: 100%;
+}
+
+.page-header-color {
+    color: #007bff;
+}
+
+.page-header-second-color {
+    color: #FFFFFF;
+}
+
+/*
+----------------------------------------
+Breadcrumbs Rules
+----------------------------------------
+*/
+
+.breadcrumbs {
+    color: #FFFFFF;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-left: auto;
+    padding: 45px 0;
+}
+
+.breadcrumbs-leading {
+    color: #FFFFFF;
+}
+
+.breadcrumbs-spacer {
+    color: #ffeb3b;
+    margin: 0 15px;
+}
+
+.breadcrumbs-active {
+    color: #007bff;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+/*
+----------------------------------------
+Section CSS
+----------------------------------------
+*/
+
+.image-container {
+    height: 100%;
+    max-height: 495px;
+    max-width: 830px;
+    width: 100%;
+}
+
+.image-padding {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.section-header-center {
+    margin-top: 0;
+    margin-bottom: 60px;
+}
+
+.section-header-light {
+    color: #FFFFFF;
+}
+
+/*
+----------------------------------------
+Features CSS
+----------------------------------------
+*/
+
+.feature-container {
+    color: #FFFFFF;
+}
+
+.feature-container:hover {
+    color: #ffeb3b;
+    cursor: default;
+}
+
+.feature-title {
+    display: table-cell;
+    padding: 20px 0 25px 0;
+    vertical-align: top;
+}
+
+.feature-icon {
+    display: table-cell;
+    font-size: 40px;
+    padding-right: 30px;
+    vertical-align: top;
+}
+
+/*
+----------------------------------------
+Footer Rules
+----------------------------------------
+*/
+
+.footer {
+    color: #FFFFFF;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    height: 90px;
+    width: 100%;
+}
+
+.footer-copyright {
+    font-weight: 500;
+    padding-top: 35px;
+}
+
+.footer-links {
+    color: #FFFFFF;
+    padding-left: 15px;
+    padding-top: 35px;
+    margin-left: auto;
+}
+
+/*
+----------------------------------------
+Blog Index Rules
+----------------------------------------
+*/
+
+/* Latest Blog Post*/
+
+.blog-latest {
+    background-color: #2E406F;
+    color: #FFFFFF;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.blog-latest-image {
+    height: 100%;
+    max-height: 390px;
+    max-width: 845px;
+    width: 100%;
+}
+
+.blog-latest-date {
+    color: #FFFFFF !important;
+    font-weight: 600;
+    margin-left: auto;
+}
+
+.blog-latest-cat {
+    color: #FFFFFF;
+    padding-right: 2px;
+    text-decoration: underline;
+}
+
+.blog-latest-title {
+    color: #FFFFFF;
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+.blog-latest-hr {
+    border-top: 1px solid #FFFFFF;
+}
+
+.blog-latest-readmore {
+    color: #FFFFFF;
+    font-weight: 600;
+}
+
+/* Default Blog Post */
+
+.blog {
+    height: 100%;
+    max-height: 550px;
+    max-width: 408px;
+    width: 100%;
+}
+
+.blog-image {
+    height: 100%;
+    max-height: 180px;
+    max-width: 408px;
+    width: 100%;
+}
+
+.blog-date {
+    color: #006cab;
+    font-weight: 600;
+    margin-left: auto;
+}
+
+.blog-cat {
+    padding-right: 2px;
+    text-decoration: underline;
+}
+
+.blog-cat:hover {
+    color: #dc3545 !important;
+}
+
+.blog-title {
+    color: #006CAB;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+.blog-hr {
+    border-top: 1px solid #E6E6E6;
+}
+
+.blog-readmore {
+    color: #006CAB;
+    font-weight: 600;
+}
+
+.blog-readmore:hover {
+    color: #dc3545 !important;
+}
+
+/*
+----------------------------------------
+Page Rules
+----------------------------------------
+*/
+
+.page-container {
+    display: flex;
+    margin-top: 0;
+    margin-bottom: 60px;
+}
+
+/*
+----------------------------------------
+Singe Post  Rules
+----------------------------------------
+*/
+
+.blog-post-container {
+    border: 1px solid rgba(0, 0, 0, .125);
+}
+
+.blog-post-image {
+    max-height: 500px;
+    max-width: 1280px;
+    height: 100%;
+    width: 100%;
+}
+
+.blog-post {
+    background-color: #fff;
+    background-clip: border-box;
+    border-radius: .25rem;
+    max-width: 1280px;
+    padding: 20px;
+    width: 100%;
+}
+
+.blog-sidebar {
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: .25rem;
+    margin-bottom: 40px;
+    padding: 20px;
+}
+
+.blog-sidebar-header {
+    color: #006CAB;
+    margin: 0 0 10px 0;
+}
+
+.blog-cat-tags-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.blog-cat-tags {
+    border: 1px #282a2d solid;
+    font-size: 14px;
+    padding: 10px;
+    margin: 4px 8px  4px 0;
+    max-width: 140px;
+    text-align: center;
+    width: auto;
+}
+
+.blog-cat-tags:hover {
+    background-color: #007bff;
+    color: #FFFFFF;
+}
+
+/*
+----------------------------------------
+Share Rules
+----------------------------------------
+*/
+
+.share-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.share-box{
+    border: 1px #282a2d solid;
+    font-size: 14px;
+    padding: 10px;
+    margin: 4px 8px  4px 0;
+    max-width: 140px;
+    text-align: center;
+    width: auto;
+}
+
+.facebook {
+    color: #3b5998;
+}
+
+.facebook:hover {
+    color: #fff;
+    background-color: #3b5998;
+}
+
+.twitter {
+    color: #4099FF;
+}
+
+.twitter:hover {
+    color: #fff;
+    background-color: #4099FF;
+}
+
+.google {
+    color: #dc4e41;
+}
+
+.google:hover {
+    color: #fff;
+    background-color: #dc4e41;
+}
+
+.reddit {
+    color: #ff4500;
+}
+
+.reddit:hover {
+    color: #fff;
+    background-color: #ff4500;
+}
+
+.email {
+    color: #444444;
+}
+
+.email:hover {
+    color: #fff;
+    background-color: #444444;
+}
+
+/*
+----------------------------------------
+Media Rules
+----------------------------------------
+*/
+
+/* 1200px - MAX  */
+
+@media (max-width: 1199px) {
+
+    .footer-copyright {
+        margin: 0 auto;
+    }
+
+    .footer-links {
+        display: none;
+    }
+
+}
+
+/* 1200px - MIN */
+
+@media (min-width: 1200px) {
+
+    .container {
+        max-width: 1720px;
+    }
+
+}
