@@ -14,9 +14,6 @@
 
 <section class = "banner-container shadow"></section>
 
-{% elsif page.url == "/category/" %}
-
-
 {% else %}
 
 <section class = "banner-container shadow">
@@ -29,16 +26,10 @@
 				<h5 class = "page-header-second-color">{{ page.subtitle }}</h5>
 
 			</div>
+
 			<div class = "breadcrumbs">
 
-				{% for breadcrumb in page.url %}
-				<h1>{{ breadcrumb | replace: '/' , ' /' | split: '/'}}</h1>
-				<h1>{{ breadcrumb | replace: 'index.html', 'page' | replace: '/' , ' /' | split: '/'}}</h1>
-				{% endfor %}
-
-				<a class = "breadcrumbs-leading" href = "/">Shoko</a>
-				<span class = "breadcrumbs-spacer">>></span>
-				<span class = "breadcrumbs-active">{{ page.title }}</span>
+				{% include _breadcrumbs.html %}
 
 			</div>
 		</div>
