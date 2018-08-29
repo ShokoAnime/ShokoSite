@@ -1,0 +1,50 @@
+---
+layout: main
+title: Category
+subtitle: Overview showing the last four posts from each category.
+permalink: /category/
+---
+
+<div class = "container section-spacer">
+
+	<h1>General - <a class ="blog-cat" href="general/">View All</a></h1>
+	<hr>
+
+	<div class = "row">
+
+		{% for post in site.categories.General limit:4 %}
+
+		{% include _posts_cat.html %}
+
+		{% endfor %}
+
+	</div>
+
+	<h1>Updates - <a class ="blog-cat" href="updates/">View All</a></h1>
+	<hr>
+
+	<div class = "row">
+
+		{% for post in site.categories.Updates limit:4 %}
+
+		{% include _posts_cat.html %}
+
+		{% endfor %}
+
+	</div>
+
+	<h1>Website - <a class ="blog-cat" href="website/">View All</a></h1>
+	<hr>
+
+	<div class = "row">
+
+		{% for post in site.categories.Website limit:4 %}
+
+		{% include _posts_cat.html %}
+
+		{% endfor %}
+
+	</div>
+
+</div>
+

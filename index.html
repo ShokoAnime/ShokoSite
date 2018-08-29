@@ -88,36 +88,8 @@ excerpt: The best and easiest way to manage your anime collection.
 
 			{% for post in site.posts limit:4 %}
 
-			<div class = "col-xl-3 row-spacer">
-				<div class = "card shadow blog">
+			{% include _posts_cat.html %}
 
-					<img class = "card-img-top blog-image" src = "{{ post.img }}" alt = " {{ post.title }}">
-
-					<div class = "card-body">
-
-						<span class = "blog-date">Posted on {{ post.date | date: '%B %d, %Y' }} in
-
-							{% for category in post.categories %}
-							<span class = "blog-cat">{{ category }}</span>
-							{% endfor %}
-
-						</span>
-						<h5 class = "blog-title">{{ post.title }}</h5>
-						<hr class = "blog-hr">
-						<p class = "blog-text">
-
-							{% if post.title.size > 33 %}
-							{{ post.content | strip_html | truncatewords:40 }}
-							{% else %}
-							{{ post.content | strip_html | truncatewords:50 }}
-							{% endif %}
-
-						</p>
-						<a class = "blog-readmore" href = "{{ post.url }}">Read More →</a>
-
-					</div>
-				</div>
-			</div>
 
 			{% endfor %}
 

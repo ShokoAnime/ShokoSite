@@ -9,11 +9,10 @@ sass:
   sass_dir: _sass
   style: compressed
 plugins:
-  - jekyll-sitemap
-  - jekyll-paginate-v2
+- jekyll-sitemap
+- jekyll-paginate-v2
 
 exclude: ['README.markdown', 'Gemfile.lock', 'Gemfile', "README.md", "CNAME", "templates", "package.json", "package-lock.json", "node_modules", "gulpfile.js", "_site"]
-
 
 pagination:
   enabled: true
