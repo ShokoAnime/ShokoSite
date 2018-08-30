@@ -1,0 +1,64 @@
+---
+id: 3371
+title: Shoko Version 3.8 Released
+date: 2017-09-03T21:18:26+00:00
+author: ElementalCrisis
+layout: post
+guid: https://shokoanime.com/?p=3371
+permalink: /shoko-version-3-8-released/
+image: assets/images/blog/2017/09/Shoko-Version-3.8-758x350.png
+categories:
+  - Updates
+tags:
+  - Shoko Desktop
+  - Shoko Server
+---
+After eight very long months, we’re pleased to announce that Shoko Version 3.8 is available for download!
+
+While we’ve added quite a few new features, fixed a lot of bugs and updated a lot of existing features and functionality, the main reason this release took longer than usual is due to the giant refactoring we did on the Shoko codebase. The great thing about this refactor is that everyone benefits from it. Users wishing to help develop Shoko will be able to learn the inner workings much quicker and users using Shoko will benefit from the fixes and enhancements made possible by the refactor.
+
+**Please note, due to bugs fixed and database changes and improvements made since Version 3.7, the upgrade process will take some time to complete.&nbsp;**
+
+Make sure to view the <a href="http://docs.shokoanime.com/changelog.html" target="_blank" rel="noopener">changelog&nbsp;</a>for a complete listing of all changes made in version 3.8.
+
+## Removal of Shoko Downloading Capabilities
+
+After an internal discussion, we&#8217;ve decided to remove all downloading capabilities within Shoko. While its not illegal to use Shoko itself and one could argue that providing download functions is also not illegal, we decided it was best if we never had to find out. However the main reason is the lack of development on that part of Shoko. The functionality we offered was minimal and provided only basic information, we decided that instead of revamping the downloads section which was hardly used, that time would be better spent working on other parts of the program that more of our users would benefit from.&nbsp;
+
+## Shoko on Linux
+
+Thanks to the work done by Cazzar, Linux users are able to use Shoko Server!
+
+You’ll need to use Docker to get Shoko Server running on Linux, we’ve created a guide for Linux users who are unfamiliar with Docker on how to set everything up properly and get it running. The Linux version of Shoko Server is still in Alpha and you are currently unable to use your current database with it. Not all functionality has been added to the Web UI either so there will be some things you’re unable to do within it.
+
+Only significant updates will be posted to the website so to keep up with the latest developments and received additional help, make sure to join our Discord server.
+
+## Shoko Desktop Speed Improvements & Memory Leak Fixes
+
+A ton of work has gone into reducing loading times within Shoko Desktop with the most notable improvement being with series loading, larger series like Naruto and One Piece now load within seconds instead of the minutes they used to take. In addition, we’ve gone through and fixed multiple memory leaks with Shoko Desktop so users no longer have to close Shoko Desktop periodically to reduce memory usage.
+
+## Multiple Files Utility Update
+
+Previously, the Multiple Files utility would only notify you if you had multiple files for an episode. For users who downloaded higher quality releases over time, this utility was pointless as they already knew. So instead we’ve added new functionality to it allowing users to set various preferences such as Source, Resolution and Fansub Group and have Shoko automatically delete multiple files that do not meet your preferences. This feature can also be enabled for use on import.
+
+Note, by default this feature is not enabled.
+
+## Corrupted Images Checker
+
+Shoko will now display an alternative image if it’s unable to load the correct image, users that see this image can run the new Validate Images action in Shoko Server which will check all images and replace any that are corrupted.
+
+Uses can also replace the current alternative image shown by navigating to **C:\ProgramData\ShokoDesktop\images** and replacing **LoadingError.png** with their version.
+
+## My Anime 3 and Shoko Version 3.8
+
+At the moment, My Anime 3 is incompatible with Shoko Version 3.8, we had hoped to have a newer version of My Anime 3 ready by the time of release but things don&#8217;t always wok out the way we want them too. For now, MA3 users please keep using Shoko Version 3.7.0.6 while we work on the update
+
+## Contributors
+
+This release was lead by **da3dsoul** who did the majority of work fixing bugs and adding new features, without him this release would still be in development. Additionally, the following people helped make this release possible.
+
+**Avael, Baine, BigRetroMike, Bond4u, Cazzar, ElementalCrisis, Jimmyson, JMediaManager, MaxPiva, Netsplite, pmcleish & RandRandom.**
+
+## Download Link
+
+<a href="https://shokoanime.com/downloads/" target="_blank" rel="noopener">Download Shoko Version 3.8</a>

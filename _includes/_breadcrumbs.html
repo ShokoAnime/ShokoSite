@@ -3,7 +3,7 @@
 {% for crumb in crumbs offset: 1 %}
 {% if forloop.last %}
 <span class = "breadcrumbs-spacer">>></span>
-<span class = "breadcrumbs-active">{{ crumb | replace:'-',' ' | remove:'.html' | capitalize }}</span>
+<span class = "breadcrumbs-active">{{ page.title }}</span>
 {% else %}
 <span class = "breadcrumbs-spacer">>></span>
 <a class = "breadcrumbs-leading"

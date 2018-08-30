@@ -6,7 +6,7 @@ General CSS
 
 body {
     background-image: url('../images/background.png');
-    color: #333333;
+    color: #2D2D2D;
     font-family: 'Raleway', sans-serif;
     font-size: 15px;
     font-weight: 500;
@@ -37,9 +37,20 @@ h1 {
 }
 
 p {
-    font-weight: 600;
     line-height: 1.9;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
+
+.button {
+    background-color: #2E406F;
+    border: 1px solid #006CAB;
+    color: #FFFFFF;
+    border-radius: 5px;
+    font-weight: 600;
+    padding: 15px;
+}
+
 
 .color-main {
     background-color: #2E406F;
@@ -92,7 +103,6 @@ Image Banner CSS
 */
 
 .banner-container {
-    /*background: url("../images/banners/Banner-1.jpg") 50% 20%;*/
     background-size: cover;
     height: 400px;
     position: relative;
@@ -138,6 +148,7 @@ Breadcrumbs Rules
 
 .breadcrumbs {
     color: #FFFFFF;
+    font-family: 'Montserrat', sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     margin-left: auto;
@@ -156,7 +167,6 @@ Breadcrumbs Rules
 .breadcrumbs-active {
     color: #007bff;
     font-weight: 600;
-    text-decoration: underline;
 }
 
 /*
@@ -170,6 +180,9 @@ Section CSS
     max-height: 495px;
     max-width: 830px;
     width: 100%;
+    border-radius: 5px;
+    border: 5px solid #E6E6E6;
+    box-shadow:  2px 2px 2px 1px #282a2d;
 }
 
 .image-padding {
@@ -301,8 +314,7 @@ Blog Index Rules
 }
 
 .blog-image {
-    height: 100%;
-    max-height: 180px;
+    height: 180px;
     max-width: 408px;
     width: 100%;
 }
@@ -343,16 +355,25 @@ Blog Index Rules
     color: #dc3545 !important;
 }
 
-/*
-----------------------------------------
-Page Rules
-----------------------------------------
-*/
+/* Pagination Rules */
 
-.page-container {
-    display: flex;
-    margin-top: 0;
-    margin-bottom: 60px;
+.pagination-wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+}
+
+.pagination-previous, .pagination-next {
+    color: #FFFFFF !important;
+    display: inline;
+
+    list-style: none;
+    margin: 0 10px;
+    text-align: center;
+}
+
+.pagination-previous > a, .pagination-next > a {
+    color: #FFFFFF;
 }
 
 /*
@@ -365,9 +386,20 @@ Singe Post  Rules
     border: 1px solid rgba(0, 0, 0, .125);
 }
 
-.blog-post-image {
+.blog-post-header-image {
     max-height: 500px;
     max-width: 1280px;
+    height: 100%;
+    width: 100%;
+}
+
+.blog-post-image {
+    border-radius: 5px;
+    border: 5px solid #E6E6E6;
+    box-shadow:  2px 2px 2px 1px #282a2d;
+    max-height: 500px;
+    max-width: 600px;
+    margin: 10px 0 20px 0;
     height: 100%;
     width: 100%;
 }
@@ -377,7 +409,7 @@ Singe Post  Rules
     background-clip: border-box;
     border-radius: .25rem;
     max-width: 1280px;
-    padding: 20px;
+    padding: 40px;
     width: 100%;
 }
 
@@ -401,18 +433,20 @@ Singe Post  Rules
 }
 
 .blog-cat-tags {
-    border: 1px #282a2d solid;
-    font-size: 14px;
+    font-size: 12px;
     padding: 10px;
-    margin: 4px 8px  4px 0;
+    margin: 4px 8px 4px 0;
     max-width: 140px;
     text-align: center;
     width: auto;
 }
 
-.blog-cat-tags:hover {
-    background-color: #007bff;
-    color: #FFFFFF;
+.blog-link {
+    font-weight: 600;
+}
+
+.blog-link:hover {
+    color: #dc3545 !important;
 }
 
 /*
@@ -426,11 +460,11 @@ Share Rules
     flex-wrap: wrap;
 }
 
-.share-box{
+.share-box {
     border: 1px #282a2d solid;
     font-size: 14px;
     padding: 10px;
-    margin: 4px 8px  4px 0;
+    margin: 4px 8px 4px 0;
     max-width: 140px;
     text-align: center;
     width: auto;

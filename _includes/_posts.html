@@ -1,22 +1,12 @@
 <div class = "row">
 
-	{% if page.url == "/blog/index.html" %}
-
-	{% assign offsetNumber = 1 %}
-
-	{% else %}
-
-	{% assign offsetNumber = 0 %}
-
-	{% endif %}
-
-	{% for post in paginator.posts offset:offsetNumber %}
+	{% for post in paginator.posts %}
 
 	<div class = "col-xl-3 row-spacer">
 		<div class = "card shadow blog">
 
 			<a href = "{{ post.url | absolute_url }}"><img class = "card-img-top blog-image"
-					src = "{{ post.img | absolute_url }}"
+					src = "{{ post.image | absolute_url }}"
 					alt = " {{ post.title }}"></a>
 
 			<div class = "card-body">
@@ -24,7 +14,7 @@
 					<span class = "blog-date">Posted on {{ post.date | date: '%B %d, %Y' }} in
 
 							{% for category in post.categories %}
-							<a class = "blog-cat" href="/category/{{ category | downcase }}">{{ category }}</a>
+							<a class = "blog-cat" href = "/category/{{ category | downcase }}">{{ category }}</a>
 							{% endfor %}
 
 				</span>
@@ -33,8 +23,8 @@
 				<hr class = "blog-hr">
 				<p class = "blog-text">
 
-					{% if post.title.size > 33 %}
-					{{ post.content | strip_html | truncatewords:40 }}
+					{% if post.title.size > 35 %}
+					{{ post.content | strip_html | truncatewords:36 }}
 					{% else %}
 					{{ post.content | strip_html | truncatewords:50 }}
 					{% endif %}
@@ -49,19 +39,24 @@
 	{% endfor %}
 
 </div>
+
 <div class = "row">
+	<div class="pagination-wrapper">
+
 	{% if paginator.total_pages > 1 %}
-	<ul class = "pager">
+	<ul>
 		{% if paginator.previous_page %}
-		<li class = "previous">
+		<li class = "pagination-previous button shadow">
 			<a href = "{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr; Newer Posts</a>
 		</li>
 		{% endif %}
 		{% if paginator.next_page %}
-		<li class = "next">
+		<li class = "pagination-next button shadow">
 			<a href = "{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Older Posts &rarr;</a>
 		</li>
 		{% endif %}
 	</ul>
 	{% endif %}
+
+	</div>
 </div>
