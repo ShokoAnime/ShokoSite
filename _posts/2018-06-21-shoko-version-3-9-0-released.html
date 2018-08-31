@@ -1,74 +1,104 @@
 ---
-id: 3461
 title: Shoko Version 3.9.0 Released
+subtitle: Check out our new TvDB Linking System
 date: 2018-06-21T20:30:32+00:00
-author: ElementalCrisis
 layout: post
-guid: https://shokoanime.com/?p=3461
-permalink: /shoko-version-3-9-0-released/
-image: assets/images/blog/2018/06/Shoko-Version-3.9.0-758x350.png
+image: assets/images/blog/2018-06-21-shoko-version-3-9-0-released/Shoko-Version-3.9.0.png
 categories:
-  - Updates
+- Updates
 tags:
-  - Shoko Desktop
-  - Shoko Server
+- Shoko Desktop
+- Shoko Server
 ---
-After a couple months of extensive testing, the latest version of Shoko has been released!
 
-This release contains a lot of new and updated features and bug fixes making it one of our biggest updates in quite some time. While we initially tried to stay away from big releases, some outside factors such as MAL unexpectedly shutting down their API (more below) and our revamped TvDB Linking System delayed this release.&nbsp;
+<p>After a couple months of extensive testing, the latest version of Shoko has been released!
+</p>
 
-As usual, we&#8217;ll cover the big changes below but for a complete list of changes, check out the <a href="http://docs.shokoanime.com/changelog.html" target="_blank" rel="noopener">Changelog</a>.
+<p>This release contains a lot of new and updated features and bug fixes making it one of our biggest updates in quite some time. While we initially tried to
+	stay away from big releases, some outside factors such as MAL unexpectedly shutting down their API (more below) and our revamped TvDB Linking System delayed
+	this release.
+</p>
 
-## New TvDB Linking System
+<p>As usual, we'll cover the big changes below but for a complete list of changes, check out the <a href = "http://docs.shokoanime.com/changelog.html"
+		target = "_blank"
+		rel = "noopener">Changelog</a>.
+</p>
 
-One of the big changes users will see in Desktop 2, our replacement for the current Shoko Desktop, is a fine-tuned Community Sites System providing users with control over every aspect of series linking. While Desktop 2 is still in development, a part of this updated system has been brought into current Desktop, the TvDB Linking System. Previously, TvDB linking worked by selecting the starting point and having Shoko match each entry between AniDB and TvDB in sequential order.&nbsp; This leads to issues with mismatched episodes and specials due to either AniDB or TvDB having the entries listed in a different order leading to additional one-off links needed to correct this. With the new TvDB Linking System, starting points are no longer used and instead&nbsp;each episode and special on AniDB is matched with is corresponding entry on TvDB using the provided air dates.&nbsp;
+<h3>New TvDB Linking System</h3>
+<p>One of the big changes users will see in Desktop 2, our replacement for the current Shoko Desktop, is a fine-tuned Community Sites System providing users
+	with control over every aspect of series linking. While Desktop 2 is still in development, a part of this updated system has been brought into current
+	Desktop, the TvDB Linking System. Previously, TvDB linking worked by selecting the starting point and having Shoko match each entry between AniDB and TvDB
+	in sequential order. This leads to issues with mismatched episodes and specials due to either AniDB or TvDB having the entries listed in a different order
+	leading to additional one-off links needed to correct this. With the new TvDB Linking System, starting points are no longer used and instead each episode
+	and special on AniDB is matched with is corresponding entry on TvDB using the provided air dates.
+</p>
 
-<img class="alignnone size-medium wp-image-3462" src="https://shokoanime.com/wp-content/uploads/2018/06/Shoko-Desktop-TvDB-Linking-400x207.png" alt="" width="400" height="207" srcset="https://shokoanime.com/wp-content/uploads/2018/06/Shoko-Desktop-TvDB-Linking-400x207.png 400w, https://shokoanime.com/wp-content/uploads/2018/06/Shoko-Desktop-TvDB-Linking-1024x531.png 1024w, https://shokoanime.com/wp-content/uploads/2018/06/Shoko-Desktop-TvDB-Linking.png 1336w" sizes="(max-width: 400px) 100vw, 400px" />
+<img src = "../../assets/images/blog/2018-06-21-shoko-version-3-9-0-released/Shoko-Desktop-TvDB-Linking.png">
 
-In the screenshot above, the left column shows the episode listing as reported by AniDB and the right side shows the episode listing as reported by TvDB. An entry in the AniDB column is linked horizontally with the entry in the TvDB column. In this case, every episode is linked correctly so it&#8217;s highlighted green. If the air date did not match, the entry in both columns would be highlighted red which would indicate looking into that entry. Most of the time, the issue lies with an incorrect air date on TvDB, however if this is not the case then please get in contact with us on&nbsp;**Discord** so we can look into it.&nbsp;
+<p>In the screenshot above, the left column shows the episode listing as reported by AniDB and the right side shows the episode listing as reported by TvDB. An
+	entry in the AniDB column is linked horizontally with the entry in the TvDB column. In this case, every episode is linked correctly so it's highlighted
+	green. If the air date did not match, the entry in both columns would be highlighted red which would indicate looking into that entry. Most of the time, the
+	issue lies with an incorrect air date on TvDB, however if this is not the case then please get in contact with us on <strong>Discord</strong> so we can look
+	into it.
+</p>
 
-For cases where you need to override a link, you can do it via the&nbsp;**Episodes** tab by clicking the&nbsp;**Override** button and selecting the correct episode/special.&nbsp;
+<p>For cases where you need to override a link, you can do it via the <strong>Episodes</strong> tab by clicking the <strong>Override</strong> button and
+	selecting the correct episode/special.
+</p>
 
-<img class="alignnone size-medium wp-image-3463" src="https://shokoanime.com/wp-content/uploads/2018/06/Shoko-Desktop-TvDB-Override-400x207.png" alt="" width="400" height="207" srcset="https://shokoanime.com/wp-content/uploads/2018/06/Shoko-Desktop-TvDB-Override-400x207.png 400w, https://shokoanime.com/wp-content/uploads/2018/06/Shoko-Desktop-TvDB-Override-1024x531.png 1024w, https://shokoanime.com/wp-content/uploads/2018/06/Shoko-Desktop-TvDB-Override.png 1336w" sizes="(max-width: 400px) 100vw, 400px" />
+<img src = "../../assets/images/blog/2018-06-21-shoko-version-3-9-0-released/Shoko-Desktop-TvDB-Override.png">
 
-As this is a brand new system, we&#8217;ll be making improvement to it, feedback is incredibly important so please let us know if you encounter any issues or have an idea to improve it.&nbsp;
+<p>As this is a brand new system, we'll be making improvement to it, feedback is incredibly important so please let us know if you encounter any issues or have
+	an idea to improve it.
+</p>
 
-## Plex Integration Reworked&nbsp;
+<h3>Plex Integration Reworked</h3>
+<p>The Plex login and sever/library selection processes have been completely reworked. Now instead of having to extract small details from the URL's the server
+	will manage that automatically for you!
+</p>
 
-The Plex login and sever/library selection processes have been completely reworked. Now instead of having to extract small details from the URL&#8217;s the server will manage that automatically for you!
+<p>For example now when you are logged into Plex via Shoko, it will show you what Plex servers you have access to as well as that server's libraries. The login
+	method has been also updated to align more so with the newer versions of the Plex login methods, used by Plex and and Plex Media Server.
+</p>
 
-For example now when you are logged into Plex via Shoko, it will show you what Plex servers you have access to as well as that server&#8217;s libraries. The login method has been also updated to align moreso with the newer versions of the Plex login methods, used by Plexamp and Plex Media Server.
+<h3>My Anime 3 Update Coming Soon</h3>
+<p>As previously announced, we'll be putting My Anime 3 into maintenance mode. Our goal will always be to make sure MA3 works with the latest version of Shoko
+	Server, we have no plans to abandon it. We're working on fixing a few bugs and removing deprecated features to ensure MA3 always works going forward.
+</p>
 
-## My Anime 3 Update Coming Soon
+<p>For our MA3 users, <strong>you can use the latest version of Shoko Server</strong> with the previously released version of MA3.
+</p>
 
-As previously announced, we&#8217;ll be putting My Anime 3 into maintenance mode. Our goal will always be to make sure MA3 works with the latest version of Shoko Server, we have no plans to abandon it.&nbsp;We&#8217;re working on fixing a few bugs and removing deprecated features to ensure MA3 always works going forward.&nbsp;
+<h3>Shoko Docs Updates</h3>
+<p>Shoko Docs is getting a huge update to reflect all the recent changes and to address some of the concerns and issues new users have reported. Look forward to
+	seeing this in the next couple of weeks.
+</p>
 
-For our MA3 users,&nbsp;**you can use the latest version of Shoko Server** with the previously released version of MA3.&nbsp;
+<h3>My Anime List (MAL) Removed</h3>
+<p>For those who don't know, a couple weeks ago, MAL unexpectedly removed their API and then went down for several days. Shoko, like every other third-party app
+	used that API to allow our users to sync and update their MAL lists within Shoko. With it gone, this is no longer possible and so we removed all
+	functionality related to it. We've discussed it at lengths and have decided that we will only support MAL again if their API is improved and works as
+	intended as the previous one was less than reliable and chalked with issues.
+</p>
 
-## Shoko Docs Updates
+<h3>Linux Users</h3>
+<p>Please be aware, that during the install for 3.9.0 the container startup script was moved from <code>/root/.shoko</code> to <code>/home/shoko/.shoko</code>
+	updating this should be fairly simple if you persisted your settings to disk. Though you will have to update any reference to the old settings directory
+	<code>settings.json</code> to the new directory, a few examples of these are:
+</p>
 
-Shoko Docs is getting a huge update to reflect all the recent changes and to address some of the concerns and issues new users have reported. Look forward to seeing this in the next couple of weeks.&nbsp;
+<ul>
+	<li>DatabaseBackupDirectory</li>
+	<li>ImagesPath</li>
+	<li>MySqliteDirectory</li>
+	<li>MyListDirectory</li>
+	<li>AnimeXmlDirectory</li>
+</ul>
 
-## My Anime List (MAL) Removed
+<h3>Download Link</h3>
+<p><a href = "https://shokoanime.com/downloads/" target = "_blank" rel = "noopener">Download Shoko Version 3.9.0</a></p>
 
-For those who don&#8217;t know, a couple weeks ago, MAL unexpectedly removed their API and then went down for several days. Shoko, like every other third-party app used that API to allow our users to sync and update their MAL lists within Shoko. With it gone, this is no longer possible and so we removed all functionality related to it.&nbsp; We&#8217;ve discussed it at lengths and have decided that we will only support MAL again if their API is improved and works as intended as the previous one was less than reliable and chalked with issues.&nbsp;
+<h3>Contributors In Alphabetical Order</h3>
+<p>This release was made possible by the following people.</p>
 
-## Linux Users
-
-Please be aware, that during the install for 3.9.0 the container startup script was moved from `/root/.shoko` to `/home/shoko/.shoko` updating this should be fairly simple if you persisted your settings to disk. Though you will have to update any reference to the old settings directory `settings.json` to the new directory, a few examples of these are:
-
-  * DatabaseBackupDirectory
-  * ImagesPath
-  * MySqliteDirectory
-  * MyListDirectory
-  * AnimeXmlDirectory
-
-## Download Link
-
-<a href="https://shokoanime.com/downloads/" target="_blank" rel="noopener">Download Shoko Version 3.9.0</a>
-
-## Contributors In Alphabetical Order
-
-This release was made possible by the following people.&nbsp;
-
-**Avael, Baine, Bond, BigRetroMike, Cazzar, Da3dsoul, ElementalCrisis, JonBaby, MaxPiva & Undeadhunter.**
+<p><strong>Avael, Baine, Bond, BigRetroMike, Cazzar, Da3dsoul, ElementalCrisis, JonBaby, MaxPiva & Undeadhunter.</strong></p>
