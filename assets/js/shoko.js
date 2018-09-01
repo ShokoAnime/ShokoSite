@@ -5,6 +5,7 @@ header.style.background = ' url("../images/banners/Banner-' + randomBanner + '.j
 header.style.backgroundSize = 'cover';
 
 console.log(randomBanner);
+console.log(dupeBannerCheck);
 
 function getCSSRule(ruleName) {
 

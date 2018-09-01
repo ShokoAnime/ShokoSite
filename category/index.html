@@ -7,44 +7,22 @@ permalink: /category/
 
 <div class = "container section-spacer">
 
-	<h1>General - <a class ="blog-cat" href="general/">View All</a></h1>
+	{% for category in site.categories %}
+
+	<h1>{{ category | first }} - <a class = "blog-cat" href = "{{ category[0] | slugify }}">View All</a></h1>
 	<hr>
 
 	<div class = "row">
 
-		{% for post in site.categories.General limit:4 %}
+		{% for post in category[1] limit: 4 %}
 
-		{% include _posts_cat.html %}
+		{% include _posts_cat_tag.html %}
 
 		{% endfor %}
 
 	</div>
 
-	<h1>Updates - <a class ="blog-cat" href="updates/">View All</a></h1>
-	<hr>
-
-	<div class = "row">
-
-		{% for post in site.categories.Updates limit:4 %}
-
-		{% include _posts_cat.html %}
-
-		{% endfor %}
-
-	</div>
-
-	<h1>Website - <a class ="blog-cat" href="website/">View All</a></h1>
-	<hr>
-
-	<div class = "row">
-
-		{% for post in site.categories.Website limit:4 %}
-
-		{% include _posts_cat.html %}
-
-		{% endfor %}
-
-	</div>
+	{% endfor %}
 
 </div>
 

@@ -9,6 +9,7 @@
 {% include _navbar.html %}
 
 <!-- Image Banner -->
+
 <section class = "banner-container shadow">
 
 	<div class = "page-header">
@@ -56,7 +57,7 @@
 				<div class = "blog-cat-tags-wrapper">
 					{% for category in page.categories %}
 
-					<a class = "blog-cat-tags button" href="/category/{{ category }}">{{ category }}</a>
+					<a class = "blog-cat-tags button" href="/category/{{ category | downcase }}">{{ category }}</a>
 
 					{% endfor %}
 				</div>
@@ -66,7 +67,7 @@
 				<div class = "blog-cat-tags-wrapper">
 					{% for tags in page.tags %}
 
-					<a class = "blog-cat-tags button" href="/tag/{{ tag }}">{{ tags }}</a>
+					<a class = "blog-cat-tags button" href="/tag/{{ tags | downcase | replace: ' ', '-'}}">{{ tags }}</a>
 
 					{% endfor %}
 				</div>
@@ -82,7 +83,6 @@
 
 	</div>
 </div>
-
 
 {% include _footer.html %}
 {% include _scripts_include.html %}
