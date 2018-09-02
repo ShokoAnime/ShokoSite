@@ -7,15 +7,12 @@ const imagemin = require('gulp-imagemin');
 const Pngquant = require('imagemin-pngquant');
 const siteRoot = '_site';
 
-
-
 /*
 |--------------------------------------------------------------------------
 | Build Jekyll
 |--------------------------------------------------------------------------
 |
 */
-
 
 gulp.task('jekyll', () => {
     const jekyll = child.exec('jekyll build --watch --incremental');
@@ -35,7 +32,6 @@ gulp.task('jekyll', () => {
 |--------------------------------------------------------------------------
 |
 */
-
 
 gulp.task('serve', () => {
     browserSync.init({
@@ -58,13 +54,13 @@ gulp.task('clean', function () {
     return gulp.src(siteRoot, {read: false})
         .pipe(clean());
 });
+
 /*
 |--------------------------------------------------------------------------
 | Minify Images
 |--------------------------------------------------------------------------
 |
 */
-
 
 gulp.task('img', function () {
     return gulp.src('assets/img/**/*.{jpg,jpeg,png,gif}')
@@ -82,7 +78,6 @@ gulp.task('img', function () {
         ]))
         .pipe(gulp.dest('assets/img/'));
 });
-
 
 /*
 |--------------------------------------------------------------------------
