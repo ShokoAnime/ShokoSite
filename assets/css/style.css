@@ -517,6 +517,41 @@ Share Rules
 
 /*
 ----------------------------------------
+Temp Rules
+----------------------------------------
+*/
+
+.alert {
+    margin-top: 2rem;
+    width: 100%;
+}
+
+.alert-header {
+    display: flex;
+}
+
+.alert-header > i {
+    font-size: 36px;
+}
+
+.alert-heading {
+    margin: 5px 0 0 10px;
+}
+
+.alert-importance {
+    text-decoration: underline;
+}
+
+.alert-link {
+    color: #006CAB !important;
+}
+
+.alert-link:hover {
+    color: #dc3545 !important;
+}
+
+/*
+----------------------------------------
 Media Rules
 ----------------------------------------
 */

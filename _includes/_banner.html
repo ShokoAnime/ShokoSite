@@ -1,0 +1,32 @@
+<!-- Image Banner -->
+
+{% if page.url == "/" %}
+
+<section class = "banner-container shadow"></section>
+
+{% else %}
+
+<section class = "banner-container shadow">
+
+	<div class = "page-header">
+		<div class = "page-wrapper">
+			<div>
+
+				<h1 class = "page-header-color">{{ page.title }}</h1>
+				<h5 class = "page-header-second-color">{{ page.subtitle }}</h5>
+
+			</div>
+
+			<div class = "breadcrumbs">
+
+				{% include _breadcrumbs.html %}
+
+			</div>
+		</div>
+	</div>
+
+</section>
+
+{% endif %}
+
+{% include _feedback_alert.html %}
