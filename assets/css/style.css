@@ -42,6 +42,13 @@ p {
     margin-bottom: 1rem;
 }
 
+.alert {
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.11);
+    display: table;
+}
+
 .button {
     background-color: #2E406F;
     border: 1px solid #006CAB;
@@ -50,7 +57,6 @@ p {
     font-weight: 600;
     padding: 15px;
 }
-
 
 .color-main {
     background-color: #2E406F;
@@ -182,7 +188,7 @@ Section CSS
     width: 100%;
     border-radius: 5px;
     border: 5px solid #E6E6E6;
-    box-shadow:  2px 2px 2px 1px #282a2d;
+    box-shadow: 2px 2px 2px 1px #282a2d;
 }
 
 .image-padding {
@@ -243,6 +249,7 @@ Footer Rules
 
 .footer-copyright {
     font-weight: 500;
+    margin-top: 0;
     padding-top: 35px;
 }
 
@@ -396,7 +403,7 @@ Singe Post  Rules
 .blog-post-image {
     border-radius: 5px;
     border: 5px solid #E6E6E6;
-    box-shadow:  2px 2px 2px 1px #282a2d;
+    box-shadow: 2px 2px 2px 1px #282a2d;
     max-height: 500px;
     max-width: 600px;
     margin: 10px 0 20px 0;
@@ -514,6 +521,65 @@ Share Rules
     color: #fff;
     background-color: #444444;
 }
+
+/*
+----------------------------------------
+Download Rules
+----------------------------------------
+*/
+
+.downloads-list > .nav-link{
+    color: #2D2D2D !important;
+    text-transform: none;
+}
+.downloads-list > .nav-link:hover{
+    color: #dc3545 !important;
+}
+
+.downloads-list > .nav-link.active {
+    background-color: #2E406F;
+    color: #ffeb3b !important;
+}
+
+.downloads-wrapper {
+    height: 100%;
+}
+
+.downloads-header-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.downloads-header {
+    margin: 0;
+}
+
+.downloads-left-info-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.downloads-right-info-wrapper {
+    align-items: flex-end;
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-top: 12px;
+}
+
+.downloads-right-info-header {
+    font-weight: 600;
+}
+
+.downloads-status{
+    padding-bottom: 2px;
+    padding-left: 10px;
+}
+
+.download-links {
+    margin-top: 1rem;
+}
+
 
 /*
 ----------------------------------------

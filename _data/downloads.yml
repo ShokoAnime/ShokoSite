@@ -1,0 +1,55 @@
+- name: Shoko Server
+  id: shoko-server
+  nav-class: active
+  tab-class: show active
+  version: 3.9.3
+  date: August 20th, 2018
+  system: Windows, Linux
+  description: >
+    <div class="alert alert-danger" role="alert">This is a danger alert—check it out!</div>
+    <p>Shoko server is the core component of the Shoko suite and with it's client-server architecture which allows any program or plugin to access Shoko.
+    You'll have access to your entire collection locally and over the internet with no additional work outside the initial configuration required.</p>
+  left-panel:
+  - header: >
+      About Daily Version <a href = "https://ci.appveyor.com/project/ElementalCrisis/jmmserver" target = "_blank" rel = "noopener">
+      <img class = "downloads-status" src = "https://ci.appveyor.com/api/projects/status/nw9nm50hli8w937q?svg=true"></a>
+    text: >
+      The daily build is updated <strong>after every buildable commit</strong> and is not tied to the information listed above. The
+      badge listed above indicates the current build status and is clickable for more information.
+  - header: >
+      About Linux Version<a href = "https://hub.docker.com/r/cazzar/shokoserver/"><img class = "downloads-status"
+      src = "https://images.microbadger.com/badges/version/cazzar/shokoserver.svg"></a>
+    text: >
+      The linux build is only automatically updated <strong>when new tags are created on Github</strong> and is not tied to the
+      information listed above..The badge listed above indicates the current build status and is clickable for more information.
+  right-panel:
+  - type: Latest Release
+    link: https://google.com
+  - type: Daily Release
+    link: https://google.com
+  - type: Linux Docker Version
+    link: https://google.com
+- name: Shoko Desktop
+  id: shoko-desktop
+  nav-class:
+  tab-class:
+  version: 3.9.3
+  date: August 20th, 2018
+  system: Windows
+  description: >
+    <p>With Shoko Desktop, you have complete control over every aspect of your anime collection. Using the built-in collection viewer,
+    you can arrange and organization how the series in your collection are named and displayed. Group related series and even create
+    custom filters based on a number of different criteria. Shoko Desktop also provides over a variety of tools to further modify your
+    collection to your own unique style, without having to learn to code or manually make changes.</p>
+  left-panel:
+  - header: >
+      About Daily Version <a href = "https://ci.appveyor.com/project/ElementalCrisis/jmmserver" target = "_blank" rel = "noopener">
+      <img class = "downloads-status" src = "https://ci.appveyor.com/api/projects/status/nw9nm50hli8w937q?svg=true"></a>
+    text: >
+      The daily build is updated <strong>after every buildable commit</strong> and is not tied to the information listed above. The
+      badge listed above indicates the current build status and is clickable for more information.
+  right-panel:
+  - type: Latest Release
+    link: https://google.com
+  - type: Daily Release
+    link: https://google.com
