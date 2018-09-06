@@ -1,7 +1,7 @@
-randomBanner = Math.floor((Math.random() * 4) + 1);
+randomBanner = Math.floor((Math.random() * 6) + 1);
 
 let header = getCSSRule('.banner-container');
-header.style.background = ' url("../images/banners/Banner-' + randomBanner + '.png") 50% 20%';
+header.style.background = ' url("../images/banners/Banner-' + randomBanner + '.jpg") 50% 20%';
 header.style.backgroundSize = 'cover';
 
 console.log(randomBanner);
