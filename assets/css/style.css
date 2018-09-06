@@ -13,8 +13,12 @@ body {
     height: 100%;
 }
 
+a {
+    font-weight: 600;
+}
+
 a:hover {
-    color: #ffeb3b !important;
+    color: #dc3545 !important;
     transition: .3s color ease-out;
 }
 
@@ -45,8 +49,9 @@ p {
 .alert {
     border-radius: 0;
     -webkit-border-radius: 0;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.11);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.11);
     display: table;
+    width: 100%;
 }
 
 .button {
@@ -91,6 +96,10 @@ Header CSS
     margin-top: auto;
 }
 
+.navbar-brand:hover {
+    color: #ffeb3b !important;
+}
+
 .nav-link {
     color: #FFFFFF !important;
     font-weight: 600;
@@ -99,6 +108,7 @@ Header CSS
 }
 
 a.nav-link:hover {
+    color: #ffeb3b !important;
     text-decoration: underline;
 }
 
@@ -163,6 +173,10 @@ Breadcrumbs Rules
 
 .breadcrumbs-leading {
     color: #FFFFFF;
+}
+
+.breadcrumbs-leading:hover {
+    color: #ffeb3b !important;
 }
 
 .breadcrumbs-spacer {
@@ -354,7 +368,6 @@ Blog Index Rules
 }
 
 .blog-readmore {
-    color: #006CAB;
     font-weight: 600;
 }
 
@@ -468,58 +481,46 @@ Share Rules
 }
 
 .share-box {
-    border: 1px #282a2d solid;
-    font-size: 14px;
-    padding: 10px;
+    height: 55px;
     margin: 4px 8px 4px 0;
-    max-width: 140px;
+    padding: 15px 13px;
     text-align: center;
-    width: auto;
+    transition: all 0.3s ease;
+    width: 50px !important;
+}
+
+.share-box:hover {
+    background-color: #282a2d;
+    color: #ffeb3b !important;
+}
+
+.share-icon-size {
+    font-size: 26px;
 }
 
 .facebook {
-    color: #3b5998;
-}
-
-.facebook:hover {
-    color: #fff;
-    background-color: #3b5998;
+    background: #3B5998;
+    color: white;
 }
 
 .twitter {
-    color: #4099FF;
-}
-
-.twitter:hover {
-    color: #fff;
-    background-color: #4099FF;
+    background: #55ACEE;
+    color: white;
 }
 
 .google {
-    color: #dc4e41;
-}
-
-.google:hover {
-    color: #fff;
-    background-color: #dc4e41;
+    background: #dd4b39;
+    color: white;
 }
 
 .reddit {
-    color: #ff4500;
-}
-
-.reddit:hover {
-    color: #fff;
-    background-color: #ff4500;
+    background: #ff4500;
+    color: white;
 }
 
 .email {
-    color: #444444;
-}
-
-.email:hover {
-    color: #fff;
-    background-color: #444444;
+    background: #444444;
+    color: white;
 }
 
 /*
@@ -528,11 +529,12 @@ Download Rules
 ----------------------------------------
 */
 
-.downloads-list > .nav-link{
+.downloads-list > .nav-link {
     color: #2D2D2D !important;
     text-transform: none;
 }
-.downloads-list > .nav-link:hover{
+
+.downloads-list > .nav-link:hover {
     color: #dc3545 !important;
 }
 
@@ -542,7 +544,7 @@ Download Rules
 }
 
 .downloads-wrapper {
-    height: 560px;
+    height: 530px;
 }
 
 .downloads-header-wrapper {
@@ -571,7 +573,7 @@ Download Rules
     font-weight: 600;
 }
 
-.downloads-status{
+.downloads-status {
     padding-bottom: 2px;
     padding-left: 10px;
 }
@@ -580,6 +582,9 @@ Download Rules
     margin-top: 1rem;
 }
 
+.downloads-table {
+    margin-top: 15px;
+}
 
 /*
 ----------------------------------------
@@ -587,7 +592,7 @@ Temp Rules
 ----------------------------------------
 */
 
-.alert {
+.alert-temp {
     margin-top: 2rem;
     width: 100%;
 }
@@ -609,7 +614,7 @@ Temp Rules
 }
 
 .alert-link {
-    color: #006CAB !important;
+    color: #007bff !important;
 }
 
 .alert-link:hover {
