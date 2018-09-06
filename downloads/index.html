@@ -39,12 +39,12 @@ permalink: /downloads/
 					</div>
 					<hr>
 
-					<p>{{download.description}}</p>
-
 					<div class = "row">
-						<div class = "col-xl-6">
+						<div class = "col-xl-8">
 
-							{% for left-item in download.left-panel %}
+							<p>{{download.quick}}</p>
+
+							{% for left-item in download.description %}
 
 							<h5>{{left-item.header}}</h5>
 							<p>{{left-item.text}}</p>
@@ -52,31 +52,39 @@ permalink: /downloads/
 							{% endfor %}
 
 						</div>
-						<div class = "col-xl-6">
+						<div class = "col-xl-4">
 
-							<h5 class = "download-links">Available Downloads</h5>
+							<h3 class = "download-links">Available Downloads</h3>
 
 							<table class = "table table-striped">
-								<thead>
-								<tr>
-									<th width = "30%">Type</th>
-									<th>Link</th>
-								</tr>
-								</thead>
-
 								<tbody>
 
-								{% for right-item in download.right-panel %}
+								{% for right-item in download.downloads %}
 
 								<tr>
-									<td>{{right-item.type}}</td>
-									<td><a href = "{{right-item.link}}" target = "_blank" rel = "noopener">Download</a></td>
+									<td>{{right-item.link}}</td>
 								</tr>
 
 								{% endfor %}
 
 								</tbody>
 							</table>
+
+							<h5 class = "download-links">Additional Resources</h5>
+
+								<table class = "table table-striped">
+									<tbody>
+
+									{% for right-item in download.resource%}
+
+									<tr>
+										<td>{{right-item.link}}</td>
+									</tr>
+
+									{% endfor %}
+
+									</tbody>
+								</table>
 
 						</div>
 					</div>
