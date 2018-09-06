@@ -6,7 +6,7 @@
   date: August 20th, 2018
   system: Windows, Linux
   description: >
-    <div class="alert alert-danger" role="alert">This is a danger alert—check it out!</div>
+    <div class="alert alert-danger" role="alert"><strong>Shoko Server is required for all Programs/Plugins.</strong></div>
     <p>Shoko server is the core component of the Shoko suite and with it's client-server architecture which allows any program or plugin to access Shoko.
     You'll have access to your entire collection locally and over the internet with no additional work outside the initial configuration required.</p>
   left-panel:
@@ -43,8 +43,8 @@
     collection to your own unique style, without having to learn to code or manually make changes.</p>
   left-panel:
   - header: >
-      About Daily Version <a href = "https://ci.appveyor.com/project/ElementalCrisis/jmmserver" target = "_blank" rel = "noopener">
-      <img class = "downloads-status" src = "https://ci.appveyor.com/api/projects/status/nw9nm50hli8w937q?svg=true"></a>
+      About Daily Version <a href = "https://ci.appveyor.com/project/ElementalCrisis/jmmclient" target = "_blank" rel = "noopener">
+      <img class = "downloads-status" src = "https://ci.appveyor.com/api/projects/status/opb4rcr4ltfflocw?svg=true"></a>
     text: >
       The daily build is updated <strong>after every buildable commit</strong> and is not tied to the information listed above. The
       badge listed above indicates the current build status and is clickable for more information.
@@ -52,4 +52,82 @@
   - type: Latest Release
     link: https://google.com
   - type: Daily Release
+    link: https://google.com
+- name: My Anime 3
+  id: my-anime-3
+  nav-class:
+  tab-class:
+  version: 3.7.2
+  date: August 17th, 2018
+  system: MediaPortal Plugin
+  description: >
+    <p>My Anime is the only MediaPortal plugin available that can deliver your entire anime collection in all it's glory, no matter the size
+    straight to your TV! With My Anime 3, the latest version in the My Anime you have complete control over your entire anime collection
+    from within MediaPortal allowing you to customize the look and style when displaying your collection.</p>
+  left-panel:
+  - header: About My Anime 3
+    text: >
+      My Anime 3 <strong>is not a standalone program</strong>, it is a plugin for the HTPC program MediaPortal 1. Additionally, there are
+      no plans to develop a version of My Anime 3 for MediaPortal 2.
+  - header: Future Development
+    text: >
+      My Anime 3 is no longer in active development and has entered maintenance mode. Any developers interested in further developing
+      My Anime 3, please contact Elemental Crisis on the Shoko discord.
+  right-panel:
+  - type: Latest Release
+    link: https://google.com
+- name: Shoko On Plex
+  id: shoko-on-plex
+  nav-class:
+  tab-class:
+  version: 3.7.2
+  date: February 2nd, 2018
+  system: Plex Channel
+  description: >
+    <p>It doesn't matter if you’re at home or on the go, with Shoko On Plex you’ll always have access to your anime collection on any device
+    capable of running Plex, the most versatile media player software currently available. Shoko On Plex takes your entire collections metadata
+    and provides it in an easy to view layout reducing clutter providing you with a sleek and minimal anime viewing experience.</p>
+  left-panel:
+  - header: About Shoko On Plex
+    text: >
+     Shoko On Plex is a <strong>Plex Channel</strong> and requires the user to manually install it.
+  - header: Shoko On Plex VS Shoko Metadata
+    text: >
+     Each plugin serves a different purpose, please see each plugins respective page to determine which one is best for you.
+  right-panel:
+  - type: Latest Release
+    link: https://google.com
+- name: Shoko Metadata
+  id: shoko-metadata
+  nav-class:
+  tab-class:
+  version: 1.3.0
+  date: December 26th, 2017
+  system: Plex Library
+  description: >
+    <p>Using Shoko Metadata, you can combine the power of Shoko with Plex’s robust library functionality providing a seamless experience for Plex users. </p>
+  left-panel:
+  - header: Shoko On Plex VS Shoko Metadata
+    text: >
+     Each plugin serves a different purpose, please see each plugins respective page to determine which one is best for you.
+  right-panel:
+  - type: Latest Release
+    link: https://google.com
+- name: Nakamori
+  id: nakamori
+  nav-class:
+  tab-class:
+  version: 2.1.21
+  date: April 1st, 2018
+  system: Kodi Plugin
+  description: >
+    <p>Nakamori was designed to allow anime fans to use the full power of Kodi with their anime collection by using Shoko Server to handle all the backend tasks
+    and issues that normally arise when using a metadata plugin.</p>
+  left-panel:
+  - header: Nakamori Support
+    text: >
+     Nakamori is a <strong>Community Plugin</strong> and is not maintained by the Shoko team. Please use the
+     <a href="https://github.com/bigretromike/nakamori" target="_blank" rel="noopener">Nakamori Github</a> for issues, requests and general feedback.
+  right-panel:
+  - type: Latest Release
     link: https://google.com
