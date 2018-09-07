@@ -39,7 +39,6 @@ gulp.task('browser-sync', ['jekyll-build'], function() {
     });
 });
 
-
 /**
  * Watch scss files for changes & recompile
  * Watch html/md files, run jekyll & reload BrowserSync

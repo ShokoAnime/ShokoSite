@@ -1,9 +1,9 @@
 title: Shoko Anime
 description: Your Archive, Your Way.
-#url: https://shokoanime.com/newsite
+#url: https://newsite.shokoanime.com/
 url: http://localhost:3000
-permalink:   /blog/:title/
-markdown:    kramdown
+permalink: /blog/:title/
+markdown: kramdown
 highlighter: rouge
 sass:
   sass_dir: _sass
@@ -12,7 +12,7 @@ plugins:
 - jekyll-sitemap
 - jekyll-paginate-v2
 
-exclude: ['README.markdown', 'Gemfile.lock', 'Gemfile', "README.md", "CNAME", "templates", "package.json", "package-lock.json", "node_modules", "gulpfile.js", "_site", "yarn.lock"]
+exclude: ['README.markdown', 'Gemfile.lock', 'Gemfile', "README.md", "package.json", "package-lock.json", "node_modules", "gulpfile.js", "_site", "yarn.lock"]
 
 pagination:
   enabled: true

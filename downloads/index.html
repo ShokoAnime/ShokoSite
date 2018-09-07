@@ -4,6 +4,7 @@ title: Downloads
 subtitle: Time to get started.
 permalink: /downloads/
 ---
+
 <div class = "container section-spacer">
 	<div class = "row row-spacer">
 		<div class = "col-xl-2">
@@ -12,8 +13,7 @@ permalink: /downloads/
 				{% for download in site.data.downloads %}
 
 				<a class = "nav-link {{download.nav-class}}" id = "{{download.id}}-tab" data-toggle = "pill" href = "#{{download.id}}" role = "tab"
-						aria-controls = "{{download.id}}"
-						aria-selected = "true">{{download.name}}</a>
+				   aria-controls = "{{download.id}}" aria-selected = "true">{{download.name}}</a>
 
 				{% endfor %}
 
@@ -72,19 +72,19 @@ permalink: /downloads/
 
 							<h5 class = "download-links">Additional Resources</h5>
 
-								<table class = "table table-striped">
-									<tbody>
+							<table class = "table table-striped">
+								<tbody>
 
-									{% for right-item in download.resource%}
+								{% for right-item in download.resource%}
 
-									<tr>
-										<td>{{right-item.link}}</td>
-									</tr>
+								<tr>
+									<td>{{right-item.link}}</td>
+								</tr>
 
-									{% endfor %}
+								{% endfor %}
 
-									</tbody>
-								</table>
+								</tbody>
+							</table>
 
 						</div>
 					</div>
