@@ -129,20 +129,18 @@
   id: nakamori
   nav-class:
   tab-class:
-  version: 2.1.21
-  date: April 1st, 2018
-  system: Kodi Plugin
+  version: 3.0.1
+  date: September 7th, 2018
+  system: Kodi addon
   quick: >
-    <p>Nakamori was designed to allow anime fans to use the full power of Kodi with their anime collection by using Shoko Server to handle all the backend tasks
-    and issues that normally arise when using a metadata plugin.</p>
+    <p>Nakamori was designed to allow anime fans to use the full power of Kodi with their anime collection by using Shoko Server to handle all the backend tasks and issues that normally arise when using a metadata plugin.</p>
   description:
   - header: Nakamori Support
     text: >
-      Nakamori is a <strong>Community Plugin</strong> and is not maintained by the Shoko team. Please use the
-      <a href="https://github.com/bigretromike/nakamori" target="_blank" rel="noopener">Nakamori Github</a> for issues, requests and general feedback.
+      Nakamori is a <strong>Community Plugin</strong> and is maintained by the da3dsoul, bigretromike. For support and general feedback you can use <a href='https://discord.gg/xkw2vHU' target="_blank" rel="noopener">official Shoko Discord server</a> and if you have any issues or requests go to <a href="https://github.com/bigretromike/nakamori/issues" target="_blank" rel="noopener">Nakamori Github</a><br>Remember to enable 'Unknown sources' in Kodi Add-ons system settings to be able to install .zip
   downloads:
-  - link: <a href="#" target="_blank" rel="noopener">Latest Version</a>
+  - link: <a href="https://shokunin.monogatari.pl/repo/repository.nakamori.zip" target="_blank" rel="noopener">Latest Version</a>
   resource:
   - link: <a href="#" target="_blank" rel="noopener">Program Information</a>
-  - link: <a href="#" target="_blank" rel="noopener">Source Code</a>
-  - link: <a href="#" target="_blank" rel="noopener">Documentation</a>
+  - link: <a href="https://github.com/bigretromike/nakamori/" target="_blank" rel="noopener">Source Code</a>
+  - link: <a href="https://shokunin.monogatari.pl/projects/nakamori/" target="_blank" rel="noopener">Documentation</a>
