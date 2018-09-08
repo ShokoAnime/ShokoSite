@@ -26,7 +26,7 @@
 					{% if post.title.size > 35 %}
 					{{ post.content | strip_html | truncatewords:36 }}
 					{% else %}
-					{{ post.content | strip_html | truncatewords:50 }}
+					{{ post.content | strip_html | truncatewords:46 }}
 					{% endif %}
 
 				</p>
@@ -46,12 +46,12 @@
 	{% if paginator.total_pages > 1 %}
 	<ul>
 		{% if paginator.previous_page %}
-		<li class = "pagination-previous button shadow">
+		<li class = "pagination-previous button shadow color-link-alt">
 			<a href = "{{ paginator.previous_page_path | prepend: '/newsite'site.url | replace: '//', '/' }}">&larr; Newer Posts</a>
 		</li>
 		{% endif %}
 		{% if paginator.next_page %}
-		<li class = "pagination-next button shadow">
+		<li class = "pagination-next button shadow color-link-alt">
 			<a href = "{{ paginator.next_page_path | prepend: '/newsite'site.url | replace: '//', '/' }}">Older Posts &rarr;</a>
 		</li>
 		{% endif %}

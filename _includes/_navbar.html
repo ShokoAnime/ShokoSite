@@ -1,4 +1,4 @@
-<nav class = "navbar navbar-expand-lg navbar-dark color-main">
+<nav class = "navbar navbar-expand-lg navbar-dark background-color-main">
 	<div class = "container">
 
 		<a class = "navbar-brand" href = "{{ '/' | absolute_url }}">Shoko</a>
@@ -10,32 +10,36 @@
 
 		<div class = "collapse navbar-collapse" id = "navbarNav">
 
+			{% for link in site.data.navlinks %}
+
 			<ul class = "navbar-nav ml-auto">
 				<li class = "nav-item active">
-					<a class = "nav-link" href = "{{ '/about' | absolute_url }}">About</a>
+					<a class = "nav-link" href = "{{ link.about | absolute_url }}">About</a>
 				</li>
 				<li class = "nav-item">
-					<a class = "nav-link" href = "{{ '/blog' | absolute_url }}">Blog</a>
+					<a class = "nav-link" href = "{{ link.blog| absolute_url }}">Blog</a>
 				</li>
 				<li class = "nav-item">
-					<a class = "nav-link" href = "https://docs.shokoanime.com/changelog" target="_blank" rel="noopener">Changelog</a>
+					<a class = "nav-link" href = "{{ link.changelog }}" target="_blank" rel="noopener">Changelog</a>
 				</li>
 				<li class = "nav-item">
-					<a class = "nav-link" href = "{{ '/downloads' | absolute_url }}">Downloads</a>
+					<a class = "nav-link" href = "{{ link.downloads | absolute_url }}">Downloads</a>
 				</li>
 				<li class = "nav-item">
-					<a class = "nav-link" href = "#">Programs / Plugins</a>
+					<a class = "nav-link" href = "{{ link.progams-plugins | absolute_url }}">Programs / Plugins</a>
 				</li>
 				<li class = "nav-item">
-					<a class = "nav-link" href = "https://docs.shokoanime.com" target="_blank" rel="noopener">Documentation</a>
+					<a class = "nav-link" href = "{{ link.shoko-docs }}" target="_blank" rel="noopener">Documentation</a>
 				</li>
 				<li class = "nav-item">
-					<a class = "nav-link" href = "https://github.com/shokoanime" target="_blank" rel="noopener">Github</a>
+					<a class = "nav-link" href = "{{ link.github }}" target="_blank" rel="noopener">Github</a>
 				</li>
 				<li class = "nav-item">
-					<a class = "nav-link" href = "https://discord.gg/vpeHDsg" target="_blank" rel="noopener">Discord</a>
+					<a class = "nav-link" href = "{{ link.discord }}" target="_blank" rel="noopener">Discord</a>
 				</li>
 			</ul>
+
+			{% endfor %}
 
 		</div>
 	</div>

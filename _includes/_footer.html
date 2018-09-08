@@ -1,4 +1,4 @@
-<section class = "color-main">
+<section class = "background-color-main">
 
 	<div class = "container">
 		<div class = "footer">
@@ -7,14 +7,18 @@
 
 			<div class = "footer-links">
 
-				<a class = "footer-links nav-links" href = "#">About</a>
-				<a class = "footer-links nav-links" href = "#">Blog</a>
-				<a class = "footer-links nav-links" href = "#">Changelog</a>
-				<a class = "footer-links nav-links" href = "#">Downloads</a>
-				<a class = "footer-links nav-links" href = "#">Programs / Plugins</a>
-				<a class = "footer-links nav-links" href = "#">Shoko Docs</a>
-				<a class = "footer-links nav-links" href = "#">GitHub</a>
-				<a class = "footer-links nav-links" href = "#">Discord</a>
+				{% for link in site.data.navlinks %}
+
+				<a class = "footer-links nav-links" href = "{{ link.about | absolute_url }}">About</a>
+				<a class = "footer-links nav-links" href = "{{ link.blog| absolute_url }}">Blog</a>
+				<a class = "footer-links nav-links" href = "{{ link.changelog }}" target = "_blank" rel = "noopener">Changelog</a>
+				<a class = "footer-links nav-links" href = "{{ link.downloads | absolute_url }}">Downloads</a>
+				<a class = "footer-links nav-links" href = "{{ link.progams-plugins | absolute_url }}">Programs / Plugins</a>
+				<a class = "footer-links nav-links" href = "{{ link.shoko-docs }}" target = "_blank" rel = "noopener">Documentation</a>
+				<a class = "footer-links nav-links" href = "{{ link.github }}" target = "_blank" rel = "noopener">Github</a>
+				<a class = "footer-links nav-links" href = "{{ link.discord }}" target = "_blank" rel = "noopener">Discord</a>
+
+				{% endfor %}
 
 			</div>
 		</div>

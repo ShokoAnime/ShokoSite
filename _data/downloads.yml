@@ -14,14 +14,14 @@
       About Daily Version <a href = "https://ci.appveyor.com/project/ElementalCrisis/jmmserver" target = "_blank" rel = "noopener">
       <img class = "downloads-status" src = "https://ci.appveyor.com/api/projects/status/nw9nm50hli8w937q?svg=true"></a>
     text: >
-      The daily build is updated <strong>after every buildable commit</strong> and is not tied to the information listed above. The
-      badge listed above indicates the current build status and is clickable for more information.
+      <p>The daily build is updated <strong>after every buildable commit</strong> and is not tied to the information listed above. The
+      badge listed above indicates the current build status and is clickable for more information.</p>
   - header: >
       About Linux Version<a href = "https://hub.docker.com/r/cazzar/shokoserver/" target = "_blank" rel = "noopener">
       <img class = "downloads-status" src = "https://images.microbadger.com/badges/version/cazzar/shokoserver.svg"></a>
     text: >
-      The linux build is only automatically updated <strong>when new tags are created on Github</strong> and is not tied to the
-      information listed above..The badge listed above indicates the current build status and is clickable for more information.
+      <p>The linux build is only automatically updated <strong>when new tags are created on Github</strong> and is not tied to the
+      information listed above..The badge listed above indicates the current build status and is clickable for more information.</p>
   downloads:
   - link: <a href="#" target="_blank" rel="noopener">Latest Version</a>
   - link: <a href="#" target="_blank" rel="noopener">Daily Version</a>
@@ -46,9 +46,9 @@
   - header: >
       About Daily Version <a href = "https://ci.appveyor.com/project/ElementalCrisis/jmmclient" target = "_blank" rel = "noopener">
       <img class = "downloads-status" src = "https://ci.appveyor.com/api/projects/status/opb4rcr4ltfflocw?svg=true"></a>
-  text: >
-    The daily build is updated <strong>after every buildable commit</strong> and is not tied to the information listed above. The
-    badge listed above indicates the current build status and is clickable for more information.
+    text: >
+      <p>The daily build is updated <strong>after every buildable commit</strong> and is not tied to the information listed above. The
+      badge listed above indicates the current build status and is clickable for more information.</p>
   downloads:
   - link: <a href="#" target="_blank" rel="noopener">Latest Version</a>
   - link: <a href="#" target="_blank" rel="noopener">Daily Version</a>
@@ -70,12 +70,12 @@
   description:
   - header: About My Anime 3
     text: >
-      My Anime 3 <strong>is not a standalone program</strong>, it is a plugin for the HTPC program MediaPortal 1. Additionally, there are
-      no plans to develop a version of My Anime 3 for MediaPortal 2.
+      <p>My Anime 3 <strong>is not a standalone program</strong>, it is a plugin for the HTPC program MediaPortal 1. Additionally, there are
+      no plans to develop a version of My Anime 3 for MediaPortal 2.</p>
   - header: Future Development
     text: >
-      My Anime 3 is no longer in active development and has entered maintenance mode. Any developers interested in further developing
-      My Anime 3, please contact Elemental Crisis on the Shoko discord.
+      <p>My Anime 3 is no longer in active development and has entered maintenance mode. Any developers interested in further developing
+      My Anime 3, please contact Elemental Crisis on the Shoko discord.</p>
   downloads:
   - link: <a href="#" target="_blank" rel="noopener">Latest Version</a>
   resource:
@@ -96,10 +96,10 @@
   description:
   - header: About Shoko On Plex
     text: >
-      Shoko On Plex is a <strong>Plex Channel</strong> and requires the user to manually install it.
+      <p>Shoko On Plex is a <strong>Plex Channel</strong> and requires the user to manually install it.</p>
   - header: Shoko On Plex VS Shoko Metadata
     text: >
-      Each plugin serves a different purpose, please see each plugins respective page to determine which one is best for you.
+      <p>Each plugin serves a different purpose, please see each plugins respective page to determine which one is best for you.</p>
   downloads:
   - link: <a href="#" target="_blank" rel="noopener">Latest Version</a>
   resource:
@@ -114,11 +114,11 @@
   date: December 26th, 2017
   system: Plex Library
   quick: >
-    <p>Using Shoko Metadata, you can combine the power of Shoko with Plex’s robust library functionality providing a seamless experience for Plex users. </p>
+    <p>Using Shoko Metadata, you can combine the power of Shoko with Plex’s robust library functionality providing a seamless experience for Plex users.</p>
   description:
   - header: Shoko On Plex VS Shoko Metadata
     text: >
-      Each plugin serves a different purpose, please see each plugins respective page to determine which one is best for you.
+      <p>Each plugin serves a different purpose, please see each plugins respective page to determine which one is best for you.</p>
   downloads:
   - link: <a href="#" target="_blank" rel="noopener">Latest Version</a>
   resource:
@@ -133,11 +133,15 @@
   date: September 7th, 2018
   system: Kodi addon
   quick: >
-    <p>Nakamori was designed to allow anime fans to use the full power of Kodi with their anime collection by using Shoko Server to handle all the backend tasks and issues that normally arise when using a metadata plugin.</p>
+    <p>Nakamori was designed to allow anime fans to use the full power of Kodi with their anime collection by using Shoko Server to handle all the backend tasks
+    and issues that normally arise when using a metadata plugin.</p>
   description:
   - header: Nakamori Support
     text: >
-      Nakamori is a <strong>Community Plugin</strong> and is maintained by the da3dsoul, bigretromike. For support and general feedback you can use <a href='https://discord.gg/xkw2vHU' target="_blank" rel="noopener">official Shoko Discord server</a> and if you have any issues or requests go to <a href="https://github.com/bigretromike/nakamori/issues" target="_blank" rel="noopener">Nakamori Github</a><br>Remember to enable 'Unknown sources' in Kodi Add-ons system settings to be able to install .zip
+      <p>Nakamori is a <strong>Community Plugin</strong> that is maintained by <strong>Da3dsoul</strong> & <strong>BigRetroMike</strong>. For support and
+      general feedback, use the <a href='https://discord.gg/xkw2vHU' target="_blank" rel="noopener">Shoko Discord server</a> and for issues or requests, use
+      the <a href="https://github.com/bigretromike/nakamori/issues" target="_blank" rel="noopener">Nakamori Github</a> repo.</p>
+      Remember to enable <strong>Unknown Sources</strong> in Kodi Add-ons system settings to be able to install the .zip file.</p>
   downloads:
   - link: <a href="https://shokunin.monogatari.pl/repo/repository.nakamori.zip" target="_blank" rel="noopener">Latest Version</a>
   resource:
