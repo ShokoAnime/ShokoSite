@@ -17,6 +17,7 @@
     - Singe Post
         - Share Buttons
     - Downloads
+        - Accordions
     - Footer
     - Temp Rules (Remove once testing is done.)
     - Media Queries
@@ -91,7 +92,7 @@ p {
     padding: 15px;
 }
 
-.button:hover{
+.button:hover {
     color: #ffeb3b !important;
 }
 
@@ -102,7 +103,6 @@ p {
 .color-link-alt:hover {
     color: #ffeb3b;
 }
-
 
 /*
 ---------------------------------------------
@@ -262,6 +262,7 @@ p {
 .feature-container:hover {
     color: #ffeb3b;
     cursor: default;
+    transition: .3s color ease-out;
 }
 
 .feature-title {
@@ -539,7 +540,8 @@ p {
 }
 
 .downloads-wrapper {
-    height: 530px;
+    height: 100%;
+    max-height: 1169px;
 }
 
 .downloads-header-wrapper {
@@ -568,17 +570,77 @@ p {
     font-weight: 600;
 }
 
-.downloads-status {
-    padding-bottom: 2px;
-    padding-left: 10px;
-}
-
 .download-links {
     margin-top: 1rem;
 }
 
 .downloads-table {
     margin-top: 15px;
+}
+
+/* Accordions */
+
+.downloads-accordion-card {
+    border: 1px solid #f1f2f3 !important;
+    background-color: #f9fafb !important;
+}
+
+.downloads-accordion-header {
+    padding: 0;
+}
+
+.downloads-accordion-header > h5 {
+    margin: 0;
+    padding: 3px 0;
+}
+
+.btn.btn-link.downloads-accordion-button:before {
+    border-left: 1px solid #757575;
+    border-top: 1px solid #757575;
+    content: '';
+    display: inline-block;
+    height: 6px;
+    margin-right: 20px;
+    margin-top: 7px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transition: .2s linear;
+    -webkit-transition: .2s linear;
+    width: 6px;
+}
+
+.btn.btn-link.downloads-accordion-button.collapsed:before {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+}
+
+.downloads-accordion-button {
+    display: flex;
+    font-weight: 500;
+    width: 100%;
+}
+
+.downloads-accordion-button:hover {
+    color: #dc3545;
+    transition: .3s color ease-out;
+}
+
+.downloads-status {
+    margin-left: auto;
+    padding-bottom: 2px;
+    padding-left: 10px;
+}
+
+/* Features */
+
+.downloads-features-body {
+    color: #2D2D2D;
+    padding: 0;
+}
+
+.downloads-features-body:hover {
+    color: #dc3545;
+    transition: .3s color ease-out;
 }
 
 /*

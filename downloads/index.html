@@ -13,7 +13,7 @@ permalink: /downloads/
 				{% for download in site.data.downloads %}
 
 				<a class = "nav-link {{download.nav-class}}" id = "{{download.id}}-tab" data-toggle = "pill" href = "#{{download.id}}" role = "tab"
-				   aria-controls = "{{download.id}}" aria-selected = "true">{{download.name}}</a>
+						aria-controls = "{{download.id}}" aria-selected = "true">{{download.name}}</a>
 
 				{% endfor %}
 
@@ -42,14 +42,9 @@ permalink: /downloads/
 					<div class = "row">
 						<div class = "col-xl-8">
 
-							<p>{{download.quick}}</p>
-
-							{% for left-item in download.description %}
-
-							<h5>{{left-item.header}}</h5>
-							{{left-item.text}}
-
-							{% endfor %}
+							{{download.warning}}
+							{{download.version-types}}
+							{{download.description}}
 
 						</div>
 						<div class = "col-xl-4">
@@ -88,11 +83,53 @@ permalink: /downloads/
 
 						</div>
 					</div>
+
+					<h4>Key Features</h4>
+
+					<div class = "row">
+
+						{% for feature in download.features %}
+
+						<div class = "col-xl-3">
+							<div class = "feature-container">
+								<div class = "card-body downloads-features-body">
+
+									<div class = "feature-icon">
+										<i class = "{{ feature.icon }}"></i>
+									</div>
+
+									<h5 class = "feature-title">{{ feature.title }}</h5>
+									<p>{{ feature.text }}</p>
+
+								</div>
+							</div>
+						</div>
+
+						{% endfor %}
+
+					</div>
+
+					<h4>Images</h4>
+
+					<div class = "row">
+
+						{% for image in download.images %}
+
+						<div class = "col-xl-3">
+							<a href = "{{ image.source }}" target = "_blank" rel = "noopener">
+								<img class = "rounded image-container" src = "{{ image.source }}" alt = "{{ image.alt }}">
+							</a>
+						</div>
+
+						{% endfor %}
+
+					</div>
 				</div>
 
 				{% endfor %}
 
 			</div>
 		</div>
+
 	</div>
 </div>

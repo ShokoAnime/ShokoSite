@@ -5,31 +5,75 @@
   version: 3.9.3
   date: August 20th, 2018
   system: Windows, Linux
-  quick: >
-    <div class="alert alert-danger" role="alert"><strong>Shoko Server is required for all Programs/Plugins.</strong></div>
-    <p>Shoko server is the core component of the Shoko suite and with it's client-server architecture which allows any program or plugin to access Shoko.
-    You'll have access to your entire collection locally and over the internet with no additional work outside the initial configuration required.</p>
-  description:
-  - header: >
-      About Daily Version <a href = "https://ci.appveyor.com/project/ElementalCrisis/jmmserver" target = "_blank" rel = "noopener">
-      <img class = "downloads-status" src = "https://ci.appveyor.com/api/projects/status/nw9nm50hli8w937q?svg=true"></a>
-    text: >
-      <p>The daily build is updated <strong>after every buildable commit</strong> and is not tied to the information listed above. The
-      badge listed above indicates the current build status and is clickable for more information.</p>
-  - header: >
-      About Linux Version<a href = "https://hub.docker.com/r/cazzar/shokoserver/" target = "_blank" rel = "noopener">
-      <img class = "downloads-status" src = "https://images.microbadger.com/badges/version/cazzar/shokoserver.svg"></a>
-    text: >
-      <p>The linux build is only automatically updated <strong>when new tags are created on Github</strong> and is not tied to the
-      information listed above..The badge listed above indicates the current build status and is clickable for more information.</p>
   downloads:
   - link: <a href="#" target="_blank" rel="noopener">Latest Version</a>
   - link: <a href="#" target="_blank" rel="noopener">Daily Version</a>
   - link: <a href="#" target="_blank" rel="noopener">Linux Docker Version</a>
   resource:
-  - link: <a href="#" target="_blank" rel="noopener">Program Information</a>
   - link: <a href="#" target="_blank" rel="noopener">Source Code</a>
   - link: <a href="#" target="_blank" rel="noopener">Documentation</a>
+  version-types: >
+    <div class = "accordion" id = "accordionExample">
+    <div class = "card downloads-accordion-card">
+    <div class = "card-header downloads-accordion-header" id = "shokoServerHeader">
+    <h5 class = "mb-0">
+    <button class = "btn btn-link downloads-accordion-button" type = "button" data-toggle = "collapse" data-target = "#shokoServer" aria-expanded = "true"
+    aria-controls = "shokoServer">
+    <span class="downloads-header-title">About Daily Version</span>
+    <a class = "downloads-status" href = "https://ci.appveyor.com/project/ElementalCrisis/jmmclient"target = "_blank" rel = "noopener">
+    <img src = "https://ci.appveyor.com/api/projects/status/opb4rcr4ltfflocw?svg=true"></a></button></h5></div>
+    <div id = "shokoServer" class = "collapse" aria-labelledby = "shokoServer" data-parent = "#shokoServerHeader">
+    <div class = "card-body">
+    The daily build is updated <strong>after every buildable commit</strong> and is not tied to the information listed above. The
+    badge listed above indicates the current build status and is clickable for more information.
+    </div></div></div>
+    <div class = "card downloads-accordion-card"><div class = "card-header downloads-accordion-header" id = "shokoServerLinuxHeader">
+    <h5 class = "mb-0">
+    <button class = "btn btn-link downloads-accordion-button" type = "button" data-toggle = "collapse" data-target = "#shokoServerLinux" aria-expanded = "true"
+    aria-controls = "shokoServerLinux">
+    <span class="downloads-header-title">About Linux Version</span>
+    <a class = "downloads-status" href = "https://hub.docker.com/r/cazzar/shokoserver/" target = "_blank" rel = "noopener">
+    <img src = "https://images.microbadger.com/badges/version/cazzar/shokoserver.svg"></a></button></h5></div>
+    <div id = "shokoServerLinux" class = "collapse" aria-labelledby = "shokoServerLinux" data-parent = "#shokoServerLinuxHeader">
+    <div class = "card-body">
+    The linux build is only automatically updated <strong>when new tags are created on Github</strong> and is not tied to the information listed above. The badge listed
+    above indicates the current build status and is clickable for more information.
+    </div></div></div></div>
+  warning: >
+    <div class="alert alert-danger" role="alert"><strong>Shoko Server is required for all Programs/Plugins.</strong></div>
+  description: >
+    <h5>Your Anime In One Place, Accessible Anywhere</h5>
+    <p>Shoko server is the core component of the Shoko suite and with it’s client-server architecture which allows any program or plugin to access Shoko.
+    You’ll have access to your entire collection locally and over the internet with no additional work outside the initial configuration required.</p>
+    <h5>Why A Client-Server Architecture Design?</h5>
+    <p>The idea behind Shoko Server is to automate the entire process from start to finish, all you need to do is specify the location of your files and Shoko Server
+    does the rest. However, instead of having to duplicate this process, Shoko Server was designed to allow other programs and plugins to connect directly to it, retrieve
+    the information it needs and display it as requested. Anyone with programming knowledge can take advantage of this and create their own program and plugin without
+    having to worry about all the tedious things Shoko Server takes care of.</p>
+  features:
+  - icon: fas fa-server  fa-sm
+    title: Hash Matching
+    text: Shoko doesn't rely on the your files having a specific filename structure. Instead, files are hashed and sent to AniDB for comparison and matching.
+  - icon: fas fa-server  fa-sm
+    title: Hash Matching
+    text: Shoko doesn't rely on the your files having a specific filename structure. Instead, files are hashed and sent to AniDB for comparison and matching.
+  - icon: fas fa-server  fa-sm
+    title: Hash Matching
+    text: Shoko doesn't rely on the your files having a specific filename structure. Instead, files are hashed and sent to AniDB for comparison and matching.
+  - icon: fas fa-server  fa-sm
+    title: Hash Matching
+    text: Shoko doesn't rely on the your files having a specific filename structure. Instead, files are hashed and sent to AniDB for comparison and matching.
+  images:
+  - source: ../assets/images/programs/server/Web-UI-Example.jpg
+    alt: Shoko Image 1
+  - source: ../assets/images/programs/server/Web-UI-Example.jpg
+    alt: Shoko Image 1
+  - source: ../assets/images/programs/server/Web-UI-Example.jpg
+    alt: Shoko Image 1
+  - source: ../assets/images/programs/server/Web-UI-Example.jpg
+    alt: Shoko Image 1
+
+
 - name: Shoko Desktop
   id: shoko-desktop
   nav-class:
@@ -37,18 +81,21 @@
   version: 3.9.3
   date: August 20th, 2018
   system: Windows
-  quick: >
-    <p>With Shoko Desktop, you have complete control over every aspect of your anime collection. Using the built-in collection viewer,
-    you can arrange and organization how the series in your collection are named and displayed. Group related series and even create
-    custom filters based on a number of different criteria. Shoko Desktop also provides over a variety of tools to further modify your
-    collection to your own unique style, without having to learn to code or manually make changes.</p>
-  description:
-  - header: >
-      About Daily Version <a href = "https://ci.appveyor.com/project/ElementalCrisis/jmmclient" target = "_blank" rel = "noopener">
-      <img class = "downloads-status" src = "https://ci.appveyor.com/api/projects/status/opb4rcr4ltfflocw?svg=true"></a>
-    text: >
-      <p>The daily build is updated <strong>after every buildable commit</strong> and is not tied to the information listed above. The
-      badge listed above indicates the current build status and is clickable for more information.</p>
+  version-types: >
+    <div class = "accordion" id = "accordionExample">
+    <div class = "card downloads-accordion-card">
+    <div class = "card-header downloads-accordion-header" id = "shokoDesktopHeader">
+    <h5 class = "card-title mb-0">
+    <button class = "btn btn-link downloads-accordion-button " type = "button" data-toggle = "collapse" data-target = "#shokoDesktop" aria-expanded = "true"
+    aria-controls = "shokoDesktop">
+    <span class="downloads-header-title">About Daily Version</span>
+    <a class = "downloads-status" href = "https://ci.appveyor.com/project/ElementalCrisis/jmmclient"target = "_blank"
+    rel = "noopener"><img src = "https://ci.appveyor.com/api/projects/status/opb4rcr4ltfflocw?svg=true"></a></button></h5></div>
+    <div id = "shokoDesktop" class = "collapse" aria-labelledby = "shokoDesktop" data-parent = "#shokoDesktopHeader">
+    <div class = "card-body">
+    The daily build is updated <strong>after every buildable commit</strong> and is not tied to the information listed above. The
+    badge listed above indicates the current build status and is clickable for more information.
+    </div></div></div></div>
   downloads:
   - link: <a href="#" target="_blank" rel="noopener">Latest Version</a>
   - link: <a href="#" target="_blank" rel="noopener">Daily Version</a>
@@ -56,6 +103,38 @@
   - link: <a href="#" target="_blank" rel="noopener">Program Information</a>
   - link: <a href="#" target="_blank" rel="noopener">Source Code</a>
   - link: <a href="#" target="_blank" rel="noopener">Documentation</a>
+  description: >
+    <h5>Manage Your Collection Your Way</h5>
+    <p>With Shoko Desktop, you have complete control over every aspect of your anime collection. Using the built-in collection viewer, you can arrange and organization
+    how the series in your collection are named and displayed. Group related series and even create custom filters based on a number of different criteria. Shoko Desktop
+    also provides over a variety of tools to further modify your collection to your own unique style, without having to learn to code or manually make changes.</p>
+    <h5>Access Your Collection Remotely</h5>
+    <p>Like our plugins, Shoko Desktop has the ability to remotely access your collection allowing you to perform any needed tasks. Additionally, using Shoko Desktop you can
+    stream your collection straight to the client with playback using the built-in MPV video player or a number of different supported video players.</p>
+  features:
+  - icon: fas fa-server  fa-sm
+    title: Hash Matching
+    text: Shoko doesn't rely on the your files having a specific filename structure. Instead, files are hashed and sent to AniDB for comparison and matching.
+  - icon: fas fa-server  fa-sm
+    title: Hash Matching
+    text: Shoko doesn't rely on the your files having a specific filename structure. Instead, files are hashed and sent to AniDB for comparison and matching.
+  - icon: fas fa-server  fa-sm
+    title: Hash Matching
+    text: Shoko doesn't rely on the your files having a specific filename structure. Instead, files are hashed and sent to AniDB for comparison and matching.
+  - icon: fas fa-server  fa-sm
+    title: Hash Matching
+    text: Shoko doesn't rely on the your files having a specific filename structure. Instead, files are hashed and sent to AniDB for comparison and matching.
+  images:
+  - source: ../assets/images/programs/server/Web-UI-Example.jpg
+    alt: Shoko Image 1
+  - source: ../assets/images/programs/server/Web-UI-Example.jpg
+    alt: Shoko Image 1
+  - source: ../assets/images/programs/server/Web-UI-Example.jpg
+    alt: Shoko Image 1
+  - source: ../assets/images/programs/server/Web-UI-Example.jpg
+    alt: Shoko Image 1
+
+
 - name: My Anime 3
   id: my-anime-3
   nav-class:
@@ -63,25 +142,42 @@
   version: 3.7.2
   date: August 17th, 2018
   system: MediaPortal Plugin
-  quick: >
-    <p>My Anime is the only MediaPortal plugin available that can deliver your entire anime collection in all it's glory, no matter the size
-    straight to your TV! With My Anime 3, the latest version in the My Anime you have complete control over your entire anime collection
-    from within MediaPortal allowing you to customize the look and style when displaying your collection.</p>
-  description:
-  - header: About My Anime 3
-    text: >
-      <p>My Anime 3 <strong>is not a standalone program</strong>, it is a plugin for the HTPC program MediaPortal 1. Additionally, there are
-      no plans to develop a version of My Anime 3 for MediaPortal 2.</p>
-  - header: Future Development
-    text: >
-      <p>My Anime 3 is no longer in active development and has entered maintenance mode. Any developers interested in further developing
-      My Anime 3, please contact Elemental Crisis on the Shoko discord.</p>
   downloads:
   - link: <a href="#" target="_blank" rel="noopener">Latest Version</a>
   resource:
-  - link: <a href="#" target="_blank" rel="noopener">Program Information</a>
   - link: <a href="#" target="_blank" rel="noopener">Source Code</a>
   - link: <a href="#" target="_blank" rel="noopener">Documentation</a>
+  description: >
+    <p>My Anime is the only MediaPortal plugin available that can deliver your entire anime collection in all it's glory, no matter the size
+    straight to your TV! With My Anime 3, the latest version in the My Anime you have complete control over your entire anime collection
+    from within MediaPortal allowing you to customize the look and style when displaying your collection.</p>
+    <h5>Future Development</h5>
+    <p>My Anime 3 is no longer in active development and has entered maintenance mode. Any developers interested in further developing
+    My Anime 3, please contact Elemental Crisis on the Shoko discord.</p>
+  features:
+  - icon: fas fa-server  fa-sm
+    title: Hash Matching
+    text: Shoko doesn't rely on the your files having a specific filename structure. Instead, files are hashed and sent to AniDB for comparison and matching.
+  - icon: fas fa-server  fa-sm
+    title: Hash Matching
+    text: Shoko doesn't rely on the your files having a specific filename structure. Instead, files are hashed and sent to AniDB for comparison and matching.
+  - icon: fas fa-server  fa-sm
+    title: Hash Matching
+    text: Shoko doesn't rely on the your files having a specific filename structure. Instead, files are hashed and sent to AniDB for comparison and matching.
+  - icon: fas fa-server  fa-sm
+    title: Hash Matching
+    text: Shoko doesn't rely on the your files having a specific filename structure. Instead, files are hashed and sent to AniDB for comparison and matching.
+  images:
+  - source: ../assets/images/programs/server/Web-UI-Example.jpg
+    alt: Shoko Image 1
+  - source: ../assets/images/programs/server/Web-UI-Example.jpg
+    alt: Shoko Image 1
+  - source: ../assets/images/programs/server/Web-UI-Example.jpg
+    alt: Shoko Image 1
+  - source: ../assets/images/programs/server/Web-UI-Example.jpg
+    alt: Shoko Image 1
+
+
 - name: Shoko On Plex
   id: shoko-on-plex
   nav-class:
@@ -89,23 +185,46 @@
   version: 3.7.2
   date: February 2nd, 2018
   system: Plex Channel
-  quick: >
-    <p>It doesn't matter if you’re at home or on the go, with Shoko On Plex you’ll always have access to your anime collection on any device
-    capable of running Plex, the most versatile media player software currently available. Shoko On Plex takes your entire collections metadata
-    and provides it in an easy to view layout reducing clutter providing you with a sleek and minimal anime viewing experience.</p>
-  description:
-  - header: About Shoko On Plex
-    text: >
-      <p>Shoko On Plex is a <strong>Plex Channel</strong> and requires the user to manually install it.</p>
-  - header: Shoko On Plex VS Shoko Metadata
-    text: >
-      <p>Each plugin serves a different purpose, please see each plugins respective page to determine which one is best for you.</p>
   downloads:
   - link: <a href="#" target="_blank" rel="noopener">Latest Version</a>
   resource:
-  - link: <a href="#" target="_blank" rel="noopener">Program Information</a>
   - link: <a href="#" target="_blank" rel="noopener">Source Code</a>
   - link: <a href="#" target="_blank" rel="noopener">Documentation</a>
+  description: >
+    <p>It doesn't matter if you’re at home or on the go, with Shoko On Plex you’ll always have access to your anime collection on any device
+    capable of running Plex, the most versatile media player software currently available. Shoko On Plex takes your entire collections metadata
+    and provides it in an easy to view layout reducing clutter providing you with a sleek and minimal anime viewing experience.</p>
+    <h5>Shoko On Plex Pros & Cons</h5>
+    <ul><li>Is a Plex Channel.</li>
+    <li>Unable to switch audio and subtitles.</li>
+    <li>Supports local, network and cloud playback.</li>
+    <li>Able to stream to devices.</li>
+    <li>Does use Shoko Group Filters.</li>
+    <li>Only able to use file and image info provided by Shoko.</li></ul>
+  features:
+  - icon: fas fa-server  fa-sm
+    title: Hash Matching
+    text: Shoko doesn't rely on the your files having a specific filename structure. Instead, files are hashed and sent to AniDB for comparison and matching.
+  - icon: fas fa-server  fa-sm
+    title: Hash Matching
+    text: Shoko doesn't rely on the your files having a specific filename structure. Instead, files are hashed and sent to AniDB for comparison and matching.
+  - icon: fas fa-server  fa-sm
+    title: Hash Matching
+    text: Shoko doesn't rely on the your files having a specific filename structure. Instead, files are hashed and sent to AniDB for comparison and matching.
+  - icon: fas fa-server  fa-sm
+    title: Hash Matching
+    text: Shoko doesn't rely on the your files having a specific filename structure. Instead, files are hashed and sent to AniDB for comparison and matching.
+  images:
+  - source: ../assets/images/programs/server/Web-UI-Example.jpg
+    alt: Shoko Image 1
+  - source: ../assets/images/programs/server/Web-UI-Example.jpg
+    alt: Shoko Image 1
+  - source: ../assets/images/programs/server/Web-UI-Example.jpg
+    alt: Shoko Image 1
+  - source: ../assets/images/programs/server/Web-UI-Example.jpg
+    alt: Shoko Image 1
+
+
 - name: Shoko Metadata
   id: shoko-metadata
   nav-class:
@@ -113,38 +232,84 @@
   version: 1.3.0
   date: December 26th, 2017
   system: Plex Library
-  quick: >
-    <p>Using Shoko Metadata, you can combine the power of Shoko with Plex’s robust library functionality providing a seamless experience for Plex users.</p>
-  description:
-  - header: Shoko On Plex VS Shoko Metadata
-    text: >
-      <p>Each plugin serves a different purpose, please see each plugins respective page to determine which one is best for you.</p>
   downloads:
   - link: <a href="#" target="_blank" rel="noopener">Latest Version</a>
   resource:
-  - link: <a href="#" target="_blank" rel="noopener">Program Information</a>
   - link: <a href="#" target="_blank" rel="noopener">Source Code</a>
   - link: <a href="#" target="_blank" rel="noopener">Documentation</a>
+  description: >
+    <p>Using Shoko Metadata, you can combine the power of Shoko with Plex’s robust library functionality providing a seamless experience for Plex users.</p>
+    <h5>Shoko Metadata Pros & Cons</h5>
+    <ul><li>Is a Plex Library.</li>
+    <li>Able to switch audio and subtitles.</li>
+    <li>Only supports local and network playback.</li>
+    <li>Able to utilize Plex’s native Sync feature.</li>
+    <li>Does not use Shoko Group Filters.</li>
+    <li>Scans, detects and build file and image info for your files for use in Plex.</li></ul>
+  features:
+  - icon: fas fa-server  fa-sm
+    title: Hash Matching
+    text: Shoko doesn't rely on the your files having a specific filename structure. Instead, files are hashed and sent to AniDB for comparison and matching.
+  - icon: fas fa-server  fa-sm
+    title: Hash Matching
+    text: Shoko doesn't rely on the your files having a specific filename structure. Instead, files are hashed and sent to AniDB for comparison and matching.
+  - icon: fas fa-server  fa-sm
+    title: Hash Matching
+    text: Shoko doesn't rely on the your files having a specific filename structure. Instead, files are hashed and sent to AniDB for comparison and matching.
+  - icon: fas fa-server  fa-sm
+    title: Hash Matching
+    text: Shoko doesn't rely on the your files having a specific filename structure. Instead, files are hashed and sent to AniDB for comparison and matching.
+  images:
+  - source: ../assets/images/programs/server/Web-UI-Example.jpg
+    alt: Shoko Image 1
+  - source: ../assets/images/programs/server/Web-UI-Example.jpg
+    alt: Shoko Image 1
+  - source: ../assets/images/programs/server/Web-UI-Example.jpg
+    alt: Shoko Image 1
+  - source: ../assets/images/programs/server/Web-UI-Example.jpg
+    alt: Shoko Image 1
+
+
 - name: Nakamori
   id: nakamori
   nav-class:
   tab-class:
   version: 3.0.1
   date: September 7th, 2018
-  system: Kodi addon
-  quick: >
-    <p>Nakamori was designed to allow anime fans to use the full power of Kodi with their anime collection by using Shoko Server to handle all the backend tasks
-    and issues that normally arise when using a metadata plugin.</p>
-  description:
-  - header: Nakamori Support
-    text: >
-      <p>Nakamori is a <strong>Community Plugin</strong> that is maintained by <strong>Da3dsoul</strong> & <strong>BigRetroMike</strong>. For support and
-      general feedback, use the <a href='https://discord.gg/xkw2vHU' target="_blank" rel="noopener">Shoko Discord server</a> and for issues or requests, use
-      the <a href="https://github.com/bigretromike/nakamori/issues" target="_blank" rel="noopener">Nakamori Github</a> repo.</p>
-      Remember to enable <strong>Unknown Sources</strong> in Kodi Add-ons system settings to be able to install the .zip file.</p>
+  system: Kodi Addon
   downloads:
   - link: <a href="https://shokunin.monogatari.pl/repo/repository.nakamori.zip" target="_blank" rel="noopener">Latest Version</a>
   resource:
   - link: <a href="#" target="_blank" rel="noopener">Program Information</a>
   - link: <a href="https://github.com/bigretromike/nakamori/" target="_blank" rel="noopener">Source Code</a>
   - link: <a href="https://shokunin.monogatari.pl/projects/nakamori/" target="_blank" rel="noopener">Documentation</a>
+  description: >
+    <p>Nakamori was designed to allow anime fans to use the full power of Kodi with their anime collection by using Shoko Server to handle all the backend tasks
+    and issues that normally arise when using a metadata plugin.</p>
+    <h5>Nakamori Support</h5>
+    <p>Nakamori is a <strong>Community Plugin</strong> that is maintained by <strong>Da3dsoul</strong> & <strong>BigRetroMike</strong>. For support and
+    general feedback, use the <a href='https://discord.gg/xkw2vHU' target="_blank" rel="noopener">Shoko Discord server</a> and for issues or requests, use
+    the <a href="https://github.com/bigretromike/nakamori/issues" target="_blank" rel="noopener">Nakamori Github</a> repo.</p>
+    Remember to enable <strong>Unknown Sources</strong> in Kodi Add-ons system settings to be able to install the .zip file.</p>
+  features:
+  - icon: fas fa-server  fa-sm
+    title: Hash Matching
+    text: Shoko doesn't rely on the your files having a specific filename structure. Instead, files are hashed and sent to AniDB for comparison and matching.
+  - icon: fas fa-server  fa-sm
+    title: Hash Matching
+    text: Shoko doesn't rely on the your files having a specific filename structure. Instead, files are hashed and sent to AniDB for comparison and matching.
+  - icon: fas fa-server  fa-sm
+    title: Hash Matching
+    text: Shoko doesn't rely on the your files having a specific filename structure. Instead, files are hashed and sent to AniDB for comparison and matching.
+  - icon: fas fa-server  fa-sm
+    title: Hash Matching
+    text: Shoko doesn't rely on the your files having a specific filename structure. Instead, files are hashed and sent to AniDB for comparison and matching.
+  images:
+  - source: ../assets/images/programs/server/Web-UI-Example.jpg
+    alt: Shoko Image 1
+  - source: ../assets/images/programs/server/Web-UI-Example.jpg
+    alt: Shoko Image 1
+  - source: ../assets/images/programs/server/Web-UI-Example.jpg
+    alt: Shoko Image 1
+  - source: ../assets/images/programs/server/Web-UI-Example.jpg
+    alt: Shoko Image 1
