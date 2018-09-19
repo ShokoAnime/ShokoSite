@@ -64,13 +64,13 @@
     title: Hash Matching
     text: Shoko doesn't rely on the your files having a specific filename structure. Instead, files are hashed and sent to AniDB for comparison and matching.
   images:
-  - source: ../assets/images/programs/server/Web-UI-Example.jpg
+  - source: ../assets/images/programs-plugins/server/Web-UI-Example.jpg
     alt: Shoko Image 1
-  - source: ../assets/images/programs/server/Web-UI-Example.jpg
+  - source: ../assets/images/programs-plugins/server/Web-UI-Example.jpg
     alt: Shoko Image 1
-  - source: ../assets/images/programs/server/Web-UI-Example.jpg
+  - source: ../assets/images/programs-plugins/server/Web-UI-Example.jpg
     alt: Shoko Image 1
-  - source: ../assets/images/programs/server/Web-UI-Example.jpg
+  - source: ../assets/images/programs-plugins/server/Web-UI-Example.jpg
     alt: Shoko Image 1
 
 
@@ -125,13 +125,13 @@
     title: Hash Matching
     text: Shoko doesn't rely on the your files having a specific filename structure. Instead, files are hashed and sent to AniDB for comparison and matching.
   images:
-  - source: ../assets/images/programs/server/Web-UI-Example.jpg
+  - source: ../assets/images/programs-plugins/server/Web-UI-Example.jpg
     alt: Shoko Image 1
-  - source: ../assets/images/programs/server/Web-UI-Example.jpg
+  - source: ../assets/images/programs-plugins/server/Web-UI-Example.jpg
     alt: Shoko Image 1
-  - source: ../assets/images/programs/server/Web-UI-Example.jpg
+  - source: ../assets/images/programs-plugins/server/Web-UI-Example.jpg
     alt: Shoko Image 1
-  - source: ../assets/images/programs/server/Web-UI-Example.jpg
+  - source: ../assets/images/programs-plugins/server/Web-UI-Example.jpg
     alt: Shoko Image 1
 
 
@@ -168,13 +168,13 @@
     title: Hash Matching
     text: Shoko doesn't rely on the your files having a specific filename structure. Instead, files are hashed and sent to AniDB for comparison and matching.
   images:
-  - source: ../assets/images/programs/server/Web-UI-Example.jpg
+  - source: ../assets/images/programs-plugins/server/Web-UI-Example.jpg
     alt: Shoko Image 1
-  - source: ../assets/images/programs/server/Web-UI-Example.jpg
+  - source: ../assets/images/programs-plugins/server/Web-UI-Example.jpg
     alt: Shoko Image 1
-  - source: ../assets/images/programs/server/Web-UI-Example.jpg
+  - source: ../assets/images/programs-plugins/server/Web-UI-Example.jpg
     alt: Shoko Image 1
-  - source: ../assets/images/programs/server/Web-UI-Example.jpg
+  - source: ../assets/images/programs-plugins/server/Web-UI-Example.jpg
     alt: Shoko Image 1
 
 
@@ -215,13 +215,13 @@
     title: Hash Matching
     text: Shoko doesn't rely on the your files having a specific filename structure. Instead, files are hashed and sent to AniDB for comparison and matching.
   images:
-  - source: ../assets/images/programs/server/Web-UI-Example.jpg
+  - source: ../assets/images/programs-plugins/server/Web-UI-Example.jpg
     alt: Shoko Image 1
-  - source: ../assets/images/programs/server/Web-UI-Example.jpg
+  - source: ../assets/images/programs-plugins/server/Web-UI-Example.jpg
     alt: Shoko Image 1
-  - source: ../assets/images/programs/server/Web-UI-Example.jpg
+  - source: ../assets/images/programs-plugins/server/Web-UI-Example.jpg
     alt: Shoko Image 1
-  - source: ../assets/images/programs/server/Web-UI-Example.jpg
+  - source: ../assets/images/programs-plugins/server/Web-UI-Example.jpg
     alt: Shoko Image 1
 
 
@@ -260,13 +260,13 @@
     title: Hash Matching
     text: Shoko doesn't rely on the your files having a specific filename structure. Instead, files are hashed and sent to AniDB for comparison and matching.
   images:
-  - source: ../assets/images/programs/server/Web-UI-Example.jpg
+  - source: ../assets/images/programs-plugins/server/Web-UI-Example.jpg
     alt: Shoko Image 1
-  - source: ../assets/images/programs/server/Web-UI-Example.jpg
+  - source: ../assets/images/programs-plugins/server/Web-UI-Example.jpg
     alt: Shoko Image 1
-  - source: ../assets/images/programs/server/Web-UI-Example.jpg
+  - source: ../assets/images/programs-plugins/server/Web-UI-Example.jpg
     alt: Shoko Image 1
-  - source: ../assets/images/programs/server/Web-UI-Example.jpg
+  - source: ../assets/images/programs-plugins/server/Web-UI-Example.jpg
     alt: Shoko Image 1
 
 
@@ -284,13 +284,16 @@
   - link: <a href="https://github.com/bigretromike/nakamori/" target="_blank" rel="noopener">Source Code</a>
   - link: <a href="https://shokunin.monogatari.pl/projects/nakamori/" target="_blank" rel="noopener">Documentation</a>
   description: >
-    <p>Nakamori was designed to allow anime fans to use the full power of Kodi with their anime collection by using Shoko Server to handle all the backend tasks
-    and issues that normally arise when using a metadata plugin.</p>
+    <p>Nakamori takes the versatility of Kodi and combines it with the power of Shoko to bring your anime collection to life. Unlike other anime
+    plugins currently available for Kodi, your entire collection’s metadata is automatically managed and made available within Kodi.</p>
+    <h5>Supported Skins</h5>
+    <p>By default, Nakamori will work with any skin. However users may experience skin-related issues unique to that particular skin. If a favorite skin of
+    yours is not displaying correctly, please create an issue on the Nakamori repo and the Nakamori team will look into it. </p>
     <h5>Nakamori Support</h5>
-    <p>Nakamori is a <strong>Community Plugin</strong> that is maintained by <strong>Da3dsoul</strong> & <strong>BigRetroMike</strong>. For support and
-    general feedback, use the <a href='https://discord.gg/xkw2vHU' target="_blank" rel="noopener">Shoko Discord server</a> and for issues or requests, use
-    the <a href="https://github.com/bigretromike/nakamori/issues" target="_blank" rel="noopener">Nakamori Github</a> repo.</p>
-    Remember to enable <strong>Unknown Sources</strong> in Kodi Add-ons system settings to be able to install the .zip file.</p>
+    <p>Nakamori is a <strong>Community Plugin</strong> which means it is not directly maintained by the Shoko team.</p>
+    <p>Nakamori is maintained by <strong>Da3dsoul</strong> & <strong>BigRetroMike</strong>. For support and general feedback, use the
+    <a href='https://discord.gg/xkw2vHU' target="_blank" rel="noopener">Shoko Discord server</a> and for issues or requests, use the
+    <a href="https://github.com/bigretromike/nakamori/issues" target="_blank" rel="noopener">Nakamori Github</a> repo.</p>
   features:
   - icon: fas fa-server  fa-sm
     title: Hash Matching
@@ -305,11 +308,11 @@
     title: Hash Matching
     text: Shoko doesn't rely on the your files having a specific filename structure. Instead, files are hashed and sent to AniDB for comparison and matching.
   images:
-  - source: ../assets/images/programs/server/Web-UI-Example.jpg
+  - source: ../assets/images/programs-plugins/server/Web-UI-Example.jpg
     alt: Shoko Image 1
-  - source: ../assets/images/programs/server/Web-UI-Example.jpg
+  - source: ../assets/images/programs-plugins/server/Web-UI-Example.jpg
     alt: Shoko Image 1
-  - source: ../assets/images/programs/server/Web-UI-Example.jpg
+  - source: ../assets/images/programs-plugins/server/Web-UI-Example.jpg
     alt: Shoko Image 1
-  - source: ../assets/images/programs/server/Web-UI-Example.jpg
+  - source: ../assets/images/programs-plugins/server/Web-UI-Example.jpg
     alt: Shoko Image 1
