@@ -116,7 +116,7 @@ permalink: /downloads/
 						{% for image in download.images %}
 
 						<div class = "col-xl-3">
-							<a href = "{{ image.source }}" target = "_blank" rel = "noopener">
+							<a href = "{{ image.source }}" target = "_blank" rel = "noopener" data-lightbox = "{{ image.set }}" data-title = "{{ image.alt }}">
 								<img class = "rounded image-container" src = "{{ image.source }}" alt = "{{ image.alt }}">
 							</a>
 						</div>

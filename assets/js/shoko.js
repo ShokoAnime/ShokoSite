@@ -10,17 +10,18 @@ let bannerInfo = [
         name: "My Anime 3",
         imageURL: "assets/images/programs-plugins/my-anime-3/My-Anime-3-StreamedMP-Collection-List.jpg",
         imageName: "My Anime 3 - StreamedMP - Collection List",
-        info: "Shoko, previously known as JMM (Japanese Media Manager) is an anime cataloging program designed to " +
-            "automate the cataloging of your anime collection regardless of the size and number of files in your " +
-            "collection, it’s even able to connect with some of the most popular media center programs out there. "
+        info: "My Anime is the only MediaPortal plugin available that can deliver your entire anime collection in " +
+            "all it’s glory, no matter the size straight to your TV! With My Anime 3, the latest version in the " +
+            "My Anime you have complete control over your entire anime collection from within MediaPortal allowing " +
+            "you to customize the look and style when displaying your collection."
     },
     {
         name: "Shoko On Plex",
         imageURL: "assets/images/programs-plugins/shoko-on-plex/Shoko-On-Plex-Poster-Listing.jpg",
-        imageName: "Shoko On Plex - Poster Listing",
-        info: "Shoko, previously known as JMM (Japanese Media Manager) is an anime cataloging program designed to " +
-            "automate the cataloging of your anime collection regardless of the size and number of files in your " +
-            "collection, it’s even able to connect with some of the most popular media center programs out there. "
+        imageName: "It doesn't matter if you’re at home or on the go, with Shoko On Plex you’ll always have access " +
+            "to your anime collection on any device capable of running Plex, the most versatile media player " +
+            "software currently available. Shoko On Plex takes your entire collections metadata and provides it " +
+            "in an easy to view layout reducing clutter providing you with a sleek and minimal anime viewing experience."
     },
     {
         name: "Nakamori",
@@ -36,9 +37,11 @@ let bannerInfo = [
         name: "Shoko Metadata",
         imageURL: "assets/images/programs-plugins/shoko-metadata/Shoko-Metadata-Series-Listing.jpg",
         imageName: "Shoko Metadata - Series Listing",
-        info: "Shoko, previously known as JMM (Japanese Media Manager) is an anime cataloging program designed to " +
-            "automate the cataloging of your anime collection regardless of the size and number of files in your " +
-            "collection, it’s even able to connect with some of the most popular media center programs out there. "
+        info: "Combine the functionality and file management provided by Shoko with Plex's robust library " +
+            "functionality providing a seamless experience for Plex. Taking full advantage of the library features " +
+            "offered by plex, Shoko Metadata provides users the ability to switch audio and subtitle track while " +
+            "utilizing Plex's native sync features. Visual users will also be able to benefit by having file and " +
+            "image info provided by Shoko built into your files for use in Plex."
     }
 ];
 
