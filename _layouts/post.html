@@ -36,7 +36,7 @@
 				<div class = "blog-cat-tags-wrapper">
 					{% for category in page.categories %}
 
-					<a class = "blog-cat-tags button" href="/newsite/category/{{ category | downcase }}">{{ category }}</a>
+					<a class = "blog-cat-tags button" href="/category/{{ category | downcase }}">{{ category }}</a>
 
 					{% endfor %}
 				</div>
@@ -46,7 +46,7 @@
 				<div class = "blog-cat-tags-wrapper">
 					{% for tags in page.tags %}
 
-					<a class = "blog-cat-tags button" href="/newsite/tag/{{ tags | downcase | replace: ' ', '-' }}">{{ tags }}</a>
+					<a class = "blog-cat-tags button" href="/tag/{{ tags | downcase | replace: ' ', '-' }}">{{ tags }}</a>
 
 					{% endfor %}
 				</div>
