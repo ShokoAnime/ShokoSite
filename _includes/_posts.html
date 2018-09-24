@@ -14,7 +14,7 @@
 					<span class = "blog-date">Posted on {{ post.date | date: '%B %d, %Y' }} in
 
 							{% for category in post.categories %}
-							<a class = "blog-cat" href = "category/{{ category | downcase }}">{{ category }}</a>
+							<a class = "blog-cat" href = "/category/{{ category | downcase }}">{{ category }}</a>
 							{% endfor %}
 
 				</span>

@@ -1,6 +1,6 @@
 title: Shoko Anime
 description: Automate your anime collection.
-url: https://shokoanime.com/
+url: https://shokoanime.com
 #url: http://localhost:3000
 permalink: /blog/:title/
 markdown: kramdown
