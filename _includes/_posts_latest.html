@@ -14,7 +14,7 @@
 					<span class = "blog-latest-date">Posted on {{ post.date | date: '%B %d, %Y' }} in
 
 							{% for category in post.categories %}
-							<a class = "blog-latest-cat color-link-alt" href="category/{{ category | downcase }}">{{ category }}</a>
+							<a class = "blog-latest-cat color-link-alt" href = "category/{{ category | downcase }}">{{ category }}</a>
 							{% endfor %}
 
 				</span>

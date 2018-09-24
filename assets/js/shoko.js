@@ -18,7 +18,8 @@ let bannerInfo = [
     {
         name: "Shoko On Plex",
         imageURL: "assets/images/programs-plugins/shoko-on-plex/Shoko-On-Plex-Poster-Listing.jpg",
-        imageName: "It doesn't matter if you’re at home or on the go, with Shoko On Plex you’ll always have access " +
+        imageName: "Shoko On Plex - Poster Listing",
+        info: "It doesn't matter if you’re at home or on the go, with Shoko On Plex you’ll always have access " +
             "to your anime collection on any device capable of running Plex, the most versatile media player " +
             "software currently available. Shoko On Plex takes your entire collections metadata and provides it " +
             "in an easy to view layout reducing clutter providing you with a sleek and minimal anime viewing experience."

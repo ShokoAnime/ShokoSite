@@ -1,6 +1,6 @@
 title: Shoko Anime
-description: Your Archive, Your Way.
-url: https://newsite.shokoanime.com/
+description: Automate your anime collection.
+url: https://shokoanime.com/
 #url: http://localhost:3000
 permalink: /blog/:title/
 markdown: kramdown

@@ -32,11 +32,13 @@ permalink: /downloads/
 							<h3 class = "downloads-header">{{download.name}}</h3>
 							<h5 class = "downloads-header">Version: {{download.version}}</h5>
 						</div>
+
 						<div class = "downloads-right-info-wrapper">
 							<span class = "downloads-right-info-header">{{download.system}}</span>
 							<span class = "downloads-right-info-header">{{download.date}}</span>
 						</div>
 					</div>
+
 					<hr>
 
 					<div class = "row">
@@ -115,7 +117,7 @@ permalink: /downloads/
 
 						{% for image in download.images %}
 
-						<div class = "col-xl-3">
+						<div class = "col-xl-3 download-images">
 							<a href = "{{ image.source }}" target = "_blank" rel = "noopener" data-lightbox = "{{ image.set }}" data-title = "{{ image.alt }}">
 								<img class = "rounded image-container" src = "{{ image.source }}" alt = "{{ image.alt }}">
 							</a>

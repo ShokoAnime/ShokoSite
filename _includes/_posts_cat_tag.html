@@ -1,17 +1,15 @@
 <div class = "col-xl-3 row-spacer">
 	<div class = "card shadow blog">
 
-		<a href = "{{ post.url | absolute_url }}"><img class = "card-img-top blog-image"
-				src = "{{ post.image | absolute_url }}"
-				alt = " {{ post.title }}"></a>
+		<a href = "{{ post.url | absolute_url }}"><img class = "card-img-top blog-image" src = "{{ post.image | absolute_url }}" alt = " {{ post.title }}"></a>
 
 		<div class = "card-body">
 
-					<span class = "blog-date">Posted on {{ post.date | date: '%B %d, %Y' }} in
+			<span class = "blog-date">Posted on {{ post.date | date: '%B %d, %Y' }} in
 
-							{% for category in post.categories %}
-							<a class = "blog-cat" href = "/category/{{ category | downcase }}">{{ category }}</a>
-							{% endfor %}
+				{% for category in post.categories %}
+				<a class = "blog-cat" href = "/category/{{ category | downcase }}">{{ category }}</a>
+				{% endfor %}
 
 				</span>
 
