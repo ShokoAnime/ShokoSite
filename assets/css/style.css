@@ -20,7 +20,6 @@
         - Accordions
     - Footer
     - Lightbox
-    - Temp Rules (Remove once testing is done.)
     - Media Queries
         - 1200px - MAX
         - 1200px - MIN
@@ -114,7 +113,6 @@ p {
 .navbar {
     font-family: 'Montserrat', sans-serif;
     letter-spacing: 0.5px;
-    padding: 15px 0;
 }
 
 .navbar-brand {
@@ -161,7 +159,7 @@ p {
 .page-header {
     background-color: #282a2d;
     bottom: 0;
-    opacity: 0.9;
+    opacity: 0.95;
     position: absolute;
     width: 100%;
     z-index: 1;
@@ -378,6 +376,10 @@ p {
     margin-left: auto;
     margin-right: auto;
     margin-top: 40px;
+}
+
+.pagination-wrapper > ul {
+    padding-inline-start: 0;
 }
 
 .pagination-previous, .pagination-next {
@@ -853,7 +855,7 @@ html.lb-disable-scrolling {
 
 .lb-data .lb-caption {
     font-size: 13px;
-    font-weight: bold;
+    font-weight: 600;
     line-height: 1em;
 }
 
@@ -864,9 +866,9 @@ html.lb-disable-scrolling {
 .lb-data .lb-number {
     display: block;
     clear: left;
+    font-weight: 600;
     padding-bottom: 1em;
     font-size: 12px;
-    color: #999999;
 }
 
 .lb-data .lb-close {
@@ -890,42 +892,6 @@ html.lb-disable-scrolling {
     filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
     opacity: 1;
 }
-
-/*
-----------------------------------------
-Temp Rules
-----------------------------------------
-*/
-
-.alert-temp {
-    margin-top: 2rem;
-    width: 100%;
-}
-
-.alert-header {
-    display: flex;
-}
-
-.alert-header > i {
-    font-size: 36px;
-}
-
-.alert-heading {
-    margin: 5px 0 0 10px;
-}
-
-.alert-importance {
-    text-decoration: underline;
-}
-
-.alert-link {
-    color: #007bff !important;
-}
-
-.alert-link:hover {
-    color: #dc3545 !important;
-}
-
 
 /*
 ---------------------------------------------
@@ -953,6 +919,56 @@ Temp Rules
 
     .container {
         max-width: 1720px;
+    }
+
+}
+
+@media (max-width: 576px) {
+
+    .blog {
+        height: 100%;
+        max-height: initial;
+    }
+
+    .blog-post {
+        padding: 20px;
+    }
+
+    .page-wrapper {
+        display: inline-block;
+    }
+
+    h1.page-header-color {
+        font-size: 26px;
+        margin: 10px 0;
+    }
+
+    h5.page-header-second-color {
+        font-size: 16px;
+        margin: 10px 0 15px 0;
+    }
+
+    .breadcrumbs {
+        font-size: 16px;
+        margin: 10px 0;
+        padding: 0;
+    }
+
+    .breadcrumbs-active {
+        content: "\a";
+        white-space: pre;
+    }
+
+    .downloads-list {
+        margin-bottom: 40px;
+    }
+
+    .downloads-wrapper {
+        max-height: initial;
+    }
+
+    .download-images {
+        margin-bottom: 40px;
     }
 
 }
