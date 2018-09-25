@@ -6,8 +6,7 @@
   date: August 20th, 2018
   system: Windows, Linux
   downloads:
-  - link: <a href="https://shokoanime.com/files/Shoko_Server_Setup_3.9.3.zip" target="_blank" rel="noopener">Latest Version</a>
-  - link: <a href="https://shokoanime.com/files/daily/Shoko.Server/shokoserver.zip" target="_blank" rel="noopener">Daily Version</a>
+  - link: <a href="https://shokoanime.com/files/stable/Shoko_Server_Setup_3.9.3.zip" target="_blank" rel="noopener">Latest Version</a>
   - link: <a href="https://hub.docker.com/r/cazzar/shokoserver/" target="_blank" rel="noopener">Linux Docker Version</a>
   resource:
   - link: <a href="https://github.com/ShokoAnime/ShokoServer" target="_blank" rel="noopener">Source Code</a>
@@ -42,6 +41,8 @@
     </div></div></div></div>
   warning: >
     <div class="alert alert-danger" role="alert"><strong>Shoko Server is required for all Programs/Plugins.</strong></div>
+    <div class="alert alert-warning" role="alert"><strong>As of August 21st, 2018, the Daily Version link has been temporarily removed while we undergo a major refactor.
+      If you have any questions, join the Shoko Discord server.</strong></div>
   description: >
     <h5>Your Anime In One Place, Accessible Anywhere</h5>
     <p>Shoko server is the core component of the Shoko suite and with it’s client-server architecture which allows any program or plugin to access Shoko.
@@ -102,12 +103,14 @@
     badge listed above indicates the current build status and is clickable for more information.
     </div></div></div></div>
   downloads:
-  - link: <a href="https://shokoanime.com/files/Shoko_Desktop_Setup_3.9.3.zip" target="_blank" rel="noopener">Latest Version</a>
-  - link: <a href="https://shokoanime.com/files/daily/Shoko.Desktop/shokodesktop.zip" target="_blank" rel="noopener">Daily Version</a>
+  - link: <a href="https://shokoanime.com/files/stable/Shoko_Desktop_Setup_3.9.3.zip" target="_blank" rel="noopener">Latest Version</a>
   resource:
   - link: <a href="https://github.com/ShokoAnime/ShokoDesktop" target="_blank" rel="noopener">Source Code</a>
   - link: <a href="https://docs.shokoanime.com/" target="_blank" rel="noopener">Documentation</a>
   - link: <a href="https://discord.gg/vpeHDsg" target="_blank" rel="noopener">Support</a>
+  warning: >
+    <div class="alert alert-warning" role="alert"><strong>As of August 21st, 2018, the Daily Version link has been temporarily removed while we undergo a major refactor.
+      If you have any questions, join the Shoko Discord server.</strong></div>
   description: >
     <h5>Manage Your Collection Your Way</h5>
     <p>With Shoko Desktop, you have complete control over every aspect of your anime collection. Using the built-in collection viewer, you can arrange and organization
@@ -152,7 +155,7 @@
   date: August 17th, 2018
   system: MediaPortal Plugin
   downloads:
-  - link: <a href="https://shokoanime.com/files/My_Anime_3_3.7.2.mpe1" target="_blank" rel="noopener">Latest Version</a>
+  - link: <a href="https://shokoanime.com/files/stable/My_Anime_3_3.7.2.mpe1" target="_blank" rel="noopener">Latest Version</a>
   resource:
   - link: <a href="#" target="_blank" rel="noopener">Source Code</a>
   - link: <a href="https://docs.shokoanime.com/" target="_blank" rel="noopener">Documentation</a>
@@ -200,7 +203,7 @@
   date: February 2nd, 2018
   system: Plex Channel
   downloads:
-  - link: <a href="https://shokoanime.com/files/Shoko_On_Plex_3.7.2.zip" target="_blank" rel="noopener">Latest Version</a>
+  - link: <a href="https://shokoanime.com/files/stable/Shoko_On_Plex_3.7.2.zip" target="_blank" rel="noopener">Latest Version</a>
   resource:
   - link: <a href="#" target="_blank" rel="noopener">Source Code</a>
   - link: <a href="https://docs.shokoanime.com/" target="_blank" rel="noopener">Documentation</a>
