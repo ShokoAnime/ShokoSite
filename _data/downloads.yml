@@ -301,8 +301,8 @@
   id: nakamori
   nav-class:
   tab-class:
-  version: 3.0.1
-  date: September 7th, 2018
+  version: 3.0.6
+  date: September 26th, 2018
   system: Kodi Addon
   downloads:
   - link: <a href="https://shokunin.monogatari.pl/repo/repository.nakamori.zip" target="_blank" rel="noopener">Latest Version</a>
@@ -321,19 +321,20 @@
     <p>Nakamori is maintained by <strong>Da3dsoul</strong> & <strong>BigRetroMike</strong>. For support and general feedback, use the
     <a href='https://discord.gg/xkw2vHU' target="_blank" rel="noopener">Shoko Discord server</a> and for issues or requests, use the
     <a href="https://github.com/bigretromike/nakamori/issues" target="_blank" rel="noopener">Nakamori Github</a> repo.</p>
+    <p>Remember to enable 'Unknown sources' in Kodi Add-ons system settings to be able to install .zip with repository</p>
   features:
   - icon: fas fa-tv fa-sm
-    title: Bed/Couch Supported
-    text: Forget watching anime on your computer, with Kodi and Nakamori on your HTPC, you're ready to watch in comfort.
+    title: Cross-platform Supported
+    text: Forget watching anime only on your PC, with Kodi and Nakamori you're ready to watch anime everywhere in comfort. If Kodi works on your device Nakamori works also!
   - icon: fas fa-columns fa-sm
     title: Kodi Skins
-    text: Nakamori is designed to work with any currently supported Kodi skin and if available, even takes advantage of unique skin features.
+    text: Nakamori aim to work with all currently supported Kodi skin and if available, even takes advantage of unique skin features.
   - icon: fas fa-star-half-alt fa-sm
     title: Ratings
-    text: No need to leave Nakamori to rate your completed series, rate once and let Shoko do the rest.
+    text: No need to leave Nakamori to rate your episodes or series, rate once and let Shoko do the rest.
   - icon: fas fa-eye fa-sm
     title: Track Watch States
-    text: Nakamori tracks what episodes you watch and updates Shoko so you don't have too.
+    text: Nakamori tracks what episodes/series you watch and updates Shoko so you don't have too.
   images:
   - source: ../assets/images/programs-plugins/nakamori/Nakamori-Fanart-Display.jpg
     alt: Nakamori - Fanart Disply
