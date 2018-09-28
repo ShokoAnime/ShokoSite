@@ -324,11 +324,11 @@
     <p>Remember to enable 'Unknown sources' in Kodi Add-ons system settings to be able to install .zip with repository</p>
   features:
   - icon: fas fa-tv fa-sm
-    title: Cross-platform Supported
+    title: Cross-platform
     text: Forget watching anime only on your PC, with Kodi and Nakamori you're ready to watch anime everywhere in comfort. If Kodi works on your device Nakamori works also!
   - icon: fas fa-columns fa-sm
     title: Kodi Skins
-    text: Nakamori aim to work with all currently supported Kodi skin and if available, even takes advantage of unique skin features.
+    text: Nakamori aims to work with all currently supported Kodi skins and if available, even takes advantage of unique skin features.
   - icon: fas fa-star-half-alt fa-sm
     title: Ratings
     text: No need to leave Nakamori to rate your episodes or series, rate once and let Shoko do the rest.
