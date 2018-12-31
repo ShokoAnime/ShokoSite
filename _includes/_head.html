@@ -19,7 +19,7 @@
 		crossorigin = "anonymous">
 
 <!-- Custom CSS -->
-<link href = "{{  '/assets/css/style.css' | absolute_url }}" rel = "stylesheet" type = "text/css">
+<link href = "{{ '/assets/css/style.css' | relative_url }}" rel = "stylesheet" type = "text/css">
 
 <!-- Font Awesome -->
 <link rel = "stylesheet"
@@ -33,6 +33,9 @@
 <!-- Favicons -->
 <link rel = "apple-touch-icon" href = "{{ ' /assets/images/site/favicon.png' | relative_url }}">
 <link rel = "icon" href = "{{ '/assets/images/site/favicon.png' | relative_url }}">
+
+<!-- JSON Feed -->
+<link rel = "alternate" title = "{{ site.title }}" type = "application/json" href = "{{ "/feed" | prepend: site.baseurl | prepend: site.url }}" />
 
 <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
 

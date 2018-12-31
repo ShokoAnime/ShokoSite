@@ -2,11 +2,11 @@
   id: shoko-server
   nav-class: active
   tab-class: show active
-  version: 3.9.3
-  date: August 20th, 2018
+  version: 3.9.4
+  date: December 31, 2018
   system: Windows, Linux
   downloads:
-  - link: <a href="https://shokoanime.com/files/stable/Shoko_Server_Setup_3.9.3.zip" target="_blank" rel="noopener">Latest Version</a>
+  - link: <a href="https://shokoanime.com/files/stable/Shoko_Server_Setup_3.9.4.zip" target="_blank" rel="noopener">Latest Version</a>
   - link: <a href="https://hub.docker.com/r/cazzar/shokoserver/" target="_blank" rel="noopener">Linux Docker Version</a>
   resource:
   - link: <a href="https://github.com/ShokoAnime/ShokoServer" target="_blank" rel="noopener">Source Code</a>
@@ -84,8 +84,8 @@
   id: shoko-desktop
   nav-class:
   tab-class:
-  version: 3.9.3
-  date: August 20th, 2018
+  version: 3.9.4
+  date: December 31, 2018
   system: Windows
   version-types: >
     <div class = "accordion" id = "accordionExample">
@@ -103,7 +103,7 @@
     badge listed above indicates the current build status and is clickable for more information.
     </div></div></div></div>
   downloads:
-  - link: <a href="https://shokoanime.com/files/stable/Shoko_Desktop_Setup_3.9.3.zip" target="_blank" rel="noopener">Latest Version</a>
+  - link: <a href="https://shokoanime.com/files/stable/Shoko_Desktop_Setup_3.9.4.zip" target="_blank" rel="noopener">Latest Version</a>
   resource:
   - link: <a href="https://github.com/ShokoAnime/ShokoDesktop" target="_blank" rel="noopener">Source Code</a>
   - link: <a href="https://docs.shokoanime.com/" target="_blank" rel="noopener">Documentation</a>
