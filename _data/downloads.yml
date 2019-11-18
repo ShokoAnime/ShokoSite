@@ -148,11 +148,11 @@
   id: my-anime-3
   nav-class:
   tab-class:
-  version: 3.7.2
-  date: August 17th, 2018
+  version: 3.7.3
+  date: November 17th, 2919
   system: MediaPortal Plugin
   downloads:
-  - link: <a href="https://shokoanime.com/files/stable/My_Anime_3_3.7.2.mpe1" target="_blank" rel="noopener">Latest Version</a>
+  - link: <a href="https://shokoanime.com/files/stable/My_Anime_3_3.7.3.mpe1" target="_blank" rel="noopener">Latest Version</a>
   resource:
   - link: <a href="#" target="_blank" rel="noopener">Source Code</a>
   - link: <a href="https://docs.shokoanime.com/" target="_blank" rel="noopener">Documentation</a>
