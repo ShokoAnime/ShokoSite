@@ -17,7 +17,7 @@
   },
   "homepage": "https://docs.shokoanime.com/",
   "dependencies": {
-    "npm": "^6.1.0"
+    "npm": "^6.13.4"
   },
   "devDependencies": {
     "browser-sync": "^2.24.7",
