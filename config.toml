@@ -1,0 +1,15 @@
+baseURL = "https://shokoanime.com/"
+languageCode = "en-us"
+title = "Shoko Anime"
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[taxonomies]
+  category = "category"
+  tag = "tag"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

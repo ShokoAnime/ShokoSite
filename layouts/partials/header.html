@@ -1,0 +1,35 @@
+{{ $fileDir := replace $.Page.File.Dir "\\" "/" }}
+{{ $fileName := $.Page.File.BaseFileName}}
+{{ $fileLocation := print $fileDir $fileName ".md"}}
+
+<div class="navbar-wrapper">
+
+		<nav class="navbar navbar-expand-lg navbar-dark navbar-info">
+			<a class="navbar-title" href="/"><h2>{{ .Site.Title }}</h2></a>
+
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMobile"
+			        aria-controls="navbarMobile" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarMobile">
+				<div class="navbar-nav nav-links">
+					<a class="navbar-link navbar-nav-link" href="link">About</a>
+					<a class="navbar-link navbar-nav-link" href="link">Blog</a>
+					<a class="navbar-link navbar-nav-link" href="link">Changelog</a>
+					<a class="navbar-link navbar-nav-link" href="link">Downloads</a>
+					<a class="navbar-link navbar-nav-link" href="link">Programs / Plugins</a>
+					<a class="navbar-link navbar-nav-link" href="link">Shoko Docs</a>
+					<a class="navbar-link navbar-nav-link" href="link">Github Repo</a>
+					<a class="navbar-link navbar-nav-link" href="link">Support</a>
+					<a class="navbar-link navbar-nav-link" id="themeSwitcher" href="#">Dark Theme</a>
+				</div>
+
+			</div>
+		</nav>
+
+</div>
+
+
+<!--			<span class="navbar-divider"></span>-->
+
