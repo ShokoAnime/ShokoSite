@@ -49,10 +49,8 @@ function getRandomBanner() {
 
 	randomNumber = Math.floor((Math.random() * 3) + 1);
 	return randomNumber;
-}
 
-let header = ' rgba(0, 0, 0, 0) url("../images/banners/Banner-' + randomBanner + '.jpg") repeat scroll 50% 20% / cover';
-css('.hero-wrapper', 'background', header);
+}
 
 while (parseInt(randomBanner, 10) === parseInt(previousBanner, 10)) {
 
@@ -61,6 +59,9 @@ while (parseInt(randomBanner, 10) === parseInt(previousBanner, 10)) {
 	}
 
 }
+
+let header = ' rgba(0, 0, 0, 0) url("../images/banners/Banner-' + randomBanner + '.jpg") repeat scroll 50% 20% / cover';
+css('.hero-wrapper', 'background', header);
 
 sessionStorage.setItem("bannerID", randomBanner);
 

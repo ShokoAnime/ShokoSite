@@ -3,7 +3,7 @@ title: "{{ replace .Name "-" " " | title }}"
 image: "assets/images/blog/NAME"
 date: {{ .Date }}
 type: "post"
-category:
-tag:
+category: ["Category"]
+tag: ["Tag"]
 draft: true
 ---

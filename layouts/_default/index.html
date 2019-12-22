@@ -9,7 +9,7 @@
 
 <!-- Hero Section -->
 
-<div class="hero-wrapper">
+<div class="hero-wrapper border-bottom">
 	<div class="hero-overlay">
 		<div class="hero-info-wrapper">
 
@@ -67,52 +67,46 @@
 <!-- Blog Section -->
 
 <div class="index-blog-wrapper background-color border-bottom">
+
 	<div class="container index-wrapper">
 		<div class="row">
 
-			{{ range last 4 (where .Site.Pages "Section" "blog") }}
+			{{ range last 3 (where .Site.Pages "Section" "blog") }}
 			{{ if eq .Params.type "post" }}
 
-			<div class="col-xl-3 index-blog-item-wrapper">
-				<div class="card index-blog-card-wrapper background-color ">
-
-					<div class="index-blog-image-wrapper">
-
-						<a href="{{ .Permalink }}"><img class="card-img-top index-blog-image" src="{{ .Params.image }}"
-							alt=" {{ .Params.title }}"></a>
-
-						<div class="index-blog-overlay">
-							<h5 class="index-blog-title">{{ .Params.title }}</h5>
+			<div class="col-xl-4 index-blog-item-wrapper">
+				<div class="index-blog-post-wrapper">
+					<img class="index-blog-post-image" src="{{ .Params.image }}" alt=" {{ .Params.title }}">
+					<div class="index-blog-post-overlay">
+						<div class="index-blog-post-date">
+							<div class="index-blog-post-date-month">{{ .Date.Format "Jan" }}</div>
+							<div class="index-blog-post-date-day">{{ .Date.Format "2" }}</div>
 						</div>
+						<div class="index-blog-post-info">
 
-					</div>
+							{{ $taxo := "category" }}
+							{{ $.Scratch.Set "counter" 0 }}
+							{{ range .Param $taxo }}
+							{{ $.Scratch.Set "counter" (add ($.Scratch.Get "counter") 1) }}
+							{{ if ne ($.Scratch.Get "counter") 1 }}
+							<span class="index-blog-post-category-divider">/</span>
+							{{ end }}
+							{{ $name := . }}
 
-					<div class="card-body index-blog-body">
+							{{ with $.Site.GetPage (printf "/%s/%s" $taxo ($name | urlize)) }}
 
-						<div class="index-blog-info">
+							<a class="index-blog-post-link" href="{{ .Permalink }}">{{ $name }}</a>
 
-							<p class="index-blog-date">{{ .Date.Format "January 2, 2006" }}</p>
+							{{ end }}
+							{{ end }}
 
-							<div class="index-blog-cat">
-
-								{{ $taxo := "category" }}
-								{{ range .Param $taxo }}
-								{{ $name := . }}
-								{{ with $.Site.GetPage (printf "/%s/%s" $taxo ($name | urlize)) }}
-								<a href="{{ .Permalink }}">{{ $name }}</a>
-								{{ end }}
-								{{ end }}
-
-							</div>
-
+							<h3 class="index-blog-post-title">{{ .Params.title }}</h3>
 						</div>
-
-						<p class="blog-text">{{ .Summary | truncate 250 }}</p>
-
-						<a class="blog-readmore" href="{{ .Permalink }}">Read More →</a>
-
+						<p class="index-blog-post-summary">{{ .Summary | truncate 170 }}</p>
+						<div class="index-blog-post-readmore">
+							<a class="index-blog-post-link" href="{{ .Permalink }}">Read More →</a>
+						</div>
 					</div>
-
 				</div>
 			</div>
 
@@ -148,10 +142,10 @@
 			</div>
 			<div class="col-xl-6 index-info-item-wrapper">
 
-				<a href="https://shokoanime.com/assets/images/programs-plugins/desktop/Shoko-Desktop-Viewing-Series.jpg"
+				<a href="/assets/images/programs-plugins/shoko-desktop/Shoko-Desktop-Viewing-Series.jpg"
 					data-toggle="lightbox" data-lightbox="Shoko Desktop - Viewing Series"
 					data-title="Shoko Desktop - Viewing Series"><img class="img-fluid index-info-image"
-					src="https://shokoanime.com/assets/images/programs-plugins/desktop/Shoko-Desktop-Viewing-Series.jpg"
+					src="/assets/images/programs-plugins/shoko-desktop/Shoko-Desktop-Viewing-Series.jpg"
 					alt="Shoko Desktop - Viewing Series"></a>
 
 
@@ -168,16 +162,26 @@
 		<div class="row">
 
 			<div class="col-xl-6 index-info-item-wrapper">
+				<div id="index-slider" class="carousel slide carousel-fade" data-ride="carousel" data-interval="2500">
 
-				<a
-					href="https://shokoanime.com/assets/images/programs-plugins/my-anime-3/My-Anime-3-StreamedMP-Collection-List.jpg"
-					data-toggle="lightbox" data-lightbox="Shoko Metadata"
-					data-title="Shoko Metadata"><img class="img-fluid index-info-image"
-					src="https://shokoanime.com/assets/images/programs-plugins/my-anime-3/My-Anime-3-StreamedMP-Collection-List.jpg"
-					alt="Shoko Metadata"></a>
+					<div class="carousel-inner">
+						<div class="carousel-item active">
+							<img src="/assets/images/programs-plugins/my-anime-3/My-Anime-3-StreamedMP-Calendar.jpg"
+								class="d-block w-100 index-slider-image" alt="My Anime 3">
+						</div>
+						<div class="carousel-item">
+							<img src="/assets/images/programs-plugins/nakamori/Nakamori-Coverflow.jpg"
+								class="d-block w-100 index-slider-image" alt="Nakamori">
+						</div>
+						<div class="carousel-item">
+							<img src="/assets/images/programs-plugins/shoko-metadata/Shoko-Metadata-Series-Listing.jpg"
+								class="d-block w-100 index-slider-image" alt="Shoko Metadata">
+						</div>
+					</div>
 
-
+				</div>
 			</div>
+
 			<div class="col-xl-6 index-info-item-wrapper">
 
 				<h1 class="index-info-header">Media Player Support Built-In</h1>
@@ -197,7 +201,8 @@
 
 					<a href="plex"><img class="media-player-image" src="/assets/images/media-players/plex.png" alt="Plex"></a>
 					<a href="plex"><img class="media-player-image" src="/assets/images/media-players/kodi.png" alt="Kodi"></a>
-					<a href="plex"><img class="media-player-image" src="/assets/images/media-players/mediaportal.png" alt="MediaPortal"></a>
+					<a href="plex"><img class="media-player-image" src="/assets/images/media-players/mediaportal.png"
+						alt="MediaPortal"></a>
 
 				</div>
 
