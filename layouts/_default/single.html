@@ -3,41 +3,62 @@
 
 {{ partial "head.html" . }}
 
-<body data-spy="scroll" data-target="#page-nav" data-offset="80">
+<body>
 
 {{ partial "header.html" . }}
 
-<div class="container container-wrapper">
-	<div class="row row-wrapper">
+<div class="blog-post-image-wrapper border-bottom">
+	<img class="blog-post-image" src="{{.Site.BaseURL }}{{ .Params.image }}" alt="{{ .Title }}">
+	<div class="blog-post-image-overlay">
 
-		<div class="col-xl-2 sidenav-wrapper">
+		{{ partial "breadcrumb.html" . }}
 
-			{{ partial "nav.html" . }}
+	</div>
+</div>
 
-		</div>
+<div class="blog-post-content-wrapper">
+	<div class="row">
 
-		<div class="col-xl-8 page-wrapper">
+		<div class="col-xl-9 blog-post-content">
 
-			{{ .Content }}
+			<div class="blog-post-info">
+				<p>Posted On: <span class="blog-post-date">{{ .Date.Format "January 2, 2006" }}</span></p>
+				{{ .Scratch.Set "type" "category" }}
+				{{ .Scratch.Set "class" "blog-post-category-single" }}
+				{{ .Scratch.Set "divider" "blog-post-divider" }}
+				<p class="blog-post-category">Categories: {{ partial "taxonomy.html" . }}</p>
 
-		</div>
+				{{ .Scratch.Set "type" "tag" }}
+				{{ .Scratch.Set "divider" "blog-post-divider" }}
+				<p class="blog-post-tags">Tags: {{ partial "taxonomy.html" . }}</p>
 
-		<div class="col-xl-2 page-nav-link-wrapper">
-			<div class="nav-links-wrapper page-nav-link-wrapper">
-				<ul class="nav flex-column flex-nowrap" id="page-nav">
-
-					{{ range .Params.pageNav }}
-
-					{{if  .navTitle }}
-					<li class="page-nav-title">{{ .navTitle }}</li>
-					{{ end }}
-
-					<li class="nav-item"><a class="nav-link nav-menu page-nav-link" href="#{{ .id }}">{{ .name }}</a></li>
-
-					{{ end }}
-
-				</ul>
 			</div>
+
+			<div class="blog-post">
+				{{ .Content }}
+			</div>
+
+		</div>
+
+		<div class="col-xl-3 blog-post-side-sticky">
+
+			<p class="blog-post-side-divider">Spread The Word</p>
+			{{ partial "share.html" . }}
+
+			{{ $related := .Site.RegularPages.Related . | first 3 }}
+			{{ with $related }}
+			<p class="blog-post-side-divider">Related Posts</p>
+			{{ range . }}
+			<div class="blog-post-related-wrapper">
+				<img class="blog-post-related-image" src="{{.Site.BaseURL }}{{ .Params.image }}" alt="{{ .Title }}">
+				<div class="blog-post-related-info">
+					<a class="blog-post-related-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
+					<p class="blog-post-related-date">{{ .Date.Format "January 2, 2006" }}</p>
+				</div>
+			</div>
+			{{ end }}
+			{{ end }}
+
 		</div>
 
 	</div>

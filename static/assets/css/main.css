@@ -1,22 +1,35 @@
 /*
-    1. General
-    2. NavBar
-    3. Index
-    4. Page Content
-    5. Sidenav Navigation
-    6. Footer
-    7. Changelog
-    8. Tables
-    9. FAQ
-    10. Tabs
-    11. Search
-    12. Lightbox
-    13. Media Queries
+---------------------------------------------
+		1. General
+		2. NavBar
+		3. Index
+				3A. Index - Hero Section
+				3A. Index - Features Section
+				3A. Index - Blog Section
+				3A. Index - Info Section
+		4. Breadcrumbs
+		5. Blog
+				5A. Blog - Share
+		6. Footer
+
+
+		4. Page Content
+		5. Sidenav Navigation
+		6. Footer
+		7. Changelog
+		8. Tables
+		9. FAQ
+		10. Tabs
+		11. Search
+		12. Lightbox
+		13. Media Queries
+---------------------------------------------
 */
+
 
 /*
 ---------------------------------------------
-    1. General
+		1. General
 ---------------------------------------------
 */
 
@@ -95,6 +108,10 @@ thead {
 	padding: 1rem 0;
 }
 
+.page-wrapper {
+	max-width: 1720px;
+}
+
 .row-wrapper {
 	height: 100%;
 	min-height: calc(100vh - 331px);
@@ -132,14 +149,22 @@ thead {
 	border-color: var(--buttonLearnBorder);
 }
 
+.category-divider {
+	color: rgb(255, 255, 255);
+	margin: 0;
+}
+
 /*
 ---------------------------------------------
-    2. NavBar
+		2. NavBar
 ---------------------------------------------
 */
 
 .navbar-wrapper {
-	background-color: var(--navBackground);
+	z-index: 3;
+	position: absolute;
+	width: 100%;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.10);
 }
 
 .navbar-info {
@@ -188,22 +213,22 @@ thead {
 	padding-left: 1rem;
 }
 
-
 /*
 ---------------------------------------------
-    3. Index
+		3. Index
 ---------------------------------------------
 */
 
-.index-wrapper {
-	max-width: 1720px;
-}
 
-/* Hero Section */
+/*
+---------------------------------------------
+				3A. Index - Hero Section
+---------------------------------------------
+*/
 
 .hero-wrapper {
 	background: rgba(0, 0, 0, 0) url("../images/banners/Banner-1.jpg") repeat scroll 50% 20% / cover;
-	height: 630px;
+	height: 600px;
 	position: relative;
 }
 
@@ -221,6 +246,8 @@ thead {
 	text-align: center;
 	margin: auto;
 	max-width: 80%;
+	position: relative;
+	top: 30px;
 }
 
 .hero-info-main {
@@ -235,7 +262,7 @@ thead {
 	color: var(--fontColorAlt);
 	padding-top: 1.5rem;
 	font-weight: 700;
-	width: 60%;
+	width: 80%;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -248,7 +275,11 @@ thead {
 	margin-right: 2rem;
 }
 
-/* Features Section */
+/*
+---------------------------------------------
+				3A. Index - Features Section
+---------------------------------------------
+*/
 
 .features-wrapper {
 	padding: 3rem 1rem;
@@ -279,7 +310,11 @@ thead {
 	vertical-align: top;
 }
 
-/* Blog */
+/*
+---------------------------------------------
+				3A. Index - Blog Section
+---------------------------------------------
+*/
 
 .index-blog-wrapper {
 	padding: 3rem 1rem;
@@ -289,7 +324,7 @@ thead {
 	height: 400px;
 	width: 100%;
 	position: relative;
-	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 .index-blog-post-image {
@@ -344,11 +379,6 @@ thead {
 	margin-top: 0;
 }
 
-.index-blog-post-category-divider {
-	color: rgb(255, 255, 255);
-	margin: 0;
-}
-
 .index-blog-post-summary {
 	color: rgb(255, 255, 255);
 	position: absolute;
@@ -363,7 +393,11 @@ thead {
 	left: 50px;
 }
 
-/* Info */
+/*
+---------------------------------------------
+				3A. Index - Info Section
+---------------------------------------------
+*/
 
 .index-info-wrapper {
 	padding: 5rem 1rem;
@@ -399,80 +433,243 @@ thead {
 
 /*
 ---------------------------------------------
-    4. Page Content
+		4. Breadcrumbs
 ---------------------------------------------
 */
 
-.page-wrapper {
-	max-width: 1055px !important;
-	padding: 5rem 2rem 5rem 3rem;
-}
-
-.page-left-column {
-	max-width: 300px;
-}
-
-.page-nav-wrapper {
-	max-width: 265px;
-	padding-left: 0;
-}
-
-.page-nav-link-wrapper {
-	margin-top: 3rem;
-	padding-left: 1rem;
-	padding-right: 0;
-	position: sticky;
-	top: 70px;
-}
-
-.page-nav-title {
-	color: var(--linkNormal);
-	font-size: 0.9125rem;
-	font-weight: 700;
-	padding: 0.21em 0;
-}
-
-.page-nav-link {
-	color: var(--linkNormal);
-	font-size: 0.8125rem;
-	font-weight: 600;
-	padding: 0.21em 0;
-}
-
-.page-nav-link:hover {
-	color: var(--linkActive);
-}
-
-.page-nav-link.active {
-	color: var(--linkActive);
-}
-
-.page-nav-link.active:before {
-	background-color: var(--pageIndicatorActive);
-	bottom: 0;
-	content: '';
-	display: inline-block;
-	height: 1.1rem;
-	left: -20px;
+.breadcrumb-wrapper {
+	padding: 0.5rem 0;
 	position: relative;
-	top: 4px;
-	width: 2px;
-	z-index: 1;
+	top: 30px;
+	width: 1720px;
+	margin: auto;
 }
 
-.page-nav-link:before {
-	background-color: var(--pageIndicator);
-	bottom: 0;
-	content: '';
-	left: -4px;
-	position: absolute;
-	top: 0;
-	width: 2px;
+.breadcrumb-page-title {
+	font-size: 4rem;
+	color: var(--fontColorAlt)
+}
+
+.breadcrumb-list {
+	margin: auto 0 auto auto;
+	font-size: 1.3rem;
+	color: var(--fontColorAlt)
+}
+
+.breadcrumb-separator {
+	margin: 0 0.6rem
+}
+
+.breadcrumb-active {
+	color: var(--linkActive);
+	font-weight: 600;
 }
 
 /*
 ---------------------------------------------
-    5. Sidenav Navigation
+		5. Blog
+---------------------------------------------
+*/
+
+.blog-post-image-wrapper {
+	height: 600px;
+	position: relative;
+}
+
+.blog-post-image-overlay {
+	background-color: rgba(10, 11, 29, 0.8);
+	position: absolute;
+	width: 100%;
+	z-index: 2;
+	height: 100%;
+	display: flex;
+}
+
+.blog-post-image {
+	width: 100%;
+	height: 600px;
+	position: absolute;
+	object-fit: cover;
+}
+
+.blog-post-content-wrapper {
+	max-width: 1720px;
+	margin: 4rem auto;
+}
+
+.blog-post-content {
+	max-width: 71%;
+}
+
+.blog-post-content-image {
+	max-height: 500px;
+	max-width: 600px;
+	height: 100%;
+	width: 100%;
+}
+
+.blog-post-info {
+	border-bottom: var(--borderColor) 1px solid;
+	display: flex;
+	font-weight: 600;
+}
+
+.blog-post-date {
+	color: var(--linkActive);
+}
+
+.blog-post-category {
+	margin-left: auto;
+}
+
+.blog-post-tags {
+	padding-left: 1rem;
+}
+
+.blog-post-divider {
+	color: var(--fontColor);
+}
+
+.blog-post {
+	padding-top: 2rem;
+}
+
+.blog-post-side-sticky {
+	position: sticky;
+	position: -webkit-sticky;
+	top: 3rem;
+	align-self: flex-start;
+	height: auto;
+}
+
+.blog-post-side-divider {
+	border-bottom: var(--borderColor) 1px solid;
+	padding: 0 0 1rem 0;
+	margin: 0;
+	font-weight: 600;
+}
+
+.blog-post-related-wrapper {
+	padding: 2rem 0;
+}
+
+.blog-post-related-image {
+	width: 150px;
+	height: 100px;
+}
+
+.blog-post-related-info {
+	display: inline-block;
+	padding-left: 2rem;
+}
+
+/*
+---------------------------------------------
+				5A. Blog - Share
+---------------------------------------------
+*/
+
+.share-button-wrapper {
+	display: flex;
+	text-align: center;
+	text-decoration: none;
+}
+
+.share-button-link {
+	color: #ffffff;
+	border: none;
+	border-radius: 4px;
+	outline: none;
+	text-align: center;
+	height: 50px;
+	display: flex;
+	width: 100px;
+	margin: 2rem 0.5rem 2rem 0;
+}
+
+.share-icon {
+	margin: auto;
+}
+
+.twitter {
+	background: #55ACEE;
+}
+
+.facebook {
+	background: #3B5998;
+}
+
+.reddit {
+	background: #ff5700;
+}
+
+.linkedin {
+	background: #4875B4;
+}
+
+.pinterest {
+	background: #BD081C;
+}
+
+.email {
+	background: #444444;
+}
+
+
+/*
+---------------------------------------------
+		6. Footer
+---------------------------------------------
+*/
+
+.footer-wrapper {
+	background-color: var(--footerBackground);
+	border-top: var(--borderColor) 1px solid;
+	height: 80px;
+	overflow: hidden;
+	width: 100%;
+}
+
+.footer-info {
+	color: var(--fontColorAlt);
+	display: flex;
+	height: 100%;
+	padding: 0 3rem;
+}
+
+.footer-links {
+	padding-top: 1.75rem;
+}
+
+.footer-links > a {
+	color: var(--fontColorAlt);
+}
+
+.footer-links > a:hover {
+	color: var(--linkActive);
+	text-decoration: none;
+}
+
+.footer-links-spacer {
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
+
+.footer-copyright {
+	margin-left: auto;
+	padding-top: 1.75rem;
+}
+
+
+/*
+---------------------------------------------
+UNUSED
+---------------------------------------------
+*/
+
+/*
+---------------------------------------------
+		5. Sidenav Navigation
 ---------------------------------------------
 */
 
@@ -560,51 +757,7 @@ a.nav-title {
 
 /*
 ---------------------------------------------
-    6. Footer
----------------------------------------------
-*/
-
-.footer-wrapper {
-	background-color: var(--footerBackground);
-	border-top: var(--borderColor) 1px solid;
-	height: 80px;
-	overflow: hidden;
-	width: 100%;
-}
-
-.footer-info {
-	color: var(--fontColorAlt);
-	display: flex;
-	height: 100%;
-	padding: 0 3rem;
-}
-
-.footer-links {
-	padding-top: 1.75rem;
-}
-
-.footer-links > a {
-	color: var(--fontColorAlt);
-}
-
-.footer-links > a:hover {
-	color: var(--linkActive);
-	text-decoration: none;
-}
-
-.footer-links-spacer {
-	padding-left: 1rem;
-	padding-right: 1rem;
-}
-
-.footer-copyright {
-	margin-left: auto;
-	padding-top: 1.75rem;
-}
-
-/*
----------------------------------------------
-    8. Tables
+		8. Tables
 ---------------------------------------------
 */
 
@@ -636,7 +789,7 @@ a.nav-title {
 
 /*
 ---------------------------------------------
-    10. Tabs
+		10. Tabs
 ---------------------------------------------
 */
 
@@ -664,7 +817,7 @@ a.nav-title {
 
 /*
 ---------------------------------------------
-    11. Search
+		11. Search
 ---------------------------------------------
 */
 
@@ -679,315 +832,4 @@ a.nav-title {
 	border-right: 0;
 	border-left: 0;
 	outline: 0;
-}
-
-/*
----------------------------------------------
-    12. Lightbox
----------------------------------------------
-*/
-
-html.lb-disable-scrolling {
-	overflow: hidden;
-	/* Position fixed required for iOS. Just putting overflow: hidden; on the body is not enough. */
-	position: fixed;
-	height: 100vh;
-	width: 100vw;
-}
-
-.lightboxOverlay {
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: 9999;
-	background-color: black;
-	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
-	opacity: 0.8;
-	display: none;
-}
-
-.lightbox {
-	position: absolute;
-	left: 0;
-	width: 100%;
-	z-index: 10000;
-	text-align: center;
-	line-height: 0;
-	font-weight: normal;
-}
-
-.lightbox .lb-image {
-	display: block;
-	height: auto;
-	max-width: inherit;
-	max-height: none;
-	border-radius: 3px;
-
-	/* Image border */
-	border: 4px solid white;
-}
-
-.lightbox a img {
-	border: none;
-}
-
-.lb-outerContainer {
-	position: relative;
-	*zoom: 1;
-	width: 250px;
-	height: 250px;
-	margin: 0 auto;
-	border-radius: 4px;
-
-	/* Background color behind image.
-		 This is visible during transitions. */
-	background-color: white;
-}
-
-.lb-outerContainer:after {
-	content: "";
-	display: table;
-	clear: both;
-}
-
-.lb-loader {
-	position: absolute;
-	top: 43%;
-	left: 0;
-	height: 25%;
-	width: 100%;
-	text-align: center;
-	line-height: 0;
-}
-
-.lb-cancel {
-	display: block;
-	width: 32px;
-	height: 32px;
-	margin: 0 auto;
-	background: url(/assets/images/lightbox/loading.gif) no-repeat;
-}
-
-.lb-nav {
-	position: absolute;
-	top: 0;
-	left: 0;
-	height: 100%;
-	width: 100%;
-	z-index: 10;
-}
-
-.lb-container > .nav {
-	left: 0;
-}
-
-.lb-nav a {
-	outline: none;
-	background-image: url('data:image/gif;base64,R0lGODlhAQABAPAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==');
-}
-
-.lb-prev, .lb-next {
-	height: 100%;
-	cursor: pointer;
-	display: block;
-}
-
-.lb-nav a.lb-prev {
-	width: 34%;
-	left: 0;
-	float: left;
-	background: url(/assets/images/lightbox/prev.png) left 48% no-repeat;
-	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
-	opacity: 0;
-	-webkit-transition: opacity 0.6s;
-	-moz-transition: opacity 0.6s;
-	-o-transition: opacity 0.6s;
-	transition: opacity 0.6s;
-}
-
-.lb-nav a.lb-prev:hover {
-	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
-	opacity: 1;
-}
-
-.lb-nav a.lb-next {
-	width: 64%;
-	right: 0;
-	float: right;
-	background: url(/assets/images/lightbox/next.png) right 48% no-repeat;
-	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
-	opacity: 0;
-	-webkit-transition: opacity 0.6s;
-	-moz-transition: opacity 0.6s;
-	-o-transition: opacity 0.6s;
-	transition: opacity 0.6s;
-}
-
-.lb-nav a.lb-next:hover {
-	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
-	opacity: 1;
-}
-
-.lb-dataContainer {
-	margin: 0 auto;
-	padding-top: 5px;
-	*zoom: 1;
-	width: 100%;
-	border-bottom-left-radius: 4px;
-	border-bottom-right-radius: 4px;
-}
-
-.lb-dataContainer:after {
-	content: "";
-	display: table;
-	clear: both;
-}
-
-.lb-data {
-	padding: 0 4px;
-	color: #ccc;
-}
-
-.lb-data .lb-details {
-	width: 85%;
-	float: left;
-	text-align: left;
-	line-height: 1.1em;
-}
-
-.lb-data .lb-caption {
-	font-size: 13px;
-	font-weight: 600;
-	line-height: 1em;
-}
-
-.lb-data .lb-caption a {
-	color: #4ae;
-}
-
-.lb-data .lb-number {
-	display: block;
-	clear: left;
-	font-weight: 600;
-	padding-bottom: 1em;
-	font-size: 12px;
-}
-
-.lb-data .lb-close {
-	display: block;
-	float: right;
-	width: 30px;
-	height: 30px;
-	background: url(/assets/images/lightbox/close.png) top right no-repeat;
-	text-align: right;
-	outline: none;
-	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
-	opacity: 0.7;
-	-webkit-transition: opacity 0.2s;
-	-moz-transition: opacity 0.2s;
-	-o-transition: opacity 0.2s;
-	transition: opacity 0.2s;
-}
-
-.lb-data .lb-close:hover {
-	cursor: pointer;
-	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
-	opacity: 1;
-}
-
-/*
----------------------------------------------
-    13. Media Queries
----------------------------------------------
-*/
-
-@media only screen and (max-width: 1015px) {
-
-	.navbar-info {
-		padding: 1rem;
-	}
-
-	.navbar-divider {
-		display: none;
-	}
-
-	.navbar-collapse {
-		padding: 1rem 0;
-		text-align: center;
-	}
-
-	.navbar-options {
-		padding-top: 0;
-	}
-
-	.page-header-wrapper {
-		height: 100%;
-	}
-
-	.page-header-subtitle-wrapper {
-		display: inline-block;
-	}
-
-	.sidenav-wrapper {
-		border-bottom: var(--borderColor) 1px solid;
-		border-right: none;
-		max-width: 100%;
-		padding: 1rem;
-	}
-
-	.page-wrapper {
-		max-width: 100%;
-		padding: 1rem 1rem;
-		width: -webkit-fill-available;
-		width: -moz-available;
-	}
-
-	.container-wrapper {
-		max-width: 100%;
-		width: -webkit-fill-available;
-		width: -moz-available;
-	}
-
-	.page-nav-link-wrapper {
-		display: none;
-	}
-
-	.footer-links {
-		display: none;
-	}
-
-	pre code {
-		word-break: break-all;
-		white-space: normal;
-	}
-
-	table, thead, tbody, th, td, tr {
-		display: block;
-	}
-
-	thead tr {
-		position: absolute;
-		top: -9999px;
-		left: -9999px;
-	}
-
-	tr {
-		border: 1px solid #ccc;
-	}
-
-	td {
-		border: none;
-		border-bottom: 1px solid #eee;
-		position: relative;
-		padding-left: 50%;
-	}
-
-	td:before {
-		position: absolute;
-		top: 6px;
-		left: 6px;
-		width: 45%;
-		padding-right: 10px;
-		white-space: nowrap;
-	}
 }

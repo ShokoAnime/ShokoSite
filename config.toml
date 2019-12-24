@@ -13,3 +13,16 @@ title = "Shoko Anime"
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
+
+[related]
+  threshold = 80
+  includeNewer = true
+  toLower = false
+
+[[related.indices]]
+  name = "tag"
+  weight = 100
+[[related.indices]]
+  name  = "date"
+  weight = 10
+  pattern = "2006"

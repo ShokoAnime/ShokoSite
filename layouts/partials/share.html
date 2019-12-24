@@ -1,0 +1,32 @@
+<!-- Social Share Button HTML -->
+<!--https://github.com/jpescador/hugo-future-imperfect-->
+
+{{ $permalink := $.Scratch.Get "Permalink" }}
+{{ $title := $.Scratch.Get "Title" }}
+
+<div class="share-button-wrapper">
+	<a href="//twitter.com/share?text={{ $title }}&amp;url={{ $permalink }}" target="_blank" rel="noopener"
+		class="share-button-link twitter">
+		<i class="share-icon fab fa-twitter"></i>
+	</a>
+
+	<a href="//www.facebook.com/sharer/sharer.php?u={{ $permalink }}" target="_blank" rel="noopener"
+		class="share-button-link facebook">
+		<i class="share-icon fab fa-facebook"></i>
+	</a>
+
+	<a href="//www.reddit.com/submit?url={{ $permalink }}&amp;title={{ $title }}" target="_blank" rel="noopener"
+		class="share-button-link  reddit">
+		<i class="share-icon fab fa-reddit-alien"></i>
+	</a>
+
+	<a href="//www.pinterest.com/pin/create/button/?url={{ $permalink }}&amp;description={{ $title }}" target="_blank"
+		rel="noopener" class="share-button-link share-btn pinterest">
+		<i class="share-icon fab fa-pinterest-p"></i>
+	</a>
+
+	<a href="mailto:?subject=Check out this post by The Shoko Team&amp;body={{ $permalink }}" target="_blank"
+		class="share-button-link share-btn email" data-proofer-ignore>
+		<i class="share-icon fas fa-envelope"></i>
+	</a>
+</div>

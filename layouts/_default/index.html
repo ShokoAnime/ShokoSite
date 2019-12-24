@@ -5,9 +5,9 @@
 
 <body>
 
-{{ partial "header.html" . }}
-
 <!-- Hero Section -->
+
+{{ partial "header.html" . }}
 
 <div class="hero-wrapper border-bottom">
 	<div class="hero-overlay">
@@ -30,7 +30,7 @@
 <!-- Features Section -->
 
 <div class="features-wrapper background-color-alt border-bottom">
-	<div class="container index-wrapper">
+	<div class="container page-wrapper">
 
 		<div class="row">
 			<div class="col-xl-12">
@@ -68,7 +68,7 @@
 
 <div class="index-blog-wrapper background-color border-bottom">
 
-	<div class="container index-wrapper">
+	<div class="container page-wrapper">
 		<div class="row">
 
 			{{ range last 3 (where .Site.Pages "Section" "blog") }}
@@ -83,23 +83,11 @@
 							<div class="index-blog-post-date-day">{{ .Date.Format "2" }}</div>
 						</div>
 						<div class="index-blog-post-info">
-
-							{{ $taxo := "category" }}
-							{{ $.Scratch.Set "counter" 0 }}
-							{{ range .Param $taxo }}
-							{{ $.Scratch.Set "counter" (add ($.Scratch.Get "counter") 1) }}
-							{{ if ne ($.Scratch.Get "counter") 1 }}
-							<span class="index-blog-post-category-divider">/</span>
-							{{ end }}
-							{{ $name := . }}
-
-							{{ with $.Site.GetPage (printf "/%s/%s" $taxo ($name | urlize)) }}
-
-							<a class="index-blog-post-link" href="{{ .Permalink }}">{{ $name }}</a>
-
-							{{ end }}
-							{{ end }}
-
+							{{ .Scratch.Delete "class" }}
+							{{ .Scratch.Set "type" "category" }}
+							{{ .Scratch.Set "class" "index-blog-post-link" }}
+							{{ .Scratch.Set "divider" "category-divider" }}
+							{{ partial "taxonomy.html" . }}
 							<h3 class="index-blog-post-title">{{ .Params.title }}</h3>
 						</div>
 						<p class="index-blog-post-summary">{{ .Summary | truncate 170 }}</p>
@@ -120,7 +108,7 @@
 <!-- Info Section -->
 
 <div class="index-info-wrapper background-color-alt border-bottom">
-	<div class="container index-wrapper">
+	<div class="container page-wrapper">
 		<div class="row">
 
 			<div class="col-xl-6 index-info-item-wrapper">
@@ -158,7 +146,7 @@
 <!-- Info Section -->
 
 <div class="index-info-wrapper background-color">
-	<div class="container index-wrapper">
+	<div class="container page-wrapper">
 		<div class="row">
 
 			<div class="col-xl-6 index-info-item-wrapper">

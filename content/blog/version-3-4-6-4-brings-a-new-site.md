@@ -9,8 +9,6 @@ tag = ["Shoko Server", "Plex"]
 
 Hello Everyone,
 
-## HEader
-
 JMM has gone through a lot of changes over the past couple of months, both with JMM itself and as you might of noticed, the website as well. Before I go into detail about the new website and other changes lets talk about the new version of JMM!
 
 With each release, we'll cover a few of the new additions or changes but for a complete listing, check out the changelog.
