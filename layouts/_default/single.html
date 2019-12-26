@@ -7,9 +7,9 @@
 
 {{ partial "header.html" . }}
 
-<div class="blog-post-image-wrapper border-bottom">
+<div class="page-image-wrapper border-bottom">
 	<img class="blog-post-image" src="{{.Site.BaseURL }}{{ .Params.image }}" alt="{{ .Title }}">
-	<div class="blog-post-image-overlay">
+	<div class="page-image-overlay">
 
 		{{ partial "breadcrumb.html" . }}
 
@@ -21,16 +21,26 @@
 
 		<div class="col-xl-9 blog-post-content">
 
-			<div class="blog-post-info">
-				<p>Posted On: <span class="blog-post-date">{{ .Date.Format "January 2, 2006" }}</span></p>
-				{{ .Scratch.Set "type" "category" }}
-				{{ .Scratch.Set "class" "blog-post-category-single" }}
-				{{ .Scratch.Set "divider" "blog-post-divider" }}
-				<p class="blog-post-category">Categories: {{ partial "taxonomy.html" . }}</p>
+			{{ .Scratch.Delete "class" }}
+			{{ .Scratch.Delete "divider" }}
 
-				{{ .Scratch.Set "type" "tag" }}
-				{{ .Scratch.Set "divider" "blog-post-divider" }}
-				<p class="blog-post-tags">Tags: {{ partial "taxonomy.html" . }}</p>
+			<div class="blog-post-info">
+				<div class="blog-post-info-left">
+					<p>Posted On: <span class="blog-post-date">{{ .Date.Format "January 2, 2006" }}</span></p>
+					<p>Banner Anime: <a href="https://anidb.net/anime/?adb.search={{ .Params.anime }}&do.search=1"
+						target="_blank">{{ .Params.anime }}</a></p>
+				</div>
+
+				<div class="blog-post-info-right">
+					{{ .Scratch.Set "type" "category" }}
+					{{ .Scratch.Set "class" "blog-post-category-single" }}
+					{{ .Scratch.Set "divider" "blog-post-divider" }}
+					<p class="blog-post-category">Categories: {{ partial "taxonomy.html" . }}</p>
+
+					{{ .Scratch.Set "type" "tag" }}
+					{{ .Scratch.Set "divider" "blog-post-divider" }}
+					<p class="blog-post-tags">Tags: {{ partial "taxonomy.html" . }}</p>
+				</div>
 
 			</div>
 
@@ -42,12 +52,16 @@
 
 		<div class="col-xl-3 blog-post-side-sticky">
 
-			<p class="blog-post-side-divider">Spread The Word</p>
+			<div class="blog-post-side-wrapper">
+				<p class="blog-post-side-header">Spread The Word</p>
+			</div>
 			{{ partial "share.html" . }}
 
 			{{ $related := .Site.RegularPages.Related . | first 3 }}
 			{{ with $related }}
-			<p class="blog-post-side-divider">Related Posts</p>
+			<div class="blog-post-side-wrapper">
+				<p class="blog-post-side-header">Related Posts</p>
+			</div>
 			{{ range . }}
 			<div class="blog-post-related-wrapper">
 				<img class="blog-post-related-image" src="{{.Site.BaseURL }}{{ .Params.image }}" alt="{{ .Title }}">

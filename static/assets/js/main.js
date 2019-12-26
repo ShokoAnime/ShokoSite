@@ -9,10 +9,13 @@ $(window).on("load", function () {
 	if (localStorage.getItem('theme') === 'light' || localStorage.getItem('theme') === null) {
 		$('link[id="dark"]').prop('disabled', true);
 		$("body").css("display", "initial");
+		$('#themeSwitcher').removeClass('fa-sun');
+		$('#themeSwitcher').addClass('fa-moon');
 	} else {
 		$('link[id="light"]').prop('disabled', true);
 		$("body").css("display", "initial");
-		$('#themeSwitcher').text('Light Theme');
+		$('#themeSwitcher').removeClass('fa-moon');
+		$('#themeSwitcher').addClass('fa-sun');
 		themeID++;
 	}
 
@@ -24,13 +27,15 @@ $('#themeSwitcher').click(function () {
 		localStorage.setItem('theme', 'light');
 		$('link[id="dark"]').prop('disabled', true);
 		$('link[id="light"]').prop('disabled', false);
-		$('#themeSwitcher').text('Dark Theme');
+		$('#themeSwitcher').removeClass('fa-sun');
+		$('#themeSwitcher').addClass('fa-moon');
 		themeID--;
 	} else {
 		localStorage.setItem('theme', 'dark');
 		$('link[id="light"]').prop('disabled', true);
 		$('link[id="dark"]').prop('disabled', false);
-		$('#themeSwitcher').text('Light Theme');
+		$('#themeSwitcher').removeClass('fa-moon');
+		$('#themeSwitcher').addClass('fa-sun');
 		themeID++;
 	}
 
@@ -61,7 +66,7 @@ while (parseInt(randomBanner, 10) === parseInt(previousBanner, 10)) {
 }
 
 let header = ' rgba(0, 0, 0, 0) url("../images/banners/Banner-' + randomBanner + '.jpg") repeat scroll 50% 20% / cover';
-css('.hero-wrapper', 'background', header);
+css('.random-banner', 'background', header);
 
 sessionStorage.setItem("bannerID", randomBanner);
 

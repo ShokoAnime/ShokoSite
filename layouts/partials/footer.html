@@ -2,14 +2,8 @@
 	<div class="footer-info">
 
 		<div class="footer-links">
-			<a class="navbar-link navbar-nav-link" href="link">About</a>
-			<a class="navbar-link navbar-nav-link" href="link">Blog</a>
-			<a class="navbar-link navbar-nav-link" href="link">Changelog</a>
-			<a class="navbar-link navbar-nav-link" href="link">Downloads</a>
-			<a class="navbar-link navbar-nav-link" href="link">Programs / Plugins</a>
-			<a class="navbar-link navbar-nav-link" href="link">Shoko Docs</a>
-			<a class="navbar-link navbar-nav-link" href="link">Github Repo</a>
-			<a class="navbar-link navbar-nav-link" href="link">Support</a>
+			{{ .Scratch.Set "extended-nav" false }}
+			{{ partial "nav.html" . }}
 		</div>
 
 		<div class="footer-copyright">

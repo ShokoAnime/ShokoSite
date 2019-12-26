@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+
+{{ partial "head.html" . }}
+
+<body>
+
+{{ partial "header.html" . }}
+
+<div class="page-image-wrapper random-banner border-bottom">
+	<div class="page-image-overlay">
+
+		{{ partial "breadcrumb.html" . }}
+
+	</div>
+</div>
+
+<div class="blog-index-wrapper">
+	<div class="row">
+
+		{{ range .Paginator.Pages }}
+
+		<div class="col-xl-4 blog-index-post">
+			<div class="blog-index-post-wrapper">
+				<img class="blog-index-post-image" src="{{ .Site.BaseURL   }}{{ .Params.image | relURL }}" alt=" {{ .Params.title }}">
+				<div class="blog-index-post-overlay">
+					<div class="blog-index-post-date">
+						<div class="blog-index-post-date-month">{{ .Date.Format "Jan" }}</div>
+						<div class="blog-index-post-date-day">{{ .Date.Format "2" }}</div>
+					</div>
+					<div class="blog-index-post-info">
+						{{ .Scratch.Set "type" "category" }}
+						{{ .Scratch.Set "class" "blog-index-post-link" }}
+						{{ .Scratch.Set "divider" "category-divider" }}
+						{{ partial "taxonomy.html" . }}
+						<h3 class="blog-index-post-title">{{ .Params.title }}</h3>
+					</div>
+					<p class="blog-index-post-summary">{{ .Summary | truncate 180 }}</p>
+					<div class="blog-index-post-readmore">
+						<a class="blog-index-post-link" href="{{ .Permalink }}">Read More →</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		{{ end }}
+
+	</div>
+</div>
+
+{{ if .Paginator.HasPrev }}
+<a href="{{ .Paginator.Prev.URL }}"> Prev </a>
+{{ end }}
+{{ if .Paginator.HasNext }}
+<a href="{{ .Paginator.Next.URL }}"> Next </a>
+{{ end }}
+
+{{ partial "footer.html" . }}
+{{ partial "scripts.html" . }}
+
+</body>
+</html>

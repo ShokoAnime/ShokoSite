@@ -4,12 +4,12 @@
 		2. NavBar
 		3. Index
 				3A. Index - Hero Section
-				3A. Index - Features Section
-				3A. Index - Blog Section
-				3A. Index - Info Section
+				3B. Index - Features Section
+				3C. Index - Info Section
 		4. Breadcrumbs
 		5. Blog
-				5A. Blog - Share
+				5A. Blog - Post
+				5B. Blog - Share
 		6. Footer
 
 
@@ -106,6 +106,12 @@ thead {
 
 .img-fluid {
 	padding: 1rem 0;
+}
+
+.random-banner {
+	background: rgba(0, 0, 0, 0) url("../images/banners/Banner-1.jpg") repeat scroll 50% 20% / cover;
+	height: 600px;
+	position: relative;
 }
 
 .page-wrapper {
@@ -213,6 +219,16 @@ thead {
 	padding-left: 1rem;
 }
 
+.nav-divider {
+	color: var(--fontColorAlt);
+	padding: 0 1rem;
+}
+
+.theme-icon {
+	color: var(--fontColorAlt);
+	cursor: pointer;
+}
+
 /*
 ---------------------------------------------
 		3. Index
@@ -225,21 +241,6 @@ thead {
 				3A. Index - Hero Section
 ---------------------------------------------
 */
-
-.hero-wrapper {
-	background: rgba(0, 0, 0, 0) url("../images/banners/Banner-1.jpg") repeat scroll 50% 20% / cover;
-	height: 600px;
-	position: relative;
-}
-
-.hero-overlay {
-	background-color: rgba(10, 11, 29, 0.8);
-	position: absolute;
-	width: 100%;
-	z-index: 2;
-	height: 100%;
-	display: flex;
-}
 
 .hero-info-wrapper {
 	display: block;
@@ -277,7 +278,7 @@ thead {
 
 /*
 ---------------------------------------------
-				3A. Index - Features Section
+				3B. Index - Features Section
 ---------------------------------------------
 */
 
@@ -312,90 +313,7 @@ thead {
 
 /*
 ---------------------------------------------
-				3A. Index - Blog Section
----------------------------------------------
-*/
-
-.index-blog-wrapper {
-	padding: 3rem 1rem;
-}
-
-.index-blog-post-wrapper {
-	height: 400px;
-	width: 100%;
-	position: relative;
-	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-}
-
-.index-blog-post-image {
-	width: 100%;
-	height: 400px;
-	position: absolute;
-}
-
-.index-blog-post-overlay {
-	background-color: rgba(10, 11, 29, 0.8);
-	position: relative;
-	width: 100%;
-	z-index: 1;
-	height: 400px;
-	display: flex;
-}
-
-.index-blog-post-date {
-	background-color: #268ed6;
-	color: white;
-	width: 60px;
-	height: 50px;
-	position: relative;
-	left: 50px;
-	padding: 10px 20px 20px 20px;
-	text-align: center;
-	font-weight: 600;
-}
-
-.index-blog-post-date-month {
-	margin-top: -0.3rem;
-}
-
-.index-blog-post-date-day {
-	font-size: 2rem;
-	margin-top: -1rem;
-}
-
-.index-blog-post-info {
-	position: absolute;
-	bottom: 160px;
-	left: 50px;
-	width: 450px;
-}
-
-.index-blog-post-link {
-	color: var(--linkBlogOverlay)
-}
-
-.index-blog-post-title {
-	color: rgb(255, 255, 255);
-	margin-top: 0;
-}
-
-.index-blog-post-summary {
-	color: rgb(255, 255, 255);
-	position: absolute;
-	bottom: 50px;
-	left: 50px;
-	width: 450px;
-}
-
-.index-blog-post-readmore {
-	position: absolute;
-	bottom: 20px;
-	left: 50px;
-}
-
-/*
----------------------------------------------
-				3A. Index - Info Section
+				3C. Index - Info Section
 ---------------------------------------------
 */
 
@@ -471,19 +389,100 @@ thead {
 ---------------------------------------------
 */
 
-.blog-post-image-wrapper {
-	height: 600px;
-	position: relative;
+.index-blog-wrapper {
+	padding: 5rem 0 3rem 0;
 }
 
-.blog-post-image-overlay {
-	background-color: rgba(10, 11, 29, 0.8);
-	position: absolute;
+.blog-index-wrapper {
+	max-width: 1720px;
+	margin: 3rem auto;
+}
+
+.blog-index-post {
+	max-width: 31.6%;
+}
+
+.blog-index-post-wrapper {
+	height: 310px;
 	width: 100%;
-	z-index: 2;
-	height: 100%;
+	position: relative;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+	margin-bottom: 2rem;
+}
+
+.blog-index-post-image {
+	width: 100%;
+	height: 310px;
+	position: absolute;
+}
+
+.blog-index-post-overlay {
+	background-color: rgba(10, 11, 29, 0.8);
+	position: relative;
+	width: 100%;
+	z-index: 1;
+	height: 310px;
 	display: flex;
 }
+
+.blog-index-post-date {
+	background-color: #268ed6;
+	color: white;
+	width: 60px;
+	height: 50px;
+	position: relative;
+	left: 50px;
+	padding: 10px 20px 20px 20px;
+	text-align: center;
+	font-weight: 600;
+}
+
+.blog-index-post-date-month {
+	margin-top: -0.3rem;
+}
+
+.blog-index-post-date-day {
+	font-size: 2rem;
+	margin-top: -1rem;
+}
+
+.blog-index-post-info {
+	position: absolute;
+	bottom: 140px;
+	left: 50px;
+	width: 450px;
+}
+
+.blog-index-post-link {
+	color: var(--linkBlogOverlay)
+}
+
+.blog-index-post-title {
+	color: rgb(255, 255, 255);
+	margin-top: 0;
+	font-size: 1.70rem;
+}
+
+.blog-index-post-summary {
+	color: rgb(255, 255, 255);
+	position: absolute;
+	bottom: 35px;
+	left: 50px;
+	width: 483px;
+}
+
+.blog-index-post-readmore {
+	position: absolute;
+	bottom: 15px;
+	left: 50px;
+}
+
+
+/*
+---------------------------------------------
+				5A. Blog - Post
+---------------------------------------------
+*/
 
 .blog-post-image {
 	width: 100%;
@@ -506,12 +505,31 @@ thead {
 	max-width: 600px;
 	height: 100%;
 	width: 100%;
+	margin: 0 0 1rem 0;
 }
 
 .blog-post-info {
 	border-bottom: var(--borderColor) 1px solid;
 	display: flex;
 	font-weight: 600;
+	font-size: 0.95rem;
+	position: relative;
+	bottom: 28px;
+	padding-bottom: 1rem;
+}
+
+.blog-post-info-left > p {
+	margin: 0;
+	text-align: start;
+}
+
+.blog-post-info-right {
+	margin-left: auto;
+}
+
+.blog-post-info-right > p {
+	margin: 0;
+	text-align: end;
 }
 
 .blog-post-date {
@@ -530,10 +548,6 @@ thead {
 	color: var(--fontColor);
 }
 
-.blog-post {
-	padding-top: 2rem;
-}
-
 .blog-post-side-sticky {
 	position: sticky;
 	position: -webkit-sticky;
@@ -542,15 +556,22 @@ thead {
 	height: auto;
 }
 
-.blog-post-side-divider {
+.blog-post-side-wrapper {
 	border-bottom: var(--borderColor) 1px solid;
 	padding: 0 0 1rem 0;
 	margin: 0;
 	font-weight: 600;
 }
 
+.blog-post-side-header{
+	margin: 0;
+	padding-left: 1rem;
+	border-left: 5px solid var(--linkActive);
+}
+
+
 .blog-post-related-wrapper {
-	padding: 2rem 0;
+	padding: 2rem 0 0 0 ;
 }
 
 .blog-post-related-image {
@@ -560,12 +581,13 @@ thead {
 
 .blog-post-related-info {
 	display: inline-block;
-	padding-left: 2rem;
+	padding-left: 1.5rem;
+	font-size: 0.95rem;
 }
 
 /*
 ---------------------------------------------
-				5A. Blog - Share
+				5B. Blog - Share
 ---------------------------------------------
 */
 
@@ -585,6 +607,10 @@ thead {
 	display: flex;
 	width: 100px;
 	margin: 2rem 0.5rem 2rem 0;
+}
+
+a.share-button-link {
+	text-decoration: none;
 }
 
 .share-icon {
@@ -660,6 +686,28 @@ thead {
 	padding-top: 1.75rem;
 }
 
+/*
+---------------------------------------------
+		7. Page
+---------------------------------------------
+*/
+
+
+.page-image-wrapper {
+	width: 100%;
+	height: 600px;
+	object-fit: cover;
+	position: relative;
+}
+
+.page-image-overlay {
+	background-color: rgba(10, 11, 29, 0.8);
+	position: absolute;
+	width: 100%;
+	z-index: 2;
+	height: 100%;
+	display: flex;
+}
 
 /*
 ---------------------------------------------

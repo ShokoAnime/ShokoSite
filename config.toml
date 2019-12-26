@@ -1,4 +1,5 @@
 baseURL = "https://shokoanime.com/"
+paginate =  6
 languageCode = "en-us"
 title = "Shoko Anime"
 
