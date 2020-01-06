@@ -1,12 +1,12 @@
 {{ $taxo := $.Scratch.Get "type" }}
 {{ $.Scratch.Set "counter" 0 }}
 {{ range .Param $taxo }}
-{{ $.Scratch.Set "counter" (add ($.Scratch.Get "counter") 1) }}
-{{ if ne ($.Scratch.Get "counter") 1 }}
-<span class="{{ $.Scratch.Get "divider" }}">|</span>
-{{ end }}
-{{ $name := . }}
-{{ with $.Site.GetPage (printf "/%s/%s" $taxo ($name | urlize)) }}
-<a class="{{ $.Scratch.Get "class" }}" href="{{ .Permalink }}">{{ $name }}</a>
-{{ end }}
-{{ end }}
+{{- $.Scratch.Set "counter" (add ($.Scratch.Get "counter") 1) -}}
+{{- if ne ($.Scratch.Get "counter") 1 -}}
+<span class="{{ $.Scratch.Get "divider" }}">,</span>
+{{- end -}}
+{{- $name := . -}}
+{{- with $.Site.GetPage (printf "/%s/%s" $taxo ($name | urlize)) -}}
+<a class="{{ $.Scratch.Get "class" }}" href="{{ .Permalink }}">{{- $name -}}</a>
+{{- end -}}
+{{- end -}}

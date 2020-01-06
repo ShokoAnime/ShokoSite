@@ -1,0 +1,35 @@
++++
+title = "Goodbye Wordpress Hello New Site"
+image = "assets/images/blog/Goodbye-Wordpress-Hello-New-Site-Banner.jpg"
+date = 2018-09-24T02:45:46+00:00
+type = "post"
+anime = "The Irregular at Magic High School"
+category = ["Website"]
++++
+
+Welcome to the new Shoko Website!
+
+While some members of our team having been working away on fixing issues created by the move to .NET Standard, we also started a side-project to create design and create a brand new website for Shoko. Up until now, we've always used WordPress to run our website and while it worked, there were definitely some limitations that started to become more apparent, especially with some of our future plans. While we won't be going into detail about those plans just yet, just know they have to do with allowing others to submit content to the website. Only a few users had access to the website backend and while we could have just created accounts for each user as they needed it, this would still require teaching every user how to use and update the specific WordPress plugins and features we previously used.
+
+So instead, we decided to completely drop WordPress and design and code our own site and well as you can see, **we did just that**.
+
+With our new website, both staff and users can make changes as needed, add new programs / plugins and even create new blog posts simply by creating a PR on the [sites repo](https://github.com/ShokoAnime/ShokoSite). You'll find some information on what's required to submit a new program / plugin or create a blog post in the repo. The site doesn't update automatically as that's something we'll be looking into in the future.
+
+### What Else Is New?
+
+You mean besides the **brand new site**?
+
+-   You've probably noticed the the random page banner, it was something the staff liked from the WordPress site so we included it.
+-   The frontpage will display a random plugin on load, keep refreshing to see them all!
+-   The individual program/plugin pages were removed. All the relevant information is now shown on the **downloads** page.
+-   The **About** page was actually finished, go check it out.
+
+### How You Can Help
+
+The site is brand new and while we've had it up in a testing function for a couple weeks, its possible we missed some bugs here and there. Users looking for an adventure should explore the site and report any issues found using the [sites repo](https://github.com/ShokoAnime/ShokoSite) so you know, we can fix them. We're also taking feedback so feel free to let us know what you think.
+
+Also before anyone asks, there is a **Dark Theme** in the works but no ETA.
+
+### Known Issues
+
+-   There's an invalid breadcrumb on the pagination pages.

@@ -3,15 +3,15 @@
 		1. General
 		2. NavBar
 		3. Index
-				3A. Index - Hero Section
-				3B. Index - Features Section
-				3C. Index - Info Section
+			3A. Index - Features Section
+			3B. Index - Info Section
 		4. Breadcrumbs
 		5. Blog
-				5A. Blog - Post
-				5B. Blog - Share
+			5A. Blog - Post
+			5B. Blog - Share
 		6. Footer
-
+		7. Page
+		8. Tables
 
 		4. Page Content
 		5. Sidenav Navigation
@@ -58,7 +58,7 @@ body {
 	font-family: "Muli", sans-serif;
 	font-size: 1rem;
 	font-weight: 400;
-	line-height: 1.9;
+	line-height: 1.5;
 	overflow-x: hidden;
 }
 
@@ -123,6 +123,15 @@ thead {
 	min-height: calc(100vh - 331px);
 }
 
+.section-wrapper {
+	padding: 3rem 0;
+}
+
+.category-divider {
+	color: rgb(255, 255, 255);
+	margin: 0;
+}
+
 .btn {
 	text-transform: uppercase;
 	font-weight: 700;
@@ -153,11 +162,6 @@ thead {
 	color: var(--buttonText);
 	background-color: var(--buttonLearnHover);
 	border-color: var(--buttonLearnBorder);
-}
-
-.category-divider {
-	color: rgb(255, 255, 255);
-	margin: 0;
 }
 
 /*
@@ -231,14 +235,7 @@ thead {
 
 /*
 ---------------------------------------------
-		3. Index
----------------------------------------------
-*/
-
-
-/*
----------------------------------------------
-				3A. Index - Hero Section
+		3. Index - Hero Section
 ---------------------------------------------
 */
 
@@ -278,13 +275,9 @@ thead {
 
 /*
 ---------------------------------------------
-				3B. Index - Features Section
+		3A. Index - Features Section
 ---------------------------------------------
 */
-
-.features-wrapper {
-	padding: 3rem 1rem;
-}
 
 .feature-header {
 	margin-top: 0;
@@ -313,13 +306,9 @@ thead {
 
 /*
 ---------------------------------------------
-				3C. Index - Info Section
+		3B. Index - Info Section
 ---------------------------------------------
 */
-
-.index-info-wrapper {
-	padding: 5rem 1rem;
-}
 
 .index-info-header {
 	margin: 2rem 0;
@@ -394,93 +383,110 @@ thead {
 }
 
 .blog-index-wrapper {
+	margin: 3rem auto 1rem auto;
 	max-width: 1720px;
-	margin: 3rem auto;
-}
-
-.blog-index-post {
-	max-width: 31.6%;
 }
 
 .blog-index-post-wrapper {
-	height: 310px;
-	width: 100%;
-	position: relative;
-	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-	margin-bottom: 2rem;
+	max-width: 31.6%;
+	padding: 0.5rem;
 }
 
 .blog-index-post-image {
 	width: 100%;
 	height: 310px;
-	position: absolute;
 }
 
-.blog-index-post-overlay {
-	background-color: rgba(10, 11, 29, 0.8);
-	position: relative;
-	width: 100%;
-	z-index: 1;
-	height: 310px;
+.blog-index-post-image-overlay {
+	position: absolute;
+	z-index: 3;
 	display: flex;
+	background-color: rgba(10, 11, 29, 0.8);
+	width: 553px;
+	height: 310px;
+	top: 8px;
+	transition: .5s ease;
+	cursor: pointer;
+	opacity: 0;
+}
+
+.blog-index-post-image-overlay:hover {
+	opacity: 1;
+}
+
+.blog-index-post-image-text {
+	color: var(--linkActive);
+	text-align: center;
+	margin: auto;
+	font-size: 2rem;
+}
+
+.blog-index-post-info {
+	display: flex;
+	padding: 1rem 0;
 }
 
 .blog-index-post-date {
-	background-color: #268ed6;
+	background-color: var(--linkActive);
 	color: white;
 	width: 60px;
 	height: 50px;
-	position: relative;
-	left: 50px;
 	padding: 10px 20px 20px 20px;
 	text-align: center;
 	font-weight: 600;
 }
 
-.blog-index-post-date-month {
-	margin-top: -0.3rem;
-}
-
 .blog-index-post-date-day {
 	font-size: 2rem;
-	margin-top: -1rem;
-}
-
-.blog-index-post-info {
-	position: absolute;
-	bottom: 140px;
-	left: 50px;
-	width: 450px;
-}
-
-.blog-index-post-link {
-	color: var(--linkBlogOverlay)
+	margin-top: -0.5rem;
 }
 
 .blog-index-post-title {
-	color: rgb(255, 255, 255);
-	margin-top: 0;
-	font-size: 1.70rem;
+	margin: 0 1rem;
+	font-size: 1.5rem;
 }
 
-.blog-index-post-summary {
-	color: rgb(255, 255, 255);
-	position: absolute;
-	bottom: 35px;
-	left: 50px;
-	width: 483px;
+.blog-index-post-category {
+	display: flex;
+	margin: 0 1rem;
 }
-
-.blog-index-post-readmore {
-	position: absolute;
-	bottom: 15px;
-	left: 50px;
-}
-
 
 /*
 ---------------------------------------------
-				5A. Blog - Post
+		5A. Blog - Pagination
+---------------------------------------------
+*/
+
+.blog-index-pagination-wrapper {
+	display: flex;
+	margin-bottom: 2rem;
+}
+
+.blog-index-pagination-content {
+	margin: auto;
+}
+
+.page-item.active .page-link {
+	color: var(--fontColorAlt);
+	background-color: var(--linkActive);
+	border-color: var(--linkActive);
+}
+
+.page-link {
+	color: var(--linkNormal);
+	background-color: var(--backgroundColor);
+	border: 1px solid var(--borderColor);
+}
+
+.page-link:hover {
+	color: var(--fontColorAlt) !important;
+	background-color: var(--linkActive);
+	border-color: var(--linkActive);
+}
+
+/*
+---------------------------------------------
+		5B. Blog - Post
 ---------------------------------------------
 */
 
@@ -546,6 +552,7 @@ thead {
 
 .blog-post-divider {
 	color: var(--fontColor);
+	padding-right: 0.4rem;
 }
 
 .blog-post-side-sticky {
@@ -563,7 +570,7 @@ thead {
 	font-weight: 600;
 }
 
-.blog-post-side-header{
+.blog-post-side-header {
 	margin: 0;
 	padding-left: 1rem;
 	border-left: 5px solid var(--linkActive);
@@ -571,7 +578,8 @@ thead {
 
 
 .blog-post-related-wrapper {
-	padding: 2rem 0 0 0 ;
+	padding: 1rem 0 0 0;
+	display: flex;
 }
 
 .blog-post-related-image {
@@ -585,9 +593,13 @@ thead {
 	font-size: 0.95rem;
 }
 
+.blog-post-related-date {
+	margin-top: .5rem;
+}
+
 /*
 ---------------------------------------------
-				5B. Blog - Share
+		5C. Blog - Share
 ---------------------------------------------
 */
 
@@ -711,6 +723,38 @@ a.share-button-link {
 
 /*
 ---------------------------------------------
+		8. Tables
+---------------------------------------------
+*/
+
+.table {
+	color: var(--fontColor);
+	font-size: 0.9375rem;
+}
+
+.table-bordered {
+	border: 1px solid var(--borderColor);
+}
+
+.table-bordered td, .table-bordered th {
+	border: 1px solid var(--borderColor);
+}
+
+.table-bordered tbody tr:nth-of-type(even) {
+	background-color: var(--rowBackgroundEven);
+}
+
+.table-bordered tbody tr:nth-of-type(odd) {
+	background-color: var(--rowBackgroundOdd);
+}
+
+.table thead th {
+	vertical-align: bottom;
+	border-bottom: 2px solid var(--borderColor);
+}
+
+/*
+---------------------------------------------
 UNUSED
 ---------------------------------------------
 */
@@ -803,37 +847,6 @@ a.nav-title {
 	font-weight: 700;
 }
 
-/*
----------------------------------------------
-		8. Tables
----------------------------------------------
-*/
-
-.table {
-	color: var(--fontColor);
-	font-size: 0.9375rem;
-}
-
-.table-bordered {
-	border: 1px solid var(--borderColor);
-}
-
-.table-bordered td, .table-bordered th {
-	border: 1px solid var(--borderColor);
-}
-
-.table-bordered tbody tr:nth-of-type(even) {
-	background-color: var(--rowBackgroundEven);
-}
-
-.table-bordered tbody tr:nth-of-type(odd) {
-	background-color: var(--rowBackgroundOdd);
-}
-
-.table thead th {
-	vertical-align: bottom;
-	border-bottom: 2px solid var(--borderColor);
-}
 
 /*
 ---------------------------------------------

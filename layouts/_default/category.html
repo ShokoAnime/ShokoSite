@@ -1,7 +1,72 @@
-<ul>
-	{{ range .Data.Pages }}
-	<li>
-		<a href="{{.RelPermalink}}">{{ .Title }}</a>
-	</li>
-	{{ end }}
-</ul>
+<!doctype html>
+<html lang="en">
+
+{{ partial "head.html" . }}
+
+<body>
+
+{{ partial "header.html" . }}
+
+<div class="page-image-wrapper random-banner border-bottom">
+	<div class="page-image-overlay">
+
+		{{ partial "breadcrumb.html" . }}
+
+	</div>
+</div>
+
+<div class="blog-index-wrapper">
+	<div class="row">
+
+		{{ range .Data.Pages }}
+
+		{{ .Scratch.Delete "class" }}
+		{{ .Scratch.Delete "divider" }}
+
+		<div class="col-xl-4 blog-index-post-wrapper">
+			<a href="{{ .Permalink }}">
+				<img class="blog-index-post-image" src="{{ .Site.BaseURL   }}{{ .Params.image }}" alt=" {{ .Params.title }}">
+				<div class="blog-index-post-image-overlay">
+					<p class="blog-index-post-image-text">
+						Read More →
+					</p>
+				</div>
+			</a>
+			<div class="blog-index-post-info">
+				<div class="blog-index-post-date">
+					<div class="blog-index-post-date-month">{{ .Date.Format "Jan" }}</div>
+					<div class="blog-index-post-date-day">{{ .Date.Format "2" }}</div>
+				</div>
+				<div class="blog-index-post-header">
+					<h3 class="blog-index-post-title">{{ .Params.title }}</h3>
+					<div class="blog-index-post-category">
+						{{ .Scratch.Set "type" "category" }}
+						{{ .Scratch.Set "class" "blog-index-post-link" }}
+						{{ .Scratch.Set "divider" "blog-post-divider" }}
+						{{ partial "taxonomy.html" . }}
+					</div>
+				</div>
+			</div>
+
+			<p class="blog-index-post-summary">{{ .Summary | truncate 215 }}</p>
+			<a class="blog-index-post-link" href="{{ .Permalink }}">Read More →</a>
+
+		</div>
+
+		{{ end }}
+
+	</div>
+</div>
+
+{{ if .Paginator.HasPrev }}
+<a href="{{ .Paginator.Prev.URL }}"> Prev </a>
+{{ end }}
+{{ if .Paginator.HasNext }}
+<a href="{{ .Paginator.Next.URL }}"> Next </a>
+{{ end }}
+
+{{ partial "footer.html" . }}
+{{ partial "scripts.html" . }}
+
+</body>
+</html>

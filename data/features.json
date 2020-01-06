@@ -18,22 +18,22 @@
     {
       "faLink": "fas fa-tv",
       "feature": "Media Player Support",
-      "text": "Shoko integrates seemlessly with some of the most popular media player programs such as Kodi, Plex & MediaPortal."
+      "text": "Shoko integrates seamlessly with some of the most popular media player programs such as Kodi, Plex & MediaPortal."
     },
     {
       "faLink": "fas fa-globe",
       "feature": "Community Sites",
-      "text": "Shoko supports multiple community sites popular within the anime community to download metadata and sync user collection and watch data."
+      "text": "Shoko supports multiple community sites popular within the anime community to download metadata, sync your user collection and watch data."
     },
     {
       "faLink": "fas fa-copy",
       "feature": "File Management",
-      "text": "Shoko provides multiple utilities to handle any and all file related issues you might encounter. No need to manually delete duplicates or multiple files in your collection."
+      "text": "Shoko provides multiple utilities to handle all file related issues you might encounter. Let Shoko take care of duplicates and multiple files in your collection."
     },
     {
       "faLink": "fas fa-stream",
       "feature": "Streaming Support",
-      "text": "Using Shoko Desktop, users can stream their collection to any PC in the world. HTPC plugins that also support streaming can also take advantage of this feature."
+      "text": "With Shoko Desktop, stream your collection to any PC in the world. Media Players that also support streaming can take advantage of this as well."
     },
     {
       "faLink": "fas fa-eye",

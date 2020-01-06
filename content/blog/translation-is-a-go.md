@@ -1,5 +1,5 @@
 +++
-title = "Translation Is a Go"
+title = "Translation is a Go"
 image = "assets/images/blog/Google-Sheets-Banner.jpg"
 date = 2016-05-31T09:14:28+00:00
 type = "post"
