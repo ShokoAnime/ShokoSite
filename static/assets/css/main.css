@@ -534,16 +534,23 @@ thead {
 	max-width: 70%;
 }
 
+.blog-nav-wrapper {
+	margin-left: auto;
+	position: sticky;
+	top: 2rem;
+	align-self: flex-start;
+}
+
 .blog-post-wrapper {
 	display: flex;
 	flex-direction: row;
 }
 
 .blog-post-image {
-	width: 570px;
-	height: 290px;
 	border-radius: 10px;
 	border: 1px solid var(--borderColor);
+	width: 489px;
+	height: 290px;
 }
 
 .blog-post-info-wrapper {
@@ -569,8 +576,102 @@ thead {
 	margin: 2rem 0;
 }
 
-blog-nav-header {
-	margin: 0
+/*
+---------------------------------------------
+		11. Blog - Side Nav
+---------------------------------------------
+*/
+
+.blog-nav-header {
+	margin: 0;
+}
+
+.blog-nav-header:before{
+	background-color: var(--linkActive);
+	display: inline-flex;
+	bottom: 0;
+	content: '';
+	top: 0;
+	width: 8px;
+	height: 28px;
+	margin-right: 1.5rem;
+	padding-bottom: 10px;
+}
+
+.blog-tax-wrapper {
+	margin: 2rem 0;
+}
+
+.blog-tax-single {
+	display: flex;
+	flex-direction: row;
+}
+
+.blog-tax-link {
+	margin-right: auto;
+	text-transform: capitalize;
+}
+
+.blog-tax-count {
+	font-weight: 600;
+	color: var(--linkActive);
+}
+
+/*
+---------------------------------------------
+		12. Blog - Share
+---------------------------------------------
+*/
+
+.share-button-wrapper {
+	display: flex;
+	text-align: center;
+	text-decoration: none;
+	margin: 2rem 0;
+}
+
+.share-button-link {
+	color: #ffffff;
+	border: none;
+	border-radius: 4px;
+	outline: none;
+	text-align: center;
+	height: 50px;
+	display: flex;
+	width: 100px;
+	margin: 0 0.15rem;
+}
+
+a.share-button-link {
+	text-decoration: none;
+}
+
+.share-icon {
+	margin: auto;
+}
+
+.twitter {
+	background: #55ACEE;
+}
+
+.facebook {
+	background: #3B5998;
+}
+
+.reddit {
+	background: #ff5700;
+}
+
+.linkedin {
+	background: #4875B4;
+}
+
+.pinterest {
+	background: #BD081C;
+}
+
+.email {
+	background: #444444;
 }
 
 /*

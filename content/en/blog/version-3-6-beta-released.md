@@ -4,7 +4,7 @@ image = "assets/images/blog/Version-36-Beta-Released-Banner.jpg"
 date = 2016-07-16T07:39:10+00:00
 type = "post"
 anime = "Tokyo Ravens"
-category = ["General", "Updates"]
+category = ["General", "Update"]
 tag = ["Beta","My Anime 3","Nakamori","Shoko Desktop","Shoko on Plex","Shoko Server"]
 +++
 

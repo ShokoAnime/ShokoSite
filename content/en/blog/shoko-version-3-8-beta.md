@@ -4,7 +4,7 @@ image = "assets/images/blog/Version-38-Beta-Banner.jpg"
 date = 2017-07-25T21:32:16+00:00
 type = "post"
 anime = "Bleach"
-category = ["Updates"]
+category = ["Update"]
 tag = ["Beta", "Shoko Desktop", "Shoko Server"]
 +++
 

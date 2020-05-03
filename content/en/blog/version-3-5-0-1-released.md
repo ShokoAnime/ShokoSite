@@ -4,7 +4,7 @@ image = "assets/images/blog/Version-3501-Banner.jpg"
 date = 2016-05-19T12:33:50+00:00
 type = "post"
 anime = "Cyborg 009"
-category = ["Updates", "Websites"]
+category = ["Update", "Website"]
 tag = ["Nakamori", "Shoko Desktop", "Shoko on Plex", "Shoko Server"]
 +++
 

@@ -4,7 +4,7 @@ image = "assets/images/blog/Version-394-Banner.jpg"
 date = 2018-12-30T19:42:46+00:00
 type = "post"
 anime = "Beautiful Bones: Sakurako's Investigation"
-category = ["Updates"]
+category = ["Update"]
 tag = ["Shoko Desktop", "Shoko Server"]
 +++
 

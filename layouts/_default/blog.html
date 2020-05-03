@@ -29,19 +29,28 @@
 
 			{{ range $paginator.Pages }}
 
-			{{ .Scratch.Delete "class" }}
-			{{ .Scratch.Delete "divider" }}
-
 			<div class="blog-post-wrapper">
-				<img class="blog-post-image" src="{{ .Site.BaseURL   }}{{ .Params.image }}" alt=" {{ .Params.title }}">
+				<img class="blog-post-image" src="{{ .Site.BaseURL }}{{ .Params.image }}" alt=" {{ .Params.title }}">
 				<div class="blog-post-info-wrapper">
 					<h3 class="blog-post-title">{{ .Params.title }}</h3>
 					<h6 class="blog-post-date">{{ .Date.Format "January 2, 2006" }}</h6>
 					<div class="blog-post-category">
-						{{ .Scratch.Set "type" "category" }}
-						{{ .Scratch.Set "class" "blog-post-link" }}
-						{{ .Scratch.Set "divider" "blog-post-divider" }}
-						{{ partial "taxonomy.html" . }}
+
+						{{ $taxoCount := 0 }}
+						{{ range $name := .Params.category }}
+						{{ $name = $name | lower }}
+
+						{{ if gt $taxoCount "0"}}
+						<span>|</span>
+						<a href="category/{{ $name | urlize }}"> {{ i18n $name }}</a>
+						{{ else }}
+						<a href="category/{{ $name | urlize }}">{{ i18n $name }}</a>
+						{{ end }}
+
+						{{ $taxoCount = add $taxoCount 1 }}
+
+						{{ end }}
+
 					</div>
 					<hr>
 					<p class="blog-post-summary">{{ .Summary | truncate 280 }}</p>
@@ -55,7 +64,36 @@
 
 		<div class="col-xl-3 blog-nav-wrapper">
 
-			<h5 class="blog-nav-header">Spread The Word</h5>
+			<!-- Share -->
+			<span class="blog-nav-header-indicator"></span>
+			<h5 class="blog-nav-header">{{ index $content_parts 1 | htmlUnescape | plainify }}</h5>
+			<hr class="blog-nav-hr">
+			{{ partial "share.html" . }}
+
+			<!-- Categories -->
+			<span class="blog-nav-header-indicator"></span>
+			<h5 class="blog-nav-header">{{ index $content_parts 2 | htmlUnescape | plainify }}</h5>
+			<hr class="blog-nav-hr">
+			<div class="blog-tax-wrapper">
+				{{ range $name, $items := .Site.Taxonomies.category }}
+				<div class="blog-tax-single">
+					<a class="blog-tax-link" href="category/{{ $name | urlize }}">{{ i18n $name }}</a>
+					<span class="blog-tax-count">{{ len $items }}</span>
+				</div>
+				{{ end }}
+			</div>
+
+			<!-- Tags -->
+			<h5 class="blog-nav-header">{{ index $content_parts 3 | htmlUnescape | plainify }}</h5>
+			<hr class="blog-nav-hr">
+			<div class="blog-tax-wrapper">
+				{{ range $name, $items := .Site.Taxonomies.tag }}
+				<div class="blog-tax-single">
+					<a class="blog-tax-link" href="tag/{{ $name | urlize }}">{{ i18n $name }}</a>
+					<span class="blog-tax-count">{{ len $items }}</span>
+				</div>
+				{{ end }}
+			</div>
 
 		</div>
 

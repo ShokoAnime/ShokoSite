@@ -4,7 +4,7 @@ image = "assets/images/blog/Shoko-Metadata-Banner.jpg"
 date = 2017-03-12T04:15:48+00:00
 type = "post"
 anime = "Angel Beats"
-category = ["Updates"]
+category = ["Update"]
 tag = ["ShokoMetadata"]
 +++
 

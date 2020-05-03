@@ -4,7 +4,7 @@ image = "assets/images/blog/Version-395-Banner.jpg"
 date = 2019-07-22T19:42:46+00:00
 type = "post"
 anime = "Speed Grapher"
-category = ["Updates"]
+category = ["Update"]
 tag = ["Shoko Desktop", "Shoko Server"]
 +++
 

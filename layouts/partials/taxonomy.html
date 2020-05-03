@@ -7,6 +7,6 @@
 {{- end -}}
 {{- $name := . -}}
 {{- with $.Site.GetPage (printf "/%s/%s" $taxo ($name | urlize)) -}}
-<a class="{{ $.Scratch.Get "class" }}" href="{{ .Permalink }}">{{- $name -}}</a>
+<a class="{{ $.Scratch.Get "class" }}" href="{{ .Permalink }}">{{ i18n $name }}</a>
 {{- end -}}
 {{- end -}}

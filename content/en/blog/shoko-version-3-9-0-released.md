@@ -4,7 +4,7 @@ image = "assets/images/blog/Version-390-Banner.jpg"
 date = 2018-06-21T20:30:32+00:00
 type = "post"
 anime = "Shakugan No Shana"
-category = ["Updates"]
+category = ["Update"]
 tag = ["Shoko Desktop", "Shoko Server"]
 +++
 

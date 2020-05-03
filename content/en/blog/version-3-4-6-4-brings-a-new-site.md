@@ -4,7 +4,7 @@ image = "assets/images/blog/Version-3464-Banner.jpg"
 date = 2016-02-03T10:44:55-08:00
 type = "post"
 anime = "Professor Layton"
-category = ["General", "Updates", "Website"]
+category = ["General", "Update", "Website"]
 tag = ["Nakamori", "Shoko Desktop", "Shoko on Plex", "Shoko Server"]
 +++
 

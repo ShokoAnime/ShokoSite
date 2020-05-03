@@ -4,7 +4,7 @@ image = "assets/images/blog/Version-3704-Banner.jpg"
 date = 2017-01-28T03:45:25+00:00
 type = "post"
 anime = "Macross Frontier"
-category = ["Updates"]
+category = ["Update"]
 tag = ["Shoko Desktop", "Shoko on Plex", "Shoko Server"]
 +++
 

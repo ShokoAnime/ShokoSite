@@ -4,7 +4,7 @@ image = "assets/images/blog/Version-392-Banner.jpg"
 date = 2018-08-02T10:57:10+00:00
 type = "post"
 anime = "Food Wars"
-category = ["Updates"]
+category = ["Update"]
 tag = ["Shoko Desktop", "Shoko Server"]
 +++
 

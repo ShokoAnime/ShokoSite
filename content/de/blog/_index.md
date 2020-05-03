@@ -3,16 +3,16 @@ title = "Shoko Blog"
 lastMod = 2019-04-12
 +++
 
-Read More →
+Lesen Sie mehr →
 
 ||ContentBlock||
 
-Spread The Word
+Verbreiten Sie das Wort
 
 ||ContentBlock||
 
-Categories
+Kategorien
 
 ||ContentBlock||
 
-Tags
+Stichworte

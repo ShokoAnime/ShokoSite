@@ -4,7 +4,7 @@ image = "assets/images/blog/Anime-Buddy-Discontinued-Banner.jpg"
 date = 2017-09-16T03:10:11+00:00
 type = "post"
 anime = "Outlaw Star"
-category = ["Updates"]
+category = ["Update"]
 tag = ["Anime Buddy"]
 +++
 

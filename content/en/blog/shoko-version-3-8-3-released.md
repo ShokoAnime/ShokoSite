@@ -4,7 +4,7 @@ image = "assets/images/blog/Version-383-Banner.jpg"
 date = 2018-02-04T01:06:21+00:00
 type = "post"
 anime = "Mobile Suit Gundam"
-category = ["Updates"]
+category = ["Update"]
 tag = ["Shoko Desktop", "Shoko on Plex", "Shoko Server"]
 +++
 

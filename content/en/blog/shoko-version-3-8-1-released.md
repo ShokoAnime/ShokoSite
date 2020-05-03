@@ -4,7 +4,7 @@ image = "assets/images/blog/Version-381-Released-Banner.jpg"
 date = 2017-10-01T19:54:21+00:00
 type = "post"
 anime = "Trigun"
-category = ["Updates"]
+category = ["Update"]
 tag = ["Shoko Desktop", "Shoko on Plex", "Shoko Server"]
 +++
 

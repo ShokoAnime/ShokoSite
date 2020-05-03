@@ -4,7 +4,7 @@ image = "assets/images/blog/My-Anime-3-Version-373-Banner.jpg"
 date = 2019-11-17T21:01:25+00:00
 type = "post"
 anime = "Fairy Tail"
-category = ["Updates"]
+category = ["Update"]
 tag = ["My Anime 3"]
 +++
 

@@ -4,7 +4,7 @@ image = "assets/images/blog/My-Anime-3-Version-372-Banner.jpg"
 date = 2018-08-17T21:01:25+00:00
 type = "post"
 anime = "Attack on Titan"
-category = ["Updates"]
+category = ["Update"]
 tag = ["My Anime 3"]
 +++
 

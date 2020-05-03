@@ -4,7 +4,7 @@ image = "assets/images/blog/Version-3443-Banner.jpg"
 date = 2015-09-10T03:45:21+00:00
 type = "post"
 anime = "Love Hina"
-category = ["Updates"]
+category = ["Update"]
 tag = ["Shoko Server", "Shoko Desktop"]
 +++
 

@@ -4,7 +4,7 @@ image = "assets/images/blog/Version-3502-Banner.jpg"
 date = 2016-05-20T08:37:14+00:00
 type = "post"
 anime = " Xam`d: Lost Memories"
-category = ["General", "Updates"]
+category = ["General", "Update"]
 tag = ["Shoko Desktop", "Shoko Server"]
 +++
 
