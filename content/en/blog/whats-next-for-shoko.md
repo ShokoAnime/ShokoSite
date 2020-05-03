@@ -5,6 +5,7 @@ date = 2019-07-26T19:42:46+00:00
 type = "post"
 anime = "Ghost in the Shell: Arise"
 category = ["General", "Website"]
+tag = ["Shoko", "Shoko Docs"]
 +++
 
 As mentioned earlier this week, we wanted to update the community on what we've got planned for Shoko and to give some clarification and possible updates on a few future projects & features that have been mentioned before on Discord. Its also important to note that not everything we discuss or bring up on Discord in regards to new features and improvements are actually planned for implementation. Sometimes its nothing more than just brainstorming and gauging reactions to said idea.
@@ -57,7 +58,9 @@ With that being said, we currently don't have plans to support My Anime 3 with t
 
 Shoko Docs was recently rebuilt which you can about in the blog post, we left the design of the Dark Theme to the community and one of our community members "Konack" created it, check it out in the image below or viewing Shoko Docs.
 
-[![Shoko Docs - Dark Theme](%7B%7B%20'assets/images/blog/2019-07-26-whats-next-for-shoko/ShokoDocs-DarkTheme.jpg'%20%7C%20absolute_url%20%7D%7D)](%7B%7B%20'assets/images/blog/2019-07-26-whats-next-for-shoko/ShokoDocs-DarkTheme.jpg'%20%7C%20absolute_url%20%7D%7D)
+
+{{% lightbox-image image-url="/assets/images/blog/Whats-Next-For-Shoko-Docs-Dark-Theme.jpg" image-alt="Shoko Docs - Dark Theme" %}}
+
 
 ### Shoko Website
 

@@ -5,7 +5,7 @@ date = 2017-12-29T01:44:32+00:00
 type = "post"
 anime = "Ranma 1/2"
 category = ["General", "Website"]
-tag = ["AniDB"]
+tag = ["AniDB", "Shoko"]
 +++
 
 The amazing folks over at AniDB have recently announced that their hosting, which had provided for free for many years by a generous member will be coming to an end soon. While the AniDB team have found a replacement host, there is now an issue of how exactly they will pay for this host. AniDB has never once accepted donations or placed Ads on their website and have always provided their content to the masses for free which has been great for everyone. We've greatly benefited from it as Shoko does not work without AniDB which in turn has allowed every single one of our users to benefit from it. It's the only site available that not only provides all the raw information we need, but allows us to access it for free. If AniDB goes offline, then there's high probability that Shoko will follow or be drastically reduced in what it can do. This is not some threat but a simple truth of what could happen if the main feature of Shoko, the ability to automatically build your collection is no longer possible.
@@ -22,4 +22,3 @@ If you've benefited from Shoko then we ask you to consider helping the service t
 
 AniDB's Patreon is now live, for a breakdown of costs and current donation amount, they added a [AniDB Accounting](https://anidb.net/perl-bin/animedb.pl?show=accounting) page.
 
-[![](../../assets/images/blog/2017-12-29-anidb-needs-our-help//patreon_button.jpg)](https://www.patreon.com/bePatron?u=9088449)

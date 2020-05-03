@@ -5,7 +5,7 @@ date = 2019-07-18T19:42:46+00:00
 type = "post"
 anime = "Kyoto Animation"
 category = ["General", "Website"]
-tag = ["Kyoto Animation"]
+tag = ["Kyoto Animation", "Shoko"]
 +++
 
 As many of you have probably already heard, Kyoto Animation, creators of such anime as Miss Kobayashi's Dragon Maid, The Melancholy of Haruhi Suzumiya, and A Silent Voice suffered a horrific arson attack yesterday that killed 33 people, with many more injured. This is the largest terror attack in Japan since 2001, and obviously extends far beyond the anime community.

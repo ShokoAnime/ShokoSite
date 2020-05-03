@@ -1,6 +1,6 @@
 +++
 title = "Shoko Version 3.8.3 Released"
-image = "assets/images/blog/Version-383-Banner.md"
+image = "assets/images/blog/Version-383-Banner.jpg"
 date = 2018-02-04T01:06:21+00:00
 type = "post"
 anime = "Mobile Suit Gundam"

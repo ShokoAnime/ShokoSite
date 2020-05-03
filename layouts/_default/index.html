@@ -3,31 +3,32 @@
 
 {{ partial "head.html" . }}
 
-<body>
+<body class="lang-{{ .Site.Language.Lang }}">
 
 {{ partial "header.html" . }}
 
 <!-- Hero Section -->
 
-<div class="random-banner border-bottom">
+{{ $content_parts := split .Content "||ContentBlock||" }}
+
+<div class="hero-random-banner border-bottom">
 	<div class="page-image-overlay">
 		<div class="hero-info-wrapper">
 
-			<h1 class="hero-info-main">Automate Your Entire Collection</h1>
-			<p class="hero-info-subtitle">Shoko is an anime cataloging program designed to automate the entire process of
-				cataloging your anime collection regardless of of the size and number of files in your collection. With Shoko,
-				you'll spend more time watching and building your collection instead of organizing it.</p>
+			<h1 class="hero-info-main">{{ index $content_parts 0 | htmlUnescape | plainify }}</h1>
+			<p class="hero-info-subtitle">{{ index $content_parts 1 | htmlUnescape | plainify }}</p>
 
 			<div class="hero-buttons">
-				<button type="button" class="btn btn-download btn-lg hero-button-spacer">Download</button>
-				<button type="button" class="btn btn-learn btn-lg">Learn More</button>
+				<button type="button" class="btn btn-download btn-lg hero-button-spacer">{{ index $content_parts 2 | htmlUnescape | plainify }}</button>
+				<button type="button" class="btn btn-learn btn-lg">{{ index $content_parts 3 | htmlUnescape | plainify }}</button>
 			</div>
 
 		</div>
 	</div>
 </div>
 
-<!-- Features Section -->
+
+<!-- Features Section-->
 
 <div class="section-wrapper background-color-alt border-bottom">
 	<div class="container page-wrapper">
@@ -35,14 +36,21 @@
 		<div class="row">
 			<div class="col-xl-12">
 
-				<h2 class="feature-header">Jam-Packed With Features</h2>
+				<h2 class="feature-header">{{ index $content_parts 4 | htmlUnescape | plainify }}</h2>
 
 			</div>
 		</div>
 
 		<div class="row">
 
-			{{ range .Site.Data.features.featuresList }}
+			{{ $data := index .Site.Data .Site.Language.Lang }}
+			{{ if eq (index .Site.Data .Site.Language.Lang) nil }}
+
+				{{ $data = .Site.Data.en }}
+
+			{{ end }}
+
+			{{ range $data.features.featuresList }}
 
 			<div class="col-xl-3 feature-item-wrapper">
 				<div class="card-body">
@@ -70,39 +78,43 @@
 	<div class="container page-wrapper">
 		<div class="row">
 
-			{{ range first 4 (where .Site.Pages "Section" "blog") }}
+			{{ $pages := .Site.Pages }}
+			{{ range .Site.Home.Translations }}
+			{{ $pages = $pages | lang.Merge .Site.Pages }}
+			{{ end }}
+
+			{{ range first 4 (where $pages "Section" "blog") }}
 			{{ if eq .Params.type "post" }}
 
 			{{ .Scratch.Delete "class" }}
 			{{ .Scratch.Delete "divider" }}
 
-			<div class="col-xl-4 blog-index-post-wrapper">
+
+			<div class="col-xl-4 front-blog-post-wrapper">
 				<a href="{{ .Permalink }}">
-					<img class="blog-index-post-image" src="{{ .Site.BaseURL   }}{{ .Params.image }}" alt=" {{ .Params.title }}">
-					<div class="blog-index-post-image-overlay">
-						<p class="blog-index-post-image-text">
-							Read More →
-						</p>
+					<img class="front-blog-post-image" src="{{ .Site.BaseURL   }}{{ .Params.image }}" alt=" {{ .Params.title }}">
+					<div class="front-blog-post-image-overlay">
+						<p class="front-blog-post-image-text">{{ index $content_parts 5 | htmlUnescape | plainify }}</p>
 					</div>
 				</a>
-				<div class="blog-index-post-info">
-					<div class="blog-index-post-date">
-						<div class="blog-index-post-date-month">{{ .Date.Format "Jan" }}</div>
-						<div class="blog-index-post-date-day">{{ .Date.Format "2" }}</div>
+				<div class="front-blog-post-info">
+					<div class="front-blog-post-date">
+						<div class="front-blog-post-date-month">{{ .Date.Format "Jan" }}</div>
+						<div class="front-blog-post-date-day">{{ .Date.Format "2" }}</div>
 					</div>
-					<div class="blog-index-post-header">
-						<h3 class="blog-index-post-title">{{ .Params.title }}</h3>
-						<div class="blog-index-post-category">
+					<div class="front-blog-post-header">
+						<h3 class="front-blog-post-title">{{ .Params.title }}</h3>
+						<div class="front-blog-post-category">
 							{{ .Scratch.Set "type" "category" }}
-							{{ .Scratch.Set "class" "blog-index-post-link" }}
+							{{ .Scratch.Set "class" "front-blog-post-link" }}
 							{{ .Scratch.Set "divider" "blog-post-divider" }}
 							{{ partial "taxonomy.html" . }}
 						</div>
 					</div>
 				</div>
 
-				<p class="blog-index-post-summary">{{ .Summary | truncate 215 }}</p>
-				<a class="blog-index-post-link" href="{{ .Permalink }}">Read More →</a>
+				<p class="front-blog-post-summary">{{ .Summary | truncate 215 }}</p>
+				<a class="front-blog-post-link" href="{{ .Permalink }}">{{ index $content_parts 5 | htmlUnescape | plainify }}</a>
 
 			</div>
 
@@ -113,92 +125,58 @@
 	</div>
 </div>
 
-<!-- Info Section -->
+<!-- Info Section 1 -->
 
 <div class="section-wrapper background-color-alt border-bottom">
 	<div class="container page-wrapper">
 		<div class="row">
 
-			<div class="col-xl-6 index-info-item-wrapper">
+			<div class="col-xl-6 info-left-item-wrapper">
 
-				<h1 class="index-info-header">Incredibly Easy To Use</h1>
-
-				<p>We're not kidding when we say we designed Shoko to be as easy to use as possible. What's the point of
-					removing the tedious processes other cataloging programs make you do if we just add our own? Of course we
-					also provide a ton of options for advanced users allowing each user to have their desired setup.</p>
-
-				<h1 class="index-info-header">How Does Shoko Really Work?</h1>
-
-				<p>Shoko hashes each file in your collection and sends the hash to AniDB for comparison. When a match is found,
-					the series is created in your database and metadata from supported data gathering sites is downloaded and
-					compiled for use within Shoko providing detailed information about each file and its associated series. In
-					the rare chance there ever is a problem with the automated process, Shoko includes a wide array of advanced
-					tools to identify and properly catalog any file that was unable to be automatically processed.</p>
+				<h1 class="info-header">{{ index $content_parts 6 | htmlUnescape | plainify }}</h1>
+				<p>{{ index $content_parts 7 | htmlUnescape | plainify }}</p>
+				<h1 class="info-header">{{ index $content_parts 8 | htmlUnescape | plainify }}</h1>
+				<p>{{ index $content_parts 9 | htmlUnescape | plainify }}</p>
 
 			</div>
-			<div class="col-xl-6 index-info-item-wrapper">
-
-				<a href="assets/images/programs-plugins/shoko-desktop/Shoko-Desktop-Viewing-Series.jpg"
-					data-toggle="lightbox" data-lightbox="Shoko Desktop - Viewing Series"
-					data-title="Shoko Desktop - Viewing Series"><img class="img-fluid index-info-image"
-					src="assets/images/programs-plugins/shoko-desktop/Shoko-Desktop-Viewing-Series.jpg"
-					alt="Shoko Desktop - Viewing Series"></a>
-
-
+			<div class="col-xl-6 info-right-image-wrapper">
+				<a href="{{ "assets/images/programs-plugins/shoko-desktop/Shoko-Desktop-Viewing-Series.jpg" | absURL }}"
+				data-toggle="lightbox" data-lightbox="Shoko Desktop - Viewing Series" data-title="Shoko Desktop - Viewing Series">
+				<img class="img-fluid info-right-image"
+					src="{{ "assets/images/programs-plugins/shoko-desktop/Shoko-Desktop-Viewing-Series.jpg" | absURL }}"
+				alt="Shoko Desktop - Viewing Series"></a>
 			</div>
 
 		</div>
 	</div>
 </div>
 
-<!-- Info Section -->
+<!-- Info Section 2 -->
 
 <div class="section-wrapper background-color">
 	<div class="container page-wrapper">
 		<div class="row">
 
-			<div class="col-xl-6 index-info-item-wrapper">
-				<div id="index-slider" class="carousel slide carousel-fade" data-ride="carousel" data-interval="2500">
-
-					<div class="carousel-inner">
-						<div class="carousel-item active">
-							<img src="assets/images/programs-plugins/my-anime-3/My-Anime-3-StreamedMP-Calendar.jpg"
-								class="d-block w-100 index-slider-image" alt="My Anime 3">
-						</div>
-						<div class="carousel-item">
-							<img src="assets/images/programs-plugins/nakamori/Nakamori-Coverflow.jpg"
-								class="d-block w-100 index-slider-image" alt="Nakamori">
-						</div>
-						<div class="carousel-item">
-							<img src="assets/images/programs-plugins/shoko-metadata/Shoko-Metadata-Series-Listing.jpg"
-								class="d-block w-100 index-slider-image" alt="Shoko Metadata">
-						</div>
-					</div>
-
-				</div>
+			<div class="col-xl-6 info-left-image-wrapper">
+				<a href="{{ "assets/images/programs-plugins/nakamori/Nakamori-Kover-Series-List.jpg" | absURL }}"
+					data-toggle="lightbox" data-lightbox="Shoko Desktop - Viewing Series"
+					data-title="Shoko Desktop - Viewing Series"><img class="img-fluid info-left-image"
+					src="{{ "assets/images/programs-plugins/nakamori/Nakamori-Kover-Series-List.jpg" | absURL }}"
+					alt="Shoko Desktop - Viewing Series"></a>
 			</div>
 
-			<div class="col-xl-6 index-info-item-wrapper">
+			<div class="col-xl-6 info-right-item-wrapper">
 
-				<h1 class="index-info-header">Media Player Support Built-In</h1>
-
-				<p>We want to make your current setup better and more efficient, not change or complicate it which is why Shoko
-					has built-in support for some of the most popular media player programs on the market. All you need to do is
-					download the Shoko plugin for your media player program of choice and you're good to go!</p>
-
-				<p>Shoko Currently supports the following media player programs. Don't see your preferred media player program
-					listed below? We provide access to Shoko's comprehensive API allowing anyone to build their own plugin. Join
-					us on <a href="https://discord.gg/vpeHDsg" rel="noopener" target="_blank">Discord</a> for more information.
-				</p>
-
-				<p>Click on one of the icons below to learn more about how to integrate it with Shoko.</p>
+				<h1 class="info-header">{{ index $content_parts 10 | htmlUnescape | plainify }}</h1>
+				<p>{{ index $content_parts 11 | htmlUnescape | plainify }}</p>
+				<p>{{ index $content_parts 12 | safeHTML }}</p>
+				<p>{{ index $content_parts 13 | htmlUnescape | plainify }}</p>
 
 				<div class="media-player-icons">
 
-					<a href="plex"><img class="media-player-image" src="assets/images/media-players/plex.png" alt="Plex"></a>
-					<a href="plex"><img class="media-player-image" src="assets/images/media-players/kodi.png" alt="Kodi"></a>
-					<a href="plex"><img class="media-player-image" src="assets/images/media-players/mediaportal.png"
-						alt="MediaPortal"></a>
+					<a href="plex"><img class="media-player-image" src="{{ "assets/images/media-players/plex.png" | absURL }}" alt="Plex"></a>
+					<a href="plex"><img class="media-player-image" src="{{ "assets/images/media-players/kodi.png" | absURL }}" alt="Kodi"></a>
+					<a href="plex"><img class="media-player-image" src="{{ "assets/images/media-players/mediaportal.png" | absURL }}" alt="MediaPortal"></a>
 
 				</div>
 
@@ -207,11 +185,9 @@
 		</div>
 	</div>
 </div>
-
 
 {{ partial "footer.html" . }}
 {{ partial "scripts.html" . }}
 
 </body>
 </html>
-

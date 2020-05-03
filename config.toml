@@ -1,29 +1,31 @@
 baseURL = "https://shokoanime.com/"
+#baseURL = "https://shokoanime.com/devsite/"
+DefaultContentLanguage = "en"
 paginate =  6
-languageCode = "en-us"
-title = "Shoko Anime"
+title = "Shoko"
+
 
 [outputs]
-  home = ["HTML", "RSS", "JSON"]
+	home = ["HTML", "RSS", "JSON"]
 
 [taxonomies]
-  category = "category"
-  tag = "tag"
+	category = "category"
+	tag = "tag"
 
-[markup]
-  [markup.goldmark]
-    [markup.goldmark.renderer]
-      unsafe = true
+[languages]
+	[languages.en]
+		contentDir = "content/en"
+		title = "Shoko"
+		languageName = "English"
+		weight = 1
+	[languages.de]
+		contentDir = "content/de"
+		title = "Shoko"
+		languageName = "German"
+		weight = 2
+	[languages.fr]
+        contentDir = "content/fr"
+        title = "Shoko"
+        languageName = "French"
+        weight = 3
 
-[related]
-  threshold = 80
-  includeNewer = true
-  toLower = false
-
-[[related.indices]]
-  name = "tag"
-  weight = 100
-[[related.indices]]
-  name  = "date"
-  weight = 10
-  pattern = "2006"

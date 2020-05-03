@@ -1,0 +1,16 @@
+[about]
+other = "About"
+[blog]
+other = "Blog"
+[changelog]
+other = "Changelog"
+[downloads]
+other = "Downloads"
+[programs]
+other = "Programs"
+[documentation]
+other = "Documentation"
+[github]
+other = "Github"
+[support]
+other = "Support"

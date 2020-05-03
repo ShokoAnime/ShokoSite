@@ -1,5 +1,5 @@
 +++
-title = "My Anime 3 Version 3 7 2 Released"
+title = "My Anime 3 Version 3.7.2 Released"
 image = "assets/images/blog/My-Anime-3-Version-372-Banner.jpg"
 date = 2018-08-17T21:01:25+00:00
 type = "post"

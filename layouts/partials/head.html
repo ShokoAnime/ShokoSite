@@ -22,4 +22,9 @@
 	<link rel="stylesheet" href="{{ "assets/css/dark.min.css" | absURL }}" id="dark">
 	<link rel="stylesheet" href="{{ "assets/css/lightbox.min.css" | absURL }}">
 
+	<!-- Language Specific CSS-->
+	{{ if eq .Site.Language.Lang "de"  }}
+	<link rel="stylesheet" href="{{ "assets/css/lang/de.min.css" | absURL }}">
+	{{ end }}
+
 </head>

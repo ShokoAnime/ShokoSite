@@ -3,7 +3,7 @@
 
 {{ partial "head.html" . }}
 
-<body>
+<body class="lang-{{ .Site.Language.Lang }}">
 
 {{ partial "header.html" . }}
 
@@ -15,45 +15,43 @@
 	</div>
 </div>
 
-<div class="blog-index-wrapper">
+{{ $content_parts := split .Content "||ContentBlock||" }}
+
+<div class="blog-wrapper">
 	<div class="row">
+		<div class="col-xl-9 blog-content-wrapper">
 
-		{{ range .Paginator.Pages }}
+			{{ range .Paginator.Pages }}
 
-		{{ .Scratch.Delete "class" }}
-		{{ .Scratch.Delete "divider" }}
+			{{ .Scratch.Delete "class" }}
+			{{ .Scratch.Delete "divider" }}
 
-		<div class="col-xl-4 blog-index-post-wrapper">
-			<a href="{{ .Permalink }}">
-				<img class="blog-index-post-image" src="{{ .Site.BaseURL   }}{{ .Params.image }}" alt=" {{ .Params.title }}">
-				<div class="blog-index-post-image-overlay">
-					<p class="blog-index-post-image-text">
-						Read More →
-					</p>
-				</div>
-			</a>
-			<div class="blog-index-post-info">
-				<div class="blog-index-post-date">
-					<div class="blog-index-post-date-month">{{ .Date.Format "Jan" }}</div>
-					<div class="blog-index-post-date-day">{{ .Date.Format "2" }}</div>
-				</div>
-				<div class="blog-index-post-header">
-					<h3 class="blog-index-post-title">{{ .Params.title }}</h3>
-					<div class="blog-index-post-category">
+			<div class="blog-post-wrapper">
+				<img class="blog-post-image" src="{{ .Site.BaseURL   }}{{ .Params.image }}" alt=" {{ .Params.title }}">
+				<div class="blog-post-info-wrapper">
+					<h3 class="blog-post-title">{{ .Params.title }}</h3>
+					<h6 class="blog-post-date">{{ .Date.Format "January 2, 2006" }}</h6>
+					<div class="blog-post-category">
 						{{ .Scratch.Set "type" "category" }}
-						{{ .Scratch.Set "class" "blog-index-post-link" }}
+						{{ .Scratch.Set "class" "blog-post-link" }}
 						{{ .Scratch.Set "divider" "blog-post-divider" }}
 						{{ partial "taxonomy.html" . }}
 					</div>
+					<hr>
+					<p class="blog-post-summary">{{ .Summary | truncate 280 }}</p>
+					<a class="blog-post-link" href="{{ .Permalink }}">{{ index $content_parts 0 | htmlUnescape | plainify }}</a>
 				</div>
 			</div>
+			<hr class="blog-hr">
 
-			<p class="blog-index-post-summary">{{ .Summary | truncate 201 }}</p>
-			<a class="blog-index-post-link" href="{{ .Permalink }}">Read More →</a>
-
+			{{ end }}
 		</div>
 
-		{{ end }}
+		<div class="col-xl-3 blog-nav-wrapper">
+
+			<h5 class="blog-nav-header">Spread The Word</h5>
+
+		</div>
 
 	</div>
 </div>

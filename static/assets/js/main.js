@@ -41,7 +41,6 @@ $('#themeSwitcher').click(function () {
 
 });
 
-
 // ----------------------------------------------------------------------------------------------------------------
 
 // Random Banner
@@ -49,12 +48,13 @@ $('#themeSwitcher').click(function () {
 let randomNumber = 0;
 let previousBanner = sessionStorage.getItem("bannerID");
 let randomBanner = getRandomBanner();
+let header = "";
+let languages = ["de"];
 
 function getRandomBanner() {
 
 	randomNumber = Math.floor((Math.random() * 3) + 1);
 	return randomNumber;
-
 }
 
 while (parseInt(randomBanner, 10) === parseInt(previousBanner, 10)) {
@@ -62,10 +62,17 @@ while (parseInt(randomBanner, 10) === parseInt(previousBanner, 10)) {
 	if (parseInt(randomBanner, 10) === parseInt(previousBanner, 10)) {
 		randomBanner = getRandomBanner();
 	}
-
 }
 
-let header = ' rgba(0, 0, 0, 0) url("../images/banners/Banner-' + randomBanner + '.jpg") repeat scroll 50% 20% / cover';
+// Check to see if the user is visiting a translated page.
+if ($(document.body).hasClass('lang-en')) {
+	 header = ' rgba(0, 0, 0, 0) url("../images/banners/Banner-' + randomBanner + '.jpg") repeat scroll 50% 20% / cover';
+} else {
+	 header = ' rgba(0, 0, 0, 0) url("../../images/banners/Banner-' + randomBanner + '.jpg") repeat scroll 50% 20% / cover';
+}
+
+// Hero is only used on the index page while the other is used on every other page.
+css('.hero-random-banner', 'background', header);
 css('.random-banner', 'background', header);
 
 sessionStorage.setItem("bannerID", randomBanner);
@@ -95,6 +102,3 @@ $(document).on('click', '[data-toggle="lightbox"]', function (event) {
 	event.preventDefault();
 	$(this).ekkoLightbox();
 });
-
-// ----------------------------------------------------------------------------------------------------------------
-
