@@ -17,11 +17,17 @@
 
 {{ $content_parts := split .Content "||ContentBlock||" }}
 
+{{ $pages := .Site.RegularPages }}
+{{ range .Site.Home.Translations }}
+{{ $pages = $pages | lang.Merge .Site.RegularPages }}
+{{ end }}
+{{ $paginator := .Paginate $pages }}
+
 <div class="blog-wrapper">
 	<div class="row">
 		<div class="col-xl-9 blog-content-wrapper">
 
-			{{ range .Paginator.Pages }}
+			{{ range $paginator.Pages }}
 
 			{{ .Scratch.Delete "class" }}
 			{{ .Scratch.Delete "divider" }}
