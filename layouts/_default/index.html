@@ -86,10 +86,6 @@
 			{{ range first 4 (where $pages "Section" "blog") }}
 			{{ if eq .Params.type "post" }}
 
-			{{ .Scratch.Delete "class" }}
-			{{ .Scratch.Delete "divider" }}
-
-
 			<div class="col-xl-4 front-blog-post-wrapper">
 				<a href="{{ .Permalink }}">
 					<img class="front-blog-post-image" src="{{ .Site.BaseURL   }}{{ .Params.image }}" alt=" {{ .Params.title }}">
@@ -105,10 +101,22 @@
 					<div class="front-blog-post-header">
 						<h3 class="front-blog-post-title">{{ .Params.title }}</h3>
 						<div class="front-blog-post-category">
-							{{ .Scratch.Set "type" "category" }}
-							{{ .Scratch.Set "class" "front-blog-post-link" }}
-							{{ .Scratch.Set "divider" "blog-post-divider" }}
-							{{ partial "taxonomy.html" . }}
+
+							{{ $taxoCount := 0 }}
+							{{ range $name := .Params.category }}
+							{{ $name = $name | lower }}
+
+							{{ if gt $taxoCount "0"}}
+							<span class="blog-post-divider">|</span>
+							<a href="category/{{ $name | urlize }}"> {{ i18n $name }}</a>
+							{{ else }}
+							<a href="category/{{ $name | urlize }}">{{ i18n $name }}</a>
+							{{ end }}
+
+							{{ $taxoCount = add $taxoCount 1 }}
+
+							{{ end }}
+
 						</div>
 					</div>
 				</div>
@@ -174,9 +182,9 @@
 
 				<div class="media-player-icons">
 
-					<a href="plex"><img class="media-player-image" src="{{ "assets/images/media-players/plex.png" | absURL }}" alt="Plex"></a>
-					<a href="plex"><img class="media-player-image" src="{{ "assets/images/media-players/kodi.png" | absURL }}" alt="Kodi"></a>
-					<a href="plex"><img class="media-player-image" src="{{ "assets/images/media-players/mediaportal.png" | absURL }}" alt="MediaPortal"></a>
+					<a href="{{ "/programs/shoko-metadata" | relLangURL }}"><img class="media-player-image" src="{{ "assets/images/media-players/plex.png" | absURL }}" alt="Plex"></a>
+					<a href="{{ "/programs/nakamori" | relLangURL }}"><img class="media-player-image" src="{{ "assets/images/media-players/kodi.png" | absURL }}" alt="Kodi"></a>
+					<a href="{{ "/programs/my-anime-3" | relLangURL }}"><img class="media-player-image" src="{{ "assets/images/media-players/mediaportal.png" | absURL }}" alt="MediaPortal"></a>
 
 				</div>
 

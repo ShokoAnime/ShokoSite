@@ -551,6 +551,33 @@ thead {
 	border: 1px solid var(--borderColor);
 	width: 489px;
 	height: 290px;
+	position: absolute;
+}
+
+.blog-post-image-overlay {
+	position: relative;
+	z-index: 3;
+	display: flex;
+	background-color: rgba(10, 11, 29, 0.8);
+	width: 489px;
+	height: 290px;
+	top: 0;
+	transition: .5s ease;
+	cursor: pointer;
+	opacity: 0;
+	border-radius: 10px;
+	border: 1px solid var(--borderColor);
+}
+
+.blog-post-image-overlay:hover {
+	opacity: 1;
+}
+
+.blog-post-image-text {
+	color: var(--linkActive);
+	text-align: center;
+	margin: auto;
+	font-size: 1.5rem;
 }
 
 .blog-post-info-wrapper {
@@ -569,7 +596,7 @@ thead {
 
 .blog-post-divider {
 	color: var(--fontColor);
-	padding-right: 0.4rem;
+	padding: 0 0.2rem;
 }
 
 .blog-hr {

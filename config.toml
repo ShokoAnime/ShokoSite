@@ -4,9 +4,12 @@ DefaultContentLanguage = "en"
 paginate =  6
 title = "Shoko"
 
-
 [outputs]
 	home = ["HTML", "RSS", "JSON"]
+
+[permalinks]
+	category = "/blog/category/:slug/"
+	tag = "/blog/tag/:slug/"
 
 [taxonomies]
 	category = "category"
@@ -23,9 +26,3 @@ title = "Shoko"
 		title = "Shoko"
 		languageName = "German"
 		weight = 2
-	[languages.fr]
-        contentDir = "content/fr"
-        title = "Shoko"
-        languageName = "French"
-        weight = 3
-

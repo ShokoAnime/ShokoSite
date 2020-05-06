@@ -16,6 +16,16 @@ other = "Github"
 [support]
 other = "Unterstützung"
 
+#Blog
+[categories]
+other = "Kategorien"
+[tags]
+other = "Stichworte"
+[share]
+other = "Verbreiten Sie das Wort"
+[read-more]
+other = "Lesen Sie mehr →"
+
 # Categories
 [general]
 other = "Allgemeines"

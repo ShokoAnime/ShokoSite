@@ -1,0 +1,34 @@
+<!-- Share -->
+<span class="blog-nav-header-indicator"></span>
+<h5 class="blog-nav-header">{{ i18n "share" }}</h5>
+<hr class="blog-nav-hr">
+{{ partial "share.html" . }}
+
+<!-- Categories -->
+<span class="blog-nav-header-indicator"></span>
+<h5 class="blog-nav-header">{{ i18n "categories" }}</h5>
+<hr class="blog-nav-hr">
+<div class="blog-tax-wrapper">
+
+	{{ range $name, $items := .Site.Taxonomies.category }}
+	<div class="blog-tax-single">
+		<a class="blog-tax-link" href="{{ "/blog/category/" | relLangURL }}{{ $name | urlize }}">{{ i18n $name }}</a>
+		<span class="blog-tax-count">{{ len $items }}</span>
+	</div>
+	{{ end }}
+
+</div>
+
+<!-- Tags -->
+<h5 class="blog-nav-header">{{ i18n "tags" }}</h5>
+<hr class="blog-nav-hr">
+<div class="blog-tax-wrapper">
+
+	{{ range $name, $items := .Site.Taxonomies.tag }}
+	<div class="blog-tax-single">
+		<a class="blog-tax-link" href="{{ "/blog/tag/" | relLangURL }}{{ $name | urlize }}">{{ i18n $name }}</a>
+		<span class="blog-tax-count">{{ len $items }}</span>
+	</div>
+	{{ end }}
+
+</div>
