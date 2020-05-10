@@ -6,6 +6,7 @@ type = "post"
 anime = "Robotics;Notes"
 category = ["Update"]
 tag = ["Shoko Desktop", "Shoko Server"]
+dev = ["Avael", "Baine", "BigRetroMike", "Bond", "Cazzar", "Da3dsoul", "Mik1ll", "MaxPiva"]
 +++
 
 Shoko Version 3.9.6 is now available for download\!
@@ -33,5 +34,3 @@ Changelog](https://docs.shokoanime.com/changelog/desktop)
 ### Contributors
 
 This release was made possible by the following people.
-
-**Avael, Baine, BigRetroMike, Bond, Cazzar, Da3dsoul, Mik1ll & MaxPiva**

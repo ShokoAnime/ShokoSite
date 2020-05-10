@@ -16,11 +16,15 @@ other = "Github"
 [support]
 other = "Unterstützung"
 
-#Blog
+# Blog
+[category]
+other = "Category"
 [categories]
-other = "Kategorien"
+other = "Categories"
+[tag]
+other = "Tag"
 [tags]
-other = "Stichworte"
+other = "Tags"
 [share]
 other = "Verbreiten Sie das Wort"
 [read-more]

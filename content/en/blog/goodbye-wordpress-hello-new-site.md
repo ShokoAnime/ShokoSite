@@ -5,6 +5,7 @@ date = 2018-09-24T02:45:46+00:00
 type = "post"
 anime = "The Irregular at Magic High School"
 category = ["Website"]
+tag = ["Shoko"]
 +++
 
 Welcome to the new Shoko Website!

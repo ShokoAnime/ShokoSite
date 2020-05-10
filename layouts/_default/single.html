@@ -3,12 +3,11 @@
 
 {{ partial "head.html" . }}
 
-<body>
+<body class="lang-{{ .Site.Language.Lang }}">
 
 {{ partial "header.html" . }}
 
-<div class="page-image-wrapper border-bottom">
-	<img class="blog-post-image" src="{{.Site.BaseURL }}{{ .Params.image }}" alt="{{ .Title }}">
+<div class="page-image-wrapper random-banner border-bottom">
 	<div class="page-image-overlay">
 
 		{{ partial "breadcrumb.html" . }}
@@ -16,62 +15,113 @@
 	</div>
 </div>
 
-<div class="blog-post-content-wrapper">
+<div class="blog-wrapper">
 	<div class="row">
+		<div class="col-xl-9 blog-content-wrapper">
 
-		<div class="col-xl-9 blog-post-content">
+			<img class="post-image" src="{{ .Site.BaseURL }}{{ .Params.image }}" alt=" {{ .Params.title }}">
+			<div class="post-info-wrapper">
 
-			{{ .Scratch.Delete "class" }}
-			{{ .Scratch.Delete "divider" }}
-
-			<div class="blog-post-info">
-				<div class="blog-post-info-left">
-					<p>Posted On: <span class="blog-post-date">{{ .Date.Format "January 2, 2006" }}</span></p>
+				<div class="post-info-left">
+					<p>Posted On: <span class="post-date">{{ .Date.Format "January 2, 2006" }}</span></p>
 					<p>Banner Anime: <a href="https://anidb.net/anime/?adb.search={{ .Params.anime }}&do.search=1"
 						target="_blank">{{ .Params.anime }}</a></p>
 				</div>
 
-				<div class="blog-post-info-right">
-					{{ .Scratch.Set "type" "category" }}
-					{{ .Scratch.Set "class" "blog-post-category-single" }}
-					{{ .Scratch.Set "divider" "blog-post-divider" }}
-					<p class="blog-post-category">Categories: </p>
 
-					{{ .Scratch.Set "type" "tag" }}
-					{{ .Scratch.Set "divider" "blog-post-divider" }}
-					<p class="blog-post-tags">Tags: </p>
+				<div class="post-info-right">
+					<div class="post-category">
+
+						{{ if gt (len .Params.category) "1" }}
+						<span class="post-section-header">Categories: </span>
+						{{ else }}
+						<span class="post-section-header">Category: </span>
+						{{ end }}
+
+						{{ $taxoCount := 0 }}
+						{{ range $name := .Params.category }}
+						{{ $name = $name | lower | urlize }}
+						{{ if gt $taxoCount "0"}}
+						<span class="post-divider">|</span>
+						<a href="{{ " blog/category/" | relLangURL }}{{ $name | urlize }}"> {{ i18n $name }}</a>
+						{{ else }}
+						<a href="{{ " blog/category/" | relLangURL }}{{ $name | urlize }}">{{ i18n $name }}</a>
+						{{ end }}
+						{{ $taxoCount = add $taxoCount 1 }}
+						{{ end }}
+
+					</div>
+
+					<div class="post-tags">
+
+						{{ if gt (len .Params.tag) "1" }}
+						<span class="post-section-header">Tags: </span>
+						{{ else }}
+						<span class="post-section-header">Tag: </span>
+						{{ end }}
+
+						{{ $taxoCount := 0 }}
+						{{ range $name := .Params.tag }}
+						{{ $name = $name | lower | urlize }}
+						{{ if gt $taxoCount "0"}}
+						<span class="post-divider">|</span>
+						<a href="{{ " blog/tag/" | relLangURL }}{{ $name | urlize }}"> {{ i18n $name }}</a>
+						{{ else }}
+						<a href="{{ " blog/tag/" | relLangURL }}{{ $name | urlize }}">{{ i18n $name }}</a>
+						{{ end }}
+						{{ $taxoCount = add $taxoCount 1 }}
+						{{ end }}
+
+					</div>
+				</div>
+			</div>
+
+			<hr class="blog-nav-hr">
+
+			<div class="post-content">
+
+				{{ .Content }}
+
+				<div class="post-dev-wrapper">
+
+					{{ if .Params.dev }}
+					{{ range $name := .Params.dev }}
+
+					{{ $data := index $.Site.Data $.Site.Language.Lang }}
+
+					{{ if eq (index $.Site.Data $.Site.Language.Lang) nil }}
+					{{ $data = .Site.Data.en }}
+					{{ end }}
+
+					{{ range $data.devs.devList }}
+
+					{{ if eq .name $name }}
+					<div class="post-dev-item">
+						<a href="https://github.com/{{ .githubLink }}" target="_blank" rel="noopener">
+							<img class="post-dev-avatar" src="https://avatars1.githubusercontent.com/u/{{ .githubID }}?s=128">
+							<div class="post-dev-avatar-overlay">
+								<i class="post-dev-git fab fa-github fa-5x"></i>
+							</div>
+						</a>
+						<div class="post-dev-name">{{ .name }}</div>
+					</div>
+					{{ end }}
+
+					{{ end }}
+
+					{{ end }}
+					{{ end }}
+
 				</div>
 
 			</div>
 
-			<div class="blog-post">
-				{{ .Content }}
-			</div>
 
 		</div>
 
-		<div class="col-xl-3 blog-post-side-sticky">
+		<div class="col-xl-3 blog-nav-wrapper">
 
-			<div class="blog-post-side-wrapper">
-				<p class="blog-post-side-header">Spread The Word</p>
-			</div>
-			{{ partial "share.html" . }}
-
-			{{ $related := .Site.RegularPages.Related . | first 3 }}
-			{{ with $related }}
-			<div class="blog-post-side-wrapper">
-				<p class="blog-post-side-header">Related Posts</p>
-			</div>
-			{{ range . }}
-			<div class="blog-post-related-wrapper">
-				<img class="blog-post-related-image" src="{{.Site.BaseURL }}{{ .Params.image }}" alt="{{ .Title }}">
-				<div class="blog-post-related-info">
-					<a class="blog-post-related-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
-					<p class="blog-post-related-date">{{ .Date.Format "January 2, 2006" }}</p>
-				</div>
-			</div>
-			{{ end }}
-			{{ end }}
+			{{ partial "blog-sidenav.html" . }}
 
 		</div>
 

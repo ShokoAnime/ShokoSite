@@ -10,6 +10,7 @@
 		8. Page
 		9. Blog - Index
 		10. Blog - Pagination
+		11. Blog - Post
 ---------------------------------------------
 */
 
@@ -526,7 +527,7 @@ thead {
 */
 
 .blog-wrapper {
-	margin: 3rem auto 1rem auto;
+	margin: 3rem auto;
 	max-width: 1440px;
 }
 
@@ -732,4 +733,94 @@ a.share-button-link {
 	color: var(--fontColorAlt) !important;
 	background-color: var(--linkActive);
 	border-color: var(--linkActive);
+}
+
+/*
+---------------------------------------------
+		11. Blog - Post
+---------------------------------------------
+*/
+
+.post-image {
+	width: 100%;
+	border: 1px solid var(--borderColor);
+	height: 500px;
+	border-radius: 10px;
+}
+
+.post-info-wrapper {
+	display: flex;
+	flex-direction: row;
+	margin-top: 1rem;
+}
+
+.post-info-left > p {
+	margin-bottom: 0;
+}
+
+.post-info-right {
+	margin-left: auto;
+	text-align: right;
+}
+
+.post-section-header {
+	font-weight: 600;
+}
+
+.post-date {
+	margin: 0.5rem 0;
+	font-weight: 600;
+	color: var(--linkActive);
+}
+
+.post-divider {
+	color: var(--fontColor);
+	padding: 0 0.2rem;
+}
+
+.post-dev-wrapper {
+	display: flex;
+}
+
+.post-dev-item {
+	display: flex;
+	flex-direction: column;
+	margin: 0 1rem 0 0;
+	text-align: center;
+	font-weight: 600;
+}
+
+.post-dev-item > a {
+	text-decoration: none;
+}
+
+.post-dev-avatar {
+	border: 1px solid var(--borderColor);
+	border-radius: 10px;
+	position: absolute;
+	display: flex;
+}
+
+.post-dev-avatar-overlay {
+	position: relative;
+	z-index: 3;
+	display: flex;
+	background-color: rgba(10, 11, 29, 0.8);
+	width: 130px;
+	height: 130px;
+	top: 0;
+	transition: .5s ease;
+	cursor: pointer;
+	opacity: 0;
+	border-radius: 10px;
+	border: 1px solid var(--borderColor);
+}
+
+.post-dev-avatar-overlay:hover {
+	opacity: 1;
+}
+
+.post-dev-git {
+	margin: auto;
+	text-align: center;
 }
