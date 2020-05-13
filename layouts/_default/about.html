@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+
+{{ partial "head.html" . }}
+
+<body class="lang-{{ .Site.Language.Lang }}">
+
+{{ partial "header.html" . }}
+
+<div class="page-image-wrapper random-banner border-bottom">
+	<div class="page-image-overlay">
+
+		{{ partial "breadcrumb.html" . }}
+
+	</div>
+</div>
+
+<div class="section-wrapper background-color-alt border-bottom">
+
+	{{ $content_parts := split .Content "||ContentBlock||" }}
+
+	<div class="staff-wrapper">
+		<h2>{{ index $content_parts 0 | htmlUnescape | plainify }}</h2>
+		<p>{{ index $content_parts 1 | htmlUnescape | plainify }}</p>
+		<hr class="hr">
+
+		<div class="row">
+
+			{{ $data := index .Site.Data .Site.Language.Lang }}
+			{{ if eq (index .Site.Data .Site.Language.Lang) nil }}
+
+			{{ $data = .Site.Data.en }}
+
+			{{ end }}
+
+			{{ range $data.devs.devList }}
+			{{ if eq .team "yes" }}
+
+			<div class="col-xl-4 staff-listing-wrapper">
+				<div class="staff-item-wrapper">
+
+					<div class="staff-left-column">
+						<img class="staff-avatar" src="https://avatars0.githubusercontent.com/u/{{ .githubID }}?s=120"
+							alt="{{ .name }}">
+						<span class="staff-join-date">{{ .joinDate }}</span>
+					</div>
+
+					<div class="staff-right-column">
+						<h3 class="staff-name">{{ .name }}</h3>
+						<p class="staff-bio">{{ .bio | truncate 220 }}</p>
+					</div>
+
+				</div>
+			</div>
+
+			{{ end }}
+			{{ end }}
+
+		</div>
+
+	</div>
+
+</div>
+
+<div class="section-wrapper background-color border-bottom">
+	<div class="staff-info-section">
+		<h2 class="staff-info-header">{{ index $content_parts 2 | htmlUnescape | plainify }}</h2>
+		<p class="staff-info-date">{{ index $content_parts 3 | htmlUnescape | plainify }}</p>
+		<hr class="hr">
+		<p>{{ index $content_parts 4 | htmlUnescape | plainify }}</p>
+		<p>{{ index $content_parts 5 | htmlUnescape | plainify }}</p>
+	</div>
+</div>
+
+<div class="section-wrapper background-color-alt border-bottom">
+	<div class="staff-info-section">
+		<h2 class="staff-info-header">{{ index $content_parts 6 | htmlUnescape | plainify }}</h2>
+		<p class="staff-info-date">{{ index $content_parts 7 | htmlUnescape | plainify }}</p>
+		<hr class="hr">
+		<p>{{ index $content_parts 8 | htmlUnescape | plainify }}</p>
+		<p>{{ index $content_parts 9 | htmlUnescape | plainify }}</p>
+	</div>
+</div>
+
+<div class="section-wrapper background-color border-bottom">
+	<div class="staff-info-section">
+		<h2 class="staff-info-header">{{ index $content_parts 10 | htmlUnescape | plainify }}</h2>
+		<p class="staff-info-date">{{ index $content_parts 11 | htmlUnescape | plainify }}</p>
+		<hr class="hr">
+		<p>{{ index $content_parts 12 | htmlUnescape | plainify }}</p>
+	</div>
+</div>
+
+
+{{ partial "footer.html" . }}
+{{ partial "scripts.html" . }}
+
+</body>
+</html>

@@ -3,37 +3,70 @@
     {
       "name": "Avael",
       "githubID": "197087",
-      "githubLink": "hidden4003"
+      "githubLink": "hidden4003",
+      "team": "yes",
+      "joinDate": "2016",
+      "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat"
     },
     {
       "name": "Baine",
       "githubID": "6566469",
-      "githubLink": "Baine"
+      "githubLink": "Baine",
+      "team": "yes",
+      "joinDate": "2016",
+      "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor sed do eiusmod tempor sed do eiusmod tempor sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat"
     },
     {
       "name": "BigRetroMike",
       "githubID": "6052025",
-      "githubLink": "BigRetroMike"
+      "githubLink": "BigRetroMike",
+      "team": "yes",
+      "joinDate": "2016",
+      "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat"
     },
     {
       "name": "Cazzar",
       "githubID": "994214",
-      "githubLink": "Cazzar"
+      "githubLink": "Cazzar",
+      "team": "yes",
+      "joinDate": "2016",
+      "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat"
     },
     {
       "name": "Da3dsoul",
       "githubID": "5205810",
-      "githubLink": "da3dsoul"
+      "githubLink": "da3dsoul",
+      "team": "yes",
+      "joinDate": "2016",
+      "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat"
     },
     {
       "name": "Elemental Crisis",
       "githubID": "9443295",
-      "githubLink": "ElementalCrisis"
+      "githubLink": "ElementalCrisis",
+      "team": "yes",
+      "joinDate": "2016",
+      "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat"
     },
     {
       "name": "MaxPiva",
       "githubID": "1164141",
-      "githubLink": "MaxPiva"
+      "githubLink": "MaxPiva",
+      "team": "yes",
+      "joinDate": "2016",
+      "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat"
+    },
+    {
+      "name": "Bond",
+      "githubID": "66413",
+      "githubLink": "bond4u",
+      "team": "no"
+    },
+    {
+      "name": "Mik1ll",
+      "githubID": "27949189",
+      "githubLink": "Mik1ll",
+      "team": "no"
     }
   ]
 }

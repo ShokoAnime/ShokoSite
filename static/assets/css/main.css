@@ -102,6 +102,7 @@ thead {
 }
 
 .page-wrapper {
+	margin: 3rem auto;
 	max-width: 1440px;
 }
 
@@ -117,6 +118,10 @@ thead {
 .category-divider {
 	color: rgb(255, 255, 255);
 	margin: 0;
+}
+
+.hr {
+	margin: 2rem 0;
 }
 
 .btn {
@@ -382,6 +387,7 @@ thead {
 
 .info-header {
 	margin: 2rem 0;
+	font-size: 2.5rem;
 }
 
 .info-right-image-wrapper {
@@ -600,10 +606,6 @@ thead {
 	padding: 0 0.2rem;
 }
 
-.blog-hr {
-	margin: 2rem 0;
-}
-
 /*
 ---------------------------------------------
 		11. Blog - Side Nav
@@ -780,12 +782,13 @@ a.share-button-link {
 
 .post-dev-wrapper {
 	display: flex;
+	flex-flow: wrap;
 }
 
 .post-dev-item {
 	display: flex;
 	flex-direction: column;
-	margin: 0 1rem 0 0;
+	margin: 0 1.5rem 0 0;
 	text-align: center;
 	font-weight: 600;
 }
@@ -799,6 +802,8 @@ a.share-button-link {
 	border-radius: 10px;
 	position: absolute;
 	display: flex;
+	width: 100px;
+	height: 100px;
 }
 
 .post-dev-avatar-overlay {
@@ -806,8 +811,8 @@ a.share-button-link {
 	z-index: 3;
 	display: flex;
 	background-color: rgba(10, 11, 29, 0.8);
-	width: 130px;
-	height: 130px;
+	width: 100px;
+	height: 100px;
 	top: 0;
 	transition: .5s ease;
 	cursor: pointer;
@@ -820,7 +825,74 @@ a.share-button-link {
 	opacity: 1;
 }
 
+.post-dev-name {
+	font-size: 0.875rem;
+	margin: 0.5rem 0;
+}
+
 .post-dev-git {
 	margin: auto;
 	text-align: center;
+}
+
+/*
+---------------------------------------------
+		12. About
+---------------------------------------------
+*/
+
+.staff-wrapper {
+	margin: 0 auto;
+	max-width: 1440px;
+}
+
+.staff-listing-wrapper {
+	max-width: 30%;
+	margin-bottom: 1rem;
+	margin-right: 0.5rem;
+}
+
+.staff-item-wrapper {
+	display: flex;
+}
+
+.staff-right-column {
+	margin: 0 0 0 1rem;
+}
+
+.staff-avatar {
+	border-radius: 10px;
+	border: 1px solid var(--borderColor);
+	margin-bottom: 0.5rem;
+	height: 120px;
+	width: 120px;
+}
+
+.staff-name {
+	margin: 0 0 0.5rem 0;
+}
+
+.staff-join-date {
+	font-weight: 700;
+	color: var(--linkActive);
+}
+
+.staff-hr {
+	margin: 0 0 2rem 0;
+}
+
+.staff-info-section {
+	margin: 0 auto;
+	max-width: 1440px;
+}
+
+.staff-info-header {
+	margin: 0;
+	font-size: 2.5rem;
+}
+
+.staff-info-date {
+	font-weight: 700;
+	color: var(--linkActive);
+	margin: 0.2rem 0;
 }

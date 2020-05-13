@@ -23,8 +23,8 @@
 			<div class="post-info-wrapper">
 
 				<div class="post-info-left">
-					<p>Posted On: <span class="post-date">{{ .Date.Format "January 2, 2006" }}</span></p>
-					<p>Banner Anime: <a href="https://anidb.net/anime/?adb.search={{ .Params.anime }}&do.search=1"
+					<p>{{ i18n "posted-on" }}<span class="post-date">{{ .Date.Format "January 2, 2006" }}</span></p>
+					<p>{{ i18n "banner-anime" }} <a href="https://anidb.net/anime/?adb.search={{ .Params.anime }}&do.search=1"
 						target="_blank">{{ .Params.anime }}</a></p>
 				</div>
 

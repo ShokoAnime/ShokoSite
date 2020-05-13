@@ -29,6 +29,10 @@ other = "Tags"
 other = "Verbreiten Sie das Wort"
 [read-more]
 other = "Lesen Sie mehr →"
+[posted-on]
+other = "Posted On:"
+[banner-anime]
+other = "Banner Anime:"
 
 # Categories
 [general]
