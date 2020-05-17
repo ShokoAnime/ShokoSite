@@ -1,15 +1,12 @@
-<a class="navbar-link" href="link">{{ i18n "about" }}</a>
+<a class="navbar-link" href="{{ "about" | relLangURL }}">{{ i18n "about" }}</a>
 <a class="navbar-link" href="{{ "blog" | relLangURL }}">{{ i18n "blog" }}</a>
-<a class="navbar-link" href="link">{{ i18n "changelog" }}</a>
-<a class="navbar-link" href="link">{{ i18n "downloads" }}</a>
-<a class="navbar-link" href="link">{{ i18n "programs" }}</a>
+<a class="navbar-link" href="https://docs.shokoanime.com/changelog/">{{ i18n "changelog" }}</a>
+<a class="navbar-link" href="{{ "downloads" | relLangURL }}">{{ i18n "downloads" }}</a>
 <a class="navbar-link" href="https://docs.shokoanime.com/" target="_blank">{{ i18n "documentation" }}</a>
 <a class="navbar-link" href="https://github.com/shokoanime" target="_blank">{{ i18n "github" }}</a>
 <a class="navbar-link" href="https://discord.gg/vpeHDsg" target="_blank">{{ i18n "support" }}</a>
 
-{{ if eq (.Scratch.Get "extended-nav") true }}
 <span class="navbar-theme-divider">|</span>
 <div class="navbar-theme-icon">
 	<i class="fas fa-sun" id="themeSwitcher"></i>
 </div>
-{{ end }}

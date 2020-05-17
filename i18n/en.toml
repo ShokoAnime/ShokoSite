@@ -7,8 +7,6 @@ other = "Blog"
 other = "Changelog"
 [downloads]
 other = "Downloads"
-[programs]
-other = "Programs"
 [documentation]
 other = "Documentation"
 [github]
@@ -71,3 +69,20 @@ other = "Shoko Server"
 other = "Shoko Metadata"
 [web-ui]
 other = "Web UI"
+
+# Downloads
+[programs]
+other = "Programs"
+[resources]
+other = "Resources"
+[windows]
+other = "Windows"
+[plugins]
+other = "Plugins"
+[stable]
+other = "Stable"
+[daily]
+other = "Daily"
+
+[learn-more-about]
+other = "Learn more about"

@@ -11,6 +11,7 @@
 		9. Blog - Index
 		10. Blog - Pagination
 		11. Blog - Post
+		12. Downloads - Index
 ---------------------------------------------
 */
 
@@ -122,6 +123,12 @@ thead {
 
 .hr {
 	margin: 2rem 0;
+	width: 100%;
+}
+
+.hr2 {
+	margin: 4rem 0;
+	width: 100%;
 }
 
 .btn {
@@ -197,7 +204,7 @@ thead {
 	margin-left: auto;
 }
 
-.navbar-links-wrapper  > a:hover {
+.navbar-links-wrapper > a:hover {
 	text-decoration: none;
 }
 
@@ -616,7 +623,7 @@ thead {
 	margin: 0;
 }
 
-.blog-nav-header:before{
+.blog-nav-header:before {
 	background-color: var(--linkActive);
 	display: inline-flex;
 	bottom: 0;
@@ -895,4 +902,88 @@ a.share-button-link {
 	font-weight: 700;
 	color: var(--linkActive);
 	margin: 0.2rem 0;
+}
+
+/*
+---------------------------------------------
+		12. Downloads - Index
+---------------------------------------------
+*/
+
+.downloads-section-wrapper {
+	margin: 3rem auto;
+	max-width: 1440px;
+}
+
+.downloads-item-image {
+	width: 570px;
+	border-radius: 10px;
+	border: 1px solid var(--borderColor);
+	margin-right: 2rem;
+}
+
+.downloads-item-left-section {
+	display: flex;
+	border-right: 1px solid var(--borderColor);
+	padding-right: 2rem;
+	max-width: 78%;
+}
+
+.downloads-item-info-wrapper {
+	display: flex;
+	width: 100%;
+}
+
+.downloads-item-left-info {
+	margin-right: auto;
+}
+
+.downloads-item-title {
+	margin: 0;
+}
+
+.downloads-item-version {
+	margin: 0.5rem 0 0 0;
+	font-weight: 700;
+	color: var(--linkActive);
+}
+
+.downloads-item-right-info {
+	text-align: right;
+}
+
+.downloads-item-platform {
+	font-weight: 700;
+	color: var(--linkActive);
+	margin-bottom: 0.5rem;
+}
+
+.downloads-item-date{
+	font-weight: 700;
+	color: var(--linkActive);
+}
+
+.downloads-item-link-header {
+	margin: 0 0 1rem 0;
+}
+
+.downloads-item-platform-wrapper {
+	display: flex;
+}
+
+.downloads-platform-section {
+	margin-right: auto;
+	display: flex;
+	flex-direction: column;
+}
+
+.downloads-platform-title {
+	margin-right: auto;
+	font-weight: 700;
+	color: var(--linkActive);
+	margin-bottom: 0.5rem;
+}
+
+.downloads-items-resources-wrapper {
+	display: inline-grid;
 }

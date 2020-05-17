@@ -1,0 +1,71 @@
+{
+  "programList": [
+    {
+      "name": "Shoko Server",
+      "platform": "Windows / Linux",
+      "version": "3.9.7",
+      "release": "April 30th, 2020",
+      "image": "http://shokoanime.com/assets/images/programs-plugins/shoko-server/WebUI-Index.jpg",
+      "info": "Shoko server is the core component of the Shoko suite and with it’s client-server architecture which allows any program or plugin to access Shoko. You’ll have access to your entire collection locally and over the internet with no additional work outside the initial configuration required.",
+      "downloads": [
+        {
+          "windowsStable": "https://shokoanime.com/files/stable/Shoko_Server_Setup_3.9.7.zip",
+          "windowsDaily": "https://shokoanime.com/files/daily/Shoko.Server/shokoserver.zip",
+          "linuxDocker": "https://hub.docker.com/r/cazzar/shokoserver/"
+        }
+      ],
+      "resources": [
+        {
+          "github": "https://github.com/ShokoAnime/ShokoServer",
+          "docs": "https://docs.shokoanime.com/",
+          "support": "https://discord.gg/vpeHDsg"
+        }
+      ]
+    },
+    {
+      "name": "Shoko Desktop",
+      "platform": "Windows",
+      "version": "3.9.7",
+      "release": "April 30th, 2020",
+      "image": "http://shokoanime.com/assets/images/programs-plugins/shoko-server/WebUI-Index.jpg",
+      "info": "Shoko server is the core component of the Shoko suite and with it’s client-server architecture which allows any program or plugin to access Shoko. You’ll have access to your entire collection locally and over the internet with no additional work outside the initial configuration required.",
+      "downloads": [
+        {
+          "windowsStable": "https://shokoanime.com/files/stable/Shoko_Server_Setup_3.9.7.zip",
+          "windowsDaily": "https://shokoanime.com/files/daily/Shoko.Server/shokoserver.zip",
+          "linuxDocker": "https://hub.docker.com/r/cazzar/shokoserver/"
+        }
+      ],
+      "resources": [
+        {
+          "github": "https://github.com/ShokoAnime/ShokoServer",
+          "docs": "https://docs.shokoanime.com/",
+          "support": "https://discord.gg/vpeHDsg"
+        }
+      ]
+    },
+    {
+      "name": "Shoko Server",
+      "platform": "Windows / Linux",
+      "version": "3.9.7",
+      "release": "April 30th, 2020",
+      "image": "http://shokoanime.com/assets/images/programs-plugins/shoko-server/WebUI-Index.jpg",
+      "info": "Shoko server is the core component of the Shoko suite and with it’s client-server architecture which allows any program or plugin to access Shoko. You’ll have access to your entire collection locally and over the internet with no additional work outside the initial configuration required.",
+      "downloads": [
+        {
+          "windows-stable": "https://shokoanime.com/files/stable/Shoko_Server_Setup_3.9.7.zip",
+          "windows-daily": "https://shokoanime.com/files/daily/Shoko.Server/shokoserver.zip",
+          "linux-docker": "https://hub.docker.com/r/cazzar/shokoserver/"
+        }
+      ],
+      "resources": [
+        {
+          "github": "https://github.com/ShokoAnime/ShokoServer",
+          "docs": "https://docs.shokoanime.com/",
+          "support": "https://discord.gg/vpeHDsg"
+        }
+      ]
+    }
+
+  ]
+}

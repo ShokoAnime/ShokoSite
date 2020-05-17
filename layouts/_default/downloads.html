@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+
+{{ partial "head.html" . }}
+
+<body class="lang-{{ .Site.Language.Lang }}">
+
+{{ partial "header.html" . }}
+
+<div class="page-image-wrapper random-banner border-bottom">
+	<div class="page-image-overlay">
+
+		{{ partial "breadcrumb.html" . }}
+
+	</div>
+</div>
+
+<div class="downloads-section-wrapper">
+
+	<div class="row">
+
+		{{ $data := index .Site.Data .Site.Language.Lang }}
+		{{ if eq (index .Site.Data .Site.Language.Lang) nil }}
+
+		{{ $data = .Site.Data.en }}
+
+		{{ end }}
+
+		{{ range $data.programs.programList }}
+
+		<div class="col-xl-12 downloads-item-wrapper">
+			<div class="row">
+
+				<div class="col-xl-10 downloads-item-left-section">
+
+					<img class="downloads-item-image" src="{{ .image }}" alt="{{ .title }}">
+
+					<div class="downloads-item-wrapper">
+						<div class="downloads-item-info-wrapper">
+
+							<div class="downloads-item-left-info">
+								<h3 class="downloads-item-title">{{ .name }}</h3>
+								<p class="downloads-item-version">{{ .version }}</p>
+							</div>
+
+							<div class="downloads-item-right-info">
+								<p class="downloads-item-platform">{{ .platform }}</p>
+								<p class="downloads-item-date">{{ .release }}</p>
+
+							</div>
+						</div>
+
+						<hr>
+
+						<div class="downloads-item-description">
+							{{ .info }}
+						</div>
+
+					</div>
+				</div>
+
+				<div class="col-xl-2 downloads-item-right-section">
+					<div class="downloads-item-links-wrapper">
+
+						<div class="downloads-item-link-section">
+
+							<h3 class="downloads-item-link-header">{{ i18n "downloads" }}</h3>
+							<div class="downloads-item-platform-wrapper">
+
+								{{ if eq .platform "Windows / Linux" }}
+
+								<div class="downloads-platform-section">
+									<p class="downloads-platform-title">{{ i18n "windows" }}</p>
+									{{ range .downloads }}
+									<a href="{{ .windowsStable }}" target="_blank" rel="noopener">{{ i18n "stable" }}</a>
+									<a href="{{ .windowsDaily }}" target="_blank" rel="noopener">{{ i18n "daily" }}</a>
+									{{ end }}
+								</div>
+
+								<div class="downloads-platform-section">
+									<p class="downloads-platform-title">{{ i18n "linux" }}</p>
+									{{ range .downloads }}
+									<a href="{{ .linuxDocker }}" target="_blank" rel="noopener">{{ i18n "stable" }}</a>
+									{{ end }}
+								</div>
+
+								{{ else if eq .platform "Windows" }}
+
+								<div class="downloads-platform-section">
+									<p class="downloads-platform-title">{{ i18n "windows" }}</p>
+									{{ range .downloads }}
+									<a href="{{ .windowsStable }}" target="_blank" rel="noopener">{{ i18n "stable" }}</a>
+									<a href="{{ .windowsDaily }}" target="_blank" rel="noopener">{{ i18n "daily" }}</a>
+									{{ end }}
+								</div>
+
+								{{ else if eq .platform "Kodi" }}
+
+								<div class="downloads-platform-section">
+									<p class="downloads-platform-title">Kodi</p>
+									{{ range .downloads }}
+									<a href="{{ .kodiStable }}" target="_blank" rel="noopener">{{ i18n "stable" }}</a>
+									{{ end }}
+								</div>
+
+								{{ else if eq .platform "Media Portal" }}
+
+								<div class="downloads-platform-section">
+									<p class="downloads-platform-title">Media Portal</p>
+									{{ range .downloads }}
+									<a href="{{ .mediaPortalStable }}" target="_blank" rel="noopener">{{ i18n "stable" }}</a>
+									{{ end }}
+								</div>
+
+								{{ else if eq .platform "Plex" }}
+
+								<div class="downloads-platform-section">
+									<p class="downloads-platform-title">Plex</p>
+									{{ range .downloads }}
+									<a href="{{ .plexStable }}" target="_blank" rel="noopener">{{ i18n "stable" }}</a>
+									{{ end }}
+								</div>
+
+								{{ end }}
+
+							</div>
+
+						</div>
+
+						<hr>
+
+						<div class="downloads-item-link-section">
+
+							<h3 class="downloads-item-link-header">{{ i18n "resources" }}</h3>
+							<div class="downloads-items-resources-wrapper">
+
+								{{ range .resources }}
+								<a href="{{ .github }}">{{ i18n "github" }}</a>
+								<a href="{{ .docs }}">{{ i18n "documentation" }}</a>
+								<a href="{{ .support }}">{{ i18n "support" }}</a>
+								{{ end }}
+
+							</div>
+
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+
+		<hr class="hr2">
+
+		{{ end }}
+
+	</div>
+
+</div>
+
+{{ partial "footer.html" . }}
+{{ partial "scripts.html" . }}
+
+</body>
+</html>
