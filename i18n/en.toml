@@ -71,6 +71,8 @@ other = "Shoko Metadata"
 other = "Web UI"
 
 # Downloads
+[version]
+other = "Version"
 [programs]
 other = "Programs"
 [resources]
@@ -83,6 +85,9 @@ other = "Plugins"
 other = "Stable"
 [daily]
 other = "Daily"
-
+[server-required]
+other = "Shoko Server is required for all Programs & Plugins."
+[learn-more]
+other = "Learn More →"
 [learn-more-about]
 other = "Learn more about"

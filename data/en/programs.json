@@ -6,7 +6,7 @@
       "version": "3.9.7",
       "release": "April 30th, 2020",
       "image": "http://shokoanime.com/assets/images/programs-plugins/shoko-server/WebUI-Index.jpg",
-      "info": "Shoko server is the core component of the Shoko suite and with it’s client-server architecture which allows any program or plugin to access Shoko. You’ll have access to your entire collection locally and over the internet with no additional work outside the initial configuration required.",
+      "info": "Shoko Server is the core component of the Shoko Suite and makes all the magic possible. Highly customizable and ready to go within a matter of minutes, Shoko Server does all the heavy lifting allowing you to sit back, relax and binge watch anime you don't even remember downloading.",
       "downloads": [
         {
           "windowsStable": "https://shokoanime.com/files/stable/Shoko_Server_Setup_3.9.7.zip",

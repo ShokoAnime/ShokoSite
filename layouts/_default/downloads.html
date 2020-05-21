@@ -34,13 +34,16 @@
 				<div class="col-xl-10 downloads-item-left-section">
 
 					<img class="downloads-item-image" src="{{ .image }}" alt="{{ .title }}">
+					<div class="downloads-item-image-overlay">
+						<p class="downloads-item-image-text">{{ i18n "learn-more" }}</p>
+					</div>
 
 					<div class="downloads-item-wrapper">
 						<div class="downloads-item-info-wrapper">
 
 							<div class="downloads-item-left-info">
 								<h3 class="downloads-item-title">{{ .name }}</h3>
-								<p class="downloads-item-version">{{ .version }}</p>
+								<p class="downloads-item-version">{{ i18n "version" }}: {{ .version  }}</p>
 							</div>
 
 							<div class="downloads-item-right-info">
@@ -53,7 +56,16 @@
 						<hr>
 
 						<div class="downloads-item-description">
-							{{ .info }}
+
+							{{ if eq "Shoko Server" .name }}
+							<div class="alert alert-warning" role="alert">
+								<i class="fas fa-exclamation-triangle"></i>
+								{{ i18n "server-required" }}
+							</div>
+							{{ end }}
+
+							<p>{{ .info }}</p>
+							<a href="{{ "/downloads/" | relLangURL }}{{ .name | urlize }}">{{ i18n "learn-more-about" }} {{ .name }}  →</a>
 						</div>
 
 					</div>
@@ -132,7 +144,7 @@
 						<div class="downloads-item-link-section">
 
 							<h3 class="downloads-item-link-header">{{ i18n "resources" }}</h3>
-							<div class="downloads-items-resources-wrapper">
+							<div class="downloads-item-resources-wrapper">
 
 								{{ range .resources }}
 								<a href="{{ .github }}">{{ i18n "github" }}</a>
