@@ -536,7 +536,8 @@ thead {
 .breadcrumb-list {
 	margin: auto 0 auto auto;
 	font-size: 1.3rem;
-	color: var(--fontColorAlt)
+	color: var(--fontColorAlt);
+	text-transform: capitalize;
 }
 
 .breadcrumb-separator {
