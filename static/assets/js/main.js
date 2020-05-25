@@ -53,7 +53,7 @@ let languages = ["de"];
 
 function getRandomBanner() {
 
-	randomNumber = Math.floor((Math.random() * 3) + 1);
+	randomNumber = Math.floor((Math.random() * 4) + 1);
 	return randomNumber;
 }
 
@@ -98,7 +98,7 @@ function css(selector, property, value) {
 
 // Lightbox
 
-$(document).on('click', '[data-toggle="lightbox"]', function (event) {
+$(document).on('click', '[data-toggle="lightbox"]', function(event) {
 	event.preventDefault();
 	$(this).ekkoLightbox();
 });

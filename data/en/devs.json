@@ -45,16 +45,38 @@
       "githubID": "9443295",
       "githubLink": "ElementalCrisis",
       "team": "yes",
-      "joinDate": "2016",
-      "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat"
+      "joinDate": "2014 - Present",
+      "bio": "The current project leader responsible for making sure this project doesn't die. Designed this site, Shoko Docs, Shoko Server Web UI and Shoko Desktop 2 so feel free to blame someone else if things aren't working."
+    },
+    {
+      "name": "JMediaManager",
+      "githubID": "6645153",
+      "githubLink": "jmediamanager",
+      "team": "yes",
+      "joinDate": "2006-2014",
+      "bio": "The original creator of JMM and My Anime 3, he is the reason we're all here and while he is no longer active. He does pop in once in awhile to make sure we're not slacking off."
     },
     {
       "name": "MaxPiva",
       "githubID": "1164141",
       "githubLink": "MaxPiva",
       "team": "yes",
-      "joinDate": "2016",
+      "joinDate": "2009 - Present",
+      "bio": "Author of the original Plex channel plugin, a black magic wizard responsible for many of the advancements made to Shoko. Due to time restrictions he mainly provides technical support to the team."
+    },
+    {
+      "name": "Mohan226",
+      "githubID": "26010946",
+      "githubLink": "harshithmohan",
+      "team": "yes",
+      "joinDate": "2020 - Present",
       "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat"
+    },
+    {
+      "name": "Wat",
+      "githubID": "1365428",
+      "githubLink": "notnyt",
+      "team": "no"
     },
     {
       "name": "Bond",

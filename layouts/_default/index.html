@@ -19,14 +19,13 @@
 			<p class="hero-info-subtitle">{{ index $content_parts 1 | htmlUnescape | plainify }}</p>
 
 			<div class="hero-buttons">
-				<button type="button" class="btn btn-download btn-lg hero-button-spacer">{{ index $content_parts 2 | htmlUnescape | plainify }}</button>
-				<button type="button" class="btn btn-learn btn-lg">{{ index $content_parts 3 | htmlUnescape | plainify }}</button>
+				<a href="{{ "/downloads/" | relLangURL }}" type="button" class="btn btn-download btn-lg hero-button-spacer"  role="button" aria-pressed="true">{{ index $content_parts 2 | htmlUnescape | plainify }}</a>
+				<a href="{{ "/downloads/shoko-server" | relLangURL }}" type="button" class="btn btn-learn btn-lg"  role="button" aria-pressed="true">{{ index $content_parts 3 | htmlUnescape | plainify }}</a>
 			</div>
 
 		</div>
 	</div>
 </div>
-
 
 <!-- Features Section-->
 
@@ -135,18 +134,11 @@
 
 <!-- Info Section 1 -->
 
-
-
 <div class="section-wrapper background-color-alt border-bottom">
 	<div class="container page-wrapper">
 		<div class="row">
 
 			<div class="col-xl-6 info-left-item-wrapper">
-
-				<span class="fa-stack fa-2x">
-  <i class="fas fa-server fa-stack-2x"></i>
-  <i class="fas fa-search fa-stack-1x fa-inverse"></i>
-</span>
 
 				<h2 class="info-header">{{ index $content_parts 6 | htmlUnescape | plainify }}</h2>
 				<p>{{ index $content_parts 7 | htmlUnescape | plainify }}</p>

@@ -18,6 +18,7 @@
         {
           "github": "https://github.com/ShokoAnime/ShokoServer",
           "docs": "https://docs.shokoanime.com/",
+          "changelog": "https://docs.shokoanime.com/changelog/",
           "support": "https://discord.gg/vpeHDsg"
         }
       ]
@@ -27,45 +28,85 @@
       "platform": "Windows",
       "version": "3.9.7",
       "release": "April 30th, 2020",
-      "image": "http://shokoanime.com/assets/images/programs-plugins/shoko-server/WebUI-Index.jpg",
-      "info": "Shoko server is the core component of the Shoko suite and with it’s client-server architecture which allows any program or plugin to access Shoko. You’ll have access to your entire collection locally and over the internet with no additional work outside the initial configuration required.",
+      "image": "http://shokoanime.com/assets/images/programs-plugins/shoko-desktop/Shoko-Desktop-Viewing-Series.jpg",
+      "info": "Shoko Desktop allows you to view your collection in full detail providing information you didn't even know you needed and now can't live without. Packed with multiple advanced utilities to further fine-tune your collection, you'll wish you had found Shoko earlier.",
       "downloads": [
         {
-          "windowsStable": "https://shokoanime.com/files/stable/Shoko_Server_Setup_3.9.7.zip",
-          "windowsDaily": "https://shokoanime.com/files/daily/Shoko.Server/shokoserver.zip",
-          "linuxDocker": "https://hub.docker.com/r/cazzar/shokoserver/"
+          "windowsStable": "https://shokoanime.com/files/stable/Shoko_Desktop_Setup_3.9.7.zip",
+          "windowsDaily": "https://shokoanime.com/files/daily/Shoko.Desktop/shokodesktop.zip"
         }
       ],
       "resources": [
         {
-          "github": "https://github.com/ShokoAnime/ShokoServer",
+          "github": "https://github.com/ShokoAnime/ShokoDesktop",
           "docs": "https://docs.shokoanime.com/",
+          "changelog": "https://docs.shokoanime.com/changelog/",
           "support": "https://discord.gg/vpeHDsg"
         }
       ]
     },
     {
-      "name": "Shoko Server",
-      "platform": "Windows / Linux",
-      "version": "3.9.7",
-      "release": "April 30th, 2020",
-      "image": "http://shokoanime.com/assets/images/programs-plugins/shoko-server/WebUI-Index.jpg",
-      "info": "Shoko server is the core component of the Shoko suite and with it’s client-server architecture which allows any program or plugin to access Shoko. You’ll have access to your entire collection locally and over the internet with no additional work outside the initial configuration required.",
+      "name": "Shoko Metadata",
+      "platform": "Plex",
+      "version": "1.4.2",
+      "release": "July 31st, 2019",
+      "image": "http://shokoanime.com/assets/images/programs-plugins/shoko-metadata/Shoko Metadata - Series Episodes 02.jpg",
+      "info": "Shoko Metadata provides users with a smooth anime experience on Plex pulling your series data directly from Shoko instead of the default metadata sources Plex uses. This Plex library plugin provides support for TV Series and Movies.",
       "downloads": [
         {
-          "windows-stable": "https://shokoanime.com/files/stable/Shoko_Server_Setup_3.9.7.zip",
-          "windows-daily": "https://shokoanime.com/files/daily/Shoko.Server/shokoserver.zip",
-          "linux-docker": "https://hub.docker.com/r/cazzar/shokoserver/"
+          "plexStable": "https://shokoanime.com/files/stable/Shoko_Server_Setup_3.9.7.zip"
         }
       ],
       "resources": [
         {
-          "github": "https://github.com/ShokoAnime/ShokoServer",
+          "github": "https://github.com/Cazzar/ShokoMetadata.bundle",
           "docs": "https://docs.shokoanime.com/",
+          "changelog": "https://docs.shokoanime.com/changelog/",
+          "support": "https://discord.gg/vpeHDsg"
+        }
+      ]
+    },
+    {
+      "name": "Nakamori",
+      "platform": "Kodi",
+      "version": "3.5.3",
+      "release": "March 16th, 2020",
+      "image": "http://shokoanime.com/assets/images/programs-plugins/nakamori/Nakamori-Coverflow.jpg",
+      "info": "Nakamori provides users with a seamless integrated service that utilizes the full power of Shoko to make your anime watching experience second to none.",
+      "downloads": [
+        {
+          "kodiStable": "https://github.com/bigretromike/nakamori/releases"
+        }
+      ],
+      "resources": [
+        {
+          "github": "https://github.com/bigretromike/nakamori/",
+          "docs": "https://shokunin.monogatari.pl/nakamori/",
+          "changelog": "https://github.com/bigretromike/nakamori.plugin/blob/master/changelog.txt",
+          "support": "https://discord.gg/vpeHDsg"
+        }
+      ]
+    },
+    {
+      "name": "My Anime 3",
+      "platform": "Media Portal",
+      "version": "3.7.3",
+      "release": "November 17th, 2019",
+      "image": "http://shokoanime.com/assets/images/programs-plugins/my-anime-3/My-Anime-3-StreamedMP-Collection-List.jpg",
+      "info": "My Anime 3 delivers your entire anime collection in all it's glory straight to Media Portal providing users with the ultimate TV viewing experience.",
+      "downloads": [
+        {
+          "kodiStable": "https://shokoanime.com/files/stable/My_Anime_3_3.7.3.mpe1"
+        }
+      ],
+      "resources": [
+        {
+          "github": "https://github.com/ShokoAnime/MyAnime3",
+          "docs": "https://docs.shokoanime.com/",
+          "changelog": "https://docs.shokoanime.com/changelog/",
           "support": "https://discord.gg/vpeHDsg"
         }
       ]
     }
-
   ]
 }

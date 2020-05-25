@@ -9,9 +9,13 @@
 		7. Footer
 		8. Page
 		9. Blog - Index
-		10. Blog - Pagination
-		11. Blog - Post
-		12. Downloads - Index
+		10. Blog - Share
+		11. Blog - Pagination
+		12. Blog - Post
+		13. About
+		14. Downloads - Index
+		15. Downloads - Single
+		16. Download/Blog - Sidenav
 ---------------------------------------------
 */
 
@@ -146,7 +150,7 @@ thead {
 }
 
 .btn-download:hover {
-	color: var(--buttonText);
+	color: var(--buttonText) !important;
 	background-color: var(--buttonDownloadHover);
 	border-color: var(--buttonDownloadBorder);
 }
@@ -158,7 +162,7 @@ thead {
 }
 
 .btn-learn:hover {
-	color: var(--buttonText);
+	color: var(--buttonText) !important;
 	background-color: var(--buttonLearnHover);
 	border-color: var(--buttonLearnBorder);
 }
@@ -551,7 +555,7 @@ thead {
 
 /*
 ---------------------------------------------
-		10. Blog - Index
+		9. Blog - Index
 ---------------------------------------------
 */
 
@@ -629,50 +633,10 @@ thead {
 	padding: 0 0.2rem;
 }
 
-/*
----------------------------------------------
-		11. Blog - Side Nav
----------------------------------------------
-*/
-
-.blog-nav-header {
-	margin: 0;
-}
-
-.blog-nav-header:before {
-	background-color: var(--linkActive);
-	display: inline-flex;
-	bottom: 0;
-	content: '';
-	top: 0;
-	width: 8px;
-	height: 28px;
-	margin-right: 1.5rem;
-	padding-bottom: 10px;
-}
-
-.blog-tax-wrapper {
-	margin: 2rem 0;
-}
-
-.blog-tax-single {
-	display: flex;
-	flex-direction: row;
-}
-
-.blog-tax-link {
-	margin-right: auto;
-	text-transform: capitalize;
-}
-
-.blog-tax-count {
-	font-weight: 600;
-	color: var(--linkActive);
-}
 
 /*
 ---------------------------------------------
-		12. Blog - Share
+		10. Blog - Share
 ---------------------------------------------
 */
 
@@ -680,7 +644,7 @@ thead {
 	display: flex;
 	text-align: center;
 	text-decoration: none;
-	margin: 2rem 0;
+	margin: 1rem 0;
 }
 
 .share-button-link {
@@ -729,7 +693,7 @@ a.share-button-link {
 
 /*
 ---------------------------------------------
-		10. Blog - Pagination
+		11. Blog - Pagination
 ---------------------------------------------
 */
 
@@ -762,7 +726,7 @@ a.share-button-link {
 
 /*
 ---------------------------------------------
-		11. Blog - Post
+		12 Blog - Post
 ---------------------------------------------
 */
 
@@ -860,7 +824,7 @@ a.share-button-link {
 
 /*
 ---------------------------------------------
-		12. About
+		13. About
 ---------------------------------------------
 */
 
@@ -922,7 +886,7 @@ a.share-button-link {
 
 /*
 ---------------------------------------------
-		12. Downloads - Index
+		14. Downloads - Index
 ---------------------------------------------
 */
 
@@ -974,7 +938,7 @@ a.share-button-link {
 	margin-bottom: 0.5rem;
 }
 
-.downloads-item-date{
+.downloads-item-date {
 	font-weight: 700;
 	color: var(--linkActive);
 }
@@ -1009,7 +973,7 @@ a.share-button-link {
 	z-index: 3;
 	display: flex;
 	background-color: rgba(10, 11, 29, 0.8);
-	max-width: 562px;
+	max-width: 570px;
 	width: 100%;
 	height: 100%;
 	transition: .5s ease;
@@ -1017,6 +981,7 @@ a.share-button-link {
 	opacity: 0;
 	border-radius: 10px;
 	border: 1px solid var(--borderColor);
+	top: 0;
 }
 
 .downloads-item-image-overlay:hover {
@@ -1028,4 +993,98 @@ a.share-button-link {
 	text-align: center;
 	margin: auto;
 	font-size: 1.5rem;
+}
+
+/*
+---------------------------------------------
+		15. Downloads - Single
+---------------------------------------------
+*/
+
+.downloads-single-wrapper {
+	margin: 3rem auto;
+	max-width: 1440px;
+}
+
+.downloads-single-content-wrapper {
+	max-width: 70%;
+}
+
+.downloads-single-content-first {
+	margin: 0 0 2rem 0 !important;
+}
+
+.downloads-single-content > h3 {
+	margin: 2rem 0;
+}
+
+.downloads-single-content > h3::before {
+	background-color: var(--linkActive);
+	display: inline-flex;
+	bottom: 0px;
+	content: "";
+	top: 0px;
+	width: 8px;
+	height: 28px;
+	margin-right: 1.5rem;
+	padding-bottom: 10px;
+}
+
+.downloads-single-image {
+	width: 450px;
+	border-radius: 10px;
+	border: 1px solid var(--borderColor);
+	margin-bottom: 1rem;
+	margin-right: 1rem;
+}
+
+/*
+---------------------------------------------
+		16. Downloads/Blog - Side Nav
+---------------------------------------------
+*/
+
+.side-nav-header {
+	margin: 0;
+}
+
+.side-nav-header:before {
+	background-color: var(--linkActive);
+	display: inline-flex;
+	bottom: 0;
+	content: '';
+	top: 0;
+	width: 8px;
+	height: 28px;
+	margin-right: 1.5rem;
+	padding-bottom: 10px;
+}
+
+.side-nav-hr {
+	margin-bottom: 0;
+}
+
+.side-group-wrapper {
+	margin: 0.5rem 0 1.5rem 0;
+}
+
+.side-item-single {
+	display: flex;
+	flex-direction: row;
+}
+
+.single-item-link {
+	margin-right: auto;
+	text-transform: capitalize;
+}
+
+.single-item-name {
+	margin-right: auto;
+	text-transform: capitalize;
+	font-weight: 600;
+}
+
+.single-item-count {
+	font-weight: 600;
+	color: var(--linkActive);
 }

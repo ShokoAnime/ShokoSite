@@ -23,7 +23,7 @@
 			<div class="post-info-wrapper">
 
 				<div class="post-info-left">
-					<p>{{ i18n "posted-on" }}<span class="post-date">{{ .Date.Format "January 2, 2006" }}</span></p>
+					<p>{{ i18n "posted-on" }} <span class="post-date">{{ .Date.Format "January 2, 2006" }}</span></p>
 					<p>{{ i18n "banner-anime" }} <a href="https://anidb.net/anime/?adb.search={{ .Params.anime }}&do.search=1"
 						target="_blank">{{ .Params.anime }}</a></p>
 				</div>
@@ -43,9 +43,9 @@
 						{{ $name = $name | lower | urlize }}
 						{{ if gt $taxoCount "0"}}
 						<span class="post-divider">|</span>
-						<a href="{{ " blog/category/" | relLangURL }}{{ $name | urlize }}"> {{ i18n $name }}</a>
+						<a href="{{ "blog/category/" | relLangURL }}{{ $name | urlize }}"> {{ i18n $name }}</a>
 						{{ else }}
-						<a href="{{ " blog/category/" | relLangURL }}{{ $name | urlize }}">{{ i18n $name }}</a>
+						<a href="{{ "blog/category/" | relLangURL }}{{ $name | urlize }}">{{ i18n $name }}</a>
 						{{ end }}
 						{{ $taxoCount = add $taxoCount 1 }}
 						{{ end }}
@@ -65,9 +65,9 @@
 						{{ $name = $name | lower | urlize }}
 						{{ if gt $taxoCount "0"}}
 						<span class="post-divider">|</span>
-						<a href="{{ " blog/tag/" | relLangURL }}{{ $name | urlize }}"> {{ i18n $name }}</a>
+						<a href="{{ "blog/tag/" | relLangURL }}{{ $name | urlize }}"> {{ i18n $name }}</a>
 						{{ else }}
-						<a href="{{ " blog/tag/" | relLangURL }}{{ $name | urlize }}">{{ i18n $name }}</a>
+						<a href="{{ "blog/tag/" | relLangURL }}{{ $name | urlize }}">{{ i18n $name }}</a>
 						{{ end }}
 						{{ $taxoCount = add $taxoCount 1 }}
 						{{ end }}
@@ -121,7 +121,8 @@
 
 		<div class="col-xl-3 blog-nav-wrapper">
 
-			{{ partial "blog-sidenav.html" . }}
+			{{ .Scratch.Set "sidenav" "blog" }}
+			{{ partial "sidenav.html" . }}
 
 		</div>
 

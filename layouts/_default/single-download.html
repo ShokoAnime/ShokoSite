@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+
+{{ partial "head.html" . }}
+
+<body class="lang-{{ .Site.Language.Lang }}">
+
+{{ partial "header.html" . }}
+
+<div class="page-image-wrapper random-banner border-bottom">
+	<div class="page-image-overlay">
+
+		{{ partial "breadcrumb.html" . }}
+
+	</div>
+</div>
+
+<div class="downloads-single-wrapper">
+	<div class="row">
+		<div class="col-xl-9 downloads-single-content-wrapper">
+
+			<div class="downloads-single-content">
+
+				{{ .Content }}
+
+				<h3>{{ i18n "screenshots" }}</h3>
+
+				{{ $programName := .Params.title }}
+				{{ range .Params.images }}
+				<a href="https://shokoanime.com/assets/images/programs-plugins/{{ $programName | urlize }}/{{ . }}" data-toggle="lightbox" data-lightbox="{{ . }}" data-title="{{ . }}">
+				<img class="downloads-single-image" src="https://shokoanime.com/assets/images/programs-plugins/{{ $programName | urlize }}/{{ . }}"
+					alt="{{ . }}"></a>
+				{{ end }}
+
+			</div>
+
+
+		</div>
+
+		<div class="col-xl-3 blog-nav-wrapper">
+
+			{{ .Scratch.Set "sidenav" "download" }}
+			{{ partial "sidenav.html" . }}
+
+		</div>
+
+	</div>
+</div>
+
+{{ partial "footer.html" . }}
+{{ partial "scripts.html" . }}
+
+</body>
+</html>

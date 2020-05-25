@@ -77,6 +77,12 @@ other = "Version"
 other = "Programs"
 [resources]
 other = "Resources"
+[details]
+other = "Details"
+[screenshots]
+other = "Screenshots"
+[program-info]
+other = "Program Information"
 [windows]
 other = "Windows"
 [plugins]
@@ -85,9 +91,13 @@ other = "Plugins"
 other = "Stable"
 [daily]
 other = "Daily"
+[platform]
+other = "Platform"
+[release]
+other = "Release"
 [server-required]
 other = "Shoko Server is required for all Programs & Plugins."
 [learn-more]
 other = "Learn More →"
 [learn-more-about]
-other = "Learn more about"
+other = "Learn More About"
