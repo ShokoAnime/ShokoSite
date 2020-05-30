@@ -1,5 +1,5 @@
 +++
-title = "Shoko Version 3 9 7 Released"
+title = "Shoko Version 3.9.7 Released"
 image = "assets/images/blog/Version-397-Banner.jpg"
 date = 2020-04-30T15:42:46+00:00
 type = "post"
@@ -16,6 +16,8 @@ We've been hard at on some of the items we previously mentioned in [What's Next 
 This release contains many fixes and improvements to the AniDB system, TvDB System and TvDB image downloading. We've also tweaked the Sentry settings to stop it from spamming the logs.
 
 The Web UI also got some much needed TLC and users are now able to pause, start and cancel queues.
+
+### Changelog
 
 As always you can find a summary of the changes made by checking out the Changelog.
 

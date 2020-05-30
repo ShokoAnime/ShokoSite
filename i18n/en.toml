@@ -25,6 +25,8 @@ other = "Tag"
 other = "Tags"
 [share]
 other = "Spread The Word"
+[translation]
+other = "Translation Available"
 [read-more]
 other = "Read More →"
 [posted-on]

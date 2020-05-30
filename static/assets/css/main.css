@@ -234,6 +234,9 @@ thead {
 
 .navbar-theme-icon {
 	color: var(--fontColorAlt);
+}
+
+.navbar-theme-icon-select {
 	cursor: pointer;
 }
 
@@ -765,6 +768,18 @@ a.share-button-link {
 .post-divider {
 	color: var(--fontColor);
 	padding: 0 0.2rem;
+}
+
+.post-content > h3::before {
+	background-color: var(--linkActive);
+	display: inline-flex;
+	bottom: 0px;
+	content: "";
+	top: 0px;
+	width: 8px;
+	height: 28px;
+	margin-right: 1.5rem;
+	padding-bottom: 10px;
 }
 
 .post-dev-wrapper {

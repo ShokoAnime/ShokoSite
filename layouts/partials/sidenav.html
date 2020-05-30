@@ -166,6 +166,23 @@
 	</div>
 	{{ end }}
 
+</div>
+
+<!-- Translation -->
+<h5 class="side-nav-header">{{ i18n "translation" }}</h5>
+<hr class="side-nav-hr">
+<div class="side-group-wrapper">
+
+	{{ if .IsTranslated }}
+	{{ range .Translations }}
+	<div class="side-item-single">
+		<a class="single-item-link" href="{{ .Permalink }}">{{ .Title }}</a>
+		<span class="single-item-count">{{ .Lang | upper }}</span>
+	</div>
+	{{ end }}
 	{{ end }}
 
 </div>
+
+{{ end }}
+

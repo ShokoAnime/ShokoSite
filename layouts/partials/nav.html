@@ -10,14 +10,14 @@
 
 <span class="navbar-theme-divider">|</span>
 <div class="navbar-theme-icon">
-	<i class="fas fa-sun" id="themeSwitcher"></i>
+	<i class="fas fa-sun navbar-theme-icon-select" id="themeSwitcher"></i>
 </div>
 
 <div class="navbar-lang dropdown">
 	<i class="fas fa-language fa-lg" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
 		aria-expanded="false"></i>
 	<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-		{{ range $.Site.Home.AllTranslations }}
+		{{ range .AllTranslations }}
 		<a class="dropdown-item" href="{{ .Permalink }}">{{ .Language.LanguageName }}</a>
 		{{ end }}
 	</div>

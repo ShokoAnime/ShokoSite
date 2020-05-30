@@ -1,20 +1,18 @@
 # Nav Menu
 [about]
-other = "Über"
+other = "About"
 [blog]
 other = "Blog"
 [changelog]
-other = "Änderungsprotokoll"
+other = "Changelog"
 [downloads]
 other = "Downloads"
-[programs]
-other = "Programme"
 [documentation]
-other = "Dokumentation"
+other = "Documentation"
 [github]
 other = "Github"
 [support]
-other = "Unterstützung"
+other = "Support"
 
 # Blog
 [category]
@@ -26,9 +24,11 @@ other = "Tag"
 [tags]
 other = "Tags"
 [share]
-other = "Verbreiten Sie das Wort"
+other = "Spread The Word"
+[translation]
+other = "Translation Available"
 [read-more]
-other = "Lesen Sie mehr →"
+other = "Read More →"
 [posted-on]
 other = "Posted On:"
 [banner-anime]
@@ -36,11 +36,11 @@ other = "Banner Anime:"
 
 # Categories
 [general]
-other = "Allgemeines"
+other = "General"
 [update]
-other = "Aktualisieren"
+other = "Update"
 [website]
-other = "Webseite"
+other = "Website"
 
 # Tags
 [anidb]
@@ -71,3 +71,35 @@ other = "Shoko Server"
 other = "Shoko Metadata"
 [web-ui]
 other = "Web UI"
+
+# Downloads
+[version]
+other = "Version"
+[programs]
+other = "Programs"
+[resources]
+other = "Resources"
+[details]
+other = "Details"
+[screenshots]
+other = "Screenshots"
+[program-info]
+other = "Program Information"
+[windows]
+other = "Windows"
+[plugins]
+other = "Plugins"
+[stable]
+other = "Stable"
+[daily]
+other = "Daily"
+[platform]
+other = "Platform"
+[release]
+other = "Release"
+[server-required]
+other = "Shoko Server is required for all Programs & Plugins."
+[learn-more]
+other = "Learn More →"
+[learn-more-about]
+other = "Learn More About"

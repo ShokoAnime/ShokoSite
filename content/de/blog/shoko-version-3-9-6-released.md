@@ -1,5 +1,5 @@
 +++
-title = "Shoko Version 3.9.6 Released German"
+title = "Shoko Version 3.9.6 veröffentlicht"
 image = "assets/images/blog/Version-396-Banner.jpg"
 date = 2019-11-27T19:42:46+00:00
 type = "post"
