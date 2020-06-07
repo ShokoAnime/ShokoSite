@@ -16,6 +16,7 @@
 		14. Downloads - Index
 		15. Downloads - Single
 		16. Download/Blog - Sidenav
+		17. Media Queries
 ---------------------------------------------
 */
 
@@ -1063,6 +1064,13 @@ a.share-button-link {
 ---------------------------------------------
 */
 
+.side-nav-wrapper {
+	position: sticky;
+	height: 100%;
+	top: 32px;
+	width: auto;
+}
+
 .side-nav-header {
 	margin: 0;
 }
@@ -1106,4 +1114,49 @@ a.share-button-link {
 .single-item-count {
 	font-weight: 600;
 	color: var(--linkActive);
+}
+
+/*
+---------------------------------------------
+		17. Media Queries
+---------------------------------------------
+*/
+
+
+@media only screen and (max-width: 1366px) {
+
+	/* Blog Index */
+	.blog-wrapper {
+		margin: 3rem 1rem;
+	}
+
+	.blog-post-wrapper {
+		width: 100%;
+	}
+
+	/* Blog Post */
+	.post-content-wrapper {
+		max-width: 63%;
+		padding: 0 1rem 0 3rem;
+
+	}
+
+	/*	Downloads - Index */
+	.downloads-entry-wrapper {
+		padding: 0 3rem;
+	}
+
+	.downloads-item-left-section {
+		max-width: 76%;
+	}
+
+	/*	Downloads - Item */
+	.downloads-single-content-wrapper {
+		padding: 0 3rem;
+		max-width: 63%;
+	}
+
+	.downloads-single-image {
+		width: 400px;
+	}
 }
