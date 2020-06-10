@@ -24,8 +24,15 @@
 <div class="blog-wrapper">
 	<div class="row">
 
-		{{ range $paginator.Pages }}
-		{{ if eq .Params.type "post" }}
+		{{ $rangeType := $paginator.Pages }}
+
+		{{ if (eq .Paginator.PageNumber 1) }}
+		{{ $rangeType = after 1 (where $paginator.Pages "Section" "blog") }}
+		{{ else if (ne .Paginator.PageNumber 1) }}
+		{{ $rangeType = (where $paginator.Pages "Section" "blog") }}
+		{{ end }}
+
+		{{ range $rangeType }}
 		<div class="col-xl-12 blog-post-container">
 
 			<div class="blog-post-wrapper">
@@ -70,7 +77,6 @@
 			</div>
 
 		</div>
-		{{ end }}
 		{{ end }}
 
 	</div>

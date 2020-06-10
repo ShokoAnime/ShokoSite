@@ -37,6 +37,7 @@
 a {
 	color: var(--linkNormal);
 	font-weight: 600;
+	outline: 0;
 }
 
 a:hover {
@@ -224,7 +225,7 @@ thead {
 .navbar-link {
 	color: var(--navLinkNormal);;
 	font-weight: 700;
-	padding-left: 1rem;
+	margin-left: 1rem;
 	font-size: 1.1rem;
 }
 
