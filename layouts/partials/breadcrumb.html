@@ -11,7 +11,7 @@
 		{{ $.Scratch.Add "path" $element }}
 		{{ if ne $element "" }}
 		<span class="breadcrumb-separator">>></span>
-		<a href='{{ $.Scratch.Get "path" }}'>{{ humanize . }}</a>
+		<a href='{{ $.Scratch.Get "path" | relURL }}'>{{ humanize . }}</a>
 		{{ $.Scratch.Add "path" "/" }}
 		{{ end }}
 		{{ end }}

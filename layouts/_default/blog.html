@@ -15,28 +15,23 @@
 	</div>
 </div>
 
-{{ $pages := .Site.RegularPages }}
+{{ $pages := (where .Site.RegularPages "Section" "blog") }}
 {{ range .Site.Home.Translations }}
-{{ $pages = $pages | lang.Merge .Site.RegularPages }}
+{{ $pages = $pages | lang.Merge (where .Site.RegularPages "Section" "blog") }}
 {{ end }}
 {{ $paginator := .Paginate $pages }}
 
 <div class="blog-wrapper">
 	<div class="row">
 
-		{{ $rangeType := $paginator.Pages }}
-
-		{{ if (eq .Paginator.PageNumber 1) }}
-		{{ $rangeType = after 1 (where $paginator.Pages "Section" "blog") }}
-		{{ else if (ne .Paginator.PageNumber 1) }}
-		{{ $rangeType = (where $paginator.Pages "Section" "blog") }}
-		{{ end }}
-
-		{{ range $rangeType }}
+		{{ range $paginator.Pages }}
 		<div class="col-xl-12 blog-post-container">
 
 			<div class="blog-post-wrapper">
-				<img class="blog-post-image" src="{{ .Site.BaseURL }}{{ .Params.image }}" alt=" {{ .Params.title }}">
+				<a href="{{ .Permalink }}">
+					<img class="blog-post-image" src="{{ .Site.BaseURL }}{{ .Params.image }}"
+					     alt=" {{ .Params.title }}">
+				</a>
 				<div class="blog-post-image-overlay">
 					<div class="blog-post-date">
 						<div class="blog-post-date-month">{{ .Date.Format "Jan" }}</div>

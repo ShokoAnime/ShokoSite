@@ -3,6 +3,7 @@ title = "Shoko Version 3.9.7 Released"
 image = "assets/images/blog/Version-397-Banner.jpg"
 date = 2020-04-30T15:42:46+00:00
 type = "post"
+version = "3.9.7"
 anime = "Outlaw Star"
 category = ["Update"]
 tag = ["Shoko Desktop", "Shoko Server"]
@@ -17,19 +18,7 @@ This release contains many fixes and improvements to the AniDB system, TvDB Syst
 
 The Web UI also got some much needed TLC and users are now able to pause, start and cancel queues.
 
-### Changelog
-
-As always you can find a summary of the changes made by checking out the Changelog.
-
-[Shoko Server 3.9.7 Changelog](https://docs.shokoanime.com/changelog/server)
-
-[Shoko Desktop 3.9.7 Changelog](https://docs.shokoanime.com/changelog/desktop)
-
-### Download Link
-
-[Download Shoko Version 3.9.7](https://shokoanime.com/downloads/)
-
-### Contributors
+##### Contributors
 
 This release was made possible by the following people.
 

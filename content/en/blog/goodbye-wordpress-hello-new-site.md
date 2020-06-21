@@ -3,6 +3,7 @@ title = "Goodbye Wordpress Hello New Site"
 image = "assets/images/blog/Goodbye-Wordpress-Hello-New-Site-Banner.jpg"
 date = 2018-09-24T02:45:46+00:00
 type = "post"
+version = "NA"
 anime = "The Irregular at Magic High School"
 category = ["Website"]
 tag = ["Shoko"]
@@ -16,7 +17,7 @@ So instead, we decided to completely drop WordPress and design and code our own 
 
 With our new website, both staff and users can make changes as needed, add new programs / plugins and even create new blog posts simply by creating a PR on the [sites repo](https://github.com/ShokoAnime/ShokoSite). You'll find some information on what's required to submit a new program / plugin or create a blog post in the repo. The site doesn't update automatically as that's something we'll be looking into in the future.
 
-### What Else Is New?
+##### What Else Is New?
 
 You mean besides the **brand new site**?
 
@@ -25,12 +26,12 @@ You mean besides the **brand new site**?
 -   The individual program/plugin pages were removed. All the relevant information is now shown on the **downloads** page.
 -   The **About** page was actually finished, go check it out.
 
-### How You Can Help
+##### How You Can Help
 
 The site is brand new and while we've had it up in a testing function for a couple weeks, its possible we missed some bugs here and there. Users looking for an adventure should explore the site and report any issues found using the [sites repo](https://github.com/ShokoAnime/ShokoSite) so you know, we can fix them. We're also taking feedback so feel free to let us know what you think.
 
 Also before anyone asks, there is a **Dark Theme** in the works but no ETA.
 
-### Known Issues
+##### Known Issues
 
 -   There's an invalid breadcrumb on the pagination pages.

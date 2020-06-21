@@ -3,6 +3,7 @@ title = "Introducing the JMM Server Web UI"
 image = "assets/images/blog/JMM-Server-Web-UI-Banner.jpg"
 date = 2016-08-09T11:27:42+00:00
 type = "post"
+version = "NA"
 anime = "Scryed"
 category = ["General", "Website"]
 tag = ["Shoko Server", "Web UI"]

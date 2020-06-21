@@ -16,29 +16,29 @@ After a very successful beta that helped in identifying previously unknown issue
 
 The [changelog](https://docs.shokoanime.com/changelog) contains the full list of changes included in version 3.6.0.2, here are some of the highlights we wanted to mention.
 
-### Collection Caching
+##### Collection Caching
 
 Users will now see and experience a significant speed boost when viewing and maintaining their collection. With the exception of Anime Buddy, every program and plugin has been updated to benefit from the cache addition. These changes will be most noticeable for users with bigger collections as that’s where the benefits of the collection cache really shine, however even users with smaller collections will still benefit from it with the near instant load times.
 
 Please note, collection caching is a new feature that we're excited to share and while we’ve performed exhaustive testing, there are bound to be bugs and issues we never encountered. If you happen to encounter any issues please report them on GitHub so we can investigate.
 
-### Streaming
+##### Streaming
 
 One of the most requested additions to JMM is finally available! Users will now be able to stream their collection to any JMM supported program or plugin with watched states being updated as normal. Checkout our [streaming documentation](https://shokoanime.com) which should you get started, as this is a new feature we’ll continue to make updates as needed to make sure we cover all issues that might arise.
 
 Please note, streaming is a new feature and while we’ve performed exhaustive testing, there are bound to be bugs and issues we never encountered. If you happen to encounter any issues please report them on GitHub so we can investigate.
 
-### Series Relation Settings
+##### Series Relation Settings
 
 Users can now specify which types of relations are excluded when they've enabled the option "Automatically place related series into the same groups" allowing for a finer control over group management. By default, when enabled every relation will be grouped together so users who already had this setting enabled should take a moment to go through the available options and select the relations they don't want grouped.
 
-### Icon Refresh & UI Improvements
+##### Icon Refresh & UI Improvements
 
 Both JMM Desktop and JMM Server have had nearly every icon replaced to give it a more updated look as well as dozens of UI fixes to improve user experience. We also added more help locations for functionality that may be considered confusing to some users and direct links within JMM Desktop to both the online documentation and our Discord server.
 
 Make sure to join us on Discord if you need help and post any issues you might encounter on GitHub.
 
-### Database Backup
+##### Database Backup
 
 JMM will now backup your database when upgrading to a new version, this is an automatic process and requires no additional input on the user side. Depending on your database type, you can find the backup in the following locations.
 
@@ -67,13 +67,13 @@ JMM will now backup your database when upgrading to a new version, this is an au
 
 The exact location for SQL Server will change depending on what version of SQL Server you are running.
 
-### Reducing AniDB Bans
+##### Reducing AniDB Bans
 
 We've made some changes into how JMM access AniDB in order to reduce the change of receiving an temporary AniDB ban while using JMM. Connection attempts will now be made every 2.5 seconds which has shown a drastic reduction in the chance of receiving a AniDB temporary ban. During our tests we were able to import over 1000 files, hash every file and download file and series information without ever receiving a temporary ban. We'll continue to work on improving this function as well as optimize it for use when importing a low amount of files or updating a single series.
 
 **Please note, AniDB tracks your IP so importing files and either accessing AniDB via your browser or another program will still result in a temporary ban for excessive connection attempts!**
 
-### My Anime 3 Update
+##### My Anime 3 Update
 
 At the moment, the updated version of My Anime 3 is hosted locally until we can update it on the MediaPortal website. Also, since the last update we've had to drop support for a couple skins as the skins are no longer updated. The amount of work to update them is more effort than its worth, at the moment My Anime 3 only supports the following skins
 
@@ -84,13 +84,13 @@ At the moment, the updated version of My Anime 3 is hosted locally until we can 
 
 If you'd like to see more skin support, feel free to request it or add support for it yourself.
 
-### Known Issues
+##### Known Issues
 
 *   If .NET Framework 4.6.1 is installed during JMM Server install, you might need to restart your computer for the install to complete.
 *   Large databases will take some time to update to the caching system, plan accordingly.
 *   Video Player Integration for watched states does not work, our previous method of hacking together this  feature has become too cumbersome to continue to fix with each update so we're working on a better solution that gives us more control. Until then you'll need to manually mark each file you watch.
 
-### Contributors
+##### Contributors
 
 This release was only made possible by the following people volunteering their time to make JMM better.
 
@@ -100,6 +100,6 @@ In alphabetical order:
 
 JMM is open source and we're always looking for more help, not just with coding!
 
-### New Site Incoming
+##### New Site Incoming
 
 We've been working on a much improved site that we'll be debuting here very soon, until then the site will not be updated as we're focusing efforts on the new site. The only exception will be any updates to the JMM suite.

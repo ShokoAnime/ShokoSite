@@ -14,21 +14,21 @@ This releases address some long-standing issues and new issues created during va
 
 For a complete list of changes, check out the [Changelog](https://docs.shokoanime.com/changelog.html).
 
-### Image Loading
+##### Image Loading
 
 Due to a change in an earlier version of Media Portal, images would appear broken or not load at all depending on the view being used. While we were able to fix this problem, we noticed that image loading itself had become slow when using certain views such as Wide Banners or Coverflow. Unfortunately the fix for this problem would require a huge refactor of My Anime 3 that, as explained below is just not possible for us anymore
 
-### Maintenance Mode
+##### Maintenance Mode
 
 At the current time, we only have two developers on staff who have ever used My Anime 3 and both of them have since moved on to other platforms and no longer use Media Portal and more importantly, don't have the time for the project they once did. While we'd like more than anything to continue updating and adding new features to My Anime 3, its unfortunately just not feasible as our team is working on bigger changes within Shoko itself and would deter from these changes as our devs would need to learn how MediaPortal and My Anime 3 work and operate. We hated seeing My Anime 3 users in constant limbo so we decided that instead of marking My Anime 3 as discontinued, we would instead put it into maintenance mode and only release update to address any major issues that are the result of changes made within Shoko Server.
 
 **Any developers interested in further developing My Anime 3, please contact Elemental Crisis on Discord.**
 
-### Download Link
+##### Download Link
 
 [Download My Anime 3 Version 3.7.2](https://shokoanime.com/downloads/)
 
-### Contributors
+##### Contributors
 
 This release was made possible by the following people.
 

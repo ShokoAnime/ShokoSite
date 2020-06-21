@@ -139,30 +139,79 @@
 <hr class="side-nav-hr">
 {{ partial "share.html" . }}
 
-<!-- Categories -->
-<span class="side-nav-header-indicator"></span>
-<h5 class="side-nav-header">{{ i18n "categories" }}</h5>
+<!-- Changelog -->
+<h5 class="side-nav-header">{{ i18n "changelog" }}</h5>
 <hr class="side-nav-hr">
 <div class="side-group-wrapper">
 
-	{{ range $name, $items := .Site.Taxonomies.category }}
+	{{ range $items := .Params.tag }}
+	{{ if eq $items "Shoko Server" }}
 	<div class="side-item-single">
-		<a class="single-item-link" href="{{ "/blog/category/" | relLangURL }}{{ $name | urlize }}">{{ i18n $name }}</a>
-		<span class="single-item-count">{{ len $items }}</span>
+		<a class="single-item-link" href="">Shoko Server {{ $.Params.version }} {{ i18n "changelog" }}</a>
+	</div>
+	{{ else if eq $items "Shoko Desktop" }}
+	<div class="side-item-single">
+		<a class="single-item-link" href="">Shoko Desktop {{ $.Params.version }} {{ i18n "changelog" }}</a>
+	</div>
+	{{ else if eq $items "Shoko Metadata" }}
+	<div class="side-item-single">
+		<a class="single-item-link" href="">Shoko Metadata {{ $.Params.version }} {{ i18n "changelog" }}</a>
+	</div>
+	{{ else if eq $items "My Anime 3" }}
+	<div class="side-item-single">
+		<a class="single-item-link" href="">My Anime 3 {{ $.Params.version }} {{ i18n "changelog" }}</a>
+	</div>
+	{{ end }}
+	{{ end }}
+
+	{{ $items := .Params.version }}
+	{{ if eq $items "NA" }}
+	<div class="side-item-single">
+		<a class="single-item-link" href="">Shoko Server {{ i18n "changelog" }}</a>
+	</div>
+	<div class="side-item-single">
+		<a class="single-item-link" href="">Shoko Desktop {{ i18n "changelog" }}</a>
 	</div>
 	{{ end }}
 
 </div>
 
-<!-- Tags -->
-<h5 class="side-nav-header">{{ i18n "tags" }}</h5>
+<!-- Download -->
+<h5 class="side-nav-header">{{ i18n "downloads" }}</h5>
 <hr class="side-nav-hr">
 <div class="side-group-wrapper">
 
-	{{ range $name, $items := .Site.Taxonomies.tag }}
+	{{ range $items := .Params.tag }}
+	{{ if eq $items "Shoko Server" }}
 	<div class="side-item-single">
-		<a class="single-item-link" href="{{ "/blog/tag/" | relLangURL }}{{ $name | urlize }}">{{ i18n $name }}</a>
-		<span class="single-item-count">{{ len $items }}</span>
+		<a class="single-item-link" href="">{{ i18n "download" }} Shoko Server {{ $.Params.version }}</a>
+	</div>
+	{{ else if eq $items "Shoko Desktop" }}
+	<div class="side-item-single">
+		<a class="single-item-link" href="">{{ i18n "download" }} Shoko Desktop {{ $.Params.version }}</a>
+	</div>
+	{{ else if eq $items "Shoko Metadata" }}
+	<div class="side-item-single">
+		<a class="single-item-link" href="">{{ i18n "download" }} Shoko Metadata {{ $.Params.version }}</a>
+	</div>
+	{{ else if eq $items "Nakamori" }}
+	<div class="side-item-single">
+		<a class="single-item-link" href="">{{ i18n "download" }} Nakamori {{ $.Params.version }}</a>
+	</div>
+	{{ else if eq $items "My Anime 3" }}
+	<div class="side-item-single">
+		<a class="single-item-link" href="">{{ i18n "download" }} My Anime 3 {{ $.Params.version }}</a>
+	</div>
+	{{ end }}
+	{{ end }}
+
+	{{ $items := .Params.version }}
+	{{ if eq $items "NA" }}
+	<div class="side-item-single">
+		<a class="single-item-link" href="">{{ i18n "download" }} Shoko Server</a>
+	</div>
+	<div class="side-item-single">
+		<a class="single-item-link" href="">{{ i18n "download" }} Shoko Desktop</a>
 	</div>
 	{{ end }}
 
@@ -181,7 +230,7 @@
 	</div>
 	{{ end }}
 
-{{ end }}
+	{{ end }}
 
 </div>
 

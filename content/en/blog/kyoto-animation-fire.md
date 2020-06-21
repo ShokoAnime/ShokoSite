@@ -3,6 +3,7 @@ title = "Kyoto Animation Fire"
 image = "assets/images/blog/Kyoto-Animation-Banner.jpg"
 date = 2019-07-18T19:42:46+00:00
 type = "post"
+version = "NA"
 anime = "Kyoto Animation"
 category = ["General", "Website"]
 tag = ["Kyoto Animation", "Shoko"]

@@ -3,6 +3,7 @@ title = "Shoko Version 3.9.6 Released"
 image = "assets/images/blog/Version-396-Banner.jpg"
 date = 2019-11-27T19:42:46+00:00
 type = "post"
+version = "3.9.6"
 anime = "Robotics;Notes"
 category = ["Update"]
 tag = ["Shoko Desktop", "Shoko Server"]
@@ -21,16 +22,6 @@ Episode images and Fanart should properly download again.
 As always you can find a summary of the changes made by checking out the
 Changelog.
 
-[Shoko Server 3.9.6
-Changelog](https://docs.shokoanime.com/changelog/server)
-
-[Shoko Desktop 3.9.6
-Changelog](https://docs.shokoanime.com/changelog/desktop)
-
-### Download Link
-
-[Download Shoko Version 3.9.6](https://shokoanime.com/downloads/)
-
-### Contributors
+##### Contributors
 
 This release was made possible by the following people.

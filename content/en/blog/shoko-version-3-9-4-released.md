@@ -3,6 +3,7 @@ title = "Shoko Version 3.9.4 Released"
 image = "assets/images/blog/Version-394-Banner.jpg"
 date = 2018-12-30T19:42:46+00:00
 type = "post"
+version = "3.9.4"
 anime = "Beautiful Bones: Sakurako's Investigation"
 category = ["Update"]
 tag = ["Shoko Desktop", "Shoko Server"]
@@ -14,7 +15,7 @@ This release addresses various bugs reported since the last update that we felt 
 
 For a complete list of changes, check out the [Changelog](https://docs.shokoanime.com/changelog.html).
 
-### Shoko Analytics
+##### Shoko Analytics
 
 One of the bigger changes we were going to introduce in version 4.0 was the inclusion of a telemetry service. However we didn't want it to get buried by the other features and changes coming with version 4.0 so instead we added a basic version of it into version 3.9.4. With telemetry services being a hot topic these days we wanted to fully explain our reasons for adding it and what data we'll be collecting to avoid any confusion going forward.
 
@@ -40,15 +41,11 @@ Starting with Version 3.9.4, we'll be collecting information related to the foll
 -   Utility - Removing Missing Files
 -   Utility - Validate All Images
 
-### Opting Out
+##### Opting Out
 
 We only track that the events listed above occur, not anything about them. You may opt-out by setting **GA\_OptOutPlzDont** to **true** in settings.json.
 
-### Download Link
-
-[Download Shoko Version 3.9.4](https://shokoanime.com/downloads/)
-
-### Contributors
+##### Contributors
 
 This release was made possible by the following people.
 

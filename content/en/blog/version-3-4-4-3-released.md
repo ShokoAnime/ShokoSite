@@ -10,7 +10,7 @@ tag = ["Shoko Server", "Shoko Desktop"]
 
 Version 3.4.4 introduces the following changes, we recommend reading through this blog post in order to familiarize yourself with what's changed.
 
-### Metro Dashboard
+##### Metro Dashboard
 
 {{% lightbox-image image-url="/assets/images/blog/Version-3443-JMM-Desktop-Metro-Series-Overview.jpg" image-alt="JMM Desktop - Metro Series Overview" %}}
 
@@ -20,7 +20,7 @@ The series display in the Metro dashboard has received a few small tweaks.
 *   The previous episode you watch is now shown, so you can re-watch it easily, or just in case you accidentally marked it as watched
 *   The next episode to watch is highlighted and shows a few more details than other episodes
 
-### Trakt
+##### Trakt
 
 {{% lightbox-image image-url="/assets/images/blog/Version-3443-JMM-Desktop-Trakt-Settings.jpg" image-alt="JMM Desktop - Trakt Settings"%}}
 
@@ -32,7 +32,7 @@ Copy and paste this PIN into the text box in JMM Desktop, and then hit "Authoriz
 
 {{% lightbox-image image-url="/assets/images/blog/Version-3443-JMM-Desktop-Community-Data.jpg" image-alt="JMM Desktop - Community Tab"%}}
 
-### Community Data
+##### Community Data
 
 A new utility has been added to help fix this data.
 
@@ -52,7 +52,7 @@ Click on the button to search, and it will show you the community recommendation
 
 {{% lightbox-image image-url="/assets/images/blog/Version-3443-JMM-Desktop-Series-Community-Links.jpg" image-alt="JMM Desktop - Series Community Links"%}}
 
-### Other
+##### Other
 
 You can now see Trakt comments on the regular series view.
 

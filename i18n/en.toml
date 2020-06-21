@@ -73,6 +73,8 @@ other = "Shoko Metadata"
 other = "Web UI"
 
 # Downloads
+[download]
+other = "Download"
 [version]
 other = "Version"
 [programs]

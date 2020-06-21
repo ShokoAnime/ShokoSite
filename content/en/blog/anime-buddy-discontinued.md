@@ -3,6 +3,7 @@ title = "Anime Buddy Discontinued"
 image = "assets/images/blog/Anime-Buddy-Discontinued-Banner.jpg"
 date = 2017-09-16T03:10:11+00:00
 type = "post"
+version = "NA"
 anime = "Outlaw Star"
 category = ["Update"]
 tag = ["Anime Buddy"]

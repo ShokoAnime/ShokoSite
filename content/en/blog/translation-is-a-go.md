@@ -3,6 +3,7 @@ title = "Translation is a Go"
 image = "assets/images/blog/Google-Sheets-Banner.jpg"
 date = 2016-05-31T09:14:28+00:00
 type = "post"
+version = "NA"
 anime = "Pumpkin Scissors"
 category = ["General"]
 tag = ["Shoko Desktop","Shoko Server"]

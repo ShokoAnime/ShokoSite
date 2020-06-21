@@ -14,11 +14,11 @@ Version 3.8 was our biggest release to date and was released a very long time af
 
 This release mainly focused on fixing issues caused by the previous release as well as adding better logging in both Server and Desktop. As always check the [Changelog](https://docs.shokoanime.com/changelog.html) for a complete list of changes made.
 
-### Shoko On Plex Updated
+##### Shoko On Plex Updated
 
 We've updated Shoko on Plex making it compatible with the latest version of Shoko. This was a maintenance release so please report any issues you encounter on GitHub.
 
-### Changes to Versioning
+##### Changes to Versioning
 
 We've decided to change our versioning system a bit.
 
@@ -32,7 +32,7 @@ For those confused here's the breakdown.
 -   MINOR version number, updated when a significant feature is added.
 -   PATCH version number, when general changes are made.,
 
-### Contributors
+##### Contributors
 
 This release was made possible by the following people.
 

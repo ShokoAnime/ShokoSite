@@ -16,7 +16,7 @@ This past weekend we moved everything over to our ShokoAnime domain name making 
 
 Now onto the main purpose of this blog post.
 
-### Introducing Shoko Docs
+##### Introducing Shoko Docs
 
 Anyone that's visited our GitHub repo in the past couple of months or talked with us on Discord has probably noticed we've been making a lot of core changes to Shoko. We've talked about some of these changes before with our vision for Shoko going forward, we made our previously private ClientV2 channel accessible to all users on our Discord server and now we're opening up Shoko Docs.
 
@@ -28,7 +28,7 @@ You can reach Shoko Docs either by clicking on Shoko Docs in the menu above or u
 
 [http://docs.shokoanime.com](https://docs.shokoanime.com)
 
-### Rewritten From Scratch
+##### Rewritten From Scratch
 
 While a lot of the old documentation will still be used as an outline, Shoko Docs is being rewritten from scratch so that the content being presented is accurate and up-to-date as previously there were sections that had not been touched in over a year. This means that previously available pages are currently not available, we have created a priority list starting with Shoko Server but are open to suggestions on what should be worked on first. 
 
