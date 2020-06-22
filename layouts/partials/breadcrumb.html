@@ -6,12 +6,18 @@
 
 		{{ $url := replace .Permalink ( printf "%s" .Site.BaseURL) "" }}
 		{{ $.Scratch.Add "path" .Site.BaseURL }}
+		{{ $len := len (split $url "/") }}
+		{{ $len := sub $len 2}}
 		<a href="/">{{ .Site.Title }}</a>
 		{{ range $index, $element := split $url "/" }}
 		{{ $.Scratch.Add "path" $element }}
 		{{ if ne $element "" }}
 		<span class="breadcrumb-separator">>></span>
+		{{ if ne $index $len }}
 		<a href='{{ $.Scratch.Get "path" | absURL }}'>{{ humanize . }}</a>
+		{{ else }}
+		{{ humanize . }}
+		{{ end }}
 		{{ $.Scratch.Add "path" "/" }}
 		{{ end }}
 		{{ end }}
