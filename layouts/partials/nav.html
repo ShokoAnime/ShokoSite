@@ -8,18 +8,21 @@
 
 {{ if eq (.Scratch.Get "extended-nav") true }}
 
-<span class="navbar-theme-divider">|</span>
-<div class="navbar-theme-icon">
-	<i class="fas fa-sun navbar-theme-icon-select" id="themeSwitcher"></i>
-</div>
+<div class="navbar-buttons">
+	<span class="navbar-theme-divider">|</span>
+	<div class="navbar-theme-icon">
+		<i class="fas fa-sun navbar-theme-icon-select" id="themeSwitcher"></i>
+	</div>
 
-<div class="navbar-lang dropdown">
-	<i class="fas fa-language fa-lg" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-		aria-expanded="false"></i>
-	<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-		{{ range .AllTranslations }}
-		<a class="dropdown-item" href="{{ .Permalink }}">{{ .Language.LanguageName }}</a>
-		{{ end }}
+	<div class="navbar-lang dropdown">
+		<i class="fas fa-language fa-lg" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+		   aria-expanded="false"></i>
+		<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+			{{ range .AllTranslations }}
+			<a class="dropdown-item" href="{{ .Permalink }}">{{ .Language.LanguageName }}</a>
+			{{ end }}
+			<a class="dropdown-item" href="/translate">Translate</a>
+		</div>
 	</div>
 </div>
 

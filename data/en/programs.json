@@ -54,7 +54,7 @@
       "info": "Shoko Metadata provides users with a smooth anime experience on Plex pulling your series data directly from Shoko instead of the default metadata sources Plex uses. This Plex library plugin provides support for TV Series and Movies.",
       "downloads": [
         {
-          "plexStable": "https://shokoanime.com/files/stable/Shoko_Server_Setup_3.9.7.zip"
+          "plexStable": "https://github.com/Cazzar/ShokoMetadata.bundle/releases/"
         }
       ],
       "resources": [

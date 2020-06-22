@@ -17,7 +17,7 @@ In the past to save time, we used a prebuilt template and customized it to our n
 
 ##### Rebuilt From The Ground Up
 
-Building of some of the design elements of the previous version of Shoko Docs, we entirely rebuilt Shoko Docs giving us a**cleaner codebase** and allowing us to **modify Shoko Docs** however we want going forward. Our CSS & JS files are 1/10th of what they previously and our overall load times have been reduced drastically. We've reduced the load times by 30%-40% and page file size by 50%. However the biggest change we've made was under the hood, the switch to Hugo.
+Building of some of the design elements of the previous version of Shoko Docs, we entirely rebuilt Shoko Docs giving us a**cleaner codebase** and allowing us to **modify Shoko Docs** however we want going forward. Our CSS & JS files are 1/10th of what they previously were, and our overall load times have been reduced drastically. We've reduced the load times by 30%-40% and page file size by 50%. However, the biggest change we've made was under the hood, the switch to Hugo.
 
 ##### Goodbye Jekyll, Hello Hugo
 
