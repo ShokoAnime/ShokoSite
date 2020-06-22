@@ -14,7 +14,7 @@
 		{{ if ne $element "" }}
 		<span class="breadcrumb-separator">>></span>
 		{{ if ne $index $len }}
-		<a href='{{ $.Scratch.Get "path" | absURL }}'>{{ humanize . }}</a>
+		<a href='{{ $.Scratch.Get "path" | absLangURL }}'>{{ humanize . }}</a>
 		{{ else }}
 		{{ humanize . }}
 		{{ end }}

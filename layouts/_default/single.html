@@ -90,7 +90,7 @@
 					{{ $data := index $.Site.Data $.Site.Language.Lang }}
 
 					{{ if eq (index $.Site.Data $.Site.Language.Lang) nil }}
-					{{ $data = .Site.Data.en }}
+					{{ $data = $.Site.Data.en }}
 					{{ end }}
 
 					{{ range $data.devs.devList }}
