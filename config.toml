@@ -15,14 +15,12 @@ title = "Shoko"
 	category = "category"
 	tag = "tag"
 
+[markup.goldmark.renderer]
+	unsafe= true
+
 [languages]
 	[languages.en]
 		contentDir = "content/en"
 		title = "Shoko"
 		languageName = "English"
 		weight = 1
-	[languages.de]
-		contentDir = "content/de"
-		title = "Shoko"
-		languageName = "German"
-		weight = 2

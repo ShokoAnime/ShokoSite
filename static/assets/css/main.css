@@ -16,7 +16,8 @@
 		14. Downloads - Index
 		15. Downloads - Single
 		16. Download/Blog - Sidenav
-		17. Media Queries
+		17. Tables
+		18. Media Queries
 ---------------------------------------------
 */
 
@@ -1130,7 +1131,39 @@ a.share-button-link {
 
 /*
 ---------------------------------------------
-		17. Media Queries
+    17. Tables
+---------------------------------------------
+*/
+
+.table {
+	color: var(--fontColor);
+	font-size: 0.9375rem;
+}
+
+.table {
+	border: 1px solid var(--borderColor);
+}
+
+.table td, .table th {
+	border: 1px solid var(--borderColor);
+}
+
+.table tbody tr:nth-of-type(even) {
+	background-color: var(--rowBackgroundEven);
+}
+
+.table tbody tr:nth-of-type(odd) {
+	background-color: var(--rowBackgroundOdd);
+}
+
+.table thead th {
+	vertical-align: bottom;
+	border-bottom: 2px solid var(--borderColor);
+}
+
+/*
+---------------------------------------------
+		18. Media Queries
 ---------------------------------------------
 */
 

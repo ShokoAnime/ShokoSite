@@ -165,7 +165,7 @@
 	{{ end }}
 
 	{{ $items := .Params.version }}
-	{{ if eq $items "NA" }}
+	{{ if or (eq $items "NA") (eq $items nil) }}
 	<div class="side-item-single">
 		<a class="single-item-link" href="">Shoko Server {{ i18n "changelog" }}</a>
 	</div>
@@ -206,7 +206,7 @@
 	{{ end }}
 
 	{{ $items := .Params.version }}
-	{{ if eq $items "NA" }}
+	{{ if or (eq $items "NA") (eq $items nil) }}
 	<div class="side-item-single">
 		<a class="single-item-link" href="">{{ i18n "download" }} Shoko Server</a>
 	</div>
