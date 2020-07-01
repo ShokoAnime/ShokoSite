@@ -1,0 +1,27 @@
+<div class="breadcrumb-wrapper">
+
+	<h2 class="breadcrumb-page-title">{{ .Title }}</h2>
+
+	<div class="breadcrumb-list">
+
+		{{ $url := replace .Permalink ( printf "%s" .Site.BaseURL) "" }}
+		{{ $.Scratch.Add "path" .Site.BaseURL }}
+		{{ $len := len (split $url "/") }}
+		{{ $len := sub $len 2}}
+		<a href="/">{{ .Site.Title }}</a>
+		{{ range $index, $element := split $url "/" }}
+		{{ $.Scratch.Add "path" $element }}
+		{{ if ne $element "" }}
+		<span class="breadcrumb-separator">>></span>
+		{{ if ne $index $len }}
+		<a href='{{ $.Scratch.Get "path" | absLangURL }}'>{{ humanize . }}</a>
+		{{ else }}
+		{{ humanize . }}
+		{{ end }}
+		{{ $.Scratch.Add "path" "/" }}
+		{{ end }}
+		{{ end }}
+
+	</div>
+
+</div>

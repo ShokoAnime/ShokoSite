@@ -1,0 +1,30 @@
+<head>
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>{{ if .Title }}{{ .Title }} | {{ end }}{{ .Site.Title }}</title>
+
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+		integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.css">
+
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Exo+2:300,400,500,600,700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Muli:300,400,600,700&display=swap" rel="stylesheet">
+
+	<!-- Shoko -->
+	<link rel="stylesheet" href="{{ "assets/css/main.min.css" | absURL }}">
+	<link rel="stylesheet" href="{{ "assets/css/light.min.css" | absURL }}" id="light">
+	<link rel="stylesheet" href="{{ "assets/css/dark.min.css" | absURL }}" id="dark">
+	<link rel="stylesheet" href="{{ "assets/css/lightbox.min.css" | absURL }}">
+
+	<!-- Language Specific CSS-->
+	{{ if eq .Site.Language.Lang "de"  }}
+	<link rel="stylesheet" href="{{ "assets/css/lang/de.min.css" | absURL }}">
+	{{ end }}
+
+</head>
