@@ -550,7 +550,7 @@ thead {
 }
 
 .breadcrumb-page-title {
-	color: var(--fontColorAlt)
+	color: var(--fontColorAlt);
 	font-size: 4rem;
 }
 
@@ -837,7 +837,7 @@ a.share-button-link {
 	position: relative;
 	top: 0;
 	transition: .5s ease;
-	width: 100px;
+	width: 101px;
 	z-index: 3;
 }
 
