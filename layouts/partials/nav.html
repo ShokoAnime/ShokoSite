@@ -21,7 +21,7 @@
 			{{ range .AllTranslations }}
 			<a class="dropdown-item" href="{{ .Permalink }}">{{ .Language.LanguageName }}</a>
 			{{ end }}
-			<a class="dropdown-item" href="/translate">Translate</a>
+			<a class="dropdown-item" href="{{ "translate" | relLangURL }}">Translate</a>
 		</div>
 	</div>
 </div>

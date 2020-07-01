@@ -55,15 +55,17 @@ Once done there are three areas where the translatable files are kept.
 
 ##### Content Folder
 
-Create a new folder in the **content** folder and name it same as the **language code** you used in the **config.toml** file. Copy the files you want to translate from the **en** folder into your newly created folder. Make sure to preserve spelling and directory structure. You do not have to copy every single file, we've set Hugo up so if a translated version of the file is not available, it will default to the **English** version. You do however have to make sure all **sub-folders** exists as well as all **_index.md** files, so the site will render the page. 
+Create a new folder in the **content** folder and name it the same as the **language code** you used in the **config.toml** file. Copy the files you want to translate from the **en** folder into your newly created folder. Make sure to preserve spelling and directory structure. You do not have to copy every single file, we've set Hugo up so if a translated version of the file is not available, it will default to the **English** version. 
+
+You do however need to make sure all **sub-folders** exists as well as all **_index.md** files regardless of your intentions to translate those pages. Otherwise, those sections will not render and appear blank when viewing the site in that language. 
 
 ##### Data Folder
 
-Create a new folder in the **data** folder and name it same as the **language code** you used in the **config.toml** file. When working with .JSON files, be aware spacing is critical and improper spacing can break the file. Like the content section, you do not have to translate each .JSON file as it will default to the **English** version if there isn't a translated file.
+Create a new folder in the **data** folder and name it the same as the **language code** you used in the **config.toml** file. When working with .JSON files, be aware spacing is critical and improper spacing can break the file. Like the content section, you do not have to translate each .JSON file as it will default to the **English** version if there isn't a translated file.
 
 ##### il8n Folder
 
-Create a new file in the **il8n** folder and name it same as the **language code** you used in the **config.toml** file then copy the contents of **en.toml** into it. 
+Create a new file in the **il8n** folder and name it the same as the **language code** you used in the **config.toml** file then copy the contents of **en.toml** into it. 
 
 ```toml
 [support]
@@ -73,7 +75,7 @@ In the above example, **[support]** is the key and should be left as-is. The onl
 
 ##### Working With Content Blocks
 
-Certain files will have it's contents broken into what we call **Contnet Blocks** which are used to separate out the content on the page. These 
+You'll notice certain files have their contents broken into what we call **Content Blocks** which are used to separate out the content on the page. These **Content Blocks** provide the capability to translate a pages content while still keeping its style and positioning. 
 
 ```md
 ||ContentBlock||
@@ -82,3 +84,15 @@ Shoko is an anime cataloging program designed to automate the entire process of 
 ```
 
 It's important to note that these sections **cannot be moved or rearranged** without breaking the page's layout as these locations are hardcoded. 
+
+##### Language Specific CSS
+
+To workaround unforeseen CSS changes that come with translating websites, we've made it so **language specific CSS** files can be added to correct any CSS issues that might arise. Create a new file in the **static/css/lang** folder and name it the same as the **language code** you used in the **config.toml** file.
+
+An example of adding a CSS file for the German language. 
+
+```dir
+static/css/lang/de.css
+```
+
+Any rules you add in the file will take priority over the ones found in the **main.css** file. We're more than willing to help if you're unfamiliar with CSS or have questions. Simply join our **Discord** server and let us know what we can do to help. 
