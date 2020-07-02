@@ -110,8 +110,10 @@ thead {
 }
 
 .page-wrapper {
+	height: 100%;
 	margin: 3rem auto;
 	max-width: 1440px;
+	min-height: calc(100vh - 578px)
 }
 
 .row-wrapper {
@@ -577,8 +579,10 @@ thead {
 */
 
 .blog-wrapper {
+	height: 100%;
 	margin: 3rem auto;
 	max-width: 1440px;
+	min-height: calc(100vh - 578px)
 }
 
 .blog-post-container {
@@ -1266,11 +1270,6 @@ a.share-button-link {
 
 	.btn-group-lg > .btn, .btn-lg {
 		font-size: 1rem;
-	}
-
-	.page-wrapper {
-		margin: 0;
-		padding: 2rem 0;
 	}
 
 	.front-blog-post-wrapper {

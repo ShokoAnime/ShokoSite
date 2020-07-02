@@ -66,9 +66,9 @@ while (parseInt(randomBanner, 10) === parseInt(previousBanner, 10)) {
 
 // Check to see if the user is visiting a translated page.
 if ($(document.body).hasClass('lang-en')) {
-	 header = ' rgba(0, 0, 0, 0) url("../images/banners/Banner-' + randomBanner + '.jpg") repeat scroll 50% 20% / cover';
+	 header = ' rgba(0, 0, 0, 0) url("/assets/images/banners/Banner-' + randomBanner + '.jpg") repeat scroll 50% 20% / cover';
 } else {
-	 header = ' rgba(0, 0, 0, 0) url("../../images/banners/Banner-' + randomBanner + '.jpg") repeat scroll 50% 20% / cover';
+	 header = ' rgba(0, 0, 0, 0) url("/assets/images/banners/Banner-' + randomBanner + '.jpg") repeat scroll 50% 20% / cover';
 }
 
 // Hero is only used on the index page while the other is used on every other page.
