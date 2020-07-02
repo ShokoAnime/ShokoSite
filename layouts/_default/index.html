@@ -107,9 +107,9 @@
 
 							{{ if gt $taxoCount "0"}}
 							<span class="blog-post-divider">|</span>
-							<a href="category/{{ $name | urlize }}"> {{ i18n $name }}</a>
+							<a href="blog/category/{{ $name | urlize }}"> {{ i18n $name }}</a>
 							{{ else }}
-							<a href="category/{{ $name | urlize }}">{{ i18n $name }}</a>
+							<a href="blog/category/{{ $name | urlize }}">{{ i18n $name }}</a>
 							{{ end }}
 
 							{{ $taxoCount = add $taxoCount 1 }}

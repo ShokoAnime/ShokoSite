@@ -53,7 +53,7 @@ let languages = ["de"];
 
 function getRandomBanner() {
 
-	randomNumber = Math.floor((Math.random() * 4) + 1);
+	randomNumber = Math.floor((Math.random() * 6) + 1);
 	return randomNumber;
 }
 

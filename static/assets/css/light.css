@@ -49,7 +49,7 @@
 	--tabsActiveBorderBottom: #ffffff;
 
 	/* Code */
-	--codeLeftBorder: #006cab;
+	--codeLeftBorder: #2196F3;
 
 	/* Buttons */
 	--buttonText: #ffffff;
@@ -61,6 +61,6 @@
 	--buttonLearnBorder: #f03358;
 
 	/* Links */
-	--linkNormal: #f56371;
+	--linkNormal: #d93252;
 	--linkActive: #2196F3;
 }

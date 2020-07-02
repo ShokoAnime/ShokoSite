@@ -1,0 +1,3 @@
+<a href="{{ .Destination | safeURL }}" data-toggle="lightbox" data-lightbox="{{ .Text }}" data-title="{{ .Text }}">
+	<img class="markdwon-image" src="{{ .Destination | safeURL }}" alt="{{ .Text }}" {{ with .Title}} title="{{ . }}"{{ end }} />
+</a>

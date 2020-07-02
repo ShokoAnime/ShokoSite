@@ -45,9 +45,13 @@ Additionally, we are looking for **Windows** users to help us test out these cha
 
  ##### Shoko Desktop 2
  
- We'll be discussing Shoko Desktop 2 in detail in an upcoming blog post that hopefully answers some of the questions we often get as well as provide some more in-depth information, and a general timeline of when you can expect Shoko Desktop 2. 
+We'll be discussing Shoko Desktop 2 in detail in an upcoming blog post that hopefully answers some of the questions we often get as well as provide some more in-depth information, and a general timeline of when you can expect Shoko Desktop 2. 
  
- As usual, we've got other items in the works that we'll be sharing with you once we've released Shoko version 4.00. For now here's a look at our redesigned Web UI that will be launching with Shoko Version 4.00.
+As usual, we've got other items in the works that we'll be sharing with you once we've released Shoko version 4.00. For now here's a look at our redesigned Web UI that will be launching with Shoko Version 4.00.
+ 
+![Shoko Server Web UI 01](/assets/images/blog/Shoko-Website-Updated-Web-UI-01.jpg)
+![Shoko Server Web UI 02](/assets/images/blog/Shoko-Website-Updated-Web-UI-02.jpg)
+![Shoko Server Web UI 03](/assets/images/blog/Shoko-Website-Updated-Web-UI-03.jpg)
  
  
  

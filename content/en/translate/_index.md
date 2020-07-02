@@ -1,5 +1,6 @@
 +++
 title = "Shoko Website Translation"
+description = "Learn how you can help make the Shoko website more accessible."
 lastMod = 2019-05-13
 layout = "single-page"
 +++
