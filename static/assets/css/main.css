@@ -109,6 +109,11 @@ thead {
 	position: relative;
 }
 
+.content-wrapper {
+	margin: 3rem auto;
+	max-width: 1440px;
+}
+
 .page-wrapper {
 	height: 100%;
 	margin: 3rem auto;
