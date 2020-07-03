@@ -4,6 +4,8 @@ DefaultContentLanguage = "en"
 paginate =  6
 title = "Shoko"
 
+disableKinds = ["taxonomyTerm"]
+
 [outputs]
 	home = ["HTML", "RSS", "JSON"]
 
