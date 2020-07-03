@@ -1,7 +1,6 @@
 +++
 title = "Shoko Website Translation"
 description = "Learn how you can help make the Shoko website more accessible."
-lastMod = 2019-05-13
 layout = "single-page"
 +++
 
@@ -14,11 +13,11 @@ We've made this quick guide to hopefully make the process easier, please let us 
 We suggest forking the Shoko Website repo as this will make it much easier to submit your changes and even make updates when needed. After doing that you'll need to modify the **config.toml** file and add your language, below is an example of adding **German** as a selectable language. 
 
 ```toml
-	[languages.de]
-		contentDir = "content/de"
-		title = "Shoko"
-		languageName = "German"
-		weight = 2
+  [languages.en]
+	contentDir = "content/en"
+	title = "Shoko"
+	languageName = "English"
+	weight = 1
 ```
 
 <table class="table table-striped">
@@ -96,4 +95,12 @@ An example of adding a CSS file for the German language.
 static/css/lang/de.css
 ```
 
+You'll also need to add the following conditional statement to the **head.html** file located in **layouts/partials/** in order for the language speciifc CSS file to load. Using the example below, replace the German language code with your language code and add it below the last language specific file and above the closing conditional tag, **{{end}}**. 
+
+```hugo
+  {{ else if eq .Site.Language.Lang "de"  }}
+  <link rel="stylesheet" href="{{ "assets/css/lang/de.min.css" | absURL }}">
+```
+
 Any rules you add in the file will take priority over the ones found in the **main.css** file. We're more than willing to help if you're unfamiliar with CSS or have questions. Simply join our **Discord** server and let us know what we can do to help. 
+

@@ -1,6 +1,6 @@
 +++
 title = "Shoko"
-lastMod = 2019-04-12
+description = "An anime cataloging program designed to automate the cataloging of your anime collection regardless of the size and number of files in your collection."
 +++
 
 Automate Your Entire Collection

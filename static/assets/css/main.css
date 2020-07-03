@@ -66,6 +66,10 @@ h2, h3, h4, h5, h6 {
 	margin: 1rem 0;
 }
 
+hr {
+	background-color: var(--borderColor);
+}
+
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -97,6 +101,10 @@ thead {
 
 .border {
 	border: 1px solid var(--borderColor) !important;
+}
+
+.border-bottom {
+	border-bottom: 1px solid var(--borderColor) !important;
 }
 
 .img-fluid {
@@ -789,6 +797,10 @@ a.share-button-link {
 	text-align: right;
 }
 
+.blog-nav-hr {
+	background-color: var(--borderColor);
+}
+
 .post-section-header {
 	font-weight: 600;
 }
@@ -1117,6 +1129,7 @@ a.share-button-link {
 }
 
 .side-nav-hr {
+	background-color: var(--borderColor);
 	margin-bottom: 0;
 }
 

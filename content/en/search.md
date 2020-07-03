@@ -1,6 +1,6 @@
 +++
 title = "Search Shoko Docs"
-lastMod = 2019-04-12
+description = "Search through the Shoko website and documentation."
 layout = "single-page"
 +++
 

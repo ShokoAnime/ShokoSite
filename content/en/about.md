@@ -1,6 +1,6 @@
 +++
 title = "About Shoko"
-lastMod = 2019-05-13
+description = "Information about the past and present Shoko team members as well as the history of the program."
 layout = "about"
 +++
 

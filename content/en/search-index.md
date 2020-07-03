@@ -1,5 +1,5 @@
 +++
-lastMod = 2019-04-12
+description = "Search through the Shoko website and documentation."
 type = "search-index"
 url = "index.json"
 layout = "single-page"

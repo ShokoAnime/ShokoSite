@@ -1,5 +1,5 @@
-#baseURL = "https://shokoanime.com/"
-baseURL = "https://shokoanime.com/devsite/"
+baseURL = "https://shokoanime.com/"
+#baseURL = "https://shokoanime.com/devsite/"
 DefaultContentLanguage = "en"
 paginate =  6
 title = "Shoko"
