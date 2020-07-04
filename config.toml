@@ -26,6 +26,11 @@ disableKinds = ["taxonomyTerm"]
 		title = "Shoko"
 		languageName = "English"
 		weight = 1
+	[languages.de]
+		contentDir = "content/de"
+		title = "Shoko"
+		languageName = "Deutsch"
+		weight = 2
 
 [params]
   images = ["icon.png"]
