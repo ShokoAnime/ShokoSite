@@ -4,20 +4,22 @@ description = "Learn how you can help make the Shoko website more accessible."
 layout = "single-page"
 +++
 
+##### Lets Translate!
+
 First off, we want to say thank you for taking the time to translate the Shoko Website! Our goal is to reach as many users as possible and by translating the website, you're helping us make that happen. 
 
 We've made this quick guide to hopefully make the process easier, please let us know if there are any issues or if you have any ideas on improving it. 
 
 ##### Getting Started
 
-We suggest forking the Shoko Website repo as this will make it much easier to submit your changes and even make updates when needed. After doing that you'll need to modify the **config.toml** file and add your language, below is an example of adding **German** as a selectable language. 
+We suggest forking the Shoko Website repo ( [Fork a Repo](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo)) as this will make it much easier to submit your changes and even make updates when needed. After doing that you'll need to modify the **config.toml** file and add your language, below is an example of adding **German** as a selectable language. 
 
 ```toml
-	[languages.de]
-		contentDir = "content/de"
-		title = "Shoko"
-		languageName = "Deutsch"
-		weight = 2
+ [languages.de]
+	contentDir = "content/de"
+	title = "Shoko"
+	languageName = "Deutsch"
+	weight = 2
 ```
 
 <table class="table table-striped">
@@ -63,9 +65,9 @@ You do however need to make sure all **sub-folders** exists as well as all **_in
 
 Create a new folder in the **data** folder and name it the same as the **language code** you used in the **config.toml** file. When working with .JSON files, be aware spacing is critical and improper spacing can break the file. Like the content section, you do not have to translate each .JSON file as it will default to the **English** version if there isn't a translated file.
 
-##### il8n Folder
+##### i18n Folder
 
-Create a new file in the **il8n** folder and name it the same as the **language code** you used in the **config.toml** file then copy the contents of **en.toml** into it. 
+Create a new file in the **i18n** folder and name it the same as the **language code** you used in the **config.toml** file then copy the contents of **en.toml** into it. 
 
 ```toml
 [support]

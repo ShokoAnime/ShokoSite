@@ -31,10 +31,6 @@
 	box-sizing: inherit;
 }
 
-::placeholder {
-	color: var(--fontColor)
-}
-
 a {
 	color: var(--linkNormal);
 	font-weight: 700;
@@ -153,18 +149,12 @@ thead {
 	width: 100%;
 }
 
-.btn {
-	-moz-box-shadow: 2px 3px 0 rgba(4, 4, 4, 0.3);
-	-webkit-box-shadow: 2px 3px 0 rgba(4, 4, 4, 0.3);
-	box-shadow: 2px 3px 0 rgba(4, 4, 4, 0.3);
-	font-weight: 700;
-	text-transform: uppercase;
-}
-
 .btn-download {
 	background-color: var(--buttonDownload);
 	border-color: var(--buttonDownloadBorder);
 	color: var(--buttonText);
+	text-transform: uppercase;
+	font-weight: 700;
 }
 
 .btn-download:hover {
@@ -177,6 +167,8 @@ thead {
 	background-color: var(--buttonLearn);
 	border-color: var(--buttonLearnBorder);
 	color: var(--buttonText);
+	text-transform: uppercase;
+	font-weight: 700;
 }
 
 .btn-learn:hover {
@@ -197,7 +189,7 @@ thead {
 	font-size: 1rem !important;
 }
 
-.markdwon-image {
+.markdown-image {
 	border: 1px solid var(--borderColor);
 	border-radius: 10px;
 	margin-bottom: 1rem;
@@ -257,7 +249,6 @@ thead {
 .navbar-link {
 	color: var(--navLinkNormal);;
 	font-size: 1.1rem;
-	font-weight: 700;
 	margin-left: 1rem;
 }
 

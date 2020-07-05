@@ -1,7 +1,7 @@
 +++
 title = "Shoko Website Updated"
 image = "assets/images/blog/Shoko-Website-Updated.jpg"
-date = 2020-06-20T16:12:14-07:00
+date = 2020-07-05T01:12:14-07:00
 type = "post"
 version = "NA"
 anime = "Fire Force"
