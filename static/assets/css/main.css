@@ -114,15 +114,15 @@ thead {
 }
 
 .content-wrapper {
-	margin: 3rem auto;
 	max-width: 1440px;
+	padding: 3rem 0;
 }
 
 .page-wrapper {
 	height: 100%;
-	margin: 3rem auto;
 	max-width: 1440px;
-	min-height: calc(100vh - 578px)
+	min-height: calc(100vh - 578px);
+	padding: 3rem 0;
 }
 
 .row-wrapper {
@@ -153,8 +153,8 @@ thead {
 	background-color: var(--buttonDownload);
 	border-color: var(--buttonDownloadBorder);
 	color: var(--buttonText);
-	text-transform: uppercase;
 	font-weight: 700;
+	text-transform: uppercase;
 }
 
 .btn-download:hover {
@@ -167,8 +167,8 @@ thead {
 	background-color: var(--buttonLearn);
 	border-color: var(--buttonLearnBorder);
 	color: var(--buttonText);
-	text-transform: uppercase;
 	font-weight: 700;
+	text-transform: uppercase;
 }
 
 .btn-learn:hover {
@@ -1251,8 +1251,8 @@ a.share-button-link {
 
 	}
 
-	.markdwon-image {
-		width: 400px;
+	.markdown-image {
+		width: 375px;
 	}
 
 	/*	Downloads - Index */
@@ -1339,6 +1339,11 @@ a.share-button-link {
 
 	.front-blog-post-wrapper {
 		max-width: 100%;
+		padding: 1rem;
+	}
+
+	.front-blog-post-image {
+		width: 100%;
 	}
 
 	.front-blog-post-image-overlay {
@@ -1366,9 +1371,13 @@ a.share-button-link {
 	}
 
 	/* Staff */
+	.staff-wrapper {
+		margin: initial;
+		padding: 1rem 0;
+	}
+
 	.staff-listing-wrapper {
 		max-width: 100%;
-
 	}
 
 	.staff-info-section {
@@ -1401,7 +1410,7 @@ a.share-button-link {
 
 	.post-content-wrapper {
 		max-width: 100%;
-		padding: 0 1rem;
+		padding: 0 2rem;
 	}
 
 	.post-image {
@@ -1425,14 +1434,28 @@ a.share-button-link {
 		display: none;
 	}
 
-	.markdwon-image {
+	.markdown-image {
 		margin-right: 0;
 		max-width: 100%;
 		width: auto;
 	}
 
+	/*Category/Tag Listing */
+	.blog-post-wrapper-listing {
+		height: 250px;
+	}
+
+	.blog-post-image-listing {
+		height: 250px;
+	}
+
+	.blog-post-image-overlay-listing {
+		height: 38%;
+	}
+
 	/* sidenav */
 	.side-nav-wrapper {
+		margin-top: 2rem;
 		position: initial;
 	}
 
