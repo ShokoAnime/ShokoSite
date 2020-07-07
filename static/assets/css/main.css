@@ -114,12 +114,14 @@ thead {
 }
 
 .content-wrapper {
+	margin: 0 auto;
 	max-width: 1440px;
 	padding: 3rem 0;
 }
 
 .page-wrapper {
 	height: 100%;
+	margin: 0 auto;
 	max-width: 1440px;
 	min-height: calc(100vh - 578px);
 	padding: 3rem 0;

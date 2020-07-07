@@ -15,9 +15,9 @@
 	</div>
 </div>
 
-{{ $pages := .Data.Pages }}
+{{ $pages := (where .Data.Pages "Section" "blog") }}
 {{ range .Site.Home.Translations }}
-{{ $pages = $pages | lang.Merge .Data.Pages }}
+{{ $pages = $pages | lang.Merge  (where .Data.Pages "Section" "blog") }}
 {{ end }}
 {{ $paginator := .Paginate $pages }}
 
