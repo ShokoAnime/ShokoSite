@@ -4,7 +4,7 @@ description = "Learn how you can help make the Shoko website more accessible."
 layout = "single-page"
 +++
 
-##### Lets Translate!
+##### Lets Translate! { class="page-content-first" }
 
 First off, we want to say thank you for taking the time to translate the Shoko Website! Our goal is to reach as many users as possible and by translating the website, you're helping us make that happen. 
 
@@ -44,7 +44,7 @@ We suggest forking the Shoko Website repo ( [Fork a Repo](https://docs.github.co
     </tr>
     <tr>
       <td>languageName</td>
-      <td>The name of the language shown in the drop-down.</td>
+      <td>The name of the language shown in the.</td>
     </tr>
     <tr>
       <td>weight</td>
@@ -80,7 +80,7 @@ In the above example, **[support]** is the key and should be left as-is. The onl
 You'll notice certain files have their contents broken into what we call **Content Blocks** which are used to separate out the content on the page. These **Content Blocks** provide the capability to translate a pages content while still keeping its style and positioning. 
 
 ```md
-||ContentBlock||
+[ContentBlock]
 
 Shoko is an anime cataloging program designed to automate the entire process of cataloging your anime collection regardless of the size and number of files in your collection. With Shoko, you'll spend more time watching and building your collection instead of organizing it.
 ```
@@ -94,12 +94,12 @@ To workaround unforeseen CSS changes that come with translating websites, we've 
 An example of adding a CSS file for the German language. 
 
 ```dir
-static/css/lang/de.css
+  static/css/lang/de.css
 ```
 
 You'll also need to add the following conditional statement to the **head.html** file located in **layouts/partials/** in order for the language speciifc CSS file to load. Using the example below, replace the German language code with your language code and add it below the last language specific file and above the closing conditional tag, **{{end}}**. 
 
-```hugo
+```
   {{ else if eq .Site.Language.Lang "de"  }}
   <link rel="stylesheet" href="{{ "assets/css/lang/de.min.css" | absURL }}">
 ```

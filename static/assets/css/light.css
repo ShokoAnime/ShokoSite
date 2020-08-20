@@ -1,66 +1,15 @@
-/*
-    1. Colors
-*/
-
-/*
----------------------------------------------
-    1. Colors
----------------------------------------------
-*/
-
 :root {
-
-	/* General */
-	--backgroundColor: #fff;
-	--backgroundColorAlt: #f9f9fb;
+	--backgroundColor: #ffffff;
 	--borderColor: #dae1e7;
-	--cardBackground: #ffffff;
-	--fontColor: #333;
-	--fontColorAlt: #FFF;
-
-	/* Navbar */
-	--navBackground: #162850;
-	--siteTitle: #ffffff;
-	--navLinkNormal: #efefef;
-	--navLinkHover: #5DADE2;
-
-	/* SideNav */
-	--sideNavTitle: #006cab;
-	--searchBackground: #ffffff;
-	--searchfontColor: #333;
-
-	/* Page Navigation */
-	--pageIndicator: #eaeff4;
-	--pageIndicatorActive: #006cab;
-
-	/* Footer */
-	--footerBackground: #162850;
-
-	/* Tables */
-	--headerNormalBackground: #f9f9fb;
-	--headerChangelogBackground: #f9f9fb;
-	--rowBackgroundEven: #FFFFFF;
-	--rowBackgroundOdd: #E9F0F8;
-
-	/* Tabs */
-	--tabsActive: #2196F3;
-	--tabsActiveBackground: #fffff;
-	--tabsActiveBorder: #dee2e6;
-	--tabsActiveBorderBottom: #ffffff;
-
-	/* Code */
-	--codeLeftBorder: #2196F3;
-
-	/* Buttons */
-	--buttonText: #ffffff;
-	--buttonDownload: #2196F3;
-	--buttonDownloadHover: #337df7;
-	--buttonDownloadBorder: #337df7;
-	--buttonLearn: #f03358;
-	--buttonLearnHover: #d93252;
-	--buttonLearnBorder: #f03358;
-
-	/* Links */
-	--linkNormal: #d93252;
-	--linkActive: #2196F3;
+	--featureBackground: #F6F7F8;
+	--featureWrapper: #0A0B1D;
+	--fontColor: #708198;
+	--fontColorAlt: #ffffff;
+	--fontStrong: #5c76bf;
+	--footerBackground: #1a1c1d;
+	--linkHover: #2196F3;
+	--linkNormal: #F03358;
+	--rowBackgroundEven: #ffffff;
+	--rowBackgroundOdd: #ffffff;
 }
+

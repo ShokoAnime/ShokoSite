@@ -44,36 +44,6 @@ other = "Update"
 [website]
 other = "Website"
 
-# Tags
-[anidb]
-other = "AniDB"
-[anime-buddy]
-other = "Anime Buddy"
-[beta]
-other = "Beta"
-[kyoto-animation]
-other = "Kyoto Animation"
-[linux]
-other = "Linux"
-[my-anime-3]
-other = "My Anime 3"
-[nakamori]
-other = "Nakamori"
-[shoko]
-other = "Shoko"
-[shoko-desktop]
-other = "Shoko Desktop"
-[shoko-docs]
-other = "Shoko Docs"
-[shoko-on-plex]
-other = "Shoko On Plex"
-[shoko-server]
-other = "Shoko Server"
-[shokometadata]
-other = "Shoko Metadata"
-[web-ui]
-other = "Web UI"
-
 # Downloads
 [download]
 other = "Download"

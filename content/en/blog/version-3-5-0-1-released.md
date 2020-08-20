@@ -42,7 +42,8 @@ With the exception of English and English (UK), the additional languages have be
 
 ##### Metro View Comes To Series
 
-{{% lightbox-image image-url="/assets/images/blog/Version-3501-JMM-Desktop-Collection-Simple-View.jpg" image-alt="JMM Desktop - Collection Simple View"%}}
+![JMM Desktop - Collection Simple View](/assets/images/blog/Version-3501-JMM-Desktop-Collection-Simple-View.jpg)
+
 
 You can now toggle the Metro View while viewing your series in the Collections tab!
 
@@ -64,6 +65,6 @@ Version 3.5.0.1 introduces a lot of new Plex updates adding the ability to users
 
 ##### Don't Forget About Nakamori
 
-Nakamori has gone through bit of a name change and dropped the plugin part from its name. A lot of work has been put into the latest version of Nakamori which has received multiple updates to enhance user experience and make it compatible with JMM 3.5.0.1. The official Nakamori website has also launched which you can checkout using the following link, {{% external-link link="https://shokunin.monogatari.pl/nakamori/" text="Nakamori Website" %}}. In addition we will be transiting the support and install pages to the official ones on the Nakamori website.
+Nakamori has gone through bit of a name change and dropped the plugin part from its name. A lot of work has been put into the latest version of Nakamori which has received multiple updates to enhance user experience and make it compatible with JMM 3.5.0.1. The official Nakamori website has also launched which you can checkout using the following link, [Nakamori Website](https://shokunin.monogatari.pl/nakamori/). In addition we will be transiting the support and install pages to the official ones on the Nakamori website.
 
 Again, these are just some of the additions and changes in 3.5.0.1, for a complete list check the [changelog](https://docs.shokoanime.com/changelog).

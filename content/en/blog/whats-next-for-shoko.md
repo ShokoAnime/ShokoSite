@@ -59,9 +59,7 @@ With that being said, we currently don't have plans to support My Anime 3 with t
 
 Shoko Docs was recently rebuilt which you can about in the blog post, we left the design of the Dark Theme to the community and one of our community members "Konack" created it, check it out in the image below or viewing Shoko Docs.
 
-
-{{% lightbox-image image-url="/assets/images/blog/Whats-Next-For-Shoko-Docs-Dark-Theme.jpg" image-alt="Shoko Docs - Dark Theme" %}}
-
+![Shoko Docs - Dark Theme](/assets/images/blog/Whats-Next-For-Shoko-Docs-Dark-Theme.jpg)
 
 ##### Shoko Website
 

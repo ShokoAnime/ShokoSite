@@ -12,7 +12,7 @@ tag = ["Shoko Server", "Web UI"]
 
 One of the main goals for JMM is to make the programs and plugins as accessible to as many people as possible regardless of operating system. This has been a goal of the project for a very long time but has seen minimal progress, until today as we're pleased to announce that we're now one step closer to making this goal a reality.
 
-{{% lightbox-image image-url="/assets/images/blog/JMM-Server-Web-UI-Alpha.jpg" image-alt="JMM Server Web UI Alpha" %}}
+![JMM Server Web UI Alpha](/assets/images/blog/JMM-Server-Web-UI-Alpha.jpg)
 
 We'd like to introduce everyone to out newest project, the JMM Server Web UI which you can see in the screenshot above. The goal of the JMM Server Web UI project is to allow users to access JMM Server regardless of operating system and even device so you always have access to your collection. While the project is still in it's infancy we've already outlined the major updates to come and while we won't be sharing the exact details of our update outline at this time as we don't want to commit to certain features or timetables that could and might change as the project continues to develop. We want and encourage our users to submit feedback and requests so they can help change and shape the Web UI to help us make it a better application.
 

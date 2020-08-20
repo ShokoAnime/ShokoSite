@@ -12,9 +12,9 @@
 		{{ range $index, $element := split $url "/" }}
 		{{ $.Scratch.Add "path" $element }}
 		{{ if ne $element "" }}
-		<span class="breadcrumb-separator">>></span>
+		<span class="breadcrumb-separator">/</span>
 		{{ if ne $index $len }}
-		<a href='{{ $.Scratch.Get "path" | absLangURL }}'>{{ humanize . }}</a>
+		<a href='{{ $.Scratch.Get "path" | relLangURL }}'>{{ humanize . }}</a>
 		{{ else }}
 		<span class="breadcrumb-active">{{ humanize . }}</span>
 		{{ end }}

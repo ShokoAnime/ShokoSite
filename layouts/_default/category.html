@@ -1,17 +1,17 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 {{ partial "head.html" . }}
 
 <body class="lang-{{ .Site.Language.Lang }}">
 
+<!-- Nav -->
 {{ partial "header.html" . }}
 
-<div class="page-image-wrapper random-banner border-bottom">
-	<div class="page-image-overlay">
-
+<!-- Random Banner -->
+<div class="random-banner">
+	<div class="hero-overlay">
 		{{ partial "breadcrumb.html" . }}
-
 	</div>
 </div>
 
@@ -21,52 +21,57 @@
 {{ end }}
 {{ $paginator := .Paginate $pages }}
 
-<div class="blog-wrapper">
-	<div class="row">
+<div class="section-wrapper row">
 
-		{{ range $paginator.Pages }}
-		{{ if eq .Params.type "post" }}
-		<div class="col-xl-12 blog-post-container">
+	{{ range $paginator.Pages }}
 
-			<div class="blog-post-wrapper">
-				<img class="blog-post-image" src="{{ .Site.BaseURL }}{{ .Params.image }}" alt=" {{ .Params.title }}">
-				<div class="blog-post-image-overlay">
-					<div class="blog-post-date">
-						<div class="blog-post-date-month">{{ .Date.Format "Jan" }}</div>
-						<div class="blog-post-date-day">{{ .Date.Format "2" }}</div>
-					</div>
-					<div class="blog-post-overlay-info">
-						<h4 class="blog-post-title">{{ .Title }}</h4>
+	<div class="col-xxl-6 col-sm-12 blog-container">
+		<div class="blog-post-wrapper">
 
-						{{ $taxoCount := 0 }}
-						{{ range $name := .Params.category }}
-						{{ $name = $name | lower }}
-						{{ if gt $taxoCount "0"}}
-						<span class="blog-post-divider">|</span>
-						<a href="/blog/category/{{ $name | urlize | relLangURL }}">{{ i18n $name }}</a>
-						{{ else }}
-						<a href="/blog/category{{ $name | urlize | relLangURL }}">{{ i18n $name }}</a>
-						{{ end }}
-						{{ $taxoCount = add $taxoCount 1 }}
-						{{ end }}
-
-					</div>
-				</div>
+			<div class="blog-post-image-wrapper">
+				<a class="blog-post-link" href="{{ .Permalink }}">
+					<span class="blog-post-date">{{ .Date.Format "January 2, 2006" }}</span>
+					<img class="blog-post-image" src="{{ .Site.BaseURL }}{{ .Params.image }}" alt=" {{ .Params.title }}">
+				</a>
 			</div>
+			<div class="blog-post-header-wrapper">
+				<P class="blog-post-header">{{ .Params.Title }}</P>
 
-			<div class="blog-post-info">
-				<p class="blog-post-summary">{{ .Summary | truncate 280 }}</p>
-				<a class="blog-post-link" href="{{ .Permalink }}">{{ i18n "read-more" }}</a>
+				<!-- Category -->
+				{{ $taxonomy := "category" }}
+				{{ $taxoCount := 0 }}
+				{{ with .Param $taxonomy }}
+
+				{{ range $index, $tag := . }}
+				{{ with $.Site.GetPage (printf "/%s/%s" $taxonomy $tag) -}}
+				{{ $name := $tag | urlize | lower }}
+
+				{{ if gt $taxoCount "0"}}
+				<a class="blog-post-category" href="/blog/category/{{ $tag | urlize  }}">{{ i18n $name }}</a>
+				{{ else }}
+				<a class="blog-post-category" href="/blog/category/{{ $tag | urlize  }}">{{ i18n $name }}</a>
+				{{ end }}
+				{{ $taxoCount = add $taxoCount 1 }}
+
+				{{ end }}
+				{{ end }}
+
+				{{ end }}
 			</div>
+			<hr class="hr1">
+
+			<p>{{ .Summary | truncate 220 }}</p>
+			<a class="blog-post-link" href="{{ .Permalink }}">{{ i18n "read-more" }}</a>
 
 		</div>
-		{{ end }}
-		{{ end }}
-
 	</div>
+
+	{{ end }}
+
 </div>
 
 {{ partial "pagination.html" . }}
+
 
 {{ partial "footer.html" . }}
 {{ partial "scripts.html" . }}

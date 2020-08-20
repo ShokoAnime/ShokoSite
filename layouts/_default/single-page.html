@@ -1,40 +1,25 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 {{ partial "head.html" . }}
 
 <body class="lang-{{ .Site.Language.Lang }}">
 
+<!-- Nav -->
 {{ partial "header.html" . }}
 
-<div class="page-image-wrapper random-banner border-bottom">
-	<div class="page-image-overlay">
-
+<!-- Random Banner -->
+<div class="random-banner">
+	<div class="hero-overlay">
 		{{ partial "breadcrumb.html" . }}
-
 	</div>
 </div>
 
-<div class="page-wrapper">
-	<div class="row">
-		<div class="col-xl-9 post-content-wrapper">
-
-			<div class="post-content">
-
-				{{ .Content }}
-
-			</div>
-
-
+<div class="section-wrapper row">
+	<div class="col-xxl-12">
+		<div class="page-content">
+			{{ .Content }}
 		</div>
-
-		<div class="col-xl-3 side-nav-wrapper">
-
-			{{ .Scratch.Set "sidenav" "blog" }}
-			{{ partial "sidenav.html" . }}
-
-		</div>
-
 	</div>
 </div>
 

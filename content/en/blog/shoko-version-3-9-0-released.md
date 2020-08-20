@@ -18,15 +18,15 @@ As usual, we'll cover the big changes below but for a complete list of changes, 
 
 One of the big changes users will see in Desktop 2, our replacement for the current Shoko Desktop, is a fine-tuned Community Sites System providing users with control over every aspect of series linking. While Desktop 2 is still in development, a part of this updated system has been brought into current Desktop, the TvDB Linking System. Previously, TvDB linking worked by selecting the starting point and having Shoko match each entry between AniDB and TvDB in sequential order. This leads to issues with mismatched episodes and specials due to either AniDB or TvDB having the entries listed in a different order leading to additional one-off links needed to correct this. With the new TvDB Linking System, starting points are no longer used and instead each episode and special on AniDB is matched with is corresponding entry on TvDB using the provided air dates.
 
-{{% lightbox-image image-url="/assets/images/blog/Version-390-Shoko-Desktop-TvDB-Linking.jpg" image-alt="Shoko Desktop - TvDB Linking" %}}
+![Shoko Desktop - TvDB Linking](/assets/images/blog/Version-390-Shoko-Desktop-TvDB-Linking.jpg)
 
-In the screenshot above, the left column shows the episode listing as reported by AniDB and the right side shows the episode listing as reported by TvDB. An entry in the AniDB column is linked horizontally with the entry in the TvDB column. In this case, every episode is linked correctly so it's highlighted green. If the air date did not match, the entry in both columns would be highlighted red which would indicate looking into that entry. Most of the time, the issue lies with an incorrect air date on TvDB, however if this is not the case then please get in contact with us on **Discord** so we can look into it.
+In the screenshot above, the left column shows the episode listing as reported by AniDB and the right side shows the episode listing as reported by TvDB. An entry in the AniDB column is linked horizontally with the entry in the TvDB column. In this case, every episode is linked correctly so it's highlighted green. If the air date did not match, the entry in both columns would be highlighted red which would indicate looking into that entry. Most of the time, the issue lies with an incorrect air date on TvDB, however if this is not the case then please get in contact with us on **Discord**, and we can look into it.
 
 For cases where you need to override a link, you can do it via the **Episodes** tab by clicking the **Override** button and selecting the correct episode/special.
 
-{{% lightbox-image image-url="/assets/images/blog/Version-390-Shoko-Desktop-TvDB-Override.jpg" image-alt="Shoko Desktop - TvDB Override" %}}
+![Shoko Desktop - TvDB Override](/assets/images/blog/Version-390-Shoko-Desktop-TvDB-Override.jpg)
 
-As this is a brand new system, we'll be making improvement to it, feedback is incredibly important so please let us know if you encounter any issues or have an idea to improve it.
+As this is a brand-new system, we'll be making improvement to it, feedback is incredibly important so please let us know if you encounter any issues or have an idea to improve it.
 
 ##### Plex Integration Reworked
 

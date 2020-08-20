@@ -1,176 +1,63 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 {{ partial "head.html" . }}
 
 <body class="lang-{{ .Site.Language.Lang }}">
 
+<!-- Nav -->
 {{ partial "header.html" . }}
 
-<div class="page-image-wrapper random-banner border-bottom">
-	<div class="page-image-overlay">
-
+<!-- Random Banner -->
+<div class="random-banner">
+	<div class="hero-overlay">
 		{{ partial "breadcrumb.html" . }}
-
 	</div>
 </div>
 
-<div class="downloads-section-wrapper">
+<div class="section-wrapper row">
 
-	<div class="row">
+	{{ $data := index .Site.Data .Site.Language.Lang }}
+	{{ if eq (index .Site.Data .Site.Language.Lang) nil }}
 
-		{{ $data := index .Site.Data .Site.Language.Lang }}
-		{{ if eq (index .Site.Data .Site.Language.Lang) nil }}
+	{{ $data = .Site.Data.en }}
 
-		{{ $data = .Site.Data.en }}
+	{{ end }}
 
-		{{ end }}
+	{{ range $data.programs.programList }}
 
-		{{ range $data.programs.programList }}
+	<div class="col-xxl-12">
+		<div class="downloads-wrapper">
 
-		<div class="col-xl-12 downloads-entry-wrapper">
-			<div class="row">
-
-				<div class="col-xl-10 downloads-item-left-section">
-					<a href="{{ "/downloads/" | relLangURL }}{{ .name | urlize }}">
-						<img class="downloads-item-image" src="{{ .image }}" alt="{{ .title }}">
-						<div class="downloads-item-image-overlay">
-							<p class="downloads-item-image-text">{{ i18n "learn-more" }}</p>
-						</div>
-					</a>
-
-					<div class="downloads-item-wrapper">
-						<div class="downloads-item-info-wrapper">
-
-							<div class="downloads-item-left-info">
-								<h3 class="downloads-item-title">{{ .name }}</h3>
-								<p class="downloads-item-version">{{ i18n "version" }}: {{ .version }}</p>
-							</div>
-
-							<div class="downloads-item-right-info">
-								<p class="downloads-item-platform">{{ .platform }}</p>
-								<p class="downloads-item-date">{{ .release }}</p>
-
-							</div>
-						</div>
-
-						<hr>
-
-						<div class="downloads-item-description">
-
-							{{ if eq "Shoko Server" .name }}
-							<div class="alert alert-warning" role="alert">
-								<i class="fas fa-exclamation-triangle"></i>
-								{{ i18n "server-required" }}
-							</div>
-							{{ end }}
-
-							<p>{{ .info }}</p>
-							<a href="{{ "/downloads/" | relLangURL }}{{ .name | urlize }}">{{ i18n "learn-more-about" }} {{ .name }}
-							→</a>
-						</div>
-
-					</div>
+			{{ if eq "Shoko Server" .name }}
+			<div class="downloads-alert">
+				<div class="alert alert-warning" role="alert">
+					<i class="downloads-alert-icon fas fa-exclamation-triangle"></i>{{ i18n "server-required" }}
 				</div>
+			</div>
+			{{ end }}
 
-				<div class="col-xl-2 downloads-item-right-section">
-					<div class="downloads-item-links-wrapper">
+			<img class="downloads-image" src="{{ .image }}" alt="{{ .title }}">
 
-						<div class="downloads-item-link-section">
-
-							<h3 class="downloads-item-link-header">{{ i18n "downloads" }}</h3>
-							<div class="downloads-item-platform-wrapper">
-
-								{{ if eq .platform "Windows / Linux" }}
-
-								<div class="downloads-platform-section">
-									<p class="downloads-platform-title">{{ i18n "windows" }}</p>
-									{{ range .downloads }}
-									<a href="{{ .windowsStable }}" target="_blank" rel="noopener">{{ i18n "stable" }}</a>
-									<a href="{{ .windowsDaily }}" target="_blank" rel="noopener">{{ i18n "daily" }}</a>
-									{{ end }}
-								</div>
-
-								<div class="downloads-platform-section">
-									<p class="downloads-platform-title">{{ i18n "linux" }}</p>
-									{{ range .downloads }}
-									<a href="{{ .linuxDocker }}" target="_blank" rel="noopener">{{ i18n "stable" }}</a>
-									{{ end }}
-								</div>
-
-								{{ else if eq .platform "Windows" }}
-
-								<div class="downloads-platform-section">
-									<p class="downloads-platform-title">{{ i18n "windows" }}</p>
-									{{ range .downloads }}
-									<a href="{{ .windowsStable }}" target="_blank" rel="noopener">{{ i18n "stable" }}</a>
-									<a href="{{ .windowsDaily }}" target="_blank" rel="noopener">{{ i18n "daily" }}</a>
-									{{ end }}
-								</div>
-
-								{{ else if eq .platform "Kodi" }}
-
-								<div class="downloads-platform-section">
-									<p class="downloads-platform-title">Kodi</p>
-									{{ range .downloads }}
-									<a href="{{ .kodiStable }}" target="_blank" rel="noopener">{{ i18n "stable" }}</a>
-									{{ end }}
-								</div>
-
-								{{ else if eq .platform "Media Portal" }}
-
-								<div class="downloads-platform-section">
-									<p class="downloads-platform-title">Media Portal</p>
-									{{ range .downloads }}
-									<a href="{{ .mediaPortalStable }}" target="_blank" rel="noopener">{{ i18n "stable" }}</a>
-									{{ end }}
-								</div>
-
-								{{ else if eq .platform "Plex" }}
-
-								<div class="downloads-platform-section">
-									<p class="downloads-platform-title">Plex</p>
-									{{ range .downloads }}
-									<a href="{{ .plexStable }}" target="_blank" rel="noopener">{{ i18n "stable" }}</a>
-									{{ end }}
-								</div>
-
-								{{ end }}
-
-							</div>
-
-						</div>
-
-						<hr>
-
-						<div class="downloads-item-link-section">
-
-							<h3 class="downloads-item-link-header">{{ i18n "resources" }}</h3>
-							<div class="downloads-item-resources-wrapper">
-
-								{{ range .resources }}
-								<a href="{{ .github }}">{{ i18n "github" }}</a>
-								<a href="{{ .docs }}">{{ i18n "documentation" }}</a>
-								<a href="{{ .support }}">{{ i18n "support" }}</a>
-								{{ end }}
-
-							</div>
-
-						</div>
-					</div>
-
+			<div class="downloads-inside-wrapper">
+				<div class={{ if eq "Shoko Server" .name }}"downloads-info-wrapper-server"{{ else }}"downloads-info-wrapper"{{ end }}>
+				<h3 class="downloads-header">{{ .name }}</h3>
+				<div class="downloads-inner-info-wrapper">
+					<p class="downloads-version">{{ i18n "version" }} {{ .version }}</p>
+					<p class="downloads-release">{{ .release }}</p>
 				</div>
+				<p>{{ .info | truncate 220 }}</p>
+				<a class="downloads-link" href="{{ "/downloads/" | relLangURL }}{{ .name | urlize }}">{{ i18n "learn-more-about" }} {{ .name }}</a>
+
+				{{ partial "downloads-link.html" . }}
 
 			</div>
 		</div>
 
-		<hr class="hr2">
-
-		{{ end }}
-
 	</div>
-
 </div>
+
+{{ end }}
 
 {{ partial "footer.html" . }}
 {{ partial "scripts.html" . }}

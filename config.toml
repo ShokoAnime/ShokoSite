@@ -1,5 +1,4 @@
 baseURL = "https://shokoanime.com/"
-#baseURL = "https://shokoanime.com/devsite/"
 DefaultContentLanguage = "en"
 paginate =  6
 title = "Shoko"
@@ -26,11 +25,6 @@ disableKinds = ["taxonomyTerm"]
 		title = "Shoko"
 		languageName = "English"
 		weight = 1
-	[languages.de]
-		contentDir = "content/de"
-		title = "Shoko"
-		languageName = "Deutsch"
-		weight = 2
 
 [params]
   images = ["icon.png"]

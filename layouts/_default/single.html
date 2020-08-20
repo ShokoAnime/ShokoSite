@@ -1,133 +1,93 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 {{ partial "head.html" . }}
 
 <body class="lang-{{ .Site.Language.Lang }}">
 
+<!-- Nav -->
 {{ partial "header.html" . }}
 
-<div class="page-image-wrapper random-banner border-bottom">
-	<div class="page-image-overlay">
-
+<!-- Random Banner -->
+<div class="random-banner">
+	<div class="hero-overlay">
 		{{ partial "breadcrumb.html" . }}
-
 	</div>
 </div>
 
-<div class="blog-wrapper">
-	<div class="row">
-		<div class="col-xl-9 post-content-wrapper">
+<div class="blog-single-wrapper">
 
-			<img class="post-image" src="{{ .Site.BaseURL }}{{ .Params.image }}" alt=" {{ .Params.title }}">
-			<div class="post-info-wrapper">
-
-				<div class="post-info-left">
-					<p>{{ i18n "posted-on" }} <span class="post-date">{{ .Date.Format "January 2, 2006" }}</span></p>
-					<p>{{ i18n "banner-anime" }} <a href="https://anidb.net/anime/?adb.search={{ .Params.anime }}&do.search=1"
-						target="_blank">{{ .Params.anime }}</a></p>
-				</div>
-
-
-				<div class="post-info-right">
-					<div class="post-category">
-
-						{{ if gt (len .Params.category) "1" }}
-						<span class="post-section-header">Categories: </span>
-						{{ else }}
-						<span class="post-section-header">Category: </span>
-						{{ end }}
-
-						{{ $taxoCount := 0 }}
-						{{ range $name := .Params.category }}
-						{{ $name = $name | lower | urlize }}
-						{{ if gt $taxoCount "0"}}
-						<span class="post-divider">|</span>
-						<a href="{{ "blog/category/" | relLangURL }}{{ $name | urlize }}"> {{ i18n $name }}</a>
-						{{ else }}
-						<a href="{{ "blog/category/" | relLangURL }}{{ $name | urlize }}">{{ i18n $name }}</a>
-						{{ end }}
-						{{ $taxoCount = add $taxoCount 1 }}
-						{{ end }}
-
-					</div>
-
-					<div class="post-tags">
-
-						{{ if gt (len .Params.tag) "1" }}
-						<span class="post-section-header">Tags: </span>
-						{{ else }}
-						<span class="post-section-header">Tag: </span>
-						{{ end }}
-
-						{{ $taxoCount := 0 }}
-						{{ range $name := .Params.tag }}
-						{{ $name = $name | lower | urlize }}
-						{{ if gt $taxoCount "0"}}
-						<span class="post-divider">|</span>
-						<a href="{{ "blog/tag/" | relLangURL }}{{ $name | urlize }}"> {{ i18n $name }}</a>
-						{{ else }}
-						<a href="{{ "blog/tag/" | relLangURL }}{{ $name | urlize }}">{{ i18n $name }}</a>
-						{{ end }}
-						{{ $taxoCount = add $taxoCount 1 }}
-						{{ end }}
-
-					</div>
-				</div>
-			</div>
-
-			<hr class="blog-nav-hr">
-
-			<div class="post-content">
-
-				{{ .Content }}
-
-				<div class="post-dev-wrapper">
-
-					{{ if .Params.dev }}
-					{{ range $name := .Params.dev }}
-
-					{{ $data := index $.Site.Data $.Site.Language.Lang }}
-
-					{{ if eq (index $.Site.Data $.Site.Language.Lang) nil }}
-					{{ $data = $.Site.Data.en }}
-					{{ end }}
-
-					{{ range $data.devs.devList }}
-
-					{{ if eq .name $name }}
-					<div class="post-dev-item">
-						<a href="https://github.com/{{ .githubLink }}" target="_blank" rel="noopener">
-							<img class="post-dev-avatar" src="https://avatars1.githubusercontent.com/u/{{ .githubID }}?s=128">
-							<div class="post-dev-avatar-overlay">
-								<i class="post-dev-git fab fa-github fa-5x"></i>
-							</div>
-						</a>
-						<div class="post-dev-name">{{ .name }}</div>
-					</div>
-					{{ end }}
-
-					{{ end }}
-
-					{{ end }}
-					{{ end }}
-
-				</div>
-
-			</div>
-
-
-		</div>
-
-		<div class="col-xl-3 side-nav-wrapper">
-
-			{{ .Scratch.Set "sidenav" "blog" }}
-			{{ partial "sidenav.html" . }}
-
-		</div>
-
+	<div class="blog-single-image-wrapper">
+		<span class="blog-single-date">{{ .Date.Format "January 2, 2006" }}</span>
+		<img class="blog-single-image" src="{{ .Site.BaseURL }}{{ .Params.image }}" alt=" {{ .Params.title }}">
 	</div>
+
+	{{ partial "share.html" . }}
+
+	<div class="blog-single-content">
+
+		{{ .Content }}
+	</div>
+
+	{{ if .Params.dev }}
+	<div class="blog-single-dev-wrapper">
+		{{ range $name := .Params.dev }}
+
+		{{ $data := index $.Site.Data $.Site.Language.Lang }}
+
+		{{ if eq (index $.Site.Data $.Site.Language.Lang) nil }}
+		{{ $data = $.Site.Data.en }}
+		{{ end }}
+
+		{{ range $data.devs.devList }}
+
+		{{ if eq .name $name }}
+		<div class="blog-single-dev-item">
+			<a href="https://github.com/{{ .githubLink }}" target="_blank" rel="noopener">
+				<img class="blog-single-dev-avatar" src="https://avatars1.githubusercontent.com/u/{{ .githubID }}?s=100">
+			</a>
+			<div class="blog-single-dev-name">{{ .name }}</div>
+		</div>
+		{{ end }}
+
+		{{ end }}
+
+		{{ end }}
+	</div>
+	{{ end }}
+
+	<hr>
+	<div class="blog-single-info-wrapper">
+		<span class="blog-single-categories">
+			{{ $taxoCount := 0 }}
+			{{ range $name := .Params.category }}
+			{{ $name = $name | lower | urlize }}
+			{{ if gt $taxoCount "0"}}
+			<span class="post-divider">|</span>
+			<a href="{{ "blog/category/" | relLangURL }}{{ $name | urlize }}"> {{ i18n $name }}</a>
+			{{ else }}
+			<a href="{{ "blog/category/" | relLangURL }}{{ $name | urlize }}">{{ i18n $name }}</a>
+			{{ end }}
+			{{ $taxoCount = add $taxoCount 1 }}
+			{{ end }}
+		</span>
+		<span class="blog-single-tags">
+			{{ $taxoCount := 0 }}
+			{{ range $name := .Params.tag }}
+			{{ $name = $name | lower | urlize }}
+			{{ if gt $taxoCount "0"}}
+			<span class="post-divider">|</span>
+			<a href="{{ "blog/tag/" | relLangURL }}{{ $name | urlize }}">{{ $name | humanize | title }}</a>
+			{{ else }}
+			<a href="{{ "blog/tag/" | relLangURL }}{{ $name | urlize }}">{{ $name | humanize | title }}</a>
+			{{ end }}
+			{{ $taxoCount = add $taxoCount 1 }}
+			{{ end }}
+		</span>
+	</div>
+
 </div>
+
 
 {{ partial "footer.html" . }}
 {{ partial "scripts.html" . }}

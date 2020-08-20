@@ -14,17 +14,17 @@ There recently has been the release for version 1.0.0 as this has been deemed th
 
 ##### What is it?
 
-Firstly, I should get into what this does. Simply put, this plugin for Plex allows you to have the series information for your libraries, as well as tagging derived from the AniDB tags. There is also the optional Scanner included in the package, which when in use let's you use your own naming structure.
+Firstly, I should get into what this does. Simply put, this plugin for Plex allows you to have the series information for your libraries, as well as tagging derived from the AniDB tags. There is also the optional Scanner included in the package, which when in use lets you use your own naming structure.
 
 For those who have used other plugins, think HAMA, but instead of polling AniDB directly, it asks Shoko for the information.
 
-{{% lightbox-image image-url="/assets/images/blog/Shoko-Metadata-Collection-View.jpg" image-alt="Shoko Metadata - Collection" %}}
+![Shoko Metadata - Collection](/assets/images/blog/Shoko-Metadata-Collection-View.jpg)
 
 ##### Why this but not Shoko on Plex?
 
 Designing this implementation one of the main uses is when you either want to save network bandwidth (more later, and some examples) or, most of your data is stored on a file system accessible via Plex.
 
-But don't get me wrong, Shoko on Plex has its use-cases and Shoko Metadata is in no way intended to supersede Shoko on Plex, personally I have both installed. When designing this plugin, I have been focusing on a personal use case.
+Don't get me wrong, Shoko on Plex has its use-cases and Shoko Metadata is in no way intended to supersede Shoko on Plex, personally I have both installed. When designing this plugin, I have been focusing on a personal use case.
 
 ##### But you may ask; how would this save network data?
 
@@ -37,7 +37,7 @@ This does also work around some of the intrinsic limitations of using a Plex Cha
 Usage is quite standard for those more experienced with plugins, though using the series scanner is a little bit more complicated.
 
 *   Download a copy of the latest version of ShokoMetadata which is available [here](https://github.com/Cazzar/ShokoMetadata.bundle/releases).
-*   Extract the release into the plugins folder which you can find [here](https://support.plex.tv/hc/en-us/articles/201106098-How-do-I-find-the-Plug-Ins-folder-).
+*   Extract the release into the plugins folder which you can find [here](https://support.plex.tv/articles/201106098-how-do-i-find-the-plug-ins-folder/).
 *   We need to copy the file **Contents/Resources/Series/Shoko Series Scanner.py** out of this folder and into **Plex Media Server/Scanners/Series** creating the directory if necessary.
 *   Please note we also need to make sure we edit the **Prefs** array in this scanner file to point towards the Shoko Server.
 *   When adding the series to Plex, we need to select the Advanced option to allow us to change the scanner as well as the metadata provider.

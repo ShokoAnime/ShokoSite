@@ -1,0 +1,103 @@
+{{ $data := index .Site.Data .Site.Language.Lang }}
+{{ if eq (index .Site.Data .Site.Language.Lang) nil }}
+{{ $data = .Site.Data.en }}
+{{ end }}
+
+{{ $program := $.Params.title }}
+{{ range $data.programs.programList }}
+{{ if eq .name $program }}
+
+<!-- Details -->
+
+<div class="downloads-single-link-list">
+	<p class="page-item-header">{{ i18n "details" }}</p>
+	<hr>
+		<span class="downloads-single-item">{{ i18n "version" }} {{ .version }}</span>
+		<span class="downloads-single-item"></span>
+		<span class="downloads-single-item">{{ .release }}</span>
+		<span class="downloads-single-item">{{ .platform }}</span>
+</div>
+
+
+<!-- Resources -->
+{{ range .resources }}
+
+<div class="downloads-single-link-list">
+	<p class="page-item-header">{{ i18n "resources" }}</p>
+	<hr>
+	<a class="downloads-single-item-link" href="{{ .github }}">{{ i18n "github" }}</a>
+	<a class="downloads-single-item-link" href="{{ .docs }}">{{ i18n "documentation" }}</a>
+	<a class="downloads-single-item-link" href="{{ .changelog }}">{{ i18n "changelog" }}</a>
+	<a class="downloads-single-item-link" href="{{ .support }}">{{ i18n "support" }}</a>
+</div>
+
+{{ end }}
+
+<!-- Downloads -->
+<p class="page-item-header">{{ i18n "download" }}</p>
+<hr>
+<div class="downloads-platform-wrapper">
+
+	{{ if eq .platform "Windows / Linux" }}
+
+	{{ range .downloads }}
+	<div class="downloads-single-platform-item">
+		<div class="downloads-single-platform-circle"><i class="downloads-platform-icon fab fa-windows fa-2x"></i></div>
+		<a href="{{ .windowsStable }}"><span class="downloads-platform-name">Windows {{ i18n "stable" }}</span></a>
+	</div>
+	<div class="downloads-single-platform-item">
+		<div class="downloads-single-platform-circle"><i class="downloads-platform-icon fab fa-windows fa-2x"></i></div>
+		<a href="{{ .windowsDaily }}"><span class="downloads-platform-name">Windows {{ i18n "daily" }}</span></a>
+	</div>
+	<div class="downloads-single-platform-item">
+		<div class="downloads-single-platform-circle"><i class="downloads-platform-icon fab fa-linux fa-2x"></i></div>
+		<a href="{{ .linuxDocker }}"><span class="downloads-platform-name">Linux {{ i18n "stable" }}</span></a>
+	</div>
+	{{ end }}
+
+	{{ else if eq .platform "Windows" }}
+
+	{{ range .downloads }}
+	<div class="downloads-single-platform-item">
+		<div class="downloads-single-platform-circle"><i class="downloads-platform-icon fab fa-windows fa-2x"></i></div>
+		<a href="{{ .windowsStable }}"><span class="downloads-platform-name">Windows {{ i18n "stable" }}</span></a>
+	</div>
+	<div class="downloads-single-platform-item">
+		<div class="downloads-single-platform-circle"><i class="downloads-platform-icon fab fa-windows fa-2x"></i></div>
+		<a href="{{ .windowsDaily }}"><span class="downloads-platform-name">Windows {{ i18n "daily" }}</span></a>
+	</div>
+	{{ end }}
+
+	{{ else if eq .platform "Kodi" }}
+
+	{{ range .downloads }}
+	<div class="downloads-single-platform-item">
+		<div class="downloads-single-platform-circle"><i class="downloads-platform-icon fas fa-download fa-2x"></i></div>
+		<a href="{{ .kodiStable }}"><span class="downloads-platform-name">Nakamori {{ i18n "stable" }}</span></a>
+	</div>
+	{{ end }}
+
+	{{ else if eq .platform "Media Portal" }}
+
+	{{ range .downloads }}
+	<div class="downloads-single-platform-item">
+		<div class="downloads-single-platform-circle"><i class="downloads-platform-icon fas fa-download fa-2x"></i></div>
+		<a href="{{ .mediaPortalStable }}"><span class="downloads-platform-name">Media Portal {{ i18n "stable" }}</span></a>
+	</div>
+	{{ end }}
+
+	{{ else if eq .platform "Plex" }}
+
+	{{ range .downloads }}
+	<div class="downloads-single-platform-item">
+		<div class="downloads-single-platform-circle"><i class="downloads-platform-icon fas fa-download fa-2x"></i></div>
+		<a href="{{ .plexStable }}"><span class="downloads-platform-name">Shoko Metadata {{ i18n "stable" }}</span></a>
+	</div>
+	{{ end }}
+
+	{{ end }}
+
+</div>
+
+{{ end }}
+{{ end }}

@@ -1,0 +1,78 @@
+<div class="downloads-platform-wrapper">
+
+	{{ if eq .platform "Windows / Linux" }}
+
+	{{ range .downloads }}
+	<div class="downloads-platform-item">
+		<a href="{{ .windowsStable }}">
+			<div class="downloads-platform-circle"><i class="downloads-platform-icon fab fa-windows fa-2x"></i></div>
+			<span class="downloads-platform-name">Windows {{ i18n "stable" }}</span>
+		</a>
+	</div>
+	<div class="downloads-platform-item">
+		<a href="{{ .windowsDaily }}">
+			<div class="downloads-platform-circle"><i class="downloads-platform-icon fab fa-windows fa-2x"></i></div>
+			<span class="downloads-platform-name">Windows {{ i18n "daily" }}</span>
+		</a>
+	</div>
+	<div class="downloads-platform-item">
+		<a href="{{ .linuxDocker }}">
+			<div class="downloads-platform-circle"><i class="downloads-platform-icon fab fa-linux fa-2x"></i></div>
+			<span class="downloads-platform-name">Linux {{ i18n "stable" }}</span>
+		</a>
+	</div>
+	{{ end }}
+
+	{{ else if eq .platform "Windows" }}
+
+	{{ range .downloads }}
+	<div class="downloads-platform-item">
+		<a href="{{ .windowsStable }}">
+			<div class="downloads-platform-circle"><i class="downloads-platform-icon fab fa-windows fa-2x"></i></div>
+			<span class="downloads-platform-name">Windows {{ i18n "stable" }}</span>
+		</a>
+	</div>
+	<div class="downloads-platform-item">
+		<a href="{{ .windowsDaily }}">
+			<div class="downloads-platform-circle"><i class="downloads-platform-icon fab fa-windows fa-2x"></i></div>
+			<span class="downloads-platform-name">Windows {{ i18n "daily" }}</span>
+		</a>
+	</div>
+	{{ end }}
+
+	{{ else if eq .platform "Kodi" }}
+
+	{{ range .downloads }}
+	<div class="downloads-platform-item">
+		<a href="{{ .kodiStable }}">
+			<div class="downloads-platform-circle"><i class="downloads-platform-icon fas fa-download fa-2x"></i></div>
+			<span class="downloads-platform-name">Nakamori {{ i18n "stable" }}</span>
+		</a>
+	</div>
+	{{ end }}
+
+	{{ else if eq .platform "Media Portal" }}
+
+	{{ range .downloads }}
+	<div class="downloads-platform-item">
+		<a href="{{ .mediaPortalStable }}">
+			<div class="downloads-platform-circle"><i class="downloads-platform-icon fas fa-download fa-2x"></i></div>
+			<span class="downloads-platform-name">Media Portal {{ i18n "stable" }}</span>
+		</a>
+	</div>
+	{{ end }}
+
+	{{ else if eq .platform "Plex" }}
+
+	{{ range .downloads }}
+	<div class="downloads-platform-item">
+		<a href="{{ .plexStable }}">
+			<div class="downloads-platform-circle"><i class="downloads-platform-icon fas fa-download fa-2x"></i></div>
+			<span class="downloads-platform-name">Shoko Metadata {{ i18n "stable" }}</span>
+		</a>
+	</div>
+	{{ end }}
+
+	{{ end }}
+
+</div>

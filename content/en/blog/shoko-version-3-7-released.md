@@ -36,7 +36,7 @@ Some users asked if we could start hosting multiple beta's in-between updates in
 
 As a thank you to all our users, we now provide the ability for all users to try the latest builds of Shoko Server and Shoko Desktop without having to build them yourself. Our **Daily Builds** are currently setup to build after each commit and can be downloaded by checking the **Daily Build** section on our **Downloads** page. We're pretty active on [GitHub](https://github.com/ShokoAnime/) and if you've been checking our commit logs you've probably noticed the **Build Indicators**after the commit time stamp as shown in the image below. If your unsure if the latest commit has built yet, the **Build Indicator** will tell you. You can also click it to view the build log if you'd like.
 
-{{% lightbox-image image-url="/assets/images/blog/Version-37-GitHub-Daily-Build-Check.jpg" image-alt="GitHub Daily Build Check" %}}
+![GitHub Daily Build Check](/assets/images/blog/Version-37-GitHub-Daily-Build-Check.jpg)
 
 ##### Help Wanted!
 

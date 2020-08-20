@@ -6,7 +6,17 @@
       "githubLink": "hidden4003",
       "team": "yes",
       "joinDate": "2015 - Present",
-      "bio": "Web developer, started in the project by improving russian translation somehow ended up with making Web UI for the server."
+      "projects": [
+        {
+          "name": "Shoko Server Web UI",
+          "link": "https://github.com/ShokoAnime/ShokoServer-WebUI"
+        },
+        {
+          "name": "Shoko Desktop 2",
+          "link": "https://github.com/ShokoAnime/ShokoDesktop2"
+        }
+      ],
+      "bio": "Long time user who started out by improving the old russian translation and somehow ended up with making Web UI for the server and leading the development of Shoko Desktop 2."
     },
     {
       "name": "Baine",
@@ -14,7 +24,17 @@
       "githubLink": "Baine",
       "team": "yes",
       "joinDate": "2013 - Present",
-      "bio": "Advanced user, part time dev when he feels the problem is easy enough. lots of edge cases, loves to drive da3dsoul or cazzar crazy with them."
+      "projects": [
+        {
+          "name": "Shoko Server",
+          "link": "https://github.com/ShokoAnime/ShokoServer"
+        },
+        {
+          "name": "Shoko Desktop",
+          "link": "https://github.com/ShokoAnime/ShokoDesktop"
+        }
+      ],
+      "bio": "Advanced user, part time dev when he feels the problem is easy enough. Famous for creating lots of edge cases and loves to drive da3dsoul or cazzar crazy with them."
     },
     {
       "name": "BigRetroMike",
@@ -22,6 +42,12 @@
       "githubLink": "BigRetroMike",
       "team": "yes",
       "joinDate": "2015 - Present",
+      "projects": [
+        {
+          "name": "Nakamori",
+          "link": "https://github.com/bigretromike/nakamori"
+        }
+      ],
       "bio": "Creator of Nakamori who helped with the original concept for the Web UI. "
     },
     {
@@ -30,7 +56,17 @@
       "githubLink": "Cazzar",
       "team": "yes",
       "joinDate": "2016 - Present",
-      "bio": "Create of Shoko Metadata, started working on making Shoko better and found himself as one of the core devs leading various major refactoring projects."
+      "projects": [
+        {
+          "name": "Shoko Server",
+          "link": "https://github.com/ShokoAnime/ShokoServer"
+        },
+        {
+          "name": "Shoko Metadata",
+          "link": "https://github.com/Cazzar/ShokoMetadata.bundle"
+        }
+      ],
+      "bio": "Create of Shoko Metadata, started working on making Shoko better and found himself as one of the core devs leading various refactoring projects."
     },
     {
       "name": "Da3dsoul",
@@ -38,15 +74,39 @@
       "githubLink": "da3dsoul",
       "team": "yes",
       "joinDate": "2015 - Present",
+      "projects": [
+        {
+          "name": "Shoko Server",
+          "link": "https://github.com/ShokoAnime/ShokoServer"
+        },
+        {
+          "name": "Shoko Desktop",
+          "link": "https://github.com/ShokoAnime/ShokoDesktop"
+        },
+        {
+          "name": "Nakamori",
+          "link": "https://github.com/bigretromike/nakamori"
+        }
+      ],
       "bio": "Wanted a better anime experience on Kodi, accidentally became one of the core devs and now is stuck in an never ending cycle of making Shoko even better."
     },
     {
-      "name": "Elemental Crisis",
+      "name": "ElementalCrisis",
       "githubID": "9443295",
       "githubLink": "ElementalCrisis",
       "team": "yes",
       "joinDate": "2015 - Present",
-      "bio": "Current Shoko project leader responsible for designing this website, Shoko Docs, Shoko Server Web UI and Shoko Desktop 2 so feel free to blame someone else if things aren't working."
+      "projects": [
+        {
+          "name": "Shoko Server Web UI",
+          "link": "https://github.com/ShokoAnime/ShokoServer-WebUI"
+        },
+        {
+          "name": "Shoko Desktop 2",
+          "link": "https://github.com/ShokoAnime/ShokoDesktop2"
+        }
+      ],
+      "bio": "Current Shoko project leader responsible in charge of UI and UX design and development so feel free to blame someone else if things aren't working."
     },
     {
       "name": "JMediaManager",
@@ -54,6 +114,20 @@
       "githubLink": "jmediamanager",
       "team": "yes",
       "joinDate": "2006-2014",
+      "projects": [
+        {
+          "name": "Shoko Server",
+          "link": "https://github.com/ShokoAnime/ShokoServer"
+        },
+        {
+          "name": "Shoko Desktop",
+          "link": "https://github.com/ShokoAnime/ShokoDesktop"
+        },
+        {
+          "name": "My Anime 3",
+          "link": "https://github.com/ShokoAnime/MyAnime3"
+        }
+      ],
       "bio": "The original creator of JMM and My Anime 3, he is the reason we're all here and while he is no longer active, he does pop in once in awhile to make sure we're not slacking off."
     },
     {
@@ -62,6 +136,24 @@
       "githubLink": "MaxPiva",
       "team": "yes",
       "joinDate": "2009 - Present",
+      "projects": [
+        {
+          "name": "Shoko Server",
+          "link": "https://github.com/ShokoAnime/ShokoServer"
+        },
+        {
+          "name": "Shoko Desktop",
+          "link": "https://github.com/ShokoAnime/ShokoDesktop"
+        },
+        {
+          "name": "My Anime 3",
+          "link": "https://github.com/ShokoAnime/MyAnime3"
+        },
+        {
+          "name": "Shoko On Plex (Discontinued)",
+          "link": "https://github.com/ShokoAnime/ShokoOnPlex"
+        }
+      ],
       "bio": "Author of the original Plex channel plugin, a black magic wizard responsible for many of the advancements made to Shoko. Due to time restrictions he mainly provides technical support to the team."
     },
     {
@@ -70,6 +162,12 @@
       "githubLink": "harshithmohan",
       "team": "yes",
       "joinDate": "2020 - Present",
+      "projects": [
+        {
+          "name": "Shoko Server Web UI",
+          "link": "https://github.com/ShokoAnime/ShokoServer-WebUI"
+        }
+      ],
       "bio": "The latest addition to the team. Stumbled upon Shoko in May, 2020 and later joined the team as a Shoko Server Web UI developer and also helps out with Shoko Metadata sometimes."
     },
     {

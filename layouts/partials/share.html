@@ -1,29 +1,27 @@
-<!-- Social Share Button HTML -->
-<!--https://github.com/jpescador/hugo-future-imperfect-->
+<div class="blog-single-share-wrapper">
+	<div class="blog-single-share-links">
+		<span class="blog-single-share-header">Share</span>
 
-<div class="share-button-wrapper">
-	<a href="//twitter.com/share?text={{ .Title }}&amp;url={{ .Permalink }}" target="_blank" rel="noopener"
-		class="share-button-link twitter">
-		<i class="share-icon fab fa-twitter"></i>
-	</a>
+		<a href="//twitter.com/share?text={{ .Title }}&amp;url={{ .Permalink }}" target="_blank" rel="noopener">
+			<i class="blog-single-share-link fab fa-twitter fa-lg"></i>
+		</a>
 
-	<a href="//www.facebook.com/sharer/sharer.php?u={{ .Permalink }}" target="_blank" rel="noopener"
-		class="share-button-link facebook">
-		<i class="share-icon fab fa-facebook"></i>
-	</a>
+		<a href="//www.facebook.com/sharer/sharer.php?u={{ .Permalink }}" target="_blank" rel="noopener">
+			<i class="blog-single-share-link fab fa-facebook fa-lg"></i>
+		</a>
 
-	<a href="//www.reddit.com/submit?url={{ .Permalink }}&amp;title={{ .Title }}" target="_blank" rel="noopener"
-		class="share-button-link  reddit">
-		<i class="share-icon fab fa-reddit-alien"></i>
-	</a>
+		<a href="//www.reddit.com/submit?url={{ .Permalink }}&amp;title={{ .Title }}" target="_blank" rel="noopener">
+			<i class="blog-single-share-link fab fa-reddit-alien fa-lg"></i>
+		</a>
 
-	<a href="//www.pinterest.com/pin/create/button/?url={{ .Permalink }}&amp;description={{ .Title }}" target="_blank"
-		rel="noopener" class="share-button-link share-btn pinterest">
-		<i class="share-icon fab fa-pinterest-p"></i>
-	</a>
+		<a href="//www.pinterest.com/pin/create/button/?url={{ .Permalink }}&amp;description={{ .Title }}" target="_blank"
+		   rel="noopener">
+			<i class="blog-single-share-link fab fa-pinterest-p fa-lg"></i>
+		</a>
 
-	<a href="mailto:?subject={{ .Title }} | Shoko Anime&amp;body={{ .Permalink }}" target="_blank"
-		class="share-button-link share-btn email" data-proofer-ignore>
-		<i class="share-icon fas fa-envelope"></i>
-	</a>
+		<a href="mailto:?subject={{ .Title }} | Shoko Anime&amp;body={{ .Permalink }}" target="_blank" data-proofer-ignore>
+			<i class="blog-single-share-link fas fa-envelope fa-lg"></i>
+		</a>
+
+	</div>
 </div>

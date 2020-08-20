@@ -7,9 +7,6 @@ anime = "Read or Die"
 category = ["Website"]
 tag = ["Shoko Docs"]
 +++
-
-{{% lightbox-image image-url="/assets/images/blog/Shoko-Docs.jpg" image-alt="Shoko Docs" %}}
-
 We're Back!
 
 This past weekend we moved everything over to our ShokoAnime domain name making it our primary domain name and switched to a more reliable hosts. You may of noticed some changes around the site, during the downtime the site went through some intensive maintenance stripping away anything that was causing performance issues. We also decided to go for a less resource intensive theme that's sleeker and for those of you visiting us on mobile, it looks great.
@@ -17,6 +14,8 @@ This past weekend we moved everything over to our ShokoAnime domain name making 
 Now onto the main purpose of this blog post.
 
 ##### Introducing Shoko Docs
+
+![Shoko Docs](/assets/images/blog/Shoko-Docs.jpg)
 
 Anyone that's visited our GitHub repo in the past couple of months or talked with us on Discord has probably noticed we've been making a lot of core changes to Shoko. We've talked about some of these changes before with our vision for Shoko going forward, we made our previously private ClientV2 channel accessible to all users on our Discord server and now we're opening up Shoko Docs.
 

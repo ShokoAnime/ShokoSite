@@ -21,9 +21,9 @@ With our new website, both staff and users can make changes as needed, add new p
 
 You mean besides the **brand new site**?
 
--   You've probably noticed the the random page banner, it was something the staff liked from the WordPress site so we included it.
+-   You've probably noticed the random page banner, it was something the staff liked from the WordPress site, so we included it.
 -   The frontpage will display a random plugin on load, keep refreshing to see them all!
--   The individual program/plugin pages were removed. All the relevant information is now shown on the **downloads** page.
+-   The individual program/plugin pages have been removed with all the relevant information now shown on the **downloads** page.
 -   The **About** page was actually finished, go check it out.
 
 ##### How You Can Help

@@ -11,7 +11,7 @@ tag = ["Shoko Docs"]
 
 If you've been on our Discord server lately you've might of seen us asking for feedback on a new design we've been working on for Shoko Docs. With the feedback & suggestions we received from the community we're happy to launch the latest version of Shoko Docs!
 
-{{% lightbox-image image-url="/assets/images/blog/Shoko-Docs-Updated.jpg" image-alt="Shoko Docs Updated" %}}
+![Shoko Docs Updated](/assets/images/blog/Shoko-Docs-Updated.jpg)
 
 In the past to save time, we used a prebuilt template and customized it to our needs. While this worked in the beginning, we found that trying to add or modify the template outside of its designed purpose would cause issues. These limitations were most prevalent when it came to fixing bugs that were usually the result of legacy code being left in the template or compatibility issues between different libraries the template used. We decided that instead of working with someone else's framework, it would be more efficient and beneficial to just create our own.
 
@@ -31,9 +31,9 @@ Shoko Docs has been completely rewritten in Markdown which means if you can type
 
 Yes you read that right, Shoko Docs finally has a dark theme.
 
-Clicking the **Dark Theme** link on the right-side of the nav menu will switch your theme. We've also designed it to remember your theme preference so you don't need keep clicking the link each time when visiting the page.
+Clicking the **Dark Theme** link on the right-side of the nav menu will switch your theme. We've also designed it to remember your theme preference, so you don't need keep clicking the link each time when visiting the page.
 
-There is one drawback at the moment, while its been added it's color scheme has not been created yet. Its not because we forgot about it, but instead we'd like **the community** to design it! Anyone who wishes to help just jump onto our Discord server and let us know!
+There is one drawback at the moment, while it's been added it's color scheme has not been created yet. Its not because we forgot about it, but instead we'd like **the community** to design it! Anyone who wishes to help just jump onto our Discord server and let us know!
 
 ##### Coming Up
 

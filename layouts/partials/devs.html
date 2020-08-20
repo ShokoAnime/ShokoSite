@@ -1,0 +1,28 @@
+{{ $data := index .Site.Data .Site.Language.Lang }}
+{{ if eq (index .Site.Data .Site.Language.Lang) nil }}
+{{ $data = .Site.Data.en }}
+{{ end }}
+
+{{ $devCount := 0 }}
+
+{{ range $data.devs.devList }}
+{{ if eq .team "yes" }}
+
+{{ $userInfo := index ($data.devs.devList) $devCount }}
+
+<div class="{{ $userInfo.name | lower }}">
+	<div class="user-header-wrapper">
+		<p class="page-item-header">{{ $userInfo.name }}</p>
+		<a class="staff-link" href="https://github.com/{{ $userInfo.githubLink }}" target="_blank" rel="noopener">GitHub Profile</a>
+	</div>
+	<hr>
+	{{ range $userInfo.projects }}
+	<li><a class="staff-project-link" href="{{ .link }}" target="_blank" rel="noopener">{{ .name }}</a></li>
+	{{ end }}
+	<p class="staff-bio">{{ $userInfo.bio }}</p>
+</div>
+
+{{ $devCount = add $devCount 1 }}
+
+{{ end }}
+{{ end }}

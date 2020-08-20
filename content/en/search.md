@@ -1,8 +1,11 @@
 +++
-title = "Search Shoko Docs"
+title = "Search Shoko"
 description = "Search through the Shoko website and documentation."
 layout = "single-page"
 +++
+### Input Search Criteria Below { class="page-content-first" }
+
+The embedded **Google Search** below will allow you to search through the Shoko website and Shoko Docs.
 
 <!-- Google Custom Search Engine -->
 <script async src="https://cse.google.com/cse.js?cx=000649133662658939805:7nv0dx66q_4"></script>
@@ -59,7 +62,7 @@ layout = "single-page"
 }
 
 .gsc-option-menu-item-highlighted {
-    background-color: var(--linkActive);
+    background-color: var(--linkHover);
 	color: var(--fontColor);
 }
 
@@ -73,11 +76,11 @@ layout = "single-page"
 }
 
 .gs-title > b:hover, .gs-title:hover {
-	color: var(--linkActive) !important;
+	color: var(--linkHover) !important;
 }
 
 .gs-webResult div.gs-visibleUrl, .gs-imageResult div.gs-visibleUrl {
-	color: var(--sideNavTitle) !important;
+	color: var(--linkHover) !important;
 	font-size: 0.85rem;
 }
 
@@ -106,7 +109,7 @@ layout = "single-page"
 .gsc-results .gsc-cursor-box .gsc-cursor-current-page {
     border-color: var(--borderColor);
     background-color: var(--backgroundColor);;
-	color: var(--linkActive) !important;
+	color: var(--linkHover) !important;
 }
 
 .gsc-results .gsc-cursor-box .gsc-cursor-page {

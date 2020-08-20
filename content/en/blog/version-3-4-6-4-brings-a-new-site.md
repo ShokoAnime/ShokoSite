@@ -19,18 +19,18 @@ With each release, we'll cover a few of the new additions or changes but
 for a complete listing, check out the
 [changelog](https://docs.shokoanime.com/changelog).
 
-{{% lightbox-image image-url="/assets/images/blog/Version-3464-Nakamori.jpg" image-alt="Nakamori - Series List"%}}
+![Nakamori - Series List](/assets/images/blog/Version-3464-Nakamori.jp)
 
 ##### Nakamori, the JMM Plugin for Kodi
 
 The biggest change with Version 3.4.6.4 is the long awaited addition of
-Kodi support with the Nakamori Plugin\! This was made possible by
+Kodi support with the Nakamori Plugin! This was made possible by
 BigRetroMike, a member of our community who developed and maintains the
 Nakamori plugin. For installing instructions and general Nakamori usage
 check out the Nakamori documentation by clicking on Documentation in the
 above menu and selecting Nakamori. BigRetroMike is always looking for
 feedback on how to improve Nakamori so if you find anything wrong with
-it or would like to see a feature added, head over to the {{% external-link link="https://github.com/bigretromike/nakamoriplugin/issues" text="Nakamori Github Repo" %}}
+it or would like to see a feature added, head over to the [Nakamori Github Repo](https://github.com/bigretromike/nakamoriplugin/issues).
 
 ##### Hashing Speed Fix
 
