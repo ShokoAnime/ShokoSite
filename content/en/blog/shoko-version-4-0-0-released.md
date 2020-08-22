@@ -11,7 +11,7 @@ dev = ["Avael", "Baine", "Cazzar", "Da3dsoul", "ElementalCrisis", "MaxPiva", "Mo
 
 After months of work we're happy to announce that Shoko version 4.0.0 is available for download! This releases introduce some big changes for Shoko, especially for our Windows users, so we recommend reading through this release post before updating. 
 
-For a complete list of changes, check out the [Changelog](https://docs.shokoanime.com/changelog.html).
+For a complete list of changes, check out the [Changelog](https://docs.shokoanime.com/changelog).
 
 ##### .NET Core Conversion
 
