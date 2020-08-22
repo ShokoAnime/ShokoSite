@@ -3,15 +3,15 @@
     {
       "name": "Shoko Server",
       "platform": "Windows / Linux",
-      "version": "3.9.7",
-      "release": "April 30th, 2020",
+      "version": "4.0.0",
+      "release": "August 21, 2020",
       "image": "http://shokoanime.com/assets/images/programs-plugins/shoko-server/WebUI-Index.jpg",
       "info": "Shoko Server is the core component of the Shoko Suite and makes all the magic possible. Highly customizable and ready to go within a matter of minutes, Shoko Server does all the heavy lifting allowing you to sit back, relax and binge watch anime you don't even remember downloading.",
       "downloads": [
         {
-          "windowsStable": "https://shokoanime.com/files/stable/Shoko_Server_Setup_3.9.7.zip",
-          "windowsDaily": "https://shokoanime.com/files/daily/Shoko.Server/shokoserver.zip",
-          "linuxDocker": "https://hub.docker.com/r/cazzar/shokoserver/"
+          "windowsStable": "https://shokoanime.com/files/shoko-server/Shoko_Server_Setup_4.0.0.exe/",
+          "windowsDaily": "https://github.com/ShokoAnime/ShokoServer/actions?query=workflow%3A%22Build+Tray+Service%22",
+          "linuxDocker": "https://hub.docker.com/r/shokoanime/server/"
         }
       ],
       "resources": [
@@ -26,14 +26,14 @@
     {
       "name": "Shoko Desktop",
       "platform": "Windows",
-      "version": "3.9.7",
-      "release": "April 30th, 2020",
+      "version": "4.0.0",
+      "release": "August 21, 2020",
       "image": "http://shokoanime.com/assets/images/programs-plugins/shoko-desktop/Shoko-Desktop-Viewing-Series.jpg",
       "info": "Shoko Desktop allows you to view your collection in full detail providing information you didn't even know you needed and now can't live without. Packed with multiple advanced utilities to further fine-tune your collection, you'll wish you had found Shoko earlier.",
       "downloads": [
         {
-          "windowsStable": "https://shokoanime.com/files/stable/Shoko_Desktop_Setup_3.9.7.zip",
-          "windowsDaily": "https://shokoanime.com/files/daily/Shoko.Desktop/shokodesktop.zip"
+          "windowsStable": "https://shokoanime.com/files/shoko-desktop/Shoko_Desktop_Setup_4.0.0.exe",
+          "windowsDaily": "https://github.com/ShokoAnime/ShokoDesktop/actions?query=workflow%3A%22Build+Daily%22"
         }
       ],
       "resources": [
@@ -96,7 +96,7 @@
       "info": "My Anime 3 delivers your entire anime collection in all it's glory straight to Media Portal providing users with the ultimate TV viewing experience.",
       "downloads": [
         {
-          "kodiStable": "https://shokoanime.com/files/stable/My_Anime_3_3.7.3.mpe1"
+          "kodiStable": "https://shokoanime.com/files/my-anime-3/My-Anime-3-3.7.3.mpe1"
         }
       ],
       "resources": [

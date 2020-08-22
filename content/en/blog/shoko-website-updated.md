@@ -35,7 +35,7 @@ We initially removed the program/plugin pages as we felt the previous downloads 
 
 If you run across any issues or have any feedback, please let us know either on Discord or the [Shoko Website Github Repo](https://github.com/ShokoAnime/ShokoSite), so we can look into it. 
 
-##### Shoko Version 4.00
+##### Shoko Version 4.0.0
 
 The next major version of Shoko is coming soon!
 

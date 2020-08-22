@@ -6,5 +6,5 @@ type = "post"
 anime = "NAME"
 category = ["Category"]
 tag = ["Tag"]
-dev= ["dev]
+dev= ["dev"]
 +++
