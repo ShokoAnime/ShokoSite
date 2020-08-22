@@ -9,7 +9,7 @@
       "info": "Shoko Server is the core component of the Shoko Suite and makes all the magic possible. Highly customizable and ready to go within a matter of minutes, Shoko Server does all the heavy lifting allowing you to sit back, relax and binge watch anime you don't even remember downloading.",
       "downloads": [
         {
-          "windowsStable": "https://shokoanime.com/files/shoko-server/Shoko_Server_Setup_4.0.0.exe/",
+          "windowsStable": "https://shokoanime.com/files/shoko-server/Shoko_Server_Setup_4.0.0.zip",
           "windowsDaily": "https://github.com/ShokoAnime/ShokoServer/actions?query=workflow%3A%22Build+Tray+Service%22",
           "linuxDocker": "https://hub.docker.com/r/shokoanime/server/"
         }
@@ -32,7 +32,7 @@
       "info": "Shoko Desktop allows you to view your collection in full detail providing information you didn't even know you needed and now can't live without. Packed with multiple advanced utilities to further fine-tune your collection, you'll wish you had found Shoko earlier.",
       "downloads": [
         {
-          "windowsStable": "https://shokoanime.com/files/shoko-desktop/Shoko_Desktop_Setup_4.0.0.exe",
+          "windowsStable": "https://shokoanime.com/files/shoko-desktop/Shoko_Desktop_Setup_4.0.0.zip",
           "windowsDaily": "https://github.com/ShokoAnime/ShokoDesktop/actions?query=workflow%3A%22Build+Daily%22"
         }
       ],
