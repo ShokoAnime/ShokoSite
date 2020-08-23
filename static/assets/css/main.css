@@ -717,7 +717,7 @@ strong {
 }
 
 .blog-single-image-wrapper {
-	margin-bottom: 3rem;
+	margin-bottom: 1rem;
 	position: relative;
 }
 
@@ -728,6 +728,11 @@ strong {
 	max-height: 475px;
 	max-width: 850px;
 	width: 100%;
+}
+
+.blog-single-image-anime {
+	margin-bottom: 2rem;
+	text-align: right;
 }
 
 .blog-single-date {

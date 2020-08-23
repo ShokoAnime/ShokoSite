@@ -16,7 +16,7 @@
 		{{ if ne $index $len }}
 		<a href='{{ $.Scratch.Get "path" | relLangURL }}'>{{ humanize . }}</a>
 		{{ else }}
-		<span class="breadcrumb-active">{{ humanize . }}</span>
+		<span class="breadcrumb-active">{{ $.Page.Title }}</span>
 		{{ end }}
 		{{ $.Scratch.Add "path" "/" }}
 		{{ end }}

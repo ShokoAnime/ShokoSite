@@ -33,7 +33,7 @@ While not exactly new, we've been working on it for some time now, version 4.0 m
 
 ##### Renamer Plugin 
 
-One of the most requested features is more control over the Renamer system, and while it's something we've also wanted ( [Drop Destination Scripts](https://github.com/ShokoAnime/ShokoServer/issues/504)) for a long time, our .NET Core conversion finally allowed us to make some progress on it. This does require some basic **C#** knowledge, so we're more than happy to help anyone who needs assistance getting their Renamer plugin up and running. 
+One of the most requested features is more control over the Renamer system, and while it's something we've also wanted ([Drop Destination Scripts](https://github.com/ShokoAnime/ShokoServer/issues/504)) for a long time, our .NET Core conversion finally allowed us to make some progress on it. This does require some basic **C#** knowledge, so we're more than happy to help anyone who needs assistance getting their Renamer plugin up and running. 
 
 We've created a repo with some examples to help you build your own Renamer plugin. 
 

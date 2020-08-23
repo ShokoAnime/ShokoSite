@@ -22,6 +22,11 @@
 		<img class="blog-single-image" src="{{ .Site.BaseURL }}{{ .Params.image }}" alt=" {{ .Params.title }}">
 	</div>
 
+	<div class="blog-single-image-anime">
+		<span>{{ i18n "image-anime" }} </span>
+		<a href="https://anidb.net/search/anime/?adb.search={{ .Params.anime }}" target="_blank" rel="noopener">{{ .Params.anime }}</a>
+	</div>
+
 	{{ partial "share.html" . }}
 
 	<div class="blog-single-content">
@@ -64,9 +69,9 @@
 			{{ $name = $name | lower | urlize }}
 			{{ if gt $taxoCount "0"}}
 			<span class="post-divider">|</span>
-			<a href="{{ "blog/category/" | relLangURL }}{{ $name | urlize }}"> {{ i18n $name }}</a>
+			<a href="{{ " blog/category/" | relLangURL }}{{ $name | urlize }}"> {{ i18n $name }}</a>
 			{{ else }}
-			<a href="{{ "blog/category/" | relLangURL }}{{ $name | urlize }}">{{ i18n $name }}</a>
+			<a href="{{ " blog/category/" | relLangURL }}{{ $name | urlize }}">{{ i18n $name }}</a>
 			{{ end }}
 			{{ $taxoCount = add $taxoCount 1 }}
 			{{ end }}
@@ -77,9 +82,9 @@
 			{{ $name = $name | lower | urlize }}
 			{{ if gt $taxoCount "0"}}
 			<span class="post-divider">|</span>
-			<a href="{{ "blog/tag/" | relLangURL }}{{ $name | urlize }}">{{ $name | humanize | title }}</a>
+			<a href="{{ " blog/tag/" | relLangURL }}{{ $name | urlize }}">{{ $name | humanize | title }}</a>
 			{{ else }}
-			<a href="{{ "blog/tag/" | relLangURL }}{{ $name | urlize }}">{{ $name | humanize | title }}</a>
+			<a href="{{ " blog/tag/" | relLangURL }}{{ $name | urlize }}">{{ $name | humanize | title }}</a>
 			{{ end }}
 			{{ $taxoCount = add $taxoCount 1 }}
 			{{ end }}
