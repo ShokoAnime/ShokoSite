@@ -40,7 +40,7 @@
 			<img class="downloads-image" src="{{ .image }}" alt="{{ .title }}">
 
 			<div class="downloads-inside-wrapper">
-				<div class={{ if eq "Shoko Server" .name }}"downloads-info-wrapper-server"{{ else }}"downloads-info-wrapper"{{ end }}>
+				<div class="{{ if eq "Shoko Server" .name }}downloads-info-wrapper-server{{ else }}downloads-info-wrapper{{ end }}">
 				<h3 class="downloads-header">{{ .name }}</h3>
 				<div class="downloads-inner-info-wrapper">
 					<p class="downloads-version">{{ i18n "version" }} {{ .version }}</p>
@@ -58,6 +58,8 @@
 </div>
 
 {{ end }}
+
+</div>
 
 {{ partial "footer.html" . }}
 {{ partial "scripts.html" . }}
