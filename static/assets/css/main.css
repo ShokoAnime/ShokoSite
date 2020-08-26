@@ -27,11 +27,12 @@
 a {
 	color: var(--linkNormal);
 	font-weight: 500;
+	text-decoration: none;
 }
 
 a:hover {
 	color: var(--linkHover);
-	text-decoration: underline !important;
+	text-decoration: none;
 }
 
 body {
@@ -458,7 +459,7 @@ strong {
 }
 
 .footer-links > .navbar-nav > a:hover {
-	color: var(--linkNormal) !important;
+	color: var(--linkHover) !important;
 	text-decoration: none;
 }
 
@@ -502,10 +503,6 @@ strong {
 	font-size: 1.3rem;
 	margin: auto 0 auto auto;
 	text-transform: capitalize;
-}
-
-.breadcrumb-list > a {
-	text-decoration: none;
 }
 
 .breadcrumb-separator {
@@ -903,10 +900,6 @@ strong {
 	text-decoration: none;
 }
 
-.downloads-link:hover {
-	text-decoration: none !important;
-}
-
 .downloads-alert {
 	bottom: 0;
 	max-width: 1400px;
@@ -939,10 +932,6 @@ strong {
 	text-align: center;
 }
 
-.downloads-platform-item > a {
-	text-decoration: none !important;
-}
-
 .downloads-platform-circle {
 	background: var(--featureBackground);
 	border-radius: 50px;
@@ -972,10 +961,6 @@ strong {
 	margin-bottom: 1rem;
 }
 
-.downloads-single-link-list > a {
-	text-decoration: none;
-}
-
 .downloads-single-platform-circle {
 	background: var(--featureBackground);
 	border-radius: 50px;
@@ -989,10 +974,6 @@ strong {
 	margin-top: 1rem;
 	text-align: center;
 	width: 101px;
-}
-
-.downloads-single-platform-item > a {
-	text-decoration: none;
 }
 
 .downloads-single-content-first {

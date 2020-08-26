@@ -10,7 +10,7 @@
       "downloads": [
         {
           "windowsStable": "https://shokoanime.com/files/shoko-server/Shoko_Server_Setup_4.0.0.zip",
-          "windowsDaily": "https://github.com/ShokoAnime/ShokoServer/actions?query=workflow%3A%22Build+Tray+Service%22",
+          "windowsDaily": "https://shokoanime.com/files/shoko-server/daily/ShokoServer.zip",
           "linuxDocker": "https://hub.docker.com/r/shokoanime/server/"
         }
       ],
@@ -33,7 +33,7 @@
       "downloads": [
         {
           "windowsStable": "https://shokoanime.com/files/shoko-desktop/Shoko_Desktop_Setup_4.0.0.zip",
-          "windowsDaily": "https://github.com/ShokoAnime/ShokoDesktop/actions?query=workflow%3A%22Build+Daily%22"
+          "windowsDaily": "https://shokoanime.com/files/shoko-desktop/daily/ShokoDesktop.zip"
         }
       ],
       "resources": [
