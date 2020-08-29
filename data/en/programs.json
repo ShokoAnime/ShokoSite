@@ -3,13 +3,13 @@
     {
       "name": "Shoko Server",
       "platform": "Windows / Linux",
-      "version": "4.0.0",
-      "release": "August 21, 2020",
+      "version": "4.0.1",
+      "release": "August 29, 2020",
       "image": "http://shokoanime.com/assets/images/programs-plugins/shoko-server/WebUI-Index.jpg",
       "info": "Shoko Server is the core component of the Shoko Suite and makes all the magic possible. Highly customizable and ready to go within a matter of minutes, Shoko Server does all the heavy lifting allowing you to sit back, relax and binge watch anime you don't even remember downloading.",
       "downloads": [
         {
-          "windowsStable": "https://shokoanime.com/files/shoko-server/Shoko_Server_Setup_4.0.0.zip",
+          "windowsStable": "https://shokoanime.com/files/shoko-server/Shoko_Server_Setup_4.0.1.zip",
           "windowsDaily": "https://shokoanime.com/files/shoko-server/daily/ShokoServer.zip",
           "linuxDocker": "https://hub.docker.com/r/shokoanime/server/"
         }
