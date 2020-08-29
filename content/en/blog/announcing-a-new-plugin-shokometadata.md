@@ -5,7 +5,7 @@ date = 2017-03-12T04:15:48+00:00
 type = "post"
 anime = "Angel Beats"
 category = ["Update"]
-tag = ["ShokoMetadata"]
+tag = ["Shoko Metadata"]
 +++
 
 For the last couple of weeks, Cazzar has been working on a new Plex plugin called, Shoko Metadata.

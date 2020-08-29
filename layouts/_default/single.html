@@ -69,9 +69,9 @@
 			{{ $name = $name | lower | urlize }}
 			{{ if gt $taxoCount "0"}}
 			<span class="post-divider">|</span>
-			<a href="{{ " blog/category/" | relLangURL }}{{ $name | urlize }}"> {{ i18n $name }}</a>
+			<a href="{{"blog/category/" | relLangURL }}{{ $name | urlize }}"> {{ i18n $name }}</a>
 			{{ else }}
-			<a href="{{ " blog/category/" | relLangURL }}{{ $name | urlize }}">{{ i18n $name }}</a>
+			<a href="{{"blog/category/" | relLangURL }}{{ $name | urlize }}">{{ i18n $name }}</a>
 			{{ end }}
 			{{ $taxoCount = add $taxoCount 1 }}
 			{{ end }}
@@ -82,9 +82,9 @@
 			{{ $name = $name | lower | urlize }}
 			{{ if gt $taxoCount "0"}}
 			<span class="post-divider">|</span>
-			<a href="{{ " blog/tag/" | relLangURL }}{{ $name | urlize }}">{{ $name | humanize | title }}</a>
+			<a href="{{"blog/tag/" | relLangURL }}{{ $name | urlize }}">{{ $name | humanize | title }}</a>
 			{{ else }}
-			<a href="{{ " blog/tag/" | relLangURL }}{{ $name | urlize }}">{{ $name | humanize | title }}</a>
+			<a href="{{"blog/tag/" | relLangURL }}{{ $name | urlize }}">{{ $name | humanize | title }}</a>
 			{{ end }}
 			{{ $taxoCount = add $taxoCount 1 }}
 			{{ end }}
