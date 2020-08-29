@@ -2,7 +2,8 @@
 title = "Shoko Metadata 1.5 Released"
 image = "assets/images/blog/Version-401-Banner.jpg"
 date = 2020-08-29T00:06:42-07:00
-type = "draft"
+type = "post"
+draft = "true"
 anime = "Isuca"
 category = ["Update"]
 tag = ["Shoko Metadata"]
