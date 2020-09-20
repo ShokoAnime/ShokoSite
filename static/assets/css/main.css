@@ -699,6 +699,7 @@ strong {
 
 .blog-pagination-wrapper {
 	display: flex;
+	margin-bottom: 2rem;
 }
 
 .blog-pagination-content {
@@ -748,6 +749,10 @@ strong {
 .blog-single-content > h5 {
 	color: var(--linkHover);
 	margin: 2rem 0;
+}
+
+.blog-single-content > h6 {
+	margin: 1.2rem 0;
 }
 
 .blog-single-info-wrapper {
