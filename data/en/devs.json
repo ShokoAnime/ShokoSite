@@ -171,6 +171,24 @@
       "bio": "The latest addition to the team. Stumbled upon Shoko in May, 2020 and later joined the team as a Shoko Server Web UI developer and also helps out with Shoko Metadata sometimes."
     },
     {
+      "name": "revam",
+      "githubID": "7761729",
+      "githubLink": "revam",
+      "team": "yes",
+      "joinDate": "2020 - Present",
+      "projects": [
+        {
+          "name": "Shoko Server",
+          "link": "https://github.com/ShokoAnime/ShokoServer"
+        },
+        {
+          "name": "Shokofin",
+          "link": "https://github.com/ShokoAnime/Shokofin"
+        }
+      ],
+      "bio": "Was looking for an efficient way to organize his ever-growing anime library and found Shoko in late 2020. Later on he joined the team to work on Shokofin and sometimes Shoko Server."
+    },
+    {
       "name": "Wat",
       "githubID": "1365428",
       "githubLink": "notnyt",
