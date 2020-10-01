@@ -21,8 +21,14 @@
 		<a class="dropdown-item" href="{{ "translate" | relLangURL }}">Translate</a>
 	</div>
 
-	<a class="navbar-link navbar-search" href="{{ "search" | relLangURL }}"><i class="fas fa-search"></i></a>
-</div>
+	<i class="fas fa-search navbar-search" onclick="searchBox()"></i>
+	<form name="cse" id="searchbox" action="/search/" method="get">
+		<input type="hidden" name="cx" value="000649133662658939805:7nv0dx66q_4"/>
+		<input type="hidden" name="ie" value="utf-8"/>
+		<input type="hidden" name="hl" value="en"/>
+		<input name="q" type="text" class="search-input" autocomplete="off" placeholder="Search ShokoDocs..."/>
+	</form>
+
 {{ end }}
 
 <div class="sidenav-right-wrapper">

@@ -166,12 +166,20 @@
         {
           "name": "Shoko Server Web UI",
           "link": "https://github.com/ShokoAnime/ShokoServer-WebUI"
+        },
+        {
+          "name": "Shokofin",
+          "link": "https://github.com/ShokoAnime/Shokofin"
+        },
+        {
+          "name": "Shoko Metadata",
+          "link": "https://github.com/Cazzar/ShokoMetadata.bundle"
         }
       ],
-      "bio": "The latest addition to the team. Stumbled upon Shoko in May, 2020 and later joined the team as a Shoko Server Web UI developer and also helps out with Shoko Metadata sometimes."
+      "bio": "Stumbled upon Shoko in mid-2020 and joined the team initially helping with Shoko Server Web UI. Now helps out with Shoko Metadata and created Shokofin."
     },
     {
-      "name": "revam",
+      "name": "Revam",
       "githubID": "7761729",
       "githubLink": "revam",
       "team": "yes",

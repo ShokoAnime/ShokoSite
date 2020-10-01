@@ -141,6 +141,13 @@ function closeNav() {
 
 // ----------------------------------------------------------------------------------------------------------------
 
+// Nav Search
+function searchBox(){
+	css('#searchbox', 'display', 'initial');
+}
+
+// ----------------------------------------------------------------------------------------------------------------
+
 //Lightbox - Has to be last.
 document.addEventListener('DOMContentLoaded',function(){
 	new SmartPhoto(".js-smartPhoto",{

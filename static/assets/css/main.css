@@ -167,6 +167,26 @@ strong {
 
 .navbar-search {
 	color: var(--fontColorAlt);
+	cursor: pointer;
+}
+
+#searchbox {
+	border-bottom: 1px solid var(--fontColorAlt);
+	display: none;
+}
+
+.search-input {
+	background: none;
+	border: none;
+	color: var(--fontColorAlt);
+}
+
+.search-input::placeholder {
+	color: var(--fontColorAlt);
+}
+
+.search-input:focus {
+	outline: none;
 }
 
 .sidenav-right-wrapper {
@@ -575,7 +595,7 @@ strong {
 	font-weight: 600
 }
 
-.avael, .baine, .bigretromike, .cazzar, .da3dsoul, .elementalcrisis, .jmediamanager, .maxpiva, .mohan226 {
+.avael, .baine, .bigretromike, .cazzar, .da3dsoul, .elementalcrisis, .jmediamanager, .maxpiva, .mohan226, .revam {
 	display: none;
 }
 
@@ -584,8 +604,8 @@ strong {
 }
 
 .staff-link {
-	text-decoration: none;
 	margin: auto 0 auto auto;
+	text-decoration: none;
 }
 
 .staff-project-link {
@@ -603,9 +623,9 @@ strong {
 }
 
 .staff-internal-wrapper {
+	cursor: pointer;
 	display: flex;
 	padding: 1rem;
-	cursor: pointer;
 }
 
 .staff-avatar {
