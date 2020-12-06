@@ -70,13 +70,15 @@ let randomBanner = getRandomBanner();
 let languages = ["de"];
 
 function getRandomBanner() {
-	randomNumber = Math.floor((Math.random() * 6) + 1);
+	randomNumber = Math.floor((Math.random() * 7) + 1);
+	console.log(`randomNumber initial: ${randomNumber}`)
 	return randomNumber;
 }
 
 while (parseInt(randomBanner, 10) === parseInt(previousBanner, 10)) {
 	if (parseInt(randomBanner, 10) === parseInt(previousBanner, 10)) {
 		randomBanner = getRandomBanner();
+		console.log(`randomNumber second: ${randomNumber}`)
 	}
 }
 
