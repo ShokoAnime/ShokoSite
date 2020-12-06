@@ -10,56 +10,113 @@
 
 <!-- Random Banner -->
 <div class="random-banner">
-	<div class="hero-overlay">
-		{{ partial "breadcrumb.html" . }}
-	</div>
+    <div class="hero-overlay">
+        {{ partial "breadcrumb.html" . }}
+    </div>
 </div>
 
 <div class="section-wrapper row">
 
-	{{ $data := index .Site.Data .Site.Language.Lang }}
-	{{ if eq (index .Site.Data .Site.Language.Lang) nil }}
+    {{ $data := index .Site.Data .Site.Language.Lang }}
+    {{ if eq (index .Site.Data .Site.Language.Lang) nil }}
 
-	{{ $data = .Site.Data.en }}
+    {{ $data = .Site.Data.en }}
+    {{ end }}
 
-	{{ end }}
+    <div class="downloads-section-header-wrapper">
+        <h5>Programs</h5>
+        <hr class="hr1">
+    </div>
 
-	{{ range $data.programs.programList }}
+    {{ range $data.programs.programList }}
+    {{ if eq "program" .type }}
 
-	<div class="col-xxl-12">
-		<div class="downloads-wrapper">
+    <div class="downloads-item-wrapper">
+        <div class="row">
 
-			{{ if eq "Shoko Server" .name }}
-			<div class="downloads-alert">
-				<div class="alert alert-warning" role="alert">
-					<i class="downloads-alert-icon fas fa-exclamation-triangle"></i>{{ i18n "server-required" }}
-				</div>
-			</div>
-			{{ end }}
+            <div class="col-xxl-5 downloads-item-left">
+                <img class="downloads-item-image" src="{{ .image }}" alt="{{ .title }}">
+            </div>
 
-			<img class="downloads-image" src="{{ .image }}" alt="{{ .title }}">
+            <div class="col-xxl-8 downloads-item-right">
+                <div class="downloads-item-info-wrapper">
+                    <div class="downloads-item-name-wrapper">
+                        <h5 class="downloads-item-name">
+                            {{ .name }}
+                        </h5>
+                        <div class="downloads-item-version-date">
+                            {{ .version }} / {{ .release }}
+                        </div>
+                    </div>
+                    <hr class="hr1">
+                    {{ if eq "Shoko Server" .name }}
+                    <div class="alert alert-warning downloads-alert" role="alert">
+                        <i class="downloads-alert-icon fas fa-exclamation-triangle"></i>{{ i18n "server-required" }}
+                    </div>
+                    {{ end }}
+                    <p>{{ .info | truncate 220 }}</p>
+                    <a class="downloads-item-link" href="{{ "/downloads/" | relLangURL }}{{ .name | urlize }}">{{ i18n "learn-more-about" }} {{ .name }}</a>
 
-			<div class="downloads-inside-wrapper">
-				<div class="{{ if eq "Shoko Server" .name }}downloads-info-wrapper-server{{ else }}downloads-info-wrapper{{ end }}">
-				<h3 class="downloads-header">{{ .name }}</h3>
-				<div class="downloads-inner-info-wrapper">
-					<p class="downloads-version">{{ i18n "version" }} {{ .version }}</p>
-					<p class="downloads-release">{{ .release }}</p>
-				</div>
-				<p>{{ .info | truncate 220 }}</p>
-				<a class="downloads-link" href="{{ "/downloads/" | relLangURL }}{{ .name | urlize }}">{{ i18n "learn-more-about" }} {{ .name }}</a>
+                    <div class="downloads-item-versions-wrapper">
+                        {{ partial "downloads-link.html" . }}
+                    </div>
+                </div>
+            </div>
 
-				{{ partial "downloads-link.html" . }}
+        </div>
+    </div>
 
-			</div>
-		</div>
+    {{ end }}
+    {{ end }}
 
-	</div>
+    <div class="downloads-section-header-wrapper">
+        <h5>Plugins</h5>
+        <hr class="hr1">
+    </div>
+
+    {{ range $data.programs.programList }}
+    {{ if eq "plugin" .type }}
+
+    <div class="downloads-item-wrapper">
+        <div class="row">
+
+            <div class="col-xxl-5 col-lg-4 col-md-12 downloads-item-left">
+                <img class="downloads-item-image" src="{{ .image }}" alt="{{ .title }}">
+            </div>
+
+            <div class="col-xxl-8 downloads-item-right">
+                <div class="downloads-item-info-wrapper">
+                    <div class="downloads-item-name-wrapper">
+                        <h5 class="downloads-item-name">
+                            {{ .name }}
+                        </h5>
+                        <div class="downloads-item-version-date">
+                            {{ .version }} / {{ .release }}
+                        </div>
+                    </div>
+                    <hr class="hr1">
+                    {{ if eq "Shoko Server" .name }}
+                    <div class="alert alert-warning downloads-alert" role="alert">
+                        <i class="downloads-alert-icon fas fa-exclamation-triangle"></i>{{ i18n "server-required" }}
+                    </div>
+                    {{ end }}
+                    <p>{{ .info | truncate 220 }}</p>
+                    <a class="downloads-item-link" href="{{ "/downloads/" | relLangURL }}{{ .name | urlize }}">{{ i18n "learn-more-about" }} {{ .name }}</a>
+
+                    <div class="downloads-item-versions-wrapper">
+                        {{ partial "downloads-link.html" . }}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    {{ end }}
+    {{ end }}
+
 </div>
 
-{{ end }}
-
-</div>
 
 {{ partial "footer.html" . }}
 {{ partial "scripts.html" . }}

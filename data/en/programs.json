@@ -3,6 +3,7 @@
     {
       "name": "Shoko Server",
       "platform": "Windows / Linux",
+      "type": "program",
       "version": "4.0.1",
       "release": "August 29, 2020",
       "image": "http://shokoanime.com/assets/images/programs-plugins/shoko-server/WebUI-Index.jpg",
@@ -26,6 +27,7 @@
     {
       "name": "Shoko Desktop",
       "platform": "Windows",
+      "type": "program",
       "version": "4.0.0",
       "release": "August 21, 2020",
       "image": "http://shokoanime.com/assets/images/programs-plugins/shoko-desktop/Shoko-Desktop-Viewing-Series.jpg",
@@ -48,6 +50,7 @@
     {
       "name": "Shoko Metadata",
       "platform": "Plex",
+      "type": "plugin",
       "version": "1.5.0",
       "release": "August 29th, 2020",
       "image": "http://shokoanime.com/assets/images/programs-plugins/shoko-metadata/Shoko Metadata - Series Episodes 02.jpg",
@@ -69,6 +72,7 @@
     {
       "name": "Nakamori",
       "platform": "Kodi",
+      "type": "plugin",
       "version": "3.5.3",
       "release": "March 16th, 2020",
       "image": "http://shokoanime.com/assets/images/programs-plugins/nakamori/Nakamori-Coverflow.jpg",
@@ -90,6 +94,7 @@
     {
       "name": "My Anime 3",
       "platform": "Media Portal",
+      "type": "plugin",
       "version": "3.7.3",
       "release": "November 17th, 2019",
       "image": "http://shokoanime.com/assets/images/programs-plugins/my-anime-3/My-Anime-3-StreamedMP-Collection-List.jpg",
