@@ -440,6 +440,15 @@
     }
 
     /* Downloads Index */
+    .downloads-item-info-wrapper {
+        text-align: center;
+    }
+
+    .downloads-platform-wrapper {
+        display: initial;
+        margin: auto;
+    }
+
     /* Downloads - Single */
     .downloads-single-image {
         height: 100%;

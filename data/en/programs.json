@@ -12,7 +12,8 @@
         {
           "windowsStable": "https://shokoanime.com/files/shoko-server/Shoko_Server_Setup_4.0.1.zip",
           "windowsDaily": "https://shokoanime.com/files/shoko-server/daily/ShokoServer.zip",
-          "linuxDocker": "https://hub.docker.com/r/shokoanime/server/"
+          "linuxStable": "https://hub.docker.com/r/shokoanime/server/tags?page=1&ordering=last_updated&name=latest",
+          "linuxDaily": "https://hub.docker.com/r/shokoanime/server/tags?page=1&ordering=last_updated&name=daily"
         }
       ],
       "resources": [

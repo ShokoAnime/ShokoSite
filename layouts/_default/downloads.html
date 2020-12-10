@@ -41,7 +41,7 @@
             <div class="col-xxl-8 downloads-item-right">
                 <div class="downloads-item-info-wrapper">
                     <div class="downloads-item-name-wrapper">
-                        <h5 class="downloads-item-name">
+                        <h5 class="downloads-item-name" id="{{ replace .name " " "-" }}">
                             {{ .name }}
                         </h5>
                         <div class="downloads-item-version-date">
@@ -87,7 +87,7 @@
             <div class="col-xxl-8 downloads-item-right">
                 <div class="downloads-item-info-wrapper">
                     <div class="downloads-item-name-wrapper">
-                        <h5 class="downloads-item-name">
+                        <h5 class="downloads-item-name" id="{{ replace .name " " "-" }}">
                             {{ .name }}
                         </h5>
                         <div class="downloads-item-version-date">
@@ -104,7 +104,9 @@
                     <a class="downloads-item-link" href="{{ "/downloads/" | relLangURL }}{{ .name | urlize }}">{{ i18n "learn-more-about" }} {{ .name }}</a>
 
                     <div class="downloads-item-versions-wrapper">
-                        {{ partial "downloads-link.html" . }}
+                        <div class="downloads-platform-wrapper">
+                            {{ partial "downloads-link.html" . }}
+                        </div>
                     </div>
                 </div>
             </div>

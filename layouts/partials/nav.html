@@ -13,13 +13,17 @@
 <div class="navbar-right-wrapper">
 	<i class="fas fa-sun navbar-theme" id="themeSwitcher"></i>
 
-	<i class="fas fa-language fa-lg navbar-language" id="dropdownMenuButton" data-toggle="dropdown"></i>
-	<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-		{{ range .AllTranslations }}
-		<a class="dropdown-item" href="{{ .Permalink }}">{{ .Language.LanguageName }}</a>
-		{{ end }}
-		<a class="dropdown-item" href="{{ "translate" | relLangURL }}">Translate</a>
-	</div>
+    <div class="nav-item dropdown navbar-language">
+        <a class="dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-language fa-lg navbar-language" data-toggle="dropdown"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+            {{ range .AllTranslations }}
+            <a class="dropdown-item" href="{{ .Permalink }}">{{ .Language.LanguageName }}</a>
+            {{ end }}
+            <a class="dropdown-item" href="{{ "translate" | relLangURL }}">Translate</a>
+        </div>
+    </div>
 
 	<i class="fas fa-search navbar-search" onclick="searchBox()"></i>
 	<form name="cse" id="searchbox" action="/search/" method="get">

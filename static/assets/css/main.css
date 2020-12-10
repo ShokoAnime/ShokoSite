@@ -39,7 +39,7 @@ body {
     background-color: var(--backgroundColor);
     color: var(--fontColor);
     display: none;
-    font-family: "Muli", sans-serif;
+    font-family: "Mulish", sans-serif;
     font-size: 1rem;
     font-weight: 400;
     height: 100%;
@@ -98,19 +98,27 @@ strong {
     padding: 0 !important;
 }
 
-/* Bootstrap 5 Fixes */
-.dropdown-menu {
-    left: initial;
-    right: 0;
+.dropdown-menu-dark {
+    background: var(--featureBackground);
 }
 
 .dropdown-item {
+    font-weight: 600;
     width: auto;
 }
 
-.dropdown-item:hover {
+.dropdown-menu-dark .dropdown-item {
+    color: var(--fontColor);
+}
+
+.dropdown-menu-dark .dropdown-item:hover {
     color: var(--linkHover);
 }
+
+.dropdown-menu-dark .dropdown-item:hover {
+    background-color: var(--featureBackground);
+}
+
 
 /*
 ---------------------------------------------
@@ -144,6 +152,7 @@ strong {
 }
 
 .navbar-right-wrapper {
+    display: flex;
     margin-left: auto;
 }
 
@@ -154,6 +163,7 @@ strong {
 .navbar-theme {
     color: var(--fontColorAlt);
     cursor: pointer;
+    margin: auto;
 }
 
 .navbar-theme:hover {
@@ -166,9 +176,15 @@ strong {
     margin: 0 0.75rem;
 }
 
+.dropdown-toggle::after {
+    display: none;
+}
+
 .navbar-search {
     color: var(--fontColorAlt);
     cursor: pointer;
+    margin: auto;
+    margin-right: 0.5rem;
 }
 
 #searchbox {
@@ -871,8 +887,10 @@ strong {
 }
 
 .downloads-item-image {
-    width: 100%;
+    border: 1px solid var(--borderColor);
+    border-radius: 10px;
     height: 100%;
+    width: 100%;
 }
 
 .downloads-item-right {
@@ -884,9 +902,9 @@ strong {
 }
 
 .downloads-item-version-date {
-    margin-left: auto;
     color: var(--linkHover);
     font-weight: 700;
+    margin-left: auto;
 }
 
 .downloads-item-versions-wrapper {
@@ -910,7 +928,7 @@ strong {
 }
 
 .downloads-platform-item {
-    margin: 1rem auto 0 auto;
+    margin: 1rem 0 0 0;
     text-align: center;
 }
 
@@ -936,7 +954,9 @@ strong {
 }
 
 .downloads-platform-name {
+    margin-bottom: 0;
     margin-left: 1rem;
+    text-align: center;
 }
 
 .downloads-single-item {
@@ -948,6 +968,19 @@ strong {
     display: flex;
     flex-direction: column;
     margin-bottom: 1rem;
+}
+
+.downloads-single-platform-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.downloads-single-platform-wrapper > .downloads-platform-item > a > .downloads-platform-rectangle {
+    margin-right: 0;
+}
+
+.downloads-single-platform-wrapper > .downloads-platform-item > a > .downloads-platform-rectangle > .downloads-platform-icon {
+    margin: auto 0 !important;
 }
 
 .downloads-single-platform-circle {
