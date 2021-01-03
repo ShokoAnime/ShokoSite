@@ -449,6 +449,32 @@
         margin: auto;
     }
 
+    .downloads-section-header-wrapper {
+        flex-shrink: unset;
+    }
+
+    .downloads-item-wrapper {
+        flex-shrink: unset;
+    }
+
+    .downloads-item-name-wrapper {
+        display: inline-grid;
+    }
+
+    .downloads-item-versions-wrapper {
+        flex-direction: column;
+    }
+
+    .downloads-platform-rectangle {
+        display: grid;
+        margin-right: 0;
+        padding-top: 1rem;
+    }
+
+    .downloads-platform-name {
+        padding-top: 0.5rem;
+    }
+
     /* Downloads - Single */
     .downloads-single-image {
         height: 100%;
