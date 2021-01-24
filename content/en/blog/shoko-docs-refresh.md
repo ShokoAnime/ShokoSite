@@ -8,7 +8,11 @@ category = ["Website"]
 tag = ["Shoko Docs"]
 +++
 
-After nearly five months, multiple designs and iterations, our new design for Shoko Docs is up! The main goal of this update was to make the design similar to the updated homepage as well as reevaluate the existing content as a lot of the information had become outdated or simply incorrect. To that end most of the content was rewritten and condensed to not only make it easier to follow, but create less confusion for future contributors. 
+After nearly five months, multiple designs and iterations, our new design for Shoko Docs is up! The main goal of this update was to make the design similar to the updated homepage as well as reevaluate the existing content as a lot of the information had become outdated or simply incorrect. To that end most of the content was rewritten and condensed to not only make it easier to follow, but create less confusion for future contributors.
+
+![Shoko Docs Refresh Preview](/assets/images/blog/Shoko-Docs-Refresh-Preview.jpg)
+
+Take a look at the updated [Shoko Docs](https://docs.shokoanime.com/).
 
 If you run across any issues or have any feedback, please let us know either on **Discord** or on the [Shoko Docs Github Repo](https://github.com/ShokoAnime/ShokoDocs), so we can look into it.
 
