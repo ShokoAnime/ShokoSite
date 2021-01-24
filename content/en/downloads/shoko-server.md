@@ -1,7 +1,7 @@
 +++
 title = "Shoko Server"
 layout = "single-download"
-images = ["WebUI-Import-Folders.jpg", "WebUI-Index.jpg", "WebUI-Settings.jpg", "WebUI-Settings-02.jpg"]
+images = ["WebUI-Index.png", "WebUI-Import-Folders.png", "WebUI-Settings.png", "WebUI-Settings-02.png", "WebUI-Actions.png", "WebUI-Logs.png"]
 +++
 
 ### Automation Done Right { class="downloads-single-content-first" }
