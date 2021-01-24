@@ -1,6 +1,6 @@
 +++
 title = "Meet Ashen, Our New Hashing Service"
-image = "assets/images/blog/Meet-Ashen.jpg"
+image = "assets/images/blog/Meet-Ashen-Banner.jpg"
 date = 2020-09-19T17:24:19-07:00
 type = "post"
 anime = "Evangelion"
