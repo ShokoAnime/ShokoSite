@@ -32,7 +32,7 @@ During the update process, some older docs were intentionally left out, either b
 
 ##### Where's That Upcoming Shoko News Blog Post?
 
-If you're referring to the one in [Introducing Sushi.Net](http://localhost:1313/blog/introducing-sushi.net/) then don't worry, we didn't forget about it. It was pushed back a bit as the next main goal is to get the next version of Shoko released which should be happening by the **end of January** so expect our 2021 Shoko Roadmap blog post early **February** 
+If you're referring to the one in [Introducing Sushi.Net](https://shokoanime.com/blog/introducing-sushi.net/) then don't worry, we didn't forget about it. It was pushed back a bit as the next main goal is to get the next version of Shoko released which should be happening by the **end of January** so expect our 2021 Shoko Roadmap blog post early **February**.
 
 
 
