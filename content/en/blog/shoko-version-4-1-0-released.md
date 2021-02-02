@@ -6,7 +6,7 @@ type = "post"
 anime = "Amagi Brilliant Park"
 category = ["Update"]
 tag = ["Shoko Desktop", "Shoko Server"]
-dev = ["Avael", "Baine", "Cazzar", "Da3dsoul", "ElementalCrisis", "JMediaManager", "Mik1ll", "Mohan226"]
+dev = ["Avael", "Baine", "Cazzar", "Da3dsoul", "ElementalCrisis", "JMediaManager", "Mik1ll", "Mohan226", "Revam"]
 +++
 
 Kicking off 2021 with the next release of Shoko, Shoko Version 4.1.0 is available for download! 
