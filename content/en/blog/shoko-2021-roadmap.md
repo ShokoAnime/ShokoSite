@@ -38,7 +38,7 @@ If we decide to make a plugin, then users can expect it to be a fairly light exp
 
 Late last year, TheTVDB staff announced TheTVDB would no longer be free and instead require a [subscription](https://thetvdb.com/subscribe) to use its API. We attempted to reach out to find out just how much a commercial license would cost and to see if there was any kind of open-source discount or program, they never responded.
 
-According to one of the [Jellyfin devs](https://www.reddit.com/r/jellyfin/comments/jrvly5/thetvdb_new_api_and_licensing_model/gbwbom6utm_source=share&utm_medium=web2x&context=3), TheTVDB quoted them a price that is completely unreasonable for a project like ours, which has no intention taking donations, screening ads, selling or even collecting user info, or any other intent other than providing a service that we enjoy working on.
+According to one of the [Jellyfin devs](https://www.reddit.com/r/jellyfin/comments/jrvly5/thetvdb_new_api_and_licensing_model/gbwbom6?utm_source=share&utm_medium=web2x&context=3), TheTVDB quoted them a price that is completely unreasonable for a project like ours, which has no intention taking donations, screening ads, selling or even collecting user info, or any other intent other than providing a service that we enjoy working on.
 
 Like many other programs that relied on TheTVDB, we'll be replacing them with [The Movie Database](https://www.themoviedb.org/?language=en-US) which we actually already support, in part. This does mean we will be completely removing TVDB support regardless if you decide to pay for it yourself. Our plans include a plugin system that will allow any dev who wants to add it back and update it to do so at their own responsibility and leisure.
 
