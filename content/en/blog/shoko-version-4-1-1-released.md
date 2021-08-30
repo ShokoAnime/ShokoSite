@@ -21,7 +21,7 @@ Ashen is on hold at the moment as **Da3dsoul** is working on other projects. We 
 
 ##### Shoko Web UI 
 
-Our team has been busy working on refining the designs and we're hoping for an **MPV** release by this holiday. We'll also be running multiple closed beta tests as each section is completed which should tremendously help iron out bugs and unforeseen issues. 
+Our team has been busy working on refining the designs and we're hoping for an **MVP** (minimum viable product) release by this holiday. We'll also be running multiple closed beta tests as each section is completed which should tremendously help iron out bugs and unforeseen issues. 
 
 ##### Contributors
 
