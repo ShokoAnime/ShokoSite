@@ -42,7 +42,7 @@ While in no particular order, we're currently planning on adding the following t
 
 Check **Shoko Docs** for install instructions.
 
-[Shokofin Install](shokoDocs)
+[Shokofin Install](https://docs.shokoanime.com/shokofin/install/)
 
 ##### Contributors
 
