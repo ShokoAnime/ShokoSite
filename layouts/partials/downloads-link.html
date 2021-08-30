@@ -92,4 +92,17 @@
 	</div>
 	{{ end }}
 
+	{{ else if eq .platform "Jellyfin" }}
+
+	{{ range .downloads }}
+	<div class="downloads-platform-item">
+		<a href="{{ .jellyfinStable }}" target="_blank" rel="noopener">
+			<div class="downloads-platform-rectangle">
+				<i class="downloads-platform-icon fas fa-download fa-lg"></i>
+				<p class="downloads-platform-name">Shokofin {{ i18n "stable" }}</p>
+			</div>
+		</a>
+	</div>
+	{{ end }}
+
 {{ end }}

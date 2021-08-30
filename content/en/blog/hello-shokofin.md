@@ -1,7 +1,7 @@
 +++
 title = "Hello Shokofin"
 image = "assets/images/blog/Hello-Shokofin.jpg"
-date = 2021-08-31T10:47:22-07:00
+date = 2021-08-29
 type = "post"
 anime = "Night Raid 1931"
 category = ["Updates"]

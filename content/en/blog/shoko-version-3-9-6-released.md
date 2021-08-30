@@ -12,15 +12,11 @@ dev = ["Avael", "Baine", "BigRetroMike", "Bond", "Cazzar", "Da3dsoul", "Mik1ll",
 
 Shoko Version 3.9.6 is now available for download\!
 
-This release addresses various startup and crashing bugs reported after
-the initial release of version 3.9.5. If any user continues to
-experience any startup or crashing related issues, please let us know.
+This release addresses various startup and crashing bugs reported after the initial release of version 3.9.5. If any user continues to experience any startup or crashing related issues, please let us know.
 
-This releases also addresses the changes The TvDB has made to their API.
-Episode images and Fanart should properly download again.
+This releases also addresses the changes The TvDB has made to their API. Episode images and Fanart should properly download again.
 
-As always you can find a summary of the changes made by checking out the
-Changelog.
+As always you can find a summary of the changes made by checking out the Changelog.
 
 ##### Contributors
 

@@ -4,13 +4,13 @@
       "name": "Shoko Server",
       "platform": "Windows / Linux",
       "type": "program",
-      "version": "4.1.0",
-      "release": "February 1st, 2021",
+      "version": "4.1.1",
+      "release": "August 29th, 2021",
       "image": "http://shokoanime.com/assets/images/programs-plugins/shoko-server/WebUI-Index.png",
       "info": "Shoko Server is the core component of the Shoko Suite and makes all the magic possible. Highly customizable and ready to go within a matter of minutes, Shoko Server does all the heavy lifting allowing you to sit back, relax and binge watch anime you don't even remember downloading.",
       "downloads": [
         {
-          "windowsStable": "https://shokoanime.com/files/shoko-server/Shoko_Server_Setup_4.1.0.zip",
+          "windowsStable": "https://shokoanime.com/files/shoko-server/Shoko_Server_Setup_4.1.1.zip",
           "windowsDaily": "https://shokoanime.com/files/shoko-server/daily/ShokoServer.zip",
           "linuxStable": "https://hub.docker.com/r/shokoanime/server/tags?page=1&ordering=last_updated&name=latest",
           "linuxDaily": "https://hub.docker.com/r/shokoanime/server/tags?page=1&ordering=last_updated&name=daily"
@@ -20,7 +20,7 @@
         {
           "github": "https://github.com/ShokoAnime/ShokoServer",
           "docs": "https://docs.shokoanime.com/",
-          "changelog": "https://docs.shokoanime.com/changelog/",
+          "changelog": "https://docs.shokoanime.com/changelog/server",
           "support": "https://discord.gg/vpeHDsg"
         }
       ]
@@ -29,13 +29,13 @@
       "name": "Shoko Desktop",
       "platform": "Windows",
       "type": "program",
-      "version": "4.1.0",
-      "release": "February 1st, 2021",
+      "version": "4.1.1",
+      "release": "August 29th, 2021",
       "image": "http://shokoanime.com/assets/images/programs-plugins/shoko-desktop/Shoko-Desktop-Viewing-Series.jpg",
       "info": "Shoko Desktop allows you to view your collection in full detail providing information you didn't even know you needed and now can't live without. Packed with multiple advanced utilities to further fine-tune your collection, you'll wish you had found Shoko earlier.",
       "downloads": [
         {
-          "windowsStable": "https://shokoanime.com/files/shoko-desktop/Shoko_Desktop_Setup_4.1.0.zip",
+          "windowsStable": "https://shokoanime.com/files/shoko-desktop/Shoko_Desktop_Setup_4.1.1.zip",
           "windowsDaily": "https://shokoanime.com/files/shoko-desktop/daily/ShokoDesktop.zip"
         }
       ],
@@ -43,7 +43,7 @@
         {
           "github": "https://github.com/ShokoAnime/ShokoDesktop",
           "docs": "https://docs.shokoanime.com/",
-          "changelog": "https://docs.shokoanime.com/changelog/",
+          "changelog": "https://docs.shokoanime.com/changelog/desktop/",
           "support": "https://discord.gg/vpeHDsg"
         }
       ]
@@ -65,7 +65,7 @@
         {
           "github": "https://github.com/Cazzar/ShokoMetadata.bundle",
           "docs": "https://docs.shokoanime.com/",
-          "changelog": "https://docs.shokoanime.com/changelog/",
+          "changelog": "https://docs.shokoanime.com/changelog/shokometadata/",
           "support": "https://discord.gg/vpeHDsg"
         }
       ]
@@ -109,7 +109,29 @@
         {
           "github": "https://github.com/ShokoAnime/MyAnime3",
           "docs": "https://docs.shokoanime.com/",
-          "changelog": "https://docs.shokoanime.com/changelog/",
+          "changelog": "https://docs.shokoanime.com/changelog/myanime3/",
+          "support": "https://discord.gg/vpeHDsg"
+        }
+      ]
+    },
+    {
+      "name": "Shokofin",
+      "platform": "Jellyfin",
+      "type": "plugin",
+      "version": "1.4.7",
+      "release": "June 1st, 2021",
+      "image": "http://shokoanime.com/assets/images/programs-plugins/shokofin/Shokofin-Series-Listing-01.jpg",
+      "info": "Shokofin brings your entire collection to Jellyfin leveraging the power of Shoko and the easiness of Jellyfin. ",
+      "downloads": [
+        {
+          "jellyfinStable": "https://github.com/ShokoAnime/Shokofin/releases/download/1.4.7/shokofin_1.4.7.zip"
+        }
+      ],
+      "resources": [
+        {
+          "github": "https://github.com/ShokoAnime/Shokofin",
+          "docs": "https://docs.shokoanime.com/",
+          "changelog": "https://docs.shokoanime.com/changelog/shokofin/",
           "support": "https://discord.gg/vpeHDsg"
         }
       ]
