@@ -4,7 +4,7 @@ image = "assets/images/blog/Hello-Shokofin.jpg"
 date = 2021-08-29
 type = "post"
 anime = "Night Raid 1931"
-category = ["Updates"]
+category = ["Update"]
 tag = ["Shokofin"]
 dev= ["Mohan226", "Revam"]
 +++
@@ -40,9 +40,7 @@ While in no particular order, we're currently planning on adding the following t
 
 ##### Shokofin Download & Install
 
-Check **Shoko Docs** for install instructions.
-
-[Shokofin Install](https://docs.shokoanime.com/shokofin/install/)
+Check [ShokoDocs](https://docs.shokoanime.com/shokofin/install/) for install instructions.
 
 ##### Contributors
 
