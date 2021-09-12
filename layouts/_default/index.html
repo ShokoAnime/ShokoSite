@@ -67,6 +67,7 @@
 			<div class="left-feature-paragraph">
 				<p>{{ index $content_parts 2 | htmlUnescape | plainify }}</p>
 				<p>{{ index $content_parts 3 | htmlUnescape | plainify }}</p>
+				<p><strong>{{ index $content_parts 4 | htmlUnescape | plainify }}</strong></p>
 			</div>
 
 			<a href="{{ "/downloads/shoko-server" | relLangURL }}" type="button"
@@ -138,11 +139,11 @@
 		<div class="right-feature-info">
 
 			<div class="right-feature-header">
-				<h3>{{ index $content_parts 4 | htmlUnescape | plainify }}</h3>
+				<h3>{{ index $content_parts 5 | htmlUnescape | plainify }}</h3>
 			</div>
 
 			<div class="right-feature-paragraph">
-				<p>{{ index $content_parts 5 | htmlUnescape | plainify }}</p>
+				<p>{{ index $content_parts 6 | htmlUnescape | plainify }}</p>
 
 				<div class="media-player-icons">
 
@@ -152,7 +153,7 @@
 						<img class="media-player-image" src="{{ "assets/images/media-players/kodi.png" | absURL }}" alt="Kodi"></a>
 					<a href="{{ "/downloads/my-anime-3" | relLangURL }}">
 						<img class="media-player-image" src="{{ "assets/images/media-players/mediaportal.png" | absURL }}" alt="MediaPortal"></a>
-					<a href="{{ "/" | relLangURL }}">
+					<a href="{{ "/downloads/shokofin" | relLangURL }}">
 					<img class="media-player-image" src="{{ "assets/images/media-players/jellyfin.png" | absURL }}" alt="Jellyfin"></a>
 				</div>
 			</div>

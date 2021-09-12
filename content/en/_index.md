@@ -19,6 +19,10 @@ Within FIVE minutes, you’ll have Shoko up and running and populating your coll
 
 [ContentBlock]
 
+Please note, Shoko does not provide any way to download files, stream files from streaming sites or access files that are not part of your perosnal collection. 
+
+[ContentBlock]
+
 Built-In Media Player Support
 
 [ContentBlock]
