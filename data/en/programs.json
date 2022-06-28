@@ -4,13 +4,13 @@
       "name": "Shoko Server",
       "platform": "Windows / Linux",
       "type": "program",
-      "version": "4.1.1",
-      "release": "August 29th, 2021",
+      "version": "4.1.2",
+      "release": "June 27th, 2022",
       "image": "http://shokoanime.com/assets/images/programs-plugins/shoko-server/WebUI-Index.png",
       "info": "Shoko Server is the core component of the Shoko Suite and makes all the magic possible. Highly customizable and ready to go within a matter of minutes, Shoko Server does all the heavy lifting allowing you to sit back, relax and binge watch anime you don't even remember downloading.",
       "downloads": [
         {
-          "windowsStable": "https://shokoanime.com/files/shoko-server/Shoko_Server_Setup_4.1.1.zip",
+          "windowsStable": "https://shokoanime.com/files/shoko-server/Shoko_Server_Setup_4.1.2.zip",
           "windowsDaily": "https://shokoanime.com/files/shoko-server/daily/ShokoServer.zip",
           "linuxStable": "https://hub.docker.com/r/shokoanime/server/tags?page=1&ordering=last_updated&name=latest",
           "linuxDaily": "https://hub.docker.com/r/shokoanime/server/tags?page=1&ordering=last_updated&name=daily"
@@ -29,13 +29,13 @@
       "name": "Shoko Desktop",
       "platform": "Windows",
       "type": "program",
-      "version": "4.1.1",
-      "release": "August 29th, 2021",
+      "version": "4.1.2",
+      "release": "June 27th, 2022",
       "image": "http://shokoanime.com/assets/images/programs-plugins/shoko-desktop/Shoko-Desktop-Viewing-Series.jpg",
       "info": "Shoko Desktop allows you to view your collection in full detail providing information you didn't even know you needed and now can't live without. Packed with multiple advanced utilities to further fine-tune your collection, you'll wish you had found Shoko earlier.",
       "downloads": [
         {
-          "windowsStable": "https://shokoanime.com/files/shoko-desktop/Shoko_Desktop_Setup_4.1.1.zip",
+          "windowsStable": "https://shokoanime.com/files/shoko-desktop/Shoko_Desktop_Setup_4.1.2.zip",
           "windowsDaily": "https://shokoanime.com/files/shoko-desktop/daily/ShokoDesktop.zip"
         }
       ],
@@ -52,8 +52,8 @@
       "name": "Shoko Metadata",
       "platform": "Plex",
       "type": "plugin",
-      "version": "1.5.0",
-      "release": "August 29th, 2020",
+      "version": "1.5.1",
+      "release": "March 24th, 2022",
       "image": "http://shokoanime.com/assets/images/programs-plugins/shoko-metadata/Shoko Metadata - Series Episodes 02.jpg",
       "info": "Shoko Metadata provides users with a smooth anime experience on Plex pulling your series data directly from Shoko instead of the default metadata sources Plex uses. This Plex library plugin provides support for TV Series and Movies.",
       "downloads": [
@@ -74,8 +74,8 @@
       "name": "Nakamori",
       "platform": "Kodi",
       "type": "plugin",
-      "version": "4.1.0",
-      "release": "May 26th, 2022",
+      "version": "4.1.2",
+      "release": "June 4th, 2022",
       "image": "http://shokoanime.com/assets/images/programs-plugins/nakamori/Nakamori-Coverflow.jpg",
       "info": "Nakamori provides users with a seamless integrated service that utilizes the full power of Shoko to make your anime watching experience second to none.",
       "downloads": [
@@ -118,13 +118,13 @@
       "name": "Shokofin",
       "platform": "Jellyfin",
       "type": "plugin",
-      "version": "1.4.7",
-      "release": "June 1st, 2021",
+      "version": "2.0.0",
+      "release": "June 27th, 2022",
       "image": "http://shokoanime.com/assets/images/programs-plugins/shokofin/Shokofin-Series-Listing-01.jpg",
       "info": "Shokofin brings your entire collection to Jellyfin leveraging the power of Shoko and the easiness of Jellyfin. ",
       "downloads": [
         {
-          "jellyfinStable": "https://github.com/ShokoAnime/Shokofin/releases/download/1.4.7/shokofin_1.4.7.zip"
+          "jellyfinStable": "https://github.com/ShokoAnime/Shokofin/releases/"
         }
       ],
       "resources": [
