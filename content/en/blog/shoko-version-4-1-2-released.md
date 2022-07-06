@@ -26,7 +26,7 @@ We're currently working on one of the biggest changes Shoko has ever gone throug
 For those who haven't seen, this is what the new Web UI will look like. Please note some of the mockups in this video have changed and all data you see if simply placeholder data.
 
 <video width="100%" height="100%" controls>
-  <source src="http://shokoanime.com/files/ShokoWebUI-June.mp4" type="video/mp4">
+  <source src="http://shokoanime.com/files/videos/ShokoWebUI-June.mp4" type="video/mp4">
 Your browser does not support the video tag.
 </video>
 
