@@ -1,0 +1,10 @@
+{
+  "bracketSameLine": true,
+  "bracketSpacing": true,
+  "htmlWhitespaceSensitivity": "css",
+  "jsxBracketSameLine": true,
+  "jsxSingleQuote": true,
+  "printWidth": 140,
+  "prose-wrap": true,
+  "singleQuote": true
+}
