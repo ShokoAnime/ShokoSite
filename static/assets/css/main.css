@@ -909,6 +909,7 @@ strong {
 
 .downloads-item-versions-wrapper {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .downloads-alert-icon {

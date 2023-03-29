@@ -1,4 +1,4 @@
-	{{ if eq .platform "Windows / Linux" }}
+	{{ if eq .platform "Windows / Linux / Arm64" }}
 
 	{{ range .downloads }}
 	<div class="downloads-platform-item">
@@ -27,6 +27,20 @@
 		<a href="{{ .linuxDaily }}" target="_blank" rel="noopener">
 			<div class="downloads-platform-rectangle"><i class="downloads-platform-icon fab fa-linux fa-lg"></i>
 				<p class="downloads-platform-name">Linux {{ i18n "daily" }}</p>
+			</div>
+		</a>
+	</div>
+	<div class="downloads-platform-item">
+		<a href="{{ .Arm64Linux }}" target="_blank" rel="noopener">
+			<div class="downloads-platform-rectangle"><i class="downloads-platform-icon fa-solid fa-microchip fa-lg"></i>
+				<p class="downloads-platform-name">Arm64 Linux Stable</p>
+			</div>
+		</a>
+	</div>
+	<div class="downloads-platform-item">
+		<a href="{{ .Arm64Daily }}" target="_blank" rel="noopener">
+			<div class="downloads-platform-rectangle"><i class="downloads-platform-icon fa-solid fa-microchip fa-lg"></i>
+				<p class="downloads-platform-name">Arm64 Linux Daily</p>
 			</div>
 		</a>
 	</div>

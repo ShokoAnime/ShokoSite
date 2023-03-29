@@ -9,8 +9,16 @@ category = ["Update"]
 tag = ["Anime Buddy"]
 +++
 
-Over the past couple of months, we've been asked about the development status of Anime Buddy. While we originally intended to keep updating it, multiple issues have made this near impossible for us without essentially creating a brand-new program. Anime Buddy has not received any updates in years and with the major changes we've made in the past couple of versions, we'd be looking at a near rewrite of Anime Buddy to just get it functional again. However, the bigger issue is we don't have access to the Windows Store so there would be no way for current users of Anime Buddy to update to a newer version.Because its was also planned and publicly talked about at one point, there was a possibly of a successor in the form of a smartphone app down the line, however at this time we have no plans to do that.
+We have received numerous inquiries about the development status of Anime Buddy in the last few months. Initially, we
+intended to continue updating the software, but several issues have made it nearly impossible for us to do so without
+creating a completely new program. Anime Buddy has not received any updates in years, and with the significant changes
+we've implemented in recent versions, we would need to rewrite the entire program to make it functional again.
 
-The Anime Buddy product page has been updated to reflect this announcement, all resources will remain up but will be eventually removed.
+However, the most significant obstacle is that we do not have access to the Windows Store, meaning that current Anime
+Buddy users would not be able to update to a newer version. While we had previously discussed the possibility of
+creating a successor in the form of a smartphone app, we currently have no plans to pursue this option.
 
-Thank you to everyone who used Anime Buddy over the years!
+As a result, we have updated the Anime Buddy product page to reflect this announcement. While all resources will remain
+available for now, they will eventually be removed.
+
+We would like to express our gratitude to everyone who has used Anime Buddy over the years!
