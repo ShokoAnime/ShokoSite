@@ -33,6 +33,8 @@ jobs:
   FTP-Deploy-Action:
     name: FTP-Deploy-Action
     runs-on: ubuntu-latest
+    needs:
+    - Hugo-Build
     steps:
       - uses: actions/checkout@v3
         with:
