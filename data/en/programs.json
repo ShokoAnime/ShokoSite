@@ -4,13 +4,13 @@
       "name": "Shoko Server",
       "platform": "Windows / Linux / Arm64",
       "type": "program",
-      "version": "4.2.1",
-      "release": "March 30th, 2023",
+      "version": "4.2.2",
+      "release": "April 2nd, 2023",
       "image": "http://shokoanime.com/assets/images/programs-plugins/shoko-server/WebUI-Index.png",
       "info": "Shoko Server is the core component of the Shoko Suite and makes all the magic possible. Highly customizable and ready to go within a matter of minutes, Shoko Server does all the heavy lifting allowing you to sit back, relax and binge watch anime you don't even remember downloading.",
       "downloads": [
         {
-          "windowsStable": "https://shokoanime.com/files/shoko-server/ShokoServer-4.2.1-Win.exe",
+          "windowsStable": "https://shokoanime.com/files/shoko-server/ShokoServer-4.2.2-Win.exe",
           "windowsDaily": "https://shokoanime.com/files/shoko-server/daily/ShokoServer.zip",
           "linuxStable": "https://hub.docker.com/r/shokoanime/server/tags?page=1&ordering=last_updated&name=latest",
           "linuxDaily": "https://hub.docker.com/r/shokoanime/server/tags?page=1&ordering=last_updated&name=daily",
@@ -31,13 +31,13 @@
       "name": "Shoko Desktop",
       "platform": "Windows",
       "type": "program",
-      "version": "4.2.0",
-      "release": "March 29th, 2023",
+      "version": "4.2.1",
+      "release": "April 2nd, 2023",
       "image": "http://shokoanime.com/assets/images/programs-plugins/shoko-desktop/Shoko-Desktop-Viewing-Series.jpg",
       "info": "Shoko Desktop allows you to view your collection in full detail providing information you didn't even know you needed and now can't live without. Packed with multiple advanced utilities to further fine-tune your collection, you'll wish you had found Shoko earlier.",
       "downloads": [
         {
-          "windowsStable": "https://shokoanime.com/files/shoko-desktop/Shoko-Desktop-Setup-4.2.0.exe",
+          "windowsStable": "https://shokoanime.com/files/shoko-desktop/Shoko-Desktop-Setup-4.2.1.exe",
           "windowsDaily": "https://shokoanime.com/files/shoko-desktop/daily/ShokoDesktop.zip"
         }
       ],
