@@ -14,7 +14,7 @@
           "windowsDaily": "https://shokoanime.com/files/shoko-server/daily/ShokoServer.zip",
           "linuxStable": "https://hub.docker.com/r/shokoanime/server/tags?page=1&ordering=last_updated&name=latest",
           "linuxDaily": "https://hub.docker.com/r/shokoanime/server/tags?page=1&ordering=last_updated&name=daily",
-          "Arm64Linux": "https://shokoanime.com/files/shoko-server/ShokoServer-4.2.1-linux-arm64.zip",
+          "Arm64Linux": "https://hub.docker.com/r/shokoanime/server/tags?page=1&ordering=last_updated&name=latest-arm64",
           "Arm64Daily": "https://hub.docker.com/r/shokoanime/server/tags?page=1&ordering=last_updated&name=daily-arm64"
         }
       ],
