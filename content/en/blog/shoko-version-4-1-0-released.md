@@ -1,5 +1,6 @@
 +++
 title = "Shoko Version 4.1.0 Released"
+quick = "Major code refactors and changes to the Renamer utility."
 image = "assets/images/blog/Version-410-Banner.jpg"
 date = 2021-02-01T12:23:34-08:00
 type = "post"

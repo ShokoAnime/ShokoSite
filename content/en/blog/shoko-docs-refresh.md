@@ -1,5 +1,6 @@
 +++
 title = "Shoko Docs Refresh"
+quick = "Take a look at the new and improved Shoko Docs." 
 image = "assets/images/blog/Shoko-Docs-Refresh-Banner.jpg"
 date = 2021-01-24T02:34:25-08:00
 type = "post"

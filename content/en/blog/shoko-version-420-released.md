@@ -1,5 +1,6 @@
 +++
 title = "Shoko Version 4.2.0 Released"
+quick = "ARM64 Linux build, Shoko v5, SQLite improvements, and new Shokofin features."
 image = "assets/images/blog/Version-420-Banner.jpg"
 date = 2023-03-20T09:16:46-07:00
 type = "post"

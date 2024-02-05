@@ -1,5 +1,6 @@
 +++
 title = "Hello Shokofin"
+quick = "Meet Shokofin, our Jellyfin plugin."
 image = "assets/images/blog/Hello-Shokofin.jpg"
 date = 2021-08-29
 type = "post"

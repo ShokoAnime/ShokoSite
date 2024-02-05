@@ -1,5 +1,6 @@
 +++
 title = "Nakamori 4.1.0 Released"
+quick = "Nakamori now compatibile with Shoko version 4.X.X"
 image = "assets/images/blog/Nakamori-410-Released.jpg"
 date = 2022-05-26T12:04:35-07:00
 type = "post"

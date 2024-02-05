@@ -1,5 +1,6 @@
 +++
 title = "Lets Talk Themes"
+quick = "Learn how themes work in the new Web UI with multiple theme examples." 
 image = "assets/images/blog/lets-talk-themes.jpg"
 date = 2023-08-03
 type = "post"

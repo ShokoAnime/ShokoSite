@@ -1,5 +1,6 @@
 +++
 title = "Shoko Version 4.1.2 Released"
+quick = "Future of Shoko Desktop, sneak peak at the new Web UI and Jellyfin 10.8 support."
 image = "assets/images/blog/Version-412-Banner.jpg"
 date = 2022-06-27T13:16:46-07:00
 type = "post"

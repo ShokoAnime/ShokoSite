@@ -1,5 +1,6 @@
 +++
 title = "Shoko 2021 Project Update"
+quick = "Outline of whats planned for Shoko and current status of each program/plugin."
 image = "assets/images/blog/Shoko-2021-Project-Update.jpg"
 date = 2021-02-28T18:09:21-08:00
 type = "post"
