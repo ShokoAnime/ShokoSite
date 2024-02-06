@@ -1,7 +1,0 @@
-<div class="blog-pagination-wrapper">
-	<div class="blog-pagination-content">
-		{{ $paginator := .Paginate (where .Data.Pages "Type" "posts") }}
-		<!-- Hugo's default pagination template. -->
-		{{ template "_internal/pagination.html" . }}
-	</div>
-</div>
