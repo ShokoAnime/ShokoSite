@@ -73,6 +73,28 @@
       ]
     },
     {
+      "name": "ShokoRelay",
+      "platform": "Plex",
+      "type": "plugin",
+      "version": "1.0.1",
+      "release": "March 27th, 2024",
+      "image": "http://shokoanime.com/assets/images/programs-plugins/shokorelay/ShokoRelay-01.jpg",
+      "info": "ShokoRelay is a agent/scanner that allows you to combine your series and movies into a single library while using Shoko to manage it.",
+      "downloads": [
+        {
+          "plexStable": "https://github.com/natyusha/ShokoRelay.bundle/releases"
+        }
+      ],
+      "resources": [
+        {
+          "github": "https://github.com/natyusha/ShokoRelay.bundle/",
+          "docs": "NA",
+          "changelog": "NA",
+          "support": "https://discord.gg/vpeHDsg"
+        }
+      ]
+    },
+    {
       "name": "Nakamori",
       "platform": "Kodi",
       "type": "plugin",

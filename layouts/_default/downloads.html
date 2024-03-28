@@ -101,7 +101,9 @@
                     </div>
                     {{ end }}
                     <p>{{ .info | truncate 220 }}</p>
+                    {{ if ne "ShokoRelay" .name }}
                     <a class="downloads-item-link" href="{{ "/downloads/" | relLangURL }}{{ .name | urlize }}">{{ i18n "learn-more-about" }} {{ .name }}</a>
+                    {{ end }}
 
                     <div class="downloads-item-versions-wrapper">
                         <div class="downloads-platform-wrapper">
