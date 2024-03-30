@@ -1,6 +1,6 @@
 +++
 title = "Hello ShokoRelay"
-quick = ""
+quick = "Learn about ShokoRelay, a new Plex Agent/Scanner loaded with features. "
 image = "assets/images/blog/Hello-ShokoRelay.jpg"
 date = 2024-03-27T09:16:46-07:00
 type = "post"
