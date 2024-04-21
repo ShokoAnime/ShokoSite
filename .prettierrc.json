@@ -3,8 +3,9 @@
   "bracketSpacing": true,
   "htmlWhitespaceSensitivity": "css",
   "jsxBracketSameLine": true,
-  "jsxSingleQuote": true,
+  "jsxSingleQuote": false,
   "printWidth": 140,
   "prose-wrap": true,
-  "singleQuote": true
+  "singleQuote": true,
+  "endOfLine": "lf"
 }
