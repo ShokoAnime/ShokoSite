@@ -2,6 +2,9 @@
 module.exports = {
   content: ['./app/**/*.{js,tsx,ts,jsx,mdx,md}'],
   theme: {
+    fontFamily: {
+      sans: ['Lexend Deca', 'sans-serif'],
+    },
     extend: {},
   },
   plugins: [],
