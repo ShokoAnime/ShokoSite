@@ -7,8 +7,8 @@ const samplesRoutes = [
   { title: 'Contributors', route: '/contributors' },
   { title: 'Downloads', route: '/downloads' },
   { title: 'Documentations', route: '/document' },
-  { title: 'Github', route: 'https://github.com' },
-  { title: 'Discord', route: 'https://discord.com' },
+  { title: 'Github', route: 'https://github.com', icon: 'si si-github' },
+  { title: 'Discord', route: 'https://discord.com', icon: 'si si-discord' },
 ];
 
 function Footer() {
@@ -17,7 +17,8 @@ function Footer() {
       <div className="mx-auto container flex flex-auto items-center justify-center">
         <div className="flex flex-auto items-start justify-start gap-4">
           {samplesRoutes.map((route) => (
-            <Link key={route.title} to={route.route}>
+            <Link key={route.title} to={route.route} className="flex gap-x-2">
+              {route.icon && <span className={route.icon} />}
               {route.title}
             </Link>
           ))}

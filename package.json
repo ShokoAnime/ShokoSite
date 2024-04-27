@@ -11,12 +11,15 @@
     "typecheck": "tsc"
   },
   "dependencies": {
+    "@fontsource-variable/lexend-deca": "^5.0.13",
+    "@mdi/font": "^7.4.47",
     "@remix-run/node": "^2.8.1",
     "@remix-run/react": "^2.8.1",
     "@remix-run/serve": "^2.8.1",
     "isbot": "^4.1.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "simple-icons-font": "^11.12.0"
   },
   "devDependencies": {
     "@mdx-js/rollup": "^3.0.0",
