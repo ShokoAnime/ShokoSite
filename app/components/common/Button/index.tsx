@@ -1,19 +1,27 @@
-import { ReactNode, useMemo } from 'react';
+import { ReactNode } from 'react';
 
 type ButtonProps = {
-  type: 'primary' | 'secondary' | 'secondary-outline';
-  className?: string;
+  type: 'primary' | 'secondary' | 'outline';
   children: ReactNode;
+  className?: string;
+  id?: string;
+  onClick?: () => void;
 };
 
-function Button(props: ButtonProps) {
-  const { type, className, children } = props;
-  const buttonStyle = useMemo(() => {
-    if (type === 'primary') return 'bg-[#3E64ED] text-[#FFFFFF]';
-    if (type === 'secondary-outline') return 'border-solid border-[#3E64ED] border text-[#2C324B]';
-    return 'border-solid border bg-[#FDFCFF] text-[#2C324B] border-[#BAC8D7]';
-  }, [type]);
-  return <button className={`rounded-[0.5rem] p-[0.75rem] ${buttonStyle} ${className}`}>{children}</button>;
+function Button({ type, className, id, children, onClick }: ButtonProps) {
+  const buttonStyle = {
+    primary:
+      'rounded-lg bg-link-light text-textAlt-light dark:bg-link-dark dark:text-textAlt-dark hover:bg-linkHover-light hover:dark:bg-linkHover-dark',
+    secondary: 'border rounded-full bg-backgroundNorm-light border-border-light dark:bg-backgroundNorm-dark dark:border-border-dark',
+    outline:
+      'border-2 rounded-lg border-link-light text-textHeader-light dark:border-link-dark dark:text-textHeader-dark hover:border-linkHover-light hover:dark:border-linkHover-dark',
+  };
+
+  return (
+    <button id={id} className={`flex items-center gap-x-3 p-3 ${buttonStyle[type]} ${className}`} onClick={onClick}>
+      {children}
+    </button>
+  );
 }
 
 export default Button;

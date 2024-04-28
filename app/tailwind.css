@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body, html {
+        @apply bg-backgroundNorm-light dark:bg-backgroundNorm-dark;
+        @apply text-textBody-light dark:text-textBody-dark;
+        @apply text-base;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        @apply text-textHeader-light dark:text-textHeader-dark;
+    }
+
+    h1 {
+        @apply text-[3rem] leading-[3.75rem];
+    }
+
+    h2 {
+        @apply text-[2.25rem] leading-[3.6rem];
+    }
+
+    h3 {
+        @apply text-[2rem] leading-[3.2rem];
+    }
+
+    h4 {
+        @apply text-[1.5rem] leading-[2.4rem];
+    }
+
+    a {
+        @apply hover:text-link-light dark:hover:text-link-dark;
+    }
+}

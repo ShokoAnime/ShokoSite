@@ -2,10 +2,12 @@
   "bracketSameLine": true,
   "bracketSpacing": true,
   "htmlWhitespaceSensitivity": "css",
-  "jsxBracketSameLine": true,
-  "jsxSingleQuote": false,
+  "jsxBracketSameLine": false,
+  "jsxSingleQuote": true,
   "printWidth": 140,
-  "prose-wrap": true,
+  "proseWrap": "always",
   "singleQuote": true,
-  "endOfLine": "lf"
+  "endOfLine": "lf",
+  "trailingComma": "es5",
+  "tabWidth": 2
 }

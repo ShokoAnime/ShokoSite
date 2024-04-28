@@ -13,4 +13,7 @@ export default defineConfig({
     remix(),
     tsconfigPaths(),
   ],
+  ssr: {
+    noExternal: ['@mdi/react', '@mdi/js'],
+  },
 });
