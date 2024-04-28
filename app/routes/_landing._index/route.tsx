@@ -1,7 +1,7 @@
 import type { MetaFunction } from '@remix-run/node';
-import { Footer, Header } from '~/components/layout';
+import { Footer, Header } from '~/routes/_landing';
 import { Button } from '~/components/common';
-import { News } from '~/components/Home';
+import News from './news';
 import { uniqueId } from 'lodash-es';
 
 export const meta: MetaFunction = () => {
