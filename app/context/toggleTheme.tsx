@@ -1,4 +1,4 @@
-import React, { createContext, ReactNode, useContext, useEffect, useState } from 'react';
+import React, { ReactNode, createContext, useContext, useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
 
 type Theme = 'light' | 'dark' | string;

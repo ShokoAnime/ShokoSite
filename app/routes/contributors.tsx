@@ -11,18 +11,20 @@ export default function Contributors() {
     <>
       <Header />
       <PageBanner
-        title='Contributors'
-        description='From the Shoko team itself to our everyday users, everyone listed below has contributed to making Shoko better.'
+        title="Contributors"
+        description="From the Shoko team itself to our everyday users, everyone listed below has contributed to making Shoko better."
       />
-      <div className='flex flex-col gap-y-16 p-16'>
-        <div className='mx-auto flex max-w-[1440px] flex-1 flex-col gap-y-16'>
-          <div className='flex flex-col gap-y-3'>
+      <div className="flex flex-col gap-y-16 p-16">
+        <div className="mx-auto flex max-w-[1440px] flex-1 flex-col gap-y-16">
+          <div className="flex flex-col gap-y-3">
             <h2>Shoko Staff</h2>
-            <hr className='w-[6.25rem] border border-highlight-light dark:border-highlight-dark' />
-            <div>These are the people who have actively contributed to the project, eventually becoming staff members.</div>
+            <hr className="w-[6.25rem] border border-highlight-light dark:border-highlight-dark" />
+            <div>
+              These are the people who have actively contributed to the project, eventually becoming staff members.
+            </div>
           </div>
 
-          <div className='flex flex-wrap gap-4'>
+          <div className="flex flex-wrap gap-4">
             {contributorsSorted.map(
               (contributor) =>
                 contributor.join_date && (
@@ -34,27 +36,33 @@ export default function Contributors() {
                     role={contributor.role}
                     joinDate={contributor.join_date}
                   />
-                )
+                ),
             )}
           </div>
         </div>
 
-        <div className='mx-auto flex max-w-[1440px] flex-1 flex-col gap-y-16'>
-          <div className='flex flex-col gap-y-3'>
+        <div className="mx-auto flex max-w-[1440px] flex-1 flex-col gap-y-16">
+          <div className="flex flex-col gap-y-3">
             <h2>Contributors</h2>
-            <hr className='w-[6.25rem] border border-highlight-light dark:border-highlight-dark' />
+            <hr className="w-[6.25rem] border border-highlight-light dark:border-highlight-dark" />
             <div>
-              The <strong>{contributors.length}</strong> amazing users who contributed to the betterment of Shoko. Contributed in the past
-              but don’t see your name? Lets fix that.
+              The <strong>{contributors.length}</strong>{' '}
+              amazing users who contributed to the betterment of Shoko. Contributed in the past but don’t see your name?
+              Lets fix that.
             </div>
           </div>
 
-          <div className='flex flex-wrap gap-4'>
+          <div className="flex flex-wrap gap-4">
             {contributorsSorted.map(
               (contributor) =>
                 !contributor.join_date && (
-                  <UserCard key={contributor.name} name={contributor.name} image={contributor.avatar_url} link={contributor.url} />
-                )
+                  <UserCard
+                    key={contributor.name}
+                    name={contributor.name}
+                    image={contributor.avatar_url}
+                    link={contributor.url}
+                  />
+                ),
             )}
           </div>
         </div>

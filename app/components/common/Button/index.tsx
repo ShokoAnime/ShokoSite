@@ -12,7 +12,8 @@ export const Button = ({ buttonType, className, id, children, onClick }: ButtonP
   const buttonStyle = {
     primary:
       'rounded-lg bg-link-light text-textAlt-light dark:bg-link-dark dark:text-textAlt-dark hover:bg-linkHover-light hover:dark:bg-linkHover-dark',
-    secondary: 'border rounded-full bg-backgroundNorm-light border-border-light dark:bg-backgroundNorm-dark dark:border-border-dark',
+    secondary:
+      'border rounded-full bg-backgroundNorm-light border-border-light dark:bg-backgroundNorm-dark dark:border-border-dark',
     outline:
       'border-2 rounded-lg border-link-light text-textHeader-light dark:border-link-dark dark:text-textHeader-dark hover:border-linkHover-light hover:dark:border-linkHover-dark',
     padded:
@@ -20,7 +21,12 @@ export const Button = ({ buttonType, className, id, children, onClick }: ButtonP
   };
 
   return (
-    <button type='button' id={id} className={`flex items-center gap-x-3 p-3 ${buttonStyle[buttonType]} ${className}`} onClick={onClick}>
+    <button
+      type="button"
+      id={id}
+      className={`flex items-center gap-x-3 p-3 ${buttonStyle[buttonType]} ${className}`}
+      onClick={onClick}
+    >
       {children}
     </button>
   );

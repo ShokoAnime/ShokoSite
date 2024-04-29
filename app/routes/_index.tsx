@@ -10,7 +10,7 @@ export const meta: MetaFunction = () => {
   return [{ title: 'New Remix App' }, { name: 'description', content: 'Welcome to Remix!' }];
 };
 
-const sampleNews: { title: string; image: string; releasedDate: Date; link: string; content: string }[] = [
+const sampleNews: { title: string, image: string, releasedDate: Date, link: string, content: string }[] = [
   {
     title: 'Shoko Version 4.1.2 Released ',
     content:
@@ -50,102 +50,109 @@ export default function Index() {
       <Header />
 
       {/* Hero */}
-      <div className='mx-auto max-w-[1440px] py-16'>
-        <div className='flex justify-center gap-x-16'>
-          <div className='flex flex-col items-center justify-center gap-y-8 text-center'>
-            <h1 className='w-full'>The All-in-One Cross-Platform Anime Management System Built For You</h1>
-            <h4 className='w-full text-textBody-light dark:text-textBody-dark'>Let Shoko take you to the future</h4>
-            <div className='flex gap-x-2'>
-              <Button buttonType='primary'>
-                <FontAwesomeIcon icon={faDownload} size='lg' />
-                <span>Download Ver 4.3.0 </span>
+      <div className="mx-auto max-w-[1440px] py-16">
+        <div className="flex justify-center gap-x-16">
+          <div className="flex flex-col items-center justify-center gap-y-8 text-center">
+            <h1 className="w-full">The All-in-One Cross-Platform Anime Management System Built For You</h1>
+            <h4 className="w-full text-textBody-light dark:text-textBody-dark">Let Shoko take you to the future</h4>
+            <div className="flex gap-x-2">
+              <Button buttonType="primary">
+                <FontAwesomeIcon icon={faDownload} size="lg" />
+                <span>Download Ver 4.3.0</span>
               </Button>
-              <Button buttonType='outline'>
-                <FontAwesomeIcon icon={faBookSkull} size='lg' />
+              <Button buttonType="outline">
+                <FontAwesomeIcon icon={faBookSkull} size="lg" />
                 <span>Getting Started</span>
               </Button>
             </div>
           </div>
-          <div className='relative'>
-            <img src='/images/home/1.png' alt='preview png' className='max-w-[630px]' />
+          <div className="relative">
+            <img src="/images/home/1.png" alt="preview png" className="max-w-[630px]" />
             <Button
-              buttonType='primary'
-              className='absolute left-1/2 top-1/2 flex size-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center !rounded-full'>
-              <FontAwesomeIcon className='pl-2' icon={faPlay} size='2xl' />
+              buttonType="primary"
+              className="absolute left-1/2 top-1/2 flex size-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center !rounded-full"
+            >
+              <FontAwesomeIcon className="pl-2" icon={faPlay} size="2xl" />
             </Button>
           </div>
         </div>
       </div>
 
       {/* Benefits of Shoko */}
-      <div className='size-full bg-backgroundAlt-light py-16 dark:bg-backgroundAlt-dark'>
-        <div className='mx-auto flex max-w-[1440px] flex-col items-center gap-y-16'>
-          <div className='flex flex-col items-center gap-y-2'>
+      <div className="size-full bg-backgroundAlt-light py-16 dark:bg-backgroundAlt-dark">
+        <div className="mx-auto flex max-w-[1440px] flex-col items-center gap-y-16">
+          <div className="flex flex-col items-center gap-y-2">
             <h2>Benefits of Shoko</h2>
-            <hr className='w-[100px] border border-highlight-light dark:border-highlight-dark' />
+            <hr className="w-[100px] border border-highlight-light dark:border-highlight-dark" />
           </div>
-          <div className='grid w-full grid-cols-3 gap-8'>
+          <div className="grid w-full grid-cols-3 gap-8">
             <Benefit />
           </div>
         </div>
       </div>
 
       {/* Info Groups */}
-      <div className='mx-auto max-w-[1440px] py-16'>
-        <div className='flex flex-col items-center gap-y-32'>
+      <div className="mx-auto max-w-[1440px] py-16">
+        <div className="flex flex-col items-center gap-y-32">
           <InfoGroup
-            title='Collection Management Made Easy'
-            image='/images/home/2.png'
+            title="Collection Management Made Easy"
+            image="/images/home/2.png"
             content={
               <>
                 <span>
-                  <span className='font-medium text-highlight-light dark:text-highlight-dark'>Shoko</span> is a free, open-source,
-                  cross-platform anime collection management system that automates the process of organizing your library. It eliminates the
-                  need to manually input series information or rename files to conform to specific formats for basic series data. Shoko
-                  simplifies anime management, making it easier to organize and enjoy your collection.
+                  <span className="font-medium text-highlight-light dark:text-highlight-dark">Shoko</span>{' '}
+                  is a free, open-source, cross-platform anime collection management system that automates the process
+                  of organizing your library. It eliminates the need to manually input series information or rename
+                  files to conform to specific formats for basic series data. Shoko simplifies anime management, making
+                  it easier to organize and enjoy your collection.
                 </span>
                 <span>
-                  Shoko streamlines the process for you, ensuring that your collection is always well-organized, easily accessible across
-                  multiple devices with one of our many media player plugins, and most importantly, automatically maintained.
+                  Shoko streamlines the process for you, ensuring that your collection is always well-organized, easily
+                  accessible across multiple devices with one of our many media player plugins, and most importantly,
+                  automatically maintained.
                 </span>
-                <span className='font-medium text-highlight-light dark:text-highlight-dark'>
-                  It&apos;s important to note that Shoko does not offer any means to download files, stream files from streaming sites, or
-                  access files that are not part of your personal collection.
+                <span className="font-medium text-highlight-light dark:text-highlight-dark">
+                  It&apos;s important to note that Shoko does not offer any means to download files, stream files from
+                  streaming sites, or access files that are not part of your personal collection.
                 </span>
               </>
             }
           />
           <InfoGroup
-            title='Spend More Time Watching Anime'
-            image='/images/home/3.png'
+            title="Spend More Time Watching Anime"
+            image="/images/home/3.png"
             reverse={true}
             content={
               <>
                 <span>
-                  With Shoko, you can have your anime collection up and running within just five minutes. Shoko automatically populates your
-                  database with information about the various series and episodes in your collection by hashing each file for comparison
-                  against AniDB&apos;s extensive database. Shoko also utilizes additional metadata sources to provide even more information
-                  and integration, ensuring that your collection is complete and well-organized.
+                  With Shoko, you can have your anime collection up and running within just five minutes. Shoko
+                  automatically populates your database with information about the various series and episodes in your
+                  collection by hashing each file for comparison against AniDB&apos;s extensive database. Shoko also
+                  utilizes additional metadata sources to provide even more information and integration, ensuring that
+                  your collection is complete and well-organized.
                 </span>
-                <span>Once your collection is set up, all that&apos;s left for you to do is decide which series you want to watch.</span>
+                <span>
+                  Once your collection is set up, all that&apos;s left for you to do is decide which series you want to
+                  watch.
+                </span>
               </>
             }
           />
           <InfoGroup
-            title='Media Player Support'
-            image='/images/home/4.png'
+            title="Media Player Support"
+            image="/images/home/4.png"
             content={
               <>
                 <span>
-                  Shoko offers more than just automated collection management. It also supports a wide range of media players, allowing you
-                  to watch your collection on the device of your choice anywhere you’d like.
+                  Shoko offers more than just automated collection management. It also supports a wide range of media
+                  players, allowing you to watch your collection on the device of your choice anywhere you’d like.
                 </span>
-                <div className='mt-4 grid grid-cols-2 grid-rows-2 gap-y-8'>
+                <div className="mt-4 grid grid-cols-2 grid-rows-2 gap-y-8">
                   {mediaPlayers.map((data) => (
-                    <div key={data.name} className='flex items-center gap-x-4'>
+                    <div key={data.name} className="flex items-center gap-x-4">
                       <img width={60} height={60} src={data.image} alt={data.name} />
-                      <div className='flex flex-col'>
-                        <span className='font-medium text-textHeader-light dark:text-textHeader-dark'>{data.name}</span>
+                      <div className="flex flex-col">
+                        <span className="font-medium text-textHeader-light dark:text-textHeader-dark">{data.name}</span>
                         <span>{data.mediaPlayer}</span>
                       </div>
                     </div>
@@ -158,13 +165,13 @@ export default function Index() {
       </div>
 
       {/* Latest NewsPost */}
-      <div className='size-full bg-backgroundAlt-light py-16 dark:bg-backgroundAlt-dark'>
-        <div className='mx-auto flex w-full max-w-[1440px] flex-col items-center'>
-          <div className='flex flex-col items-center gap-y-2'>
+      <div className="size-full bg-backgroundAlt-light py-16 dark:bg-backgroundAlt-dark">
+        <div className="mx-auto flex w-full max-w-[1440px] flex-col items-center">
+          <div className="flex flex-col items-center gap-y-2">
             <h2>Latest News</h2>
-            <hr className='w-[100px] border border-highlight-light dark:border-highlight-dark' />
+            <hr className="w-[100px] border border-highlight-light dark:border-highlight-dark" />
           </div>
-          <div className='mt-16 flex gap-x-8'>
+          <div className="mt-16 flex gap-x-8">
             {sampleNews.map((x) => (
               <NewsPost
                 key={uniqueId('news')}
