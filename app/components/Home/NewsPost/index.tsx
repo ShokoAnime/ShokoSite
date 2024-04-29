@@ -30,21 +30,34 @@ export const NewsPost = ({ image, title, releaseDate, content, link }: NewsProps
     };
 
     const montStr = (m: number) => {
-      return ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'][m];
+      return [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December',
+      ][m];
     };
 
     return `${montStr(month)} ${day}${nth(day)}, ${year}`;
   }, [releaseDate]);
   return (
-    <div className='flex flex-col gap-y-6'>
+    <div className="flex flex-col gap-y-6">
       <img width={445} src={image} alt={title} />
-      <div className='text-textHeader-light dark:text-textHeader-dark'>
-        <div className='opacity-65'>{timeStr}</div>
-        <div className='text-xl'>{title}</div>
+      <div className="text-textHeader-light dark:text-textHeader-dark">
+        <div className="opacity-65">{timeStr}</div>
+        <div className="text-xl">{title}</div>
       </div>
       <div>{content}</div>
 
-      <Link className='font-medium text-link-light dark:text-link-dark' to={link}>
+      <Link className="font-medium text-link-light dark:text-link-dark" to={link}>
         Read More →
       </Link>
     </div>

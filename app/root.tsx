@@ -1,6 +1,6 @@
 // root.tsx
 import { Links, Meta, Outlet, Scripts, ScrollRestoration, useLoaderData } from '@remix-run/react';
-import { json, LoaderFunction } from '@remix-run/node';
+import { LoaderFunction, json } from '@remix-run/node';
 import { ToggleTheme } from './context/toggleTheme';
 import './root.css';
 
@@ -18,10 +18,10 @@ export default function App() {
   const { theme } = useLoaderData<LoaderData>();
 
   return (
-    <html lang='en' className={theme}>
+    <html lang="en" className={theme}>
       <head>
-        <meta charSet='utf-8' />
-        <meta name='viewport' content='width=device-width, initial-scale=1' />
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
         <title>Shoko</title>

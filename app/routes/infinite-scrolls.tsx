@@ -1,4 +1,4 @@
-import { json } from '@remix-run/node';
+import { LoaderFunctionArgs, json } from '@remix-run/node';
 import { Profile } from '~/models/profile';
 import { ApiResult } from '~/api/api';
 import { useCallback, useEffect, useState } from 'react';
@@ -68,14 +68,14 @@ function InfiniteScrolls() {
       if (!node) return;
       setHeight(node.getBoundingClientRect().height);
     },
-    [profiles.length]
+    [profiles.length],
   );
 
   return (
     <>
-      {(Array.isArray(profiles) &&
-        profiles.length &&
-        profiles?.map((x: Profile) => (
+      {(Array.isArray(profiles)
+        && profiles.length
+        && profiles?.map((x: Profile) => (
           <div key={x.id} ref={divHeight}>
             <h3>
               {x.first_name} {x.last_name} - {x.id}

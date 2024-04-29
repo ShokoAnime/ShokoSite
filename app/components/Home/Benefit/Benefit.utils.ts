@@ -8,7 +8,7 @@ export const benefitsMap = [
   },
   {
     title: 'File Management',
-    description: "Manage multiple, duplicate, and missing files with Shoko's built-in utilities",
+    description: 'Manage multiple, duplicate, and missing files with Shoko\'s built-in utilities',
     icon: faFilePen,
   },
   {
@@ -28,7 +28,7 @@ export const benefitsMap = [
   },
   {
     title: 'Extensive API',
-    description: "Expand Shoko's capabilities, customize it or bring it to an entirely new platform.",
+    description: 'Expand Shoko\'s capabilities, customize it or bring it to an entirely new platform.',
     icon: faLaptopCode,
   },
 ];
