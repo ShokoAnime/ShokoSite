@@ -11,6 +11,7 @@
 
     h1, h2, h3, h4, h5, h6 {
         @apply text-textHeader-light dark:text-textHeader-dark;
+        @apply font-medium
     }
 
     h1 {
@@ -32,4 +33,9 @@
     a {
         @apply hover:text-link-light dark:hover:text-link-dark;
     }
+
+    strong {
+        @apply font-semibold text-highlight-light dark:text-highlight-dark;
+    }
+
 }

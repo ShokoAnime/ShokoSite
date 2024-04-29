@@ -12,6 +12,7 @@ module.exports = {
         base: ['1rem', '1.6rem'],
         lg: ['1.125rem', '1.8rem'],
         xl: ['1.25rem', '2rem'],
+        '2xl': ['1.5rem', '2.4rem'],
       },
       colors: {
         backgroundNorm: {
@@ -36,31 +37,35 @@ module.exports = {
         },
         textAlt: {
           light: '#FFFFFF',
-          dark: '#212534',
+          dark: '#FFFFFF',
         },
         link: {
           light: '#3E64ED',
           dark: '#279CEB',
         },
         linkHover: {
-          light: '#3556ce',
+          light: '#425ECCFF',
           dark: '#217dbc',
         },
         highlight: {
           light: '#EC407A',
           dark: '#E3B341',
         },
-        header: {
+        headerLink: {
           light: '#66B4F3',
           dark: '#66B4F3',
+        },
+        headerLinkHover: {
+          light: '#5ba2da',
+          dark: '#5ba2da',
         },
         buttonAlt: {
           light: '#202941',
           dark: '#202941',
         },
         overlay: {
-          light: '#0A0B1DA6',
-          dark: '#0A0B1DA6',
+          light: '#0A0B1DBF',
+          dark: '#0A0B1DBF',
         },
       },
     },
