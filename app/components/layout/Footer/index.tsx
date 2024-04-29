@@ -8,7 +8,7 @@ interface FooterProps {
 export const Footer = ({ altBackground = false }: FooterProps) => {
   return (
     <div
-      className={`flex h-[6.25rem] w-full items-center ${
+      className={`flex h-[6.25rem] w-full items-center px-6 2xl:px-0 ${
         altBackground
           ? 'bg-backgroundAlt-light dark:bg-backgroundAlt-dark'
           : 'bg-backgroundNorm-light dark:bg-backgroundNorm-dark'

@@ -15,7 +15,7 @@
     }
 
     h1 {
-        @apply text-[3rem] leading-[3.75rem];
+        @apply text-[2.5rem] leading-[3.5rem];
     }
 
     h2 {
@@ -36,6 +36,13 @@
 
     strong {
         @apply font-semibold text-highlight-light dark:text-highlight-dark;
+    }
+
+    /* Tailwind LG Breakpoint*/
+    @media (min-width: 1281px) {
+        h1 {
+            @apply text-[3rem] leading-[3.75rem];
+        }
     }
 
 }

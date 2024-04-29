@@ -7,10 +7,10 @@ import { useTheme } from '~/context/toggleTheme';
 export const navRoutes = [
   { title: 'About', route: '/about' },
   { title: 'Blog', route: '/blog' },
-  { title: 'Changelog', route: '/change-log' },
+  { title: 'Changelog', route: 'https://docs.shokoanime.com/changelog/shoko-server' },
   { title: 'Contributors', route: '/contributors' },
   { title: 'Downloads', route: '/downloads' },
-  { title: 'Documentation', route: '/document' },
+  { title: 'Documentation', route: 'https://docs.shokoanime.com/' },
   { title: 'Github', route: 'https://github.com', icon: 'si si-github' },
   { title: 'Discord', route: 'https://discord.com', icon: 'si si-discord' },
 ];
@@ -22,15 +22,15 @@ export const Header = () => {
   const currentURL = location.pathname;
 
   return (
-    <div className="sticky top-0 z-20 w-full bg-backgroundAlt-light p-4 text-textHeader-light shadow dark:bg-backgroundAlt-dark dark:text-textHeader-dark">
+    <div className="sticky top-0 z-20 w-full bg-backgroundAlt-light px-6 py-4 text-textHeader-light shadow dark:bg-backgroundAlt-dark dark:text-textHeader-dark 2xl:px-0">
       <div className="mx-auto flex max-w-[1440px] flex-auto items-center justify-between">
-        <div className="flex items-center justify-center gap-4">
-          <a href="/">
-            <img src="/images/shoko-icon.svg" alt="Shoko Site" className="w-[4.688rem]" />
-          </a>
-          <h3 className="font-medium text-textHeader-light dark:text-textHeader-dark">Shoko</h3>
-        </div>
-        <div className="flex gap-4 font-medium">
+        <a className="flex items-center justify-center gap-4" href="/">
+          <img src="/images/shoko-icon.svg" alt="Shoko Site" className="w-[4.688rem]" />
+          <h3 className="font-medium text-textHeader-light hover:text-linkHover-light dark:text-textHeader-dark dark:hover:text-linkHover-dark">
+            Shoko
+          </h3>
+        </a>
+        <div className="hidden gap-4 font-medium xl:inline-flex">
           {navRoutes.map((route) => (
             <Link
               key={route.title}
