@@ -1,8 +1,8 @@
 // root.tsx
 import { Links, Meta, Outlet, Scripts, ScrollRestoration, useLoaderData } from '@remix-run/react';
+import { json, LoaderFunction } from '@remix-run/node';
 import { ToggleTheme } from './context/toggleTheme';
 import './root.css';
-import { json, LoaderFunction } from '@remix-run/node';
 
 type LoaderData = {
   theme: string;

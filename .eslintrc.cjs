@@ -15,13 +15,15 @@ module.exports = {
   },
 
   // Base config
-  extends: ['eslint:recommended', 'plugin:prettier/recommended', 'plugin:mdx/recommended', 'plugin:tailwindcss/recommended'],
+  extends: ['plugin:react/recommended', 'eslint:recommended', 'plugin:mdx/recommended', 'plugin:tailwindcss/recommended', 'plugin:prettier/recommended'],
 
-  plugins: ['@stylistic', 'tailwindcss'],
+  plugins: ['react', '@stylistic', 'tailwindcss'],
 
   rules: {
     'no-multi-spaces': 'warn',
     '@stylistic/indent': ['error', 2],
+    'react/jsx-curly-newline': [1, { 'multiline': 'consistent', 'singleline': 'consistent' }],
+    'react/jsx-max-props-per-line': [1, { 'maximum': 1, 'when': 'multiline' }],
     'tailwindcss/classnames-order': ['warn', {
       'callees': ['classnames', 'clsx', 'ctl'],
       'config': 'tailwind.config.js',

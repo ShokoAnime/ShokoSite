@@ -56,11 +56,11 @@ export default function Index() {
             <h1 className='w-full'>The All-in-One Cross-Platform Anime Management System Built For You</h1>
             <h4 className='w-full text-textBody-light dark:text-textBody-dark'>Let Shoko take you to the future</h4>
             <div className='flex gap-x-2'>
-              <Button type='primary'>
+              <Button buttonType='primary'>
                 <FontAwesomeIcon icon={faDownload} size='lg' />
                 <span>Download Ver 4.3.0 </span>
               </Button>
-              <Button type='outline'>
+              <Button buttonType='outline'>
                 <FontAwesomeIcon icon={faBookSkull} size='lg' />
                 <span>Getting Started</span>
               </Button>
@@ -69,7 +69,7 @@ export default function Index() {
           <div className='relative'>
             <img src='/images/home/1.png' alt='preview png' className='max-w-[630px]' />
             <Button
-              type='primary'
+              buttonType='primary'
               className='absolute left-1/2 top-1/2 flex size-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center !rounded-full'>
               <FontAwesomeIcon className='pl-2' icon={faPlay} size='2xl' />
             </Button>
