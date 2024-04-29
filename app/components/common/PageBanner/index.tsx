@@ -28,7 +28,7 @@ export const PageBanner = ({ title, description }: PageBannerProps) => {
       <div className='absolute left-1/2 top-1/2 w-full -translate-x-1/2 -translate-y-1/2'>
         <div className='mx-auto flex max-w-[850px] flex-col items-center gap-y-8'>
           <h1 className='text-textAlt-light dark:text-textAlt-dark'>{title}</h1>
-          <h4 className='text-textAlt-light dark:text-textAlt-dark'>{description}</h4>
+          <h4 className='text-center text-textAlt-light dark:text-textAlt-dark'>{description}</h4>
           <div className='flex gap-x-2'>
             <a
               className='text-2xl text-headerLink-light hover:text-headerLinkHover-light dark:text-headerLink-dark hover:dark:text-headerLinkHover-dark'
