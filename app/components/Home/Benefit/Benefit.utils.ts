@@ -12,7 +12,7 @@ export const benefitsMap = [
     icon: faFilePen,
   },
   {
-    title: 'Sync watch States',
+    title: 'Sync Watch States',
     description: 'Automatically sync and update watch states for local and supported community sites.',
     icon: faEye,
   },
