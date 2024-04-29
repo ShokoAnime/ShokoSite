@@ -50,24 +50,30 @@ export default function Index() {
       <Header />
 
       {/* Hero */}
-      <div className="mx-auto max-w-[1440px] py-16">
-        <div className="flex justify-center gap-x-16">
+      <div className="mx-auto max-w-[1440px] px-6 py-16 2xl:px-0">
+        <div className="flex flex-col items-center justify-center gap-x-16 gap-y-12 2xl:flex-row">
           <div className="flex flex-col items-center justify-center gap-y-8 text-center">
-            <h1 className="w-full">The All-in-One Cross-Platform Anime Management System Built For You</h1>
+            <h1 className="w-full max-w-[53.125rem] text-pretty">
+              The All-in-One Cross-Platform Anime Management System Built For You
+            </h1>
             <h4 className="w-full text-textBody-light dark:text-textBody-dark">Let Shoko take you to the future</h4>
             <div className="flex gap-x-2">
               <Button buttonType="primary">
                 <FontAwesomeIcon icon={faDownload} size="lg" />
                 <span>Download Ver 4.3.0</span>
               </Button>
-              <Button buttonType="outline">
+              <Button buttonType="outline" onClick={() => window.open('https://docs.shokoanime.com', '_blank')}>
                 <FontAwesomeIcon icon={faBookSkull} size="lg" />
                 <span>Getting Started</span>
               </Button>
             </div>
           </div>
-          <div className="relative">
-            <img src="/images/home/1.png" alt="preview png" className="max-w-[630px]" />
+          <div className="relative w-full 2xl:w-fit">
+            <img
+              src="/images/home/1.png"
+              alt="preview png"
+              className="mx-auto flex items-center 2xl:max-w-[630px]"
+            />
             <Button
               buttonType="primary"
               className="absolute left-1/2 top-1/2 flex size-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center !rounded-full"
@@ -79,7 +85,7 @@ export default function Index() {
       </div>
 
       {/* Benefits of Shoko */}
-      <div className="size-full bg-backgroundAlt-light py-16 dark:bg-backgroundAlt-dark">
+      <div className="size-full bg-backgroundAlt-light px-6 py-16 dark:bg-backgroundAlt-dark 2xl:px-0">
         <div className="mx-auto flex max-w-[1440px] flex-col items-center gap-y-16">
           <div className="flex flex-col items-center gap-y-2">
             <h2>Benefits of Shoko</h2>
@@ -92,8 +98,8 @@ export default function Index() {
       </div>
 
       {/* Info Groups */}
-      <div className="mx-auto max-w-[1440px] py-16">
-        <div className="flex flex-col items-center gap-y-32">
+      <div className="mx-auto max-w-[1440px] px-6 py-16 2xl:px-0">
+        <div className="flex flex-col items-center gap-y-16 2xl:gap-y-32">
           <InfoGroup
             title="Collection Management Made Easy"
             image="/images/home/2.png"
@@ -165,7 +171,7 @@ export default function Index() {
       </div>
 
       {/* Latest NewsPost */}
-      <div className="size-full bg-backgroundAlt-light py-16 dark:bg-backgroundAlt-dark">
+      <div className="size-full bg-backgroundAlt-light px-6 py-16 dark:bg-backgroundAlt-dark 2xl:px-0">
         <div className="mx-auto flex w-full max-w-[1440px] flex-col items-center">
           <div className="flex flex-col items-center gap-y-2">
             <h2>Latest News</h2>
