@@ -32,7 +32,7 @@ export const PageBanner = ({ title, description }: PageBannerProps) => {
           <div className="flex gap-x-2">
             <a
               className="text-2xl text-headerLink-light hover:text-headerLinkHover-light dark:text-headerLink-dark hover:dark:text-headerLinkHover-dark"
-              href="/"
+              href="/public"
             >
               Shoko
             </a>
