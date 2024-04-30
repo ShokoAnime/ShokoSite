@@ -37,12 +37,14 @@
   {
     "name": "fearnlj01",
     "avatar_url": "https://avatars.githubusercontent.com/u/13705865?v=4",
-    "url": "https://github.com/fearnlj01"
+    "url": "https://github.com/fearnlj01",
+    "honorable": true
   },
   {
     "name": "krbrs",
     "avatar_url": "https://avatars.githubusercontent.com/u/57227244?v=4",
-    "url": "https://github.com/krbrs"
+    "url": "https://github.com/krbrs",
+    "honorable": true
   },
   {
     "name": "Queuecumbr",
@@ -91,17 +93,20 @@
   {
     "name": "bigretromike",
     "avatar_url": "https://avatars.githubusercontent.com/u/6052025?v=4",
-    "url": "https://github.com/bigretromike"
+    "url": "https://github.com/bigretromike",
+    "honorable": true
   },
   {
     "name": "maxpiva",
     "avatar_url": "https://avatars.githubusercontent.com/u/1164141?v=4",
-    "url": "https://github.com/maxpiva"
+    "url": "https://github.com/maxpiva",
+    "honorable": true
   },
   {
     "name": "jmediamanager",
     "avatar_url": "https://avatars.githubusercontent.com/u/6645153?v=4",
-    "url": "https://github.com/jmediamanager"
+    "url": "https://github.com/jmediamanager",
+    "honorable": true
   },
   {
     "name": "Cazzar",
@@ -113,7 +118,8 @@
   {
     "name": "Baine",
     "avatar_url": "https://avatars.githubusercontent.com/u/6566469?v=4",
-    "url": "https://github.com/Baine"
+    "url": "https://github.com/Baine",
+    "honorable": true
   },
   {
     "name": "bond4u",
@@ -123,7 +129,8 @@
   {
     "name": "Mik1ll",
     "avatar_url": "https://avatars.githubusercontent.com/u/27949189?v=4",
-    "url": "https://github.com/Mik1ll"
+    "url": "https://github.com/Mik1ll",
+    "honorable": true
   },
   {
     "name": "pmcleish",

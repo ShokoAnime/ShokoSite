@@ -21,7 +21,6 @@ module.exports = {
 
   rules: {
     'no-multi-spaces': 'warn',
-    '@stylistic/indent': ['error', 2],
     'react/jsx-curly-newline': [1, { 'multiline': 'consistent', 'singleline': 'consistent' }],
     'react/jsx-max-props-per-line': [1, { 'maximum': 1, 'when': 'multiline' }],
     'tailwindcss/classnames-order': ['warn', {
