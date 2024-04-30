@@ -98,7 +98,7 @@ export default function Index() {
       </div>
 
       {/* Info Groups */}
-      <div className="mx-auto max-w-[1440px] px-6 py-16 2xl:px-0">
+      <div className="shoko-page mx-auto max-w-[1440px] px-6 py-16 2xl:px-0">
         <div className="flex flex-col items-center gap-y-16 2xl:gap-y-32">
           <InfoGroup
             title="Collection Management Made Easy"
@@ -133,9 +133,10 @@ export default function Index() {
                 <span>
                   With Shoko, you can have your anime collection up and running within just five minutes. Shoko
                   automatically populates your database with information about the various series and episodes in your
-                  collection by hashing each file for comparison against AniDB&apos;s extensive database. Shoko also
-                  utilizes additional metadata sources to provide even more information and integration, ensuring that
-                  your collection is complete and well-organized.
+                  collection by hashing each file for comparison against{' '}
+                  <a href="https://anidb.net" target="_blank" rel="noreferrer">AniDB&apos;s</a>{' '}
+                  extensive database. Shoko also utilizes additional metadata sources to provide even more information
+                  and integration, ensuring that your collection is complete and well-organized.
                 </span>
                 <span>
                   Once your collection is set up, all that&apos;s left for you to do is decide which series you want to

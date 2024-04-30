@@ -54,13 +54,19 @@ module.exports = {
         'text-textAlt-dark',
         'text-textHeader-light',
         'text-textHeader-dark',
+        'shoko-page',
       ],
     }],
+    "tailwindcss/no-custom-classname": [
+      "warn",
+      {
+        "whitelist": ['shoko-page']
+      }
+    ],
     'tailwindcss/enforces-negative-arbitrary-values': 'warn',
     'tailwindcss/enforces-shorthand': 'warn',
     'tailwindcss/migration-from-tailwind-2': 'warn',
     'tailwindcss/no-arbitrary-value': 'off',
-    'tailwindcss/no-custom-classname': 'warn',
     'tailwindcss/no-contradicting-classname': 'error',
   },
 
