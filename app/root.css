@@ -2,13 +2,13 @@
 @import 'simple-icons-font/font/simple-icons.min.css';
 @import 'tailwind.css';
 
-.light * .shoko-page * a {
+.light * .shoko-blog-post * a {
     font-weight: 500;
     color: #3E64ED;
     text-decoration: underline;
 }
 
-.dark * .shoko-page * a {
+.dark * .shoko-blog-post * a {
     font-weight: 500;
     color: #279CEB;
     text-decoration: underline;

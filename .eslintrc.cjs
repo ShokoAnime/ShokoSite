@@ -54,13 +54,12 @@ module.exports = {
         'text-textAlt-dark',
         'text-textHeader-light',
         'text-textHeader-dark',
-        'shoko-page',
       ],
     }],
     "tailwindcss/no-custom-classname": [
       "warn",
       {
-        "whitelist": ['shoko-page']
+        "whitelist": ['shoko-blog-post']
       }
     ],
     'tailwindcss/enforces-negative-arbitrary-values': 'warn',
