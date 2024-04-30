@@ -34,7 +34,7 @@ export default function About() {
         </div>
       </div>
 
-      <div className="mx-auto min-h-[calc(100vh-644px)] max-w-[1440px] flex-1 py-16">
+      <div className="shoko-page mx-auto min-h-[calc(100vh-644px)] max-w-[1440px] flex-1 p-16">
         {tab === 'The Early Years' && (
           <HistorySection
             title="The Early Years"

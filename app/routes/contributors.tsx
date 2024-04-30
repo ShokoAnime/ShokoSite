@@ -15,7 +15,7 @@ export default function Contributors() {
         description="From the Shoko team itself to our everyday users, everyone listed below has contributed to making Shoko better."
       />
 
-      <div className="mx-auto flex max-w-[1440px] flex-col gap-y-16 p-16 2xl:px-0 2xl:py-16">
+      <div className="shoko-page mx-auto flex max-w-[1440px] flex-col gap-y-16 p-16 2xl:px-0 2xl:py-16">
         <ContributorsGroup
           title="Shoko Staff"
           type="staff"
@@ -36,8 +36,7 @@ export default function Contributors() {
               <div>
                 The <strong>{contributorsLength}</strong>{' '}
                 amazing users who contributed to the betterment of Shoko. Contributed in the past but don’t see your
-                name?{' '}
-                <a className="font-medium text-link-light underline dark:text-link-dark" href="/">Lets fix that.</a>
+                name? <a href="/">Lets fix that.</a>
               </div>
             </>
           }

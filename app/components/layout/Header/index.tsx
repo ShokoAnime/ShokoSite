@@ -1,18 +1,25 @@
 import { Link, useLocation } from '@remix-run/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMagnifyingGlass, faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
+import { IconDefinition, faMagnifyingGlass, faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
+import { faDiscord, faGithub } from '@fortawesome/free-brands-svg-icons';
 import { Button } from '~/components/common';
 import { useTheme } from '~/context/toggleTheme';
 
-export const navRoutes = [
+interface NavRoute {
+  title: string;
+  route: string;
+  icon?: IconDefinition;
+}
+
+export const navRoutes: NavRoute[] = [
   { title: 'About', route: '/about' },
   { title: 'Blog', route: '/blog' },
   { title: 'Changelog', route: 'https://docs.shokoanime.com/changelog/shoko-server' },
   { title: 'Contributors', route: '/contributors' },
   { title: 'Downloads', route: '/downloads' },
   { title: 'Documentation', route: 'https://docs.shokoanime.com/' },
-  { title: 'Github', route: 'https://github.com', icon: 'si si-github' },
-  { title: 'Discord', route: 'https://discord.com', icon: 'si si-discord' },
+  { title: 'Github', route: 'https://github.com', icon: faGithub },
+  { title: 'Discord', route: 'https://discord.com', icon: faDiscord },
 ];
 
 export const Header = () => {
@@ -35,9 +42,11 @@ export const Header = () => {
             <Link
               key={route.title}
               to={route.route}
-              className={`flex gap-x-2 ${route.route === currentURL && 'text-link-light dark:text-link-dark'}`}
+              className={`flex items-center gap-x-2${
+                route.route === currentURL ? ' text-link-light dark:text-link-dark' : ''
+              }`}
             >
-              {route.icon && <span className={route.icon} />}
+              {route.icon && <FontAwesomeIcon icon={route.icon} size="lg" />}
               {route.title}
             </Link>
           ))}
