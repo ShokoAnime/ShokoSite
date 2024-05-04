@@ -14,7 +14,7 @@ export const UserCard = ({ name, joinDate, role, image, link }: UserCardProps) =
       rel="noopener noreferrer"
       target="_blank"
     >
-      <img className="size-full max-h-[4.6875rem] max-w-[4.6875rem] rounded-full" src={image} alt={name} />
+      <img className="size-full h-[4.6875rem] w-[4.6875rem] rounded-full" src={image} alt={name} />
       <div className="flex flex-col items-center gap-y-1">
         <div className="text-sm font-medium capitalize text-textHeader-light dark:text-textHeader-dark">{name}</div>
         {role && (

@@ -1,17 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { UserCard } from '~/components';
-import contributors from '~/data/contributors.json';
+
+interface Contributor {
+  name: string;
+  avatar_url: string;
+  url: string;
+  role?: string;
+  join_date?: string;
+  honorable?: boolean;
+}
 
 interface ContributorsGroupProps {
   title: string;
   description: string | React.ReactNode;
   type: string;
+  data: Contributor[];
 }
 
-export const ContributorsGroup = ({ title, description, type }: ContributorsGroupProps) => {
-  const contributorsSorted = contributors.sort((a, b) => {
-    return a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1;
-  });
+export const ContributorsGroup = ({ title, description, type, data }: ContributorsGroupProps) => {
+  const [contributorsSorted, setContributorsSorted] = useState<Contributor[]>([]);
+
+  useEffect(() => {
+    setContributorsSorted(data.sort((a, b) => {
+      return a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1;
+    }));
+  }, [data]);
 
   return (
     <div className="flex flex-col gap-y-16">

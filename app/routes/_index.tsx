@@ -17,7 +17,7 @@ const sampleNews: { title: string, image: string, releasedDate: Date, link: stri
       'After many months of internal and public testing, the latest version fo Nakamori is now available for download! This update is probably one of the biggest to date with Nakamori being completely rewritten...',
     releasedDate: new Date(Date.parse('2023-11-18')),
     link: '#',
-    image: '/images/home/5.png',
+    image: '/images/home/blog-01.webp',
   },
   {
     title: 'Shoko Version 4.1.2 Released ',
@@ -25,7 +25,7 @@ const sampleNews: { title: string, image: string, releasedDate: Date, link: stri
       'This maintenance release addresses a few reported bugs and a few under-the-hood changes that won’t affect most users. However, its main purpose is it allows Shoko Server to work with our latest media …',
     releasedDate: new Date(Date.parse('2023-10-20')),
     link: '#',
-    image: '/images/home/6.png',
+    image: '/images/home/blog-02.webp',
   },
   {
     title: 'Shoko Version 4.1.2 Released ',
@@ -33,7 +33,7 @@ const sampleNews: { title: string, image: string, releasedDate: Date, link: stri
       'After many months of internal and public testing, the latest version fo Nakamori is now available for download! This update is probably one of the biggest to date with Nakamori being completely rewritten...',
     releasedDate: new Date(Date.parse('2023-10-05')),
     link: '#',
-    image: '/images/home/7.png',
+    image: '/images/home/blog-03.webp',
   },
 ];
 
@@ -70,9 +70,9 @@ export default function Index() {
           </div>
           <div className="relative w-full 2xl:w-fit">
             <img
-              src="/images/home/1.png"
-              alt="preview png"
-              className="mx-auto flex items-center 2xl:max-w-[630px]"
+              className="mx-auto flex items-center rounded-lg shadow-custom 2xl:max-w-[630px]"
+              src="/images/home/video-placeholder.webp"
+              alt="preview webp"
             />
             <Button
               buttonType="primary"
@@ -102,7 +102,7 @@ export default function Index() {
         <div className="flex flex-col items-center gap-y-16 2xl:gap-y-32">
           <InfoGroup
             title="Collection Management Made Easy"
-            image="/images/home/2.png"
+            image="/images/home/video-placeholder.webp"
             content={
               <>
                 <span>
@@ -126,7 +126,7 @@ export default function Index() {
           />
           <InfoGroup
             title="Spend More Time Watching Anime"
-            image="/images/home/3.png"
+            image="/images/home/video-placeholder.webp"
             reverse={true}
             content={
               <>
@@ -154,7 +154,7 @@ export default function Index() {
           />
           <InfoGroup
             title="Media Player Support"
-            image="/images/home/4.png"
+            image="/images/home/media-player.webp"
             content={
               <>
                 <span>
