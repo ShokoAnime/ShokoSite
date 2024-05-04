@@ -50,7 +50,7 @@ export const NewsPost = ({ image, title, releaseDate, content, link }: NewsProps
   }, [releaseDate]);
   return (
     <div className="flex flex-col gap-y-6">
-      <img width={445} src={image} alt={title} />
+      <img className="w-[28.125rem] rounded-lg shadow-custom" src={image} alt={title} />
       <div className="text-textHeader-light dark:text-textHeader-dark">
         <div className="opacity-65">{timeStr}</div>
         <div className="text-xl">{title}</div>

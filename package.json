@@ -22,6 +22,8 @@
     "@remix-run/serve": "^2.9.1",
     "isbot": "^4.4.0",
     "js-cookie": "^3.0.5",
+    "overlayscrollbars": "^2.7.3",
+    "overlayscrollbars-react": "^0.5.6",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "simple-icons-font": "^11.12.0"
@@ -29,13 +31,13 @@
   "devDependencies": {
     "@mdx-js/rollup": "^3.0.1",
     "@remix-run/dev": "^2.9.1",
-    "@stylistic/eslint-plugin": "^1.7.2",
+    "@stylistic/eslint-plugin": "^1.8.0",
     "@types/js-cookie": "^3.0.6",
     "@types/lodash-es": "^4.17.12",
     "@types/react": "^18.3.1",
     "@types/react-dom": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
-    "@typescript-eslint/parser": "^7.7.1",
+    "@typescript-eslint/parser": "^7.8.0",
     "autoprefixer": "^10.4.19",
     "dprint": "^0.45.1",
     "eslint": "^8.57.0",
@@ -57,7 +59,7 @@
     "tailwindcss": "^3.4.3",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.5",
-    "vite": "^5.2.10",
+    "vite": "^5.2.11",
     "vite-tsconfig-paths": "^4.3.2"
   },
   "engines": {

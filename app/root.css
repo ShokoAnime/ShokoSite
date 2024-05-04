@@ -14,3 +14,10 @@
     text-decoration: underline;
 }
 
+/*.light * .scrollbar-custom * .os-scrollbar-handle {*/
+/*    background: #ec407a;*/
+/*}*/
+
+/*.dark * .scrollbar-custom * .os-scrollbar-handle {*/
+/*    background: #e3b341;*/
+/*}*/

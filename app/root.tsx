@@ -1,7 +1,8 @@
-// root.tsx
 import { Links, Meta, Outlet, Scripts, ScrollRestoration, useLoaderData } from '@remix-run/react';
 import { LoaderFunction, json } from '@remix-run/node';
-import { ToggleTheme } from './context/toggleTheme';
+import { Providers } from '~/context/Providers';
+import { Layout } from '~/components/layout/Wrapper';
+import '@fortawesome/fontawesome-svg-core/styles.css';
 import './root.css';
 
 type LoaderData = {
@@ -27,9 +28,11 @@ export default function App() {
         <title>Shoko</title>
       </head>
       <body>
-        <ToggleTheme initialTheme={theme}>
-          <Outlet />
-        </ToggleTheme>
+        <Layout>
+          <Providers>
+            <Outlet />
+          </Providers>
+        </Layout>
         <ScrollRestoration />
         <Scripts />
       </body>

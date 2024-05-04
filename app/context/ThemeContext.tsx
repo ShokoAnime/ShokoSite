@@ -1,16 +1,22 @@
 import React, { ReactNode, createContext, useContext, useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
 
-type Theme = 'light' | 'dark' | string;
+type Theme = 'light' | 'dark';
 
-interface ThemeContextType {
+interface ThemeContextValue {
   theme: Theme;
   toggleTheme: () => void;
 }
 
-interface ToggleThemeProps {
-  initialTheme: Theme;
-  children?: ReactNode;
+const ThemeContext = createContext<ThemeContextValue>({
+  theme: 'light',
+  toggleTheme: () => {},
+});
+
+export const useTheme = () => useContext(ThemeContext);
+
+interface ThemeProviderProps {
+  children: ReactNode;
 }
 
 const getInitialTheme = (): Theme => {
@@ -26,13 +32,8 @@ const setThemeClass = (theme: Theme) => {
   document.documentElement.classList.toggle('light', theme === 'light');
 };
 
-export const ThemeContext = createContext<ThemeContextType>({
-  theme: 'light',
-  toggleTheme: () => {},
-});
-
-export const ToggleTheme: React.FC<ToggleThemeProps> = ({ children, initialTheme }) => {
-  const [theme, setTheme] = useState<Theme>(initialTheme || getInitialTheme());
+export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
+  const [theme, setTheme] = useState<Theme>(getInitialTheme());
 
   useEffect(() => {
     setThemeClass(theme);
@@ -46,5 +47,3 @@ export const ToggleTheme: React.FC<ToggleThemeProps> = ({ children, initialTheme
 
   return <ThemeContext.Provider value={{ theme, toggleTheme }}>{children}</ThemeContext.Provider>;
 };
-
-export const useTheme = () => useContext(ThemeContext);

@@ -27,7 +27,7 @@ export const InfoGroup = ({ title, content, image, reverse = false }: InfoGroupP
             <div className="flex flex-col gap-4">{content}</div>
           </div>
         </div>
-        <img src={image} alt={title} width={611} />
+        <img className="rounded-lg shadow-custom" src={image} alt={title} width={611} />
       </div>
     </>
   );

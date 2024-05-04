@@ -4,6 +4,9 @@ module.exports = {
   content: ['./app/**/*.{js,tsx,ts,jsx,mdx,md}'],
   theme: {
     extend: {
+      boxShadow: {
+        custom: '0 4px 4px rgba(0, 0, 0, 0.25)',
+      },
       fontFamily: {
         sans: ['Lexend Deca Variable', 'sans-serif'],
       },

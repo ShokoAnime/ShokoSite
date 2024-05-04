@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconDefinition, faMagnifyingGlass, faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 import { faDiscord, faGithub } from '@fortawesome/free-brands-svg-icons';
 import { Button } from '~/components/common';
-import { useTheme } from '~/context/toggleTheme';
+import { useTheme } from '~/context/ThemeContext';
 
 interface NavRoute {
   title: string;
