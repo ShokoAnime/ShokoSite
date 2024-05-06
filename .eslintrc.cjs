@@ -15,7 +15,7 @@ module.exports = {
   },
 
   // Base config
-  extends: ['plugin:react/recommended', 'eslint:recommended', 'plugin:mdx/recommended', 'plugin:tailwindcss/recommended', 'plugin:prettier/recommended'],
+  extends: ['plugin:react/recommended', 'eslint:recommended', 'plugin:mdx/recommended', 'plugin:tailwindcss/recommended'],
 
   plugins: ['react', '@stylistic', 'tailwindcss'],
 
@@ -29,32 +29,7 @@ module.exports = {
       'prependCustom': true,
       'removeDuplicates': true,
       'whitespace': 'condense',
-      'whitelist': [
-        'bg-backgroundAlt-light',
-        'bg-backgroundAlt-dark',
-        'bg-backgroundNorm-light',
-        'bg-backgroundNorm-dark',
-        'bg-buttonAlt-light',
-        'bg-buttonAlt-dark',
-        'bg-header-light',
-        'bg-header-dark',
-        'bg-overlay-light',
-        'bg-overlay-dark',
-        'border-border-light',
-        'border-border-dark',
-        'text-highlight-light',
-        'text-highlight-dark',
-        'text-link-light',
-        'text-link-dark',
-        'text-textBody-light',
-        'text-textBody-dark',
-        'text-linkHover-light',
-        'text-linkHover-dark',
-        'text-textAlt-light',
-        'text-textAlt-dark',
-        'text-textHeader-light',
-        'text-textHeader-dark',
-      ],
+      'whitelist': [],
     }],
     "tailwindcss/no-custom-classname": [
       "warn",

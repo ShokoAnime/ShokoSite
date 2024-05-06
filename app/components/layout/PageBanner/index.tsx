@@ -1,6 +1,6 @@
-import { useLocation } from '@remix-run/react';
+import { useLocation, useNavigate } from '@remix-run/react';
 import { useEffect, useState } from 'react';
-import { useDownloadsContext } from '~/context/DownloadsContext';
+import { Button } from '~/components';
 
 interface PageBannerProps {
   title: string;
@@ -9,70 +9,58 @@ interface PageBannerProps {
 
 export const PageBanner = ({ title, description }: PageBannerProps) => {
   const [bannerURL, setBannerURL] = useState<string>('');
-  const [buildBreadcrumbs, setBuildBreadcrumbs] = useState<string[]>([]);
-  const { setIsLoading } = useDownloadsContext();
+  const [breadcrumbs, setBreadcrumbs] = useState<string[]>([]);
 
   const location = useLocation();
+  const navigate = useNavigate();
 
-  const pathBuilder = (path: string) => {
-    const pathArray = location.pathname.split('/');
-    return pathArray.slice(0, pathArray.indexOf(path) + 1).join('/');
-  };
-
-  // Increase when adding a new banner.
-  const bannerCount = 9;
+  const bannerCount = 9; // Increase when adding a new banner
 
   useEffect(() => {
-    const randomBanner = Math.floor(Math.random() * bannerCount) + 1;
+    const pathSegments = location.pathname.split('/');
+    const isValidPath = pathSegments.length === 3 || pathSegments.length === 4;
 
-    setIsLoading(true);
-
-    if (bannerURL !== '' && location.pathname.split('/').length === 3) {
-      setBuildBreadcrumbs(location.pathname.split('/').slice(1));
-      return;
+    if (bannerURL === '' || isValidPath) {
+      const randomBanner = Math.floor(Math.random() * bannerCount) + 1;
+      setBannerURL(`/images/banners/banner-${randomBanner}.webp`);
     }
 
-    setBannerURL(`/images/banners/banner-${randomBanner}.webp`);
-    setBuildBreadcrumbs(location.pathname.split('/').slice(1));
-    setIsLoading(false);
-  }, [bannerURL, location.pathname]);
+    setBreadcrumbs(pathSegments.slice(1));
+  }, [location.pathname]);
+
+  const formatBreadcrumb = (segment: string) => {
+    return segment.replace(/-/g, ' ').replace(/\b\w/g, (char) => char.toUpperCase());
+  };
+
+  const onClickHandler = (url: string) => {
+    navigate(url);
+  };
 
   return (
     <div className="relative h-[22.5rem]">
-      <div className="absolute h-[22.5rem] w-full bg-overlay-light" />
+      <div className="bg-shoko-overlay absolute h-[22.5rem] w-full" />
       <div className="absolute left-1/2 top-1/2 w-full -translate-x-1/2 -translate-y-1/2">
         <div className="mx-auto flex max-w-[850px] flex-col items-center gap-y-8">
-          <h1 className="text-textAlt-light dark:text-textAlt-dark">{title}</h1>
-          <h4 className="text-center text-textAlt-light dark:text-textAlt-dark">{description}</h4>
-          <div className="flex gap-x-2">
-            <a
-              className="text-2xl font-medium text-headerLink-light hover:text-headerLinkHover-light dark:text-headerLink-dark hover:dark:text-headerLinkHover-dark"
-              href="/"
-            >
+          <h1 className="text-shoko-text-alt">{title}</h1>
+          <h4 className="text-shoko-text-alt text-center">{description}</h4>
+          <div className="flex">
+            <Button buttonType="breadcrumb" onClick={() => onClickHandler('/')}>
               Shoko
-            </a>
-            <h4 className="text-textAlt-light dark:text-textAlt-dark">/</h4>
-            {buildBreadcrumbs.map((data, index) => (
-              <div className="flex gap-x-2" key={index}>
-                {buildBreadcrumbs.length > index + 1
+            </Button>
+            <h4 className="text-shoko-text-alt">/</h4>
+            {breadcrumbs.map((segment, index) => (
+              <div className="flex" key={index}>
+                {breadcrumbs.length > index + 1
                   ? (
-                    <a
-                      className="text-2xl font-medium capitalize text-headerLink-light hover:text-headerLinkHover-light dark:text-headerLink-dark hover:dark:text-headerLinkHover-dark"
-                      href={pathBuilder(data)}
+                    <Button
+                      buttonType="breadcrumb"
+                      onClick={() => onClickHandler(`/${breadcrumbs.slice(0, index + 1).join('/')}`)}
                     >
-                      {data.replace(/-/g, ' ').replace(/\b\w/g, (char) => char.toUpperCase())}
-                    </a>
+                      {formatBreadcrumb(segment)}
+                    </Button>
                   )
-                  : (
-                    <h4 className="capitalize text-textAlt-light dark:text-textAlt-dark">
-                      {data.replace(/-/g, ' ').replace(/\b\w/g, (char) => char.toUpperCase())}
-                    </h4>
-                  )}
-                {buildBreadcrumbs.length > index + 1 && (
-                  <h4 className="text-textAlt-light dark:text-textAlt-dark">
-                    /
-                  </h4>
-                )}
+                  : <h4 className="text-shoko-text-alt ml-2 capitalize">{formatBreadcrumb(segment)}</h4>}
+                {breadcrumbs.length > index + 1 && <h4 className="text-shoko-text-alt">/</h4>}
               </div>
             ))}
           </div>
