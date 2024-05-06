@@ -1,0 +1,98 @@
+@import '@fontsource-variable/lexend-deca';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body, html {
+        @apply bg-shoko-bg;
+        @apply text-shoko-text;
+        @apply text-base;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        @apply text-shoko-text-header;
+        @apply font-medium
+    }
+
+    h1 {
+        @apply text-[2.5rem] leading-[3.5rem];
+    }
+
+    h2 {
+        @apply text-[2.25rem] leading-[3.6rem];
+    }
+
+    h3 {
+        @apply text-[2rem] leading-[3.2rem];
+    }
+
+    h4 {
+        @apply text-[1.5rem] leading-[2.4rem];
+    }
+
+    a {
+        @apply hover:text-shoko-link-hover;
+    }
+
+    strong {
+        @apply font-semibold text-shoko-highlight;
+    }
+
+    /* Tailwind LG Breakpoint*/
+    @media (min-width: 1281px) {
+        h1 {
+            @apply text-[3rem] leading-[3.75rem];
+        }
+    }
+}
+
+:root {
+    --shoko-bg: #FDFCFF;
+    --shoko-bg-alt: #F5F4F8;
+    --shoko-border: #BAC8D7A6;
+    --shoko-text: #535E72;
+    --shoko-text-header: #2C324B;
+    --shoko-text-alt: #FFFFFF;
+    --shoko-link: #3E64ED;
+    --shoko-link-hover: #425ECC;
+    --shoko-link-header: #66B4F3;
+    --shoko-link-header-hover: #5ba2da;
+    --shoko-highlight: #EC407A;
+    --shoko-overlay: #0A0B1DBF;
+}
+
+.dark {
+    --shoko-bg: #17181F;
+    --shoko-bg-alt: #1C1D25;
+    --shoko-border: #0B0B0E;
+    --shoko-text: #CFD8E3;
+    --shoko-text-header: #BCD0E9;
+    --shoko-text-alt: #FFFFFF;
+    --shoko-link: #279CEB;
+    --shoko-link-hover: #217dbc;
+    --shoko-link-header: #66B4F3;
+    --shoko-link-header-hover: #5ba2da;
+    --shoko-highlight: #E3B341;
+    --shoko-overlay: #0A0B1DBF;
+}
+
+.light * .shoko-blog-post * a {
+    font-weight: 500;
+    color: #3E64ED;
+    text-decoration: underline;
+}
+
+.dark * .shoko-blog-post * a {
+    font-weight: 500;
+    color: #279CEB;
+    text-decoration: underline;
+}
+
+/*.light * .scrollbar-custom * .os-scrollbar-handle {*/
+/*    background: #ec407a;*/
+/*}*/
+
+/*.dark * .scrollbar-custom * .os-scrollbar-handle {*/
+/*    background: #e3b341;*/
+/*}*/

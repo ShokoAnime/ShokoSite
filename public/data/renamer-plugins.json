@@ -1,0 +1,28 @@
+[
+  {
+    "name": "Name",
+    "description": "Description",
+    "images": [
+      "Image"
+    ],
+    "resources": [
+      {
+        "name": "Name",
+        "url": "URL"
+      }
+    ],
+    "downloads": [
+      {
+        "text": "Platform",
+        "links": [
+          {
+            "name": "Download Type",
+            "version": "Version",
+            "date": "Date",
+            "url": "URL"
+          }
+        ]
+      }
+    ]
+  }
+]
