@@ -25,7 +25,7 @@ export const Button = ({ buttonType, className, id, children, onClick }: ButtonP
       type="button"
       id={id}
       className={cx(
-        'flex items-center gap-x-3 p-4 font-medium',
+        'flex items-center gap-x-3 p-4 font-medium transition-colors duration-500 ease-in-out focus:outline-none',
         buttonStyle[buttonType],
         buttonType === 'circle' ? 'rounded-full' : 'rounded-lg',
         className,

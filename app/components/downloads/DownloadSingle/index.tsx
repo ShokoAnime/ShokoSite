@@ -9,8 +9,8 @@ interface DownloadProps {
     name: string;
     images: string[];
     description: string;
-    resources: { name: string }[];
-    downloads: { text: string, links: { name: string, version: string, date: string }[] }[];
+    resources: { name: string, url: string }[];
+    downloads: { text: string, links: { name: string, version: string, date: string, url: string }[] }[];
   };
 }
 
@@ -31,8 +31,6 @@ export const DownloadSingle = ({ data }: DownloadProps) => {
     changelog: mdiClockEditOutline,
     docs: mdiBookOpenOutline,
   };
-
-  console.log(downloadTab);
 
   return (
     <div className="flex items-center gap-x-16">
