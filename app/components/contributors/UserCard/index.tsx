@@ -9,16 +9,16 @@ interface UserCardProps {
 export const UserCard = ({ name, joinDate, role, image, link }: UserCardProps) => {
   return (
     <a
-      className="flex w-[11.125rem] flex-col items-center gap-y-4 rounded-lg bg-backgroundAlt-light p-4 transition-transform duration-300 hover:-translate-y-4 dark:bg-backgroundAlt-dark"
+      className="bg-shoko-bg-alt flex w-[11.125rem] flex-col items-center gap-y-4 rounded-lg p-4 transition-transform duration-300 hover:-translate-y-4"
       href={link}
       rel="noopener noreferrer"
       target="_blank"
     >
-      <img className="size-full h-[4.6875rem] w-[4.6875rem] rounded-full" src={image} alt={name} />
+      <img className="size-[4.6875rem] rounded-full" src={image} alt={name} />
       <div className="flex flex-col items-center gap-y-1">
-        <div className="text-sm font-medium capitalize text-textHeader-light dark:text-textHeader-dark">{name}</div>
+        <div className="text-shoko-text-header text-sm font-medium capitalize">{name}</div>
         {role && (
-          <div className="flex flex-col items-center gap-y-1 text-sm font-medium capitalize text-textHeader-light opacity-65 dark:text-textHeader-dark">
+          <div className="text-shoko-text-header flex flex-col items-center gap-y-1 text-sm font-medium capitalize opacity-65">
             <div>{joinDate} - Present</div>
             <div>{role}</div>
           </div>

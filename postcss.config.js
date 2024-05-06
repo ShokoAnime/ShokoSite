@@ -1,8 +1,6 @@
-const postCssConfig = {
+export default {
   plugins: {
     tailwindcss: {},
     autoprefixer: {},
   },
-};
-
-export default postCssConfig;
+}

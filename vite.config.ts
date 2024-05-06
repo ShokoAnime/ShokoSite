@@ -1,16 +1,22 @@
-import { defineConfig } from 'vite';
 import { vitePlugin as remix } from '@remix-run/dev';
+import { installGlobals } from '@remix-run/node';
+import { defineConfig } from 'vite';
 import tsconfigPaths from 'vite-tsconfig-paths';
-import mdx from '@mdx-js/rollup';
-import remarkFrontmatter from 'remark-frontmatter';
-import remarkMdxFrontmatter from 'remark-mdx-frontmatter';
+
+installGlobals();
 
 export default defineConfig({
   plugins: [
-    mdx({
-      remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter],
+    remix({
+      routes(defineRoutes) {
+        return defineRoutes((route) => {
+          route('/about', 'routes/about/index.tsx');
+          route('/contributors', 'routes/contributors/index.tsx');
+          route('/downloads/:id', 'routes/downloads/[id].tsx');
+          route('*', 'routes/404.tsx', { id: '404' });
+        });
+      },
     }),
-    remix(),
     tsconfigPaths(),
   ],
 });

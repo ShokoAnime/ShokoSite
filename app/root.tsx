@@ -1,9 +1,9 @@
+import React, { Suspense } from 'react';
 import { Links, Meta, Outlet, Scripts, ScrollRestoration, useLoaderData } from '@remix-run/react';
 import { LoaderFunction, json } from '@remix-run/node';
 import { Providers } from '~/context/Providers';
-import { Layout } from '~/components/layout/Wrapper';
-import '@fortawesome/fontawesome-svg-core/styles.css';
-import './root.css';
+import { ScrollWrapper } from '~/components';
+import '~/css/tailwind.css';
 
 type LoaderData = {
   theme: string;
@@ -15,9 +15,8 @@ export const loader: LoaderFunction = async ({ request }) => {
   return json<LoaderData>({ theme });
 };
 
-export default function App() {
+export function Layout({ children }: { children: React.ReactNode }) {
   const { theme } = useLoaderData<LoaderData>();
-
   return (
     <html lang="en" className={theme}>
       <head>
@@ -28,14 +27,18 @@ export default function App() {
         <title>Shoko</title>
       </head>
       <body>
-        <Layout>
+        <ScrollWrapper>
           <Providers>
-            <Outlet />
+            {children}
           </Providers>
-        </Layout>
+        </ScrollWrapper>
         <ScrollRestoration />
         <Scripts />
       </body>
     </html>
   );
+}
+
+export default function App() {
+  return <Outlet />;
 }

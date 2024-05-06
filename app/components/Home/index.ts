@@ -1,3 +1,4 @@
+export { Hero } from './Hero';
 export { Benefit } from './Benefit';
-export { InfoGroup } from './InfoGroup';
+export { InfoGroups } from './InfoGroups';
 export { NewsPost } from './NewsPost';
