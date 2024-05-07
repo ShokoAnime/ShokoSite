@@ -31,7 +31,7 @@ export const Header = () => {
   return (
     <div className="bg-shoko-bg-alt text-shoko-text-header sticky top-0 z-20 w-full px-6 py-4 shadow 2xl:px-0">
       <div className="mx-auto flex max-w-[1440px] flex-auto items-center justify-between">
-        <Link className="flex items-center justify-center gap-4" to="/">
+        <Link className="flex h-16 items-center justify-center gap-4" to="/">
           <img src="/images/common/shoko-icon.svg" alt="Shoko Site" className="w-[4.688rem]" />
           <h3 className="text-shoko-text-header hover:text-shoko-link-hover font-medium">
             Shoko

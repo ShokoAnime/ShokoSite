@@ -42,7 +42,7 @@
     ]
   },
   {
-    "name": "ShokoRelay",
+    "name": "Shoko Relay",
     "description": "ShokoRelay is an agent/scanner that allows you to combine your series and movies into a single library while using Shoko to manage it.",
     "images": [
       "/images/downloads/programs-plugins/WebUI-Index.png",

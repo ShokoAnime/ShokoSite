@@ -1,15 +1,16 @@
 import { useEffect } from 'react';
 import { useDownloadsContext } from '~/context/DownloadsContext';
+import { urlFormatProper, urlFormatURL } from '~/helpers/urlFormat';
 
 export const useDownloadData = (selectedTab: string) => {
-  const { setData, setIsLoading } = useDownloadsContext();
+  const { setTab, setData, setIsLoading } = useDownloadsContext();
 
   useEffect(() => {
     const fetchData = async () => {
-      const tabFormatted = selectedTab.replace(/ /g, '-').toLowerCase();
-      const url = `/data/${tabFormatted}.json`;
+      const url = `/data/${urlFormatURL(selectedTab)}.json`;
 
       setIsLoading(true);
+      setTab(urlFormatProper(selectedTab));
 
       try {
         const response = await fetch(url);

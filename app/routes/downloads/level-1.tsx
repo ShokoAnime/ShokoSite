@@ -26,6 +26,8 @@ export const loader = async ({ params }: loaderProps) => {
 export function ErrorBoundary() {
   const error = useRouteError();
 
+  console.log(error);
+
   if (isRouteErrorResponse(error)) {
     return (
       <>
@@ -37,7 +39,7 @@ export function ErrorBoundary() {
   }
 }
 
-export default function DownloadPage() {
+export default function DownloadPageLevel1() {
   const { item }: loaderProps = useLoaderData();
 
   return (

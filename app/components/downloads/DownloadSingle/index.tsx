@@ -58,7 +58,7 @@ export const DownloadSingle = ({ data }: DownloadProps) => {
             ))}
           </div>
         </div>
-        <div>{data.description}</div>
+        <div className="text-shoko-text text-base">{data.description}</div>
         <div className="flex flex-col gap-y-6">
           <div className="flex items-center gap-x-12 border-b pb-6">
             {data.downloads.map((downloadLink) => (
@@ -66,6 +66,7 @@ export const DownloadSingle = ({ data }: DownloadProps) => {
                 buttonType="text"
                 key={downloadLink.text}
                 className={cx('px-0 text-xl', downloadTab === downloadLink.text && ('!text-shoko-link'))}
+                disabled={data.downloads.length === 1}
                 onClick={() => setDownloadTab(downloadLink.text)}
               >
                 {downloadLink.text}
