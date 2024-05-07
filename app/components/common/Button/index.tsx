@@ -6,10 +6,11 @@ type ButtonProps = {
   children: ReactNode;
   className?: string;
   id?: string;
+  disabled?: boolean;
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
-export const Button = ({ buttonType, className, id, children, onClick }: ButtonProps) => {
+export const Button = ({ buttonType, className, id, children, disabled, onClick }: ButtonProps) => {
   const buttonStyle = {
     primary: 'bg-shoko-link text-shoko-text-alt hover:bg-shoko-link-hover hover:text-shoko-text-alt',
     padded: 'text-shoko-header-text hover:bg-shoko-link-hover hover:text-shoko-text-alt',
@@ -31,6 +32,7 @@ export const Button = ({ buttonType, className, id, children, onClick }: ButtonP
         className,
       )}
       onClick={onClick}
+      disabled={disabled}
     >
       {children}
     </button>

@@ -1,28 +1,22 @@
-import React from 'react';
-import { useNavigate } from '@remix-run/react';
+import { useLocation } from '@remix-run/react';
 import { useDownloadData } from '~/hooks/useDownloadData';
 import { useDownloadsContext } from '~/context/DownloadsContext';
-import { Button, DownloadCallout, DownloadSingle, Loading } from '~/components';
+import { DownloadCallout, DownloadGrid, DownloadNavTabs, DownloadSingle, Loading } from '~/components';
 import { mdiLightbulbAlertOutline } from '@mdi/js';
+import { urlFormatProper } from '~/helpers/urlFormat';
 
 interface DownloadsIndexProps {
   tabName: string;
 }
 
 export const DownloadsIndex = ({ tabName }: DownloadsIndexProps) => {
-  const navigationTabs = ['Shoko Server', 'Media Player Plugins', 'Web UI Themes', 'Renamer Plugins', 'Legacy'];
-  const { tab, setTab, data, isLoading, setIsLoading } = useDownloadsContext();
-  const navigate = useNavigate();
+  const { tab, setTab, data, isLoading } = useDownloadsContext();
+  const location = useLocation();
+
+  // Format tab name for match.
+  setTab(urlFormatProper(location.pathname));
 
   useDownloadData(tabName);
-
-  const handleTabClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    const target = e.target as HTMLButtonElement;
-    const tabName = target.innerText.replace(/ /g, '-').toLowerCase();
-    setIsLoading(true);
-    setTab(target.innerText);
-    navigate(`/downloads/${tabName}`);
-  };
 
   const renderShokoServer = () => {
     if (tab === 'Shoko Server' && data !== undefined) {
@@ -32,23 +26,18 @@ export const DownloadsIndex = ({ tabName }: DownloadsIndexProps) => {
     return null;
   };
 
+  const renderDownloadGrid = () => {
+    if (tab === 'Media Player Plugins' && data !== undefined && !isLoading) {
+      // @ts-expect-error - Types match, but TS doesn't know that data is defined.
+      return <DownloadGrid data={data} />;
+    }
+    return null;
+  };
+
   return (
     <>
-      <div className="bg-shoko-bg-alt h-[5.5rem] p-4">
-        <div className="text-shoko-text-header mx-auto flex h-full max-w-[1440px] items-center justify-center gap-x-2 text-xl font-medium">
-          {navigationTabs.map((tabName) => (
-            <Button
-              key={tabName}
-              buttonType={tab === tabName ? 'primary' : 'padded'}
-              onClick={handleTabClick}
-            >
-              {tabName}
-            </Button>
-          ))}
-        </div>
-      </div>
-
-      <div className="mx-auto flex min-h-[calc(100vh-557px)] max-w-[1440px] flex-col gap-y-16 p-16 2xl:px-0 2xl:py-16">
+      <DownloadNavTabs />
+      <div className="mx-auto flex min-h-[calc(100vh-645px)] max-w-[1440px] flex-col gap-y-16 p-16 2xl:px-0 2xl:py-16">
         {isLoading
           ? <Loading />
           : (
@@ -70,6 +59,7 @@ export const DownloadsIndex = ({ tabName }: DownloadsIndexProps) => {
                 }
               />
               {renderShokoServer()}
+              {renderDownloadGrid()}
             </>
           )}
       </div>

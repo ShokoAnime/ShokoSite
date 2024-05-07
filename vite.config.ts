@@ -12,7 +12,8 @@ export default defineConfig({
         return defineRoutes((route) => {
           route('/about', 'routes/about/index.tsx');
           route('/contributors', 'routes/contributors/index.tsx');
-          route('/downloads/:id', 'routes/downloads/[id].tsx');
+          route('/downloads/:id', 'routes/downloads/level-1.tsx');
+          route('/downloads/:id/:subid', 'routes/downloads/level-2.tsx');
           route('*', 'routes/404.tsx', { id: '404' });
         });
       },
