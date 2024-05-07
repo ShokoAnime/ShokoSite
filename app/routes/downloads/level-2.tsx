@@ -13,7 +13,6 @@ import {
   PageBanner,
   PageNotFound,
 } from '~/components';
-import { useEffect } from 'react';
 
 interface SelectedFileProps {
   name: string;
@@ -24,7 +23,7 @@ interface SelectedFileProps {
 }
 
 export default function DownloadPageLevel2() {
-  const { data, isLoading, setTab } = useDownloadsContext();
+  const { data, isLoading } = useDownloadsContext();
   const location = useLocation();
   const downloadType = location.pathname.split('/')[2];
 
