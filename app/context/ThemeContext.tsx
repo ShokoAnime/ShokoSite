@@ -3,10 +3,10 @@ import Cookies from 'js-cookie';
 
 type Theme = 'light' | 'dark';
 
-interface ThemeContextValue {
+type ThemeContextValue = {
   theme: Theme;
   toggleTheme: () => void;
-}
+};
 
 const ThemeContext = createContext<ThemeContextValue>({
   theme: 'light',
@@ -15,9 +15,9 @@ const ThemeContext = createContext<ThemeContextValue>({
 
 export const useTheme = () => useContext(ThemeContext);
 
-interface ThemeProviderProps {
+type ThemeProviderProps = {
   children: ReactNode;
-}
+};
 
 const getInitialTheme = (): Theme => {
   if (typeof window !== 'undefined') {

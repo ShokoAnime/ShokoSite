@@ -10,10 +10,12 @@ export default defineConfig({
     remix({
       routes(defineRoutes) {
         return defineRoutes((route) => {
-          route('/about', 'routes/about/index.tsx');
-          route('/contributors', 'routes/contributors/index.tsx');
-          route('/downloads/:id', 'routes/downloads/level-1.tsx');
-          route('/downloads/:id/:subid', 'routes/downloads/level-2.tsx');
+          route('/about', 'routes/about/About.tsx');
+          route('/contributors', 'routes/contributors/Contributors.tsx');
+          route('/downloads', 'routes/downloads/Downloads.tsx', () => {
+            route(':id', 'routes/downloads/DownloadPageLevel1.tsx');
+            route(':id/:subid', 'routes/downloads/DownloadPageLevel2.tsx');
+          });
           route('*', 'routes/404.tsx', { id: '404' });
         });
       },
