@@ -1,9 +1,21 @@
 import React from 'react';
-import { Links, Meta, Outlet, Scripts, ScrollRestoration, useLoaderData } from '@remix-run/react';
+import {
+  Links,
+  Meta,
+  Outlet,
+  Scripts,
+  ScrollRestoration,
+  isRouteErrorResponse,
+  useLoaderData,
+  useRouteError,
+} from '@remix-run/react';
 import { LoaderFunction, json } from '@remix-run/node';
 import { Providers } from '~/context/Providers';
-import { ScrollWrapper } from '~/components';
 import '~/css/tailwind.css';
+import PageNotFound from '~/components/layout/PageNotFound';
+import ScrollWrapper from '~/components/layout/ScrollWrapper';
+import Header from '~/components/layout/Header';
+import Footer from '~/components/layout/Footer';
 
 type LoaderData = {
   theme: string;
@@ -14,6 +26,18 @@ export const loader: LoaderFunction = async ({ request }) => {
   const theme = themeHeader?.includes('theme=dark') ? 'dark' : 'light';
   return json<LoaderData>({ theme });
 };
+
+export function ErrorBoundary() {
+  const error = useRouteError();
+
+  console.log(error);
+
+  if (isRouteErrorResponse(error)) {
+    return <PageNotFound />;
+  }
+
+  return <div>An error occurred</div>;
+}
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const { theme } = useLoaderData<LoaderData>();
@@ -29,7 +53,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <body>
         <ScrollWrapper>
           <Providers>
+            <Header />
             {children}
+            <Footer />
           </Providers>
         </ScrollWrapper>
         <ScrollRestoration />

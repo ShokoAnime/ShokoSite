@@ -1,1 +1,0 @@
-export { HistorySection } from './HistorySection';

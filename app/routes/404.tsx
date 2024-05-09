@@ -1,11 +1,5 @@
-import { Footer, Header, PageNotFound } from '~/components';
+import PageNotFound from '~/components/layout/PageNotFound';
 
 export default function NotFoundPage() {
-  return (
-    <>
-      <Header />
-      <PageNotFound />
-      <Footer altBackground={true} />
-    </>
-  );
+  return <PageNotFound />;
 }
