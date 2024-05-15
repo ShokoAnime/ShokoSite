@@ -1,24 +1,26 @@
-import { Navigate, useParams } from '@remix-run/react';
+import { useDownloadData } from '~/hooks/useDownloadData';
+import { useLocation, useParams } from '@remix-run/react';
 import { mdiLightbulbAlertOutline } from '@mdi/js';
-import PageNotFound from '~/components/layout/PageNotFound';
+import { convertToProperName } from '~/helpers/utils';
+import { DownloadsDataType } from '~/types/DownloadsDataType';
 import PageBanner from '~/components/layout/PageBanner';
+import PageNotFound from '~/components/layout/PageNotFound';
+import DownloadSingle from '~/components/downloads/DownloadSingle';
 import DownloadNavTabs from '~/components/downloads/DownloadNavTabs';
 import DownloadCallout from '~/components/downloads/DownloadCallout';
-import { useDownloadData } from '~/hooks/useDownloadData';
-import DownloadSingle from '~/components/downloads/DownloadSingle';
-import DownloadGrid from '~/components/downloads/DownloadGrid';
 
-function Downloads() {
-  const validPaths = ['shoko-server', 'media-player-plugins', 'web-ui-themes', 'renamer-plugins', 'legacy'];
+function DownloadsSingle() {
   const { id } = useParams();
-
   const data = useDownloadData(id ?? '') ?? [];
+  const path = useLocation().pathname;
+  const name = path.split('/')[3];
+  const file = data.filter((item: DownloadsDataType) => item.name === convertToProperName(name));
 
-  if (!id) {
-    return <Navigate to="/downloads/shoko-server" replace />;
+  if (data.length === 0) {
+    return <div>Loading...</div>;
   }
 
-  if (!validPaths.includes(id)) {
+  if (file.length === 0) {
     return <PageNotFound />;
   }
 
@@ -46,10 +48,10 @@ function Downloads() {
             </span>
           }
         />
-        {data.length === 1 ? <DownloadSingle data={data[0]} /> : <DownloadGrid data={data} />}
+        {file.length !== 0 && <DownloadSingle data={file[0]} />}
       </div>
     </>
   );
 }
 
-export default Downloads;
+export default DownloadsSingle;

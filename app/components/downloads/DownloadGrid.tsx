@@ -1,7 +1,7 @@
 import { mdiDownload, mdiPowerPlug } from '@mdi/js';
 import { convertNameToUrl } from '~/helpers/utils';
-import LinkButton from '~/components/common/LinkButton';
 import { DownloadsDataType } from '~/types/DownloadsDataType';
+import LinkButton from '~/components/common/LinkButton';
 import Icon from '~/components/common/Icon';
 
 type DownloadProps = {

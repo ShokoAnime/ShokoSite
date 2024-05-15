@@ -1,4 +1,4 @@
-import contributorsData from '~/data/contributors.json';
+import contributorsData from '../../../public/data/contributors.json';
 import PageBanner from '~/components/layout/PageBanner';
 import ContributorsGroup from '~/components/contributors/ContributorsGroup';
 

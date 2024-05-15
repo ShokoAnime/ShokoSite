@@ -43,7 +43,7 @@ const Header = () => {
             <Link
               key={route.title}
               to={route.route}
-              className={`flex items-center gap-x-2${route.route === currentURL ? ' text-shoko-link' : ''}`}
+              className={`flex items-center gap-x-2${currentURL.startsWith(route.route) ? ' text-shoko-link' : ''}`}
             >
               {route.icon && (
                 route.icon

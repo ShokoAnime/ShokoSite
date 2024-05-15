@@ -1,31 +1,21 @@
 import React from 'react';
-import {
-  Links,
-  Meta,
-  Outlet,
-  Scripts,
-  ScrollRestoration,
-  isRouteErrorResponse,
-  useLoaderData,
-  useRouteError,
-} from '@remix-run/react';
-import { LoaderFunction, json } from '@remix-run/node';
+import { Links, Meta, Outlet, Scripts, ScrollRestoration, isRouteErrorResponse, useRouteError } from '@remix-run/react';
 import { Providers } from '~/context/Providers';
 import '~/css/tailwind.css';
 import PageNotFound from '~/components/layout/PageNotFound';
 import ScrollWrapper from '~/components/layout/ScrollWrapper';
 import Header from '~/components/layout/Header';
 import Footer from '~/components/layout/Footer';
+import Cookies from 'js-cookie';
 
-type LoaderData = {
+type ThemeData = {
   theme: string;
 };
 
-export const loader: LoaderFunction = async ({ request }) => {
-  const themeHeader = request.headers.get('Cookie');
-  const theme = themeHeader?.includes('theme=dark') ? 'dark' : 'light';
-  return json<LoaderData>({ theme });
-};
+export function getThemeData(): ThemeData {
+  const theme = Cookies.get('theme') === 'dark' ? 'dark' : 'light';
+  return { theme };
+}
 
 export function ErrorBoundary() {
   const error = useRouteError();
@@ -40,7 +30,8 @@ export function ErrorBoundary() {
 }
 
 export function Layout({ children }: { children: React.ReactNode }) {
-  const { theme } = useLoaderData<LoaderData>();
+  const { theme } = getThemeData();
+
   return (
     <html lang="en" className={theme}>
       <head>
