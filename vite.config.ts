@@ -8,14 +8,14 @@ installGlobals();
 export default defineConfig({
   plugins: [
     remix({
+      ssr: false,
       routes(defineRoutes) {
         return defineRoutes((route) => {
           route('/about', 'routes/about/About.tsx');
           route('/contributors', 'routes/contributors/Contributors.tsx');
-          route('/downloads', 'routes/downloads/Downloads.tsx', () => {
-            route(':id', 'routes/downloads/DownloadPageLevel1.tsx');
-            route(':id/:subid', 'routes/downloads/DownloadPageLevel2.tsx');
-          });
+          route('/downloads', 'routes/downloads/Downloads.tsx', { id: 'downloads' });
+          route('/downloads/:id', 'routes/downloads/Downloads.tsx', { id: 'downloads-id' });
+          route('/downloads/:id/:subid', 'routes/downloads/DownloadsSingle.tsx');
           route('*', 'routes/404.tsx', { id: '404' });
         });
       },

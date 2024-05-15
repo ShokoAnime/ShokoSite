@@ -1,7 +1,7 @@
 import { useLocation } from '@remix-run/react';
 import { useEffect, useState } from 'react';
 import cx from 'classnames';
-import { convertPathToBreadcrumb } from '~/helpers/utils';
+import { convertToProperName } from '~/helpers/utils';
 import LinkButton from '~/components/common/LinkButton';
 
 type PageBannerProps = {
@@ -46,10 +46,10 @@ const PageBanner = ({ title, description }: PageBannerProps) => {
                 {breadcrumbs.length > index + 1
                   ? (
                     <LinkButton buttonType="breadcrumb" to={`/${breadcrumbs.slice(0, index + 1).join('/')}`}>
-                      {convertPathToBreadcrumb(segment)}
+                      {convertToProperName(segment)}
                     </LinkButton>
                   )
-                  : <h4 className="text-shoko-text-alt ml-2 capitalize">{convertPathToBreadcrumb(segment)}</h4>}
+                  : <h4 className="text-shoko-text-alt ml-2 capitalize">{convertToProperName(segment)}</h4>}
                 {breadcrumbs.length > index + 1 && <h4 className="text-shoko-text-alt">/</h4>}
               </div>
             ))}
