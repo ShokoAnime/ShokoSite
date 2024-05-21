@@ -12,6 +12,7 @@ export default defineConfig({
       routes(defineRoutes) {
         return defineRoutes((route) => {
           route('/about', 'routes/about/About.tsx');
+          route('/blog', 'routes/blog/Blog.tsx');
           route('/contributors', 'routes/contributors/Contributors.tsx');
           route('/downloads', 'routes/downloads/Downloads.tsx', { id: 'downloads' });
           route('/downloads/:id', 'routes/downloads/Downloads.tsx', { id: 'downloads-id' });
