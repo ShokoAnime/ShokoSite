@@ -14,11 +14,11 @@ const UserCard = ({ name, joinDate, role, image, link }: UserCardProps) => {
       rel="noopener noreferrer"
       target="_blank"
     >
-      <img className="size-[4.6875rem] rounded-full" src={image} alt={name} />
+      <img className="size-[4.6875rem] rounded-full" src={image} alt={name} loading="lazy" />
       <div className="flex flex-col items-center gap-y-1">
         <div className="text-shoko-text-header text-sm font-medium capitalize">{name}</div>
         {role && (
-          <div className="text-shoko-text-header flex flex-col items-center gap-y-1 text-sm font-medium capitalize opacity-65">
+          <div className="text-shoko-text-header flex h-12 flex-col items-center justify-end gap-y-1 text-sm font-medium capitalize opacity-65">
             <div>{joinDate} - Present</div>
             <div>{role}</div>
           </div>

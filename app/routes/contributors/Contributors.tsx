@@ -1,13 +1,6 @@
-import contributorsData from '../../../public/data/contributors.json';
+import { contributors, honorable, staff } from '~/data/contributors';
 import PageBanner from '~/components/layout/PageBanner';
 import ContributorsGroup from '~/components/contributors/ContributorsGroup';
-
-import type { Contributor } from '~/components/contributors/ContributorsGroup';
-
-const data = contributorsData as Contributor[];
-const staff = data.filter((contributor) => contributor.join_date);
-const honorableMentions = data.filter((contributor) => contributor.honorable);
-const contributors = data.filter((contributor) => !contributor.join_date && !contributor.honorable);
 
 function Contributors() {
   return (
@@ -28,7 +21,7 @@ function Contributors() {
         <ContributorsGroup
           title="Honorable Mentions"
           type="honorable"
-          data={honorableMentions}
+          data={honorable}
           description="From former staff members to users who have put in significant work, these are the people who have left their mark on Shoko."
         />
 

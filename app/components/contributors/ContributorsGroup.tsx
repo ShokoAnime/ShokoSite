@@ -1,20 +1,12 @@
-import React, { useMemo } from 'react';
+import { ReactNode, useMemo } from 'react';
+import { ContributorsType } from '~/types/ContributorsType';
 import UserCard from './UserCard';
-
-export type Contributor = {
-  name: string;
-  avatar_url: string;
-  url: string;
-  role?: string;
-  join_date?: string;
-  honorable?: boolean;
-};
 
 type ContributorsGroupProps = {
   title: string;
-  description: string | React.ReactNode;
-  type: string;
-  data: Contributor[];
+  description: string | ReactNode;
+  type: 'staff' | 'honorable' | 'contributors';
+  data: ContributorsType[];
 };
 
 const ContributorsGroup = ({ title, description, type, data }: ContributorsGroupProps) => {
@@ -22,8 +14,14 @@ const ContributorsGroup = ({ title, description, type, data }: ContributorsGroup
     return data.sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
   }, [data]);
 
-  const renderContributor = ({ name, avatar_url, url, role, join_date, honorable }: Contributor) => {
-    if (type === 'staff' && join_date) {
+  const renderContributor = (contributor: ContributorsType) => {
+    const { name, avatar_url, url, role, join_date, honorable } = contributor;
+
+    const isStaff = type === 'staff' && join_date;
+    const isHonorable = type === 'honorable' && honorable;
+    const isContributor = type === 'contributors' && !join_date && !honorable;
+
+    if (isStaff || isHonorable || isContributor) {
       return (
         <UserCard
           key={name}
@@ -32,28 +30,6 @@ const ContributorsGroup = ({ title, description, type, data }: ContributorsGroup
           link={url}
           role={role}
           joinDate={join_date}
-        />
-      );
-    }
-
-    if (type === 'honorable' && honorable) {
-      return (
-        <UserCard
-          key={name}
-          name={name}
-          image={avatar_url}
-          link={url}
-        />
-      );
-    }
-
-    if (type === 'contributors' && !join_date && !honorable) {
-      return (
-        <UserCard
-          key={name}
-          name={name}
-          image={avatar_url}
-          link={url}
         />
       );
     }
