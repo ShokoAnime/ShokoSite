@@ -18,7 +18,7 @@ type IconName = {
   [key: string]: React.ReactNode | string;
 };
 
-const DownloadSingle = ({ data }: DownloadProps) => {
+const DownloadItem = ({ data }: DownloadProps) => {
   const [downloadTab, setDownloadTab] = useState(data.downloads[0].text);
 
   const iconName: IconName = {
@@ -31,15 +31,23 @@ const DownloadSingle = ({ data }: DownloadProps) => {
   return (
     <div className="flex items-center gap-x-16">
       <div className="flex flex-col gap-y-4">
-        {data.images.map((image) => <img key={image} className="max-w-[37.5rem]" src={image} alt={data.name} />).slice(
-          0,
-          1,
-        )}
+        {data.images.map((image) => (
+          <img
+            key={image.url}
+            className="h-[21rem] max-w-[37.5rem]"
+            src={image.url}
+            alt={image.alt}
+          />
+        )).slice(0, 1)}
         <div className="flex gap-x-3">
-          {data.images.map((image) => <img key={image} className="h-20 max-w-[8.75rem]" src={image} alt={data.name} />)
-            .slice(
-              1,
-            )}
+          {data.images.map((image) => (
+            <img
+              key={image.url}
+              className="h-20 max-w-[8.75rem]"
+              src={image.url}
+              alt={image.alt}
+            />
+          )).slice(1)}
         </div>
       </div>
       <div className="flex w-full flex-col gap-y-6">
@@ -101,4 +109,4 @@ const DownloadSingle = ({ data }: DownloadProps) => {
   );
 };
 
-export default DownloadSingle;
+export default DownloadItem;

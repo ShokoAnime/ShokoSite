@@ -1,18 +1,19 @@
 import { Navigate, useParams } from '@remix-run/react';
 import { mdiLightbulbAlertOutline } from '@mdi/js';
+import { DownloadsDataType } from '~/types/DownloadsDataType';
 import PageNotFound from '~/components/layout/PageNotFound';
 import PageBanner from '~/components/layout/PageBanner';
 import DownloadNavTabs from '~/components/downloads/DownloadNavTabs';
 import DownloadCallout from '~/components/downloads/DownloadCallout';
-import { useDownloadData } from '~/hooks/useDownloadData';
-import DownloadSingle from '~/components/downloads/DownloadSingle';
+import DownloadItem from '~/components/downloads/DownloadItem';
 import DownloadGrid from '~/components/downloads/DownloadGrid';
+import { downloadsCheck } from '~/helpers/downloads-check';
 
 function Downloads() {
   const validPaths = ['shoko-server', 'media-player-plugins', 'web-ui-themes', 'renamer-plugins', 'legacy'];
   const { id } = useParams();
 
-  const data = useDownloadData(id ?? '') ?? [];
+  const data: DownloadsDataType[] = downloadsCheck(id ?? '') ?? [];
 
   if (!id) {
     return <Navigate to="/downloads/shoko-server" replace />;
@@ -46,7 +47,7 @@ function Downloads() {
             </span>
           }
         />
-        {data.length === 1 ? <DownloadSingle data={data[0]} /> : <DownloadGrid data={data} />}
+        {data.length === 1 ? <DownloadItem data={data[0]} /> : <DownloadGrid data={data} />}
       </div>
     </>
   );
