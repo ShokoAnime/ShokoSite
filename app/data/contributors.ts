@@ -30,13 +30,6 @@ export const staff: ContributorsType[] = [
     role: 'Core / Plugin Dev',
   },
   {
-    name: 'duehoa1211',
-    avatar_url: 'https://avatars.githubusercontent.com/u/11846133?v=4',
-    url: 'https://github.com/duehoa1211',
-    join_date: '2023',
-    role: 'Web Dev',
-  },
-  {
     name: 'da3dsoul',
     avatar_url: 'https://avatars.githubusercontent.com/u/5205810?v=4',
     url: 'https://github.com/da3dsoul',
@@ -57,15 +50,30 @@ export const staff: ContributorsType[] = [
     join_date: '2016',
     role: 'Core / Plugin Dev',
   },
-];
-
-export const honorable: ContributorsType[] = [
   {
     name: 'fearnlj01',
     avatar_url: 'https://avatars.githubusercontent.com/u/13705865?v=4',
     url: 'https://github.com/fearnlj01',
-    honorable: true,
+    join_date: '2023',
+    role: 'Core / Web Dev',
   },
+  {
+    name: 'Baine',
+    avatar_url: 'https://avatars.githubusercontent.com/u/6566469?v=4',
+    url: 'https://github.com/Baine',
+    join_date: '2014',
+    role: 'QA',
+  },
+  {
+    name: 'Mik1ll',
+    avatar_url: 'https://avatars.githubusercontent.com/u/27949189?v=4',
+    url: 'https://github.com/Mik1ll',
+    join_date: '2022',
+    role: 'Plugin Dev',
+  },
+];
+
+export const honorable: ContributorsType[] = [
   {
     name: 'krbrs',
     avatar_url: 'https://avatars.githubusercontent.com/u/57227244?v=4',
@@ -91,15 +99,15 @@ export const honorable: ContributorsType[] = [
     honorable: true,
   },
   {
-    name: 'Baine',
-    avatar_url: 'https://avatars.githubusercontent.com/u/6566469?v=4',
-    url: 'https://github.com/Baine',
+    name: 'duehoa1211',
+    avatar_url: 'https://avatars.githubusercontent.com/u/11846133?v=4',
+    url: 'https://github.com/duehoa1211',
     honorable: true,
   },
   {
-    name: 'Mik1ll',
-    avatar_url: 'https://avatars.githubusercontent.com/u/27949189?v=4',
-    url: 'https://github.com/Mik1ll',
+    name: 'funniray',
+    avatar_url: 'https://avatars.githubusercontent.com/u/16416198?v=4',
+    url: 'https://github.com/funniray',
     honorable: true,
   },
 ];
@@ -129,11 +137,6 @@ export const contributors: ContributorsType[] = [
     name: 'LexMalta',
     avatar_url: 'https://avatars.githubusercontent.com/u/1142161?v=4',
     url: 'https://github.com/LexMalta',
-  },
-  {
-    name: 'funniray',
-    avatar_url: 'https://avatars.githubusercontent.com/u/16416198?v=4',
-    url: 'https://github.com/funniray',
   },
   {
     name: 'bond4u',
