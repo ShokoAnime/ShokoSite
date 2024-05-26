@@ -3,6 +3,7 @@ import cx from 'classnames';
 import { mdiArrowRight, mdiTagMultiple } from '@mdi/js';
 import Icon from '~/components/common/Icon';
 import Button from '~/components/common/Button';
+import { convertDate } from '~/helpers/utils';
 
 type BlogPreviewProps = {
   title: string;
@@ -32,7 +33,7 @@ const BlogPreview = ({ url, tags, date, title, image, className, description }: 
       />
       <div className="flex flex-col gap-y-2">
         <div className="flex justify-between">
-          <div>{date}</div>
+          <div>{convertDate(date)}</div>
           <div className="flex gap-x-2">
             <Icon icon={mdiTagMultiple} className="text-shoko-link" />
             {tags.map((tag, index, arr) => {
@@ -57,9 +58,13 @@ const BlogPreview = ({ url, tags, date, title, image, className, description }: 
 };
 
 const BlogList = ({ content }: BlogListProps) => {
+  const blogData = content.sort((a, b) => {
+    return new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime();
+  });
+
   return (
     <div className="flex w-[900px] flex-col">
-      {content.map((item, index, arr) => {
+      {blogData.map((item, index, arr) => {
         const className = index !== arr.length - 1 ? 'border-b mb-8' : 'mb-0';
         return (
           <BlogPreview
