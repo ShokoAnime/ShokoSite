@@ -18,7 +18,7 @@ export const navRoutes: NavRoute[] = [
   { title: 'Blog', route: '/blog' },
   { title: 'Changelog', route: 'https://docs.shokoanime.com/changelog/shoko-server' },
   { title: 'Contributors', route: '/contributors' },
-  { title: 'Downloads', route: '/downloads' },
+  { title: 'Downloads', route: '/downloads/shoko-server' },
   { title: 'Documentation', route: 'https://docs.shokoanime.com/' },
   { title: 'Github', route: 'https://github.com', icon: <FaGithub size={24} /> },
   { title: 'Discord', route: 'https://discord.com', icon: <FaDiscord size={24} /> },

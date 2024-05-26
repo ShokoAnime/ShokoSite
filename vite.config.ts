@@ -22,7 +22,7 @@ export default defineConfig({
         return defineRoutes((route) => {
           route('/about', 'routes/about/About.tsx');
           route('/blog', 'routes/blog/Blog.tsx');
-          route('/blog/:id', 'routes/blog/BlogDetail.mdx', { id: 'blog-id' });
+          route('/blog/:id', 'routes/blog/BlogPost.tsx');
           route('/contributors', 'routes/contributors/Contributors.tsx');
           route('/downloads', 'routes/downloads/Downloads.tsx', { id: 'downloads' });
           route('/downloads/:id', 'routes/downloads/Downloads.tsx', { id: 'downloads-id' });

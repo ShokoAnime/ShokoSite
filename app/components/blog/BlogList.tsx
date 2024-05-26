@@ -24,6 +24,7 @@ type BlogListProps = {
 
 const BlogPreview = ({ url, tags, date, title, image, className, description }: BlogPreviewProps) => {
   const navigate = useNavigate();
+  const postUrl = url.split('/').pop()?.replace('.md', '');
   return (
     <div className={cx('flex flex-col gap-y-6 pb-8', className)}>
       <img
@@ -48,7 +49,7 @@ const BlogPreview = ({ url, tags, date, title, image, className, description }: 
         <div className="line-clamp-5">
           {description}
         </div>
-        <Button buttonType="primary" className="flex w-[165px]" onClick={() => navigate(url)}>
+        <Button buttonType="primary" className="flex w-[165px]" onClick={() => navigate(postUrl)}>
           <span>Read More</span>
           <Icon icon={mdiArrowRight} />
         </Button>
@@ -70,7 +71,8 @@ const BlogList = ({ content }: BlogListProps) => {
           <BlogPreview
             key={item.frontmatter.title}
             {...item.frontmatter}
-            description={item.content}
+            description={item.description}
+            url={item.filename}
             className={className}
           />
         );
