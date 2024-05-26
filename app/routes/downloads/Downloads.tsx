@@ -1,4 +1,4 @@
-import { Navigate, useParams } from '@remix-run/react';
+import { Navigate, useLocation, useParams } from '@remix-run/react';
 import { mdiLightbulbAlertOutline } from '@mdi/js';
 import { DownloadsDataType } from '~/types/DownloadsDataType';
 import PageNotFound from '~/components/layout/PageNotFound';
@@ -8,12 +8,43 @@ import DownloadCallout from '~/components/downloads/DownloadCallout';
 import DownloadItem from '~/components/downloads/DownloadItem';
 import DownloadGrid from '~/components/downloads/DownloadGrid';
 import { downloadsCheck } from '~/helpers/downloads-check';
+import { useEffect, useState } from 'react';
+import { markdownList } from '~/helpers/markdown-list';
+import Loading from '~/components/common/Loading';
 
 function Downloads() {
-  const validPaths = ['shoko-server', 'media-player-plugins', 'web-ui-themes', 'renamer-plugins', 'legacy'];
+  const validPaths = [
+    'downloads',
+    'shoko-server',
+    'media-player-plugins',
+    'web-ui-themes',
+    'renamer-plugins',
+    'legacy',
+  ];
   const { id } = useParams();
 
+  const [isLoading, setIsLoading] = useState(true);
+  const [item, setItem] = useState([]);
+
   const data: DownloadsDataType[] = downloadsCheck(id ?? '') ?? [];
+
+  useEffect(() => {
+    setIsLoading(true);
+    const fetchData = async () => {
+      const markdownData = markdownList(id);
+      setItem(markdownData);
+      setIsLoading(false);
+    };
+    fetchData();
+  }, [id]);
+
+  const DataRender = () => {
+    if (item.length === 1) {
+      return <DownloadItem data={item[0]} />;
+    } else {
+      return <DownloadGrid data={item} />;
+    }
+  };
 
   if (!id) {
     return <Navigate to="/downloads/shoko-server" replace />;
@@ -47,7 +78,7 @@ function Downloads() {
             </span>
           }
         />
-        {data.length === 1 ? <DownloadItem data={data[0]} /> : <DownloadGrid data={data} />}
+        {!isLoading && <DataRender />}
       </div>
     </>
   );

@@ -19,7 +19,7 @@ type IconName = {
 };
 
 const DownloadItem = ({ data }: DownloadProps) => {
-  const [downloadTab, setDownloadTab] = useState(data.downloads[0].text);
+  const [downloadTab, setDownloadTab] = useState(data.frontmatter.downloads[0].text);
 
   const iconName: IconName = {
     discord: <FaGithub size={24} />,
@@ -31,7 +31,7 @@ const DownloadItem = ({ data }: DownloadProps) => {
   return (
     <div className="flex items-center gap-x-16">
       <div className="flex flex-col gap-y-4">
-        {data.images.map((image) => (
+        {data.frontmatter.images.map((image) => (
           <img
             key={image.url}
             className="h-[21rem] max-w-[37.5rem]"
@@ -40,7 +40,7 @@ const DownloadItem = ({ data }: DownloadProps) => {
           />
         )).slice(0, 1)}
         <div className="flex gap-x-3">
-          {data.images.map((image) => (
+          {data.frontmatter.images.map((image) => (
             <img
               key={image.url}
               className="h-20 max-w-[8.75rem]"
@@ -54,7 +54,7 @@ const DownloadItem = ({ data }: DownloadProps) => {
         <div className="border-shoko-border flex items-center justify-between gap-x-2 border-b pb-6">
           <h2 className="text-xl font-medium">Info</h2>
           <div className="flex gap-x-3">
-            {data.resources.map((resource) => (
+            {data.frontmatter.resources.map((resource) => (
               <Button key={resource.name} className="flex gap-x-2" buttonType="resource">
                 <Icon icon={iconName[resource.name.toLowerCase()]} />
                 <div className="text-sm">{resource.name}</div>
@@ -65,12 +65,12 @@ const DownloadItem = ({ data }: DownloadProps) => {
         <div className="text-shoko-text text-base">{data.description}</div>
         <div className="flex flex-col gap-y-6">
           <div className="flex items-center gap-x-12 border-b pb-6">
-            {data.downloads.map((downloadLink) => (
+            {data.frontmatter.downloads.map((downloadLink) => (
               <Button
                 buttonType="text"
                 key={downloadLink.text}
                 className={cx('px-0 text-xl', downloadTab === downloadLink.text && ('!text-shoko-link'))}
-                disabled={data.downloads.length === 1}
+                disabled={data.frontmatter.downloads.length === 1}
                 onClick={() => setDownloadTab(downloadLink.text)}
               >
                 {downloadLink.text}
@@ -78,7 +78,7 @@ const DownloadItem = ({ data }: DownloadProps) => {
             ))}
           </div>
           <div>
-            {data.downloads.filter((downloadArray) => downloadArray.text === downloadTab)
+            {data.frontmatter.downloads.filter((downloadArray) => downloadArray.text === downloadTab)
               .map((downloadLink) => (
                 <div key={downloadLink.text} className="flex flex-col gap-y-4">
                   {downloadLink.links.map((link) => (
