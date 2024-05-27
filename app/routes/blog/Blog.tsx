@@ -2,8 +2,14 @@ import PageBanner from '~/components/layout/PageBanner';
 import LeftSection from '~/components/blog/LeftSection';
 import BlogList from '~/components/blog/BlogList';
 import { markdownList } from '~/helpers/markdown-list';
+import { useEffect } from 'react';
 
 function Blog() {
+  useEffect(() => {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }, []);
+
   return (
     <>
       <PageBanner

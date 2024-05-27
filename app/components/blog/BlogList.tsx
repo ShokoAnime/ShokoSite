@@ -1,30 +1,13 @@
-import { useNavigate } from '@remix-run/react';
 import cx from 'classnames';
-import { mdiArrowRight, mdiTagMultiple } from '@mdi/js';
+import { mdiDownload, mdiTagMultiple } from '@mdi/js';
 import Icon from '~/components/common/Icon';
-import Button from '~/components/common/Button';
 import { convertDate } from '~/helpers/utils';
-
-type BlogPreviewProps = {
-  title: string;
-  date: string;
-  tags: string[];
-  url: string;
-  image: string;
-  description: string;
-  className?: string;
-};
-
-type BlogListProps = {
-  content: {
-    frontmatter: BlogPreviewProps;
-    content: string;
-  }[];
-};
+import LinkButton from '~/components/common/LinkButton';
+import { BlogListProps, BlogPreviewProps } from '~/types/BlogTypes';
 
 const BlogPreview = ({ url, tags, date, title, image, className, description }: BlogPreviewProps) => {
-  const navigate = useNavigate();
   const postUrl = url.split('/').pop()?.replace('.md', '');
+
   return (
     <div className={cx('flex flex-col gap-y-6 pb-8', className)}>
       <img
@@ -49,10 +32,12 @@ const BlogPreview = ({ url, tags, date, title, image, className, description }: 
         <div className="line-clamp-5">
           {description}
         </div>
-        <Button buttonType="primary" className="flex w-[165px]" onClick={() => navigate(postUrl)}>
-          <span>Read More</span>
-          <Icon icon={mdiArrowRight} />
-        </Button>
+        <LinkButton buttonType="primary" className="!p-4" to={postUrl ?? ''}>
+          <div className="mx-auto flex items-center gap-x-2">
+            <Icon icon={mdiDownload} />
+            Read More
+          </div>
+        </LinkButton>
       </div>
     </div>
   );
@@ -69,10 +54,13 @@ const BlogList = ({ content }: BlogListProps) => {
         const className = index !== arr.length - 1 ? 'border-b mb-8' : 'mb-0';
         return (
           <BlogPreview
-            key={item.frontmatter.title}
-            {...item.frontmatter}
-            description={item.description}
+            key={item.filename}
+            title={item.frontmatter.title}
             url={item.filename}
+            description={item.description}
+            date={item.frontmatter.date}
+            tags={item.frontmatter.tags}
+            image={item.frontmatter.image}
             className={className}
           />
         );
