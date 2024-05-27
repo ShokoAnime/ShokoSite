@@ -1,11 +1,11 @@
 import { mdiDownload, mdiPowerPlug } from '@mdi/js';
 import { convertNameToUrl } from '~/helpers/utils';
-import { DownloadsDataType } from '~/types/DownloadsDataType';
 import LinkButton from '~/components/common/LinkButton';
 import Icon from '~/components/common/Icon';
+import { DownloadSingleProps } from '~/types/DownloadTypes';
 
 type DownloadProps = {
-  data: DownloadsDataType[];
+  data: DownloadSingleProps[];
 };
 
 const DownloadGrid = ({ data }: DownloadProps) => {

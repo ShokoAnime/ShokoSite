@@ -1,25 +1,17 @@
 import { useLocation } from '@remix-run/react';
 import { mdiLightbulbAlertOutline } from '@mdi/js';
-import { convertToProperName } from '~/helpers/utils';
-import { DownloadsDataType } from '~/types/DownloadsDataType';
 import PageBanner from '~/components/layout/PageBanner';
 import PageNotFound from '~/components/layout/PageNotFound';
 import DownloadItem from '~/components/downloads/DownloadItem';
 import DownloadNavTabs from '~/components/downloads/DownloadNavTabs';
 import DownloadCallout from '~/components/downloads/DownloadCallout';
-import { downloadsCheck } from '~/helpers/downloads-check';
+import { markdownDetail } from '~/helpers/markdown-detail';
 
 function DownloadsSingle() {
   const path = useLocation().pathname;
-  const name = path.split('/')[3];
-  const data = downloadsCheck(path.split('/')[2]) ?? [];
-  const file = data.filter((item: DownloadsDataType) => item.name === convertToProperName(name));
+  const data = markdownDetail(path);
 
-  if (data.length === 0) {
-    return <div>Loading...</div>;
-  }
-
-  if (file.length === 0) {
+  if (data === undefined) {
     return <PageNotFound />;
   }
 
@@ -47,7 +39,7 @@ function DownloadsSingle() {
             </span>
           }
         />
-        {file.length !== 0 && <DownloadItem data={file[0]} />}
+        {<DownloadItem data={data} />}
       </div>
     </>
   );

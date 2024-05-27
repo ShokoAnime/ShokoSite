@@ -1,16 +1,14 @@
-import { Navigate, useLocation, useParams } from '@remix-run/react';
+import { Navigate, useParams } from '@remix-run/react';
 import { mdiLightbulbAlertOutline } from '@mdi/js';
-import { DownloadsDataType } from '~/types/DownloadsDataType';
 import PageNotFound from '~/components/layout/PageNotFound';
 import PageBanner from '~/components/layout/PageBanner';
 import DownloadNavTabs from '~/components/downloads/DownloadNavTabs';
 import DownloadCallout from '~/components/downloads/DownloadCallout';
 import DownloadItem from '~/components/downloads/DownloadItem';
 import DownloadGrid from '~/components/downloads/DownloadGrid';
-import { downloadsCheck } from '~/helpers/downloads-check';
 import { useEffect, useState } from 'react';
 import { markdownList } from '~/helpers/markdown-list';
-import Loading from '~/components/common/Loading';
+import { DownloadSingleProps } from '~/types/DownloadTypes';
 
 function Downloads() {
   const validPaths = [
@@ -24,25 +22,23 @@ function Downloads() {
   const { id } = useParams();
 
   const [isLoading, setIsLoading] = useState(true);
-  const [item, setItem] = useState([]);
-
-  const data: DownloadsDataType[] = downloadsCheck(id ?? '') ?? [];
+  const [data, setData] = useState<DownloadSingleProps[]>();
 
   useEffect(() => {
     setIsLoading(true);
     const fetchData = async () => {
-      const markdownData = markdownList(id);
-      setItem(markdownData);
+      const markdownData = markdownList(id ?? '');
+      setData(markdownData);
       setIsLoading(false);
     };
     fetchData();
   }, [id]);
 
   const DataRender = () => {
-    if (item.length === 1) {
-      return <DownloadItem data={item[0]} />;
+    if (data?.length === 1) {
+      return <DownloadItem data={data[0]} />;
     } else {
-      return <DownloadGrid data={item} />;
+      return <DownloadGrid data={data ?? []} />;
     }
   };
 

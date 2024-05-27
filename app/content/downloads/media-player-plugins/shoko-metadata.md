@@ -1,5 +1,5 @@
 ---
-name: 'Shoko Relay'
+name: 'Shoko Metadata'
 images:
   - url: '/images/downloads/programs-plugins/WebUI-Index.png'
     alt: 'WebUI Index'
@@ -13,16 +13,20 @@ images:
     alt: 'WebUI Settings 02'
 resources:
   - name: 'Github'
-    url: 'https://github.com/natyusha/ShokoRelay.bundle/'
+    url: 'https://github.com/Cazzar/ShokoMetadata.bundle'
+  - name: 'Docs'
+    url: 'https://docs.shokoanime.com/'
+  - name: 'Changelog'
+    url: 'https://docs.shokoanime.com/changelog/shokometadata/'
   - name: 'Discord'
     url: 'https://discord.gg/vpeHDsg'
 downloads:
   - text: 'Plex'
     links:
       - name: 'Plex Stable'
-        version: '1.0.1'
-        date: 'March 27th, 2024'
-        url: 'https://github.com/natyusha/ShokoRelay.bundle/releases'
+        version: '1.5.1'
+        date: 'March 24th, 2022'
+        url: 'https://github.com/Cazzar/ShokoMetadata.bundle/releases/'
 ---
 
-ShokoRelay is an agent/scanner that allows you to combine your series and movies into a single library while using Shoko to manage it.
+Shoko Metadata provides users with a smooth anime experience on Plex pulling your series data directly from Shoko instead of the default metadata sources Plex uses. This Plex library plugin provides support for TV Series and Movies.
