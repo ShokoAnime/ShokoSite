@@ -10,11 +10,11 @@ export const markdownDetail = (path: string) => {
     const MDContent = module.default;
 
     return {
-      postName: filename.split('/')[3].replace('.md', ''),
+      filename: filename.split('/')[3].replace('.md', ''),
       frontmatter: module.frontmatter,
       description: <MDContent />,
     };
   });
 
-  return files.filter((file) => file.postName === postName)[0];
+  return files.filter((file) => file.filename === postName)[0];
 };

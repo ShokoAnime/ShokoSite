@@ -1,12 +1,21 @@
+import { useEffect } from 'react';
 import PageBanner from '~/components/layout/PageBanner';
 import LeftSection from '~/components/blog/LeftSection';
-import { useMarkdownList } from '~/hooks/useMarkdownList';
 import { useLocation } from '@remix-run/react';
 import { markdownDetail } from '~/helpers/markdown-detail';
+import { BlogPostProps } from '~/types/BlogTypes';
 
 function BlogPost() {
   const path = useLocation().pathname;
-  const post = markdownDetail(path);
+  const post: BlogPostProps = markdownDetail(path);
+
+  console.log(post);
+
+  useEffect(() => {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }, []);
+
   return (
     <>
       <PageBanner
@@ -25,7 +34,7 @@ function BlogPost() {
             <div className="flex justify-between">
               <div>{post.frontmatter.date}</div>
               <div className="flex gap-x-2">
-                {post.frontmatter.tags.map((tag, index, arr) => {
+                {post.frontmatter.tags?.map((tag, index, arr) => {
                   if (index === arr.length - 1) {
                     return <span key={tag} className="text-shoko-link">{tag}</span>;
                   }

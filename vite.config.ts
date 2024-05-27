@@ -5,6 +5,7 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 import mdx from '@mdx-js/rollup';
 import remarkFrontmatter from 'remark-frontmatter';
 import remarkMdxFrontmatter from 'remark-mdx-frontmatter';
+import remarkGfm from 'remark-gfm';
 
 installGlobals();
 
@@ -14,6 +15,7 @@ export default defineConfig({
       remarkPlugins: [
         remarkFrontmatter,
         remarkMdxFrontmatter,
+        remarkGfm,
       ],
     }),
     remix({
