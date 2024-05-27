@@ -1,5 +1,5 @@
 ---
-name: 'Shoko Relay'
+name: 'Nakamori'
 images:
   - url: '/images/downloads/programs-plugins/WebUI-Index.png'
     alt: 'WebUI Index'
@@ -13,16 +13,20 @@ images:
     alt: 'WebUI Settings 02'
 resources:
   - name: 'Github'
-    url: 'https://github.com/natyusha/ShokoRelay.bundle/'
+    url: 'https://github.com/bigretromike/nakamori/'
+  - name: 'Docs'
+    url: 'https://shokunin.monogatari.pl/nakamori/'
+  - name: 'Changelog'
+    url: 'https://github.com/bigretromike/nakamori.plugin/blob/master/changelog.txt'
   - name: 'Discord'
     url: 'https://discord.gg/vpeHDsg'
 downloads:
-  - text: 'Plex'
+  - text: 'Kodi'
     links:
-      - name: 'Plex Stable'
-        version: '1.0.1'
-        date: 'March 27th, 2024'
-        url: 'https://github.com/natyusha/ShokoRelay.bundle/releases'
+      - name: 'Kodi Stable'
+        version: '4.1.2'
+        date: 'June 4th, 2022'
+        url: 'https://github.com/bigretromike/nakamori/releases'
 ---
 
-ShokoRelay is an agent/scanner that allows you to combine your series and movies into a single library while using Shoko to manage it.
+Nakamori provides users with a seamless integrated service that utilizes the full power of Shoko to make your anime watching experience second to none.

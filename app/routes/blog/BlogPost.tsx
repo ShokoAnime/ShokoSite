@@ -9,8 +9,6 @@ function BlogPost() {
   const path = useLocation().pathname;
   const post: BlogPostProps = markdownDetail(path);
 
-  console.log(post);
-
   useEffect(() => {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;

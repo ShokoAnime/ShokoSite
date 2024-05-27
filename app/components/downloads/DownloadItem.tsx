@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { mdiBookOpenOutline, mdiClockEditOutline, mdiDownload } from '@mdi/js';
 import { FaDiscord, FaGithub } from 'react-icons/fa';
 import cx from 'classnames';
-import { DownloadsDataType } from '~/types/DownloadsDataType';
 import Button from '~/components/common/Button';
 import Icon from '~/components/common/Icon';
+import { DownloadSingleProps } from '~/types/DownloadTypes';
 
 type DownloadProps = {
-  data: DownloadsDataType;
+  data: DownloadSingleProps;
 };
 
 type IconName = {
