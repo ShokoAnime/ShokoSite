@@ -10,7 +10,7 @@ export const markdownDetail = (path: string) => {
     const MDContent = module.default;
 
     return {
-      filename: filename.split('/').length === 3
+      filename: filename.split('/').length === 4
         ? filename.split('/')[3].replace('.md', '')
         : filename.split('/')[4].replace('.md', ''),
       frontmatter: module.frontmatter,

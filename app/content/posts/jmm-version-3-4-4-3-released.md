@@ -1,0 +1,71 @@
+---
+title: "JMM Version 3.4.4.3 Released"
+quick: "Version 3.4.4.3 introduces Metro Dashboard tweaks, Trakt API v2.0 support, and a new Community Data utility."
+image: "jmm-version-3-4-4-3.webp"
+date: "2015-09-10"
+anime: "Love Hina"
+tags: [ "Shoko Server", "Shoko Desktop" ]
+---
+
+Version 3.4.4 introduces the following changes, we recommend reading through this blog post in order to familiarize
+yourself with what's changed.
+
+##### Metro Dashboard
+
+![Metro Series Overview](/images/blog/jmm-version-3-4-4-3-metro-overview.webp)
+
+The series display in the Metro dashboard has received a few small tweaks.
+
+* A button has been added to refresh this series.
+* The previous episode you watched is now shown, so you can re-watch it easily, or just in case you accidentally marked
+  it as watched.
+* The next episode to watch is highlighted and shows a few more details than other episodes.
+
+##### Trakt
+
+![JMM Desktop - Trakt Settings](/images/blog/jmm-version-3-4-4-3-trakt-settings.webp)
+
+The major focus of this release has been adding support for Version 2.0 of the Trakt API. For the last 6-9 months, this
+has been broken in JMM. Most of this is invisible to the user, but a few things will be different and are detailed
+below. Trakt now uses OAuth to verify your credentials, and you are no longer required to enter your login/password into
+JMM. Once Trakt is enabled, simply click on the "Get PIN" link, and this will re-direct you to the Trakt website, and
+you will be given a temporary PIN as shown below.
+
+![JMM Desktop - Trakt OAutH](/images/blog/jmm-version-3-4-4-3-trakt-auth.webp)
+
+Copy and paste this PIN into the text box in JMM Desktop, and then hit "Authorize JMM". At this point, JMM stores a
+token which it can use to start sending data to Trakt. Since Trakt has not been working for such a long time, you will
+probably find that a lot of your Trakt data is not valid anymore.
+
+![JMM Desktop - Community Tab](/images/blog/jmm-version-3-4-4-3-community-data.webp)
+
+##### Community Data
+
+A new utility has been added to help fix this data.
+
+Step 1 - Select the first 2 checkboxes and Press Start. This will check with Trakt that your existing data is correct;
+if it is not, it will be removed from your local database.
+
+Step 2 - Uncheck the first 2 checkboxes and select the third "Check if my links are different from Community
+Recommendations". This will check the links you have selected against what the admins have selected as the correct
+links. You can then filter the list to see what series are missing a link entirely or differ from the recommendation.
+
+**NOTE:** This can take quite a while depending on the number of series you have. It also has the benefit of updating
+your existing data.
+
+![JMM Desktop - Community Data Differences](/images/blog/jmm-version-3-4-4-3-community-data-differences.webp)
+
+From here you can open the series to fix the data manually.
+
+![JMM Desktop - Trakt Recommendations](/images/blog/jmm-version-3-4-4-3-trakt-recommends.webp)
+
+Click on the button to search, and it will show you the community recommendation, and you can use this instead.
+
+![JMM Desktop - Series Community Links](/images/blog/jmm-version-3-4-4-3-community-links.webp)
+
+##### Other
+
+You can now see Trakt comments on the regular series view.
+
+![JMM Desktop - Trakt Comments](/images/blog/jmm-version-3-4-4-3-trakt-comments.webp)
+

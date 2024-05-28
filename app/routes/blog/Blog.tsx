@@ -5,11 +5,6 @@ import { markdownList } from '~/helpers/markdown-list';
 import { useEffect } from 'react';
 
 function Blog() {
-  useEffect(() => {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-  }, []);
-
   return (
     <>
       <PageBanner
