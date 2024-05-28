@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
 import { ThemeProvider } from '~/context/ThemeContext';
+import { BlogProvider } from '~/context/BlogContext';
 
 type ProvidersProps = {
   children: ReactNode;
@@ -8,7 +9,9 @@ type ProvidersProps = {
 export const Providers: React.FC<ProvidersProps> = ({ children }) => {
   return (
     <ThemeProvider>
-      {children}
+      <BlogProvider>
+        {children}
+      </BlogProvider>
     </ThemeProvider>
   );
 };

@@ -1,4 +1,4 @@
-import React, { ReactNode, createContext, useContext, useEffect, useState } from 'react';
+import { ReactNode, createContext, useContext, useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
 
 type Theme = 'light' | 'dark';
@@ -32,7 +32,7 @@ const setThemeClass = (theme: Theme) => {
   document.documentElement.classList.toggle('light', theme === 'light');
 };
 
-export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
+export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   const [theme, setTheme] = useState<Theme>(getInitialTheme());
 
   useEffect(() => {

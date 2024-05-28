@@ -1,13 +1,8 @@
 import { useEffect, useState } from 'react';
 import cx from 'classnames';
 import { markdownList } from '~/helpers/markdown-list';
-import { BlogPostProps } from '~/types/BlogTypes';
+import { BlogPostProps, TagItemProps } from '~/types/BlogTypes';
 import HighLightHeader from '~/components/blog/HighLightHeader';
-
-type TagItemProps = {
-  name: string;
-  count: number;
-};
 
 const Tags: React.FC = () => {
   const [tagList, setTagList] = useState<TagItemProps[]>([]);
@@ -36,7 +31,7 @@ const Tags: React.FC = () => {
   }, []);
 
   return (
-    <div className="mb-0 flex flex-col w-full justify-between gap-y-6 font-semibold">
+    <div className="mb-0 flex w-full flex-col justify-between gap-y-6 font-semibold">
       <HighLightHeader title="Tags" />
       <div className="flex flex-col gap-y-2">
         {tagList.map((tag, index) => (
