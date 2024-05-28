@@ -1,9 +1,5 @@
 import React from 'react';
 
-export type BlogListProps = {
-  content: BlogPostProps[];
-};
-
 export type BlogPostProps = {
   description: React.JSX.Element | string;
   filename: string;
@@ -23,4 +19,9 @@ export type BlogPreviewProps = {
   image: string;
   description: React.JSX.Element | string;
   className?: string;
+};
+
+export type TagItemProps = {
+  name: string;
+  count: number;
 };

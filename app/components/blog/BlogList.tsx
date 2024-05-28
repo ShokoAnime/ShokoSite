@@ -3,7 +3,10 @@ import { mdiDownload, mdiTagMultiple } from '@mdi/js';
 import Icon from '~/components/common/Icon';
 import { convertDate } from '~/helpers/utils';
 import LinkButton from '~/components/common/LinkButton';
-import { BlogListProps, BlogPreviewProps } from '~/types/BlogTypes';
+import { BlogPreviewProps } from '~/types/BlogTypes';
+import { useBlogData } from '~/context/BlogContext';
+import { useEffect, useState } from 'react';
+import Loading from '~/components/common/Loading';
 
 const BlogPreview = ({ url, tags, date, title, image, className, description }: BlogPreviewProps) => {
   const postUrl = url.split('/').pop()?.replace('.md', '');
@@ -43,8 +46,26 @@ const BlogPreview = ({ url, tags, date, title, image, className, description }: 
   );
 };
 
-const BlogList = ({ content }: BlogListProps) => {
-  const blogData = content.sort((a, b) => {
+const BlogList = () => {
+  const { blogList, fetchBlogList } = useBlogData();
+  const [isFetched, setIsFetched] = useState(false);
+
+  useEffect(() => {
+    if (!isFetched) {
+      fetchBlogList();
+      setIsFetched(true);
+    }
+  }, [fetchBlogList, isFetched]);
+
+  if (!isFetched || !blogList) {
+    return (
+      <div className="w-full items-center">
+        <Loading />
+      </div>
+    );
+  }
+
+  const blogData = blogList.sort((a, b) => {
     return new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime();
   });
 
