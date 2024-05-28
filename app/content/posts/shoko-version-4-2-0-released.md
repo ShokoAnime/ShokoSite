@@ -1,47 +1,47 @@
 ---
 title: "Shoko Version 4.2.0 Released"
 quick: "ARM64 Linux build, Shoko v5, SQLite improvements, and new Shokofin features."
-image: "Version-420-Banner.webp"
+image: "shoko-version-4-2-0.webp"
 date: "2023-03-20"
 anime: "Handyman Saitou in Another World"
-tags: ["Shoko Server", "Shoko Desktop", "Shokofin"]
-devs: ["Avael", "Baine", "Cazzar", "Da3dsoul", "fearnlj01", "krbrs", "Mik1ll", "Mohan226", "Revam"]
+tags: [ "Shoko Server", "Shoko Desktop", "Shokofin" ]
+devs: [ "Avael", "Baine", "Cazzar", "Da3dsoul", "fearnlj01", "krbrs", "Mik1ll", "Mohan226", "Revam" ]
 ---
 
 We are thrilled to announce the release of the latest version of Shoko! This new version introduces numerous
-enhancements, novel features, and bug fixes that improve the user experience significantly.
+enhancements, novel features, and bug fixes that significantly improve the user experience.
 
 For a comprehensive list of changes, kindly visit our [Changelog](https://docs.shokoanime.com/changelog/).
 
 ##### Basic ARM64 Support
 
-Thanks to **Mohan226**, we're now able to offer an ARM64 build of Shoko on Linux
+Thanks to **Mohan226**, we're now able to offer an ARM64 build of Shoko on Linux.
 
-However, please note that all initial testing was conducted in a virtual machine. As there are numerous devices
-running on ARM64, we will not provide support for getting Shoko to work on your device. Although you can always ask,
-as this is an uncharted territory, we'll depend on users to document the path forward.
+However, please note that all initial testing was conducted in a virtual machine. As there are numerous devices running
+on ARM64, we will not provide support for getting Shoko to work on your device. Although you can always ask, as this is
+uncharted territory, we'll depend on users to document the path forward.
 
 Please keep in mind that several ARM devices do not meet the minimum requirements of Shoko. In case it runs, it will
 perform exceptionally poorly and might even crash. We do not intend to optimize for these kinds of devices.
 
-We're looking into getting an ARM64 build of Shoko working on Mac and hope to have something available soon for users
-to test out.
+We're looking into getting an ARM64 build of Shoko working on Mac and hope to have something available soon for users to
+test out.
 
 ##### Final Minor Release
 
-This minor release marks the conclusion of version 4 as we prepare for the next major release, version 5. Although
-we are not yet prepared to disclose what to expect, as there are still many aspects to work out, we can say that
-this is something the team, particularly **da3dsoul**, has been eager to do for a very long time. We will probably
-post a future blog detailing the changes since we anticipate a prolonged beta period when these changes are made.
-However, let's just say goodbye to nHibernate.
+This minor release marks the conclusion of version 4 as we prepare for the next major release, version 5. Although we
+are not yet prepared to disclose what to expect, as there are still many aspects to work out, we can say that this is
+something the team, particularly **da3dsoul**, has been eager to do for a very long time. We will probably post a future
+blog detailing the changes since we anticipate a prolonged beta period when these changes are made. However, let's just
+say goodbye to nHibernate.
 
-**Due to the database changes, the latest 4.2.X version will be required to upgrade to Shoko 5.X.X once release.**
+**Due to the database changes, the latest 4.2.X version will be required to upgrade to Shoko 5.X.X once released.**
 
 ##### .NET 6 and AniDB Rewrite Brings Speed and Bug Fixes
 
 The transition to .NET 6 and the comprehensive rewrite of the AniDB provider were two significant impediments that
-contributed to the extended period between releases. However, despite the fact that both of these significant
-changes are not visible to the end-users, they still offer tremendous benefits. The shift to .NET 6 provides better
+contributed to the extended period between releases. However, despite the fact that both of these significant changes
+are not visible to the end-users, they still offer tremendous benefits. The shift to .NET 6 provides better
 compatibility, performance enhancements, and establishes the framework for future changes that we intend to make to
 Shoko. The AniDB rewrite addresses several bugs and unforeseen issues with AniDB as a provider while significantly
 increasing speed.
@@ -79,7 +79,3 @@ our [Downloads Page](https://shokoanime.com/downloads/).
 
 We hope you enjoy the new features and improvements in this release. As always, we appreciate your feedback and support.
 Happy organizing!
-
-##### Contributors
-
-This release was made possible by the following people.

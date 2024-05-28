@@ -1,0 +1,22 @@
+---
+title: "Shoko Version 3.9.5 Released"
+quick: "Shoko Version 3.9.5 addresses various bugs and provides a roadmap update for the next major version."
+image: "shoko-version-3-9-5.webp"
+date: "2019-07-22"
+anime: "Speed Grapher"
+tags: [ "Shoko Desktop", "Shoko Server" ]
+devs: [ "Avael", "Baine", "BigRetroMike", "Cazzar", "Da3dsoul" ]
+---
+
+Shoko Version 3.9.5 is now available for download!
+
+This release addresses various bugs reported since the last update that we felt needed addressing while we continue
+working on the next major version of Shoko. As always, you can find a summary of the changes made by checking out the
+Changelog.
+
+##### What's Next For Shoko
+
+We get asked quite often what's being worked on at the moment or when a certain feature that's been mentioned before
+will be released. So in order to somewhat answer these questions and just outline our general plans to the community,
+we'll be posting a road map of sorts later this week. If there's something in particular you've seen mentioned before
+but haven't heard about in awhile, DM **Elemental Crisis** for a possible update.

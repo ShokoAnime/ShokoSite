@@ -1,0 +1,15 @@
+---
+title: "My Anime Version 3.7.3 Released"
+quick: "The latest version of My Anime 3.7.3 addresses incompatibility issues with the latest Shoko Server, ensuring episode lists populate and resolving playback issues."
+image: "my-anime-3-version-3-7-3.webp"
+date: "2019-11-17"
+anime: "Fairy Tail"
+tags: ["My Anime 3"]
+devs: ["MaxPiva"]
+---
+
+After a couple of weeks of testing, we're happy to announce My Anime 3.7.3 is now available for download.
+
+This is strictly a maintenance release and  addresses some incompatibility issues when using the latest version of Shoko Server. Episode lists should now properly populate, and issues encountered during video playback have been resolved.
+
+If you continue to encounter any of these issues or discover a new issue, please create an issue on GitHub.

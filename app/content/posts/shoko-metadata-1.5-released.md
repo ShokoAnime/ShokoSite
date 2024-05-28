@@ -1,0 +1,31 @@
+---
+title: "Shoko Metadata 1.5 Released"
+quick: "Shoko Metadata 1.5 fixes subdirectory issues, adds single season ordering, and updates the movie scanner for better performance."
+image: "shoko-metadata-1-5-0.webp"
+date: "2020-08-29T00:13:03-07:00"
+anime: "Log Horizon"
+tags: ["Shoko Metadata"]
+devs: ["Cazzar", "Mohan226"]
+---
+
+It has been a whole year since the last release! The focus of this release fixes an issue with subdirectories, now you can store your anime in whatever way you want without having to put up with Plex and its non-anime friendly folder structure. This release also adds a few user-requested features such as single season ordering which you can read about below.
+
+For a complete list of changes, check out the [Changelog](https://docs.shokoanime.com/changelog/shokometadata).
+
+##### Fixing the Issue With Subdirectories
+
+Plex has a problem with series being stored in subdirectories as it detects everything as a single series. For example, if you have Naruto and Naruto Shippuden in a folder called **Naruto**, Plex would only consider it as one series named **Naruto**. Now you can store it however you want, and it will work properly. It was tested with various folder structures and series to make sure there were no outlier cases. It was fixed by taking inspiration from the Absolute Series Scanner.
+
+However, with this fix, scanning speed does take a hit as it breaks the **Partial Scanning** feature of Plex and it ends up scanning the whole parent folder again. Users who prefer to set up their folder structure in this manner should give Plex a couple more minutes for scanning.
+
+##### Single Season Ordering
+
+In the previous release, the episodes of every show would be divided into seasons according to the TvDB data. Now, an option has been added to the metadata agent called **Single Season Ordering** which, instead of dividing the episodes into different seasons, puts all the normal episodes into a **Season 1**, specials into **Season 0**, openings/endings into **Season -1**, and trailers into **Season -2**.
+
+##### Updates to the Movie Scanner
+
+There was a problem with movies such as **Initial D Legend** where it was technically three movies but grouped into one and because of that, the movie scanner would show two of the movies as duplicates of the third movie. With the update to the scanner, now they are scanned properly as three different movies.
+
+##### API v3 and Future
+
+As some of you may know, with the release of [Shoko Server 4.0.0](http://localhost:1313/blog/shoko-version-4-0-0-released/), we have many new API v3 endpoints which are generally faster than v2 endpoints currently being used in Shoko Metadata. These old endpoints will be changed to the new v3 endpoints which will result in faster scanning and metadata refreshes. The development of that is ongoing but we're planning on releasing an update to the unstable branch with these changes for testing very soon.

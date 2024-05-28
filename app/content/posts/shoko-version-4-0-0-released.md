@@ -1,0 +1,74 @@
+---
+title: "Shoko Version 4.0.0 Released"
+quick: "Shoko version 4.0.0 introduces .NET Core conversion, Web UI for Windows users, a tray service, and API version 3."
+image: "shoko-version-4-0-0.webp"
+date: "2020-08-21"
+anime: "God of High School"
+tags: [ "Shoko Desktop", "Shoko Server", "WebUI" ]
+devs: [ "Avael", "Baine", "Cazzar", "Da3dsoul", "ElementalCrisis", "MaxPiva", "Mohan226" ]
+---
+
+After months of work, we're happy to announce that Shoko version 4.0.0 is available for download! This release
+introduces some big changes for Shoko, especially for our Windows users, so we recommend reading through this release
+post before updating.
+
+For a complete list of changes, check out the [Changelog](https://docs.shokoanime.com/changelog).
+
+##### .NET Core Conversion
+
+We've successfully converted Shoko Server to .NET Core, providing better cross compatibility support, as well as making
+Shoko easier to build upon and maintain as we go forward. One of the big benefits for us is this conversion helps us
+clean up the codebase which is one of our never-ending tasks we work on with nearly every version. While this is all
+internal, the biggest benefit for users will be an increase in both speed and stability when using Shoko Server. Another
+benefit for our Windows users is you no longer need to have **.NET Framework 4.7** installed to run Shoko Server.
+However, it is still required to run Shoko Desktop.
+
+##### Goodbye Native UI, Hello Web UI
+
+Arguably the biggest visual change for Windows users is the replacement of the longstanding Shoko UI that we've been
+using for nearly a decade with our Web UI. This is something that we've been planning since the initial conception of
+the Web UI, and we're happy to finally see it become a reality. While we understand this will take some time to get used
+to, especially for Windows users, as Linux users have always used the Web UI, the changes and benefits it provides will
+make it worth it. For starters, the Web UI already provides more functionality than the old UI did and with the Web UI
+separated from Shoko Server we can update it without having to tie that update to the next version of Shoko Server.
+
+We've got a lot planned for the Web UI so check back with us in a couple of weeks.
+
+##### Shoko Server Tray Service (Windows Only)
+
+With the removal of the native UI in Shoko Server, we've made Shoko Server into a tray service. This means when you
+first start Shoko Server (if you don't have it automatically start with Windows) it will automatically be added to the
+Windows Tray. Clicking on the Shoko Server icon will allow you to open the Web UI or close Shoko Server. It's possible
+we might add a few more options, but we haven't decided on anything at the moment. Make sure to let us know on **Discord
+** if you've got any ideas.
+
+##### API Version 3
+
+While not exactly new, we've been working on it for some time now, version 4.0 makes API version 3 our main API and
+leads to the deprecation of both API version 1 and API version 2. For the majority of our users, this change won't
+affect you, but it's still important to note, as eventually, we'll be removing the deprecated APIs. We highly suggest
+that all users using our API update to avoid issues in the future. One of the benefits of API version 3 is the addition
+of swagger which can be accessed via **127.0.0.1:8111/swagger** when Shoko Server is running.
+
+##### Renamer Plugin
+
+One of the most requested features is more control over the Renamer system, and while it's something we've also
+wanted ([Drop Destination Scripts](https://github.com/ShokoAnime/ShokoServer/issues/504)) for a long time, our .NET Core
+conversion finally allowed us to make some progress on it. This does require some basic **C#** knowledge, so we're more
+than happy to help anyone who needs assistance getting their Renamer plugin up and running.
+
+We've created a repo with some examples to help you build your own Renamer plugin.
+
+[ShokoAnime - SamplePlugins](https://github.com/ShokoAnime/SamplePlugins)
+
+##### Docker Changes
+
+For our Linux and Docker users, please make sure to update your path to the Shoko Anime docker
+account, [Shoko on Docker](https://hub.docker.com/r/shokoanime/server/) as we'll be using this account going forward.
+The build on Cazzar's page will eventually be deprecated.
+
+##### Daily Changes
+
+We're now using Github Actions to build our dailies for both Shoko Server and Shoko Desktop and have updated our
+download links for them. If you've bookmarked the App Veyor links or have pulled in your setup, please make sure to
+update your links as they are no longer linked and will no longer build on new commits.
