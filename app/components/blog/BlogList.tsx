@@ -51,11 +51,9 @@ const BlogList = () => {
   const [isFetched, setIsFetched] = useState(false);
 
   useEffect(() => {
-    if (!isFetched) {
-      fetchBlogList();
-      setIsFetched(true);
-    }
-  }, [fetchBlogList, isFetched]);
+    fetchBlogList(['All']);
+    setIsFetched(true);
+  }, [isFetched]);
 
   if (!isFetched || !blogList) {
     return (
@@ -76,13 +74,13 @@ const BlogList = () => {
         return (
           <BlogPreview
             key={item.filename}
+            className={className}
             title={item.frontmatter.title}
+            date={item.frontmatter.date}
             url={item.filename}
             description={item.description}
-            date={item.frontmatter.date}
-            tags={item.frontmatter.tags}
             image={item.frontmatter.image}
-            className={className}
+            tags={item.frontmatter.tags}
           />
         );
       })}

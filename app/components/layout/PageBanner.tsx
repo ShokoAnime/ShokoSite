@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import cx from 'classnames';
 import { convertToProperName } from '~/helpers/utils';
 import LinkButton from '~/components/common/LinkButton';
+import { useSetPageTitle } from '~/hooks/useSetPageTitle';
 
 type PageBannerProps = {
   title: string;
@@ -12,10 +13,11 @@ type PageBannerProps = {
 const PageBanner = ({ title, description }: PageBannerProps) => {
   const [bannerUrl, setBannerUrl] = useState('');
   const [breadcrumbs, setBreadcrumbs] = useState<string[]>([]);
-
   const location = useLocation();
 
   const bannerCount = 9; // Increase when adding a new banner
+
+  useSetPageTitle(title);
 
   useEffect(() => {
     const pathSegments = location.pathname.split('/');

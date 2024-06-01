@@ -7,7 +7,7 @@ type BlogContextType = {
   blogList: BlogPostProps[];
   blogDetail: BlogPostProps | null;
   tagList: TagItemProps[];
-  fetchBlogList: () => void;
+  fetchBlogList: (tagsArray: string[]) => void;
   fetchBlogDetail: (slug: string) => void;
 };
 
@@ -26,24 +26,37 @@ export const BlogProvider = ({ children }: { children: React.ReactNode }) => {
   const [blogDetail, setBlogDetail] = useState<BlogPostProps | null>(null);
   const [tagList, setTagList] = useState<TagItemProps[]>([]);
 
-  const fetchBlogList = async () => {
-    const posts = markdownList('blog');
-    const tagCountMap: TagItemProps[] = [];
+  const countTagOccurrences = (posts: BlogPostProps[]): TagItemProps[] => {
+    const tagCountMap: Record<string, number> = {};
 
-    posts.forEach((item: BlogPostProps) => {
-      item.frontmatter.tags.forEach((tag: string) => {
-        const existingTag = tagCountMap.find((t) => t.name === tag);
-        if (existingTag) {
-          existingTag.count += 1;
-        } else {
-          tagCountMap.push({ name: tag, count: 1 });
-        }
+    posts.forEach((post) => {
+      post.frontmatter.tags.forEach((tag) => {
+        tagCountMap[tag] = (tagCountMap[tag] || 0) + 1;
       });
     });
 
-    tagCountMap.sort((a, b) => a.name.localeCompare(b.name));
-    setTagList(tagCountMap);
-    setBlogList(posts);
+    return Object.entries(tagCountMap).map(([name, count]) => ({ name, count }));
+  };
+
+  const filterPostsByTags = (posts: BlogPostProps[], tagsArray: string[]): BlogPostProps[] => {
+    if (tagsArray.length === 0 || tagsArray.includes('All')) {
+      return posts;
+    }
+
+    return posts.filter((post) => post.frontmatter.tags.some((tag) => tagsArray.includes(tag)));
+  };
+
+  const sortTags = (tags: TagItemProps[]): TagItemProps[] => {
+    return [...tags].sort((a, b) => a.name.localeCompare(b.name));
+  };
+
+  const fetchBlogList = async (tagsArray: string[] = []) => {
+    const posts = markdownList('blog');
+    const tagCountMap = countTagOccurrences(posts);
+    const filteredPosts = filterPostsByTags(posts, tagsArray).sort();
+
+    setBlogList(filteredPosts);
+    setTagList(sortTags(tagCountMap));
     setBlogDetail(null);
   };
 
