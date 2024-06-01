@@ -11,7 +11,7 @@ It's been a little over two months since the last blog post and the team has bee
 version 3.7. However, as you can probably guess, besides continued development on the program, there have been quite a
 few other changes that have been made with the biggest being the **new name**.
 
-##### Starting With Version 3.7, JMM Will Now be Known as Shoko.
+#### Starting With Version 3.7, JMM Will Now be Known as Shoko.
 
 Over the past couple of months, starting around mid-development of Version 3.6, we started talking about a possible name
 change to give the program a unique identity. While you could argue that Japanese Media Manager is a unique identity, it
@@ -35,7 +35,7 @@ domain name <https://ShokoAnime.com> as we'll be making it the primary domain na
 weeks, we'll be making all the public changes, the underlying code will however **not be** changing at this time as that
 alone is a time-consuming process.
 
-##### Our New Look
+#### Our New Look
 
 As you can see, we've updated the look and design of our website.
 
@@ -49,7 +49,7 @@ also says Shoko.
 
 Please let us know what you think in the Website Development channel on Discord; we're still making adjustments.
 
-##### Shoko Version 3.7 Beta Available
+#### Shoko Version 3.7 Beta Available
 
 After a long and extensive alpha period, we're happy to release Version 3.7 beta for everyone to try!
 
@@ -60,7 +60,7 @@ instead of Shoko.
 As usual, we'll cover the big ones below, but we suggest taking a look at the
 redesigned [changelog](https://docs.shokoanime.com/changelog) page for all the changes.
 
-##### Cloud Support
+#### Cloud Support
 
 Shoko now supports cloud hosting!
 
@@ -69,7 +69,7 @@ map some import folders, and use it for hosting their anime collection. Please r
 updated [Configuring Shoko Server](https://docs.shokoanime.com/server/config.html) page for instructions on how to do
 this.
 
-##### Web UI Included
+#### Web UI Included
 
 Version 3.7 includes support for our Web UI, which we recommend everyone to check out as it will be replacing the
 standard Shoko Server UI in the future.
@@ -78,13 +78,13 @@ You can access the Web UI by typing **localhost:8111** in your browser after Sho
 asking our users to play around with it and report back any issues or suggestions you might have in
 the [Web UI Repository](https://github.com/ShokoAnime/ShokoServer-WebUI) on GitHub.
 
-##### Administrative Privileges No Longer Needed
+#### Administrative Privileges No Longer Needed
 
 Both Shoko Server and Shoko Desktop will now store your settings and files in the ProgramData folder, removing the need
 for administrative privileges when running either program. You will need to run both Shoko Server and Shoko Desktop as
 an Administrator once to perform the migration if you've previously used Shoko, which the majority of you have.
 
-##### Shoko Server Integrity Check
+#### Shoko Server Integrity Check
 
 Users can now run an integrity check comparing their file's current hash to the one stored in the database from when the
 file was initially hashed. Using this utility, you'll be able to identify corrupt files and replace them.

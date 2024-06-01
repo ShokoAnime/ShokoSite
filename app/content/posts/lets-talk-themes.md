@@ -11,7 +11,7 @@ One of the oldest feature requests, going all the way back to when the program w
 
 With the announcement of Shoko Desktop 2, its change from a C# program to a web application, and the eventual decision to merge Shoko Desktop features into the Server Web UI, theme support was once again reevaluated. We decided it would be something added after the release of version 1.0.0, as referenced [here](https://github.com/ShokoAnime/Shoko-WebUI/issues/112).
 
-##### Hello Theme Support
+#### Hello Theme Support
 
 Earlier in the year, we polled users of varying Shoko experience to gather feedback on the current Web UI design, aiming to identify user pain points and areas for improvement. Using the data we gathered, we decided to start a complete redesign of the Web UI, internally known as V7 (Version 7), to build a better Web UI for our users. While this process was underway, we took a look at our post-version 1.0.0 list and decided to move a couple of items up, such as user avatar support and, of course, proper theme support.
 

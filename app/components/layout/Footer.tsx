@@ -8,8 +8,7 @@ const Footer = () => {
   return (
     <div
       className={cx(
-        `flex h-[6.25rem] w-full items-center px-6 2xl:px-0'
-        ${currentUrl === '/' ? 'bg-shoko-bg' : 'bg-shoko-bg-alt'}`,
+        `flex h-[6.25rem] w-full items-center px-6 2xl:px-0 ${currentUrl === '/' ? 'bg-shoko-bg' : 'bg-shoko-bg-alt'}`,
       )}
     >
       <div className="mx-auto flex max-w-[1440px] flex-auto items-center justify-center font-medium">

@@ -9,6 +9,8 @@ export type BlogPostProps = {
     tags: string[];
     image: string;
     anime: string;
+    download: string;
+    changelog: string;
   } | Record<string, never>;
 };
 

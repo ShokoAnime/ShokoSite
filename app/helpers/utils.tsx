@@ -1,8 +1,11 @@
 export const convertToProperName = (path: string) => {
   return path
+    .replace(/\b(\d+)-(\d+)-(\d+)-(\d+)\b/g, '$1.$2.$3.$4')
+    .replace(/\b(\d+)-(\d+)-(\d+)\b/g, '$1.$2.$3')
     .replace(/-/g, ' ')
     .replace(/\b\w/g, (char) => char.toUpperCase())
-    .replace('Ui', 'UI');
+    .replace('Ui', 'UI')
+    .replace('Jmm', 'JMM');
 };
 
 export const convertNameToUrl = (path: string) => {

@@ -23,7 +23,7 @@ Shoko in 2017.
 dailies and 3.7.0.900-999 for beta. To address this problem we've introduced a new update channel system which you can
 read about below.**
 
-##### Shoko Server Cross-Platform Support
+#### Shoko Server Cross-Platform Support
 
 We've already begun work on making Shoko Server cross-platform with the introduction of
 the [Web UI](https://shokoanine.com/blog/introducing-the-jmm-server-webui/) and slowly
@@ -31,7 +31,7 @@ implementing [Nancy](https://github.com/NancyFx/Nancy), we hope to have Shoko Se
 itself will be a lot of work but we feel it's something that we can accomplish. Anyone that would like to help can
 contact us on Discord for more information.
 
-##### Code Cleanup and Documentation
+#### Code Cleanup and Documentation
 
 One of the main issues that's been reported from users wanting to contribute is the general lack of code documentation
 within Shoko. This is something that will be addressed as we continue to implement and migrate to Nancy. We'll also be
@@ -41,7 +41,7 @@ These are the main items we wanted to address but not everything we're working o
 have to keep checking back to learn more. Before we get into what's new in Version 3.7, there are a few additional items
 we'd like to address.
 
-##### Thank You Beta Testers
+#### Thank You Beta Testers
 
 We'd like to thank everyone who participated in the 3.7 Beta. Without them this release would not have been possible for
 at least another month at the minimum. This was our second public beta and like last time, the feedback we received
@@ -52,7 +52,7 @@ good idea, it's just not feasible for us due to a number of reasons with two of 
 maintenance required for this. However, **Avael** had been looking into automating builds to allow users to try the
 latest commits which after some trial and error and lots of broken builds, we launched **Daily Builds** in November.
 
-##### Daily Builds
+#### Daily Builds
 
 As a thank you to all our users, we now provide the ability for all users to try the latest builds of Shoko Server and
 Shoko Desktop without having to build them yourself. Our **Daily Builds** are currently set up to build after each
@@ -63,19 +63,19 @@ built yet, the **Build Indicator** will tell you. You can also click it to view 
 
 ![GitHub Daily Build Check](/images/blog/sohko-version-3-7-daily-build-check.webp)
 
-##### Help Wanted!
+#### Help Wanted!
 
 We've got a lot of work coming up and are looking for users interested in contributing to Shoko in a variety of
 different ways. If you'd like to help out please check the updated [Contributing](https://shokoanime.com) page or get in
 contact with us on Discord. We're looking for users for a number of different roles so just because you can't code
 doesn't mean you can't help out.
 
-##### Version 3.7
+#### Version 3.7
 
 As usual, head on over to the [changelog](https://docs.shokoanime.com/changelog) for a complete listing of all changes
 made in version 3.7.
 
-##### Cloud Support
+#### Cloud Support
 
 Shoko now officially supports cloud hosting meaning you no longer have to map the cloud folder using NetDrive or a
 similar program. You can now directly add a supported cloud provider and map the actual cloud folder for use with Shoko.
@@ -90,7 +90,7 @@ Please note, not all supported cloud providers offer the same speeds and service
 updated [Configuring Shoko Server](https://docs.shokoanime.com/server/config) page for instructions on how to use a
 cloud provider.
 
-##### MPV Integration, Zoom Player Support and Video Player Changes
+#### MPV Integration, Zoom Player Support and Video Player Changes
 
 After having to constantly fix the previously supported video players with almost every release due to something we
 changed or an update to the video player itself **we're no longer offering full integration** for video players that *
@@ -123,7 +123,7 @@ keys. We're working on adding a GUI and additional features.
 While not originally part of the plan, Zoom Player support has also been added thanks to **Netsplite** giving users
 another media player to use with Shoko.
 
-##### Web UI Included
+#### Web UI Included
 
 We want everyone to become familiar with the Web UI as it will eventually take the place of the existing Shoko Server UI
 when Shoko Server is fully cross-compatible. You can access the Web UI by typing in **localhost:8111** in your browser
@@ -132,7 +132,7 @@ username, there is no password. User feedback is highly encouraged as we'll be m
 and runs as we progress forward. Please report back issues or suggestions you might have in
 the [Web UI Repository](https://github.com/ShokoAnime/ShokoServer-WebUI) on GitHub.
 
-##### Administrative Privileges No Longer Needed
+#### Administrative Privileges No Longer Needed
 
 Both Shoko Server and Shoko Desktop will now keep all related files in the ProgramData folder. You'll need to run both
 Shoko Server and Shoko Desktop as an administrator once for everything to be set up properly. Existing users will have
@@ -140,21 +140,21 @@ all their files automatically moved. After the initial run as an administrator y
 user, we've done a lot of testing but everyone's setup is different so if you encounter any problems please contact us
 on Discord so we can help.
 
-##### Shoko Server Integrity Check
+#### Shoko Server Integrity Check
 
 We've added a new utility to Shoko Server that allows users to run an integrity check on their entire collection. If
 ran, each file is rehashed and has its new hash compared to the hash stored in the database from when the file was
 originally imported. If the hash is different, Shoko Server will report the file as corrupted allowing users to easily
 replace corrupted files.
 
-##### Update Channels Added
+#### Update Channels Added
 
 Users can now check different update channels, Stable and Beta, and switch between them with ease. The channel can be
 selected in the **About** window, with the desired channel selected click the **Check For Updates** button. This was a
 last-minute addition we added due to the confusion some users had during the beta which caused fixed issues to be
 reported, we'll be fine-tuning as well as looking into adding a daily channel as we go forward.
 
-##### AniDB Dynamic Rate Limiter
+#### AniDB Dynamic Rate Limiter
 
 To enhance our AniDB ban prevention system, Shoko now considers user intervention during AniDB requests. Previously,
 users could bypass our ban prevention method by pausing the queue and waiting or restarting Shoko Server. This created
@@ -164,13 +164,13 @@ incrementally. The improved system now tracks total usage and throttles as neede
 Please note, **there is currently an issue with users receiving an HTTP ban from AniDB**, which is different from a UDP
 ban that our AniDB ban prevention system addresses. This issue appears to be on AniDB's side and is being investigated.
 
-##### Log Rotator
+#### Log Rotator
 
 We've implemented a Log Rotator that will zip up old log files to reduce the size of the log folder. Currently, it's
 hard-coded to do this every day, but we'll be adding options for users to select different frequencies and decide what
 to do with older logs. Suggestions for improving this system are welcome.
 
-##### My Anime 3 and the Future
+#### My Anime 3 and the Future
 
 Version 3.6 introduced significant changes that caused issues with My Anime 3. With the addition of **Netsplite** to the
 team, we not only restored functionality but also fixed longstanding bugs and added new features. Version 3.7 has
@@ -183,7 +183,7 @@ it at this time.
 We also want to thank [pur_berger](http://forum.team-mediaportal.com/members/pur_berger.50701/) for allowing us to
 include his modifications to the Avallanche skin, enabling My Anime 3 to work with it.
 
-##### Known Issues
+#### Known Issues
 
 - Some utilities do not work with files hosted on the cloud.
 - If a video player is already open, there is a chance that video playback will fail when the user presses the play

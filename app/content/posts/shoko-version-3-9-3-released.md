@@ -14,6 +14,6 @@ This release addresses an issue with manually linked files not updating properly
 
 For a complete list of changes, check out the [Changelog](https://docs.shokoanime.com/changelog.html).
 
-##### Download Link
+#### Download Link
 
 [Download Shoko Version 3.9.3](https://shokoanime.com/downloads/)

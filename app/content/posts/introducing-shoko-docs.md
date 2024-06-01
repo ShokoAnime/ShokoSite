@@ -16,7 +16,7 @@ less resource-intensive theme that's sleeker, and for those of you visiting us o
 
 Now onto the main purpose of this blog post.
 
-##### Introducing Shoko Docs
+#### Introducing Shoko Docs
 
 ![Shoko Docs](/images/blog/introducing-shoko-docs-index.webp)
 
@@ -40,7 +40,7 @@ You can reach Shoko Docs either by clicking on Shoko Docs in the menu above or u
 
 [http://docs.shokoanime.com](https://docs.shokoanime.com)
 
-##### Rewritten From Scratch
+#### Rewritten From Scratch
 
 While a lot of the old documentation will still be used as an outline, Shoko Docs is being rewritten from scratch so
 that the content being presented is accurate and up-to-date, as previously there were sections that had not been touched

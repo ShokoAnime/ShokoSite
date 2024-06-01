@@ -19,6 +19,8 @@ export default {
       colors: {
         'shoko-bg': 'var(--shoko-bg)',
         'shoko-bg-alt': 'var(--shoko-bg-alt)',
+        'shoko-button-alt': 'var(--shoko-button-alt)',
+        'shoko-button-alt-hover': 'var(--shoko-button-alt-hover)',
         'shoko-border': 'var(--shoko-border)',
         'shoko-text': 'var(--shoko-text)',
         'shoko-text-header': 'var(--shoko-text-header)',

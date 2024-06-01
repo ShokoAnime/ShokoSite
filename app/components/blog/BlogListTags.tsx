@@ -1,39 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import cx from 'classnames';
-import { markdownList } from '~/helpers/markdown-list';
-import { BlogPostProps, TagItemProps } from '~/types/BlogTypes';
-import HighLightHeader from '~/components/blog/HighLightHeader';
+import HighLightHeader from '~/components/common/HighLightHeader';
 import { useBlogData } from '~/context/BlogContext';
-import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import Button from '~/components/common/Button';
 
-const Tags = () => {
-  const [tagList, setTagList] = useState<TagItemProps[]>([]);
+const BlogListTags = () => {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
-  const { fetchBlogList } = useBlogData();
-
-  useEffect(() => {
-    const fetchDataAndProcessTags = async () => {
-      const dataList = markdownList('blog');
-      const tagCountMap: TagItemProps[] = [];
-
-      dataList.forEach((item: BlogPostProps) => {
-        item.frontmatter.tags.forEach((tag: string) => {
-          const existingTag = tagCountMap.find((t) => t.name === tag);
-          if (existingTag) {
-            existingTag.count += 1;
-          } else {
-            tagCountMap.push({ name: tag, count: 1 });
-          }
-        });
-      });
-
-      tagCountMap.sort((a, b) => a.name.localeCompare(b.name));
-      setTagList(tagCountMap);
-    };
-
-    fetchDataAndProcessTags();
-  }, []);
+  const { fetchBlogList, tagList } = useBlogData();
 
   const handleTagChange = (tag: string) => {
     const updatedTags = selectedTags.includes(tag)
@@ -59,18 +32,14 @@ const Tags = () => {
   return (
     <div className="mb-0 flex w-full flex-col justify-between gap-y-6 font-semibold">
       <HighLightHeader title="Avalable Tags" rightSide={selectedTags.length > 0 && resetTags()} />
-      <OverlayScrollbarsComponent
-        element="span"
-        options={{ scrollbars: { autoHide: 'never' } }}
-        events={{ scroll: () => {/* ... */} }}
-        defer
-      >
-        <div className="flex h-[30rem] flex-col gap-y-2">
-          {tagList.map((tag, index) => (
+      <div className="flex flex-col gap-y-2">
+        {tagList
+          .sort((a, b) => b.count - a.count)
+          .map((tag, index) => (
             <div
               key={tag.name}
               className={cx(
-                'flex items-center justify-between pb-2  cursor-pointer',
+                'flex items-center justify-between pb-2 cursor-pointer',
                 tagList.length !== index + 1 && 'border-b border-shoko-border',
               )}
             >
@@ -89,10 +58,9 @@ const Tags = () => {
               </label>
             </div>
           ))}
-        </div>
-      </OverlayScrollbarsComponent>
+      </div>
     </div>
   );
 };
 
-export default Tags;
+export default BlogListTags;

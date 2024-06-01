@@ -12,7 +12,7 @@ discussed publicly on our website, on Discord, and other platforms, while others
 among the team. With the start of a new year, we thought it would be best to outline the current status of all our
 projects and talk about some new ones in development.
 
-##### Shoko Desktop 2
+#### Shoko Desktop 2
 
 Shoko Desktop 2 was first envisioned back in late 2016 and at the time was nothing more than a handful of ideas for
 improving the current Shoko Desktop. Over the years, these ideas turned into a foundation for creating a better program
@@ -39,7 +39,7 @@ us on Discord to chat.
 
 There have been discussions on creating a separate playback program, but at this time it's nothing more than that.
 
-##### My Anime 3
+#### My Anime 3
 
 Back in 2018, we put My Anime 3 into [maintenance mode](https://shokoanime.com/blog/my-anime-3-version-3-7-2-released/)
 due to a lack of developer support and a focus on other areas. This hasn't changed, but it's important to note that with
@@ -51,7 +51,7 @@ We are currently evaluating updating My Anime 3 to use the new API but have not 
 Anime 3 users who want to continue using it, we'll be sure to let you know the last version of Shoko that supports My
 Anime 3.
 
-##### MediaPortal 2 Plugin
+#### MediaPortal 2 Plugin
 
 Creating a successor to My Anime 3 for MediaPortal 2 is something we've looked into but will not commit to at this time.
 We like what we've seen, but MediaPortal's overall popularity leads us to question how needed an anime plugin is on this
@@ -61,7 +61,7 @@ and maintenance would be.
 If we decide to make a plugin, users can expect it to be a fairly light experience similar to Nakamori (Kodi plugin). It
 will not aim to be a fully featured client like My Anime 3.
 
-##### Removing TvDB
+#### Removing TvDB
 
 Late last year, TheTVDB staff announced that TheTVDB would no longer be free and would instead require
 a [subscription](https://thetvdb.com/subscribe) to use its API. We attempted to reach out to find out just how much a
@@ -102,7 +102,7 @@ likely that we'll decide to remove it all and have Shoko download the data from 
 
 We will release more info on this after discussing it more at a later date.
 
-##### The State of Nakamori
+#### The State of Nakamori
 
 We've been asked when Nakamori will get updated to work with the latest version of Kodi. As of Kodi 19, all plugins must
 be written in Python 3. Unfortunately, Nakamori is a community plugin made by BigRetroMike, and while we'd love to see
@@ -149,20 +149,20 @@ and work on it again. A new developer could take the work we've put in and keep 
 they are able to. Like Shoko, you have license to take any or all of the code present in Nakamori for your own use. I
 ask that you share your work with the rest of us, but that's merely a request, not part of the terms of use.
 
-##### Ashen
+#### Ashen
 
 Like us, our friends at [Animeshon](https://animeshon.com/) have multiple projects in the works, and Ashen has taken a
 backseat for now. This is because ~~da3dsoul is lazy and plays too many video games~~ their dev team is working hard on
 other projects like their Encyclopedia at the moment, and they want Ashen and Detabesu (the ~~terrible~~ fantastic name
 of the Encyclopedia section) to be able to handle the volume of users that Shoko will bring.
 
-##### Shokofin
+#### Shokofin
 
 We'll properly introduce Shokofin later, but we've been working on a plugin for Jellyfin that is currently in beta and
 waiting on some changes in Jellyfin before we can move forward. Once these changes have been made and/or an updated
 version comes out, we can move forward with Shokofin.
 
-##### Developers Wanted
+#### Developers Wanted
 
 As usual, we're always looking for devs to join our team. If interested, join our Discord and let us know! We always
 have plans, big and small, for improvements to the infrastructure of managing our anime collections.

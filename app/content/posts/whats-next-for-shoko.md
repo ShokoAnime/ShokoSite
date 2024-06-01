@@ -4,7 +4,7 @@ quick: "Update on Shoko Server, Shoko Desktop 2, Web UI, and more."
 image: "whats-next-for-shoko.webp"
 date: "2019-07-26"
 anime: "Ghost in the Shell: Arise"
-tags: [ "Shoko Server", "Shoko Desktop", "Shoko Desktop 2", "Shoko Web UI", "Shoko on Plex", "Shoko Metadata", "My Anime 3", "Shoko Docs", "Website"]
+tags: [ "Shoko Server", "Shoko Desktop", "Shoko Desktop 2", "Web UI", "Shoko on Plex", "Shoko Metadata", "My Anime 3", "Shoko Docs", "Website"]
 ---
 
 As mentioned earlier this week, we wanted to update the community on what we've got planned for Shoko and to give some
@@ -13,7 +13,7 @@ also important to note that not everything we discuss or bring up on Discord in 
 are actually planned for implementation. Sometimes it's nothing more than just brainstorming and gauging reactions to
 said idea.
 
-##### Shoko Server
+#### Shoko Server
 
 We've decided to stop work on the .NET Standard conversion that's been the focus since late last year. While working on
 the .NET Standard conversion, we ran into issues getting our data source and import systems to play nice in a
@@ -33,7 +33,7 @@ stopped new developers from contributing.
 
 While there is no timeline for how long this will take, you can see the progress being made in the Shoko Server repo.
 
-##### Shoko Desktop
+#### Shoko Desktop
 
 It should come as no surprise that the current version of Shoko Desktop is, for all intents and purposes, deprecated.
 Besides fixing crucial functionality, adding or expanding on existing functionality requires a lot of work due to a
@@ -45,7 +45,7 @@ was spread out over multiple files that made calls to multiple others files.
 
 Desktop suffers from the same issue Server does, which is what we've planned to fix with Shoko Desktop 2.
 
-##### Shoko Desktop 2
+#### Shoko Desktop 2
 
 Shoko Desktop 2 is a complete replacement for Shoko Desktop and is designed to be cross-platform. We've had public alpha
 builds available in the past and plan to continue to have more going forward. We've recently spent a lot of time going
@@ -55,7 +55,7 @@ We're not stuck in an endless perfection loop, but while we wait for needed func
 and changing our designs. This is why you see us post revised mockups from time to time for community feedback and why
 we can afford to make major changes even with an alpha build available.
 
-##### Shoko Server Web UI
+#### Shoko Server Web UI
 
 A while back, we released part one of our Web UI update showing the new design and added functionality. The next planned
 feature update for the Web UI will add a customizable dashboard allowing users to display various widgets and even add
@@ -63,7 +63,7 @@ new ones.
 
 Theming support is also coming to the Web UI and will be a test run for how theming in Shoko Desktop 2 will work.
 
-##### Shoko on Plex
+#### Shoko on Plex
 
 The Plex team announced a while back that they would
 be [removing the plugin directory](https://www.plex.tv/blog/subtitles-and-sunsets-big-improvements-little-housekeeping/)
@@ -71,11 +71,11 @@ and eventually removing plugin support altogether. When this was announced, we d
 maintenance mode and instead focus effort on Shoko Metadata. This is still the current plan until Plex decides to
 completely remove plugin support.
 
-##### Shoko Metadata
+#### Shoko Metadata
 
 Still in active development and our recommended way to connect Shoko with Plex.
 
-##### My Anime 3
+#### My Anime 3
 
 While our My Anime 3 user base has decreased over the years, we still support the My Anime 3 plugin but as previously
 mentioned have put the plugin into [maintenance mode](https://shokoanime.com/blog/my-anime-3-version-3-7-2-released/)
@@ -86,20 +86,20 @@ development. This is because the API My Anime 3 currently uses will not be prese
 the team familiar enough or a user of My Anime 3 to make the required fixes and do the proper testing. We are willing,
 however, to provide support and help any developer(s) who are willing to work on this when the time comes.
 
-##### Shoko Docs
+#### Shoko Docs
 
 Shoko Docs was recently rebuilt, which you can read about in the blog post. We left the design of the Dark Theme to the
 community, and one of our community members, "Konack," created it. Check it out in the image below or view Shoko Docs.
 
 ![Shoko Docs - Dark Theme](/images/blog/whats-next-for-shoko-docs-dark-theme.webp)
 
-##### Shoko Website
+#### Shoko Website
 
 We've begun work on an updated website with the goal of creating a better design and improving functionality. The
 redesign will also benefit from Hugo and be completely rebuilt using Markdown to make updating for staff easier and
 provide a huge user-related benefit which we'll discuss when the time comes. For now, it's a secret.
 
-##### Final Thoughts
+#### Final Thoughts
 
 This should cover all the questions we've been asked over the past couple of months and should shed some light on our
 upcoming plans.

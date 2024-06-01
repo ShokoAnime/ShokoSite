@@ -11,7 +11,7 @@ While we continue working on the next release of Shoko (coming soon!), one of ou
 project for some time now and has released a public beta that we wanted to highlight. What better time than right before
 we say goodbye to 2020 and hello to 2021?
 
-##### Introducing Sushi.Net, A .NET Port of Sushi
+#### Introducing Sushi.Net, A .NET Port of Sushi
 
 For those not familiar, [sushi](https://github.com/tp7/Sushi) is a **Python** script that allows you to remux releases
 with ease regardless of the audio and/or subtitle source. Like **Shoko**, it's designed to remove the manual process and
@@ -20,7 +20,7 @@ automatically syncs up subtitles by finding similarities in audio streams.
 Now thanks to **MaxPiva**, this handy utility is now available for .NET devs and once version 1.00 hits, it will be
 available as a NuGet package.
 
-##### How Audio Shifting Works With Sushi.Net
+#### How Audio Shifting Works With Sushi.Net
 
 Basically, Sushi.Net will normalize the destination audio stream, then find the silences in the stream, and mark the
 destination stream into chunks. After that, it will apply a band filter to attenuate the vocals and load both streams
@@ -31,14 +31,14 @@ Of course, it can also shift subtitles in the same way the original Sushi does, 
 subtitles as input (space separated), or it can get the subtitles from the --src stream if it's a container (mkv, mp4,
 etc).
 
-##### How To Get Started
+#### How To Get Started
 
 You can download [Sushi.Net](https://github.com/maxpiva/Sushi.Net) on GitHub. You'll find instructions, examples, and
 additional information in the repo.
 
-##### See You In 2021
+#### See You In 2021
 
 2021 is going to be a big year for Shoko with the realization and finalization of a lot of work. We'll have a blog post
 very soon to share some of these exciting details with everyone.
 
-##### Developed By
+#### Developed By

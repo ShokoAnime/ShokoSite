@@ -1,12 +1,12 @@
 import cx from 'classnames';
-import { mdiDownload, mdiTagMultiple } from '@mdi/js';
+import { mdiArrowRight, mdiTagMultiple } from '@mdi/js';
 import Icon from '~/components/common/Icon';
 import { convertDate } from '~/helpers/utils';
 import LinkButton from '~/components/common/LinkButton';
 import { BlogPreviewProps } from '~/types/BlogTypes';
 import { useBlogData } from '~/context/BlogContext';
 import { useEffect, useState } from 'react';
-import Loading from '~/components/common/Loading';
+import SkeletonLoader from '~/components/common/SkeletonLoader';
 
 const BlogPreview = ({ url, tags, date, title, image, className, description }: BlogPreviewProps) => {
   const postUrl = url.split('/').pop()?.replace('.md', '');
@@ -20,28 +20,32 @@ const BlogPreview = ({ url, tags, date, title, image, className, description }: 
       />
       <div className="flex flex-col gap-y-2">
         <div className="flex justify-between">
-          <div>{convertDate(date)}</div>
+          <div className="text-shoko-text-header font-medium opacity-65">{convertDate(date)}</div>
           <div className="flex gap-x-2">
-            <Icon icon={mdiTagMultiple} className="text-shoko-link" />
-            {tags.map((tag, index, arr) => {
-              if (index === arr.length - 1) {
-                return <span key={tag} className="text-shoko-link">{tag}</span>;
-              }
-              return <span key={tag} className="text-shoko-link">{tag} |</span>;
-            })}
+            <Icon icon={mdiTagMultiple} className="text-shoko-highlight" />
+            {tags.slice(0, 4).map((tag, index, arr) => (
+              <div
+                key={tag}
+                className="text-shoko-highlight font-medium"
+              >
+                {tag}
+                {index !== arr.length - 1 && ' |'}
+                {tags.length > 4 && index === 3 && ` | +${tags.length - 4} More`}
+              </div>
+            ))}
           </div>
         </div>
-        <div className="text-2xl font-semibold">{title}</div>
-        <div className="line-clamp-5">
-          {description}
-        </div>
-        <LinkButton buttonType="primary" className="!p-4" to={postUrl ?? ''}>
-          <div className="mx-auto flex items-center gap-x-2">
-            <Icon icon={mdiDownload} />
-            Read More
-          </div>
-        </LinkButton>
+        <h4 className="text-shoko-text-header font-semibold">{title}</h4>
       </div>
+      <div className="line-clamp-5">
+        {description}
+      </div>
+      <LinkButton buttonType="primary" className="w-40 p-3" to={postUrl ?? ''}>
+        <div className="mx-auto flex items-center gap-x-2">
+          Read More
+          <Icon icon={mdiArrowRight} />
+        </div>
+      </LinkButton>
     </div>
   );
 };
@@ -56,11 +60,7 @@ const BlogList = () => {
   }, [isFetched]);
 
   if (!isFetched || !blogList) {
-    return (
-      <div className="w-full items-center">
-        <Loading />
-      </div>
-    );
+    return <SkeletonLoader type="blog list" />;
   }
 
   const blogData = blogList.sort((a, b) => {

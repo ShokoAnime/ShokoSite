@@ -15,7 +15,7 @@ version. This version also contains a big change which we've addressed below.
 
 For a complete list of changes, check out the [Changelog](https://docs.shokoanime.com/changelog.html).
 
-##### Shoko Analytics
+#### Shoko Analytics
 
 One of the bigger changes we were going to introduce in version 4.0 was the inclusion of a telemetry service. However,
 we didn't want it to get buried by the other features and changes coming with version 4.0, so instead, we added a basic
@@ -48,7 +48,7 @@ Starting with Version 3.9.4, we'll be collecting information related to the foll
 - Utility - Removing Missing Files
 - Utility - Validate All Images
 
-##### Opting Out
+#### Opting Out
 
 We only track that the events listed above occur, not anything about them. You may opt out by setting *
 *GA\_OptOutPlzDont** to **true** in settings.json.

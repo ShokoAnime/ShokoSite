@@ -4,6 +4,8 @@ quick: "Major code refactors and changes to the Renamer utility."
 image: "shoko-version-4-1-0.webp"
 date: "2021-02-01"
 anime: "Amagi Brilliant Park"
+download: { title: "Download Version 4.1.0", href: "https://shokoanime.com/downloads/" }
+changelog: { title: "Version 4.1.0 Changelog", href: "https://docs.shokoanime.com/changelog/" }
 tags: [ "Shoko Desktop", "Shoko Server" ]
 devs: [ "Avael", "Baine", "Cazzar", "Da3dsoul", "ElementalCrisis", "JMediaManager", "Mik1ll", "Mohan226", "Revam" ]
 ---
@@ -14,17 +16,17 @@ This release focused primarily on a lot of much-needed refactoring and backend c
 
 For a complete list of changes, check out the [Changelog](https://docs.shokoanime.com/changelog/).
 
-##### Renamer System Refactor
+#### Renamer System Refactor
 
 The main priority of this release was refactoring the renamer system allowing us to work towards its complete overhaul coming later this year. It's one of our most important features, and the team has a lot of ideas for improvement and functionality to make it even better.
 
 One of the major changes we think a lot of users will benefit from is the addition of pipelines and being able to define a renamer based on the content being imported. We have more coming down the line, though currently it's all in the planning stage. The new renamer and plugin system has enough details to warrant a separate blog post, so a later post will be dedicated to it.
 
-##### Have You Checked Out Shoko Docs?
+#### Have You Checked Out Shoko Docs?
 
 If you missed our last blog post, we launched an [updated and refreshed](https://shokoanime.com/blog/shoko-docs-refresh/) version of Shoko Docs pretty much rewritten from scratch as a lot of the information had become outdated. As Shoko continues to grow, we'll continue to work and improve it and hope to see more community updates as time goes on.
 
-##### More On The Way
+#### More On The Way
 
 As [previously mentioned](https://shokoanime.com/blog/shoko-docs-refresh/), we'll be discussing what's in store for Shoko and our plans for 2021. This blog post is turning out to be one of the longer ones we've written so look forward to a lot of information soon.
 
