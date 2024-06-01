@@ -17,7 +17,7 @@ shutting down their API (more below) and our revamped TvDB Linking System delaye
 As usual, we'll cover the big changes below, but for a complete list of changes, check out
 the [Changelog](https://docs.shokoanime.com/changelog.html).
 
-##### New TvDB Linking System
+#### New TvDB Linking System
 
 One of the big changes users will see in Desktop 2, our replacement for the current Shoko Desktop, is a fine-tuned
 Community Sites System providing users with control over every aspect of series linking. While Desktop 2 is still in
@@ -45,7 +45,7 @@ and selecting the correct episode/special.
 As this is a brand-new system, we'll be making improvements to it. Feedback is incredibly important, so please let us
 know if you encounter any issues or have an idea to improve it.
 
-##### Plex Integration Reworked
+#### Plex Integration Reworked
 
 The Plex login and server/library selection processes have been completely reworked. Now, instead of having to extract
 small details from the URLs, the server will manage that automatically for you!
@@ -54,7 +54,7 @@ For example, now when you are logged into Plex via Shoko, it will show you what 
 as those servers' libraries. The login method has also been updated to align more so with the newer versions of the Plex
 login methods used by Plex and Plex Media Server.
 
-##### My Anime 3 Update Coming Soon
+#### My Anime 3 Update Coming Soon
 
 As previously announced, we'll be putting My Anime 3 into maintenance mode. Our goal will always be to make sure MA3
 works with the latest version of Shoko Server; we have no plans to abandon it. We're working on fixing a few bugs and
@@ -62,12 +62,12 @@ removing deprecated features to ensure MA3 always works going forward.
 
 For our MA3 users, **you can use the latest version of Shoko Server** with the previously released version of MA3.
 
-##### Shoko Docs Updates
+#### Shoko Docs Updates
 
 Shoko Docs is getting a huge update to reflect all the recent changes and to address some of the concerns and issues new
 users have reported. Look forward to seeing this in the next couple of weeks.
 
-##### My Anime List (MAL) Removed
+#### My Anime List (MAL) Removed
 
 For those who don't know, a couple weeks ago, MAL unexpectedly removed their API and then went down for several days.
 Shoko, like every other third-party app, used that API to allow our users to sync and update their MAL lists within
@@ -75,7 +75,7 @@ Shoko. With it gone, this is no longer possible, so we removed all functionality
 lengths and have decided that we will only support MAL again if their API is improved and works as intended, as the
 previous one was less than reliable and had numerous issues.
 
-##### Linux Users
+#### Linux Users
 
 Please be aware that during the install for 3.9.0, the container startup script was moved from `/root/.shoko`
 to `/home/shoko/.shoko`. Updating this should be fairly simple if you persisted your settings to disk. However, you will
@@ -88,6 +88,6 @@ are:
 - MyListDirectory
 - AnimeXmlDirectory
 
-##### Download Link
+#### Download Link
 
 [Download Shoko Version 3.9.0](https://shokoanime.com/downloads/)

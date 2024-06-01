@@ -1,11 +1,11 @@
-import HighLightHeader from '~/components/blog/HighLightHeader';
+import HighLightHeader from '~/components/common/HighLightHeader';
 import { mdiOpenInNew } from '@mdi/js';
 import Icon from '~/components/common/Icon';
 import { useBlogData } from '~/context/BlogContext';
 import { useEffect, useState } from 'react';
 import { RandomAnimeProps } from '~/types/BlogTypes';
-import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
+import SkeletonLoader from '~/components/common/SkeletonLoader';
 
 type ItemProps = {
   anime: string;
@@ -21,9 +21,9 @@ function Items({ anime, image, url }: ItemProps) {
       rel="nofollow noreferrer"
       href={url}
     >
-      <img className="rounded-lg" src={`/images/blog/${image}`} alt={anime} />
+      <img className="shadow-custom rounded-lg" src={`/images/blog/${image}`} alt={anime} />
       <div className="mx-auto flex items-center gap-x-2">
-        <span>{anime}</span>
+        <div>{anime}</div>
         <Icon icon={mdiOpenInNew} />
       </div>
     </a>
@@ -37,7 +37,7 @@ const tempAnime: RandomAnimeProps = {
   },
 };
 
-function SpotLight() {
+const BlogListSpotlight = () => {
   const [randomAnime, setRandomAnime] = useState<RandomAnimeProps>(tempAnime);
   const { fetchBlogList, blogList } = useBlogData();
 
@@ -57,26 +57,22 @@ function SpotLight() {
     }
   }, [blogList]);
 
-  return randomAnime.frontmatter.image.includes('default.webp')
-    ? (
-      <div className="flex flex-col gap-y-6">
-        <Skeleton width={'100%'} height={49} />
-        <div className="flex flex-col gap-y-4">
-          <Skeleton width={352} height={185} />
-          <Skeleton width={'100%'} height={26} />
-        </div>
-      </div>
-    )
-    : (
-      <div className="flex flex-col items-start gap-y-6">
-        <HighLightHeader title="Anime Spotlight" />
-        <Items
-          image={randomAnime?.frontmatter.image}
-          anime={randomAnime?.frontmatter.anime}
-          url={`https://anidb.net/anime/?adb.search=${randomAnime?.frontmatter.anime}`}
-        />
-      </div>
-    );
-}
+  return (
+    <div className="flex flex-col items-start gap-y-6">
+      {randomAnime.frontmatter.image.includes('default.webp')
+        ? <SkeletonLoader type="highlight" />
+        : (
+          <>
+            <HighLightHeader title="Anime Spotlight" />
+            <Items
+              image={randomAnime?.frontmatter.image}
+              anime={randomAnime?.frontmatter.anime}
+              url={`https://anidb.net/anime/?adb.search=${randomAnime?.frontmatter.anime}`}
+            />
+          </>
+        )}
+    </div>
+  );
+};
 
-export default SpotLight;
+export default BlogListSpotlight;

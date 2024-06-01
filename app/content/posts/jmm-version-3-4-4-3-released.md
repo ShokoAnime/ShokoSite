@@ -10,7 +10,7 @@ tags: [ "Shoko Server", "Shoko Desktop" ]
 Version 3.4.4 introduces the following changes, we recommend reading through this blog post in order to familiarize
 yourself with what's changed.
 
-##### Metro Dashboard
+#### Metro Dashboard
 
 ![Metro Series Overview](/images/blog/jmm-version-3-4-4-3-metro-overview.webp)
 
@@ -21,7 +21,7 @@ The series display in the Metro dashboard has received a few small tweaks.
   it as watched.
 * The next episode to watch is highlighted and shows a few more details than other episodes.
 
-##### Trakt
+#### Trakt
 
 ![JMM Desktop - Trakt Settings](/images/blog/jmm-version-3-4-4-3-trakt-settings.webp)
 
@@ -39,7 +39,7 @@ probably find that a lot of your Trakt data is not valid anymore.
 
 ![JMM Desktop - Community Tab](/images/blog/jmm-version-3-4-4-3-community-data.webp)
 
-##### Community Data
+#### Community Data
 
 A new utility has been added to help fix this data.
 
@@ -63,7 +63,7 @@ Click on the button to search, and it will show you the community recommendation
 
 ![JMM Desktop - Series Community Links](/images/blog/jmm-version-3-4-4-3-community-links.webp)
 
-##### Other
+#### Other
 
 You can now see Trakt comments on the regular series view.
 

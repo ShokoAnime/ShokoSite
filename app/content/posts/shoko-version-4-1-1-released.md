@@ -4,6 +4,8 @@ quick: "Update on Ashen & the Web UI with a maintenance release for Shoko."
 image: "shoko-version-4-1-1.webp"
 date: "2021-08-29"
 anime: "Okko's Inn"
+download: { title: "Download Version 4.1.1", href: "https://shokoanime.com/downloads/" }
+changelog: { title: "Version 4.1.1 Changelog", href: "https://docs.shokoanime.com/changelog/" }
 tags: [ "Shoko Desktop", "Shoko Server", "Shokofin", "Ashen" ]
 devs: [ "Baine", "Cazzar", "Da3dsoul", "ElementalCrisis", "Mohan226", "Revam" ]
 ---
@@ -14,10 +16,10 @@ For a complete list of changes, check out the [Changelog](https://docs.shokoanim
 
 We also figured this blog post would be a good time to update everyone on the status of our in-development projects.
 
-##### Ashen
+#### Ashen
 
 Ashen is on hold at the moment as **Da3dsoul** is working on other projects. We previously pulled some users and had them test out the service and for the most part it worked flawlessly. However, there is still a lot of work that needs to be done on Ashen itself and as well as Shoko before you'll be able to use it. There currently is no ETA on when it will be available for public use.
 
-##### Shoko Web UI
+#### Shoko Web UI
 
 Our team has been busy working on refining the designs and we're hoping for an **MVP** (minimum viable product) release by this holiday. We'll also be running multiple closed beta tests as each section is completed which should tremendously help iron out bugs and unforeseen issues.

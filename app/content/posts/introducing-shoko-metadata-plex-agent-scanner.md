@@ -12,7 +12,7 @@ For the last couple of weeks, **Cazzar** has been working on a new Plex plugin c
 Recently, version 1.0.0 was released, marking it as the latest stable version working alongside Shoko Server 3.7.0.4.
 However, at the time of writing, the current version has little documentation due to being an early release.
 
-##### What is Shoko Metadata?
+#### What is Shoko Metadata?
 
 Firstly, let's discuss what this plugin does. Simply put, this plugin for Plex allows you to have series information for
 your libraries, as well as tagging derived from AniDB tags. There is also an optional Scanner included in the package,
@@ -23,7 +23,7 @@ information.
 
 ![Shoko Metadata - Collection](/images/blog/introducing-shoko-metadata-collection-view.webp)
 
-##### Why This Instead of Shoko on Plex?
+#### Why This Instead of Shoko on Plex?
 
 One of the main uses of this implementation is when you either want to save network bandwidth (more on this later, with
 some examples) or most of your data is stored on a file system accessible via Plex.
@@ -31,7 +31,7 @@ some examples) or most of your data is stored on a file system accessible via Pl
 Shoko on Plex has its use-cases, and Shoko Metadata is in no way intended to supersede Shoko on Plex. Personally, I have
 both installed. When designing this plugin, I have been focusing on a personal use case.
 
-##### But You May Ask, How Would This Save Network Data?
+#### But You May Ask, How Would This Save Network Data?
 
 If you have Shoko operating off files on something like a NAS and you stream via Shoko On Plex, you will notice that
 there is at minimum the stream between ShokoServer and Plex and then to the watching client. With everything, that's
@@ -42,7 +42,7 @@ This also works around some intrinsic limitations of using a Plex Channel. For e
 the main features of being able to use Shoko Metadata. Soon (this is currently planned and in the design phase), I am
 looking at adding a new feature that syncs the watch status between both sides.
 
-##### How To Use It
+#### How To Use It
 
 Usage is quite standard for those more experienced with plugins, though using the series scanner is a bit more
 complicated.
@@ -60,7 +60,7 @@ complicated.
 * ???
 * Profit!
 * 
-##### What's The Difference And When Should I Use This?
+#### What's The Difference And When Should I Use This?
 
 To minimize confusion about which is best used in which scenario, let me explain when to use both plugins.
 

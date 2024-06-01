@@ -13,7 +13,7 @@ critical functions. To remedy this situation, we've been looking into alternativ
 announce our partnership with [animeshon](https://animeshon.com/?hl=en-US), an upcoming anime & manga metadata provider
 and their perceptual hashing service **Ashen**.
 
-##### What is Ashen?
+#### What is Ashen?
 
 Ashen is a **perceptual image hashing** service aimed to provide users with another hashing method to speed up the
 importing and identifying process. It's important to note that **Ashen is not meant to replace AniDB**, instead both
@@ -21,7 +21,7 @@ hashing services will work together in Shoko to give our users the best of both 
 system can be overzealous and cause huge time delays when importing new files into your collection and when this
 happens, Shoko is forced to stop importing for an unknown arbitrary time while it waits out the ban.
 
-##### So Ashen is better than AniDB?
+#### So Ashen is better than AniDB?
 
 Both providers have their strengths and weaknesses, so it's not fair to definitely say one is better than the other.
 AniDB's database and userbase means the file you're currently hashing has probably already been dumped, allowing Shoko
@@ -32,7 +32,7 @@ Ashen also benefits from newer technology, and a design philosophy where speed i
 **20-25 seconds** for the file to be hashed, data to be sent, compared internally and then sent back to Shoko. With
 Ashen, the same file only takes **2 seconds** allowing Shoko to import 10-12 files in the same timeframe.
 
-##### How does animeshon benefit from this?
+#### How does animeshon benefit from this?
 
 One of the founding members of animeshon, Christian Roggia, is a former contributor to Shoko, so when he approached the
 Shoko team about a potential partnership, we knew he would be honest with us and not shy away from any difficult
@@ -47,37 +47,37 @@ of their API and the ability to exceed some of the posted rate limits.
 \* Only certain, invite only members are sending that data, as it is more data and processing than the average user
 sends.
 
-##### So when will Ashen be available in Shoko?
+#### So when will Ashen be available in Shoko?
 
 Soon! 
 
 Our team has been beta testing it, and while we don't have a date at the moment, we're aiming to have it within Shoko by
 the end of the year, assuming we don't run into any unforeseen issues.
 
-##### Common Questions
+#### Common Questions
 
 We've complied what we believe to be some common questions that will come up as well as questions we had ourselves that
 were answered by the animeshon team.
 
-###### Do I have to use Ashen?
+##### Do I have to use Ashen?
 
 No, users will be able to disable Ashen if they prefer to stick with just AniDB for file hashing.
 
-###### Can I **only** use Ashen?
+##### Can I **only** use Ashen?
 
 For hashing, yes, but AniDB provides other information that Shoko still needs, for now.
 
-###### How does the Shoko Team know additional data won't be collected?
+##### How does the Shoko Team know additional data won't be collected?
 
 That's simple, our very own **da3dsoul** is part of the animeshon team and built Ashen.
 
-###### So animeshon will profit from the results of our data?
+##### So animeshon will profit from the results of our data?
 
 Animeshon is free to do whatever they want with their service and their database, like any other metadata provider. This
 is not new and **every single metadata provider** you've ever contributed to is the same way. We've made sure that only
 **anime related** data is sent via Ashen to protect our users and avoid legal issues that could arise.
 
-###### How legal is it? I'm not a pirate ◔_◔, but I don't want anyone to think I am.
+##### How legal is it? I'm not a pirate ◔_◔, but I don't want anyone to think I am.
 
 Ashen is a perceptual hashing system. The video file has a few frames extracted at intelligently selected spots at only
 144p (removing a lot of detail that might be a watermark, for example), then they are *locally* run through a utility to
@@ -86,7 +86,7 @@ just that animeshon, or us at Shoko for that matter, don't care if you are a scu
 we can't even tell! This protects everyone involved, as it's easier to sue a company that enables piracy than 50,000
 people that save for 5 years to buy a hard drive.
 
-###### Where Can I Go To Learn More
+##### Where Can I Go To Learn More
 
 The following links were provided to us by the Animeshon team.
 

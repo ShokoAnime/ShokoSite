@@ -62,6 +62,8 @@
     --shoko-link-hover: #425ECC;
     --shoko-link-header: #66B4F3;
     --shoko-link-header-hover: #5ba2da;
+    --shoko-button-alt: #202941;
+    --shoko-button-alt-hover: #2a365b;
     --shoko-highlight: #EC407A;
     --shoko-overlay: #0A0B1DBF;
 }
@@ -77,6 +79,8 @@
     --shoko-link-hover: #217dbc;
     --shoko-link-header: #66B4F3;
     --shoko-link-header-hover: #5ba2da;
+    --shoko-button-alt: #202941;
+    --shoko-button-alt-hover: #252d42;
     --shoko-highlight: #E3B341;
     --shoko-overlay: #0A0B1DBF;
 }
@@ -91,6 +95,32 @@
     font-weight: 500;
     color: #279CEB;
     text-decoration: underline;
+}
+
+#blog-post * a {
+    font-weight: 600;
+    color: var(--shoko-link);
+    text-decoration: underline;
+}
+
+#blog-post > h4 {
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+#blog-post > h4::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100px;
+    height: 2px;
+    background-color: var(--shoko-highlight); /* Color of the border */
+}
+
+#blog-post * img {
+    border-radius: 0.5rem;
+    margin-bottom: 2rem;
 }
 
 /*.light * .scrollbar-custom * .os-scrollbar-handle {*/

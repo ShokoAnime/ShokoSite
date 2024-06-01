@@ -24,12 +24,12 @@ brought back.
 As with any major release, unforeseen issues are expected. Therefore, please make sure to report any issues you
 encounter on the Nakamori repo, so the Nakamori dev team can fix them promptly.
 
-##### Download
+#### Download
 
 Please follow
 the [Nakamori Install Instructions](https://shokunin.monogatari.pl/projects/nakamori/nakamori-installation/) to make
 sure you properly install the repo and the addon itself.
 
-##### Contributors
+#### Contributors
 
 This release was made possible by the following people.

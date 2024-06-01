@@ -4,6 +4,8 @@ quick: "ARM64 Linux build, Shoko v5, SQLite improvements, and new Shokofin featu
 image: "shoko-version-4-2-0.webp"
 date: "2023-03-20"
 anime: "Handyman Saitou in Another World"
+download: { title: "Download Version 4.2.0", href: "https://shokoanime.com/downloads/" }
+changelog: { title: "Version 4.2.0 Changelog", href: "https://docs.shokoanime.com/changelog/" }
 tags: [ "Shoko Server", "Shoko Desktop", "Shokofin" ]
 devs: [ "Avael", "Baine", "Cazzar", "Da3dsoul", "fearnlj01", "krbrs", "Mik1ll", "Mohan226", "Revam" ]
 ---
@@ -13,7 +15,7 @@ enhancements, novel features, and bug fixes that significantly improve the user 
 
 For a comprehensive list of changes, kindly visit our [Changelog](https://docs.shokoanime.com/changelog/).
 
-##### Basic ARM64 Support
+#### Basic ARM64 Support
 
 Thanks to **Mohan226**, we're now able to offer an ARM64 build of Shoko on Linux.
 
@@ -27,7 +29,7 @@ perform exceptionally poorly and might even crash. We do not intend to optimize 
 We're looking into getting an ARM64 build of Shoko working on Mac and hope to have something available soon for users to
 test out.
 
-##### Final Minor Release
+#### Final Minor Release
 
 This minor release marks the conclusion of version 4 as we prepare for the next major release, version 5. Although we
 are not yet prepared to disclose what to expect, as there are still many aspects to work out, we can say that this is
@@ -37,7 +39,7 @@ say goodbye to nHibernate.
 
 **Due to the database changes, the latest 4.2.X version will be required to upgrade to Shoko 5.X.X once released.**
 
-##### .NET 6 and AniDB Rewrite Brings Speed and Bug Fixes
+#### .NET 6 and AniDB Rewrite Brings Speed and Bug Fixes
 
 The transition to .NET 6 and the comprehensive rewrite of the AniDB provider were two significant impediments that
 contributed to the extended period between releases. However, despite the fact that both of these significant changes
@@ -46,7 +48,7 @@ compatibility, performance enhancements, and establishes the framework for futur
 Shoko. The AniDB rewrite addresses several bugs and unforeseen issues with AniDB as a provider while significantly
 increasing speed.
 
-##### Major SQLite Work
+#### Major SQLite Work
 
 Significant effort and time were invested in improving overall performance when using SQLite as your database. Since
 making SQLite the default database type for Shoko, we've been working on improving the user experience and making it
@@ -56,7 +58,7 @@ helped to reduce the dreaded database lock errors that frequently appeared. Addi
 remaining database lock errors. Although we've done extensive testing, please keep an eye out and report any database
 lock errors you see in your log.
 
-##### Shokofin 3.0.0
+#### Shokofin 3.0.0
 
 The latest update to Shokofin has introduced several exciting new features and improvements. Users can now finally
 synchronize watch states between Shoko and Jellyfin, including the ability to import, export, and sync watch states
@@ -72,7 +74,7 @@ For users who enjoy experimenting with new features, the update introduces an ex
 settings that enables them to toggle new, mostly untested features. These include the ability to merge multiple versions
 of episodes in your Shoko managed library, as well as changing to the experimental chronological season sorting.
 
-##### Enough Reading, Get Shoko 4.2.0 Now
+#### Enough Reading, Get Shoko 4.2.0 Now
 
 To download the latest release and view the detailed changelog, head over to
 our [Downloads Page](https://shokoanime.com/downloads/).

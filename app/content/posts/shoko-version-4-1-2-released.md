@@ -4,6 +4,8 @@ quick: "Future of Shoko Desktop, sneak peek at the new Web UI and Jellyfin 10.8 
 image: "shoko-version-4-1-2.webp"
 date: "2022-06-27"
 anime: "Spy x Family"
+download: { title: "Download Version 4.1.2", href: "https://shokoanime.com/downloads/" }
+changelog: { title: "Version 4.1.2 Changelog", href: "https://docs.shokoanime.com/changelog/" }
 tags: [ "Shoko Server", "Shoko Desktop", "Shokofin" ]
 devs: [ "Baine", "Cazzar", "Da3dsoul", "Mik1ll", "Revam" ]
 ---
@@ -14,7 +16,7 @@ API.
 
 For a complete list of changes, check out the [Changelog](https://docs.shokoanime.com/changelog/).
 
-##### Shoko Development
+#### Shoko Development
 
 We understand that our lack of frequent updates has been a source of concern, and we have been asked about it numerous
 times. To make it easier, we will list the factors that contribute to our update schedule in this blog post.
@@ -30,7 +32,7 @@ Please note that some mockups in this video have changed, and all data you see i
 
 [![ShokoWebUI June](/images/blog/shoko-version-4-1-2-video-thumb.webp)](http://shokoanime.com/files/videos/ShokoWebUI-June.mp4)
 
-##### Jellyfin 10.8 Support
+#### Jellyfin 10.8 Support
 
 Jellyfin 10.8 introduced some changes that broke compatibility with Shokofin. The latest version of ShokoFin, version
 2.0.0, resolves this issue and is now available for download. Please note that due to certain changes, older versions of

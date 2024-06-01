@@ -1,5 +1,5 @@
 ---
-title: "Version 3.5.0.2 Maintenance Update"
+title: "JMM Version 3.5.0.2 Maintenance Update"
 quick: "Fixes installer script bug and reverts Shoko on Plex to the previous version due to newly discovered bugs."
 image: "jmm-version-3-5-0-2.webp"
 date: "2016-05-20"

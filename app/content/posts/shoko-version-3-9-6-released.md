@@ -18,6 +18,6 @@ download again.
 
 As always, you can find a summary of the changes made by checking out the Changelog.
 
-##### Contributors
+#### Contributors
 
 This release was made possible by the following people.
