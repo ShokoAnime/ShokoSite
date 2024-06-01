@@ -6,8 +6,8 @@ import NewsPost from '~/components/home/NewsPost';
 
 export const meta: MetaFunction = () => {
   return [
-    { title: 'New Remix App' },
-    { name: 'description', content: 'Welcome to Remix!' },
+    { title: 'Shoko | Anime Management System' },
+    { name: 'description', content: 'The All-in-One Cross-Platform Anime Management System Built For You' },
   ];
 };
 

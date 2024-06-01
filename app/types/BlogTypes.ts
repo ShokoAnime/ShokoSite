@@ -8,6 +8,7 @@ export type BlogPostProps = {
     date: string;
     tags: string[];
     image: string;
+    anime: string;
   } | Record<string, never>;
 };
 
@@ -24,4 +25,11 @@ export type BlogPreviewProps = {
 export type TagItemProps = {
   name: string;
   count: number;
+};
+
+export type RandomAnimeProps = {
+  frontmatter: {
+    anime: string;
+    image: string;
+  };
 };

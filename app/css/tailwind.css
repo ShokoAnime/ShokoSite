@@ -4,6 +4,10 @@
 @tailwind utilities;
 
 @layer base {
+    a {
+        @apply hover:text-shoko-link-hover;
+    }
+
     body, html {
         @apply bg-shoko-bg;
         @apply text-shoko-text;
@@ -31,8 +35,8 @@
         @apply text-[1.5rem] leading-[2.4rem];
     }
 
-    a {
-        @apply hover:text-shoko-link-hover;
+    input {
+        @apply accent-shoko-highlight;
     }
 
     strong {
