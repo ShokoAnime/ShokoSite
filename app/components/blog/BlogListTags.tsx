@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import cx from 'classnames';
-import HighLightHeader from '~/components/common/HighLightHeader';
 import { useBlogData } from '~/context/BlogContext';
+import HighLightHeader from '~/components/common/HighLightHeader';
 import Button from '~/components/common/Button';
 
 const BlogListTags = () => {
@@ -14,6 +14,8 @@ const BlogListTags = () => {
       : [...selectedTags, tag];
     setSelectedTags(updatedTags);
     fetchBlogList(updatedTags.length > 0 ? updatedTags : ['All']);
+
+    document?.querySelector('#blog-list')?.scrollIntoView({ block: 'start' });
   };
 
   const resetTags = () => (

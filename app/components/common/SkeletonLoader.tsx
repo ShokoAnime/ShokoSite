@@ -18,7 +18,7 @@ const SkeletonLoader = ({ type }: SkeletonLoaderProps) => {
     );
   }
 
-  if (type === 'blog list') {
+  if (type === 'blog-list') {
     const fakeArray = [1, 2, 3, 4];
     return (
       <div className="flex w-full max-w-[56.25rem] flex-col gap-y-6">
@@ -40,7 +40,7 @@ const SkeletonLoader = ({ type }: SkeletonLoaderProps) => {
     );
   }
 
-  if (type === 'index blog') {
+  if (type === 'index-blog') {
     const fakeArray = [1, 2, 3];
     return (
       <div className="mx-auto flex w-full max-w-[1440px] items-center gap-x-6">

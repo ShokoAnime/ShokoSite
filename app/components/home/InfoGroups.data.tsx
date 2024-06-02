@@ -8,7 +8,7 @@ const mediaPlayers = [
 const InfoGroupDetails = [
   {
     title: 'Collection Management Made Easy',
-    image: '/images/home/video-placeholder.webp',
+    image: '/images/home/web-ui-dashboard.webp',
     content: (
       <>
         <span>
@@ -32,7 +32,7 @@ const InfoGroupDetails = [
   },
   {
     title: 'Spend More Time Watching Anime',
-    image: '/images/home/video-placeholder.webp',
+    image: '/images/home/web-ui-series.webp',
     content: (
       <>
         <span>
@@ -58,7 +58,7 @@ const InfoGroupDetails = [
   },
   {
     title: 'Media Player Support',
-    image: '/images/home/video-placeholder.webp',
+    image: '/images/home/media-player.webp',
     content: (
       <>
         <span>

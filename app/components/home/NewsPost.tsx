@@ -21,7 +21,7 @@ const NewsPost = () => {
           <hr className="border-shoko-highlight w-[100px] border" />
         </div>
         <div className="mt-16 flex w-full gap-x-8">
-          {!isFetched || !blogList ? <SkeletonLoader type="index blog" /> : (
+          {!isFetched || !blogList ? <SkeletonLoader type="index-blog" /> : (
             blogList
               .sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime())
               .slice(0, 3)

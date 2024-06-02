@@ -1,5 +1,6 @@
 import React from 'react';
 import InfoGroupDetails from './InfoGroups.data';
+import Image from '~/components/common/Image';
 
 type InfoSectionProps = {
   title: string;
@@ -28,7 +29,11 @@ const InfoSection = ({ title, image, content, reverse }: InfoSectionProps) => {
             <div className="flex flex-col gap-4">{content}</div>
           </div>
         </div>
-        <img className="shadow-custom rounded-lg" src={image} alt={title} width={611} />
+        <Image
+          src={image}
+          alt={title}
+          className="shadow-custom h-full max-h-[21.625rem] w-fit max-w-[38.125rem] rounded-lg"
+        />
       </div>
     </>
   );

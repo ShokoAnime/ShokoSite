@@ -1,9 +1,5 @@
 import React from 'react';
 
-export type DownloadListProps = {
-  content: DownloadSingleProps[];
-};
-
 export type DownloadSingleProps = {
   description: React.JSX.Element | string;
   filename: string;

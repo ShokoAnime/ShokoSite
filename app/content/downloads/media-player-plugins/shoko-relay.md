@@ -1,15 +1,15 @@
 ---
 name: 'Shoko Relay'
 images:
-  - url: '/images/downloads/programs-plugins/WebUI-Index.png'
+  - url: '/images/downloads/programs-plugins/shokorelay-series.webp'
     alt: 'WebUI Index'
-  - url: '/images/downloads/programs-plugins/WebUI-Import-Folders.png'
+  - url: '/images/downloads/programs-plugins/shokorelay-series.webp'
     alt: 'WebUI Import Folders'
-  - url: '/images/downloads/programs-plugins/WebUI-Actions.png'
+  - url: '/images/downloads/programs-plugins/shokorelay-series.webp'
     alt: 'WebUI Actions'
-  - url: '/images/downloads/programs-plugins/WebUI-Settings.png'
+  - url: '/images/downloads/programs-plugins/shokorelay-series.webp'
     alt: 'WebUI Settings'
-  - url: '/images/downloads/programs-plugins/WebUI-Settings-02.png'
+  - url: '/images/downloads/programs-plugins/shokorelay-series.webp'
     alt: 'WebUI Settings 02'
 resources:
   - name: 'Github'
@@ -25,4 +25,6 @@ downloads:
         url: 'https://github.com/natyusha/ShokoRelay.bundle/releases'
 ---
 
-ShokoRelay is an agent/scanner that allows you to combine your series and movies into a single library while using Shoko to manage it.
+ShokoRelay is a Plex agent and scanner that allows you to integrate your series and movies into a single library, all managed through Shoko. This tool simplifies the organization of your media collection, enabling a seamless experience by combining everything in one place. With ShokoRelay, you can easily manage your entire media library, benefiting from Shoko's robust management features while keeping your collection organized and accessible anywhere.
+
+For information on the difference between ShokoRelay and Shoko Metadata, check [Shoko Docs](https://docs.shokoanime.com/plex-integration/installing-agents-scanners/)
