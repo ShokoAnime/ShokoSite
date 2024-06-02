@@ -1,5 +1,4 @@
-import { Navigate, useParams } from '@remix-run/react';
-import { mdiLightbulbAlertOutline } from '@mdi/js';
+import { Navigate, useLocation } from '@remix-run/react';
 import PageNotFound from '~/components/layout/PageNotFound';
 import PageBanner from '~/components/layout/PageBanner';
 import DownloadNavTabs from '~/components/downloads/DownloadNavTabs';
@@ -9,44 +8,55 @@ import DownloadGrid from '~/components/downloads/DownloadGrid';
 import { useEffect, useState } from 'react';
 import { markdownList } from '~/helpers/markdown-list';
 import { DownloadSingleProps } from '~/types/DownloadTypes';
+import { downloadMessage } from '~/components/downloads/DownloadCallout.utils';
+import { markdownDetail } from '~/helpers/markdown-detail';
+
+const validPaths = [
+  'downloads',
+  'shoko-server',
+  'media-player-plugins',
+  'web-ui-themes',
+  'renamer-plugins',
+  'legacy',
+];
 
 function Downloads() {
-  const validPaths = [
-    'downloads',
-    'shoko-server',
-    'media-player-plugins',
-    'web-ui-themes',
-    'renamer-plugins',
-    'legacy',
-  ];
-  const { id } = useParams();
-
+  const path = useLocation().pathname;
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState<DownloadSingleProps[]>();
+  const [pathName, setPathName] = useState('');
 
   useEffect(() => {
-    setIsLoading(true);
     const fetchData = async () => {
-      const markdownData = markdownList(id ?? '');
-      setData(markdownData);
+      setIsLoading(true);
+      const pathSegments = path.split('/');
+      const newPathName = pathSegments[2];
+      setPathName(newPathName);
+
+      const markdownData = newPathName === 'shoko-server'
+        ? markdownDetail([...pathSegments, 'shoko-server'].join('/'))
+        : markdownList(newPathName ?? '');
+
+      const markdownDataCheck = Array.isArray(markdownData) ? markdownData : [markdownData];
+
+      setData(markdownDataCheck);
       setIsLoading(false);
     };
+
     fetchData();
-  }, [id]);
+  }, [path]);
 
-  const DataRender = () => {
-    if (data?.length === 1) {
-      return <DownloadItem data={data[0]} />;
-    } else {
-      return <DownloadGrid data={data ?? []} />;
-    }
-  };
+  document?.querySelector('#download-list')?.scrollIntoView({ block: 'end' });
 
-  if (!id) {
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!pathName) {
     return <Navigate to="/downloads/shoko-server" replace />;
   }
 
-  if (!validPaths.includes(id)) {
+  if (!validPaths.includes(pathName)) {
     return <PageNotFound />;
   }
 
@@ -59,22 +69,14 @@ function Downloads() {
       <DownloadNavTabs />
       <div className="mx-auto flex min-h-[calc(100vh-645px)] max-w-[1440px] flex-col gap-y-16 p-16 2xl:px-0 2xl:py-16">
         <DownloadCallout
-          icon={mdiLightbulbAlertOutline}
-          message={
-            <span className="text-shoko-text text-base">
-              Learn how to make your own Shoko application / plugin using our extensive API.{' '}
-              <a
-                className="text-shoko-link font-medium"
-                href="/"
-                target="_blank"
-                rel="noopener"
-              >
-                Click Here to learn more!
-              </a>
-            </span>
-          }
+          icon={downloadMessage(pathName).icon}
+          message={downloadMessage(pathName).content}
         />
-        {!isLoading && <DataRender />}
+        {!isLoading && data !== undefined && (
+          pathName === 'shoko-server'
+            ? <DownloadItem data={data[0]} />
+            : <DownloadGrid data={data} />
+        )}
       </div>
     </>
   );

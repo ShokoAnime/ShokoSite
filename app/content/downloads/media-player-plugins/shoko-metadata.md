@@ -1,16 +1,16 @@
 ---
 name: 'Shoko Metadata'
 images:
-  - url: '/images/downloads/programs-plugins/WebUI-Index.png'
-    alt: 'WebUI Index'
-  - url: '/images/downloads/programs-plugins/WebUI-Import-Folders.png'
-    alt: 'WebUI Import Folders'
-  - url: '/images/downloads/programs-plugins/WebUI-Actions.png'
-    alt: 'WebUI Actions'
-  - url: '/images/downloads/programs-plugins/WebUI-Settings.png'
-    alt: 'WebUI Settings'
-  - url: '/images/downloads/programs-plugins/WebUI-Settings-02.png'
-    alt: 'WebUI Settings 02'
+  - url: '/images/downloads/programs-plugins/shoko-metadata-series-listing-grid.webp'
+    alt: 'Shoko Metadata - Series Listing Grid'
+  - url: '/images/downloads/programs-plugins/shoko-metadata-series-episodes.webp'
+    alt: 'Shoko Metadata - Series Episodes'
+  - url: '/images/downloads/programs-plugins/shoko-metadata-series-listing-summary.webp'
+    alt: 'Shoko Metadata - Series Listing Summary'
+  - url: '/images/downloads/programs-plugins/shoko-metadata-series-view-01.webp'
+    alt: 'Shoko Metadata - Series View 01'
+  - url: '/images/downloads/programs-plugins/shoko-metadata-series-view-02.webp'
+    alt: 'Shoko Metadata - Series View 02'
 resources:
   - name: 'Github'
     url: 'https://github.com/Cazzar/ShokoMetadata.bundle'
@@ -29,4 +29,6 @@ downloads:
         url: 'https://github.com/Cazzar/ShokoMetadata.bundle/releases/'
 ---
 
-Shoko Metadata provides users with a smooth anime experience on Plex pulling your series data directly from Shoko instead of the default metadata sources Plex uses. This Plex library plugin provides support for TV Series and Movies.
+Plex, a leading user-generated streaming service, now supports Shoko, one of the best anime cataloging programs. Stream your anime anywhere on any device, with Plex handling the streaming and Shoko Metadata providing detailed information. Shoko Metadata pulls all info directly from Shoko, eliminating the need to manually correct mislinked series or movies due to Plex's inadequate anime support. This saves you time and ensures your collection is accurately cataloged. Plex Pass users benefit from built-in scrobbling, allowing watch state data to sync back to Shoko and upload to your preferred community sites.
+
+For information on the difference between ShokoRelay and Shoko Metadata, check [Shoko Docs](https://docs.shokoanime.com/plex-integration/installing-agents-scanners/)

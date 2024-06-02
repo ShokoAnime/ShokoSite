@@ -9,7 +9,7 @@ const DownloadNavTabs = () => {
   const path = useLocation().pathname;
 
   return (
-    <div className="bg-shoko-bg-alt h-[5.5rem] p-4">
+    <div className="bg-shoko-bg-alt h-[5.5rem] p-4" id="download-list">
       <div className="text-shoko-text-header mx-auto flex h-full max-w-[1440px] items-center justify-center gap-x-2 text-xl font-medium">
         {navigationTabs.map((tab) => {
           const link = `/downloads/${convertNameToUrl(tab)}`;

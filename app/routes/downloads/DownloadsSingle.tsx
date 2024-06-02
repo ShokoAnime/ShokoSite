@@ -9,6 +9,7 @@ import { markdownDetail } from '~/helpers/markdown-detail';
 
 function DownloadsSingle() {
   const path = useLocation().pathname;
+  const downloadName = path.split('/').pop();
   const data = markdownDetail(path);
 
   if (data === undefined) {
@@ -17,10 +18,7 @@ function DownloadsSingle() {
 
   return (
     <>
-      <PageBanner
-        title="Downloads"
-        description="Browse through our complete selection of programs, plugins, Web UI Themes and other tools available in the Shoko Suite."
-      />
+      <PageBanner title={downloadName ?? 'Downloads'} />
       <DownloadNavTabs />
       <div className="mx-auto flex min-h-[calc(100vh-645px)] max-w-[1440px] flex-col gap-y-16 p-16 2xl:px-0 2xl:py-16">
         <DownloadCallout

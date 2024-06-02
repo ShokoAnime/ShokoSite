@@ -44,7 +44,7 @@ const BlogListSidebar = ({ data }: BlogDetailSidebar) => {
           </div>
           <div className="flex flex-col gap-y-1">
             <div className="text-shoko-text-header">Tags</div>
-            <div className="text-shoko-text flex font-normal">
+            <div className="text-shoko-text flex flex-wrap font-normal">
               {data.frontmatter.tags.map((tag: string, index: number) => {
                 return (
                   <div key={tag} className="text-shoko-highlight font-medium">

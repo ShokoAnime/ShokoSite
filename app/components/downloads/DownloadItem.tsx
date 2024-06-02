@@ -5,17 +5,18 @@ import cx from 'classnames';
 import Button from '~/components/common/Button';
 import Icon from '~/components/common/Icon';
 import { DownloadSingleProps } from '~/types/DownloadTypes';
+import Image from '~/components/common/Image';
 
 type DownloadProps = {
   data: DownloadSingleProps;
 };
 
 type IconName = {
+  [key: string]: React.ReactNode | string;
   discord: React.ReactNode;
   github: React.ReactNode;
   changelog: string;
   docs: string;
-  [key: string]: React.ReactNode | string;
 };
 
 const DownloadItem = ({ data }: DownloadProps) => {
@@ -32,20 +33,20 @@ const DownloadItem = ({ data }: DownloadProps) => {
     <div className="flex items-center gap-x-16">
       <div className="flex flex-col gap-y-4">
         {data.frontmatter.images.map((image) => (
-          <img
-            key={image.url}
-            className="h-[21rem] max-w-[37.5rem]"
+          <Image
             src={image.url}
             alt={image.alt}
+            className="h-[21rem] w-full max-w-[37.5rem] rounded-lg"
+            key={image.alt}
           />
         )).slice(0, 1)}
         <div className="flex gap-x-3">
           {data.frontmatter.images.map((image) => (
-            <img
-              key={image.url}
-              className="h-20 max-w-[8.75rem]"
+            <Image
               src={image.url}
               alt={image.alt}
+              className="h-20 w-fit max-w-[8.75rem] rounded-lg"
+              key={image.alt}
             />
           )).slice(1)}
         </div>
@@ -55,14 +56,16 @@ const DownloadItem = ({ data }: DownloadProps) => {
           <h2 className="text-xl font-medium">Info</h2>
           <div className="flex gap-x-3">
             {data.frontmatter.resources.map((resource) => (
-              <Button key={resource.name} className="flex gap-x-2" buttonType="resource">
-                <Icon icon={iconName[resource.name.toLowerCase()]} />
-                <div className="text-sm">{resource.name}</div>
-              </Button>
+              <a key={resource.name} className="text-sm" href={resource.url} target="_blank" rel="noreferrer">
+                <Button className="flex gap-x-2" buttonType="resource">
+                  <Icon icon={iconName[resource.name.toLowerCase()]} />
+                  {resource.name}
+                </Button>
+              </a>
             ))}
           </div>
         </div>
-        <div className="text-shoko-text text-base">{data.description}</div>
+        <div className="flex flex-col gap-y-6" id="markdown">{data.description}</div>
         <div className="flex flex-col gap-y-6">
           <div className="flex items-center gap-x-12 border-b pb-6">
             {data.frontmatter.downloads.map((downloadLink) => (

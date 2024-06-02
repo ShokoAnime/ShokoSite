@@ -60,7 +60,7 @@ const BlogList = () => {
   }, [isFetched]);
 
   if (!isFetched || !blogList) {
-    return <SkeletonLoader type="blog list" />;
+    return <SkeletonLoader type="blog-list" />;
   }
 
   const blogData = blogList.sort((a, b) => {
@@ -68,7 +68,7 @@ const BlogList = () => {
   });
 
   return (
-    <div className="flex w-[900px] flex-col">
+    <div className="flex w-full max-w-[900px] flex-col">
       {blogData.map((item, index, arr) => {
         const className = index !== arr.length - 1 ? 'border-b mb-8' : 'mb-0';
         return (

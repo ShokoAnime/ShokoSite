@@ -36,7 +36,7 @@ const PageBanner = ({ title, description }: PageBannerProps) => {
       <div className="bg-shoko-overlay absolute h-[22.5rem] w-full" />
       <div className="absolute left-1/2 top-1/2 w-full -translate-x-1/2 -translate-y-1/2">
         <div className={cx(`mx-auto flex max-w-[850px] flex-col items-center`, description ? 'gap-y-8' : 'gap-y-4')}>
-          <h1 className="text-shoko-text-alt">{title}</h1>
+          <h1 className="text-shoko-text-alt capitalize">{convertToProperName(title)}</h1>
           <h4 className="text-shoko-text-alt text-center">{description}</h4>
           <div className="flex">
             <LinkButton buttonType="breadcrumb" to="/">

@@ -27,7 +27,7 @@ function BlogPost() {
           title={blogDetail.frontmatter.title}
           image={blogDetail.frontmatter.image}
         />
-        <div className="text-shoko-text-header mx-auto my-16 flex h-full min-h-[calc(100vh-824px)] max-w-[1440px] justify-center gap-x-16 text-xl font-medium">
+        <div className="text-shoko-text-header mx-auto my-16 flex h-full min-h-[calc(100vh-824px)] max-w-[1440px] justify-between text-xl font-medium">
           <BlogDetailSidebar data={blogDetail} />
           <BlogDetailContent data={blogDetail} />
         </div>

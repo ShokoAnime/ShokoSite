@@ -13,7 +13,11 @@ const DownloadGrid = ({ data }: DownloadProps) => {
     <div className="flex flex-wrap gap-8">
       {data.map((download) => (
         <div key={download.frontmatter.name} className="flex max-w-[28.5rem] flex-col gap-y-6 ">
-          <img className="shadow-custom rounded-lg" src={download.frontmatter.images[0].url} alt="" />
+          <img
+            className="shadow-custom h-64 rounded-lg "
+            src={download.frontmatter.images[0].url}
+            alt={download.frontmatter.images[0].alt}
+          />
           <div className="flex items-center justify-between">
             <div>
               <h4>{download.frontmatter.name}</h4>

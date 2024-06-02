@@ -21,6 +21,12 @@ export const markdownTypes = (type: string) => {
         { eager: true },
       );
       break;
+    case 'legacy':
+      modules = import.meta.glob<{ default: string, frontmatter: Record<string, never> }>(
+        '../content/downloads/legacy/*.md',
+        { eager: true },
+      );
+      break;
   }
 
   return modules;
