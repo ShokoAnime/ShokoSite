@@ -13,7 +13,7 @@ type ItemProps = {
   url: string;
 };
 
-function Items({ anime, image, url }: ItemProps) {
+const SelectedAnime = ({ anime, image, url }: ItemProps) => {
   return (
     <a
       className="text-shoko-link flex flex-col gap-y-4 font-semibold"
@@ -28,25 +28,18 @@ function Items({ anime, image, url }: ItemProps) {
       </div>
     </a>
   );
-}
-
-const tempAnime: RandomAnimeProps = {
-  frontmatter: {
-    anime: 'One Piece',
-    image: 'default.webp',
-  },
 };
 
 const BlogListSpotlight = () => {
-  const [randomAnime, setRandomAnime] = useState<RandomAnimeProps>(tempAnime);
+  const [randomAnime, setRandomAnime] = useState<RandomAnimeProps | null>(null);
   const { fetchBlogList, blogList } = useBlogData();
 
   useEffect(() => {
-    fetchBlogList(['All']);
-  }, []);
+    if (blogList.length === 0) {
+      fetchBlogList(['All']);
+    }
 
-  useEffect(() => {
-    if (blogList.length !== 0 && randomAnime.frontmatter.image.includes('default.webp')) {
+    if (blogList.length !== 0 && randomAnime === null) {
       const randomIndex = Math.floor(Math.random() * blogList.length);
       setRandomAnime({
         frontmatter: {
@@ -55,22 +48,20 @@ const BlogListSpotlight = () => {
         },
       });
     }
-  }, [blogList]);
+  }, [blogList, fetchBlogList]);
 
   return (
     <div className="flex flex-col items-start gap-y-6">
-      {randomAnime.frontmatter.image.includes('default.webp')
-        ? <SkeletonLoader type="highlight" />
-        : (
-          <>
-            <HighLightHeader title="Anime Spotlight" />
-            <Items
-              image={randomAnime?.frontmatter.image}
-              anime={randomAnime?.frontmatter.anime}
-              url={`https://anidb.net/anime/?adb.search=${randomAnime?.frontmatter.anime}`}
-            />
-          </>
-        )}
+      <HighLightHeader title="Anime Spotlight" />
+      {randomAnime === null ? <SkeletonLoader type="highlight" /> : (
+        randomAnime && (
+          <SelectedAnime
+            image={randomAnime.frontmatter.image}
+            anime={randomAnime.frontmatter.anime}
+            url={`https://anidb.net/anime/?adb.search=${randomAnime.frontmatter.anime}`}
+          />
+        )
+      )}
     </div>
   );
 };

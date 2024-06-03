@@ -54,18 +54,18 @@ const BlogList = () => {
   const { blogList, fetchBlogList } = useBlogData();
   const [isFetched, setIsFetched] = useState(false);
 
+  const blogData = blogList.sort((a, b) => {
+    return new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime();
+  });
+
   useEffect(() => {
     fetchBlogList(['All']);
     setIsFetched(true);
   }, [isFetched]);
 
-  if (!isFetched || !blogList) {
+  if (blogData.length === 0) {
     return <SkeletonLoader type="blog-list" />;
   }
-
-  const blogData = blogList.sort((a, b) => {
-    return new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime();
-  });
 
   return (
     <div className="flex w-full max-w-[900px] flex-col">
