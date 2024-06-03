@@ -22,13 +22,11 @@ const validPaths = [
 
 function Downloads() {
   const path = useLocation().pathname;
-  const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState<DownloadSingleProps[]>();
   const [pathName, setPathName] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
-      setIsLoading(true);
       const pathSegments = path.split('/');
       const newPathName = pathSegments[2];
       setPathName(newPathName);
@@ -40,7 +38,6 @@ function Downloads() {
       const markdownDataCheck = Array.isArray(markdownData) ? markdownData : [markdownData];
 
       setData(markdownDataCheck);
-      setIsLoading(false);
     };
 
     fetchData();
@@ -48,11 +45,7 @@ function Downloads() {
 
   document?.querySelector('#download-list')?.scrollIntoView({ block: 'end' });
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if (!pathName) {
+  if (pathName !== '' && path === '/downloads') {
     return <Navigate to="/downloads/shoko-server" replace />;
   }
 
@@ -72,7 +65,7 @@ function Downloads() {
           icon={downloadMessage(pathName).icon}
           message={downloadMessage(pathName).content}
         />
-        {!isLoading && data !== undefined && (
+        {data !== undefined && (
           pathName === 'shoko-server'
             ? <DownloadItem data={data[0]} />
             : <DownloadGrid data={data} />

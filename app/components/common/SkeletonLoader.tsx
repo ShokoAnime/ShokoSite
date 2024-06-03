@@ -8,12 +8,9 @@ type SkeletonLoaderProps = {
 const SkeletonLoader = ({ type }: SkeletonLoaderProps) => {
   if (type === 'highlight') {
     return (
-      <div className="flex w-full max-w-[386px] flex-col gap-y-6">
-        <Skeleton width={'100%'} height={49} />
-        <div className="flex flex-col gap-y-4">
-          <Skeleton width={'100%'} height={204} />
-          <Skeleton width={'100%'} height={26} />
-        </div>
+      <div className="flex w-full max-w-[386px] flex-col gap-y-4">
+        <Skeleton width={'100%'} height={208} />
+        <Skeleton width={'100%'} height={26} />
       </div>
     );
   }
