@@ -11,15 +11,6 @@ import { DownloadSingleProps } from '~/types/DownloadTypes';
 import { downloadMessage } from '~/components/downloads/DownloadCallout.utils';
 import { markdownDetail } from '~/helpers/markdown-detail';
 
-const validPaths = [
-  'downloads',
-  'shoko-server',
-  'media-player-plugins',
-  'web-ui-themes',
-  'renamer-plugins',
-  'legacy',
-];
-
 function Downloads() {
   const path = useLocation().pathname;
   const [data, setData] = useState<DownloadSingleProps[]>();
@@ -49,7 +40,7 @@ function Downloads() {
     return <Navigate to="/downloads/shoko-server" replace />;
   }
 
-  if (!validPaths.includes(pathName)) {
+  if (data?.length === 0) {
     return <PageNotFound />;
   }
 
