@@ -36,20 +36,22 @@ const DownloadItem = ({ data }: DownloadProps) => {
           <Image
             src={image.url}
             alt={image.alt}
-            className="h-[21rem] w-full max-w-[37.5rem] rounded-lg"
+            className="size-full max-h-[21rem] max-w-[37.5rem] rounded-lg"
             key={image.alt}
           />
         )).slice(0, 1)}
-        <div className="flex gap-x-3">
-          {data.frontmatter.images.map((image) => (
-            <Image
-              src={image.url}
-              alt={image.alt}
-              className="h-20 w-fit max-w-[8.75rem] rounded-lg"
-              key={image.alt}
-            />
-          )).slice(1)}
-        </div>
+        {data.frontmatter.images.length > 1 && (
+          <div className="flex gap-x-3">
+            {data.frontmatter.images.map((image) => (
+              <Image
+                src={image.url}
+                alt={image.alt}
+                className="h-20 w-fit max-w-[8.75rem] rounded-lg"
+                key={image.alt}
+              />
+            )).slice(1)}
+          </div>
+        )}
       </div>
       <div className="flex w-full flex-col gap-y-6">
         <div className="border-shoko-border flex items-center justify-between gap-x-2 border-b pb-6">

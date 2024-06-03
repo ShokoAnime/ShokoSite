@@ -20,8 +20,8 @@ export const navRoutes: NavRoute[] = [
   { title: 'Contributors', route: '/contributors' },
   { title: 'Downloads', route: '/downloads/shoko-server' },
   { title: 'Documentation', route: 'https://docs.shokoanime.com/' },
-  { title: 'Github', route: 'https://github.com', icon: <FaGithub size={24} /> },
-  { title: 'Discord', route: 'https://discord.com', icon: <FaDiscord size={24} /> },
+  { title: 'Github', route: 'https://github.com/ShokoAnime/', icon: <FaGithub size={24} /> },
+  { title: 'Discord', route: 'https://discord.gg/vpeHDsg', icon: <FaDiscord size={24} /> },
 ];
 
 const Header = () => {
@@ -40,16 +40,33 @@ const Header = () => {
         </Link>
         <div className="hidden gap-4 font-medium xl:inline-flex">
           {navRoutes.map((route) => (
-            <Link
-              key={route.title}
-              to={route.route}
-              className={`flex items-center gap-x-2${currentURL.startsWith(route.route) ? ' text-shoko-link' : ''}`}
-            >
-              {route.icon && (
-                route.icon
-              )}
-              {route.title}
-            </Link>
+            route.title !== 'Github' && route.title !== 'Discord'
+              ? (
+                <Link
+                  key={route.title}
+                  to={route.route}
+                  className={`flex items-center gap-x-2${currentURL.startsWith(route.route) ? ' text-shoko-link' : ''}`}
+                >
+                  {route.icon && (
+                    route.icon
+                  )}
+                  {route.title}
+                </Link>
+              )
+              : (
+                <a
+                  key={route.title}
+                  href={route.route}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-x-2"
+                >
+                  {route.icon && (
+                    route.icon
+                  )}
+                  {route.title}
+                </a>
+              )
           ))}
         </div>
         <div className="flex gap-x-2">

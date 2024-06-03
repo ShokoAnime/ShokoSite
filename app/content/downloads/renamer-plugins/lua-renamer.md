@@ -9,20 +9,26 @@ resources:
   - name: 'Github'
     url: 'https://github.com/Mik1ll/LuaRenamer'
   - name: 'Discord'
-    url: 'https://discord.com/channels/96234011612958720/747541697684045905'
+    url: 'https://discord.gg/vpeHDsg'
 downloads:
   - text: 'Shoko Server'
     links:
-      - name: 'For Shoko Stable'
+      - name: 'Shoko Stable'
         version: '3.2.1'
         date: 'July 17, 2023'
         url: 'https://github.com/Mik1ll/LuaRenamer/releases/tag/v3.2.1'
-      - name: 'For Latest Shoko Daily'
+      - name: 'Latest Shoko Daily'
         version: '4.1.1'
         date: 'April 22, 2024'
         url: 'https://github.com/Mik1ll/LuaRenamer/releases/tag/v4.1.1'
 ---
 
-Rename your files with Lua. Fitting for those who have renaming requirements not fulfilled by the legacy renamer and don't want to write+compile their own plugin. Provides access to much of the data available via Shoko's plugin interface, allowing you to write a script with complex renaming rules and edge case handling. Also allows you to fully control where your files end up with destination import folder and subfolder customization.
+Ideal for users with specific renaming needs not met by the legacy renamer, Lua allows you to rename files without
+writing and compiling your own plugin. Access extensive data via Shoko's plugin interface to create scripts with complex
+renaming rules and edge case handling. Additionally, you can fully control the destination import folder and subfolder
+customization, ensuring your files are organized exactly as you want.
 
-#### [Please view the docs to get started](https://docs.shokoanime.com/renaming-plugins/lua-renamer)
+New users, we highly recommend reading the **Getting Started** docs, which will guide you through creating your first
+script. Check the links at the top of the page to get started.
+
+**Requires minimal coding knowledge to use.**
