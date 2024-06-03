@@ -2,7 +2,10 @@ import { Link } from '@remix-run/react';
 import { useBlogData } from '~/context/BlogContext';
 import { useEffect, useState } from 'react';
 import SkeletonLoader from '~/components/common/SkeletonLoader';
-import { convertDate } from '~/helpers/utils';
+import { convertDate, convertNameToUrl } from '~/helpers/utils';
+import Icon from '~/components/common/Icon';
+import { mdiArrowRight } from '@mdi/js';
+import LinkButton from '~/components/common/LinkButton';
 
 const NewsPost = () => {
   const { blogList, fetchBlogList } = useBlogData();
@@ -27,11 +30,21 @@ const NewsPost = () => {
               .slice(0, 3)
               .map((news) => (
                 <div key={news.frontmatter.title} className="flex w-full max-w-[450px] flex-col gap-y-6">
-                  <img
-                    className="shadow-custom rounded-lg"
-                    src={`/images/blog/${news.frontmatter.image}`}
-                    alt={news.frontmatter.title}
-                  />
+                  <div className="relative">
+                    <img
+                      className="shadow-custom rounded-lg"
+                      src={`/images/blog/${news.frontmatter.image}`}
+                      alt={news.frontmatter.title}
+                    />
+                    <Link
+                      className="font-medium"
+                      to={`/blog/${news.filename.split('/').pop()?.replace('.md', '')}`}
+                    >
+                      <div className="text-shoko-text-alt absolute inset-0 flex items-center justify-center rounded-lg bg-gray-900/65 text-2xl opacity-0 transition-opacity duration-300 hover:opacity-100">
+                        Read More →
+                      </div>
+                    </Link>
+                  </div>
                   <div className="text-shoko-text-header">
                     <div className="text-shoko-text-header font-medium opacity-65">
                       {convertDate(news.frontmatter.date)}
@@ -41,8 +54,10 @@ const NewsPost = () => {
                     </div>
                   </div>
                   <div className="line-clamp-3">{news.description}</div>
-
-                  <Link className="text-shoko-link font-medium" to={news.frontmatter.title}>
+                  <Link
+                    className="text-shoko-link font-medium"
+                    to={`/blog/${news.filename.split('/').pop()?.replace('.md', '')}`}
+                  >
                     Read More →
                   </Link>
                 </div>

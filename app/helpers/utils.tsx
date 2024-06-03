@@ -11,6 +11,7 @@ export const convertToProperName = (path: string) => {
 export const convertNameToUrl = (path: string) => {
   return path
     .replace(/ /g, '-')
+    .replace('.md', '')
     .toLowerCase();
 };
 
