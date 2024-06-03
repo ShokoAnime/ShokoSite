@@ -6,7 +6,7 @@ date = 2024-03-27T09:16:46-07:00
 type = "post"
 anime = "The Apothecary Diaries"
 category = ["Update"]
-tag = ["ShokoRelay", "Shoko Desktop", "Shokofin"]
+tag = ["ShokoRelay"]
 +++
 
 As we continue our efforts on the next major update to Shoko itself, packed with new features and significant
@@ -46,8 +46,8 @@ the other.
 
 ##### Additional Info and Download
 
-If you're curious, we suggest investing a few moments to read the 
-[ShokoRelay README](https://github.com/natyusha/ShokoRelay.bundle) for comprehensive details and a breakdown of 
+If you're curious, we suggest investing a few moments to read the
+[ShokoRelay README](https://github.com/natyusha/ShokoRelay.bundle) for comprehensive details and a breakdown of
 updates. Download and install instructions are also provided there.
 
 ##### Coming Soon
