@@ -21,6 +21,12 @@ export const markdownTypes = (type: string) => {
         { eager: true },
       );
       break;
+    case 'renamer-plugins':
+      modules = import.meta.glob<{ default: string, frontmatter: Record<string, never> }>(
+        '../content/downloads/renamer-plugins/*.md',
+        { eager: true },
+      );
+      break;
     case 'legacy':
       modules = import.meta.glob<{ default: string, frontmatter: Record<string, never> }>(
         '../content/downloads/legacy/*.md',
