@@ -7,17 +7,28 @@ import { BlogPreviewProps } from '~/types/BlogTypes';
 import { useBlogData } from '~/context/BlogContext';
 import { useEffect, useState } from 'react';
 import SkeletonLoader from '~/components/common/SkeletonLoader';
+import { Link } from '@remix-run/react';
 
 const BlogPreview = ({ url, tags, date, title, image, className, description }: BlogPreviewProps) => {
   const postUrl = url.split('/').pop()?.replace('.md', '');
 
   return (
     <div className={cx('flex flex-col gap-y-6 pb-8', className)}>
-      <img
-        src={`/images/blog/${image}`}
-        alt={title}
-        className="shadow-custom h-[18.75rem] rounded-lg object-cover object-top"
-      />
+      <div className="relative">
+        <img
+          src={`/images/blog/${image}`}
+          alt={title}
+          className="shadow-custom h-[18.75rem] w-full rounded-lg object-cover object-top"
+        />
+        <Link
+          className="font-medium"
+          to={postUrl ?? ''}
+        >
+          <div className="text-shoko-text-alt absolute inset-0 flex items-center justify-center rounded-lg bg-gray-900/65 text-2xl opacity-0 transition-opacity duration-300 hover:opacity-100">
+            Read More →
+          </div>
+        </Link>
+      </div>
       <div className="flex flex-col gap-y-2">
         <div className="flex justify-between">
           <div className="text-shoko-text-header font-medium opacity-65">{convertDate(date)}</div>
@@ -40,12 +51,12 @@ const BlogPreview = ({ url, tags, date, title, image, className, description }: 
       <div className="line-clamp-5">
         {description}
       </div>
-      <LinkButton buttonType="primary" className="w-40 p-3" to={postUrl ?? ''}>
-        <div className="mx-auto flex items-center gap-x-2">
-          Read More
-          <Icon icon={mdiArrowRight} />
-        </div>
-      </LinkButton>
+      <Link
+        className="text-shoko-link font-medium"
+        to={postUrl ?? ''}
+      >
+        Read More →
+      </Link>
     </div>
   );
 };
@@ -70,7 +81,7 @@ const BlogList = () => {
   return (
     <div className="flex w-full max-w-[900px] flex-col">
       {blogData.map((item, index, arr) => {
-        const className = index !== arr.length - 1 ? 'border-b mb-8' : 'mb-0';
+        const className = index !== arr.length - 1 ? 'border-shoko-border border-b mb-8' : 'mb-0';
         return (
           <BlogPreview
             key={item.filename}
