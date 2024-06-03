@@ -5,12 +5,11 @@ type ImageProps = {
   src: string;
   alt: string;
   className?: string;
-  key?: string;
 };
 
-const Image = ({ src, alt, className, key }: ImageProps) => {
+const Image = ({ src, alt, className }: ImageProps) => {
   return (
-    <Zoom key={key} zoomMargin={65}>
+    <Zoom zoomMargin={65}>
       <img className={className} src={src} alt={alt} />
     </Zoom>
   );
