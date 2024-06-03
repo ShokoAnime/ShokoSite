@@ -5,6 +5,8 @@ import Icon from '~/components/common/Icon';
 import { mdiDownload, mdiMail, mdiTextBoxOutline } from '@mdi/js';
 import { FaFacebook, FaPinterest, FaReddit } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
+import { useLocation } from '@remix-run/react';
+import { convertToProperName } from '~/helpers/utils';
 
 type BlogDetailSidebar = {
   data: BlogPostProps;
@@ -21,6 +23,33 @@ const BlogListSidebar = ({ data }: BlogDetailSidebar) => {
   const downloadItem: DownloadChangelog = data.frontmatter.download;
   // @ts-expect-error - Workaround for the type error.
   const changelogItem: DownloadChangelog = data.frontmatter.changelog;
+  const location = useLocation();
+  const title = convertToProperName(data.frontmatter.title);
+  const encodedTitle = encodeURIComponent(title);
+  const encodedUrl = encodeURIComponent(`https://shokoanime.com/${location.pathname}`);
+
+  const shareLinks = [
+    {
+      icon: <FaReddit size={24} />,
+      link: `https://www.reddit.com/submit?title=${encodedTitle}&url=${encodedUrl}`,
+    },
+    {
+      icon: <FaXTwitter size={24} />,
+      link: `https://x.com/share?text=${encodedTitle}&url=${encodedUrl}`,
+    },
+    {
+      icon: <FaFacebook size={24} />,
+      link: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
+    },
+    {
+      icon: <FaPinterest size={24} />,
+      link: `https://www.pinterest.com/pin/create/button/?url=${encodedUrl}&description=${encodedTitle}`,
+    },
+    {
+      icon: <Icon icon={mdiMail} />,
+      link: `mailto:?subject=${encodedTitle}&body=${encodedUrl}`,
+    },
+  ];
 
   return (
     <div className="bg-shoko-bg-alt flex w-[28.125rem] flex-col gap-y-8 rounded-lg p-8">
@@ -83,21 +112,13 @@ const BlogListSidebar = ({ data }: BlogDetailSidebar) => {
         <div className="flex flex-col items-start gap-y-6 text-base">
           <HighLightHeader title="Share" />
           <div className="flex w-full gap-x-4">
-            <Button buttonType="share">
-              <FaReddit size={24} />
-            </Button>
-            <Button buttonType="share">
-              <FaXTwitter size={24} />
-            </Button>
-            <Button buttonType="share">
-              <FaFacebook size={24} />
-            </Button>
-            <Button buttonType="share">
-              <FaPinterest size={24} />
-            </Button>
-            <Button buttonType="share">
-              <Icon icon={mdiMail} />
-            </Button>
+            {shareLinks.map((link, index) => (
+              <a key={index} href={link.link} target="_blank" rel="noreferrer">
+                <Button buttonType="share">
+                  {link.icon}
+                </Button>
+              </a>
+            ))}
           </div>
         </div>
       </div>
