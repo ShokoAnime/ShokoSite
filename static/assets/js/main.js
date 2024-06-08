@@ -75,21 +75,11 @@ function getRandomBanner() {
 }
 
 while (parseInt(randomBanner, 10) === parseInt(previousBanner, 10)) {
-	if (parseInt(randomBanner, 10) === parseInt(previousBanner, 10)) {
-		randomBanner = getRandomBanner();
-	}
-}
-
-// Check to see if the user is visiting a translated page.
-if (document.body.classList.contains('lang-en')) {
-	header = 'rgba(0, 0, 0, 0) url("/assets/images/banners/Banner-' + randomBanner + '.jpg") repeat scroll 50% 20% / cover';
-} else {
-	header = 'rgba(0, 0, 0, 0) url("/assets/images/banners/Banner-' + randomBanner + '.jpg") repeat scroll 50% 20% / cover';
+	randomBanner = getRandomBanner();
 }
 
 // Hero is only used on the index page while the other is used on every other page.
-css('.hero-wrapper', 'background', header);
-css('.random-banner', 'background', header);
+css(':root', '--hero-image', 'url("/assets/images/banners/Banner-' + randomBanner + '.jpg")');
 
 sessionStorage.setItem("bannerID", randomBanner);
 

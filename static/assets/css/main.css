@@ -220,8 +220,12 @@ strong {
 ---------------------------------------------
 */
 
+:root {
+    --hero-image: url(/assets/images/banners/Banner-3.jpg)
+}
+
 .hero-wrapper {
-    background: url(../images/banners/Banner-3.jpg) 50% 20%/cover;
+    background: var(--hero-image) 50% 20%/cover;
     height: 600px;
     position: relative;
 }
@@ -518,7 +522,7 @@ strong {
 */
 
 .random-banner {
-    background: url(../images/banners/Banner-3.jpg) 50% 20%/cover;
+    background: var(--hero-image) 50% 20%/cover;
     height: 400px;
     position: relative;
 }
