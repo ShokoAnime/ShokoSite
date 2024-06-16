@@ -8,72 +8,67 @@ const mediaPlayers = [
 const InfoGroupDetails = [
   {
     title: 'Collection Management Made Easy',
+    subtitle: 'Let Shoko Take Control',
     image: '/images/home/web-ui-dashboard.webp',
     content: (
       <>
-        <span>
-          <span className="text-shoko-highlight font-medium">Shoko</span>{' '}
-          is a free, open-source, cross-platform anime collection management system that automates the process of
-          organizing your library. It eliminates the need to manually input series information or rename files to
-          conform to specific formats for basic series data. Shoko simplifies anime management, making it easier to
-          organize and enjoy your collection.
-        </span>
-        <span>
-          Shoko streamlines the process for you, ensuring that your collection is always well-organized, easily
-          accessible across multiple devices with one of our many media player plugins, and most importantly,
-          automatically maintained.
-        </span>
-        <span className="text-shoko-highlight font-medium">
-          It&apos;s important to note that Shoko does not offer any means to download files, stream files from streaming
-          sites, or access files that are not part of your personal collection.
-        </span>
+        <div>
+          Shoko is a free, open-source, and cross-platform anime collection management system that automates organizing
+          your collection, regardless of size or location. It eliminates the need for manual input of series information
+          or file renaming, ensuring your collection is well-organized and accessible across multiple devices with media
+          player plugins.
+        </div>
+        <div className="text-shoko-highlight font-medium">
+          Please be aware that Shoko does not offer any means to download files, stream files from streaming sites, or
+          access files that are not part of your personal collection.
+        </div>
       </>
     ),
   },
   {
     title: 'Spend More Time Watching Anime',
+    subtitle: 'Get Started In Minutes',
     image: '/images/home/web-ui-series.webp',
     content: (
       <>
-        <span>
-          With Shoko, you can have your anime collection up and running within just five minutes. Shoko automatically
-          populates your database with information about the various series and episodes in your collection by hashing
-          each file for comparison against{' '}
+        <div>
+          With Shoko, you can have your anime collection up and running in just five minutes. Shoko automatically
+          populates your database with detailed information about the series and episodes in your collection by hashing
+          each file and comparing it against{' '}
           <a
-            className="text-shoko-link font-medium underline"
+            className="text-shoko-link underline"
             href="https://anidb.net"
             target="_blank"
             rel="noreferrer"
           >
             AniDB&apos;s
           </a>{' '}
-          extensive database. Shoko also utilizes additional metadata sources to provide even more information and
-          integration, ensuring that your collection is complete and well-organized.
-        </span>
-        <span>
-          Once your collection is set up, all that&apos;s left for you to do is decide which series you want to watch.
-        </span>
+          extensive database. Additionally, Shoko uses various metadata sources to provide even more information and
+          integration, ensuring your collection is complete and well-organized. Once your collection is set up, all
+          that&apos;s left for you to do is decide which series to watch next.
+        </div>
       </>
     ),
   },
   {
     title: 'Media Player Support',
+    subtitle: 'Watch Your Way',
     image: '/images/home/media-player.webp',
     content: (
       <>
-        <span>
-          Shoko offers more than just automated collection management. It also supports a wide range of media players,
-          allowing you to watch your collection on the device of your choice anywhere you’d like.
-        </span>
+        <div>
+          Shoko offers more than just automated collection management. It supports a wide range of media players,
+          allowing you to watch your collection on thefk device of your choice, wherever you’d like.
+        </div>
         <div className="mt-4 grid grid-cols-2 grid-rows-2 gap-y-8">
           {mediaPlayers.map((data) => (
             <div key={data.name} className="flex items-center gap-x-4">
               <img width={60} height={60} src={data.image} alt={data.name} />
               <div className="flex flex-col">
-                <span className="text-shoko-text-header font-medium">
+                <div className="text-shoko-text-header font-header text-lg font-semibold">
                   {data.name}
-                </span>
-                <span>{data.mediaPlayer}</span>
+                </div>
+                <div>{data.mediaPlayer}</div>
               </div>
             </div>
           ))}

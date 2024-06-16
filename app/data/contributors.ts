@@ -1,6 +1,6 @@
-import { ContributorsType } from '~/types/ContributorsType';
+import { ContributorsProps } from '~/types/contributors';
 
-export const staff: ContributorsType[] = [
+export const staff: ContributorsProps[] = [
   {
     name: 'Avael',
     avatar_url: 'https://avatars.githubusercontent.com/u/197087?v=4',
@@ -73,7 +73,7 @@ export const staff: ContributorsType[] = [
   },
 ];
 
-export const honorable: ContributorsType[] = [
+export const honorable: ContributorsProps[] = [
   {
     name: 'krbrs',
     avatar_url: 'https://avatars.githubusercontent.com/u/57227244?v=4',
@@ -112,7 +112,7 @@ export const honorable: ContributorsType[] = [
   },
 ];
 
-export const contributors: ContributorsType[] = [
+export const contributors: ContributorsProps[] = [
   {
     name: 'Queuecumbr',
     avatar_url: 'https://avatars.githubusercontent.com/u/11492746?v=4',

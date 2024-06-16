@@ -1,28 +1,23 @@
 {
-  "name": "my-remix-app",
+  "name": "shokoremix",
   "private": true,
   "sideEffects": false,
   "type": "module",
   "scripts": {
-    "dev": "remix vite:dev",
+    "preinstall": "npx only-allow pnpm",
     "build": "remix vite:build",
-    "eslint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
+    "dev": "remix vite:dev",
+    "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
     "start": "remix-serve ./build/server/index.js",
-    "typecheck": "tsc",
-    "generate-json": "node ./scripts/generate-blog-data.js"
+    "typecheck": "tsc"
   },
   "dependencies": {
     "@fontsource-variable/lexend-deca": "^5.0.13",
-    "@fortawesome/free-brands-svg-icons": "^6.5.2",
-    "@icons-pack/react-simple-icons": "^9.5.0",
+    "@fontsource-variable/work-sans": "^5.0.19",
     "@mdi/js": "^7.4.47",
     "@remix-run/node": "^2.9.2",
     "@remix-run/react": "^2.9.2",
     "@remix-run/serve": "^2.9.2",
-    "@tabler/icons-react": "^3.5.0",
-    "classnames": "^2.5.1",
-    "esbuild": "^0.21.4",
-    "install": "^0.13.0",
     "isbot": "^4.4.0",
     "js-cookie": "^3.0.5",
     "overlayscrollbars": "^2.8.3",
@@ -30,11 +25,8 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-icons": "^5.2.1",
-    "react-lazy-load-image-component": "^1.6.0",
     "react-loading-skeleton": "^3.4.0",
-    "react-medium-image-zoom": "^5.2.4",
-    "remark-gfm": "^4.0.0",
-    "simple-icons-font": "^11.12.0"
+    "react-medium-image-zoom": "^5.2.4"
   },
   "devDependencies": {
     "@mdx-js/mdx": "^3.0.1",
@@ -48,26 +40,29 @@
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",
     "autoprefixer": "^10.4.19",
+    "classnames": "^2.5.1",
     "dprint": "^0.45.1",
     "eslint": "^8.57.0",
     "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-mdx": "^3.1.5",
-    "eslint-plugin-react": "^7.34.1",
+    "eslint-plugin-react": "^7.34.2",
     "eslint-plugin-react-hooks": "^4.6.2",
-    "eslint-plugin-tailwindcss": "^3.17.0",
+    "eslint-plugin-tailwindcss": "^3.17.3",
     "gray-matter": "^4.0.3",
     "mdx-bundler": "^10.0.2",
+    "only-allow": "^1.2.1",
     "postcss": "^8.4.38",
     "remark-frontmatter": "^5.0.0",
+    "remark-gfm": "^4.0.0",
     "remark-mdx-frontmatter": "^4.0.0",
-    "tailwindcss": "^3.4.3",
+    "tailwindcss": "^3.4.4",
     "typescript": "^5.4.5",
-    "vite": "^5.2.11",
+    "vite": "^5.3.1",
     "vite-tsconfig-paths": "^4.3.2"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=20.0.0"
   }
 }

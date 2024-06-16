@@ -1,20 +1,14 @@
-import { ReactNode, useMemo } from 'react';
-import { ContributorsType } from '~/types/ContributorsType';
-import UserCard from './UserCard';
-
-type ContributorsGroupProps = {
-  title: string;
-  description: string | ReactNode;
-  type: 'staff' | 'honorable' | 'contributors';
-  data: ContributorsType[];
-};
+import { useMemo } from 'react';
+import { ContributorsGroupProps, ContributorsProps } from '~/types/contributors';
+import { SectionHeader } from '~/components/common/SectionHeader';
+import UserCard from '../common/UserCard';
 
 const ContributorsGroup = ({ title, description, type, data }: ContributorsGroupProps) => {
   const contributorsSorted = useMemo(() => {
     return data.sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
   }, [data]);
 
-  const renderContributor = (contributor: ContributorsType) => {
+  const renderContributor = (contributor: ContributorsProps) => {
     const { name, avatar_url, url, role, join_date, honorable } = contributor;
 
     const isStaff = type === 'staff' && join_date;
@@ -24,6 +18,7 @@ const ContributorsGroup = ({ title, description, type, data }: ContributorsGroup
     if (isStaff || isHonorable || isContributor) {
       return (
         <UserCard
+          type="contributors"
           key={name}
           name={name}
           image={avatar_url}
@@ -38,10 +33,9 @@ const ContributorsGroup = ({ title, description, type, data }: ContributorsGroup
   };
 
   return (
-    <div className="flex flex-col gap-y-16">
+    <div className="flex flex-col gap-y-8">
       <div className="flex flex-col gap-y-3">
-        <h2>{title}</h2>
-        <hr className="border-shoko-highlight w-[6.25rem] border" />
+        <SectionHeader title={title} type="h2" />
         <div>{description}</div>
       </div>
 

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import Button from '~/components/common/Button';
 import HistorySection from '~/components/about/HistorySection';
-import PageBanner from '~/components/layout/PageBanner';
+import cx from 'classnames';
+import { PageBanner } from '~/components/layout/PageBanner';
 
 function About() {
   const [tab, setTab] = useState('The Early Years');
@@ -18,12 +19,13 @@ function About() {
         title="About Shoko"
         description="Spend some time learning about Shoko's development over the years."
       />
-      <div className="bg-shoko-bg-alt h-[5.5rem] p-4">
+      <div className="bg-shoko-bg-alt border-shoko-border border-b border-solid py-2">
         <div className="text-shoko-text-header mx-auto flex h-full max-w-[1440px] items-center justify-center gap-x-2 text-xl font-medium">
           {headers.map((header) => (
             <Button
               key={header}
-              buttonType={tab === header ? 'primary' : 'padded'}
+              className={cx('p-3', tab === header ? '!text-shoko-link' : 'text-shoko-text-header')}
+              buttonType="text"
               onClick={(e) => {
                 onClickHandler(e);
               }}

@@ -34,7 +34,7 @@ module.exports = {
     "tailwindcss/no-custom-classname": [
       "warn",
       {
-        "whitelist": ['shoko-blog-post']
+        "whitelist": ['shoko-post']
       }
     ],
     'tailwindcss/enforces-negative-arbitrary-values': 'warn',

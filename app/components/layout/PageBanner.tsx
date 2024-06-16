@@ -1,7 +1,7 @@
 import { useLocation } from '@remix-run/react';
 import { useEffect, useState } from 'react';
 import cx from 'classnames';
-import { convertToProperName } from '~/helpers/utils';
+import { convertToProperName } from '~/helpers/helpers';
 import LinkButton from '~/components/common/LinkButton';
 import { useSetPageTitle } from '~/hooks/useSetPageTitle';
 
@@ -10,7 +10,7 @@ type PageBannerProps = {
   description?: string;
 };
 
-const PageBanner = ({ title, description }: PageBannerProps) => {
+export const PageBanner = ({ title, description }: PageBannerProps) => {
   const [bannerUrl, setBannerUrl] = useState('');
   const [breadcrumbs, setBreadcrumbs] = useState<string[]>([]);
   const location = useLocation();
@@ -19,42 +19,68 @@ const PageBanner = ({ title, description }: PageBannerProps) => {
 
   useSetPageTitle(title);
 
+  // Function to shuffle an array
+  const shuffleArray = (array: number[]): number[] => {
+    return array.map((value) => ({ value, sort: Math.random() }))
+      .sort((a, b) => a.sort - b.sort)
+      .map(({ value }) => value);
+  };
+
   useEffect(() => {
-    const pathSegments = location.pathname.split('/');
-    const isValidPath = pathSegments.length === 3 || pathSegments.length === 4;
+    const updateBannerUrl = () => {
+      const pathSegments = location.pathname.split('/');
+      const isValidPath = pathSegments.length === 2 || pathSegments.length === 3 || pathSegments.length === 4;
 
-    if (bannerUrl === '' || !isValidPath) {
-      const randomBanner = Math.floor(Math.random() * bannerCount) + 1;
-      setBannerUrl(`/images/banners/banner-${randomBanner}.webp`);
-    }
+      if (!isValidPath) {
+        setBreadcrumbs(pathSegments.slice(1).filter(segment => segment));
+        return;
+      }
 
-    setBreadcrumbs(pathSegments.slice(1).filter((segment) => !!segment));
-  }, [location.pathname]);
+      if (!bannerUrl || !isValidPath) {
+        const banners = shuffleArray(Array.from({ length: bannerCount }, (_, i) => i + 1));
+        const randomBanner = banners.pop();
+
+        setBannerUrl(`/images/banners/banner-${randomBanner}.webp`);
+      }
+
+      setBreadcrumbs(pathSegments.slice(1).filter(segment => segment));
+    };
+
+    updateBannerUrl();
+  }, [bannerUrl, location.pathname]);
+
+  const renderBreadcrumbs = () =>
+    breadcrumbs.map((segment, index) => {
+      const isLastSegment = index === breadcrumbs.length - 1;
+      const path = `/${breadcrumbs.slice(0, index + 1).join('/')}`;
+
+      return (
+        <div className="flex gap-x-2" key={index}>
+          {!isLastSegment
+            ? (
+              <LinkButton buttonType="breadcrumb" to={path}>
+                {convertToProperName(segment)}
+              </LinkButton>
+            )
+            : <h4 className="text-shoko-text-alt capitalize">{convertToProperName(segment)}</h4>}
+          {!isLastSegment && <h4 className="text-shoko-text-alt">{'>>'}</h4>}
+        </div>
+      );
+    });
 
   return (
     <div className="relative h-[22.5rem]">
       <div className="bg-shoko-overlay absolute h-[22.5rem] w-full" />
       <div className="absolute left-1/2 top-1/2 w-full -translate-x-1/2 -translate-y-1/2">
-        <div className={cx(`mx-auto flex max-w-[850px] flex-col items-center`, description ? 'gap-y-8' : 'gap-y-4')}>
+        <div className={cx('flex w-full flex-col items-center justify-center', description ? 'gap-y-4' : 'gap-y-2')}>
           <h1 className="text-shoko-text-alt capitalize">{convertToProperName(title)}</h1>
-          <h4 className="text-shoko-text-alt text-center">{description}</h4>
-          <div className="flex">
+          <h4 className="text-shoko-text-alt w-full max-w-[850px] text-center">{description}</h4>
+          <div className="flex items-center justify-between gap-x-2">
             <LinkButton buttonType="breadcrumb" to="/">
               Shoko
             </LinkButton>
-            <h4 className="text-shoko-text-alt">/</h4>
-            {breadcrumbs.map((segment, index) => (
-              <div className="flex" key={index}>
-                {breadcrumbs.length > index + 1
-                  ? (
-                    <LinkButton buttonType="breadcrumb" to={`/${breadcrumbs.slice(0, index + 1).join('/')}`}>
-                      {convertToProperName(segment)}
-                    </LinkButton>
-                  )
-                  : <h4 className="text-shoko-text-alt ml-2 capitalize">{convertToProperName(segment)}</h4>}
-                {breadcrumbs.length > index + 1 && <h4 className="text-shoko-text-alt">/</h4>}
-              </div>
-            ))}
+            <h4 className="font-header text-shoko-text-alt">{'>>'}</h4>
+            {renderBreadcrumbs()}
           </div>
         </div>
       </div>
@@ -62,5 +88,3 @@ const PageBanner = ({ title, description }: PageBannerProps) => {
     </div>
   );
 };
-
-export default PageBanner;

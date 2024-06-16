@@ -1,4 +1,5 @@
 @import '@fontsource-variable/lexend-deca';
+@import '@fontsource-variable/work-sans';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,17 +7,21 @@
 @layer base {
     a {
         @apply hover:text-shoko-link-hover;
+        @apply font-semibold;
     }
 
     body, html {
         @apply bg-shoko-bg;
         @apply text-shoko-text;
         @apply text-base;
+        @apply font-body;
+        @apply font-medium;
     }
 
     h1, h2, h3, h4, h5, h6 {
         @apply text-shoko-text-header;
-        @apply font-medium
+        @apply font-medium;
+        @apply font-header;
     }
 
     h1 {
@@ -42,86 +47,72 @@
     strong {
         @apply font-semibold text-shoko-highlight;
     }
-
-    /* Tailwind LG Breakpoint*/
-    @media (min-width: 1281px) {
-        h1 {
-            @apply text-[3rem] leading-[3.75rem];
-        }
-    }
 }
 
 :root {
-    --shoko-bg: #FDFCFF;
-    --shoko-bg-alt: #F5F4F8;
-    --shoko-border: #BAC8D7A6;
-    --shoko-text: #535E72;
-    --shoko-text-header: #2C324B;
-    --shoko-text-alt: #FFFFFF;
-    --shoko-link: #3E64ED;
-    --shoko-link-hover: #425ECC;
-    --shoko-link-header: #66B4F3;
-    --shoko-link-header-hover: #5ba2da;
-    --shoko-button-alt: #202941;
-    --shoko-button-alt-hover: #2a365b;
-    --shoko-highlight: #EC407A;
-    --shoko-overlay: #0A0B1DBF;
+    --shoko-bg: rgba(253, 252, 255, 1);
+    --shoko-bg-alt: rgba(245, 244, 248, 1);
+    --shoko-border: rgba(186, 200, 215, 0.65);
+    --shoko-text: rgba(32, 46, 84, 1);
+    --shoko-text-header: rgba(44, 50, 75, 1);
+    --shoko-text-alt: rgba(255, 255, 255, 1);
+    --shoko-link: rgba(62, 100, 237, 1);
+    --shoko-link-hover: rgba(66, 94, 204, 1);
+    --shoko-link-header: rgba(102, 180, 243, 1);
+    --shoko-link-header-hover: rgba(91, 162, 218, 1);
+    --shoko-button-alt: rgba(32, 41, 65, 1);
+    --shoko-button-alt-hover: rgba(42, 54, 91, 1);
+    --shoko-highlight: rgba(236, 64, 122, 1);
+    --shoko-overlay: rgba(10, 11, 29, 0.75);
 }
 
 .dark {
-    --shoko-bg: #17181F;
-    --shoko-bg-alt: #1C1D25;
-    --shoko-border: #0B0B0E;
-    --shoko-text: #CFD8E3;
-    --shoko-text-header: #BCD0E9;
-    --shoko-text-alt: #FFFFFF;
-    --shoko-link: #279CEB;
-    --shoko-link-hover: #217dbc;
-    --shoko-link-header: #66B4F3;
-    --shoko-link-header-hover: #5ba2da;
-    --shoko-button-alt: #202941;
-    --shoko-button-alt-hover: #252d42;
-    --shoko-highlight: #E3B341;
-    --shoko-overlay: #0A0B1DBF;
+    --shoko-bg: rgba(23, 24, 31, 1);
+    --shoko-bg-alt: rgba(28, 29, 37, 1);
+    --shoko-border: rgba(11, 11, 14, 1);
+    --shoko-text: rgba(207, 216, 227, 1);
+    --shoko-text-header: rgb(215, 220, 225);
+    --shoko-text-alt: rgba(255, 255, 255, 1);
+    --shoko-link: rgba(39, 156, 235, 1);
+    --shoko-link-hover: rgba(33, 125, 188, 1);
+    --shoko-link-header: rgba(102, 180, 243, 1);
+    --shoko-link-header-hover: rgba(91, 162, 218, 1);
+    --shoko-button-alt: rgba(32, 41, 65, 1);
+    --shoko-button-alt-hover: rgba(37, 45, 66, 1);
+    --shoko-highlight: rgba(227, 179, 65, 1);
+    --shoko-overlay: rgba(10, 11, 29, 0.75);
 }
 
-.light * .shoko-blog-post * a {
-    font-weight: 500;
-    color: #3E64ED;
-    text-decoration: underline;
-}
-
-.dark * .shoko-blog-post * a {
-    font-weight: 500;
-    color: #279CEB;
-    text-decoration: underline;
-}
-
-#markdown * a {
+.shoko-post * a {
     font-weight: 600;
     color: var(--shoko-link);
     text-decoration: underline;
 }
 
-#markdown > h4 {
+.shoko-post * a:hover {
+    color: var(--shoko-link-hover);
+}
+
+.shoko-post > h4 {
     position: relative;
     padding-bottom: 0.5rem;
 }
 
-#markdown > h4::after {
+.shoko-post > h4::after {
     content: '';
     position: absolute;
     left: 0;
     bottom: 0;
-    width: 100px;
+    width: 120px;
     height: 2px;
     background-color: var(--shoko-highlight); /* Color of the border */
 }
 
-#markdown * img {
+.shoko-post * img {
     border-radius: 0.5rem;
     margin-bottom: 2rem;
 }
+
 
 [data-rmiz-modal-overlay="visible"] {
     background-color: rgb(0, 0, 0, 0.85) !important;
@@ -130,11 +121,3 @@
 [data-rmiz-modal-content] > img {
     border-radius: 0.5rem;
 }
-
-/*.light * .scrollbar-custom * .os-scrollbar-handle {*/
-/*    background: #ec407a;*/
-/*}*/
-
-/*.dark * .scrollbar-custom * .os-scrollbar-handle {*/
-/*    background: #e3b341;*/
-/*}*/

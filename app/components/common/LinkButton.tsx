@@ -1,20 +1,13 @@
-import React, { ReactNode } from 'react';
 import { buttonStyle } from '~/components/common/Button';
 import { Link } from '@remix-run/react';
 import cx from 'classnames';
+import { ButtonProps } from '~/types/common';
 
-type Props = {
-  buttonType: 'primary' | 'padded' | 'outline' | 'breadcrumb' | 'circle' | 'resource' | 'text';
-  children: ReactNode;
-  className?: string;
-  to: string;
-};
-
-const LinkButton = ({ buttonType, className, children, to }: Props) => (
+const LinkButton = ({ buttonType, className, children, to }: ButtonProps) => (
   <Link
-    to={to}
+    to={to ?? '/'}
     className={cx(
-      'flex items-center gap-x-3 p-4 font-medium transition-colors duration-500 ease-in-out focus:outline-none',
+      'flex items-center gap-x-3 p-4 font-body transition-colors duration-500 ease-in-out focus:outline-none',
       buttonStyle[buttonType],
       buttonType === 'circle' ? 'rounded-full' : 'rounded-lg',
       className,

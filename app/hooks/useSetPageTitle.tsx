@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { convertToProperName } from '~/helpers/utils';
+import { convertToProperName } from '~/helpers/helpers';
 
 export const useSetPageTitle = (title: string) => {
   useEffect(() => {

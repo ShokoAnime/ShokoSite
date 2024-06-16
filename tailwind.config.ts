@@ -7,7 +7,8 @@ export default {
         custom: '0 4px 4px rgba(0, 0, 0, 0.25)',
       },
       fontFamily: {
-        sans: ['Lexend Deca Variable', 'sans-serif'],
+        header: ['Lexend Deca Variable', 'sans-serif'],
+        body: ['Work Sans Variable', 'sans-serif'],
       },
       fontSize: {
         sm: ['0.875rem', '1.4rem'],
