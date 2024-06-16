@@ -6,7 +6,7 @@ images:
 resources:
   - name: 'Docs'
     url: 'https://docs.shokoanime.com/renaming-plugins/lua-renamer'
-  - name: 'Github'
+  - name: 'GitHub'
     url: 'https://github.com/Mik1ll/LuaRenamer'
   - name: 'Discord'
     url: 'https://discord.gg/vpeHDsg'

@@ -5,7 +5,7 @@ import Icon from '~/components/common/Icon';
 const Hero = () => {
   return (
     <div className="mx-auto max-w-[1440px] px-6 py-16 2xl:px-0">
-      <div className="flex flex-col items-center justify-center gap-x-16 gap-y-12 2xl:flex-row">
+      <div className="flex flex-col gap-x-16 2xl:flex-row">
         <div className="flex flex-col items-center justify-center gap-y-8 text-center">
           <h1 className="w-full max-w-[53.125rem] text-pretty">
             The All-in-One Cross-Platform Anime Management System Built For You

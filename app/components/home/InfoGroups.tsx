@@ -1,41 +1,28 @@
-import React from 'react';
+import { InfoSectionProps } from '~/types/home';
+import { Image } from '~/components/common/Image';
 import InfoGroupDetails from './InfoGroups.data';
-import Image from '~/components/common/Image';
+import { SectionHeader } from '~/components/common/SectionHeader';
 
-type InfoSectionProps = {
-  title: string;
-  content: React.ReactNode;
-  image: string;
-  reverse: boolean;
-};
-
-const InfoSection = ({ title, image, content, reverse }: InfoSectionProps) => {
+const InfoSection = ({ title, subtitle, image, content, reverse }: InfoSectionProps) => {
   return (
-    <>
-      {/* Only shown when min-width <= 1280 */}
-      <div className="inline-flex max-w-[850px] flex-col gap-y-2 2xl:hidden">
-        <h2>{title}</h2>
-        <hr className="border-shoko-highlight mx-auto flex w-[100px] border" />
-      </div>
-      <div
-        className={`flex items-center gap-x-16 ${reverse ? 'flex-row-reverse' : ''}`}
-      >
-        <div className="flex max-w-[850px] flex-col gap-y-8">
-          <div className="hidden flex-col gap-y-2 2xl:inline-flex">
-            <h2>{title}</h2>
-            <hr className="border-shoko-highlight w-[100px] border" />
-          </div>
-          <div className="flex gap-8">
-            <div className="flex flex-col gap-4">{content}</div>
-          </div>
+    <div
+      className={`flex items-end gap-x-16 ${reverse ? 'flex-row-reverse' : ''}`}
+    >
+      <div className="flex max-w-[850px] flex-col gap-y-8">
+        <div>
+          <div className="text-shoko-text-header font-header text-xl font-semibold opacity-75">{subtitle}</div>
+          <SectionHeader title={title} type="h2" />
         </div>
-        <Image
-          src={image}
-          alt={title}
-          className="shadow-custom h-full max-h-[21.625rem] w-fit max-w-[38.125rem] rounded-lg"
-        />
+        <div className="flex gap-8">
+          <div className="flex flex-col gap-4">{content}</div>
+        </div>
       </div>
-    </>
+      <Image
+        src={image}
+        alt={title}
+        className="shadow-custom h-full max-h-[21.625rem] w-fit max-w-[38.125rem] rounded-lg"
+      />
+    </div>
   );
 };
 
@@ -48,6 +35,7 @@ const InfoGroups = () => {
             <InfoSection
               key={infoGroup.title}
               title={infoGroup.title}
+              subtitle={infoGroup.subtitle}
               image={infoGroup.image}
               content={infoGroup.content}
               reverse={index % 2 !== 0}

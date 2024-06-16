@@ -1,5 +1,5 @@
 import { contributors, honorable, staff } from '~/data/contributors';
-import PageBanner from '~/components/layout/PageBanner';
+import { PageBanner } from '~/components/layout/PageBanner';
 import ContributorsGroup from '~/components/contributors/ContributorsGroup';
 
 function Contributors() {

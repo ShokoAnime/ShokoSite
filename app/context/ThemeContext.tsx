@@ -1,5 +1,4 @@
 import { ReactNode, createContext, useContext, useEffect, useState } from 'react';
-import Cookies from 'js-cookie';
 
 type Theme = 'light' | 'dark';
 
@@ -21,7 +20,7 @@ type ThemeProviderProps = {
 
 const getInitialTheme = (): Theme => {
   if (typeof window !== 'undefined') {
-    const savedTheme = Cookies.get('theme') as Theme | undefined;
+    const savedTheme = localStorage.getItem('theme') as Theme | null;
     return savedTheme === 'dark' || savedTheme === 'light' ? savedTheme : 'light';
   }
   return 'light';
@@ -37,7 +36,7 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
 
   useEffect(() => {
     setThemeClass(theme);
-    Cookies.set('theme', theme);
+    localStorage.setItem('theme', theme);
   }, [theme]);
 
   const toggleTheme = () => {

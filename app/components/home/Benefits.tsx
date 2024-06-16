@@ -1,29 +1,35 @@
+import { BenefitProps } from '~/types/home';
+import { SectionHeader } from '~/components/common/SectionHeader';
 import Icon from '~/components/common/Icon';
-import benefitDetails from '~/components/home/Benefits.data';
+import benefitDetails from './Benefits.data';
+
+const SingleBenefit = ({ title, description, icon }: BenefitProps) => {
+  return (
+    <div className="bg-shoko-bg border-shoko-border border-b-shoko-button-alt hover:bg-shoko-button-alt hover:text-shoko-text-alt group flex w-full max-w-[20.938rem] flex-col items-center gap-y-4 rounded-lg border border-b-2 p-4 transition-colors duration-500 ease-in-out">
+      <Icon
+        className="text-shoko-text-header group-hover:text-shoko-text-alt transition-colors duration-500 ease-in-out"
+        icon={icon}
+        size={64}
+      />
+      <div className="flex flex-col items-center gap-y-2">
+        <div className="font-header text-shoko-text-header group-hover:text-shoko-text-alt text-xl font-semibold transition-colors duration-500 ease-in-out">
+          {title}
+        </div>
+        <div className="font-body text-center">
+          {description}
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const Benefits = () => {
   return (
-    <div className="bg-shoko-bg-alt size-full px-6 py-16 2xl:px-0">
-      <div className="mx-auto flex max-w-[1440px] flex-col items-center gap-y-16">
-        <div className="flex flex-col items-center gap-y-2">
-          <h2>Benefits of Shoko</h2>
-          <hr className="border-shoko-highlight w-[100px] border" />
-        </div>
-        <div className="grid w-full grid-cols-3 gap-8">
-          {benefitDetails.map((benefit) => (
-            <div
-              className="flex max-w-[445px] items-center gap-4"
-              key={benefit.title}
-            >
-              <div className="my-auto flex w-full max-w-[64px]">
-                <Icon className="text-shoko-text-header mx-auto" icon={benefit.icon} size={64} />
-              </div>
-              <div className="flex flex-col gap-y-4">
-                <div className="text-shoko-text-header font-medium">{benefit.title}</div>
-                <div>{benefit.description}</div>
-              </div>
-            </div>
-          ))}
+    <div className="bg-shoko-bg-alt border-shoko-border border-y py-16">
+      <div className="mx-auto flex w-full max-w-[1440px] flex-col justify-center gap-y-16">
+        <SectionHeader type="h2" title="Benefits of Shoko" center={true} />
+        <div className="flex flex-wrap gap-8">
+          {benefitDetails.map((benefit) => <SingleBenefit key={benefit.title} {...benefit} />)}
         </div>
       </div>
     </div>

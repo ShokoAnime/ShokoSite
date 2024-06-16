@@ -1,26 +1,15 @@
-import React from 'react';
 import cx from 'classnames';
-
-type ButtonProps = {
-  buttonType: 'primary' | 'secondary' | 'padded' | 'outline' | 'breadcrumb' | 'circle' | 'share' | 'resource' | 'text';
-  children: React.ReactNode;
-  className?: string;
-  id?: string;
-  disabled?: boolean;
-  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-};
+import { ButtonProps } from '~/types/common';
 
 export const buttonStyle = {
   primary: 'bg-shoko-link text-shoko-text-alt hover:bg-shoko-link-hover hover:text-shoko-text-alt',
   secondary: 'bg-shoko-button-alt text-shoko-text-alt hover:bg-shoko-button-alt-hover hover:text-shoko-text-alt',
-  padded: 'text-shoko-header-text hover:bg-shoko-link-hover hover:text-shoko-text-alt',
-  outline: 'border border-shoko-link text-shoko-text-header hover:bg-shoko-link-hover hover:text-shoko-text-alt',
-  breadcrumb: 'py-0 px-2 text-2xl font-medium text-shoko-link-header hover:text-shoko-link-header-hover',
+  outline: 'border-2 border-shoko-link text-shoko-header-text hover:bg-shoko-link-hover hover:text-shoko-text-alt',
   circle: '!p-3 bg-shoko-bg border border-shoko-border hover:bg-shoko-link-hover hover:text-shoko-text-alt',
-  share:
-    '!p-3 bg-shoko-bg border border-shoko-border rounded-[50px] hover:bg-shoko-link-hover hover:text-shoko-text-alt',
-  resource: 'py-2 bg-shoko-bg-alt text-shoko-text-header hover:bg-shoko-link-hover hover:text-shoko-text-alt',
-  text: 'py-0 text-shoko-text-header hover:text-shoko-link',
+  text: 'text-shoko-text-header hover:text-shoko-link-hover',
+  breadcrumb: '!p-0 text-2xl text-shoko-link-header font-header font-medium hover:text-shoko-link-header-hover',
+  download:
+    'bg-shoko-bg-alt text-shoko-text-header border border-shoko-border hover:bg-shoko-link-hover hover:text-shoko-text-alt',
 };
 
 const Button = ({ buttonType, className, id, children, disabled, onClick }: ButtonProps) => {
@@ -29,7 +18,7 @@ const Button = ({ buttonType, className, id, children, disabled, onClick }: Butt
       type="button"
       id={id}
       className={cx(
-        'flex items-center gap-x-3 p-4 font-medium transition-colors duration-500 ease-in-out focus:outline-none',
+        'flex items-center gap-x-3 p-4 font-body transition-colors duration-500 justify-center ease-in-out focus:outline-none',
         buttonStyle[buttonType],
         buttonType === 'circle' ? 'rounded-full' : 'rounded-lg',
         className,

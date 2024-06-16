@@ -1,15 +1,13 @@
-import React from 'react';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import 'overlayscrollbars/overlayscrollbars.css';
-
-type ScrollWrapperProps = {
-  children: React.ReactNode;
-};
+import { ScrollWrapperProps } from '~/types/common';
 
 const ScrollWrapper = ({ children }: ScrollWrapperProps) => {
   return (
     <OverlayScrollbarsComponent
+      defer
       className="os-theme-dark scrollbar-custom"
+      style={{ height: '100vh' }}
       options={{
         scrollbars: {
           autoHide: 'scroll',
@@ -17,7 +15,6 @@ const ScrollWrapper = ({ children }: ScrollWrapperProps) => {
           autoHideDelay: 500,
         },
       }}
-      style={{ height: '100vh' }}
     >
       <div>{children}</div>
     </OverlayScrollbarsComponent>

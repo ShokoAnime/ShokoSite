@@ -1,37 +1,12 @@
 import React, { useEffect } from 'react';
-import { Links, Meta, Outlet, Scripts, ScrollRestoration, isRouteErrorResponse, useRouteError } from '@remix-run/react';
-import { Providers } from '~/context/Providers';
 import '~/css/tailwind.css';
-import PageNotFound from '~/components/layout/PageNotFound';
-import ScrollWrapper from '~/components/layout/ScrollWrapper';
+import { Links, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react';
 import Header from '~/components/layout/Header';
 import Footer from '~/components/layout/Footer';
-import Cookies from 'js-cookie';
-
-type ThemeData = {
-  theme: string;
-};
-
-export function getThemeData(): ThemeData {
-  const theme = Cookies.get('theme') === 'dark' ? 'dark' : 'light';
-  return { theme };
-}
-
-export function ErrorBoundary() {
-  const error = useRouteError();
-
-  console.log(error);
-
-  if (isRouteErrorResponse(error)) {
-    return <PageNotFound />;
-  }
-
-  return <div>An error occurred</div>;
-}
+import ScrollWrapper from '~/components/layout/ScrollWrapper';
+import { ThemeProvider } from '~/context/ThemeContext';
 
 export function Layout({ children }: { children: React.ReactNode }) {
-  const { theme } = getThemeData();
-
   useEffect(() => {
     const htmlElement = document.documentElement;
     setTimeout(function() {
@@ -40,7 +15,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
   }, []);
 
   return (
-    <html lang="en" className={`hidden ${theme}`}>
+    <html lang="en" className={`hidden`}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -50,14 +25,14 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <ScrollWrapper>
-          <Providers>
+          <ThemeProvider>
             <Header />
             {children}
+            <ScrollRestoration />
+            <Scripts />
             <Footer />
-          </Providers>
+          </ThemeProvider>
         </ScrollWrapper>
-        <ScrollRestoration />
-        <Scripts />
       </body>
     </html>
   );

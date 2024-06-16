@@ -1,4 +1,13 @@
-import { mdiApi, mdiDatabaseClock, mdiEyeRefresh, mdiFileMultiple, mdiTelevision, mdiVectorBezier } from '@mdi/js';
+import {
+  mdiCogs,
+  mdiDatabaseClock,
+  mdiEyeRefresh,
+  mdiFileDocumentEditOutline,
+  mdiLinux,
+  mdiRename,
+  mdiTelevision,
+  mdiVectorBezier,
+} from '@mdi/js';
 
 const benefitDetails = [
   {
@@ -9,7 +18,17 @@ const benefitDetails = [
   {
     title: 'File Management',
     description: 'Manage multiple, duplicate, and missing files with Shoko\'s built-in utilities',
-    icon: mdiFileMultiple,
+    icon: mdiFileDocumentEditOutline,
+  },
+  {
+    title: 'Cross Platform',
+    description: 'Fully supported on Windows and Linux with experimental support on ARM64 devices. .',
+    icon: mdiLinux,
+  },
+  {
+    title: 'Media Player Support',
+    description: 'Integrate with multiple media players for on-the-go access to your collection.',
+    icon: mdiTelevision,
   },
   {
     title: 'Sync Watch States',
@@ -22,14 +41,14 @@ const benefitDetails = [
     icon: mdiVectorBezier,
   },
   {
-    title: 'Media Player Support',
-    description: 'Integrate with multiple media players for on-the-go access to your collection.',
-    icon: mdiTelevision,
+    title: 'File Renaming & Moving',
+    description: 'Automatically rename and move matched files based on your specific criteria.',
+    icon: mdiRename,
   },
   {
     title: 'Extensive API',
     description: 'Expand Shoko\'s capabilities, customize it or bring it to an entirely new platform.',
-    icon: mdiApi,
+    icon: mdiCogs,
   },
 ];
 
