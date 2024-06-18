@@ -1,8 +1,10 @@
-import { useLocation } from '@remix-run/react';
 import { useEffect, useState } from 'react';
-import { convertToProperName } from '~/helpers/helpers';
-import LinkButton from '~/components/common/LinkButton';
+import { useLocation } from '@remix-run/react';
+
 import { useSetPageTitle } from '~/hooks/useSetPageTitle';
+import { convertToProperName } from '~/helpers/helpers';
+
+import LinkButton from '~/components/common/LinkButton';
 
 type BlogDetailBannerProps = {
   title: string;

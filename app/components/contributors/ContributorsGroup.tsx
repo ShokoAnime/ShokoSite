@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
+
 import { ContributorsGroupProps, ContributorsProps } from '~/types/contributors';
-import { SectionHeader } from '~/components/common/SectionHeader';
+import SectionHeader from '~/components/common/SectionHeader';
 import UserCard from '../common/UserCard';
 
 const ContributorsGroup = ({ title, description, type, data }: ContributorsGroupProps) => {

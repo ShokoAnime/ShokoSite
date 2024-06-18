@@ -1,5 +1,5 @@
 import { BenefitProps } from '~/types/home';
-import { SectionHeader } from '~/components/common/SectionHeader';
+import SectionHeader from '~/components/common/SectionHeader';
 import Icon from '~/components/common/Icon';
 import benefitDetails from './Benefits.data';
 

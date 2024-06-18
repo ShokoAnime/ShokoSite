@@ -1,58 +1,72 @@
-import { PageBanner } from '~/components/layout/PageBanner';
-import { BlogList } from '~/components/blog/BlogList';
 import { useEffect, useRef, useState } from 'react';
+
 import { MarkdownFile } from '~/types/markdown';
-import { getAllTags, markdownList } from '~/helpers/markdown';
+import PageBanner from '~/components/layout/PageBanner';
 import BlogFilter from '~/components/blog/BlogFilter';
+import BlogList from '~/components/blog/BlogList';
 
 function Blog() {
-  const [markdownFiles, setMarkdownFiles] = useState<MarkdownFile[]>([]);
-  const [allTags, setAllTags] = useState<string[]>([]);
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
-  const [tagClicked, setTagClicked] = useState<boolean>(false);
+  const [offset, setOffset] = useState(0);
+  const [markdownFiles, setMarkdownFiles] = useState<MarkdownFile[]>([]);
   const [hasMore, setHasMore] = useState(true);
+  const [allTags, setAllTags] = useState<[]>([]);
+  const [tagClicked, setTagClicked] = useState(false);
   const [totalCount, setTotalCount] = useState(0);
-  const loadingRef = useRef<HTMLDivElement | null>(null);
+  const loadingRef = useRef<HTMLDivElement>(null);
 
-  const loadMoreFiles = async (clearFiles = false) => {
-    if (clearFiles) {
-      setMarkdownFiles([]);
+  const fetchMarkdownList = async (newOffset: number, tags: string[]) => {
+    const url = new URL('/api/getMarkdownList', window.location.origin);
+    url.searchParams.set('offset', newOffset.toString());
+    url.searchParams.set('type', 'blog');
+
+    if (tags.length > 0) {
+      url.searchParams.set('tags', tags.join(','));
     }
 
-    const { markdownFiles: newFiles, hasMore: moreFiles, totalCount } = await markdownList(
-      'blog',
-      clearFiles ? 0 : markdownFiles.length,
-      5,
-      'sortByDateDescending',
-      selectedTags,
-    );
+    const response = await fetch(url.toString());
+    const { markdownFiles: newMarkdownFiles, hasMore: newHasMore, totalCount } = await response.json();
 
-    // Get new data and filter out any duplicates.
-    setMarkdownFiles((prevFiles) => {
-      const uniqueNewFiles = newFiles.filter(
-        (newFile) => !prevFiles.some((prevFile) => prevFile.filename === newFile.filename),
-      );
-      return clearFiles ? uniqueNewFiles : [...prevFiles, ...uniqueNewFiles];
-    });
+    return { newMarkdownFiles, newHasMore, totalCount };
+  };
 
-    setHasMore(moreFiles);
+  const fetchTags = async () => {
+    const response = await fetch('/api/getTags?type=blog');
+    const { allTags } = await response.json();
+    setAllTags(allTags);
+  };
+
+  const fetchInitialData = async () => {
+    setMarkdownFiles([]);
+
+    const { newMarkdownFiles, newHasMore, totalCount } = await fetchMarkdownList(0, selectedTags);
+
+    setMarkdownFiles(newMarkdownFiles);
+    setHasMore(newHasMore);
+    setOffset(5);
     setTotalCount(totalCount);
+
+    await fetchTags();
+  };
+
+  const loadMore = async () => {
+    const newOffset = offset + 5;
+    const { newMarkdownFiles, newHasMore } = await fetchMarkdownList(newOffset, selectedTags);
+
+    setMarkdownFiles((prevFiles) => [...prevFiles, ...newMarkdownFiles]);
+    setHasMore(newHasMore);
+    setOffset(newOffset);
   };
 
   useEffect(() => {
-    const fetchTags = async () => {
-      const allTags = await getAllTags('blog');
-      setAllTags(allTags);
-    };
-
-    fetchTags();
-  }, []);
+    fetchInitialData();
+  }, [selectedTags]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting && hasMore) {
-          loadMoreFiles();
+          loadMore();
         }
       },
       { threshold: 0.5 },
@@ -67,11 +81,7 @@ function Blog() {
         observer.unobserve(loadingRef.current);
       }
     };
-  }, [hasMore, markdownFiles]);
-
-  useEffect(() => {
-    loadMoreFiles(true);
-  }, [selectedTags]);
+  }, [hasMore, offset, selectedTags]);
 
   return (
     <>
@@ -79,7 +89,7 @@ function Blog() {
         title="Shoko Blog"
         description="Stay informed with the latest news about Shoko's development, third-party plugins, and other relevant topics."
       />
-      <div className="mx-auto flex h-full min-h-[calc(100vh-557px)] max-w-[1440px] flex-col items-center justify-center gap-y-8 py-16">
+      <div className="mx-auto flex h-full min-h-[calc(100vh-557px)] max-w-[1440px] flex-col items-center justify-start gap-y-8 py-16">
         <BlogFilter
           availableTags={allTags}
           tagCount={totalCount}
@@ -87,9 +97,12 @@ function Blog() {
           setSelectedTags={setSelectedTags}
           setTagClicked={setTagClicked}
         />
-        <div className="overflow-y-auto">
-          <BlogList data={markdownFiles} setTagClicked={setTagClicked} tagClicked={tagClicked} />
-        </div>
+        <BlogList
+          data={markdownFiles}
+          setTagClicked={setTagClicked}
+          tagClicked={tagClicked}
+          selectedTags={selectedTags}
+        />
         {hasMore && <div ref={loadingRef} />}
       </div>
     </>

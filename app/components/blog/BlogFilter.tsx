@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import cx from 'classnames';
+import { mdiFilterRemove, mdiFilterVariant } from '@mdi/js';
+
 import { BlogFilterProps } from '~/types/blog';
+
 import Button from '~/components/common/Button';
 import Icon from '~/components/common/Icon';
-import { mdiFilterRemove, mdiFilterVariant } from '@mdi/js';
 
 const BlogFilter = ({ availableTags, tagCount, selectedTags, setSelectedTags, setTagClicked }: BlogFilterProps) => {
   const [filter, showFilter] = useState(false);
@@ -54,18 +56,18 @@ const BlogFilter = ({ availableTags, tagCount, selectedTags, setSelectedTags, se
         <div className="border-shoko-border mx-auto flex h-[11.6rem] w-full max-w-[1074px] flex-col flex-wrap gap-x-4 gap-y-1 border-b border-solid pb-6">
           {availableTags.sort().map((tag) => (
             <label
-              key={tag}
-              htmlFor={tag}
+              key={tag.name}
+              htmlFor={tag.name}
               className="hover:text-shoko-link-hover flex w-[15.625rem] cursor-pointer items-center justify-between text-lg"
             >
-              {tag}
+              {tag.name}
               <div className="flex gap-x-2">
                 <input
                   className="mr-6"
                   type="checkbox"
-                  id={tag}
-                  checked={selectedTags.includes(tag)}
-                  onChange={() => onTagChange(tag)}
+                  id={tag.name}
+                  checked={selectedTags.includes(tag.name)}
+                  onChange={() => onTagChange(tag.name)}
                 />
               </div>
             </label>

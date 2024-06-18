@@ -1,4 +1,4 @@
-export const PageNotFound = () => {
+const PageNotFound = () => {
   return (
     <>
       <div className="flex min-h-[calc(100vh-197px)] items-center justify-center pb-32">
@@ -16,3 +16,5 @@ export const PageNotFound = () => {
     </>
   );
 };
+
+export default PageNotFound;

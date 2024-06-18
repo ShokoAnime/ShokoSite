@@ -1,7 +1,7 @@
 import { InfoSectionProps } from '~/types/home';
-import { Image } from '~/components/common/Image';
+import Image from '~/components/common/Image';
+import SectionHeader from '~/components/common/SectionHeader';
 import InfoGroupDetails from './InfoGroups.data';
-import { SectionHeader } from '~/components/common/SectionHeader';
 
 const InfoSection = ({ title, subtitle, image, content, reverse }: InfoSectionProps) => {
   return (

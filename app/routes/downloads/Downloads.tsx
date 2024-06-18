@@ -1,6 +1,6 @@
-import { PageBanner } from '~/components/layout/PageBanner';
-import { SectionHeader } from '~/components/common/SectionHeader';
-import { DownloadIndexCard } from '~/components/downloads/IndexCard';
+import PageBanner from '~/components/layout/PageBanner';
+import SectionHeader from '~/components/common/SectionHeader';
+import DownloadIndexCard from '~/components/downloads/IndexCard';
 
 function Downloads() {
   const headerSubtitle = (

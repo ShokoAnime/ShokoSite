@@ -2,7 +2,10 @@ import React from 'react';
 import { MarkdownFile } from '~/types/markdown';
 
 export type BlogFilterProps = {
-  availableTags: string[];
+  availableTags: {
+    name: string;
+    count: number;
+  }[];
   tagCount: number;
   selectedTags: string[];
   setSelectedTags: (selectedTags: string[]) => void;
@@ -13,6 +16,7 @@ export type BlogListProps = {
   data: MarkdownFile[];
   tagClicked: boolean;
   setTagClicked: (tagClicked: boolean) => void;
+  selectedTags: string[];
 };
 
 export type BlogDetail = {

@@ -1,14 +1,16 @@
 import { useLocation } from '@remix-run/react';
 import { markdownDetail } from '~/helpers/markdown';
 import { useEffect, useState } from 'react';
+
 import { BlogDetail } from '~/types/blog';
-import { BlogSidebar } from '~/components/blog/BlogSidebar';
-import BlogPostBanner from '~/components/blog/BlogPostBanner';
-import { PageNotFound } from '~/components/layout/PageNotFound';
-import { SectionHeader } from '~/components/common/SectionHeader';
-import UserCard from '~/components/common/UserCard';
 import { contributors, honorable, staff } from '~/data/contributors';
 import { ContributorsProps } from '~/types/contributors';
+
+import BlogSidebar from '~/components/blog/BlogSidebar';
+import BlogPostBanner from '~/components/blog/BlogPostBanner';
+import PageNotFound from '~/components/layout/PageNotFound';
+import SectionHeader from '~/components/common/SectionHeader';
+import UserCard from '~/components/common/UserCard';
 
 export default function BlogPost() {
   const [postData, setPostData] = useState<BlogDetail>();
@@ -74,7 +76,7 @@ export default function BlogPost() {
   // If the post is not found, return a 404 page.
   if (postData === null) return <PageNotFound />;
 
-  return ((
+  return (
     <>
       <BlogPostBanner title={postData.frontmatter.title} image={postData.frontmatter.image} />
       <div className="my-16 flex justify-center gap-x-16">
@@ -103,5 +105,5 @@ export default function BlogPost() {
         </div>
       </div>
     </>
-  ));
+  );
 }

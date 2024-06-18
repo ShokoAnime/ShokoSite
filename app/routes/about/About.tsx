@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import Button from '~/components/common/Button';
-import HistorySection from '~/components/about/HistorySection';
 import cx from 'classnames';
-import { PageBanner } from '~/components/layout/PageBanner';
+
+import PageBanner from '~/components/layout/PageBanner';
+import HistorySection from '~/components/about/HistorySection';
+import Button from '~/components/common/Button';
 
 function About() {
   const [tab, setTab] = useState('The Early Years');
