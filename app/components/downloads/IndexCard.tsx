@@ -1,9 +1,10 @@
 import { mdiLayersTriple, mdiTelevision, mdiThemeLightDark, mdiTools, mdiWeatherSunset } from '@mdi/js';
 import { Link } from '@remix-run/react';
+
 import { DownloadCategories } from '~/types/downloads';
 import Icon from '~/components/common/Icon';
 
-export const DownloadIndexCard = () => {
+const DownloadIndexCard = () => {
   const downloadData = [
     {
       title: 'Shoko Server',
@@ -43,17 +44,17 @@ export const DownloadIndexCard = () => {
         key={title}
         to={link}
       >
-        <div className="bg-shoko-bg border-shoko-border border-b-shoko-link hover:bg-shoko-link hover:text-shoko-text-alt group flex w-full max-w-[28.125rem] items-center gap-x-6 gap-y-4 rounded-lg border border-b-2 p-4 transition-colors duration-500 ease-in-out">
+        <div className="bg-shoko-bg border-shoko-border border-b-shoko-link hover:bg-shoko-link hover:text-shoko-text-alt group flex w-full max-w-[28.125rem] flex-col items-center gap-x-6 gap-y-4 rounded-lg border border-b-2 p-4 transition-colors duration-500 ease-in-out">
           <Icon
             className="text-shoko-text-header group-hover:text-shoko-text-alt transition-colors duration-500 ease-in-out"
             icon={icon}
-            size={64}
+            size={100}
           />
-          <div className="flex w-full max-w-[330px] flex-col gap-y-2">
-            <div className="font-header text-shoko-text-header group-hover:text-shoko-text-alt text-xl font-semibold transition-colors duration-500 ease-in-out">
+          <div className="flex w-full max-w-[228px] flex-col gap-y-2">
+            <div className="font-header text-shoko-text-header group-hover:text-shoko-text-alt flex justify-center text-xl font-semibold transition-colors duration-500 ease-in-out">
               {title}
             </div>
-            <div className="font-body text-base">
+            <div className="font-body flex text-center text-base">
               {description}
             </div>
           </div>
@@ -68,3 +69,5 @@ export const DownloadIndexCard = () => {
     </div>
   );
 };
+
+export default DownloadIndexCard;

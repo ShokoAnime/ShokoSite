@@ -30,6 +30,8 @@ export default defineConfig({
           route('/downloads', 'routes/downloads/downloads.tsx');
           route('/downloads/:id', 'routes/downloads/downloadsList.tsx');
           route('/downloads/:id/:subid', 'routes/downloads/downloadsSingle.tsx');
+          route('/downloads/shoko-server', 'routes/downloads/downloadsSingle.tsx', { id: 'shoko-server' });
+          route('/api/*', 'routes/api/markdownData.ts');
           route('*', 'routes/404.tsx', { id: '404' });
         });
       },

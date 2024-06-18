@@ -1,7 +1,8 @@
-import { buttonStyle } from '~/components/common/Button';
 import { Link } from '@remix-run/react';
 import cx from 'classnames';
+
 import { ButtonProps } from '~/types/common';
+import { buttonStyle } from '~/components/common/Button';
 
 const LinkButton = ({ buttonType, className, children, to }: ButtonProps) => (
   <Link

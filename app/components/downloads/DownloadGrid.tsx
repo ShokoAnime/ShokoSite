@@ -1,87 +1,17 @@
-import { useEffect, useRef, useState } from 'react';
-import { useLocation } from '@remix-run/react';
-import { getAllTags, markdownList } from '~/helpers/markdown';
-import { PageNotFound } from '~/components/layout/PageNotFound';
+import { mdiDownload, mdiPowerPlug } from '@mdi/js';
+
 import { MarkdownFile } from '~/types/markdown';
-import { DownloadGridItems } from '~/components/downloads/DownloadGridItems';
-import { PageBanner } from '~/components/layout/PageBanner';
+import { convertNameToUrl } from '~/helpers/helpers';
 
-export const DownloadGrid = () => {
-  const [markdownFiles, setMarkdownFiles] = useState<MarkdownFile[]>([]);
-  const [allTags, setAllTags] = useState<string[]>([]);
-  const [selectedTags, setSelectedTags] = useState<string[]>([]);
-  const [tagClicked, setTagClicked] = useState<boolean>(false);
-  const [hasMore, setHasMore] = useState(true);
-  const [totalCount, setTotalCount] = useState(0);
-  const loadingRef = useRef<HTMLDivElement | null>(null);
-  const location = useLocation();
-  const getDownloadType = location.pathname.split('/').pop();
+import PageBanner from '~/components/layout/PageBanner';
+import Icon from '~/components/common/Icon';
+import LinkButton from '~/components/common/LinkButton';
 
-  const loadMoreFiles = async (clearFiles = false) => {
-    if (clearFiles) {
-      setMarkdownFiles([]);
-    }
+type DownloadGridProps = {
+  data: MarkdownFile[];
+};
 
-    const { markdownFiles: newFiles, hasMore: moreFiles, totalCount } = await markdownList(
-      getDownloadType ?? 'downloads',
-      clearFiles ? 0 : markdownFiles.length,
-      6,
-      'sortByDateDescending',
-      selectedTags,
-    );
-
-    // Get new data and filter out any duplicates.
-    setMarkdownFiles((prevFiles) => {
-      const uniqueNewFiles = newFiles.filter(
-        (newFile) => !prevFiles.some((prevFile) => prevFile.filename === newFile.filename),
-      );
-      return clearFiles ? uniqueNewFiles : [...prevFiles, ...uniqueNewFiles];
-    });
-
-    setHasMore(moreFiles);
-    setTotalCount(totalCount);
-  };
-
-  useEffect(() => {
-    const fetchTags = async () => {
-      const allTags = await getAllTags('web-ui-themes');
-      setAllTags(allTags);
-    };
-
-    fetchTags();
-  }, []);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && hasMore) {
-          loadMoreFiles();
-        }
-      },
-      { threshold: 0.5 },
-    );
-
-    if (loadingRef.current) {
-      observer.observe(loadingRef.current);
-    }
-
-    return () => {
-      if (loadingRef.current) {
-        observer.unobserve(loadingRef.current);
-      }
-    };
-  }, [hasMore, markdownFiles]);
-
-  useEffect(() => {
-    loadMoreFiles(true);
-  }, [selectedTags]);
-
-  // If the post data is still loading, return null.
-  if (markdownFiles === undefined) return null;
-
-  // If the post is not found, return a 404 page.
-  if (markdownFiles === null) return <PageNotFound />;
-
+const DownloadGrid = ({ data }: DownloadGridProps) => {
   return (
     <div>
       <PageBanner
@@ -89,9 +19,48 @@ export const DownloadGrid = () => {
         description="Browse through selection of programs, plugins, Web UI Themes and other tools available in the Shoko Suite."
       />
       <div className="text-shoko-text-header mx-auto flex h-full min-h-[calc(100vh-557px)] max-w-[1440px] flex-col gap-x-2 gap-y-16 py-16">
-        <DownloadGridItems data={markdownFiles} />
+        <div className="flex flex-wrap gap-8">
+          {data.map((download) => (
+            <div key={download.frontmatter.name} className="flex max-w-[28.5rem] flex-col gap-y-6 ">
+              <img
+                className="shadow-custom h-64 rounded-lg "
+                src={download.frontmatter.images[0].url}
+                alt={download.frontmatter.images[0].alt}
+              />
+              <div className="flex items-center justify-between">
+                <div>
+                  <h4>{download.frontmatter.name}</h4>
+                  <hr className="border-shoko-highlight w-[6.25rem] border" />
+                </div>
+                <div className="bg-shoko-bg-alt border-shoko-border text-shoko-text-header flex gap-x-2 rounded-lg border px-4 py-3 font-medium">
+                  <Icon icon={mdiPowerPlug} />
+                  {download.frontmatter.downloads[0].text}
+                </div>
+              </div>
+              <div className="line-clamp-3">
+                {download.description}
+              </div>
+              <div className="text-shoko-text-header flex justify-between font-medium opacity-65">
+                <div>
+                  Version {''}
+                  {download.frontmatter.version}
+                </div>
+                <div>
+                  {download.frontmatter.date}
+                </div>
+              </div>
+              <LinkButton buttonType="download" className="!p-4" to={convertNameToUrl(download.frontmatter.name)}>
+                <div className="mx-auto flex items-center gap-x-2">
+                  <Icon icon={mdiDownload} />
+                  Download {download.frontmatter.name}
+                </div>
+              </LinkButton>
+            </div>
+          ))}
+        </div>
       </div>
-      {hasMore && <div ref={loadingRef} />}
     </div>
   );
 };
+
+export default DownloadGrid;

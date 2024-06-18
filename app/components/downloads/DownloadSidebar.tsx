@@ -1,13 +1,13 @@
-import { SectionHeader } from '~/components/common/SectionHeader';
 import { DownloadItem, PlatformData } from '~/types/downloads';
+import SectionHeader from '~/components/common/SectionHeader';
 
 type DownloadSidebar = {
   downloadData: DownloadItem;
 };
 
-export const DownloadSidebar = ({ downloadData }: DownloadSidebar) => {
+const DownloadSidebar = ({ downloadData }: DownloadSidebar) => {
   return (
-    <div className="flex w-full max-w-[12.5rem] flex-col gap-y-8">
+    <div className="flex w-auto max-w-56 flex-col gap-y-8">
       <div className="flex flex-col gap-y-6">
         <SectionHeader title="File Information" type="h4" />
         <div className="flex flex-col gap-y-1">
@@ -66,3 +66,5 @@ export const DownloadSidebar = ({ downloadData }: DownloadSidebar) => {
     </div>
   );
 };
+
+export default DownloadSidebar;

@@ -1,7 +1,7 @@
-import { SectionHeader } from '~/components/common/SectionHeader';
 import { HistorySectionProps } from '~/types/common';
+import SectionHeader from '~/components/common/SectionHeader';
 
-export const HistorySection = ({ title, years, programs, children }: HistorySectionProps) => {
+const HistorySection = ({ title, years, programs, children }: HistorySectionProps) => {
   return (
     <div className="mx-auto flex max-w-[73.75rem] gap-x-16">
       <div className="flex w-full max-w-[11.75rem] flex-col items-center gap-y-6">

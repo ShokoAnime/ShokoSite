@@ -10,7 +10,7 @@ type PageBannerProps = {
   description?: string;
 };
 
-export const PageBanner = ({ title, description }: PageBannerProps) => {
+const PageBanner = ({ title, description }: PageBannerProps) => {
   const [bannerUrl, setBannerUrl] = useState('');
   const [breadcrumbs, setBreadcrumbs] = useState<string[]>([]);
   const location = useLocation();
@@ -88,3 +88,5 @@ export const PageBanner = ({ title, description }: PageBannerProps) => {
     </div>
   );
 };
+
+export default PageBanner;

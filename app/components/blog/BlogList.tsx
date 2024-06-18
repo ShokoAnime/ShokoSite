@@ -1,14 +1,16 @@
 import { useEffect, useState } from 'react';
+import { Link } from '@remix-run/react';
+import { mdiTagMultiple } from '@mdi/js';
+
 import { BlogListProps } from '~/types/blog';
 import { convertDate } from '~/helpers/helpers';
-import Icon from '~/components/common/Icon';
-import { mdiTagMultiple } from '@mdi/js';
-import LinkButton from '~/components/common/LinkButton';
-import { Link } from '@remix-run/react';
 
-export const BlogList = ({ data, setTagClicked, tagClicked }: BlogListProps) => {
-  const [visible, setVisible] = useState(true);
+import Icon from '~/components/common/Icon';
+import LinkButton from '~/components/common/LinkButton';
+
+const BlogList = ({ data, setTagClicked, tagClicked, selectedTags }: BlogListProps) => {
   const [blogData, setBlogData] = useState(data);
+  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
     if (tagClicked) {
@@ -25,15 +27,23 @@ export const BlogList = ({ data, setTagClicked, tagClicked }: BlogListProps) => 
     }
   }, [data, tagClicked]);
 
+  if (blogData.length === 0 && selectedTags.length !== 0) {
+    return (
+      <div>
+        <h4>Looks like there were no posts with your selected criteria.</h4>
+      </div>
+    );
+  }
+
   return (
     <div className={`transition-opacity duration-300 ${visible ? 'opacity-100' : 'opacity-0'}`}>
       {blogData.map((file) => (
-        <div key={file.filename} className="flex gap-x-16 [&>div]:pb-16 [&>div]:last:pb-0">
+        <div key={file.frontmatter.title} className="flex gap-x-16 [&>div]:pb-16 [&>div]:last:pb-0">
           <div className="relative flex flex-col items-center text-center">
-            <div className="bg-shoko-text-header border-shoko-border text-shoko-text-alt z-10 flex h-fit w-[6.875rem] flex-col items-center rounded-lg border border-solid px-3 py-2">
+            <div className="bg-shoko-bg-alt border-shoko-border text-shoko-text z-10 flex h-fit w-[6.875rem] flex-col items-center rounded-lg border border-solid px-3 py-2">
               <div className="flex gap-x-2">
-                <h4 className="text-shoko-text-alt">{convertDate(file.frontmatter.date, 'array')[1]}</h4>
-                <h4 className="text-shoko-text-alt">{convertDate(file.frontmatter.date, 'array')[0]}</h4>
+                <h4 className="text-shoko-text">{convertDate(file.frontmatter.date, 'array')[1]}</h4>
+                <h4 className="text-shoko-text">{convertDate(file.frontmatter.date, 'array')[0]}</h4>
               </div>
               <div className="font-semibold ">{convertDate(file.frontmatter.date, 'array')[2]}</div>
             </div>
@@ -84,3 +94,5 @@ export const BlogList = ({ data, setTagClicked, tagClicked }: BlogListProps) => 
     </div>
   );
 };
+
+export default BlogList;

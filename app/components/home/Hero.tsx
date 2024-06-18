@@ -1,4 +1,5 @@
 import { mdiBookOpenOutline, mdiDownload, mdiPlay } from '@mdi/js';
+
 import Button from '~/components/common/Button';
 import Icon from '~/components/common/Icon';
 

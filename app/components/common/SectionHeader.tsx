@@ -1,7 +1,7 @@
 import cx from 'classnames';
 import { HighLightHeaderProps } from '~/types/common';
 
-export const SectionHeader = ({ title, type, subtitle, center, opacity }: HighLightHeaderProps) => {
+const SectionHeader = ({ title, type, subtitle, center, opacity }: HighLightHeaderProps) => {
   return (
     <div className={cx('flex flex-col gap-y-2', center && 'items-center')}>
       <div className="flex items-baseline justify-between">
@@ -21,3 +21,5 @@ export const SectionHeader = ({ title, type, subtitle, center, opacity }: HighLi
     </div>
   );
 };
+
+export default SectionHeader;

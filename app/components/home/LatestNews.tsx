@@ -1,9 +1,11 @@
-import { markdownList } from '~/helpers/markdown';
 import { useEffect, useRef, useState } from 'react';
-import { MarkdownFile } from '~/types/markdown';
-import { SectionHeader } from '~/components/common/SectionHeader';
 import { Link } from '@remix-run/react';
+
+import { MarkdownFile } from '~/types/markdown';
+import { markdownList } from '~/helpers/markdown';
 import { convertDate } from '~/helpers/helpers';
+
+import SectionHeader from '~/components/common/SectionHeader';
 
 const LatestNews = () => {
   const [markdownFiles, setMarkdownFiles] = useState<MarkdownFile[]>([]);

@@ -1,7 +1,8 @@
-import { UserCardProps } from '~/types/contributors';
 import cx from 'classnames';
-import Icon from '~/components/common/Icon';
 import { mdiAccount } from '@mdi/js';
+
+import { UserCardProps } from '~/types/contributors';
+import Icon from '~/components/common/Icon';
 
 const UserCard = ({ type, className, name, joinDate, role, image, link }: UserCardProps) => {
   return (

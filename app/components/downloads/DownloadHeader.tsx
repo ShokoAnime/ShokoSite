@@ -1,7 +1,9 @@
 import { FaDiscord, FaGithub } from 'react-icons/fa';
 import { mdiBookOpenOutline, mdiClockEditOutline } from '@mdi/js';
+
 import { IconName } from '~/types/downloads';
-import { SectionHeader } from '~/components/common/SectionHeader';
+
+import SectionHeader from '~/components/common/SectionHeader';
 import Button from '~/components/common/Button';
 import Icon from '~/components/common/Icon';
 
@@ -13,7 +15,7 @@ type DownloadHeaderProps = {
   }[];
 };
 
-export const DownloadHeader = ({ title, resources }: DownloadHeaderProps) => {
+const DownloadHeader = ({ title, resources }: DownloadHeaderProps) => {
   const iconName: IconName = {
     discord: <FaGithub size={24} />,
     github: <FaDiscord size={24} />,
@@ -37,3 +39,5 @@ export const DownloadHeader = ({ title, resources }: DownloadHeaderProps) => {
     </div>
   );
 };
+
+export default DownloadHeader;

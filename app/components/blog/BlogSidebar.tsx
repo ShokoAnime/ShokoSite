@@ -1,17 +1,19 @@
-import { SectionHeader } from '~/components/common/SectionHeader';
-import Button from '~/components/common/Button';
-import Icon from '~/components/common/Icon';
 import { mdiDownload, mdiMail, mdiTextBoxOutline } from '@mdi/js';
-import { convertToProperName } from '~/helpers/helpers';
 import { FaFacebook, FaPinterest, FaReddit } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
+
+import { convertToProperName } from '~/helpers/helpers';
 import { BlogDetail } from '~/types/blog';
+
+import SectionHeader from '~/components/common/SectionHeader';
+import Button from '~/components/common/Button';
+import Icon from '~/components/common/Icon';
 
 type BlogSidebar = {
   postData: BlogDetail;
 };
 
-export const BlogSidebar = ({ postData }: BlogSidebar) => {
+const BlogSidebar = ({ postData }: BlogSidebar) => {
   const animeUrl = `https://anidb.net/anime/?adb.search=${postData.frontmatter.anime}`;
   const downloadItem = postData.frontmatter.download;
   const changelogItem = postData.frontmatter.changelog;
@@ -115,3 +117,5 @@ export const BlogSidebar = ({ postData }: BlogSidebar) => {
     </div>
   );
 };
+
+export default BlogSidebar;

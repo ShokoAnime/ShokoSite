@@ -39,22 +39,24 @@ const getMarkdownModules = (type: string) => {
   }
 };
 
-// Get all unique tags from markdown files.
-export const getAllTags = async (type: string): Promise<string[]> => {
+// Get all unique tags and their counts from markdown files.
+export const getAllTags = async (type: string): Promise<Array<{ name: string, count: number }>> => {
   const modules = getMarkdownModules(type);
   const filenames = Object.keys(modules);
 
-  const allTags = new Set<string>();
+  const tagCounts = new Map<string, number>();
 
   await Promise.all(
     filenames.map(async (filename) => {
       const module = await modules[filename]();
       const tags = module.frontmatter.tags || [];
-      (tags as string[]).forEach((tag: string) => allTags.add(tag));
+      (tags as string[]).forEach((tag: string) => {
+        tagCounts.set(tag, (tagCounts.get(tag) || 0) + 1);
+      });
     }),
   );
 
-  return Array.from(allTags);
+  return Array.from(tagCounts.entries()).map(([tag, count]) => ({ name: tag, count }));
 };
 
 // Sort markdown files ascending based on the date in the frontmatter.
@@ -87,11 +89,10 @@ const sanitizeContent = (MDContent: string) => {
 // Get a list of markdown files based on the type.
 export const markdownList = async (
   type: string,
-  startIndex: number,
+  offset: number,
   count: number,
   sortCondition: SortCondition = 'sortByDateDescending',
   tags: string[] = [],
-  limit?: number,
 ): Promise<MarkdownListProps> => {
   const modules = getMarkdownModules(type);
   const filenames = Object.keys(modules);
@@ -125,15 +126,12 @@ export const markdownList = async (
   // Sort the markdown files
   const sortedMarkdownFiles = filteredMarkdownFiles.sort(sortMap[sortCondition]);
 
-  // Determine the effective count based on the limit
-  const effectiveCount = limit ? Math.min(count, limit - startIndex) : count;
-
   // Slice the sorted files to get only the requested amount
-  const paginatedFiles = sortedMarkdownFiles.slice(startIndex, startIndex + effectiveCount);
+  const paginatedFiles = sortedMarkdownFiles.slice(offset, offset + count);
 
   return {
     markdownFiles: paginatedFiles,
-    hasMore: startIndex + effectiveCount < sortedMarkdownFiles.length && effectiveCount > 0,
+    hasMore: offset + count < sortedMarkdownFiles.length,
     totalCount: filteredMarkdownFiles.length,
   };
 };

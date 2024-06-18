@@ -22,6 +22,7 @@ export type MarkdownListProps = {
   markdownFiles: MarkdownFile[];
   hasMore: boolean;
   totalCount: number;
+  allTags?: string[];
 };
 
 export type SortCondition = 'sortByDateAscending' | 'sortByDateDescending';
