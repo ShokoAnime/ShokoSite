@@ -4,6 +4,7 @@ import { MarkdownFile } from '~/types/markdown';
 import PageBanner from '~/components/layout/PageBanner';
 import BlogFilter from '~/components/blog/BlogFilter';
 import BlogList from '~/components/blog/BlogList';
+import BlogListSidebar from '~/components/blog/BlogListSidebar';
 
 function Blog() {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
@@ -16,6 +17,7 @@ function Blog() {
   const loadingRef = useRef<HTMLDivElement>(null);
 
   const fetchMarkdownList = async (newOffset: number, tags: string[]) => {
+    console.log('Called');
     const url = new URL('/api/getMarkdownList', window.location.origin);
     url.searchParams.set('offset', newOffset.toString());
     url.searchParams.set('type', 'blog');
@@ -89,8 +91,8 @@ function Blog() {
         title="Shoko Blog"
         description="Stay informed with the latest news about Shoko's development, third-party plugins, and other relevant topics."
       />
-      <div className="mx-auto flex h-full min-h-[calc(100vh-557px)] max-w-[1440px] flex-col items-center justify-start gap-y-8 py-16">
-        <BlogFilter
+      <div className="flex min-h-[calc(100vh-557px)] w-full justify-center gap-x-16 py-16">
+        <BlogListSidebar
           availableTags={allTags}
           tagCount={totalCount}
           selectedTags={selectedTags}
@@ -103,8 +105,8 @@ function Blog() {
           tagClicked={tagClicked}
           selectedTags={selectedTags}
         />
-        {hasMore && <div ref={loadingRef} />}
       </div>
+      {hasMore && <div ref={loadingRef} />}
     </>
   );
 }

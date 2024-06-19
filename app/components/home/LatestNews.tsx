@@ -19,7 +19,6 @@ const LatestNews = () => {
       3,
       'sortByDateDescending',
       [],
-      3,
     );
 
     // Update the state with new unique files
@@ -75,11 +74,11 @@ const LatestNews = () => {
                 src={`/images/blog/${file.frontmatter.image}`}
                 alt={file.frontmatter.title}
               />
-              <div className="font-header shadow-custom absolute right-5 top-5 flex flex-col items-center rounded-lg">
+              <div className="font-header shadow-custom absolute left-5 top-5 flex flex-col items-center rounded-lg">
                 <div className="bg-shoko-bg text-shoko-text-header flex h-10 w-[4.375rem] items-center justify-center rounded-t-lg text-2xl font-bold">
                   {convertDate(file.frontmatter.date, 'array')[0]}
                 </div>
-                <div className="bg-shoko-highlight font-header text-shoko-text-alt flex h-[2.188rem] w-[4.375rem] items-center justify-center rounded-b-lg text-xl font-bold">
+                <div className="bg-shoko-highlight font-header text-shoko-text-alt flex h-10 w-[4.375rem] items-center justify-center rounded-b-lg text-xl font-bold">
                   {convertDate(file.frontmatter.date, 'array')[1]}
                 </div>
               </div>

@@ -9,11 +9,11 @@ import SectionHeader from '~/components/common/SectionHeader';
 import Button from '~/components/common/Button';
 import Icon from '~/components/common/Icon';
 
-type BlogSidebar = {
+type BlogPostSidebar = {
   postData: BlogDetail;
 };
 
-const BlogSidebar = ({ postData }: BlogSidebar) => {
+const BlogPostSidebar = ({ postData }: BlogPostSidebar) => {
   const animeUrl = `https://anidb.net/anime/?adb.search=${postData.frontmatter.anime}`;
   const downloadItem = postData.frontmatter.download;
   const changelogItem = postData.frontmatter.changelog;
@@ -118,4 +118,4 @@ const BlogSidebar = ({ postData }: BlogSidebar) => {
   );
 };
 
-export default BlogSidebar;
+export default BlogPostSidebar;

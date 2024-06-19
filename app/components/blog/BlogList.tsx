@@ -7,6 +7,7 @@ import { convertDate } from '~/helpers/helpers';
 
 import Icon from '~/components/common/Icon';
 import LinkButton from '~/components/common/LinkButton';
+import cx from 'classnames';
 
 const BlogList = ({ data, setTagClicked, tagClicked, selectedTags }: BlogListProps) => {
   const [blogData, setBlogData] = useState(data);
@@ -29,34 +30,32 @@ const BlogList = ({ data, setTagClicked, tagClicked, selectedTags }: BlogListPro
 
   if (blogData.length === 0 && selectedTags.length !== 0) {
     return (
-      <div>
+      <div className={cx('w-full max-w-[1000px]', visible ? 'opacity-100' : 'opacity-0')}>
         <h4>Looks like there were no posts with your selected criteria.</h4>
       </div>
     );
   }
 
   return (
-    <div className={`transition-opacity duration-300 ${visible ? 'opacity-100' : 'opacity-0'}`}>
+    <div className={cx('transition-opacity duration-300', visible ? 'opacity-100' : 'opacity-0')}>
       {blogData.map((file) => (
-        <div key={file.frontmatter.title} className="flex gap-x-16 [&>div]:pb-16 [&>div]:last:pb-0">
-          <div className="relative flex flex-col items-center text-center">
-            <div className="bg-shoko-bg-alt border-shoko-border text-shoko-text z-10 flex h-fit w-[6.875rem] flex-col items-center rounded-lg border border-solid px-3 py-2">
-              <div className="flex gap-x-2">
-                <h4 className="text-shoko-text">{convertDate(file.frontmatter.date, 'array')[1]}</h4>
-                <h4 className="text-shoko-text">{convertDate(file.frontmatter.date, 'array')[0]}</h4>
-              </div>
-              <div className="font-semibold ">{convertDate(file.frontmatter.date, 'array')[2]}</div>
-            </div>
-            <div className="bg-shoko-border absolute left-1/2 z-0 h-full w-px -translate-x-1/2"></div>
-          </div>
-          <div className="flex w-full max-w-[900px] flex-col gap-y-6">
-            <h3>{file.frontmatter.title}</h3>
+        <div key={file.frontmatter.title} className="flex [&>div]:pb-16 [&>div]:last:pb-0">
+          <div className="flex w-full max-w-[1000px] flex-col gap-y-6">
+            <h2>{file.frontmatter.title}</h2>
             <div className="group relative">
               <img
                 className="shadow-custom rounded-lg"
                 src={`/images/blog/${file.frontmatter.image}`}
                 alt={file.frontmatter.title}
               />
+              <div className="font-header shadow-custom absolute left-5 top-5 flex flex-col items-center rounded-lg">
+                <div className="bg-shoko-bg font-header text-shoko-text-header flex h-12 w-24 items-center justify-center rounded-t-lg text-2xl font-bold">
+                  {convertDate(file.frontmatter.date, 'array')[0]}
+                </div>
+                <div className="bg-shoko-highlight font-header text-shoko-text-alt flex h-12 w-24 items-center justify-center rounded-b-lg text-xl font-bold">
+                  {convertDate(file.frontmatter.date, 'array')[1]}
+                </div>
+              </div>
               <Link
                 className="text-shoko-link font-semibold"
                 to={`/blog/${file.filename.split('/').pop()?.replace('.mdx', '')}`}
@@ -80,7 +79,7 @@ const BlogList = ({ data, setTagClicked, tagClicked, selectedTags }: BlogListPro
                 ))}
               </div>
             </div>
-            <div className="text-shoko-text line-clamp-5 text-base">{file.description}</div>
+            <div className="text-shoko-text line-clamp-4">{file.description}</div>
             <LinkButton
               className="w-fit"
               buttonType="primary"
