@@ -6,7 +6,7 @@ import { BlogDetail } from '~/types/blog';
 import { contributors, honorable, staff } from '~/data/contributors';
 import { ContributorsProps } from '~/types/contributors';
 
-import BlogSidebar from '~/components/blog/BlogSidebar';
+import BlogPostSidebar from '~/components/blog/BlogPostSidebar';
 import BlogPostBanner from '~/components/blog/BlogPostBanner';
 import PageNotFound from '~/components/layout/PageNotFound';
 import SectionHeader from '~/components/common/SectionHeader';
@@ -80,7 +80,7 @@ export default function BlogPost() {
     <>
       <BlogPostBanner title={postData.frontmatter.title} image={postData.frontmatter.image} />
       <div className="my-16 flex justify-center gap-x-16">
-        <BlogSidebar postData={postData} />
+        <BlogPostSidebar postData={postData} />
         <div className="border-shoko-border border-r border-solid" />
         <div className="flex flex-col gap-y-6">
           <div className="shoko-post flex w-full max-w-[850px] flex-col gap-y-6">{postData.description}</div>
