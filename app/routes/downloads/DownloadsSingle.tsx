@@ -32,7 +32,7 @@ function DownloadsSingle() {
 
   return (
     <>
-      <PageBanner title="Downloads" />
+      <PageBanner title="DownloadsIndex" />
       <div className="my-16 flex h-full min-h-[calc(100vh-685px)] justify-center gap-x-16">
         <DownloadSidebar downloadData={downloadData} />
         <div className="border-shoko-border border-r border-solid" />

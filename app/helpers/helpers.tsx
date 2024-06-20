@@ -14,6 +14,7 @@ export const convertToProperName = (path: string) => {
     })
     .replace(/-/g, ' ')
     .replace(/\b\w/g, (char) => char.toUpperCase())
+    .replace(/\bDownloadsIndex\b/g, 'Downloads')
     .replace(/\bUi\b/g, 'UI')
     .replace(/\bJmm\b/g, 'JMM');
 };

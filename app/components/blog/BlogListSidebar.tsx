@@ -2,8 +2,6 @@ import SectionHeader from '~/components/common/SectionHeader';
 import { BlogFilterProps } from '~/types/blog';
 import Button from '~/components/common/Button';
 import cx from 'classnames';
-import Icon from '~/components/common/Icon';
-import { mdiCheckCircle } from '@mdi/js';
 
 const BlogListSidebar = (
   { availableTags, selectedTags, setSelectedTags, setTagClicked }: BlogFilterProps,
@@ -20,25 +18,33 @@ const BlogListSidebar = (
   const tagList = availableTags.sort((a, b) => a.name.localeCompare(b.name));
 
   return (
-    <div className="border-shoko-border flex w-full max-w-[250px] flex-col gap-y-8 border-r border-solid">
-      <div className="flex flex-col gap-y-6">
-        <SectionHeader title="Available Tags" type="h4" />
-        <div className="flex flex-col items-start gap-y-1">
-          {tagList.sort().map((tag) => (
-            <div key={tag.name} className="flex w-full justify-between pr-6">
-              <Button
-                className={cx(
-                  'hover:text-shoko-link-hover p-0 duration-0',
-                  selectedTags.includes(tag.name) && '!text-shoko-link',
-                )}
-                buttonType="text"
-                onClick={() => onTagChange(tag.name)}
-              >
-                {tag.name} ({tag.count})
-              </Button>
-              {selectedTags.includes(tag.name) && <Icon icon={mdiCheckCircle} className="text-shoko-link" />}
-            </div>
-          ))}
+    <div className="flex w-full max-w-[300px] flex-col gap-y-8">
+      <div className="sticky top-36 flex flex-col gap-y-6">
+        <div className="flex flex-col gap-y-6">
+          <SectionHeader title="Share Your Project" type="h4" />
+          <div className="flex flex-col items-start gap-y-1">
+            If you&apos;re working on a project that uses Shoko, feel free to create a blog post for it. Please reach
+            out to us on Discord if you would like to do so.
+          </div>
+        </div>
+        <div className="flex flex-col gap-y-6">
+          <SectionHeader title="Available Tags" type="h4" />
+          <div className="flex flex-wrap items-start gap-1">
+            {tagList.sort().map((tag) => (
+              <div key={tag.name} className="flex justify-between">
+                <Button
+                  className={cx(
+                    'hover:text-shoko-link-hover duration-0 py-2 px-2 text-sm',
+                    selectedTags.includes(tag.name) && 'bg-shoko-link text-shoko-text-alt',
+                  )}
+                  buttonType="outline"
+                  onClick={() => onTagChange(tag.name)}
+                >
+                  {tag.name}
+                </Button>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

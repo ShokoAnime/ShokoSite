@@ -1,5 +1,4 @@
-@import '@fontsource-variable/lexend-deca';
-@import '@fontsource-variable/work-sans';
+@import '@fontsource-variable/sora';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -29,7 +28,7 @@
     }
 
     h2 {
-        @apply text-[2.25rem] leading-[3.6rem];
+        @apply text-[2.25rem] leading-[3.15rem];
     }
 
     h3 {

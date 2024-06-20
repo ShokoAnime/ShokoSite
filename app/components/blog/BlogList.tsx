@@ -37,11 +37,15 @@ const BlogList = ({ data, setTagClicked, tagClicked, selectedTags }: BlogListPro
   }
 
   return (
-    <div className={cx('transition-opacity duration-300', visible ? 'opacity-100' : 'opacity-0')}>
+    <div
+      className={cx(
+        'flex flex-col gap-y-8 w-full max-w-[1000px] transition-opacity duration-300',
+        visible ? 'opacity-100' : 'opacity-0',
+      )}
+    >
       {blogData.map((file) => (
-        <div key={file.frontmatter.title} className="flex [&>div]:pb-16 [&>div]:last:pb-0">
-          <div className="flex w-full max-w-[1000px] flex-col gap-y-6">
-            <h2>{file.frontmatter.title}</h2>
+        <div key={file.filename} className="flex flex-col gap-y-8">
+          <div className="flex flex-col gap-y-6">
             <div className="group relative">
               <img
                 className="shadow-custom rounded-lg"
@@ -49,10 +53,10 @@ const BlogList = ({ data, setTagClicked, tagClicked, selectedTags }: BlogListPro
                 alt={file.frontmatter.title}
               />
               <div className="font-header shadow-custom absolute left-5 top-5 flex flex-col items-center rounded-lg">
-                <div className="bg-shoko-bg font-header text-shoko-text-header flex h-12 w-24 items-center justify-center rounded-t-lg text-2xl font-bold">
+                <div className="bg-shoko-bg font-header text-shoko-text-header flex h-10 w-16 items-center justify-center rounded-t-lg text-2xl font-bold">
                   {convertDate(file.frontmatter.date, 'array')[0]}
                 </div>
-                <div className="bg-shoko-highlight font-header text-shoko-text-alt flex h-12 w-24 items-center justify-center rounded-b-lg text-xl font-bold">
+                <div className="bg-shoko-highlight font-header text-shoko-text-alt flex h-10 w-16 items-center justify-center rounded-b-lg text-xl font-bold">
                   {convertDate(file.frontmatter.date, 'array')[1]}
                 </div>
               </div>
@@ -65,21 +69,24 @@ const BlogList = ({ data, setTagClicked, tagClicked, selectedTags }: BlogListPro
                 </div>
               </Link>
             </div>
-            <div className="flex gap-x-2">
-              <Icon className="text-shoko-highlight font-medium" icon={mdiTagMultiple} />
-              <div className="flex flex-wrap gap-x-2">
-                {file.frontmatter.tags.map((tag, index, arr) => (
-                  <div
-                    key={tag}
-                    className="text-shoko-highlight font-medium"
-                  >
-                    {tag}
-                    {index !== arr.length - 1 && ' |'}
-                  </div>
-                ))}
+            <div className="flex flex-col gap-y-2">
+              <div className="flex gap-x-2">
+                <Icon className="text-shoko-highlight font-medium" icon={mdiTagMultiple} />
+                <div className="flex flex-wrap gap-x-2">
+                  {file.frontmatter.tags.map((tag, index, arr) => (
+                    <div
+                      key={tag}
+                      className="text-shoko-highlight font-medium"
+                    >
+                      {tag}
+                      {index !== arr.length - 1 && ' |'}
+                    </div>
+                  ))}
+                </div>
               </div>
+              <h2>{file.frontmatter.title}</h2>
+              <div className="text-shoko-text line-clamp-4">{file.description}</div>
             </div>
-            <div className="text-shoko-text line-clamp-4">{file.description}</div>
             <LinkButton
               className="w-fit"
               buttonType="primary"
@@ -88,6 +95,7 @@ const BlogList = ({ data, setTagClicked, tagClicked, selectedTags }: BlogListPro
               Read More →
             </LinkButton>
           </div>
+          <div className="border-shoko-border border-b" />
         </div>
       ))}
     </div>

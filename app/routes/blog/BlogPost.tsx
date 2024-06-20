@@ -81,7 +81,6 @@ export default function BlogPost() {
       <BlogPostBanner title={postData.frontmatter.title} image={postData.frontmatter.image} />
       <div className="my-16 flex justify-center gap-x-16">
         <BlogPostSidebar postData={postData} />
-        <div className="border-shoko-border border-r border-solid" />
         <div className="flex flex-col gap-y-6">
           <div className="shoko-post flex w-full max-w-[850px] flex-col gap-y-6">{postData.description}</div>
           {postData.frontmatter.devs && (

@@ -56,7 +56,7 @@ const BlogDetailBanner = ({ title, image }: BlogDetailBannerProps) => {
                 ))}
               </div>
               <h1 className="text-shoko-text-alt capitalize">
-                {convertToProperName(breadcrumbs[breadcrumbs.length - 1])}
+                {title}
               </h1>
             </div>
           </div>

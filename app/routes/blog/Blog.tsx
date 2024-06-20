@@ -1,74 +1,59 @@
 import { useEffect, useRef, useState } from 'react';
+import { useLoaderData } from '@remix-run/react';
+import { LoaderFunction } from '@remix-run/node';
 
-import { MarkdownFile } from '~/types/markdown';
+import { InitialMarkdownList, MarkdownFile } from '~/types/markdown';
+import { getAllTags, markdownList } from '~/helpers/markdown';
 import PageBanner from '~/components/layout/PageBanner';
-import BlogFilter from '~/components/blog/BlogFilter';
 import BlogList from '~/components/blog/BlogList';
 import BlogListSidebar from '~/components/blog/BlogListSidebar';
 
+export const loader: LoaderFunction = async () => {
+  const type = 'blog';
+  const offset = 0;
+  const limit = 5;
+  const sort = 'sortByDateDescending';
+  const tags: string[] = [];
+
+  const { markdownFiles, hasMore, totalCount } = await markdownList(type, offset, limit, sort, tags);
+  const allTags = await getAllTags(type);
+
+  return {
+    initialMarkdownFiles: markdownFiles,
+    initialHasMore: hasMore,
+    totalCount,
+    allTags,
+  };
+};
+
 function Blog() {
+  const { initialMarkdownFiles, initialHasMore, totalCount, allTags } = useLoaderData<
+    InitialMarkdownList
+  >();
+  const [markdownFiles, setMarkdownFiles] = useState<MarkdownFile[]>(initialMarkdownFiles);
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
-  const [offset, setOffset] = useState(0);
-  const [markdownFiles, setMarkdownFiles] = useState<MarkdownFile[]>([]);
-  const [hasMore, setHasMore] = useState(true);
-  const [allTags, setAllTags] = useState<[]>([]);
   const [tagClicked, setTagClicked] = useState(false);
-  const [totalCount, setTotalCount] = useState(0);
+  const [hasMore, setHasMore] = useState(initialHasMore);
   const loadingRef = useRef<HTMLDivElement>(null);
 
-  const fetchMarkdownList = async (newOffset: number, tags: string[]) => {
-    console.log('Called');
-    const url = new URL('/api/getMarkdownList', window.location.origin);
-    url.searchParams.set('offset', newOffset.toString());
-    url.searchParams.set('type', 'blog');
+  const loadMoreFiles = async () => {
+    const { markdownFiles: newFiles, hasMore: moreFiles } = await markdownList(
+      'blog',
+      markdownFiles.length,
+      5,
+      'sortByDateDescending',
+      selectedTags,
+    );
 
-    if (tags.length > 0) {
-      url.searchParams.set('tags', tags.join(','));
-    }
-
-    const response = await fetch(url.toString());
-    const { markdownFiles: newMarkdownFiles, hasMore: newHasMore, totalCount } = await response.json();
-
-    return { newMarkdownFiles, newHasMore, totalCount };
+    setMarkdownFiles((prevFiles) => [...prevFiles, ...newFiles]);
+    setHasMore(moreFiles);
   };
-
-  const fetchTags = async () => {
-    const response = await fetch('/api/getTags?type=blog');
-    const { allTags } = await response.json();
-    setAllTags(allTags);
-  };
-
-  const fetchInitialData = async () => {
-    setMarkdownFiles([]);
-
-    const { newMarkdownFiles, newHasMore, totalCount } = await fetchMarkdownList(0, selectedTags);
-
-    setMarkdownFiles(newMarkdownFiles);
-    setHasMore(newHasMore);
-    setOffset(5);
-    setTotalCount(totalCount);
-
-    await fetchTags();
-  };
-
-  const loadMore = async () => {
-    const newOffset = offset + 5;
-    const { newMarkdownFiles, newHasMore } = await fetchMarkdownList(newOffset, selectedTags);
-
-    setMarkdownFiles((prevFiles) => [...prevFiles, ...newMarkdownFiles]);
-    setHasMore(newHasMore);
-    setOffset(newOffset);
-  };
-
-  useEffect(() => {
-    fetchInitialData();
-  }, [selectedTags]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting && hasMore) {
-          loadMore();
+          loadMoreFiles();
         }
       },
       { threshold: 0.5 },
@@ -83,7 +68,24 @@ function Blog() {
         observer.unobserve(loadingRef.current);
       }
     };
-  }, [hasMore, offset, selectedTags]);
+  }, [hasMore, markdownFiles, selectedTags]);
+
+  useEffect(() => {
+    const fetchInitialData = async () => {
+      const { markdownFiles: newMarkdownFiles, hasMore: newHasMore } = await markdownList(
+        'blog',
+        0,
+        5,
+        'sortByDateDescending',
+        selectedTags,
+      );
+
+      setMarkdownFiles(newMarkdownFiles);
+      setHasMore(newHasMore);
+    };
+
+    fetchInitialData();
+  }, [selectedTags]);
 
   return (
     <>
