@@ -39,6 +39,30 @@ const getMarkdownModules = (type: string) => {
   }
 };
 
+export const getDownloadsCount = async (): Promise<{ programs: number, themes: number, renamers: number }> => {
+  const downloads = getMarkdownModules('downloads');
+  const filenames = Object.keys(downloads);
+
+  let programs = 0;
+  let themes = 0;
+  let renamers = 0;
+
+  await Promise.all(
+    filenames.map(async (filename) => {
+      const type = filename.split('/')[3];
+      if (type === 'media-player-plugins' || type === 'legacy' || type === 'shoko-server') {
+        programs++;
+      } else if (type === 'webui-themes') {
+        themes++;
+      } else if (type === 'renamer-plugins') {
+        renamers++;
+      }
+    }),
+  );
+
+  return { programs, themes, renamers };
+};
+
 // Get all unique tags and their counts from markdown files.
 export const getAllTags = async (type: string): Promise<Array<{ name: string, count: number }>> => {
   const modules = getMarkdownModules(type);

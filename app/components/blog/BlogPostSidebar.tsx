@@ -46,7 +46,7 @@ const BlogPostSidebar = ({ postData }: BlogPostSidebar) => {
   ];
 
   return (
-    <div className="flex w-full max-w-[18.125rem] flex-col gap-y-8">
+    <div className="border-shoko-border flex w-fit max-w-64 flex-col flex-wrap gap-y-8 border-r border-solid pr-12">
       <div className="flex flex-col gap-y-6">
         <SectionHeader title="Post Information" type="h4" />
         <div className="flex flex-col gap-y-1">
@@ -104,7 +104,7 @@ const BlogPostSidebar = ({ postData }: BlogPostSidebar) => {
 
       <div className="flex flex-col items-start gap-y-6 text-base">
         <SectionHeader title="Share" type="h4" />
-        <div className="flex w-full gap-x-4">
+        <div className="flex w-full flex-wrap gap-4">
           {shareLinks.map((link, index) => (
             <a key={index} href={link.link} target="_blank" rel="noreferrer">
               <Button buttonType="circle" className="size-[2.8rem]">

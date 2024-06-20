@@ -25,4 +25,14 @@ export type MarkdownListProps = {
   allTags?: string[];
 };
 
+export type InitialMarkdownList = {
+  initialMarkdownFiles: MarkdownFile[];
+  initialHasMore: boolean;
+  totalCount: number;
+  allTags: {
+    name: string;
+    count: number;
+  }[];
+};
+
 export type SortCondition = 'sortByDateAscending' | 'sortByDateDescending';

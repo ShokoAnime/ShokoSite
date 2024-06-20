@@ -1,9 +1,10 @@
 import { useLocation } from '@remix-run/react';
 import { useEffect, useState } from 'react';
 import cx from 'classnames';
+
+import { useSetPageTitle } from '~/hooks/useSetPageTitle';
 import { convertToProperName } from '~/helpers/helpers';
 import LinkButton from '~/components/common/LinkButton';
-import { useSetPageTitle } from '~/hooks/useSetPageTitle';
 
 type PageBannerProps = {
   title: string;

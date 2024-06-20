@@ -2,7 +2,7 @@ import PageBanner from '~/components/layout/PageBanner';
 import SectionHeader from '~/components/common/SectionHeader';
 import DownloadIndexCard from '~/components/downloads/IndexCard';
 
-function Downloads() {
+function DownloadsIndex() {
   const headerSubtitle = (
     <>
       <div className="flex gap-x-2">
@@ -27,7 +27,7 @@ function Downloads() {
   return (
     <>
       <PageBanner
-        title="Downloads"
+        title="DownloadsIndex"
         description="Browse through selection of programs, plugins, Web UI Themes and other tools available in the Shoko Suite."
       />
       <div className="text-shoko-text-header mx-auto flex h-full min-h-[calc(100vh-557px)] max-w-[1440px] flex-col gap-x-2 gap-y-16 py-16">
@@ -38,4 +38,4 @@ function Downloads() {
   );
 }
 
-export default Downloads;
+export default DownloadsIndex;
