@@ -24,15 +24,15 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <title>Shoko</title>
       </head>
       <body>
-        <ScrollWrapper>
-          <ThemeProvider>
-            <Header />
-            {children}
-            <ScrollRestoration />
-            <Scripts />
-            <Footer />
-          </ThemeProvider>
-        </ScrollWrapper>
+        {/*<ScrollWrapper>*/}
+        <ThemeProvider>
+          <Header />
+          {children}
+          <ScrollRestoration />
+          <Scripts />
+          <Footer />
+        </ThemeProvider>
+        {/*</ScrollWrapper>*/}
       </body>
     </html>
   );
