@@ -6,8 +6,8 @@ import { DownloadItem } from '~/types/downloads';
 
 import PageNotFound from '~/components/layout/PageNotFound';
 import PageBanner from '~/components/layout/PageBanner';
-import DownloadSidebar from '~/components/downloads/DownloadSidebar';
-import DownloadHeader from '~/components/downloads/DownloadHeader';
+import DownloadSidebar from '~/components/downloads/DownloadPostSidebar';
+import DownloadPostHeader from '~/components/downloads/DownloadPostHeader';
 import SectionHeader from '~/components/common/SectionHeader';
 import Image from '~/components/common/Image';
 
@@ -32,13 +32,13 @@ function DownloadsSingle() {
 
   return (
     <>
-      <PageBanner title="DownloadsIndex" />
+      <PageBanner title={downloadData.frontmatter.name} />
       <div className="my-16 flex h-full min-h-[calc(100vh-685px)] justify-center gap-x-16">
         <DownloadSidebar downloadData={downloadData} />
         <div className="border-shoko-border border-r border-solid" />
         <div className="flex w-full max-w-[850px] flex-col gap-y-6">
           <div className="flex flex-col gap-y-6">
-            <DownloadHeader title="Description" resources={downloadData.frontmatter.resources} />
+            <DownloadPostHeader title="Description" resources={downloadData.frontmatter.resources} />
             {downloadData.description}
           </div>
           <div className="flex flex-col gap-y-6">

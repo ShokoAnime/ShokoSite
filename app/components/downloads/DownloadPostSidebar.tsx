@@ -1,39 +1,61 @@
 import { DownloadItem, PlatformData } from '~/types/downloads';
 import SectionHeader from '~/components/common/SectionHeader';
 
-type DownloadSidebar = {
+type DownloadPostSidebar = {
   downloadData: DownloadItem;
 };
 
-const DownloadSidebar = ({ downloadData }: DownloadSidebar) => {
+const DownloadPostSidebar = ({ downloadData }: DownloadPostSidebar) => {
   return (
     <div className="flex w-auto max-w-56 flex-col gap-y-8">
       <div className="flex flex-col gap-y-6">
         <SectionHeader title="File Information" type="h4" />
+        {downloadData.frontmatter.author && (
+          <div className="flex flex-col gap-y-1">
+            <div className="font-header font-medium">Author</div>
+            <div className="font-body">{downloadData.frontmatter.author}</div>
+          </div>
+        )}
         <div className="flex flex-col gap-y-1">
           <div className="font-header font-medium">Version</div>
           <div className="font-body">{downloadData.frontmatter.version}</div>
         </div>
         <div className="flex flex-col gap-y-1">
-          <div className="font-header font-medium">Release Date</div>
+          <div className="font-header font-medium">Last Updated</div>
           <div className="font-body">{downloadData.frontmatter.date}</div>
         </div>
-        <div className="flex flex-col gap-y-1">
-          <div className="font-header font-medium">Platforms</div>
-          <div className="text-shoko-text flex flex-wrap font-normal">
-            {downloadData.frontmatter.downloads.map(
-              (platform: PlatformData, index: number) => {
+        {!downloadData.frontmatter.author && (
+          <div className="flex flex-col gap-y-1">
+            <div className="font-header font-medium">Platforms</div>
+            <div className="text-shoko-text flex flex-wrap font-normal">
+              {downloadData.frontmatter.downloads.map(
+                (platform: PlatformData, index: number) => {
+                  return (
+                    <div key={platform.text} className="text-shoko-highlight font-medium">
+                      {index !== downloadData.frontmatter.downloads.length - 1
+                        ? `${platform.text},\u00A0`
+                        : platform.text}
+                    </div>
+                  );
+                },
+              )}
+            </div>
+          </div>
+        )}
+        {downloadData.frontmatter.tags && (
+          <div className="flex flex-col gap-y-1">
+            <div className="font-header font-medium">Theme Tags</div>
+            <div className="font-body flex">
+              {downloadData.frontmatter.tags.sort().map((tag: string, index: number) => {
                 return (
-                  <div key={platform.text} className="text-shoko-highlight font-medium">
-                    {index !== downloadData.frontmatter.downloads.length - 1
-                      ? `${platform.text},\u00A0`
-                      : platform.text}
+                  <div key={tag} className="text-shoko-highlight font-medium">
+                    {index !== downloadData.frontmatter.tags.length - 1 ? `${tag},\u00A0` : tag}
                   </div>
                 );
-              },
-            )}
+              })}
+            </div>
           </div>
-        </div>
+        )}
       </div>
 
       <div className="flex flex-col gap-y-6">
@@ -67,4 +89,4 @@ const DownloadSidebar = ({ downloadData }: DownloadSidebar) => {
   );
 };
 
-export default DownloadSidebar;
+export default DownloadPostSidebar;

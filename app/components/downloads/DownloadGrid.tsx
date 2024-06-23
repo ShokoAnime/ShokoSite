@@ -1,29 +1,55 @@
-import { mdiDownload, mdiPowerPlug } from '@mdi/js';
+import { useEffect, useState } from 'react';
+import { mdiAccount, mdiDownload, mdiPowerPlug } from '@mdi/js';
+import cx from 'classnames';
 
-import { MarkdownFile } from '~/types/markdown';
 import { convertNameToUrl } from '~/helpers/helpers';
-
-import PageBanner from '~/components/layout/PageBanner';
+import { DownloadGridProps } from '~/types/downloads';
 import Icon from '~/components/common/Icon';
 import LinkButton from '~/components/common/LinkButton';
 
-type DownloadGridProps = {
-  data: MarkdownFile[];
-};
+const DownloadGrid = ({ data, type, setTagClicked, tagClicked, selectedTags }: DownloadGridProps) => {
+  const [downloadData, setDownloadData] = useState(data);
+  const [visible, setVisible] = useState(true);
 
-const DownloadGrid = ({ data }: DownloadGridProps) => {
+  useEffect(() => {
+    if (tagClicked) {
+      setVisible(false);
+      const timeout = setTimeout(() => {
+        setVisible(true);
+        setDownloadData(data);
+        setTagClicked(false);
+      }, 300);
+      return () => clearTimeout(timeout);
+    } else {
+      setVisible(true);
+      setDownloadData(data);
+    }
+  }, [data, tagClicked]);
+
+  if (downloadData.length === 0 && selectedTags.length !== 0) {
+    return (
+      <div className={cx('w-full max-w-[1086px]', visible ? 'opacity-100' : 'opacity-0')}>
+        <h4>Looks like there were no Web UI Themes with your selected criteria.</h4>
+      </div>
+    );
+  }
+
   return (
     <div>
-      <PageBanner
-        title="Downloads"
-        description="Browse through selection of programs, plugins, Web UI Themes and other tools available in the Shoko Suite."
-      />
-      <div className="text-shoko-text-header mx-auto flex h-full min-h-[calc(100vh-557px)] max-w-[1440px] flex-col gap-x-2 gap-y-16 py-16">
+      <div
+        className={cx(
+          'text-shoko-text-header mx-auto flex size-full min-h-[calc(100vh-557px)] w-full flex-col flex-wrap gap-16 gap-x-2',
+          type === 'webui-themes' ? 'max-w-[1076px]' : 'max-w-[1440px]',
+        )}
+      >
         <div className="flex flex-wrap gap-8">
-          {data.map((download) => (
-            <div key={download.frontmatter.name} className="flex max-w-[28.5rem] flex-col gap-y-6 ">
+          {downloadData.map((download) => (
+            <div
+              key={download.filename}
+              className={cx('flex flex-col gap-y-6', type === 'webui-themes' ? 'max-w-[32.5rem]' : 'max-w-[28.5rem]')}
+            >
               <img
-                className="shadow-custom h-64 rounded-lg "
+                className={cx('shadow-custom rounded-lg', type === 'webui-themes' ? 'h-72' : 'h-64')}
                 src={download.frontmatter.images[0].url}
                 alt={download.frontmatter.images[0].alt}
               />
@@ -32,10 +58,19 @@ const DownloadGrid = ({ data }: DownloadGridProps) => {
                   <h4>{download.frontmatter.name}</h4>
                   <hr className="border-shoko-highlight w-[6.25rem] border" />
                 </div>
-                <div className="bg-shoko-bg-alt border-shoko-border text-shoko-text-header flex gap-x-2 rounded-lg border px-4 py-3 font-medium">
-                  <Icon icon={mdiPowerPlug} />
-                  {download.frontmatter.downloads[0].text}
-                </div>
+                {type !== 'webui-themes'
+                  ? (
+                    <div className="bg-shoko-bg-alt border-shoko-border text-shoko-text-header flex gap-x-2 rounded-lg border px-4 py-3 font-medium">
+                      <Icon icon={mdiPowerPlug} />
+                      {download.frontmatter.downloads[0].text}
+                    </div>
+                  )
+                  : (
+                    <div className="bg-shoko-bg-alt border-shoko-border text-shoko-text-header flex gap-x-2 rounded-lg border px-4 py-3 font-medium">
+                      <Icon icon={mdiAccount} />
+                      {download.frontmatter.author}
+                    </div>
+                  )}
               </div>
               <div className="line-clamp-3">
                 {download.description}

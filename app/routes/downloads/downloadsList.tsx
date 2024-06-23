@@ -1,57 +1,57 @@
 import { useEffect, useRef, useState } from 'react';
-import { useLocation } from '@remix-run/react';
+import { useLoaderData, useLocation } from '@remix-run/react';
+import { LoaderFunction } from '@remix-run/node';
 
+import { InitialMarkdownList, MarkdownFile } from '~/types/markdown';
 import { getAllTags, markdownList } from '~/helpers/markdown';
-import { MarkdownFile } from '~/types/markdown';
-
+import PageBanner from '~/components/layout/PageBanner';
 import DownloadGrid from '~/components/downloads/DownloadGrid';
-import PageNotFound from '~/components/layout/PageNotFound';
+import DownloadGridSidebar from '~/components/downloads/DownloadGridSidebar';
 
-function Downloads() {
-  const location = useLocation();
-  const downloadType = location.pathname.split('/').pop();
+export const loader: LoaderFunction = async ({ request }) => {
+  const url = new URL(request.url);
+  const pathname = url.pathname.split('/').pop();
+  const type = pathname ?? 'Downloads';
+  const offset = 0;
+  const limit = 5;
+  const sort = 'sortByDateDescending';
+  const tags: string[] = [];
 
-  const [markdownFiles, setMarkdownFiles] = useState<MarkdownFile[]>([]);
-  const [allTags, setAllTags] = useState<string[]>([]);
+  const { markdownFiles, hasMore, totalCount } = await markdownList(type, offset, limit, sort, tags);
+  const allTags = await getAllTags(type);
+
+  return {
+    initialMarkdownFiles: markdownFiles,
+    initialHasMore: hasMore,
+    totalCount,
+    allTags,
+  };
+};
+
+function DownloadsList() {
+  const { initialMarkdownFiles, initialHasMore, totalCount, allTags } = useLoaderData<
+    InitialMarkdownList
+  >();
+  const [markdownFiles, setMarkdownFiles] = useState<MarkdownFile[]>(initialMarkdownFiles);
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
-  const [tagClicked, setTagClicked] = useState<boolean>(false);
-  const [hasMore, setHasMore] = useState(true);
-  const [totalCount, setTotalCount] = useState(0);
-  const loadingRef = useRef<HTMLDivElement | null>(null);
+  const [tagClicked, setTagClicked] = useState(false);
+  const [hasMore, setHasMore] = useState(initialHasMore);
+  const loadingRef = useRef<HTMLDivElement>(null);
+  const location = useLocation();
+  const type = location.pathname.split('/').pop();
 
-  const loadMoreFiles = async (clearFiles = false) => {
-    if (clearFiles) {
-      setMarkdownFiles([]);
-    }
-
-    const { markdownFiles: newFiles, hasMore: moreFiles, totalCount } = await markdownList(
-      downloadType ?? 'downloads',
-      clearFiles ? 0 : markdownFiles.length,
-      6,
+  const loadMoreFiles = async () => {
+    const { markdownFiles: newFiles, hasMore: moreFiles } = await markdownList(
+      type ?? 'downloads',
+      markdownFiles.length,
+      5,
       'sortByDateDescending',
       selectedTags,
     );
 
-    // Get new data and filter out any duplicates.
-    setMarkdownFiles((prevFiles) => {
-      const uniqueNewFiles = newFiles.filter(
-        (newFile) => !prevFiles.some((prevFile) => prevFile.filename === newFile.filename),
-      );
-      return clearFiles ? uniqueNewFiles : [...prevFiles, ...uniqueNewFiles];
-    });
-
+    setMarkdownFiles((prevFiles) => [...prevFiles, ...newFiles]);
     setHasMore(moreFiles);
-    setTotalCount(totalCount);
   };
-
-  useEffect(() => {
-    const fetchTags = async () => {
-      const allTags = await getAllTags('web-ui-themes');
-      setAllTags(allTags);
-    };
-
-    fetchTags();
-  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -72,24 +72,52 @@ function Downloads() {
         observer.unobserve(loadingRef.current);
       }
     };
-  }, [hasMore, markdownFiles]);
+  }, [hasMore, markdownFiles, selectedTags]);
 
   useEffect(() => {
-    loadMoreFiles(true);
+    const fetchInitialData = async () => {
+      const { markdownFiles: newMarkdownFiles, hasMore: newHasMore } = await markdownList(
+        type ?? 'downloads',
+        0,
+        5,
+        'sortByDateDescending',
+        selectedTags,
+      );
+
+      setMarkdownFiles(newMarkdownFiles);
+      setHasMore(newHasMore);
+    };
+
+    fetchInitialData();
   }, [selectedTags]);
-
-  // If the post data is still loading, return null.
-  if (markdownFiles === undefined) return null;
-
-  // If the post is not found, return a 404 page.
-  if (markdownFiles === null) return <PageNotFound />;
 
   return (
     <>
-      <DownloadGrid data={markdownFiles} />
+      <PageBanner
+        title="Downloads"
+        description="Browse through selection of programs, plugins, Web UI Themes and other tools available in the Shoko Suite."
+      />
+      <div className="mx-auto flex min-h-[calc(100vh-557px)] w-full max-w-[1440px] gap-x-16 py-16">
+        {type === 'webui-themes' && (
+          <DownloadGridSidebar
+            availableTags={allTags}
+            tagCount={totalCount}
+            selectedTags={selectedTags}
+            setSelectedTags={setSelectedTags}
+            setTagClicked={setTagClicked}
+          />
+        )}
+        <DownloadGrid
+          data={markdownFiles}
+          selectedTags={selectedTags}
+          setTagClicked={setTagClicked}
+          tagClicked={tagClicked}
+          type={type ?? 'downloads'}
+        />
+      </div>
       {hasMore && <div ref={loadingRef} />}
     </>
   );
 }
 
-export default Downloads;
+export default DownloadsList;

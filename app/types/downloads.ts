@@ -1,4 +1,11 @@
 import React from 'react';
+import { MarkdownFile } from '~/types/markdown';
+
+export type DownloadsIndexProps = {
+  programs: number;
+  themes: number;
+  renamers: number;
+};
 
 export type DownloadCategories = {
   title: string;
@@ -30,8 +37,9 @@ export type DownloadItem = {
       url: string;
     }[];
     downloads: PlatformData[];
+    author: string;
+    tags: string[];
   };
-  tags?: string[];
   description: React.ReactNode;
 };
 
@@ -41,4 +49,12 @@ export type IconName = {
   github: React.ReactNode;
   changelog: string;
   docs: string;
+};
+
+export type DownloadGridProps = {
+  data: MarkdownFile[];
+  tagClicked: boolean;
+  setTagClicked: (tagClicked: boolean) => void;
+  selectedTags: string[];
+  type: string;
 };
