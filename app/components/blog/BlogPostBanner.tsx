@@ -24,7 +24,7 @@ const BlogDetailBanner = ({ title, image }: BlogDetailBannerProps) => {
   }, [location.pathname]);
 
   return (
-    <div className="relative mt-16 h-[600px] w-full overflow-hidden ">
+    <div className="relative mt-16 h-[600px] w-full overflow-hidden">
       <div
         className="inset-0 mx-auto size-full max-w-[1440px] rounded-lg bg-cover bg-top"
         style={{ backgroundImage: `url(/images/blog/${image})` }}

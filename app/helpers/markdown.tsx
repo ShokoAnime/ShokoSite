@@ -39,6 +39,7 @@ const getMarkdownModules = (type: string) => {
   }
 };
 
+// Get the total count of downloads for each category.
 export const getDownloadsCount = async (): Promise<{ programs: number, themes: number, renamers: number }> => {
   const downloads = getMarkdownModules('downloads');
   const filenames = Object.keys(downloads);

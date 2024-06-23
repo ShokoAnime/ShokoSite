@@ -77,7 +77,7 @@ export default function BlogPost() {
   if (postData === null) return <PageNotFound />;
 
   return (
-    <>
+    <div className="h-full min-h-[calc(100vh-557px)] ">
       <BlogPostBanner title={postData.frontmatter.title} image={postData.frontmatter.image} />
       <div className="my-16 flex justify-center gap-x-16">
         <BlogPostSidebar postData={postData} />
@@ -103,6 +103,6 @@ export default function BlogPost() {
           )}
         </div>
       </div>
-    </>
+    </div>
   );
 }

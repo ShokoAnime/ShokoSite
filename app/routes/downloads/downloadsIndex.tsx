@@ -1,23 +1,37 @@
+import { useEffect, useState } from 'react';
+
+import { DownloadsIndexProps } from '~/types/downloads';
+import { getDownloadsCount } from '~/helpers/markdown';
 import PageBanner from '~/components/layout/PageBanner';
 import SectionHeader from '~/components/common/SectionHeader';
 import DownloadIndexCard from '~/components/downloads/IndexCard';
 
 function DownloadsIndex() {
+  const [downloadCount, setDownloadCount] = useState<DownloadsIndexProps>();
+
+  useEffect(() => {
+    const getPostInfo = async () => {
+      const data = await getDownloadsCount();
+      setDownloadCount(data);
+    };
+    getPostInfo();
+  }, []);
+
   const headerSubtitle = (
     <>
       <div className="flex gap-x-2">
         <div className="flex gap-x-2">
-          <div className="text-shoko-highlight">8</div>
+          <div className="text-shoko-highlight">{downloadCount?.programs}</div>
           <div>Program / Plugins</div>
         </div>
         <div>|</div>
         <div className="flex gap-x-2">
-          <div className="text-shoko-highlight">36</div>
+          <div className="text-shoko-highlight">{downloadCount?.themes}</div>
           <div>Web UI Themes</div>
         </div>
         <div>|</div>
         <div className="flex gap-x-2">
-          <div className="text-shoko-highlight">1</div>
+          <div className="text-shoko-highlight">{downloadCount?.renamers}</div>
           <div>Renamer Plugin</div>
         </div>
       </div>

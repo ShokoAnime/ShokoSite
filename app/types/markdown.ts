@@ -10,6 +10,7 @@ export type Frontmatter = {
   anime: string;
   tags: string[];
   version: string;
+  author?: string;
 } | Record<string, never>;
 
 export type MarkdownFile = {

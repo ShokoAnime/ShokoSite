@@ -15,7 +15,7 @@ type DownloadHeaderProps = {
   }[];
 };
 
-const DownloadHeader = ({ title, resources }: DownloadHeaderProps) => {
+const DownloadPostHeader = ({ title, resources }: DownloadHeaderProps) => {
   const iconName: IconName = {
     discord: <FaGithub size={24} />,
     github: <FaDiscord size={24} />,
@@ -40,4 +40,4 @@ const DownloadHeader = ({ title, resources }: DownloadHeaderProps) => {
   );
 };
 
-export default DownloadHeader;
+export default DownloadPostHeader;
