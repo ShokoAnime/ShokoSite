@@ -23,17 +23,17 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
         <title>Shoko</title>
       </head>
-      <body>
-        {/*<ScrollWrapper>*/}
+      <ScrollWrapper>
         <ThemeProvider>
           <Header />
-          {children}
+          <div className="h-full min-h-[calc(100vh-664px)]">
+            {children}
+          </div>
           <ScrollRestoration />
           <Scripts />
           <Footer />
         </ThemeProvider>
-        {/*</ScrollWrapper>*/}
-      </body>
+      </ScrollWrapper>
     </html>
   );
 }

@@ -6,6 +6,7 @@ const ScrollWrapper = ({ children }: ScrollWrapperProps) => {
   return (
     <OverlayScrollbarsComponent
       defer
+      element="body"
       className="os-theme-dark scrollbar-custom"
       style={{ height: '100vh' }}
       options={{

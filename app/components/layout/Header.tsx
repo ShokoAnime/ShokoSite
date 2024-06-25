@@ -50,10 +50,14 @@ const Header = () => {
   const currentURL = location.pathname;
 
   return (
-    <div className="bg-shoko-bg-alt font-header border-shoko-border sticky top-0 z-20 border-b font-semibold">
-      <div className="mx-auto flex w-full max-w-[1440px] items-center justify-between py-4">
+    <div className="bg-shoko-bg-alt font-header border-shoko-border sticky top-0 z-20 w-full border-b py-3 font-semibold">
+      <div className="mx-auto flex w-[1440px] items-center justify-between">
         <h2 className="flex items-center gap-x-4">
-          <img src="/images/common/shoko-icon.svg" alt="Shoko Site" className="w-[4.688rem]" />
+          <img
+            src="/images/common/shoko-icon.svg"
+            alt="Shoko Site"
+            className="size-[4.688rem]"
+          />
           <Link to="/">
             Shoko
           </Link>
@@ -61,7 +65,7 @@ const Header = () => {
         <nav className="flex items-center gap-x-4">
           {navRoutes.map((route) => {
             const isExternal = route.route.startsWith('http');
-            const isActive = isExternal ? false : route.route === currentURL;
+            const isActive = isExternal ? false : currentURL.startsWith(route.route);
 
             return isExternal
               ? (
@@ -91,11 +95,11 @@ const Header = () => {
           </Button>
           {
             /*
-          TODO: Implement search functionality once Algolia is set up.
-          <Button buttonType="circle" className="size-[2.813rem]">
-          <Icon icon={mdiMagnify} />
-          </Button>
-          */
+					TODO: Implement search functionality once Algolia is set up.
+					<Button buttonType="circle" className="size-[2.813rem]">
+					<Icon icon={mdiMagnify} />
+					</Button>
+					*/
           }
         </div>
       </div>
