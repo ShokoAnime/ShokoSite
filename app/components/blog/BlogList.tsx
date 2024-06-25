@@ -44,7 +44,10 @@ const BlogList = ({ data, setTagClicked, tagClicked, selectedTags }: BlogListPro
       )}
     >
       {blogData.map((file) => (
-        <div key={file.filename} className="flex flex-col gap-y-8">
+        <div
+          key={file.filename}
+          className="border-shoko-border flex flex-col gap-y-8 border-b pb-8 last:border-0 last:pb-0"
+        >
           <div className="flex flex-col gap-y-6">
             <div className="group relative">
               <img
@@ -95,7 +98,6 @@ const BlogList = ({ data, setTagClicked, tagClicked, selectedTags }: BlogListPro
               Read More →
             </LinkButton>
           </div>
-          <div className="border-shoko-border border-b" />
         </div>
       ))}
     </div>
