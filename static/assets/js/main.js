@@ -70,7 +70,7 @@ let randomBanner = getRandomBanner();
 let languages = ["de"];
 
 function getRandomBanner() {
-	randomNumber = Math.floor((Math.random() * 7) + 1);
+	randomNumber = Math.floor((Math.random() * 4) + 1);
 	return randomNumber;
 }
 
@@ -79,7 +79,7 @@ while (parseInt(randomBanner, 10) === parseInt(previousBanner, 10)) {
 }
 
 // Hero is only used on the index page while the other is used on every other page.
-css(':root', '--hero-image', 'url("/assets/images/banners/Banner-' + randomBanner + '.jpg")');
+css(':root', '--hero-image', 'url("/assets/images/banners/Banner-' + randomBanner + '.jpg") !important');
 
 sessionStorage.setItem("bannerID", randomBanner);
 
