@@ -9,7 +9,7 @@
 {{ partial "header.html" . }}
 
 <!-- Random Banner -->
-<div class="random-banner">
+<div class="random-banner" style="--hero-image: url('{{ .Site.BaseURL }}{{ .Params.image }}')">
 	<div class="hero-overlay">
 		{{ partial "breadcrumb.html" . }}
 	</div>

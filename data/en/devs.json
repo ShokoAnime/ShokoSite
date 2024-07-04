@@ -223,13 +223,25 @@
     {
       "name": "fearnlj01",
       "githubID": "13705865",
-      "githubLink": "Swtrse",
+      "githubLink": "fearnlj01",
       "team": "no"
     },
     {
       "name": "krbrs",
       "githubID": "57227244",
       "githubLink": "krbrs",
+      "team": "no"
+    },
+    {
+      "name": "Queuecumbr",
+      "githubID": "11492746",
+      "githubLink": "Queuecumbr",
+      "team": "no"
+    },
+    {
+      "name": "Terrails",
+      "githubID": "8273440",
+      "githubLink": "Terrails",
       "team": "no"
     }
   ]
