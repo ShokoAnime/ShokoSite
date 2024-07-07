@@ -14,7 +14,7 @@ const Hero = () => {
           <h4 className="text-shoko-text w-full">
             Let Shoko take you to the future
           </h4>
-          <div className="flex gap-x-2">
+          <div className="flex gap-x-2 mb-4">
             <Button buttonType="primary">
               <Icon icon={mdiDownload} />
               <span>Download Ver 4.3.0</span>

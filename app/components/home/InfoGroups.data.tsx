@@ -60,7 +60,7 @@ const InfoGroupDetails = [
           Shoko offers more than just automated collection management. It supports a wide range of media players,
           allowing you to watch your collection on thefk device of your choice, wherever you’d like.
         </div>
-        <div className="mt-4 grid grid-cols-2 grid-rows-2 gap-y-8">
+        <div className="mt-4 grid grid-cols-1 md:grid-cols-2 grid-rows-2 gap-y-8">
           {mediaPlayers.map((data) => (
             <div key={data.name} className="flex items-center gap-x-4">
               <img width={60} height={60} src={data.image} alt={data.name} />
