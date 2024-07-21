@@ -20,9 +20,8 @@ const DownloadGridSidebar = (
   const colors = tagList.filter(tag => tag.name !== 'Dark Theme' && tag.name !== 'Light Theme');
 
   return (
-    <div className="flex w-full max-w-[300px] flex-col gap-y-8">
-      <div className="sticky top-36 flex flex-col gap-y-6">
-        <div className="flex flex-col gap-y-6">
+      <div className="lg:sticky lg:top-36 flex lg:flex-col flex-row flex-wrap gap-6 max-w-[72%] lg:w-full lg:max-w-[300px] px-4 lg:px-0">
+        <div className="flex flex-col gap-y-6 grow w-full">
           <SectionHeader title="Share Your Themes" type="h4" />
           <div className="flex flex-col items-start gap-y-1">
             Have a theme you&apos;ve created or want to learn how?
@@ -68,7 +67,6 @@ const DownloadGridSidebar = (
           </div>
         </div>
       </div>
-    </div>
   );
 };
 
