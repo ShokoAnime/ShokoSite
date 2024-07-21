@@ -60,13 +60,13 @@ const LatestNews = () => {
   }, []);
 
   return (
-    <div className="bg-shoko-bg-alt border-shoko-border flex flex-col items-center justify-center gap-y-16 border-t border-solid py-16">
+    <div className="bg-shoko-bg-alt border-shoko-border flex flex-col items-center justify-center gap-y-16 border-t border-solid py-16 px-4">
       <SectionHeader title="Latest News" type="h2" center={true} />
-      <div className="flex flex-col lg:flex-row w-full max-w-full overflow-y-auto gap-y-8 px-[1rem] lg:max-w-[1440px] lg:gap-x-8">
+      <div className="flex flex-col lg:flex-row w-full max-w-full overflow-y-auto gap-y-8 px-[1rem] lg:max-w-[1440px] lg:gap-x-8 items-center lg:items-start">
         {markdownFiles.map((file, index) => (
           <div
             key={index}
-            className="border-shoko-border flex w-full max-w-[28.75rem] flex-col rounded-lg border border-solid"
+            className="border-shoko-border flex w-full lg:max-w-[28.75rem] flex-col rounded-lg border border-solid"
           >
             <div className="group relative">
               <img
