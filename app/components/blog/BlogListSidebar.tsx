@@ -18,7 +18,7 @@ const BlogListSidebar = (
   const tagList = availableTags.sort((a, b) => a.name.localeCompare(b.name));
 
   return (
-    <div className="flex w-full max-w-[300px] flex-col gap-y-8">
+    <div className="flex w-full xl:max-w-[300px] flex-col gap-y-8 mx-8">
       <div className="sticky top-36 flex flex-col gap-y-6">
         <div className="flex flex-col gap-y-6">
           <SectionHeader title="Share Your Project" type="h4" />
