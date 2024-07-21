@@ -39,7 +39,7 @@ const BlogList = ({ data, setTagClicked, tagClicked, selectedTags }: BlogListPro
   return (
     <div
       className={cx(
-        'flex flex-col gap-y-8 w-full max-w-[1000px] transition-opacity duration-300',
+        'flex flex-col gap-y-8 w-full max-w-[1000px] transition-opacity duration-300 px-6 xl:mx-6',
         visible ? 'opacity-100' : 'opacity-0',
       )}
     >
@@ -51,7 +51,7 @@ const BlogList = ({ data, setTagClicked, tagClicked, selectedTags }: BlogListPro
           <div className="flex flex-col gap-y-6">
             <div className="group relative">
               <img
-                className="shadow-custom rounded-lg"
+                className="shadow-custom rounded-lg w-full"
                 src={`/images/blog/${file.frontmatter.image}`}
                 alt={file.frontmatter.title}
               />
@@ -79,7 +79,7 @@ const BlogList = ({ data, setTagClicked, tagClicked, selectedTags }: BlogListPro
                   {file.frontmatter.tags.map((tag, index, arr) => (
                     <div
                       key={tag}
-                      className="text-shoko-highlight font-medium"
+                      className="text-shoko-highlight font-medium text-sm xl:text-xl"
                     >
                       {tag}
                       {index !== arr.length - 1 && ' |'}
@@ -87,8 +87,8 @@ const BlogList = ({ data, setTagClicked, tagClicked, selectedTags }: BlogListPro
                   ))}
                 </div>
               </div>
-              <h2>{file.frontmatter.title}</h2>
-              <div className="text-shoko-text line-clamp-4">{file.description}</div>
+              <h3 className='text-xl lg:text-3xl'>{file.frontmatter.title}</h3>
+              <div className="text-shoko-text text-md lg:text-2xl line-clamp-4">{file.description}</div>
             </div>
             <LinkButton
               className="w-fit"
