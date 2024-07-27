@@ -16,7 +16,6 @@ export type HighLightHeaderProps = {
   subtitle?: string | React.ReactNode;
   center?: boolean;
   opacity?: number;
-  className?: string;
 };
 
 export type ImageProps = {

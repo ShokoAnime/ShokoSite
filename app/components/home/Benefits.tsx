@@ -28,7 +28,7 @@ const Benefits = () => {
     <div className="bg-shoko-bg-alt border-shoko-border border-y py-16">
       <div className="mx-auto flex w-full flex-col justify-center gap-y-16">
         <SectionHeader type="h2" title="Benefits of Shoko" center={true} />
-        <div className="flex flex-wrap xl:gap-8 lg:gap-6 gap-4 justify-center lg:container lg:mx-auto">
+        <div className="flex flex-wrap xl:gap-8 lg:gap-4 gap-2 justify-center lg:container lg:mx-auto">
           {benefitDetails.map((benefit) => <SingleBenefit key={benefit.title} {...benefit} />)}
         </div>
       </div>
