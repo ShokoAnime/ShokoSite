@@ -1,8 +1,6 @@
 import { useLocation } from '@remix-run/react';
 import cx from 'classnames';
-import { navRoutes } from '~/components/layout/Header';
-import { ExternalLink } from '../common/ExternalLink';
-import { InternalLink } from '../common/InternalLink';
+import { ExternalLink, InternalLink, navRoutes } from '~/components/layout/Header';
 
 const Footer = () => {
   const currentUrl = useLocation().pathname;
@@ -14,8 +12,8 @@ const Footer = () => {
         ${currentUrl === '/' ? 'bg-shoko-bg' : 'bg-shoko-bg-alt'}`,
       )}
     >
-      <div className="mx-auto flex flex-row-reverse xl:flex-row w-full max-w-[1440px] justify-between">
-        <nav className="hidden xl:flex items-center gap-x-4">
+      <div className="mx-auto flex w-full max-w-[1440px] justify-between">
+        <nav className="flex items-center gap-x-4">
           {navRoutes.map((route) => {
             const isExternal = route.route.startsWith('http');
 

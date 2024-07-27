@@ -62,7 +62,7 @@ const LatestNews = () => {
   return (
     <div className="bg-shoko-bg-alt border-shoko-border flex flex-col items-center justify-center gap-y-16 border-t border-solid py-16">
       <SectionHeader title="Latest News" type="h2" center={true} />
-      <div className="flex w-full max-w-full overflow-y-auto gap-x-4 px-[1rem] lg:max-w-[1440px] lg:gap-x-8">
+      <div className="flex w-full max-w-[1440px] gap-x-8">
         {markdownFiles.map((file, index) => (
           <div
             key={index}
