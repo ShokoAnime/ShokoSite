@@ -43,15 +43,14 @@ const DownloadIndexCard = () => {
       <Link
         key={title}
         to={link}
-        className='fit-content px-8 md:px-0 md:max-w-[250px]'
       >
         <div className="bg-shoko-bg border-shoko-border border-b-shoko-link hover:bg-shoko-link hover:text-shoko-text-alt group flex w-full max-w-[28.125rem] flex-col items-center gap-x-6 gap-y-4 rounded-lg border border-b-2 p-4 transition-colors duration-500 ease-in-out">
           <Icon
             className="text-shoko-text-header group-hover:text-shoko-text-alt transition-colors duration-500 ease-in-out"
             icon={icon}
-            size={50}
+            size={100}
           />
-          <div className="flex w-full flex-col gap-y-2">
+          <div className="flex w-full max-w-[228px] flex-col gap-y-2">
             <div className="font-header text-shoko-text-header group-hover:text-shoko-text-alt flex justify-center text-xl font-semibold transition-colors duration-500 ease-in-out">
               {title}
             </div>
@@ -65,7 +64,7 @@ const DownloadIndexCard = () => {
   };
 
   return (
-    <div className="flex flex-col mx-auto justify-center md:flex-row md:flex-wrap gap-6">
+    <div className="flex flex-wrap gap-8">
       {downloadData.map((download) => <SingleDownload key={download.title} {...download} />)}
     </div>
   );
