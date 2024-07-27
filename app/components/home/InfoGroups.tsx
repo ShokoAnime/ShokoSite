@@ -11,8 +11,8 @@ const InfoSection = ({ title, subtitle, image, content, reverse }: InfoSectionPr
     >
       <div className="flex max-w-[850px] flex-col gap-y-8">
         <div>
-          <div className="text-shoko-text-header font-header text-xl font-semibold opacity-75 text-center">{subtitle}</div>
-          <SectionHeader title={title} type="h2" center className='text-center'/>
+          <div className="text-shoko-text-header font-header text-xl font-semibold opacity-75">{subtitle}</div>
+          <SectionHeader title={title} type="h2" />
         </div>
         <div className="flex gap-8">
           <div className="flex flex-col gap-4">{content}</div>

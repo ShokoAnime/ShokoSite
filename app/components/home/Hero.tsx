@@ -8,10 +8,10 @@ const Hero = () => {
     <div className="mx-auto max-w-[1440px] px-6 py-16 2xl:px-0">
       <div className="flex flex-col gap-x-16 2xl:flex-row">
         <div className="flex flex-col items-center justify-center gap-y-8 text-center">
-          <h1 className="w-full text-2xl  lg:text-3xl max-w-[53.125rem] text-pretty">
+          <h1 className="w-full max-w-[53.125rem] text-pretty">
             The All-in-One Cross-Platform Anime Management System Built For You
           </h1>
-          <h4 className="text-lg lg:text-shoko-text w-full">
+          <h4 className="text-shoko-text w-full">
             Let Shoko take you to the future
           </h4>
           <div className="flex gap-x-2 mb-4">

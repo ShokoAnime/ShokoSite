@@ -1,8 +1,9 @@
 import { useLocation } from '@remix-run/react';
 import cx from 'classnames';
+import { navRoutes } from '~/components/layout/Header';
 import { ExternalLink } from '../common/ExternalLink';
 import { InternalLink } from '../common/InternalLink';
-import { navRoutes } from './Layout.data';
+
 const Footer = () => {
   const currentUrl = useLocation().pathname;
 
@@ -36,9 +37,8 @@ const Footer = () => {
               );
           })}
         </nav>
-        <div className="flex flex-col md:flex-row text-shoko-text-header font-medium">
-          <span>© 2016-2024 Shoko. </span>
-          <span>All Rights Reserved.</span>
+        <div className="text-shoko-text-header font-medium">
+          © 2016-2024 Shoko. All Rights Reserved.
         </div>
       </div>
     </div>
