@@ -1,12 +1,11 @@
 import { Link, useLocation } from '@remix-run/react';
 import cx from 'classnames';
 import { FaDiscord, FaGithub } from 'react-icons/fa';
-import { mdiMenuClose, mdiMenuOpen, mdiThemeLightDark } from '@mdi/js';
+import { mdiMagnify, mdiThemeLightDark } from '@mdi/js';
 import { ExternalLinksProps, InternalLinksProps, NavRouteProps } from '~/types/layout';
 import Button from '~/components/common/Button';
 import Icon from '~/components/common/Icon';
 import { useTheme } from '~/context/ThemeContext';
-import { useState } from 'react';
 
 export const navRoutes: NavRouteProps[] = [
   { title: 'About', route: '/about' },
@@ -38,7 +37,7 @@ export const ExternalLink = ({ title, url, icon }: ExternalLinksProps) => (
     href={url}
     target="_blank"
     rel="noopener noreferrer"
-    className="hidden text-shoko-text-header hover:text-shoko-link-hover lg:flex lg:items-center gap-x-2"
+    className="text-shoko-text-header hover:text-shoko-link-hover flex items-center gap-x-2"
   >
     {icon}
     <span>{title}</span>
@@ -50,11 +49,9 @@ const Header = () => {
   const location = useLocation();
   const currentURL = location.pathname;
 
-  const [showMenu, setShowMenu] = useState(false);
-
   return (
     <div className="bg-shoko-bg-alt font-header border-shoko-border sticky top-0 z-20 w-full border-b py-3 font-semibold">
-      <div className="mx-auto flex items-center justify-between">
+      <div className="mx-auto flex w-[1440px] items-center justify-between">
         <h2 className="flex items-center gap-x-4">
           <img
             src="/images/common/shoko-icon.svg"
@@ -65,7 +62,7 @@ const Header = () => {
             Shoko
           </Link>
         </h2>
-        <nav className="hidden md:flex items-center gap-x-4">
+        <nav className="flex items-center gap-x-4">
           {navRoutes.map((route) => {
             const isExternal = route.route.startsWith('http');
             const isActive = isExternal ? false : currentURL.startsWith(route.route);
@@ -96,46 +93,16 @@ const Header = () => {
               icon={mdiThemeLightDark}
             />
           </Button>
-
-          <Button buttonType="outline" className="md:hidden" onClick={() => setShowMenu(_ => !showMenu)}>
-            <Icon
-              icon={showMenu === false ? mdiMenuOpen : mdiMenuClose}
-            />
-          </Button>
           {
             /*
-          TODO: Implement search functionality once Algolia is set up.
-          <Button buttonType="circle" className="size-[2.813rem]">
-          <Icon icon={mdiMagnify} />
-          </Button>
-          */
+					TODO: Implement search functionality once Algolia is set up.
+					<Button buttonType="circle" className="size-[2.813rem]">
+					<Icon icon={mdiMagnify} />
+					</Button>
+					*/
           }
         </div>
       </div>
-      <nav className="flex flex-col justify-center md:hidden">
-        {navRoutes.map((route) => {
-          const isExternal = route.route.startsWith('http');
-          const isActive = isExternal ? false : currentURL.startsWith(route.route);
-
-          return isExternal
-            ? (
-              <ExternalLink
-                key={route.title}
-                title={route.title}
-                url={route.route}
-                icon={route.icon}
-              />
-            )
-            : (
-              <InternalLink
-                key={route.title}
-                title={route.title}
-                route={route.route}
-                isActive={isActive}
-              />
-            );
-        })}
-      </nav>
     </div>
   );
 };
