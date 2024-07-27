@@ -36,7 +36,7 @@ const Footer = () => {
               );
           })}
         </nav>
-        <div className="flex flex-col lg:flex-row text-shoko-text-header font-medium">
+        <div className="flex flex-col md:flex-row text-shoko-text-header font-medium">
           <span>© 2016-2024 Shoko. </span>
           <span>All Rights Reserved.</span>
         </div>
