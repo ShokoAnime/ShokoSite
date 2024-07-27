@@ -34,13 +34,13 @@ const ContributorsGroup = ({ title, description, type, data }: ContributorsGroup
   };
 
   return (
-    <div className="flex flex-col gap-y-4">
+    <div className="flex flex-col gap-y-8">
       <div className="flex flex-col gap-y-3">
         <SectionHeader title={title} type="h2" />
         <div>{description}</div>
       </div>
 
-      <div className="flex flex-row flex-wrap gap-4">
+      <div className="flex flex-wrap gap-4">
         {contributorsSorted.map(renderContributor)}
       </div>
     </div>
