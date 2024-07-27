@@ -56,15 +56,15 @@ const PageBanner = ({ title, description }: PageBannerProps) => {
       const path = `/${breadcrumbs.slice(0, index + 1).join('/')}`;
 
       return (
-        <div className="flex gap-x-1" key={index}>
+        <div className="flex gap-x-2" key={index}>
           {!isLastSegment
             ? (
-              <LinkButton buttonType="breadcrumb" className='text-[16px] md:text-xl' to={path}>
+              <LinkButton buttonType="breadcrumb" to={path}>
                 {convertToProperName(segment)}
               </LinkButton>
             )
-            : <h4 className="text-shoko-text-alt capitalize text-[16px] md:text-xl">{convertToProperName(segment)}</h4>}
-          {!isLastSegment && <h4 className="text-shoko-text-alt text-[16px] md:text-xl">{'>>'}</h4>}
+            : <h4 className="text-shoko-text-alt capitalize">{convertToProperName(segment)}</h4>}
+          {!isLastSegment && <h4 className="text-shoko-text-alt">{'>>'}</h4>}
         </div>
       );
     });
@@ -74,13 +74,13 @@ const PageBanner = ({ title, description }: PageBannerProps) => {
       <div className="bg-shoko-overlay absolute h-[22.5rem] w-full" />
       <div className="absolute left-1/2 top-1/2 w-full -translate-x-1/2 -translate-y-1/2">
         <div className={cx('flex w-full flex-col items-center justify-center', description ? 'gap-y-4' : 'gap-y-2')}>
-          <h1 className="text-shoko-text-alt capitalize text-[28px] md:text-xl">{convertToProperName(title)}</h1>
-          <h4 className="text-shoko-text-alt w-full max-w-[850px] text-[18px] md:text-xl text-center px-4">{description}</h4>
+          <h1 className="text-shoko-text-alt capitalize">{convertToProperName(title)}</h1>
+          <h4 className="text-shoko-text-alt w-full max-w-[850px] text-center">{description}</h4>
           <div className="flex items-center justify-between gap-x-2">
-            <LinkButton buttonType="breadcrumb" className='text-[16px] md:text-xl' to="/">
+            <LinkButton buttonType="breadcrumb" to="/">
               Shoko
             </LinkButton>
-            <h4 className="font-header text-shoko-text-alt text-[16px] md:text-xl">{'>>'}</h4>
+            <h4 className="font-header text-shoko-text-alt">{'>>'}</h4>
             {renderBreadcrumbs()}
           </div>
         </div>

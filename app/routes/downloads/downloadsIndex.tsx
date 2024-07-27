@@ -19,17 +19,17 @@ function DownloadsIndex() {
 
   const headerSubtitle = (
     <>
-      <div className="hidden lg:flex flex-col lg:flex-row gap-2 lg:gap-x-2">
+      <div className="flex gap-x-2">
         <div className="flex gap-x-2">
           <div className="text-shoko-highlight">{downloadCount?.programs}</div>
           <div>Program / Plugins</div>
         </div>
-        <div className='hidden lg:inline-block'>|</div>
+        <div>|</div>
         <div className="flex gap-x-2">
           <div className="text-shoko-highlight">{downloadCount?.themes}</div>
           <div>Web UI Themes</div>
         </div>
-        <div className='hidden lg:inline-block'>|</div>
+        <div>|</div>
         <div className="flex gap-x-2">
           <div className="text-shoko-highlight">{downloadCount?.renamers}</div>
           <div>Renamer Plugin</div>
