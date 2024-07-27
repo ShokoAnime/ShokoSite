@@ -8,7 +8,7 @@ const UserCard = ({ type, className, name, joinDate, role, image, link }: UserCa
   return (
     <a
       className={cx(
-        'bg-shoko-bg-alt border-shoko-border flex w-[11.125rem] flex-col items-center gap-y-4 rounded-lg border border-solid p-4 transition-transform duration-300 hover:-translate-y-4',
+        'bg-shoko-bg-alt border-shoko-border flex w-[250px] justify-center md:w-[11.125rem] flex-col items-center gap-y-4 rounded-lg border border-solid p-4 transition-transform duration-300 hover:-translate-y-4',
         className,
       )}
       href={link}

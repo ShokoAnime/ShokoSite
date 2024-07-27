@@ -97,7 +97,7 @@ function DownloadsList() {
         title="Downloads"
         description="Browse through selection of programs, plugins, Web UI Themes and other tools available in the Shoko Suite."
       />
-      <div className="mx-auto flex min-h-[calc(100vh-557px)] w-full max-w-[1440px] gap-x-16 py-16">
+      <div className="mx-auto container flex flex-col items-center lg:items-start lg:flex-row lg:min-h-[calc(100vh-557px)] w-full max-w-[1440px] gap-16 py-16">
         {type === 'webui-themes' && (
           <DownloadGridSidebar
             availableTags={allTags}

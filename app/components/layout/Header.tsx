@@ -1,68 +1,38 @@
 import { Link, useLocation } from '@remix-run/react';
 import cx from 'classnames';
-import { FaDiscord, FaGithub } from 'react-icons/fa';
-import { mdiMagnify, mdiThemeLightDark } from '@mdi/js';
-import { ExternalLinksProps, InternalLinksProps, NavRouteProps } from '~/types/layout';
+import { mdiMenuClose, mdiMenuOpen, mdiThemeLightDark } from '@mdi/js';
 import Button from '~/components/common/Button';
 import Icon from '~/components/common/Icon';
 import { useTheme } from '~/context/ThemeContext';
+import { useCallback, useState } from 'react';
+import { ExternalLink } from '../common/ExternalLink';
+import { InternalLink } from '../common/InternalLink';
+import { navRoutes } from './Layout.data';
 
-export const navRoutes: NavRouteProps[] = [
-  { title: 'About', route: '/about' },
-  { title: 'Blog', route: '/blog' },
-  { title: 'Changelog', route: 'https://docs.shokoanime.com/changelog/shoko-server' },
-  { title: 'Contributors', route: '/contributors' },
-  { title: 'Downloads', route: '/downloads/' },
-  { title: 'Documentation', route: 'https://docs.shokoanime.com/' },
-  { title: 'GitHub', route: 'https://github.com/ShokoAnime/', icon: <FaGithub size={24} /> },
-  { title: 'Discord', route: 'https://discord.gg/vpeHDsg', icon: <FaDiscord size={24} /> },
-];
+type HeaderProps = {
+  showMobileMenu?: boolean;
+  onMobileMenuToggle: (value: boolean) => void;
+}
 
-export const InternalLink = ({ title, route, isActive }: InternalLinksProps) => (
-  <Link
-    key={title}
-    to={route}
-    className={cx(
-      'text-shoko-text-header hover:text-shoko-link-hover flex items-center gap-x-2',
-      isActive && '!text-shoko-link',
-    )}
-  >
-    {title}
-  </Link>
-);
 
-export const ExternalLink = ({ title, url, icon }: ExternalLinksProps) => (
-  <a
-    key={title}
-    href={url}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="text-shoko-text-header hover:text-shoko-link-hover flex items-center gap-x-2"
-  >
-    {icon}
-    <span>{title}</span>
-  </a>
-);
-
-const Header = () => {
+const Header = ({ showMobileMenu = false, onMobileMenuToggle }: HeaderProps) => {
   const { theme, toggleTheme } = useTheme();
   const location = useLocation();
   const currentURL = location.pathname;
 
+
   return (
     <div className="bg-shoko-bg-alt font-header border-shoko-border sticky top-0 z-20 w-full border-b py-3 font-semibold">
-      <div className="mx-auto flex w-[1440px] items-center justify-between">
-        <h2 className="flex items-center gap-x-4">
+      <div className="mx-auto flex xl:max-w-[1440px] items-center justify-between">
+        <Link to="/" className='flex items-center gap-x-4 ml-4'>
           <img
             src="/images/common/shoko-icon.svg"
             alt="Shoko Site"
-            className="size-[4.688rem]"
+            className="size-[45px] md:size-[4.688rem]"
           />
-          <Link to="/">
-            Shoko
-          </Link>
-        </h2>
-        <nav className="flex items-center gap-x-4">
+          <h2 className='inline-block lg:hidden xl:inline-block text-[24px] md:text-[36px]'>Shoko</h2>
+        </Link>
+        <nav className="hidden lg:flex items-center gap-x-4">
           {navRoutes.map((route) => {
             const isExternal = route.route.startsWith('http');
             const isActive = isExternal ? false : currentURL.startsWith(route.route);
@@ -86,21 +56,19 @@ const Header = () => {
               );
           })}
         </nav>
-        <div className="flex gap-x-2">
+        <div className="flex gap-x-2 mr-[20px]">
           <Button buttonType="circle" className="size-[2.813rem]" onClick={toggleTheme}>
             <Icon
               className={cx(theme === 'dark' ? 'rotate-180' : '')}
               icon={mdiThemeLightDark}
             />
           </Button>
-          {
-            /*
-					TODO: Implement search functionality once Algolia is set up.
-					<Button buttonType="circle" className="size-[2.813rem]">
-					<Icon icon={mdiMagnify} />
-					</Button>
-					*/
-          }
+
+          <Button buttonType="circle" className="lg:hidden size-[2.813rem]" onClick={() => onMobileMenuToggle(!showMobileMenu)}>
+            <Icon
+              icon={showMobileMenu === false ? mdiMenuOpen : mdiMenuClose}
+            />
+          </Button>
         </div>
       </div>
     </div>

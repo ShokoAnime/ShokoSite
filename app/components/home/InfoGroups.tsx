@@ -6,12 +6,13 @@ import InfoGroupDetails from './InfoGroups.data';
 const InfoSection = ({ title, subtitle, image, content, reverse }: InfoSectionProps) => {
   return (
     <div
-      className={`flex items-end gap-x-16 ${reverse ? 'flex-row-reverse' : ''}`}
+      // className={`flex items-end gap-x-16 ${reverse ? 'flex-row-reverse' : ''}`}
+      className={`flex flex-wrap items-end gap-y-4 lg:gap-x-16 ${reverse ? 'xl:flex-row-reverse xl:flex-nowrap' : 'xl:flex-nowrap'}`}
     >
       <div className="flex max-w-[850px] flex-col gap-y-8">
         <div>
-          <div className="text-shoko-text-header font-header text-xl font-semibold opacity-75">{subtitle}</div>
-          <SectionHeader title={title} type="h2" />
+          <div className="text-shoko-text-header font-header text-xl font-semibold opacity-75 text-center">{subtitle}</div>
+          <SectionHeader title={title} type="h2" center className='text-center'/>
         </div>
         <div className="flex gap-8">
           <div className="flex flex-col gap-4">{content}</div>
@@ -20,7 +21,8 @@ const InfoSection = ({ title, subtitle, image, content, reverse }: InfoSectionPr
       <Image
         src={image}
         alt={title}
-        className="shadow-custom h-full max-h-[21.625rem] w-fit max-w-[38.125rem] rounded-lg"
+        // className="shadow-custom h-full max-h-[21.625rem] w-fit max-w-[38.125rem] rounded-lg"
+        className="shadow-custom h-full xl:max-h-[21.625rem] w-full xl:w-fit xl:max-w-[38.125rem] rounded-lg"
       />
     </div>
   );
