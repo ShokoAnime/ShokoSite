@@ -2,19 +2,20 @@ import { mdiBookOpenOutline, mdiDownload, mdiPlay } from '@mdi/js';
 
 import Button from '~/components/common/Button';
 import Icon from '~/components/common/Icon';
+import { Text } from '~/components/common/Text';
 
 const Hero = () => {
   return (
     <div className="mx-auto max-w-[1440px] px-6 py-16 2xl:px-0">
-      <div className="flex flex-col gap-x-16 2xl:flex-row">
+      <div className="flex flex-col gap-x-16 xl:flex-row">
         <div className="flex flex-col items-center justify-center gap-y-8 text-center">
-          <h1 className="w-full max-w-[53.125rem] text-pretty">
+          <Text className="w-full max-w-[50rem] lg:max-w-[53.125rem]" size="h1">
             The All-in-One Cross-Platform Anime Management System Built For You
-          </h1>
-          <h4 className="text-shoko-text w-full">
+          </Text>
+          <Text size="h3">
             Let Shoko take you to the future
-          </h4>
-          <div className="flex gap-x-2">
+          </Text>
+          <div className="flex w-full flex-col gap-4 sm:w-fit sm:flex-row">
             <Button buttonType="primary">
               <Icon icon={mdiDownload} />
               <span>Download Ver 4.3.0</span>
@@ -25,7 +26,7 @@ const Hero = () => {
             </Button>
           </div>
         </div>
-        <div className="relative w-full 2xl:w-fit">
+        <div className="relative mt-8 w-full xl:mt-0 xl:w-fit">
           <img
             className="shadow-custom mx-auto flex items-center rounded-lg 2xl:max-w-[630px]"
             src="/images/home/video-placeholder.webp"

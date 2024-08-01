@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from '@remix-run/react';
 
 import { MarkdownFile } from '~/types/markdown';
@@ -6,14 +6,13 @@ import { markdownList } from '~/helpers/markdown';
 import { convertDate } from '~/helpers/helpers';
 
 import SectionHeader from '~/components/common/SectionHeader';
+import Text from '~/components/common/Text';
 
 const LatestNews = () => {
   const [markdownFiles, setMarkdownFiles] = useState<MarkdownFile[]>([]);
-  const [hasMore, setHasMore] = useState(true);
-  const loadingRef = useRef<HTMLDivElement | null>(null);
 
   const loadMoreFiles = async () => {
-    const { markdownFiles: newFiles, hasMore: moreFiles } = await markdownList(
+    const { markdownFiles: newFiles } = await markdownList(
       'blog',
       markdownFiles.length,
       3,
@@ -28,45 +27,21 @@ const LatestNews = () => {
       );
       return [...prevFiles, ...uniqueNewFiles];
     });
-
-    // Update the hasMore state
-    setHasMore(moreFiles);
   };
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const [entry] = entries;
-        if (entry.isIntersecting && hasMore) {
-          loadMoreFiles();
-        }
-      },
-      { threshold: 0.5 },
-    );
-
-    if (loadingRef.current) {
-      observer.observe(loadingRef.current);
-    }
-
-    return () => {
-      if (loadingRef.current) {
-        observer.unobserve(loadingRef.current);
-      }
-    };
-  }, [hasMore, markdownFiles]);
-
-  useEffect(() => {
+    if (markdownFiles.length === 3) return;
     loadMoreFiles();
   }, []);
 
   return (
-    <div className="bg-shoko-bg-alt border-shoko-border flex flex-col items-center justify-center gap-y-16 border-t border-solid py-16">
+    <div className="flex flex-col items-center justify-center gap-y-16 border-t border-solid border-shoko-border bg-shoko-bg-alt px-6 py-16">
       <SectionHeader title="Latest News" type="h2" center={true} />
-      <div className="flex w-full max-w-[1440px] gap-x-8">
+      <div className="flex w-full flex-col justify-center gap-6 lg:flex-row">
         {markdownFiles.map((file, index) => (
           <div
             key={index}
-            className="border-shoko-border flex w-full max-w-[28.75rem] flex-col rounded-lg border border-solid"
+            className="flex w-full flex-col rounded-lg border border-solid border-shoko-border lg:max-w-[28.75rem]"
           >
             <div className="group relative">
               <img
@@ -74,32 +49,32 @@ const LatestNews = () => {
                 src={`/images/blog/${file.frontmatter.image}`}
                 alt={file.frontmatter.title}
               />
-              <div className="font-header shadow-custom absolute left-5 top-5 flex flex-col items-center rounded-lg">
-                <div className="bg-shoko-bg text-shoko-text-header flex h-10 w-[4.375rem] items-center justify-center rounded-t-lg text-2xl font-bold">
+              <div className="absolute left-5 top-5 flex flex-col items-center rounded-lg font-header shadow-custom">
+                <div className="flex h-10 w-[4.375rem] items-center justify-center rounded-t-lg bg-shoko-bg text-2xl font-bold text-shoko-text-header">
                   {convertDate(file.frontmatter.date, 'array')[0]}
                 </div>
-                <div className="bg-shoko-highlight font-header text-shoko-text-alt flex h-10 w-[4.375rem] items-center justify-center rounded-b-lg text-xl font-bold">
+                <div className="flex h-10 w-[4.375rem] items-center justify-center rounded-b-lg bg-shoko-highlight font-header text-xl font-bold text-shoko-text-alt">
                   {convertDate(file.frontmatter.date, 'array')[1]}
                 </div>
               </div>
               <Link
-                className="text-shoko-link font-semibold"
+                className="font-semibold text-shoko-link"
                 to={`/blog/${file.filename.split('/').pop()?.replace('.mdx', '')}`}
               >
-                <div className="text-shoko-text-alt font-header absolute inset-0 flex cursor-pointer items-center justify-center rounded-t-lg bg-gray-900/75 text-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <div className="absolute inset-0 flex cursor-pointer items-center justify-center rounded-t-lg bg-gray-900/75 font-header text-2xl text-shoko-text-alt opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                   Read More →
                 </div>
               </Link>
             </div>
-            <div className="bg-shoko-bg flex flex-col gap-y-6 rounded-lg p-6">
-              <div className="text-shoko-text-header font-header line-clamp-1 text-xl font-medium">
+            <div className="flex flex-col gap-y-6 rounded-lg bg-shoko-bg p-6">
+              <Text className="line-clamp-1 font-medium" size="blogHeader" type="header">
                 {file.frontmatter.title}
-              </div>
-              <div className="text-shoko-text font-body line-clamp-3">
+              </Text>
+              <Text className="line-clamp-3" size="blogText">
                 {file.description}
-              </div>
+              </Text>
               <Link
-                className="text-shoko-link font-semibold"
+                className="font-semibold text-shoko-link"
                 to={`/blog/${file.filename.split('/').pop()?.replace('.mdx', '')}`}
               >
                 Read More →
