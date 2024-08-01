@@ -62,9 +62,9 @@ const InfoGroupDetails = [
         </div>
         <div className="mt-4 grid grid-cols-1 grid-rows-2 gap-y-8 md:grid-cols-2">
           {mediaPlayers.map((data) => (
-            <div key={data.name} className="ml-8 flex w-fit justify-center gap-x-4">
+            <div key={data.name} className="ml-6 flex w-fit justify-center gap-x-4">
               <img width={60} height={60} src={data.image} alt={data.name} />
-              <div className="flex flex-col">
+              <div className="flex w-72 flex-col">
                 <div className="font-header text-lg font-semibold text-shoko-text-header">
                   {data.name}
                 </div>

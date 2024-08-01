@@ -4,11 +4,7 @@ import 'react-medium-image-zoom/dist/styles.css';
 import { ImageProps } from '~/types/common';
 
 const Image = ({ src, alt, className }: ImageProps) => {
-  return (
-    <Zoom zoomMargin={65}>
-      <img className={className} src={src} alt={alt} />
-    </Zoom>
-  );
+  return <img className={className} src={src} alt={alt} />;
 };
 
 export default Image;
