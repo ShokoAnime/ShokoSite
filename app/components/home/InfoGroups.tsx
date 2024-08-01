@@ -26,7 +26,7 @@ const InfoSection = ({ title, subtitle, image, content, reverse }: InfoSectionPr
   return (
     <div
       className={cx(
-        'flex items-center gap-16 xl:items-end',
+        'flex items-center gap-16',
         reverse || isMobile ? 'flex-col-reverse xl:flex-row-reverse' : 'xl:flex-row',
       )}
     >
@@ -59,7 +59,7 @@ const InfoGroups = () => {
   return (
     <>
       <div className="mx-auto max-w-[1440px] px-6 py-16 2xl:px-0">
-        <div className="flex flex-col items-center gap-y-16 2xl:gap-y-32">
+        <div className="flex flex-col items-center gap-y-16 text-center sm:text-left 2xl:gap-y-32">
           {InfoGroupDetails.map((infoGroup, index) => (
             <InfoSection
               key={infoGroup.title}
