@@ -2,7 +2,7 @@ import { mdiBookOpenOutline, mdiDownload, mdiPlay } from '@mdi/js';
 
 import Button from '~/components/common/Button';
 import Icon from '~/components/common/Icon';
-import { Text } from '~/components/common/Text';
+import Text from '~/components/common/Text';
 
 const Hero = () => {
   return (
@@ -28,7 +28,7 @@ const Hero = () => {
         </div>
         <div className="relative mt-8 w-full xl:mt-0 xl:w-fit">
           <img
-            className="shadow-custom mx-auto flex items-center rounded-lg 2xl:max-w-[630px]"
+            className="mx-auto flex items-center rounded-lg shadow-custom 2xl:max-w-[630px]"
             src="/images/home/video-placeholder.webp"
             alt="preview webp"
           />

@@ -4,7 +4,7 @@ import { ContributorsGroupProps, ContributorsProps } from '~/types/contributors'
 import SectionHeader from '~/components/common/SectionHeader';
 import UserCard from '../common/UserCard';
 
-const ContributorsGroup = ({ title, description, type, data }: ContributorsGroupProps) => {
+const ContributorsGroup = ({ title, description, position, data }: ContributorsGroupProps) => {
   const contributorsSorted = useMemo(() => {
     return data.sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
   }, [data]);
@@ -12,14 +12,14 @@ const ContributorsGroup = ({ title, description, type, data }: ContributorsGroup
   const renderContributor = (contributor: ContributorsProps) => {
     const { name, avatar_url, url, role, join_date, honorable } = contributor;
 
-    const isStaff = type === 'staff' && join_date;
-    const isHonorable = type === 'honorable' && honorable;
-    const isContributor = type === 'contributors' && !join_date && !honorable;
+    const isStaff = position === 'staff' && join_date;
+    const isHonorable = position === 'honorable' && honorable;
+    const isContributor = position === 'contributors' && !join_date && !honorable;
 
     if (isStaff || isHonorable || isContributor) {
       return (
         <UserCard
-          type="contributors"
+          position="contributors"
           key={name}
           name={name}
           image={avatar_url}

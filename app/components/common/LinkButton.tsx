@@ -3,6 +3,7 @@ import cx from 'classnames';
 
 import { ButtonProps } from '~/types/common';
 import { buttonStyle } from '~/components/common/Button';
+import Text from '~/components/common/Text';
 
 const LinkButton = ({ buttonType, className, children, to }: ButtonProps) => (
   <Link
@@ -14,7 +15,7 @@ const LinkButton = ({ buttonType, className, children, to }: ButtonProps) => (
       className,
     )}
   >
-    {children}
+    <Text size="h3">{children}</Text>
   </Link>
 );
 

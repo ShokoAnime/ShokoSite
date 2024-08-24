@@ -12,12 +12,12 @@ export type ContributorsProps = {
 export type ContributorsGroupProps = {
   title: string;
   description: string | ReactNode;
-  type: 'staff' | 'honorable' | 'contributors';
+  position: 'staff' | 'honorable' | 'contributors';
   data: ContributorsProps[];
 };
 
 export type UserCardProps = {
-  type: 'contributors' | 'downloads';
+  position: 'contributors' | 'downloads';
   name: string;
   image: string;
   link: string;
