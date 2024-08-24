@@ -87,11 +87,11 @@ export default function BlogPost() {
             <div className="flex flex-col gap-y-4">
               <SectionHeader title="Contributors" type="h4" />
               <div>This release was made possible by the following people.</div>
-              <div className="flex w-full max-w-[850px] flex-wrap gap-4">
+              <div className="flex w-full max-w-full flex-wrap gap-4 lg:max-w-[850px]">
                 {contributorData.map((contributor) => (
                   <UserCard
                     key={contributor.name}
-                    className="w-full max-w-[12.5rem]"
+                    className="w-full max-w-full md:max-w-[12.5rem]"
                     name={contributor.name}
                     image={contributor.avatar_url}
                     link={contributor.url}
