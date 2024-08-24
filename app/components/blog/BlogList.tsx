@@ -6,7 +6,8 @@ import { BlogListProps } from '~/types/blog';
 import { convertDate } from '~/helpers/helpers';
 
 import Icon from '~/components/common/Icon';
-import LinkButton from '~/components/common/LinkButton';
+import Button from '~/components/common/Button';
+import Text from '~/components/common/Text';
 import cx from 'classnames';
 
 const BlogList = ({ data, setTagClicked, tagClicked, selectedTags }: BlogListProps) => {
@@ -39,47 +40,47 @@ const BlogList = ({ data, setTagClicked, tagClicked, selectedTags }: BlogListPro
   return (
     <div
       className={cx(
-        'flex flex-col gap-y-8 w-full max-w-[1000px] transition-opacity duration-300',
+        'flex w-full max-w-[1000px] flex-col gap-y-8 transition-opacity duration-300',
         visible ? 'opacity-100' : 'opacity-0',
       )}
     >
       {blogData.map((file) => (
         <div
           key={file.filename}
-          className="border-shoko-border flex flex-col gap-y-8 border-b pb-8 last:border-0 last:pb-0"
+          className="flex flex-col gap-y-8 border-b border-shoko-border pb-8 last:border-0 last:pb-0"
         >
           <div className="flex flex-col gap-y-6">
             <div className="group relative">
               <img
-                className="shadow-custom rounded-lg"
+                className="rounded-lg shadow-custom"
                 src={`/images/blog/${file.frontmatter.image}`}
                 alt={file.frontmatter.title}
               />
-              <div className="font-header shadow-custom absolute left-5 top-5 flex flex-col items-center rounded-lg">
-                <div className="bg-shoko-bg font-header text-shoko-text-header flex h-10 w-16 items-center justify-center rounded-t-lg text-2xl font-bold">
+              <div className="absolute left-5 top-5 flex flex-col items-center rounded-lg font-header shadow-custom">
+                <div className="flex h-8 w-12 items-center justify-center rounded-t-lg bg-shoko-bg font-header text-xl font-bold text-shoko-text-header lg:h-10 lg:w-16 lg:text-2xl">
                   {convertDate(file.frontmatter.date, 'array')[0]}
                 </div>
-                <div className="bg-shoko-highlight font-header text-shoko-text-alt flex h-10 w-16 items-center justify-center rounded-b-lg text-xl font-bold">
+                <div className="flex h-8 w-12  items-center justify-center rounded-b-lg bg-shoko-highlight font-header text-lg font-bold text-shoko-text-alt lg:h-10 lg:w-16 lg:text-2xl">
                   {convertDate(file.frontmatter.date, 'array')[1]}
                 </div>
               </div>
               <Link
-                className="text-shoko-link font-semibold"
+                className="font-semibold text-shoko-link"
                 to={`/blog/${file.filename.split('/').pop()?.replace('.mdx', '')}`}
               >
-                <div className="text-shoko-text-alt font-header absolute inset-0 flex cursor-pointer items-center justify-center rounded-lg bg-gray-900/75 text-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <div className="absolute inset-0 flex cursor-pointer items-center justify-center rounded-lg bg-gray-900/75 font-header text-2xl text-shoko-text-alt opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                   Read More →
                 </div>
               </Link>
             </div>
             <div className="flex flex-col gap-y-2">
               <div className="flex gap-x-2">
-                <Icon className="text-shoko-highlight font-medium" icon={mdiTagMultiple} />
+                <Icon className="font-medium text-shoko-highlight" icon={mdiTagMultiple} />
                 <div className="flex flex-wrap gap-x-2">
                   {file.frontmatter.tags.map((tag, index, arr) => (
                     <div
                       key={tag}
-                      className="text-shoko-highlight font-medium"
+                      className="font-medium text-shoko-highlight"
                     >
                       {tag}
                       {index !== arr.length - 1 && ' |'}
@@ -87,16 +88,16 @@ const BlogList = ({ data, setTagClicked, tagClicked, selectedTags }: BlogListPro
                   ))}
                 </div>
               </div>
-              <h2>{file.frontmatter.title}</h2>
-              <div className="text-shoko-text line-clamp-4">{file.description}</div>
+              <Text size="h2">{file.frontmatter.title}</Text>
+              <div className="line-clamp-4 text-shoko-text">{file.description}</div>
             </div>
-            <LinkButton
-              className="w-fit"
+            <Button
+              className="w-full lg:w-fit"
               buttonType="primary"
               to={`/blog/${file.filename.split('/').pop()?.replace('.mdx', '')}`}
             >
               Read More →
-            </LinkButton>
+            </Button>
           </div>
         </div>
       ))}

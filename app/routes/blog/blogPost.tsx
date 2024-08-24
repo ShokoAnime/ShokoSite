@@ -77,9 +77,9 @@ export default function BlogPost() {
   if (postData === null) return <PageNotFound />;
 
   return (
-    <div className="h-full min-h-[calc(100vh-557px)]">
+    <div className="h-full min-h-[calc(100vh-557px)] px-0 lg:px-6">
       <BlogPostBanner title={postData.frontmatter.title} image={postData.frontmatter.image} />
-      <div className="my-16 flex justify-center gap-x-16">
+      <div className="my-16 flex flex-col justify-center gap-x-16 px-6 lg:flex-row lg:px-0">
         <BlogPostSidebar postData={postData} />
         <div className="flex flex-col gap-y-6">
           <div className="shoko-post flex w-full max-w-[850px] flex-col gap-y-6">{postData.description}</div>
@@ -91,11 +91,11 @@ export default function BlogPost() {
                 {contributorData.map((contributor) => (
                   <UserCard
                     key={contributor.name}
-                    type="downloads"
                     className="w-full max-w-[12.5rem]"
                     name={contributor.name}
                     image={contributor.avatar_url}
                     link={contributor.url}
+                    position="downloads"
                   />
                 ))}
               </div>

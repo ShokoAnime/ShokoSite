@@ -5,6 +5,7 @@ import { useSetPageTitle } from '~/hooks/useSetPageTitle';
 import { convertToProperName } from '~/helpers/helpers';
 
 import LinkButton from '~/components/common/LinkButton';
+import Text from '~/components/common/Text';
 
 type BlogDetailBannerProps = {
   title: string;
@@ -24,13 +25,13 @@ const BlogDetailBanner = ({ title, image }: BlogDetailBannerProps) => {
   }, [location.pathname]);
 
   return (
-    <div className="relative mt-16 h-[600px] w-full overflow-hidden">
+    <div className="relative mt-0 h-[400px] w-full overflow-hidden lg:mt-16 lg:h-[600px]">
       <div
-        className="inset-0 mx-auto size-full max-w-[1440px] rounded-lg bg-cover bg-top"
+        className="inset-0 mx-auto size-full max-w-[1440px] rounded-none bg-cover bg-top lg:rounded-lg"
         style={{ backgroundImage: `url(/images/blog/${image})` }}
       />
       <div
-        className="absolute inset-0 mx-auto w-full max-w-[1440px] rounded-lg"
+        className="absolute inset-0 mx-auto w-full max-w-[1440px] rounded-none lg:rounded-lg"
         style={{
           backgroundImage:
             'linear-gradient(0deg, rgba(10,11,29,0.8) 20%, rgba(10,11,29,0.1) 55%, rgba(10,11,29,0.1) 85%)',
@@ -55,9 +56,9 @@ const BlogDetailBanner = ({ title, image }: BlogDetailBannerProps) => {
                   </div>
                 ))}
               </div>
-              <h1 className="text-shoko-text-alt capitalize">
+              <Text size="h1" className="text-center capitalize text-shoko-text-alt">
                 {title}
-              </h1>
+              </Text>
             </div>
           </div>
         </div>

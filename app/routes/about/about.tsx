@@ -25,7 +25,7 @@ function About() {
           {headers.map((header) => (
             <Button
               key={header}
-              className={cx('p-2 md:p-3', tab === header ? '!text-shoko-link' : 'text-shoko-text-header')}
+              className={cx('p-1 md:p-3', tab === header ? '!text-shoko-link' : 'text-shoko-text-header')}
               buttonType="text"
               onClick={(e) => {
                 onClickHandler(e);

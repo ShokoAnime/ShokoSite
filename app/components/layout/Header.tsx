@@ -1,7 +1,7 @@
 import { Link, useLocation } from '@remix-run/react';
 import cx from 'classnames';
 import { FaDiscord, FaGithub } from 'react-icons/fa';
-import { mdiAlphaX, mdiCloseCircleOutline, mdiMagnify, mdiMenuClose, mdiMenuOpen, mdiThemeLightDark } from '@mdi/js';
+import { mdiMenuClose, mdiMenuOpen, mdiThemeLightDark } from '@mdi/js';
 import { ExternalLinksProps, InternalLinksProps, MobileMenuProps, NavRouteProps } from '~/types/layout';
 import Button from '~/components/common/Button';
 import Icon from '~/components/common/Icon';

@@ -2,26 +2,11 @@ import { InfoSectionProps } from '~/types/home';
 import Image from '~/components/common/Image';
 import SectionHeader from '~/components/common/SectionHeader';
 import InfoGroupDetails from './InfoGroups.data';
-import { useEffect, useState } from 'react';
 import cx from 'classnames';
+import { useMobile } from '~/hooks/useMobile';
 
 const InfoSection = ({ title, subtitle, image, content, reverse }: InfoSectionProps) => {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setIsMobile(window.innerWidth <= 1024);
-
-      const handleResize = () => {
-        setIsMobile(window.innerWidth <= 1024);
-      };
-
-      window.addEventListener('resize', handleResize);
-      return () => {
-        window.removeEventListener('resize', handleResize);
-      };
-    }
-  }, []);
+  const { isMobile } = useMobile();
 
   return (
     <div

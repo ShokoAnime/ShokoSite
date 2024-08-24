@@ -93,7 +93,7 @@ function Blog() {
         title="Shoko Blog"
         description="Stay informed with the latest news about Shoko's development, third-party plugins, and other relevant topics."
       />
-      <div className="flex min-h-[calc(100vh-557px)] w-full justify-center gap-x-16 py-16">
+      <div className="flex min-h-[calc(100vh-557px)] w-full flex-col justify-center gap-x-16 px-6 py-16 xl:flex-row">
         <BlogListSidebar
           availableTags={allTags}
           tagCount={totalCount}
