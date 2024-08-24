@@ -398,4 +398,9 @@ export const contributors: ContributorsProps[] = [
     avatar_url: 'https://avatars.githubusercontent.com/u/4028896?v=4',
     url: 'https://github.com/swtrse',
   },
+  {
+    name: 'Momongaka',
+    avatar_url: 'https://avatars.githubusercontent.com/u/43152492?v=4',
+    url: 'https://github.com/Momongaka',
+  },
 ];

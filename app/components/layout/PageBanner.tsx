@@ -5,6 +5,7 @@ import cx from 'classnames';
 import { useSetPageTitle } from '~/hooks/useSetPageTitle';
 import { convertToProperName } from '~/helpers/helpers';
 import LinkButton from '~/components/common/LinkButton';
+import Text from '~/components/common/Text';
 
 type PageBannerProps = {
   title: string;
@@ -63,7 +64,7 @@ const PageBanner = ({ title, description }: PageBannerProps) => {
                 {convertToProperName(segment)}
               </LinkButton>
             )
-            : <h4 className="text-shoko-text-alt capitalize">{convertToProperName(segment)}</h4>}
+            : <Text size="h4" className="capitalize text-shoko-text-alt">{convertToProperName(segment)}</Text>}
           {!isLastSegment && <h4 className="text-shoko-text-alt">{'>>'}</h4>}
         </div>
       );
@@ -71,16 +72,18 @@ const PageBanner = ({ title, description }: PageBannerProps) => {
 
   return (
     <div className="relative h-[22.5rem]">
-      <div className="bg-shoko-overlay absolute h-[22.5rem] w-full" />
+      <div className="absolute h-[22.5rem] w-full bg-shoko-overlay" />
       <div className="absolute left-1/2 top-1/2 w-full -translate-x-1/2 -translate-y-1/2">
         <div className={cx('flex w-full flex-col items-center justify-center', description ? 'gap-y-4' : 'gap-y-2')}>
-          <h1 className="text-shoko-text-alt capitalize">{convertToProperName(title)}</h1>
-          <h4 className="text-shoko-text-alt w-full max-w-[850px] text-center">{description}</h4>
+          <Text size="h1" className="capitalize text-shoko-text-alt">{convertToProperName(title)}</Text>
+          <Text size="pageBannerText" className="w-full max-w-[850px] text-center text-shoko-text-alt">
+            {description}
+          </Text>
           <div className="flex items-center justify-between gap-x-2">
             <LinkButton buttonType="breadcrumb" to="/">
               Shoko
             </LinkButton>
-            <h4 className="font-header text-shoko-text-alt">{'>>'}</h4>
+            <Text size="h4" className="font-header text-shoko-text-alt">{'>>'}</Text>
             {renderBreadcrumbs()}
           </div>
         </div>

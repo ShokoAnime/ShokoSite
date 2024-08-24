@@ -20,12 +20,12 @@ function About() {
         title="About Shoko"
         description="Spend some time learning about Shoko's development over the years."
       />
-      <div className="bg-shoko-bg-alt border-shoko-border border-b border-solid py-2">
-        <div className="text-shoko-text-header mx-auto flex h-full max-w-[1440px] items-center justify-center gap-x-2 text-xl font-medium">
+      <div className="border-b border-solid border-shoko-border bg-shoko-bg-alt py-2">
+        <div className="mx-auto flex h-full max-w-[1440px] flex-col items-center justify-center gap-x-2 text-xl font-medium text-shoko-text-header md:flex-row">
           {headers.map((header) => (
             <Button
               key={header}
-              className={cx('p-3', tab === header ? '!text-shoko-link' : 'text-shoko-text-header')}
+              className={cx('p-2 md:p-3', tab === header ? '!text-shoko-link' : 'text-shoko-text-header')}
               buttonType="text"
               onClick={(e) => {
                 onClickHandler(e);

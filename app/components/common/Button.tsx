@@ -18,7 +18,7 @@ const Button = ({ buttonType, className, id, children, disabled, onClick }: Butt
       type="button"
       id={id}
       className={cx(
-        'flex items-center gap-x-3 p-4 font-body transition-colors duration-500 justify-center ease-in-out focus:outline-none',
+        'flex items-center justify-center gap-x-3 p-4 font-body transition-colors duration-500 ease-in-out focus:outline-none',
         buttonStyle[buttonType],
         buttonType === 'circle' ? 'rounded-full' : 'rounded-lg',
         className,

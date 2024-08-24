@@ -13,21 +13,21 @@ function Contributors() {
       <div className="mx-auto flex min-h-[calc(100vh-557px)] max-w-[1440px] flex-col gap-y-16 p-16 2xl:px-0 2xl:py-16">
         <ContributorsGroup
           title="Shoko Staff"
-          type="staff"
+          position="staff"
           description="These are the people who have actively contributed to the project, eventually becoming staff members."
           data={staff}
         />
 
         <ContributorsGroup
           title="Honorable Mentions"
-          type="honorable"
+          position="honorable"
           data={honorable}
           description="From former staff members to users who have put in significant work, these are the people who have left their mark on Shoko."
         />
 
         <ContributorsGroup
           title="Contributors"
-          type="contributors"
+          position="contributors"
           data={contributors}
           description={
             <>
@@ -35,7 +35,7 @@ function Contributors() {
                 The <strong>{contributors.length}</strong>{' '}
                 amazing users who contributed to the betterment of Shoko. Contributed in the past but don&apos;t see
                 your name?{' '}
-                <a className="text-shoko-link font-medium underline" href="/" target="_blank" rel="noopener">
+                <a className="font-medium text-shoko-link underline" href="/" target="_blank" rel="noopener">
                   Lets fix that.
                 </a>
               </div>
