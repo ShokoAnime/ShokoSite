@@ -1,5 +1,6 @@
 import cx from 'classnames';
 import { ButtonProps } from '~/types/common';
+import { Link } from '@remix-run/react';
 
 export const buttonStyle = {
   primary: 'bg-shoko-link text-shoko-text-alt hover:bg-shoko-link-hover hover:text-shoko-text-alt',
@@ -12,7 +13,7 @@ export const buttonStyle = {
     'bg-shoko-bg-alt text-shoko-text-header border border-shoko-border hover:bg-shoko-link-hover hover:text-shoko-text-alt',
 };
 
-const Button = ({ buttonType, className, id, children, disabled, onClick }: ButtonProps) => {
+export const NormalButton = ({ buttonType, className, id, children, disabled, onClick }: ButtonProps) => {
   return (
     <button
       type="button"
@@ -23,11 +24,58 @@ const Button = ({ buttonType, className, id, children, disabled, onClick }: Butt
         buttonType === 'circle' ? 'rounded-full' : 'rounded-lg',
         className,
       )}
-      onClick={onClick}
       disabled={disabled}
+      onClick={onClick}
     >
       {children}
     </button>
+  );
+};
+
+export const InternalButton = ({ buttonType, className, id, children, to }: ButtonProps) => {
+  return (
+    <Link
+      type="button"
+      id={id}
+      className={cx(
+        'flex items-center justify-center gap-x-3 p-4 font-body transition-colors duration-500 ease-in-out focus:outline-none',
+        buttonStyle[buttonType],
+        buttonType === 'circle' ? 'rounded-full' : 'rounded-lg',
+        className,
+      )}
+      to={to ?? '/'}
+    >
+      {children}
+    </Link>
+  );
+};
+
+const Button = ({ buttonType, className, id, children, disabled, onClick, to }: ButtonProps) => {
+  return (
+    to
+      ? (
+        <InternalButton
+          buttonType={buttonType}
+          className={className}
+          id={id}
+          disabled={disabled}
+          onClick={onClick}
+          to={to}
+        >
+          {children}
+        </InternalButton>
+      )
+      : (
+        <NormalButton
+          buttonType={buttonType}
+          className={className}
+          id={id}
+          disabled={disabled}
+          onClick={onClick}
+        >
+          {children}
+        </NormalButton>
+      )
   );
 };
 

@@ -13,10 +13,10 @@ const Text = ({ children, className, size, type = 'body' }: TextProps) => {
     h1: 'text-2xl md:text-3xl lg:text-4xl',
     h2: 'text-2xl md:text-3xl lg:text-4xl',
     h3: 'text-lg md:text-xl lg:text-2xl',
-    h4: 'text-base md:text-xl lg:text-2xl',
+    h4: 'text-xl lg:text-2xl',
     blogHeader: 'text-lg sm:text-xl',
     blogText: 'text-md sm:text-base',
-    pageBannerText: 'text-md sm:text-base',
+    pageBannerText: 'text-base md:text-xl lg:text-2xl',
   };
 
   const typeMap = {

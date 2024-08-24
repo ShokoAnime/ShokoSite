@@ -15,7 +15,7 @@ const LinkButton = ({ buttonType, className, children, to }: ButtonProps) => (
       className,
     )}
   >
-    <Text size="h3">{children}</Text>
+    <Text size="h4">{children}</Text>
   </Link>
 );
 
