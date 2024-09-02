@@ -49,7 +49,7 @@ const BlogPostSidebar = ({ postData }: BlogPostSidebar) => {
   ];
 
   return (
-    <div className="mx-auto mb-4 flex w-fit max-w-fit flex-col flex-wrap gap-6 border-b border-solid border-shoko-border pr-0 md:mx-0 md:flex-row lg:flex-col lg:gap-8 lg:border-r lg:pr-12">
+    <div className="mx-auto mb-4 flex w-fit max-w-full flex-col flex-wrap gap-6 border-b border-solid border-shoko-border pr-0 md:mx-0 md:flex-row lg:max-w-[360px] lg:flex-col lg:gap-8 lg:border-b-0 lg:border-r lg:pr-12">
       <div className="flex w-full flex-col gap-6">
         <SectionHeader title="Post Information" type="h4" center={isMobile} />
         <div className="flex flex-col items-center gap-4">
@@ -70,7 +70,7 @@ const BlogPostSidebar = ({ postData }: BlogPostSidebar) => {
           </div>
           <div className="flex w-full flex-col gap-y-1 text-center md:w-1/3 lg:w-full lg:text-left">
             <div className="font-header font-medium">Tags</div>
-            <div className="mx-auto flex flex-wrap justify-center font-normal text-shoko-text">
+            <div className="mx-auto flex flex-wrap justify-center font-normal text-shoko-text lg:justify-start">
               {postData.frontmatter.tags.sort().map((tag: string, index: number) => {
                 return (
                   <div key={tag} className="font-medium text-shoko-highlight">
