@@ -1,14 +1,18 @@
+import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from '@remix-run/react';
 import cx from 'classnames';
+import { PanelLeftClose, PanelLeftOpen } from 'lucide-react';
 import { FaDiscord, FaGithub } from 'react-icons/fa';
-import { mdiMenuClose, mdiMenuOpen, mdiThemeLightDark } from '@mdi/js';
-import { ExternalLinksProps, InternalLinksProps, MobileMenuProps, NavRouteProps } from '~/types/layout';
+import {
+  ExternalLinksProps,
+  InternalLinksProps,
+  MobileMenuProps,
+  NavRouteBuilderProps,
+  NavRouteProps,
+} from '~/types/layout';
 import Button from '~/components/common/Button';
-import Icon from '~/components/common/Icon';
-import { useTheme } from '~/context/ThemeContext';
-import { useEffect, useRef, useState } from 'react';
 
-export const navRoutes: NavRouteProps[] = [
+const navRoutes: NavRouteProps[] = [
   { title: 'About', route: '/about' },
   { title: 'Blog', route: '/blog' },
   { title: 'Changelog', route: 'https://docs.shokoanime.com/changelog/shoko-server' },
@@ -19,27 +23,54 @@ export const navRoutes: NavRouteProps[] = [
   { title: 'Discord', route: 'https://discord.gg/vpeHDsg', icon: <FaDiscord size={24} /> },
 ];
 
-export const InternalLink = ({ title, route, isActive, onClick }: InternalLinksProps) => (
+const NavRouteBuilder = ({ currentURL, className, onClick }: NavRouteBuilderProps) => {
+  return (
+    <nav className={cx('mx-8 flex flex-col items-center justify-center gap-6 font-header lg:flex-row', className)}>
+      {navRoutes.map((route) => {
+        const isExternal = route.route.startsWith('http');
+        const isActive = isExternal ? false : currentURL.startsWith(route.route);
+
+        return isExternal
+          ? (
+            <ExternalLink
+              key={route.title}
+              title={route.title}
+              url={route.route}
+              icon={route.icon}
+            />
+          )
+          : (
+            <InternalLink
+              key={route.title}
+              title={route.title}
+              route={route.route}
+              isActive={isActive}
+              onClick={onClick}
+            />
+          );
+      })}
+    </nav>
+  );
+};
+
+const InternalLink = ({ title, route, isActive, onClick }: InternalLinksProps) => (
   <Link
     key={title}
     to={route}
     onClick={onClick}
-    className={cx(
-      'flex items-center gap-x-2 text-shoko-text-header hover:text-shoko-link-hover',
-      isActive && '!text-shoko-link',
-    )}
+    className={cx('flex items-center gap-x-2 text-shoko-18', isActive && '!text-shoko-link')}
   >
     {title}
   </Link>
 );
 
-export const ExternalLink = ({ title, url, icon }: ExternalLinksProps) => (
+const ExternalLink = ({ title, url, icon }: ExternalLinksProps) => (
   <a
     key={title}
     href={url}
     target="_blank"
     rel="noopener noreferrer"
-    className="flex items-center gap-x-2 text-shoko-text-header hover:text-shoko-link-hover"
+    className="flex items-center gap-x-2 text-shoko-18"
   >
     {icon}
     <span>{title}</span>
@@ -69,48 +100,29 @@ const MobileMenu = ({ setShowMobileMenu }: MobileMenuProps) => {
     setIsVisible(true);
   }, []);
 
+  const handleLinkClick = () => {
+    setShowMobileMenu(false);
+  };
+
   return (
-    <div className="fixed right-0 top-0 z-40 size-full backdrop-blur">
+    <div className="fixed inset-0 z-40 flex items-start justify-end backdrop-blur">
       <div
         ref={menuRef}
         className={cx(
-          'ml-auto h-full w-fit bg-shoko-bg backdrop-blur-none transition-transform duration-500 ease-in-out',
-          isVisible ? 'translate-x-0 transform' : 'translate-x-full transform',
+          'flex h-screen w-64 max-w-full flex-col bg-shoko-bg-alt transition-transform duration-300 ease-in-out',
+          isVisible ? 'translate-x-0' : 'translate-x-full',
         )}
       >
-        <div className="flex flex-row-reverse pr-2 pt-4">
+        <div className="flex justify-end p-8">
           <Button buttonType="text" onClick={() => setShowMobileMenu(false)}>
-            <Icon
-              icon={mdiMenuClose}
-              size={36}
-            />
+            <PanelLeftOpen />
           </Button>
         </div>
-        <nav className={cx('mx-8 flex flex-col items-end justify-center gap-y-4')}>
-          {navRoutes.map((route) => {
-            const isExternal = route.route.startsWith('http');
-            const isActive = isExternal ? false : currentURL.startsWith(route.route);
-
-            return isExternal
-              ? (
-                <ExternalLink
-                  key={route.title}
-                  title={route.title}
-                  url={route.route}
-                  icon={route.icon}
-                />
-              )
-              : (
-                <InternalLink
-                  key={route.title}
-                  title={route.title}
-                  route={route.route}
-                  isActive={isActive}
-                  onClick={() => setShowMobileMenu(false)}
-                />
-              );
-          })}
-        </nav>
+        <NavRouteBuilder
+          className="!items-end"
+          currentURL={currentURL}
+          onClick={handleLinkClick}
+        />
       </div>
     </div>
   );
@@ -118,75 +130,51 @@ const MobileMenu = ({ setShowMobileMenu }: MobileMenuProps) => {
 
 const Header = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
-  const { theme, toggleTheme } = useTheme();
+  const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
   const currentURL = location.pathname;
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <>
-      <div className="sticky top-0 z-20 w-full border-b border-shoko-border bg-shoko-bg-alt py-3 font-header font-semibold">
-        <div className="mx-6 flex max-w-[1440px] items-center justify-between 2xl:mx-auto">
-          <h2 className="flex items-center gap-x-4">
+      <header
+        className={cx(
+          'sticky top-0 z-20 w-full transition-all duration-300',
+          isScrolled && 'shadow-md backdrop-blur',
+        )}
+      >
+        <div className="mx-auto flex max-w-[1440px] justify-between px-6 py-3 font-header">
+          <div className="flex items-center gap-x-4 text-shoko-36">
             <img
               src="/images/common/shoko-icon.svg"
               alt="Shoko Site"
-              className="size-[4.688rem]"
+              className="size-16"
             />
             <Link to="/">
               Shoko
             </Link>
-          </h2>
-          <nav className="hidden items-center gap-x-4 xl:flex">
-            {navRoutes.map((route) => {
-              const isExternal = route.route.startsWith('http');
-              const isActive = isExternal ? false : currentURL.startsWith(route.route);
-
-              return isExternal
-                ? (
-                  <ExternalLink
-                    key={route.title}
-                    title={route.title}
-                    url={route.route}
-                    icon={route.icon}
-                  />
-                )
-                : (
-                  <InternalLink
-                    key={route.title}
-                    title={route.title}
-                    route={route.route}
-                    isActive={isActive}
-                  />
-                );
-            })}
-          </nav>
-          <div className="flex gap-x-2">
-            <Button buttonType="circle" className="size-[2.813rem]" onClick={toggleTheme}>
-              <Icon
-                className={cx(theme === 'dark' ? 'rotate-180' : '')}
-                icon={mdiThemeLightDark}
-              />
-            </Button>
-            {
-              /*
-						TODO: Implement search functionality once Algolia is set up.
-						<Button buttonType="circle" className="size-[2.813rem]">
-						<Icon icon={mdiMagnify} />
-						</Button>
-						*/
-            }
+          </div>
+          <NavRouteBuilder className="hidden xl:flex" currentURL={currentURL} />
+          <div className="flex items-center gap-x-2 xl:hidden">
             <Button
-              buttonType="circle"
-              className="size-[2.813rem] xl:hidden"
+              buttonType="round"
               onClick={() => setShowMobileMenu(!showMobileMenu)}
             >
-              <Icon
-                icon={!showMobileMenu ? mdiMenuOpen : mdiMenuClose}
-              />
+              <PanelLeftClose />
             </Button>
           </div>
         </div>
-      </div>
+      </header>
       {showMobileMenu && <MobileMenu setShowMobileMenu={setShowMobileMenu} />}
     </>
   );

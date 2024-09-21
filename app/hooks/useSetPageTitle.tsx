@@ -1,8 +1,10 @@
 import { useEffect } from 'react';
 import { convertToProperName } from '~/helpers/helpers';
 
-export const useSetPageTitle = (title: string) => {
+export const useSetPageTitle = (title: string): void => {
   useEffect(() => {
-    document.title = `${convertToProperName(title)} | Shoko`;
+    document.title = title === ''
+      ? 'Shoko | Anime Management System'
+      : `${convertToProperName(title)} | Shoko`;
   }, [title]);
 };

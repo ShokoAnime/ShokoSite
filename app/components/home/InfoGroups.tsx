@@ -1,34 +1,53 @@
-import { InfoSectionProps } from '~/types/home';
-import Image from '~/components/common/Image';
-import SectionHeader from '~/components/common/SectionHeader';
-import InfoGroupDetails from './InfoGroups.data';
+import { SingleInfoProps } from '~/types/home';
 import cx from 'classnames';
-import { useMobile } from '~/hooks/useMobile';
+import SectionHeader from '~/components/common/SectionHeader';
+import Image from '~/components/common/Image';
 
-const InfoSection = ({ title, subtitle, image, content, reverse }: InfoSectionProps) => {
-  const { isMobile } = useMobile();
-
-  return (
-    <div
-      className={cx(
-        'flex items-center gap-16',
-        reverse || isMobile ? 'flex-col-reverse xl:flex-row-reverse' : 'xl:flex-row',
-      )}
-    >
-      <div className="flex max-w-[850px] flex-col gap-y-8">
+const InfoDetails = [
+  {
+    title: 'Why Use Shoko?',
+    subtitle: 'Effortless Organization',
+    image: '/images/home/web-ui-series.webp',
+    description: (
+      <>
         <div>
-          <div
-            className={cx(
-              'flex font-header text-base font-semibold text-shoko-text-header opacity-75 xl:text-xl',
-              isMobile && 'justify-center',
-            )}
-          >
-            {subtitle}
-          </div>
-          <SectionHeader title={title} type="h2" center={isMobile} />
+          Shoko streamlines your anime collection by hashing your files and matching them against AniDB’s comprehensive
+          database. It automatically fills your collection with detailed information about each series and episode,
+          while also pulling in metadata from other sources. This ensures your collection is fully organized in just a
+          few minutes. With Shoko managing the setup and organization, you can focus on what really matters—choosing
+          your next anime to watch.
         </div>
+        <strong>
+          Please be aware that Shoko does not offer any means to download files, stream files from streaming sites, or
+          access files that are not part of your personal collection.
+        </strong>
+      </>
+    ),
+  },
+  {
+    title: 'Advanced Management Tools',
+    subtitle: 'Streamlined File Maintenance',
+    image: '/images/home/web-ui-release-management.webp',
+    description: (
+      <>
+        <div>
+          Shoko provides robust tools for maintaining your anime collection. Detect and manage duplicate, missing, or
+          corrupted files effortlessly. Automatically rename and move files using metadata and custom plugins. Easily
+          link unrecognized files to correct entries. With support for multiple TMDB links per series, Shoko ensures
+          your collection stays organized and accurate.
+        </div>
+      </>
+    ),
+  },
+];
+
+const SingleInfo = ({ title, subtitle, image, description, reverse }: SingleInfoProps) => {
+  return (
+    <div className={cx('flex items-center gap-16', reverse ? 'flex-row-reverse' : 'flex-row')}>
+      <div className="flex max-w-[850px] flex-col gap-y-8">
+        <SectionHeader title={title} subtitle={subtitle} type="h2" />
         <div className="flex gap-8">
-          <div className="flex flex-col gap-4">{content}</div>
+          <div className="flex flex-col gap-4">{description}</div>
         </div>
       </div>
       <Image
@@ -40,25 +59,21 @@ const InfoSection = ({ title, subtitle, image, content, reverse }: InfoSectionPr
   );
 };
 
-const InfoGroups = () => {
+const infoGroups = () => {
   return (
-    <>
-      <div className="mx-auto max-w-[1440px] px-6 py-16 2xl:px-0">
-        <div className="flex flex-col items-center gap-y-16 text-center sm:text-left 2xl:gap-y-32">
-          {InfoGroupDetails.map((infoGroup, index) => (
-            <InfoSection
-              key={infoGroup.title}
-              title={infoGroup.title}
-              subtitle={infoGroup.subtitle}
-              image={infoGroup.image}
-              content={infoGroup.content}
-              reverse={index % 2 !== 0}
-            />
-          ))}
-        </div>
-      </div>
-    </>
+    <div className="flex flex-col gap-16">
+      {InfoDetails.map((infoGroup, index) => (
+        <SingleInfo
+          key={infoGroup.title}
+          title={infoGroup.title}
+          subtitle={infoGroup.subtitle}
+          image={infoGroup.image}
+          description={infoGroup.description}
+          reverse={index % 2 !== 0}
+        />
+      ))}
+    </div>
   );
 };
 
-export default InfoGroups;
+export default infoGroups;

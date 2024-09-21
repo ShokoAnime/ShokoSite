@@ -1,27 +1,24 @@
+import { Link } from '@remix-run/react';
 import cx from 'classnames';
 import { ButtonProps } from '~/types/common';
-import { Link } from '@remix-run/react';
 
-export const buttonStyle = {
-  primary: 'bg-shoko-link text-shoko-text-alt hover:bg-shoko-link-hover hover:text-shoko-text-alt',
-  secondary: 'bg-shoko-button-alt text-shoko-text-alt hover:bg-shoko-button-alt-hover hover:text-shoko-text-alt',
-  outline: 'border-2 border-shoko-link text-shoko-header-text hover:bg-shoko-link-hover hover:text-shoko-text-alt',
-  circle: '!p-3 bg-shoko-bg border border-shoko-border hover:bg-shoko-link-hover hover:text-shoko-text-alt',
-  text: 'text-shoko-text-header hover:text-shoko-link-hover',
-  breadcrumb: '!p-0 text-2xl text-shoko-link-header font-header font-medium hover:text-shoko-link-header-hover',
-  download:
-    'bg-shoko-bg-alt text-shoko-text-header border border-shoko-border hover:bg-shoko-link-hover hover:text-shoko-text-alt',
+const buttonStyle = {
+  primary: 'bg-shoko-link text-shoko-btn-text gap-x-2 px-4 py-3 hover:bg-shoko-btn-hover font-semibold',
+  outline:
+    'border border-shoko-link text-shoko-text gap-x-2 px-4 py-3 hover:text-shoko-text hover:bg-shoko-bg font-semibold',
+  round: 'bg-shoko-bg border border-shoko-border text-shoko-text-header hover:text-shoko-link gap-x-3 p-4',
+  text: 'text-shoko-text-header hover:text-shoko-link',
 };
 
-export const NormalButton = ({ buttonType, className, id, children, disabled, onClick }: ButtonProps) => {
+const NormalButton = ({ buttonType, className, id, children, disabled, onClick }: ButtonProps) => {
   return (
     <button
       type="button"
       id={id}
       className={cx(
-        'flex items-center justify-center gap-x-3 p-4 font-body transition-colors duration-500 ease-in-out focus:outline-none',
+        'flex items-center justify-center font-body transition-colors duration-500 ease-in-out focus:outline-none',
         buttonStyle[buttonType],
-        buttonType === 'circle' ? 'rounded-full' : 'rounded-lg',
+        buttonType === 'round' ? 'rounded-full' : 'rounded-lg',
         className,
       )}
       disabled={disabled}
@@ -32,15 +29,15 @@ export const NormalButton = ({ buttonType, className, id, children, disabled, on
   );
 };
 
-export const InternalButton = ({ buttonType, className, id, children, to }: ButtonProps) => {
+const InternalButton = ({ buttonType, className, id, children, to }: ButtonProps) => {
   return (
     <Link
       type="button"
       id={id}
       className={cx(
-        'flex items-center justify-center gap-x-3 p-4 font-body transition-colors duration-500 ease-in-out focus:outline-none',
+        'flex items-center justify-center font-body transition-colors duration-500 ease-in-out focus:outline-none',
         buttonStyle[buttonType],
-        buttonType === 'circle' ? 'rounded-full' : 'rounded-lg',
+        buttonType === 'round' ? 'rounded-full' : 'rounded-lg',
         className,
       )}
       to={to ?? '/'}

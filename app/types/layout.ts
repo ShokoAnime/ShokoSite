@@ -6,6 +6,12 @@ export type NavRouteProps = {
   icon?: React.ReactNode;
 };
 
+export type NavRouteBuilderProps = {
+  currentURL: string;
+  className?: string;
+  onClick?: () => void;
+};
+
 export type InternalLinksProps = {
   title: string;
   route: string;
@@ -21,4 +27,15 @@ export type ExternalLinksProps = {
 
 export type MobileMenuProps = {
   setShowMobileMenu: (val: boolean) => void;
+};
+
+export type PageHeroProps = {
+  title: string;
+  description?: string;
+  date?: string;
+};
+
+export type BreadcrumbProps = {
+  segment: string;
+  index: number;
 };

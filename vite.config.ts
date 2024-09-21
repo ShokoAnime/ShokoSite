@@ -27,10 +27,10 @@ export default defineConfig({
           route('/blog', 'routes/blog/blog.tsx');
           route('/blog/:id', 'routes/blog/blogPost.tsx');
           route('/contributors', 'routes/contributors/contributors.tsx');
-          route('/downloads', 'routes/downloads/downloadsIndex.tsx');
-          route('/downloads/:id', 'routes/downloads/downloadsList.tsx');
-          route('/downloads/:id/:subid', 'routes/downloads/downloadsSingle.tsx');
-          route('/downloads/shoko-server', 'routes/downloads/downloadsSingle.tsx', { id: 'shoko-server' });
+          route('/downloads', 'routes/downloads/downloads.tsx');
+          route('/downloads/:id', 'routes/downloads/downloadsGrid.tsx');
+          route('/downloads/:id/:subid', 'routes/downloads/downloadSingle.tsx');
+          route('/downloads/shoko-server', 'routes/downloads/downloadSingle.tsx', { id: 'shoko-server' });
           route('*', 'routes/404.tsx', { id: '404' });
         });
       },

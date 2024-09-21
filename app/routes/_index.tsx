@@ -1,22 +1,28 @@
 import type { MetaFunction } from '@remix-run/node';
 import Hero from '~/components/home/Hero';
-import Benefits from '~/components/home/Benefits';
+import Features from '~/components/home/Features';
+import Divider from '~/components/layout/Divider';
 import InfoGroups from '~/components/home/InfoGroups';
+import WatchAnywhere from '~/components/home/WatchAnywhere';
 import LatestNews from '~/components/home/LatestNews';
 
 export const meta: MetaFunction = () => {
   return [
     { title: 'Shoko | Anime Management System' },
-    { name: 'description', content: 'The All-in-One Cross-Platform Anime Management System Built For You' },
+    { name: 'description', content: 'The All-in-One Cross-Platform Anime Management System Built For You.' },
   ];
 };
 
 export default function Index() {
   return (
-    <div>
+    <div className="my-24 flex flex-col gap-24">
       <Hero />
-      <Benefits />
+      <Features />
+      <Divider />
       <InfoGroups />
+      <Divider />
+      <WatchAnywhere />
+      <Divider />
       <LatestNews />
     </div>
   );

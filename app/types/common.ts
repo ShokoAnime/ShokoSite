@@ -1,7 +1,7 @@
 import React from 'react';
 
 export type ButtonProps = {
-  buttonType: 'primary' | 'secondary' | 'outline' | 'circle' | 'text' | 'breadcrumb' | 'download';
+  buttonType: 'primary' | 'outline' | 'round' | 'text';
   children: React.ReactNode;
   className?: string;
   id?: string;
@@ -10,28 +10,20 @@ export type ButtonProps = {
   to?: string;
 };
 
-export type HighLightHeaderProps = {
-  title: string;
-  type: string;
-  subtitle?: string | React.ReactNode;
-  center?: boolean;
-  opacity?: number;
-  className?: string;
-};
-
 export type ImageProps = {
   src: string;
   alt: string;
   className?: string;
 };
 
-export type HistorySectionProps = {
-  title: string;
-  years: string;
-  programs: string[];
-  children: React.ReactNode;
+export type Option = {
+  name: string;
+  count: number;
 };
 
-export type ScrollWrapperProps = {
-  children: React.ReactNode;
+export type MultiSelectDropdownProps = {
+  title: string;
+  icon: React.ReactNode;
+  options: Option[];
+  setSelectedOptions: (selected: string[]) => void;
 };
