@@ -1,12 +1,13 @@
 import { Link } from '@remix-run/react';
 import { BlogCardProps } from '~/types/blog';
 import { convertDate } from '~/helpers/helpers';
+import Image from '~/components/common/Image';
 
 const BlogCard = ({ file, image, title, date, description }: BlogCardProps) => {
   return (
     <div className="flex max-w-[330px] flex-col gap-6">
       <div className="group relative">
-        <img
+        <Image
           src={`/images/blog/${image}`}
           alt={title}
           className="w-full rounded-lg object-cover shadow-custom transition-opacity duration-300 group-hover:opacity-75"

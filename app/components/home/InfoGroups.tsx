@@ -54,6 +54,7 @@ const SingleInfo = ({ title, subtitle, image, description, reverse }: SingleInfo
         src={image}
         alt={title}
         className="h-full max-h-[21.625rem] w-fit rounded-lg shadow-custom lg:max-w-[38.125rem]"
+        zoom={true}
       />
     </div>
   );
