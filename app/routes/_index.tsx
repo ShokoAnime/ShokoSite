@@ -1,4 +1,4 @@
-import type { MetaFunction } from '@remix-run/node';
+import type { MetaFunction } from '@remix-run/cloudflare';
 import Hero from '~/components/home/Hero';
 import Features from '~/components/home/Features';
 import Divider from '~/components/layout/Divider';
