@@ -1,60 +1,27 @@
 import React from 'react';
-import { MarkdownFile } from '~/types/markdown';
 
-export type DownloadsIndexProps = {
-  programs: number;
-  themes: number;
-  renamers: number;
-};
-
-export type DownloadCategories = {
-  title: string;
+export type DownloadListItemProps = {
+  name: string;
   description: string;
-  icon: string;
+  count: number;
   link: string;
 };
 
-export type PlatformData = {
-  text: string;
-  links: {
-    name: string;
-    url: string;
-  }[];
+export type HeaderBuilderProps = {
+  title: string;
+  children?: React.ReactNode;
 };
 
-export type DownloadItem = {
-  filename: string;
-  frontmatter: {
-    name: string;
-    date: string;
-    version: string;
-    images: {
-      url: string;
-      alt: string;
-    }[];
-    resources: {
-      name: string;
-      url: string;
-    }[];
-    downloads: PlatformData[];
-    author: string;
-    tags: string[];
-  };
-  description: React.ReactNode;
+export type IconNameProps = {
+  [key: string]: React.JSX.Element;
 };
 
-export type IconName = {
-  [key: string]: React.ReactNode | string;
-  discord: React.ReactNode;
-  github: React.ReactNode;
-  changelog: string;
-  docs: string;
+export type Tag = {
+  name: string;
+  count: number;
 };
 
-export type DownloadGridProps = {
-  data: MarkdownFile[];
-  tagClicked: boolean;
-  setTagClicked: (tagClicked: boolean) => void;
-  selectedTags: string[];
-  type: string;
+export type CategorizedTags = {
+  themes: Tag[];
+  colors: Tag[];
 };

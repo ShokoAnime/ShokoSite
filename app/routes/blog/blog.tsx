@@ -1,63 +1,53 @@
 import { useEffect, useRef, useState } from 'react';
-import { useLoaderData } from '@remix-run/react';
-import { LoaderFunction } from '@remix-run/node';
+import { MarkdownFile } from '~/types/markdown';
+import { getMarkdownList } from '~/helpers/markdown';
+import PageHero from '~/components/layout/PageHero';
+import BlogCard from '~/components/blog/BlogCard';
 
-import { InitialMarkdownList, MarkdownFile } from '~/types/markdown';
-import { getAllTags, markdownList } from '~/helpers/markdown';
-import PageBanner from '~/components/layout/PageBanner';
-import BlogList from '~/components/blog/BlogList';
-import BlogListSidebar from '~/components/blog/BlogListSidebar';
-
-export const loader: LoaderFunction = async () => {
-  const type = 'blog';
-  const offset = 0;
-  const limit = 5;
-  const sort = 'sortByDateDescending';
-  const tags: string[] = [];
-
-  const { markdownFiles, hasMore, totalCount } = await markdownList(type, offset, limit, sort, tags);
-  const allTags = await getAllTags(type);
-
-  return {
-    initialMarkdownFiles: markdownFiles,
-    initialHasMore: hasMore,
-    totalCount,
-    allTags,
-  };
-};
-
-function Blog() {
-  const { initialMarkdownFiles, initialHasMore, totalCount, allTags } = useLoaderData<
-    InitialMarkdownList
-  >();
-  const [markdownFiles, setMarkdownFiles] = useState<MarkdownFile[]>(initialMarkdownFiles);
-  const [selectedTags, setSelectedTags] = useState<string[]>([]);
-  const [tagClicked, setTagClicked] = useState(false);
-  const [hasMore, setHasMore] = useState(initialHasMore);
+export default function Blog() {
+  const [markdownFiles, setMarkdownFiles] = useState<MarkdownFile[]>([]);
+  const [hasMore, setHasMore] = useState(true);
+  const [totalCount, setTotalCount] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [loading, setLoading] = useState(false);
   const loadingRef = useRef<HTMLDivElement>(null);
 
-  const loadMoreFiles = async () => {
-    const { markdownFiles: newFiles, hasMore: moreFiles } = await markdownList(
-      'blog',
-      markdownFiles.length,
-      5,
-      'sortByDateDescending',
-      selectedTags,
-    );
+  const loadFiles = async (page: number) => {
+    setLoading(true);
+    const { markdownFiles: newFiles, hasMore, totalCount } = await getMarkdownList({
+      type: 'blog',
+      page,
+      pageSize: 16,
+      sortCondition: 'dateDescending',
+    });
 
-    setMarkdownFiles((prevFiles) => [...prevFiles, ...newFiles]);
-    setHasMore(moreFiles);
+    if (page === 1) {
+      setMarkdownFiles(newFiles);
+    } else {
+      setMarkdownFiles((prevFiles) => [...prevFiles, ...newFiles]);
+    }
+    setHasMore(hasMore);
+    setTotalCount(totalCount);
+    setLoading(false);
   };
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && hasMore) {
-          loadMoreFiles();
-        }
-      },
-      { threshold: 0.5 },
-    );
+    loadFiles(1);
+  }, []);
+
+  useEffect(() => {
+    const loadMore = () => {
+      if (!hasMore || loading) return;
+      const nextPage = currentPage + 1;
+      setCurrentPage(nextPage);
+      loadFiles(nextPage);
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting && markdownFiles.length !== 0) {
+        loadMore();
+      }
+    }, { threshold: 0.5 });
 
     if (loadingRef.current) {
       observer.observe(loadingRef.current);
@@ -68,49 +58,27 @@ function Blog() {
         observer.unobserve(loadingRef.current);
       }
     };
-  }, [hasMore, markdownFiles, selectedTags]);
-
-  useEffect(() => {
-    const fetchInitialData = async () => {
-      const { markdownFiles: newMarkdownFiles, hasMore: newHasMore } = await markdownList(
-        'blog',
-        0,
-        5,
-        'sortByDateDescending',
-        selectedTags,
-      );
-
-      setMarkdownFiles(newMarkdownFiles);
-      setHasMore(newHasMore);
-    };
-
-    fetchInitialData();
-  }, [selectedTags]);
+  }, [hasMore, loading, currentPage, markdownFiles.length]);
 
   return (
     <>
-      <PageBanner
+      <PageHero
         title="Shoko Blog"
         description="Stay informed with the latest news about Shoko's development, third-party plugins, and other relevant topics."
       />
-      <div className="flex min-h-[calc(100vh-557px)] w-full flex-col justify-center gap-x-16 px-6 py-16 xl:flex-row">
-        <BlogListSidebar
-          availableTags={allTags}
-          tagCount={totalCount}
-          selectedTags={selectedTags}
-          setSelectedTags={setSelectedTags}
-          setTagClicked={setTagClicked}
-        />
-        <BlogList
-          data={markdownFiles}
-          setTagClicked={setTagClicked}
-          tagClicked={tagClicked}
-          selectedTags={selectedTags}
-        />
+      <div className="my-16 flex flex-wrap gap-6">
+        {markdownFiles.map((file) => (
+          <BlogCard
+            key={file.filename}
+            file={file.filename}
+            image={file.frontmatter.image}
+            title={file.frontmatter.title}
+            date={file.frontmatter.date}
+            description={file.description}
+          />
+        ))}
       </div>
-      {hasMore && <div ref={loadingRef} />}
+      <div ref={loadingRef} />
     </>
   );
 }
-
-export default Blog;

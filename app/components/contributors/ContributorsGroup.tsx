@@ -18,15 +18,17 @@ const ContributorsGroup = ({ title, description, position, data }: ContributorsG
 
     if (isStaff || isHonorable || isContributor) {
       return (
-        <UserCard
-          position="contributors"
-          key={name}
-          name={name}
-          image={avatar_url}
-          link={url}
-          role={role}
-          joinDate={join_date}
-        />
+        <div className="flex w-full max-w-[185px] items-center justify-center">
+          <UserCard
+            position="contributors"
+            key={name}
+            name={name}
+            image={avatar_url}
+            link={url}
+            role={role}
+            joinDate={join_date}
+          />
+        </div>
       );
     }
 

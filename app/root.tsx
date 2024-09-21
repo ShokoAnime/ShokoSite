@@ -1,21 +1,11 @@
-import React, { useEffect } from 'react';
-import '~/css/tailwind.css';
+import React from 'react';
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react';
-import Header from '~/components/layout/Header';
-import Footer from '~/components/layout/Footer';
-import ScrollWrapper from '~/components/layout/ScrollWrapper';
-import { ThemeProvider } from '~/context/ThemeContext';
+import './css/tailwind.css';
+import PageWrapper from '~/components/layout/PageWrapper';
 
 export function Layout({ children }: { children: React.ReactNode }) {
-  useEffect(() => {
-    const htmlElement = document.documentElement;
-    setTimeout(function() {
-      htmlElement.classList.remove('hidden');
-    }, 200);
-  }, []);
-
   return (
-    <html lang="en" className="hidden">
+    <html lang="en">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -23,17 +13,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
         <title>Shoko</title>
       </head>
-      <ScrollWrapper>
-        <ThemeProvider>
-          <Header />
-          <div className="h-full min-h-[calc(100vh-664px)]">
-            {children}
-          </div>
+      <body>
+        <PageWrapper>
+          {children}
           <ScrollRestoration />
           <Scripts />
-          <Footer />
-        </ThemeProvider>
-      </ScrollWrapper>
+        </PageWrapper>
+      </body>
     </html>
   );
 }

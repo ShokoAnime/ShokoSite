@@ -1,16 +1,15 @@
-import PageBanner from '~/components/layout/PageBanner';
 import ContributorsGroup from '~/components/contributors/ContributorsGroup';
 import { contributors, honorable, staff } from '~/data/contributors';
+import PageHero from '~/components/layout/PageHero';
 
 function Contributors() {
   return (
     <>
-      <PageBanner
+      <PageHero
         title="Contributors"
         description="From the Shoko team itself to our everyday users, everyone listed below has contributed to making Shoko better."
       />
-
-      <div className="mx-auto flex min-h-[calc(100vh-557px)] max-w-[1440px] flex-col gap-y-16 p-16 2xl:px-0 2xl:py-16">
+      <div className="mx-auto flex flex-col gap-y-16 p-16 2xl:px-0 2xl:py-16">
         <ContributorsGroup
           title="Shoko Staff"
           position="staff"
@@ -35,7 +34,7 @@ function Contributors() {
                 The <strong>{contributors.length}</strong>{' '}
                 amazing users who contributed to the betterment of Shoko. Contributed in the past but don&apos;t see
                 your name?{' '}
-                <a className="font-medium text-shoko-link underline" href="/" target="_blank" rel="noopener">
+                <a className="font-semibold text-shoko-link underline" href="/" target="_blank" rel="noopener">
                   Lets fix that.
                 </a>
               </div>

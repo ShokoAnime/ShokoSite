@@ -1,3 +1,5 @@
+import React from 'react';
+
 export type Frontmatter = {
   image: string;
   images: { url: string, alt: string }[];
@@ -5,18 +7,26 @@ export type Frontmatter = {
   name: string;
   subtitle: string;
   download: string;
-  downloads: { text: string, url: string }[];
+  downloads: {
+    text: string;
+    links: {
+      name: string;
+      url: string;
+    }[];
+  }[];
+  resources: { name: string, url: string }[];
   date: string;
   anime: string;
   tags: string[];
   version: string;
   author?: string;
+  devs?: string[];
 } | Record<string, never>;
 
 export type MarkdownFile = {
   filename: string;
   frontmatter: Frontmatter;
-  description: string;
+  description: React.JSX.Element | string;
 };
 
 export type MarkdownListProps = {
@@ -36,4 +46,19 @@ export type InitialMarkdownList = {
   }[];
 };
 
-export type SortCondition = 'sortByDateAscending' | 'sortByDateDescending';
+export interface MarkdownListOptions {
+  type: string;
+  page: number;
+  pageSize: number;
+  sortCondition: SortCondition;
+  subType?: string;
+  tags?: string[];
+}
+
+export interface MarkdownListResult {
+  markdownFiles: MarkdownFile[];
+  hasMore: boolean;
+  totalCount: number;
+}
+
+export type SortCondition = 'dateAscending' | 'dateDescending';

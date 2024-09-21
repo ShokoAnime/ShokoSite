@@ -1,189 +1,80 @@
-import { renderToStaticMarkup } from 'react-dom/server';
-import { Frontmatter, MarkdownFile, MarkdownListProps, SortCondition } from '~/types/markdown';
+import { MarkdownFile, MarkdownListOptions, MarkdownListResult, SortCondition } from '~/types/markdown';
+import { loadMarkdownFiles } from '~/helpers/markdownLoader';
 
-// Get all markdown files from the content directory.
-const getMarkdownModules = (type: string) => {
-  switch (type) {
-    case 'blog':
-      return import.meta.glob<{ default: string, frontmatter: Frontmatter }>(
-        '../content/posts/*.mdx',
-        { eager: false },
-      );
-    case 'downloads':
-      return import.meta.glob<{ default: string, frontmatter: Record<string, never> }>(
-        '../content/downloads/*/*.mdx',
-        { eager: false },
-      );
-    case 'media-player-plugins':
-      return import.meta.glob<{ default: string, frontmatter: Record<string, never> }>(
-        '../content/downloads/media-player-plugins/*.mdx',
-        { eager: false },
-      );
-    case 'renamer-plugins':
-      return import.meta.glob<{ default: string, frontmatter: Record<string, never> }>(
-        '../content/downloads/renamer-plugins/*.mdx',
-        { eager: false },
-      );
-    case 'webui-themes':
-      return import.meta.glob<{ default: string, frontmatter: Record<string, never> }>(
-        '../content/downloads/webui-themes/*.mdx',
-        { eager: false },
-      );
-    case 'legacy':
-      return import.meta.glob<{ default: string, frontmatter: Record<string, never> }>(
-        '../content/downloads/legacy/*.mdx',
-        { eager: false },
-      );
-    default:
-      return {};
+const markdownCache: Record<string, MarkdownFile[]> = {};
+
+async function getOrLoadMarkdownFiles(type: string): Promise<MarkdownFile[]> {
+  if (!markdownCache[type]) {
+    markdownCache[type] = await loadMarkdownFiles(type);
   }
+  return markdownCache[type];
+}
+
+const sortFunctions: Record<SortCondition, (a: MarkdownFile, b: MarkdownFile) => number> = {
+  dateAscending: (a, b) => new Date(a.frontmatter.date).getTime() - new Date(b.frontmatter.date).getTime(),
+  dateDescending: (a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime(),
 };
 
-// Get the total count of downloads for each category.
-export const getDownloadsCount = async (): Promise<{ programs: number, themes: number, renamers: number }> => {
-  const downloads = getMarkdownModules('downloads');
-  const filenames = Object.keys(downloads);
+export async function getMarkdownList({
+  type,
+  page,
+  pageSize,
+  sortCondition,
+  tags = [],
+}: MarkdownListOptions): Promise<MarkdownListResult> {
+  const allMarkdownFiles = await getOrLoadMarkdownFiles(type);
 
-  let programs = 0;
-  let themes = 0;
-  let renamers = 0;
-
-  await Promise.all(
-    filenames.map(async (filename) => {
-      const type = filename.split('/')[3];
-      if (type === 'media-player-plugins' || type === 'legacy' || type === 'shoko-server') {
-        programs++;
-      } else if (type === 'webui-themes') {
-        themes++;
-      } else if (type === 'renamer-plugins') {
-        renamers++;
-      }
-    }),
-  );
-
-  return { programs, themes, renamers };
-};
-
-// Get all unique tags and their counts from markdown files.
-export const getAllTags = async (type: string): Promise<Array<{ name: string, count: number }>> => {
-  const modules = getMarkdownModules(type);
-  const filenames = Object.keys(modules);
-
-  const tagCounts = new Map<string, number>();
-
-  await Promise.all(
-    filenames.map(async (filename) => {
-      const module = await modules[filename]();
-      const tags = module.frontmatter.tags || [];
-      (tags as string[]).forEach((tag: string) => {
-        tagCounts.set(tag, (tagCounts.get(tag) || 0) + 1);
-      });
-    }),
-  );
-
-  return Array.from(tagCounts.entries()).map(([tag, count]) => ({ name: tag, count }));
-};
-
-// Sort markdown files ascending based on the date in the frontmatter.
-const sortByDateAscending = (a: MarkdownFile, b: MarkdownFile) => {
-  return new Date(a.frontmatter.date).getTime() - new Date(b.frontmatter.date).getTime();
-};
-
-// Sort markdown files descending based on the date in the frontmatter.
-const sortByDateDescending = (a: MarkdownFile, b: MarkdownFile) => {
-  return new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime();
-};
-
-// Map sort conditions to their respective sort functions.
-const sortMap = {
-  sortByDateAscending: sortByDateAscending,
-  sortByDateDescending: sortByDateDescending,
-};
-
-// Clean content by removing HTML tags, extra spaces and trimming for description.
-const sanitizeContent = (MDContent: string) => {
-  const renderedContent = renderToStaticMarkup(<MDContent />);
-  const cleanedContent = renderedContent.replace(/<[^>]*>|&[^;]+;/g, '');
-  const trimmedContent = cleanedContent.replace(/\s+/g, ' ').trim();
-
-  // Get the first 200 words
-  const wordsArray = trimmedContent.split(' ');
-  return wordsArray.slice(0, 100).join(' ');
-};
-
-// Get a list of markdown files based on the type.
-export const markdownList = async (
-  type: string,
-  offset: number,
-  count: number,
-  sortCondition: SortCondition = 'sortByDateDescending',
-  tags: string[] = [],
-): Promise<MarkdownListProps> => {
-  const modules = getMarkdownModules(type);
-  const filenames = Object.keys(modules);
-
-  // Sort filenames based on the sort condition
-  const allMarkdownFiles = await Promise.all(
-    filenames.map(async (filename) => {
-      const module = await modules[filename]();
-      const MDContent = module.default;
-      const sanitizedContent = sanitizeContent(MDContent);
-
-      return {
-        filename,
-        frontmatter: module.frontmatter,
-        description: sanitizedContent,
-      };
-    }),
-  );
-
-  // Filter files based on tags
-  let filteredMarkdownFiles: MarkdownFile[];
-
-  if (tags.length > 0) {
-    filteredMarkdownFiles = allMarkdownFiles.filter(({ frontmatter }) =>
+  const filteredMarkdownFiles = tags.length > 0
+    ? allMarkdownFiles.filter(({ frontmatter }) =>
       frontmatter.tags?.length && tags.every(tag => frontmatter.tags!.includes(tag))
-    );
-  } else {
-    filteredMarkdownFiles = allMarkdownFiles;
-  }
+    )
+    : allMarkdownFiles;
 
-  // Sort the markdown files
-  const sortedMarkdownFiles = filteredMarkdownFiles.sort(sortMap[sortCondition]);
+  const sortedMarkdownFiles = filteredMarkdownFiles.sort(sortFunctions[sortCondition]);
 
-  // Slice the sorted files to get only the requested amount
-  const paginatedFiles = sortedMarkdownFiles.slice(offset, offset + count);
+  const startIndex = (page - 1) * pageSize;
+  const paginatedFiles = sortedMarkdownFiles.slice(startIndex, startIndex + pageSize);
 
   return {
     markdownFiles: paginatedFiles,
-    hasMore: offset + count < sortedMarkdownFiles.length,
+    hasMore: startIndex + pageSize < sortedMarkdownFiles.length,
     totalCount: filteredMarkdownFiles.length,
   };
-};
+}
 
-export const markdownDetail = async (path: string) => {
-  const pathParts = path.split('/').filter(Boolean);
+export async function getMarkdownDetail(type: string, slug: string): Promise<MarkdownFile | null> {
+  const files = await getOrLoadMarkdownFiles(type);
+  return files.find((file) => file.filename.split('/').pop()?.replace('.mdx', '') === slug) || null;
+}
 
-  if (pathParts.length === 3) {
-    pathParts.shift();
-  }
+export async function getDownloadsCount(): Promise<any> {
+  const downloads = await getOrLoadMarkdownFiles('downloads');
 
-  const type = pathParts[0];
-  const fileName = pathParts[1];
-  const modules = getMarkdownModules(type);
+  const shokoServer = 1;
+  let mediaPlayerPlugins = 0;
+  let themes = 0;
+  let renamer = 0;
+  let legacy = 0;
 
-  const files = await Promise.all(
-    Object.keys(modules).map(async (filename: string) => {
-      const module = await modules[filename]();
-      const MDContent = module.default;
+  downloads.map((download) => {
+    download.filename.includes('media-player-plugins') && mediaPlayerPlugins++;
+    download.filename.includes('themes') && themes++;
+    download.filename.includes('renamer') && renamer++;
+    download.filename.includes('legacy') && legacy++;
+  });
 
-      return {
-        filename: filename.split('/').pop()?.replace('.mdx', '') || '',
-        frontmatter: module.frontmatter,
-        description: <MDContent />,
-      };
-    }),
-  );
+  return { shokoServer, mediaPlayerPlugins, legacy, themes, renamer };
+}
 
-  return files.find((file) => file.filename === fileName) || null;
-};
+export async function getAllTags(type: string): Promise<Array<{ name: string, count: number }>> {
+  const files = await getOrLoadMarkdownFiles(type);
+  const tagCounts = new Map<string, number>();
+
+  files.forEach(({ frontmatter }) => {
+    (frontmatter.tags || []).forEach((tag: string) => {
+      tagCounts.set(tag, (tagCounts.get(tag) || 0) + 1);
+    });
+  });
+
+  return Array.from(tagCounts.entries()).map(([name, count]) => ({ name, count }));
+}

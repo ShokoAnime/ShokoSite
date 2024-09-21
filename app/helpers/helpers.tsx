@@ -1,4 +1,4 @@
-type DateFormat = 'string' | 'array';
+import { renderToStaticMarkup } from 'react-dom/server';
 
 export const convertToProperName = (path: string) => {
   if (path === undefined) {
@@ -26,36 +26,22 @@ export const convertNameToUrl = (path: string) => {
     .toLowerCase();
 };
 
-export const convertDate = (dateString: string, format: DateFormat = 'string') => {
-  const getDaySuffix = (day: number) => {
-    if (day > 3 && day < 21) return 'th';
-    switch (day % 10) {
-      case 1:
-        return 'st';
-      case 2:
-        return 'nd';
-      case 3:
-        return 'rd';
-      default:
-        return 'th';
-    }
+export const convertDate = (date: string): string => {
+  const options: Intl.DateTimeFormatOptions = {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
   };
+  return new Date(date).toLocaleDateString('en-US', options);
+};
 
-  const dateParts = dateString.split('-');
-  const year = parseInt(dateParts[0], 10);
-  const monthIndex = parseInt(dateParts[1], 10) - 1;
-  const day = parseInt(dateParts[2], 10);
-
-  const date = new Date(year, monthIndex, day);
-  const options: Intl.DateTimeFormatOptions = { month: 'short' };
-  const monthShort = date.toLocaleDateString('en-US', options);
-  const optionsLong: Intl.DateTimeFormatOptions = { month: 'long' };
-  const monthLong = date.toLocaleDateString('en-US', optionsLong);
-  const daySuffix = getDaySuffix(day);
-
-  if (format === 'array') {
-    return [day, monthShort, year];
-  }
-
-  return `${monthLong} ${day}${daySuffix}, ${year}`;
+export const sanitizeContent = (MDContent: string): string => {
+  const renderedContent = renderToStaticMarkup(<MDContent />);
+  return renderedContent
+    .replace(/<[^>]*>|&[^;]+;/g, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .split(' ')
+    .slice(0, 100)
+    .join(' ');
 };
