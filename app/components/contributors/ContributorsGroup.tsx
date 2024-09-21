@@ -39,7 +39,7 @@ const ContributorsGroup = ({ title, description, position, data }: ContributorsG
     <div className="flex flex-col gap-y-8">
       <div className="flex flex-col gap-y-3">
         <SectionHeader title={title} type="h2" />
-        <div>{description}</div>
+        <div className="flex text-center lg:text-start">{description}</div>
       </div>
 
       <div className="flex flex-wrap gap-4">

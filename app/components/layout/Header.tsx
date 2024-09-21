@@ -25,7 +25,7 @@ const navRoutes: NavRouteProps[] = [
 
 const NavRouteBuilder = ({ currentURL, className, onClick }: NavRouteBuilderProps) => {
   return (
-    <nav className={cx('mx-8 flex flex-col items-center justify-center gap-6 font-header lg:flex-row', className)}>
+    <nav className={cx('mx-8 flex flex-col items-center justify-center gap-6 font-header xl:flex-row', className)}>
       {navRoutes.map((route) => {
         const isExternal = route.route.startsWith('http');
         const isActive = isExternal ? false : currentURL.startsWith(route.route);

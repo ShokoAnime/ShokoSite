@@ -21,11 +21,11 @@ export default function About() {
         title="About Shoko"
         description="Spend some time learning about Shoko’s development over the years."
       />
-      <div className="flex justify-center gap-6">
+      <div className="flex flex-col justify-center gap-6 md:flex-row">
         {headers.map((header) => (
           <button
             key={header}
-            className={`font-header text-shoko-24 font-semibold ${
+            className={`font-header text-shoko-20 font-semibold lg:text-shoko-24 ${
               tab === header ? 'text-shoko-link' : 'text-shoko-text'
             }`}
             onClick={() => setTab(header)}

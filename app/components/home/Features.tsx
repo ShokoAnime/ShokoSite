@@ -31,10 +31,10 @@ const featureList = [
 
 const SingleFeature = ({ icon, title, description, descriptionLink }: SingleFeatureProps) => {
   return (
-    <div className="flex max-w-[330px] flex-col gap-4">
-      <div className="flex items-center gap-x-3">
+    <div className="flex max-w-[330px] flex-col gap-4 text-center 2xl:text-start">
+      <div className="flex items-center justify-center gap-x-3 2xl:justify-start">
         {icon}
-        <div className="text-shoko-18 font-semibold">
+        <div className="jus text-shoko-18 font-semibold">
           {title}
         </div>
       </div>
@@ -45,7 +45,7 @@ const SingleFeature = ({ icon, title, description, descriptionLink }: SingleFeat
             href={descriptionLink.link}
             target="_blank"
             rel="noreferrer"
-            className="flex items-center gap-x-2 text-shoko-link hover:text-shoko-link-hover"
+            className="flex items-center justify-center gap-x-2 text-shoko-link hover:text-shoko-link-hover 2xl:justify-start"
           >
             {descriptionLink.text}
             <ExternalLink size={20} />
@@ -64,7 +64,7 @@ const Features = () => {
         Let Shoko, an open-source, cross-platform anime collection management system automate and organize your
         collection so you can spend more time watching.
       </div>
-      <div className="mt-16 flex gap-6">
+      <div className="mt-16 flex flex-wrap justify-center gap-6 2xl:flex-nowrap">
         {featureList.map((feature) => (
           <SingleFeature
             key={feature.title}

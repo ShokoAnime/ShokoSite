@@ -3,7 +3,7 @@ import { BlogTagsProps } from '~/types/blog';
 
 const BlogTags = ({ tags }: BlogTagsProps) => {
   return (
-    <div className="mt-6 flex gap-x-2">
+    <div className=" mt-6 flex justify-center gap-2 md:justify-start">
       <div className="font-medium text-shoko-highlight">
         <Tags />
       </div>

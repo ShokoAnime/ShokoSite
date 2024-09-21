@@ -38,7 +38,7 @@ export default function BlogPost() {
     <>
       <PageHero title={postData.frontmatter.title} date={postData.frontmatter.date} />
       <div className="mx-auto my-16 flex w-full max-w-[850px] flex-col justify-center gap-6">
-        <div className="shoko-post flex flex-col gap-6">
+        <div className="shoko-post flex flex-col gap-6 text-center md:text-start">
           {postData.description}
         </div>
         {postData.frontmatter.devs && (

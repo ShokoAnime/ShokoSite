@@ -34,7 +34,7 @@ const SingleMediaPlayer = ({ program, name, type, link }: SingleMediaPlayerProps
   return (
     <Link
       to={link}
-      className="flex w-full max-w-[330px] flex-col items-center gap-4 rounded-lg border border-shoko-border bg-shoko-bg-alt p-4 text-center transition-transform duration-300 hover:-translate-y-4 hover:cursor-pointer hover:border-shoko-link hover:text-shoko-text"
+      className="flex w-full max-w-[346px] flex-col items-center justify-center gap-4 rounded-lg border border-shoko-border bg-shoko-bg-alt p-4 text-center transition-transform duration-300 hover:-translate-y-4 hover:cursor-pointer hover:border-shoko-link hover:text-shoko-text lg:max-w-[474px] lg:flex-row 2xl:max-w-[330px] 2xl:flex-col 2xl:justify-start"
       style={{ transformOrigin: 'center', willChange: 'transform', position: 'relative' }}
     >
       <img src={`/images/home/${program.toLowerCase()}.svg`} alt={name} className="size-16" />
@@ -62,7 +62,7 @@ const WatchAnywhere = () => {
           <ExternalLink size={20} />
         </div>
       </div>
-      <div className="flex gap-6">
+      <div className="flex flex-wrap gap-6 2xl:flex-nowrap">
         {mediaPlayers.map((data) => (
           <SingleMediaPlayer
             key={data.program}

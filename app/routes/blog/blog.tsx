@@ -66,7 +66,7 @@ export default function Blog() {
         title="Shoko Blog"
         description="Stay informed with the latest news about Shoko's development, third-party plugins, and other relevant topics."
       />
-      <div className="my-16 flex flex-wrap gap-6">
+      <div className="my-16 flex flex-wrap gap-5">
         {markdownFiles.map((file) => (
           <BlogCard
             key={file.filename}
