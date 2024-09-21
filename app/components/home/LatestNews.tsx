@@ -29,7 +29,7 @@ const LatestNews = () => {
   return (
     <div className="flex flex-col gap-16">
       <SectionHeader title="Latest News" type="h2" center={true} />
-      <div className="flex gap-6">
+      <div className="flex flex-wrap justify-center gap-6 2xl:flex-nowrap 2xl:justify-start">
         {markdownFiles.map((file) => (
           <BlogCard
             key={file.filename}

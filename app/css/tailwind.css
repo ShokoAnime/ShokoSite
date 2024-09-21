@@ -26,13 +26,17 @@
   }
 
   h1 {
+    @apply text-[2rem];
+    @apply leading-[3rem];
     @apply lg:text-[3rem];
     @apply lg:leading-[4.5rem];
   }
 
   h2 {
-    @apply text-[2.25rem];
-    @apply leading-[3.375rem];
+    @apply text-[1.75rem];
+    @apply leading-[2.25rem];
+    @apply lg:text-[2.25rem];
+    @apply lg:leading-[3.375rem];
   }
 
   h4 {
@@ -85,6 +89,10 @@
   padding-bottom: 0.5rem;
 }
 
+.shoko-post > h4 {
+  position: relative;
+}
+
 .shoko-post > h4::after {
   content: '';
   position: absolute;
@@ -93,6 +101,13 @@
   width: 120px;
   height: 2px;
   background-color: var(--shoko-highlight);
+}
+
+@media screen and (max-width: 425px) {
+  .shoko-post > h4::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 
 .shoko-post * img {

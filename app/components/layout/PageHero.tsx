@@ -20,12 +20,18 @@ const PageHero = ({ title, description, date }: PageHeroProps) => {
 
     return (
       <div className="flex gap-x-2">
-        {isLastSegment ? <h4 className="text-shoko-24 capitalize text-shoko-text">{formattedSegment}</h4> : (
-          <>
-            <Link className="text-shoko-24 text-shoko-link" to={path}>{formattedSegment}</Link>
-            <h4 className="text-shoko-text">/</h4>
-          </>
-        )}
+        {isLastSegment
+          ? (
+            <h4 className="hidden text-shoko-18 capitalize text-shoko-text md:inline-flex md:text-shoko-24">
+              {formattedSegment}
+            </h4>
+          )
+          : (
+            <>
+              <Link className="text-shoko-18 text-shoko-link md:text-shoko-24" to={path}>{formattedSegment}</Link>
+              <h4 className="text-shoko-18 text-shoko-text md:text-shoko-24">/</h4>
+            </>
+          )}
       </div>
     );
   };
@@ -40,12 +46,12 @@ const PageHero = ({ title, description, date }: PageHeroProps) => {
             )}
             <h1 className="text-center capitalize">{convertToProperName(title)}</h1>
           </div>
-          {description && <div className="text-center text-shoko-24 font-semibold">{description}</div>}
-          <div className="flex items-center justify-between gap-x-2">
-            <Link className="text-shoko-24 text-shoko-link" to="/">
+          {description && <div className="text-center text-shoko-18 font-semibold md:text-shoko-24">{description}</div>}
+          <div className="flex flex-row items-center justify-between gap-x-2">
+            <Link className="text-shoko-18 text-shoko-link md:text-shoko-24" to="/">
               Shoko
             </Link>
-            <h4 className="text-shoko-24 text-shoko-text">/</h4>
+            <h4 className="text-shoko-18 text-shoko-text md:text-shoko-24">/</h4>
             {breadcrumbs.map((segment, index) => <Breadcrumb key={index} segment={segment} index={index} />)}
           </div>
         </div>

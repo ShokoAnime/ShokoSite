@@ -43,8 +43,13 @@ const InfoDetails = [
 
 const SingleInfo = ({ title, subtitle, image, description, reverse }: SingleInfoProps) => {
   return (
-    <div className={cx('flex items-center gap-16', reverse ? 'flex-row-reverse' : 'flex-row')}>
-      <div className="flex max-w-[850px] flex-col gap-y-8">
+    <div
+      className={cx(
+        'flex items-center gap-16',
+        reverse ? 'flex-col 2xl:flex-row-reverse' : 'flex-col 2xl:flex-row',
+      )}
+    >
+      <div className="flex max-w-[850px] flex-col gap-y-8 text-center 2xl:text-start">
         <SectionHeader title={title} subtitle={subtitle} type="h2" />
         <div className="flex gap-8">
           <div className="flex flex-col gap-4">{description}</div>

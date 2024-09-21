@@ -36,6 +36,9 @@ export default {
         'shoko-24': ['1.5rem', { lineHeight: '1.5' }],
         'shoko-36': ['2.25rem', { lineHeight: '1.5' }],
       },
+      screens: {
+        '2xl': '1440px',
+      },
     },
   },
   plugins: [],
