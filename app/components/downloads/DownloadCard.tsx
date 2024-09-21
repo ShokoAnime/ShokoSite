@@ -3,6 +3,7 @@ import { Download } from 'lucide-react';
 import { Link } from '@remix-run/react';
 import { convertNameToUrl } from '~/helpers/helpers';
 import { MarkdownFile } from '~/types/markdown';
+import Image from '~/components/common/Image';
 
 type DownloadCardProps = {
   data: MarkdownFile;
@@ -12,7 +13,7 @@ const DownloadCard = ({ data }: DownloadCardProps) => {
   return (
     <div className="flex size-full max-w-[330px] flex-col gap-6">
       <div className="group relative">
-        <img
+        <Image
           src={data.frontmatter.images[0].url}
           alt={data.frontmatter.images[0].alt}
           className="size-full h-[186px] rounded-lg object-cover shadow-custom transition-opacity duration-300 group-hover:opacity-75"

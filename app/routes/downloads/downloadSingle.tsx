@@ -51,6 +51,7 @@ export default function DownloadSingle() {
             className="w-full max-w-[537px]"
             src={downloadData.frontmatter.images[0].url}
             alt={downloadData.frontmatter.images[0].alt}
+            zoom={true}
           />
           <div className="flex gap-2">
             {downloadData.frontmatter.images.slice(1, 5).map((image, index) => (
@@ -58,6 +59,7 @@ export default function DownloadSingle() {
                 <Image
                   src={image.url}
                   alt={image.alt}
+                  zoom={true}
                 />
               </div>
             ))}
