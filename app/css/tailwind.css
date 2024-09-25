@@ -132,6 +132,7 @@ ul {
 /* Webkit browsers (Chrome, Safari, newer versions of Edge) */
 ::-webkit-scrollbar {
   width: 4px;
+  height: 4px;
   background: var(--shoko-bg);
 }
 

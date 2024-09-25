@@ -12,7 +12,7 @@ type DownloadCardProps = {
 
 const DownloadCard = ({ data }: DownloadCardProps) => {
   return (
-    <div className="flex size-full max-w-[330px] flex-col gap-6">
+    <div className="flex size-full max-w-[310px] flex-col gap-6 xl:max-w-[335px]">
       <div className="group relative">
         <Image
           src={data.meta.images[0].url}

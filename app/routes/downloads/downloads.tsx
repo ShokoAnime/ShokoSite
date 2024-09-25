@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useLocation } from '@remix-run/react';
-import { getDownloadsCount } from '~/lib/markdown';
+import { Link } from '@remix-run/react';
 import PageHero from '~/components/layout/PageHero';
 import { DownloadCounts, DownloadListItemProps } from '~/types/downloads';
 import { Info } from 'lucide-react';
 import { useBackground } from '~/hooks/useBackground';
-import { ContentItem } from '~/types/content';
 
 const DownloadListItem = ({ name, description, count, link }: DownloadListItemProps) => {
   const pluralize = (word: string, count: number) => `${word}${count === 1 ? '' : 's'}`;
@@ -36,15 +34,15 @@ const DownloadListItem = ({ name, description, count, link }: DownloadListItemPr
   };
 
   return (
-    <div className="flex items-center">
-      <div className="w-full max-w-[278px] font-semibold">
+    <div className="flex flex-col items-center gap-2 text-center lg:flex-row lg:text-start">
+      <div className="flex w-full justify-center font-semibold lg:max-w-[200px] lg:justify-start xl:max-w-[278px]">
         <CountBuilder />
       </div>
       <div>
         <div className="font-header text-shoko-20 font-bold">{name}</div>
         <div className="text-shoko-text-75">{description}</div>
       </div>
-      <Link className="ml-auto font-semibold text-shoko-link" to={link}>
+      <Link className="text-center font-semibold text-shoko-link lg:ml-auto lg:text-start" to={link}>
         {`Download ${name} →`}
       </Link>
     </div>

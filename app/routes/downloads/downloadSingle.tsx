@@ -63,32 +63,32 @@ export default function DownloadSingle() {
   return (
     <>
       <PageHero title={downloadData.meta.name} />
-      <div className="my-16 flex w-full items-center gap-16">
+      <div className="my-16 flex w-full flex-col items-center gap-16 xl:flex-row">
         <div className="flex flex-col gap-4">
           <Image
-            className="w-full max-w-[537px]"
+            className="w-full max-w-[360px] md:max-w-[537px]"
             src={downloadData.meta.images[0].url}
             alt={downloadData.meta.images[0].alt}
             zoom={true}
           />
-          <div className="flex gap-2">
+          <div className="flex flex-wrap justify-center gap-2 xl:justify-start">
             {downloadData.meta.images.slice(1, 5).map((image: { url: string, alt: string }, idx: number) => (
-              <div key={idx} className="h-[72px] w-[126px]">
-                <Image
-                  src={image.url}
-                  alt={image.alt}
-                  zoom={true}
-                />
-              </div>
+              <Image
+                key={idx}
+                className="h-[72px] w-[113px]"
+                src={image.url}
+                alt={image.alt}
+                zoom={true}
+              />
             ))}
           </div>
         </div>
-        <div className="flex w-full flex-col gap-8">
+        <div className="flex w-full max-w-[850px] flex-col gap-8">
           <HeaderBuilder title="Info">
             {downloadData.meta.resources.map((resource: { name: string, url: string }) => (
               <a className="flex gap-2" key={resource.name} href={resource.url} target="_blank" rel="noreferrer">
                 {iconName[resource.name.toLowerCase()]}
-                {resource.name}
+                <span className="hidden md:inline-flex">{resource.name}</span>
               </a>
             ))}
           </HeaderBuilder>
@@ -111,9 +111,9 @@ export default function DownloadSingle() {
           )}
 
           <HeaderBuilder title="Downloads">
-            <div className="flex items-center gap-2">
+            <div className="flex flex-col items-center gap-2 md:flex-row">
               <div className="font-semibold text-shoko-highlight">{downloadData.meta.version}</div>
-              <div>|</div>
+              <div className="hidden md:inline-flex">|</div>
               <div className="font-semibold text-shoko-highlight">{downloadData.meta.date}</div>
             </div>
           </HeaderBuilder>
@@ -123,9 +123,9 @@ export default function DownloadSingle() {
                 key={index}
                 className="flex items-center justify-between border-b border-shoko-divider pb-4 font-semibold last:border-none last:pb-0"
               >
-                <div className="flex w-full justify-between">
+                <div className="flex w-full flex-col justify-between gap-2 md:flex-row">
                   <div>{download.text}</div>
-                  <div className="flex gap-6">
+                  <div className="flex flex-wrap gap-6">
                     {download.links.map((link: { name: string, url: string }) => (
                       <a
                         className="flex gap-2 text-shoko-link"
