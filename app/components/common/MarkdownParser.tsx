@@ -1,9 +1,16 @@
+// @ts-expect-error - Not an issue.
+import Prism from 'prismjs';
 import React, { useEffect, useRef, useState } from 'react';
 import { evaluate } from '@mdx-js/mdx';
 import * as runtime from 'react/jsx-runtime';
 import Image from '../../components/common/Image';
-import hljs from 'highlight.js';
-import 'highlight.js/styles/github-dark.css';
+import 'prismjs/themes/prism-tomorrow.css';
+
+// Only import the languages we need to reduce bundle size.
+import 'prismjs/components/prism-javascript';
+import 'prismjs/components/prism-typescript';
+import 'prismjs/components/prism-jsx';
+import 'prismjs/components/prism-tsx';
 
 type MDXRendererProps = {
   content: string;
@@ -19,17 +26,19 @@ type InlineCodeProps = {
 };
 
 const CodeBlock = ({ children, className }: CodeBlockProps) => {
-  const codeRef = useRef(null);
+  const codeRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     if (codeRef.current) {
-      hljs.highlightElement(codeRef.current);
+      Prism.highlightElement(codeRef.current);
     }
-  }, []);
+  }, [children]);
+
+  const language = className ? className.replace(/language-/, '') : 'javascript';
 
   return (
     <pre>
-      <code ref={codeRef} className={className}>
+      <code ref={codeRef} className={`language-${language}`}>
         {children}
       </code>
     </pre>
@@ -55,7 +64,6 @@ const MDXRenderer = ({ content }: MDXRendererProps) => {
 
     const parseMDX = async () => {
       try {
-        // Remove import statements
         const contentWithoutImports = content.replace(/import.*?from.*?[\r\n]/g, '');
 
         const module = await evaluate(contentWithoutImports, {
