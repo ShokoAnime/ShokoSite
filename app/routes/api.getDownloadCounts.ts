@@ -1,24 +1,24 @@
-import { LoaderFunction, json } from '@remix-run/node';
-import path from 'path';
-import fs from 'fs/promises';
+import { LoaderFunction, json } from '@remix-run/cloudflare';
+import { getContentItems } from '~/lib/contentLoader';
 
-const BASE_DIR = path.join(process.cwd(), 'app', 'content', 'downloads');
-
-async function countFilesInSubdirectories(baseDir: string): Promise<Record<string, number>> {
+async function countFilesInSubdirectories(): Promise<Record<string, number>> {
   const counts: Record<string, number> = {};
+  const types = [
+    'shoko-server',
+    'media-player-plugins',
+    'webui-themes',
+    'renamer-plugins',
+    'legacy-apps',
+  ];
 
-  try {
-    const subdirs = await fs.readdir(baseDir, { withFileTypes: true });
-
-    for (const dirent of subdirs) {
-      if (dirent.isDirectory()) {
-        const subdir = path.join(baseDir, dirent.name);
-        const files = await fs.readdir(subdir);
-        counts[dirent.name] = files.length;
-      }
+  for (const type of types) {
+    try {
+      const items = await getContentItems(type);
+      counts[type] = items.length;
+    } catch (error) {
+      console.error(`Error counting files for ${type}:`, error);
+      counts[type] = 0;
     }
-  } catch (error) {
-    console.error('Error reading directories:', error);
   }
 
   return counts;
@@ -30,10 +30,10 @@ export const loader: LoaderFunction = async ({ request }) => {
   }
 
   try {
-    const fileCounts = await countFilesInSubdirectories(BASE_DIR);
+    const fileCounts = await countFilesInSubdirectories();
 
     const result = {
-      shokoServer: 1,
+      shokoServer: fileCounts['shoko-server'] || 1, // Assuming there's always at least one Shoko Server file
       mediaPlayerPlugins: fileCounts['media-player-plugins'] || 0,
       themes: fileCounts['webui-themes'] || 0,
       renamer: fileCounts['renamer-plugins'] || 0,

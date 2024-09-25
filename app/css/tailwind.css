@@ -66,7 +66,7 @@
   --shoko-btn-hover: rgba(43, 169, 255, 1.0)
 }
 
-code {
+code, pre {
   border-radius: 8px;
 }
 

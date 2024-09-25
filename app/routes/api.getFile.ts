@@ -1,17 +1,5 @@
-import { LoaderFunction } from '@remix-run/node';
-import path from 'path';
-import fs from 'fs/promises';
-import matter from 'gray-matter';
-import { ContentItem } from '~/types/content';
-import { contentPath } from '~/lib/contentPath';
-
-const CONTENT_DIR = path.join(process.cwd(), 'app', 'content');
-
-const readContentFile = async (filePath: string): Promise<ContentItem> => {
-  const fileContent = await fs.readFile(filePath, 'utf-8');
-  const { data: meta, content } = matter(fileContent);
-  return { filename: path.basename(filePath), meta, content };
-};
+import { LoaderFunction } from '@remix-run/cloudflare';
+import { getContentItems } from '~/lib/contentLoader';
 
 export const loader: LoaderFunction = async ({ request }) => {
   const url = new URL(request.url);
@@ -23,16 +11,14 @@ export const loader: LoaderFunction = async ({ request }) => {
   }
 
   try {
-    const contentDir = contentPath(CONTENT_DIR, type);
-    const filePath = path.join(contentDir, `${filename}.mdx`);
+    const contentItems = await getContentItems(type);
+    const requestedItem = contentItems.find(item => item.filename === `${filename}.mdx`);
 
-    try {
-      await fs.access(filePath);
-    } catch (error) {
-      new Response('File not found', { status: 404 });
+    if (!requestedItem) {
+      throw new Response('File not found', { status: 404 });
     }
 
-    return await readContentFile(filePath);
+    return requestedItem;
   } catch (error) {
     if (error instanceof Response) {
       throw error;
