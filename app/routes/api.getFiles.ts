@@ -19,7 +19,7 @@ const readContentFile = async (filePath: string): Promise<ContentItem> => {
 };
 
 const filterByTags = (items: ContentItem[], tagString: string[]): ContentItem[] => {
-  if (tagString.length === 0) return items;
+  if (tagString.length === 0 || tagString.includes('')) return items;
 
   const tags = tagString[0].split(', ').map(tag => tag.trim());
 
@@ -33,8 +33,6 @@ export const loader: LoaderFunction = async ({ request }) => {
   const limit = parseInt(url.searchParams.get('limit') || '10', 10);
   const sort = (url.searchParams.get('sort') as sort) || 'dateDescending';
   const tags = url.searchParams.getAll('tags');
-
-  console.log(tags);
 
   try {
     const contentDir = contentPath(CONTENT_DIR, type);

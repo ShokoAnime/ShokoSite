@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from '@remix-run/react';
 import cx from 'classnames';
 import { PanelLeftClose, PanelLeftOpen } from 'lucide-react';
-import { FaDiscord, FaGithub } from 'react-icons/fa';
 import {
   ExternalLinksProps,
   InternalLinksProps,
@@ -11,6 +10,7 @@ import {
   NavRouteProps,
 } from '~/types/layout';
 import Button from '~/components/common/Button';
+import { SiDiscord, SiGithub } from '@icons-pack/react-simple-icons';
 
 const navRoutes: NavRouteProps[] = [
   { title: 'About', route: '/about' },
@@ -19,8 +19,8 @@ const navRoutes: NavRouteProps[] = [
   { title: 'Contributors', route: '/contributors' },
   { title: 'Downloads', route: '/downloads/' },
   { title: 'Documentation', route: 'https://docs.shokoanime.com/' },
-  { title: 'GitHub', route: 'https://github.com/ShokoAnime/', icon: <FaGithub size={24} /> },
-  { title: 'Discord', route: 'https://discord.gg/vpeHDsg', icon: <FaDiscord size={24} /> },
+  { title: 'GitHub', route: 'https://github.com/ShokoAnime/', icon: <SiGithub size={24} /> },
+  { title: 'Discord', route: 'https://discord.gg/vpeHDsg', icon: <SiDiscord size={24} /> },
 ];
 
 const NavRouteBuilder = ({ currentURL, className, onClick }: NavRouteBuilderProps) => {
@@ -153,7 +153,7 @@ const Header = () => {
           isScrolled && 'shadow-md backdrop-blur',
         )}
       >
-        <div className="mx-auto flex max-w-[1440px] justify-between px-6 py-3 font-header">
+        <div className="mx-auto flex max-w-screen-2xl justify-between px-6 py-3 font-header">
           <div className="flex items-center gap-x-4 text-shoko-36">
             <img
               src="/images/common/shoko-icon.svg"
