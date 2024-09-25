@@ -7,14 +7,6 @@ import remarkMdxFrontmatter from 'remark-mdx-frontmatter';
 import remarkGfm from 'remark-gfm';
 
 export default defineConfig({
-  build: {
-    rollupOptions: {
-      external: [
-        'highlight.js',
-        'highlight.js/styles/github-dark.css',
-      ],
-    },
-  },
   plugins: [
     mdx({
       remarkPlugins: [
