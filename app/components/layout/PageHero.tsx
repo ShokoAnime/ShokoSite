@@ -48,7 +48,7 @@ const PageHero = ({ title, description, date }: PageHeroProps) => {
             <h1 className="text-center capitalize">{convertToProperName(title)}</h1>
           </div>
           {description && <div className="text-center text-shoko-18 font-semibold md:text-shoko-24">{description}</div>}
-          <div className="flex flex-row items-center justify-between gap-x-2">
+          <div className="flex flex-row flex-wrap items-center justify-center gap-x-2 md:justify-between">
             <Link className="text-shoko-18 text-shoko-link md:text-shoko-24" to="/">
               Shoko
             </Link>

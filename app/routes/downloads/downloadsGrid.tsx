@@ -121,7 +121,7 @@ export default function DownloadsGrid() {
             />
           </div>
         )}
-        <div className="flex flex-wrap gap-4">
+        <div className="flex flex-wrap justify-center gap-4 lg:justify-start">
           {downloads.map((download) => <DownloadCard key={download.meta.name} data={download} />)}
         </div>
       </div>
