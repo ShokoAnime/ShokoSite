@@ -1,5 +1,5 @@
 @import '@fontsource-variable/space-grotesk';
-@import '@fontsource-variable/inter';
+@import 'non.geist';
 
 @tailwind base;
 @tailwind components;
@@ -64,6 +64,21 @@
   --shoko-border: rgba(13, 16, 22, 1.0);
   --shoko-btn-text: rgba(28, 30, 39, 1.0);
   --shoko-btn-hover: rgba(43, 169, 255, 1.0)
+}
+
+code {
+  border-radius: 8px;
+}
+
+li {
+  font-size: 14px;
+  margin-bottom: 0.5rem;
+}
+
+ul {
+  list-style: disc !important;
+  margin: 0 !important;
+  padding-left: 20px !important;
 }
 
 [data-rmiz-modal-overlay="visible"] {
@@ -132,3 +147,4 @@
     scrollbar-color: var(--shoko-text-75) var(--shoko-bg);
   }
 }
+

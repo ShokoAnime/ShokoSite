@@ -1,49 +1,31 @@
-import { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Zoom from 'react-medium-image-zoom';
 import 'react-medium-image-zoom/dist/styles.css';
 
-import { ImageProps } from '~/types/common';
-
-type LazyImageProps = ImageProps & {
+type ImageProps = {
+  src: string;
+  alt: string;
+  className?: string;
   zoom?: boolean;
 };
 
-const Image = ({
-  src,
-  alt,
-  className,
-  zoom = false,
-}: LazyImageProps) => {
+const Image: React.FC<ImageProps> = ({ src, alt, className = '', zoom = false }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
 
-  const handleImageLoad = useCallback(() => {
-    setImageLoaded(true);
-  }, []);
-
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const img = new window.Image();
-      img.src = src;
-      if (img.complete) {
-        handleImageLoad();
-      } else {
-        img.onload = handleImageLoad;
-      }
-      return () => {
-        img.onload = null;
-      };
-    }
-  }, [src, handleImageLoad]);
+    const img = new window.Image();
+    img.src = src;
+    img.onload = () => setImageLoaded(true);
+  }, [src]);
 
   const imageElement = (
     <img
       src={src}
       alt={alt}
       loading="lazy"
-      onLoad={handleImageLoad}
-      className={`rounded-lg shadow-custom ${className} transition-opacity duration-500 ease-in-out ${
+      className={`w-full max-w-[330px] rounded-lg shadow-custom transition-opacity duration-500 ease-in-out ${
         imageLoaded ? 'opacity-100' : 'opacity-0'
-      }`}
+      } ${className}`}
     />
   );
 

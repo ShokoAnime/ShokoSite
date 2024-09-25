@@ -1,9 +1,10 @@
 import { Link } from '@remix-run/react';
-import { BlogCardProps } from '~/types/blog';
-import { convertDate } from '~/helpers/helpers';
+import { PostCardProps } from '~/types/blog';
 import Image from '~/components/common/Image';
+import { convertDate } from '~/lib/convertDate';
+import { sanitizeContent } from '~/lib/sanitizeContent';
 
-const BlogCard = ({ file, image, title, date, description }: BlogCardProps) => {
+const PostCard = ({ file, image, title, date, description }: PostCardProps) => {
   return (
     <div className="flex flex-col gap-6 lg:flex-row 2xl:max-w-[330px] 2xl:flex-col">
       <div className="group relative">
@@ -23,10 +24,10 @@ const BlogCard = ({ file, image, title, date, description }: BlogCardProps) => {
           <div className="text-shoko-14 font-semibold text-shoko-text-75">{convertDate(date)}</div>
           <div className="line-clamp-1 font-header text-shoko-18 font-bold">{title}</div>
         </div>
-        <div className="line-clamp-3">{description}</div>
+        <div className="line-clamp-3">{sanitizeContent(description)}</div>
       </div>
     </div>
   );
 };
 
-export default BlogCard;
+export default PostCard;
