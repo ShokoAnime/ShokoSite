@@ -27,7 +27,7 @@ export default {
       },
       fontFamily: {
         header: ['Space Grotesk Variable', 'sans-serif'],
-        body: ['Inter Variable', 'sans-serif'],
+        body: ['Geist Variable', 'sans-serif'],
       },
       fontSize: {
         'shoko-14': ['0.875rem', { lineHeight: '1.5' }],

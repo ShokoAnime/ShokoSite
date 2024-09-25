@@ -3,13 +3,13 @@ import { useEffect } from 'react';
 import { useSetPageTitle } from '~/hooks/useSetPageTitle';
 
 const PageNotFound = () => {
-  const { setBackgroundImageHeight } = useBackground();
+  const { setBackgroundImageFull } = useBackground();
 
   useSetPageTitle('404 - Page Not Found');
 
   useEffect(() => {
-    setBackgroundImageHeight('100vh');
-  }, [setBackgroundImageHeight]);
+    setBackgroundImageFull(true);
+  }, [setBackgroundImageFull]);
 
   return (
     <>

@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from '@remix-run/react';
 import { BreadcrumbProps, PageHeroProps } from '~/types/layout';
-import { convertDate, convertToProperName } from '~/helpers/helpers';
+import { convertDate } from '~/lib/convertDate';
+import { convertToProperName } from '~/lib/convertToProperName';
 import Divider from '~/components/layout/Divider';
 
 const PageHero = ({ title, description, date }: PageHeroProps) => {

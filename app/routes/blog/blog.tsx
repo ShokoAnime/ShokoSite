@@ -1,64 +1,58 @@
 import { useEffect, useRef, useState } from 'react';
-import { MarkdownFile } from '~/types/markdown';
-import { getMarkdownList } from '~/helpers/markdown';
 import PageHero from '~/components/layout/PageHero';
-import BlogCard from '~/components/blog/BlogCard';
+import PostCard from '~/components/blog/PostCard';
+import { useSentinel } from '~/hooks/useSentinel';
+import { ContentItem } from '~/types/content';
+import { useBackground } from '~/hooks/useBackground';
 
 export default function Blog() {
-  const [markdownFiles, setMarkdownFiles] = useState<MarkdownFile[]>([]);
-  const [hasMore, setHasMore] = useState(true);
-  const [totalCount, setTotalCount] = useState(0);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [loading, setLoading] = useState(false);
-  const loadingRef = useRef<HTMLDivElement>(null);
+  const [blogPosts, setBlogPosts] = useState<ContentItem[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [offset, setOffset] = useState(0);
+  const [loadingRef, isIntersecting] = useSentinel();
+  const totalCountRef = useRef(0);
+  const { resetBackground } = useBackground();
 
-  const loadFiles = async (page: number) => {
-    setLoading(true);
-    const { markdownFiles: newFiles, hasMore, totalCount } = await getMarkdownList({
-      type: 'blog',
-      page,
-      pageSize: 16,
-      sortCondition: 'dateDescending',
-    });
+  const type = 'blog';
+  const limit = 12;
+  const sort = 'dateDescending';
 
-    if (page === 1) {
-      setMarkdownFiles(newFiles);
-    } else {
-      setMarkdownFiles((prevFiles) => [...prevFiles, ...newFiles]);
+  const fetchBlogPosts = async () => {
+    try {
+      setIsLoading(true);
+      const response = await fetch(
+        `/api/getFiles?type=${type}&offset=${offset}&limit=${limit}&sort=${sort}`,
+      );
+
+      if (!response.ok) new Error(`HTTP error! status: ${response.status}`);
+
+      const data = await response.json() as { results: ContentItem[], totalCount: number };
+
+      totalCountRef.current = data.totalCount;
+      setBlogPosts(prevPosts => [
+        ...prevPosts,
+        ...data.results.filter((newPost: ContentItem) =>
+          !prevPosts.some(existingPost => existingPost.filename === newPost.filename)
+        ),
+      ]);
+
+      setIsLoading(false);
+    } catch (error) {
+      console.error('Error fetching blog posts:', error);
     }
-    setHasMore(hasMore);
-    setTotalCount(totalCount);
-    setLoading(false);
   };
 
   useEffect(() => {
-    loadFiles(1);
+    resetBackground();
+    fetchBlogPosts();
   }, []);
 
   useEffect(() => {
-    const loadMore = () => {
-      if (!hasMore || loading) return;
-      const nextPage = currentPage + 1;
-      setCurrentPage(nextPage);
-      loadFiles(nextPage);
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting && markdownFiles.length !== 0) {
-        loadMore();
-      }
-    }, { threshold: 0.5 });
-
-    if (loadingRef.current) {
-      observer.observe(loadingRef.current);
+    if (isIntersecting && totalCountRef.current > blogPosts.length) {
+      setOffset(prevOffset => prevOffset + 16);
+      fetchBlogPosts();
     }
-
-    return () => {
-      if (loadingRef.current) {
-        observer.unobserve(loadingRef.current);
-      }
-    };
-  }, [hasMore, loading, currentPage, markdownFiles.length]);
+  }, [blogPosts.length, isIntersecting]);
 
   return (
     <>
@@ -67,14 +61,14 @@ export default function Blog() {
         description="Stay informed with the latest news about Shoko's development, third-party plugins, and other relevant topics."
       />
       <div className="my-16 flex flex-wrap gap-5">
-        {markdownFiles.map((file) => (
-          <BlogCard
-            key={file.filename}
-            file={file.filename}
-            image={file.frontmatter.image}
-            title={file.frontmatter.title}
-            date={file.frontmatter.date}
-            description={file.description}
+        {blogPosts.map(({ filename, meta, content }) => (
+          <PostCard
+            key={filename}
+            file={filename}
+            image={meta.image}
+            title={meta.title}
+            date={meta.date}
+            description={content}
           />
         ))}
       </div>

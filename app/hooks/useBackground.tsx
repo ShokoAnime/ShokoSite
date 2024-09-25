@@ -3,26 +3,26 @@ import { useBetween } from 'use-between';
 
 type BackgroundState = {
   backgroundImage: string | null;
-  backgroundImageHeight: string | number | null;
+  backgroundImageFull: boolean;
   setBackgroundImage: (backgroundImage: string | null) => void;
-  setBackgroundImageHeight: (backgroundImageHeight: string | number | null) => void;
+  setBackgroundImageFull: (backgroundImageFull: boolean) => void;
   resetBackground: () => void;
 };
 
 const useBackgroundState = (): BackgroundState => {
   const [backgroundImage, setBackgroundImage] = useState<string | null>(null);
-  const [backgroundImageHeight, setBackgroundImageHeight] = useState<string | number | null>(null);
+  const [backgroundImageFull, setBackgroundImageFull] = useState<boolean>(false);
 
   const resetBackground = () => {
     setBackgroundImage(null);
-    setBackgroundImageHeight(null);
+    setBackgroundImageFull(false);
   };
 
   return {
     backgroundImage,
-    backgroundImageHeight,
+    backgroundImageFull,
     setBackgroundImage,
-    setBackgroundImageHeight,
+    setBackgroundImageFull,
     resetBackground,
   };
 };

@@ -1,102 +1,103 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { MarkdownFile } from '~/types/markdown';
-import { getAllTags, getMarkdownList } from '~/helpers/markdown';
 import { useLocation } from '@remix-run/react';
-import { convertToProperName } from '~/helpers/helpers';
+import { convertToProperName } from '~/lib/convertToProperName';
 import PageHero from '~/components/layout/PageHero';
 import DownloadCard from '~/components/downloads/DownloadCard';
-import { CategorizedTags, Tag } from '~/types/downloads';
 import MultiSelectDropdown from '~/components/common/MultiSelectDropdown';
 import { Palette, SunMoon } from 'lucide-react';
+import { useBackground } from '~/hooks/useBackground';
+import { useSentinel } from '~/hooks/useSentinel';
+import { ContentItem } from '~/types/content';
+import { CategorizedTags } from '~/types/downloads';
+
+const LIMIT = 12;
+const SORT = 'dateDescending';
 
 export default function DownloadsGrid() {
-  const [markdownFiles, setMarkdownFiles] = useState<MarkdownFile[]>([]);
-  const [hasMore, setHasMore] = useState(true);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [loading, setLoading] = useState(false);
+  const [downloads, setDownloads] = useState<ContentItem[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [tags, setTags] = useState<CategorizedTags>();
   const [colorOptions, setColorOptions] = useState<string[]>([]);
   const [themeOptions, setThemeOptions] = useState<string[]>([]);
+  const [offset, setOffset] = useState(0);
   const location = useLocation();
-  const loadingRef = useRef<HTMLDivElement>(null);
+  const [loadingRef, isIntersecting] = useSentinel();
+  const { resetBackground } = useBackground();
+  const totalCountRef = useRef(0);
 
-  const downloadType = location.pathname
-    .split('/')
-    .pop()
-    ?.split('-')
-    .map((word, index) => index === 0 ? word.toLowerCase() : word.charAt(0).toUpperCase() + word.slice(1))
-    .join('');
+  const downloadType = location.pathname.split('/')[2];
 
-  const loadFiles = async (page: number) => {
-    setLoading(true);
-    const { markdownFiles: newFiles, hasMore } = await getMarkdownList({
-      type: downloadType ?? 'downloads',
-      page,
-      pageSize: 16,
-      sortCondition: 'dateDescending',
-      tags: [...colorOptions, ...themeOptions],
-    });
+  const fetchDownloads = useCallback(async () => {
+    try {
+      setIsLoading(true);
+      const response = await fetch(
+        `/api/getFiles?type=${downloadType}&offset=${offset}&limit=${LIMIT}&sort=${SORT}&tags=${
+          [...colorOptions, ...themeOptions].join(', ')
+        }`,
+      );
 
-    if (page === 1) {
-      setMarkdownFiles(newFiles);
-    } else {
-      setMarkdownFiles((prevFiles) => [...prevFiles, ...newFiles]);
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+
+      const data = await response.json() as { results: ContentItem[], totalCount: number };
+
+      totalCountRef.current = data.totalCount;
+      setDownloads(prevDownloads => [
+        ...prevDownloads,
+        ...data.results.filter((newDownload: ContentItem) =>
+          !prevDownloads.some(existingDownload => existingDownload.filename === newDownload.filename)
+        ),
+      ]);
+    } catch (error) {
+      console.error('Error fetching download items:', error);
+    } finally {
+      setIsLoading(false);
     }
-    setHasMore(hasMore);
-    setLoading(false);
-  };
+  }, [downloadType, offset, colorOptions, themeOptions]);
 
-  useEffect(() => {
-    const getTags = async () => {
-      if (downloadType !== 'webuiThemes') return;
+  const fetchTags = useCallback(async () => {
+    if (downloadType !== 'webui-themes') return;
 
-      const fetchedTags: Tag[] = await getAllTags('webuiThemes');
+    try {
+      const response = await fetch('/api/getAllTags?type=webui-themes');
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
-      const categorizedTags = fetchedTags.reduce<CategorizedTags>((acc, tag) => {
-        if (['Dark Theme', 'Light Theme', 'OLED Theme'].includes(tag.name)) {
-          acc.themes.push(tag);
-        } else {
-          acc.colors.push(tag);
-        }
-        return acc;
-      }, { themes: [], colors: [] });
+      const data = await response.json() as { tags: string[] };
+
+      const categorizedTags = data.tags.reduce<CategorizedTags>(
+        (acc, tag) => {
+          if (['Dark Theme', 'Light Theme', 'OLED Theme'].includes(tag)) {
+            acc.themes.push(tag);
+          } else {
+            acc.colors.push(tag);
+          }
+          return acc;
+        },
+        { themes: [], colors: [] },
+      );
 
       setTags(categorizedTags);
-    };
-
-    getTags();
-    loadFiles(1);
-  }, []);
-
-  useEffect(() => {
-    const loadMore = () => {
-      if (!hasMore || loading) return;
-      const nextPage = currentPage + 1;
-      setCurrentPage(nextPage);
-      loadFiles(nextPage);
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting && markdownFiles.length !== 0) {
-        loadMore();
-      }
-    }, { threshold: 0.5 });
-
-    if (loadingRef.current) {
-      observer.observe(loadingRef.current);
+    } catch (error) {
+      console.error('Error fetching tags:', error);
     }
-
-    return () => {
-      if (loadingRef.current) {
-        observer.unobserve(loadingRef.current);
-      }
-    };
-  }, [hasMore, loading, currentPage, markdownFiles.length]);
+  }, [downloadType]);
 
   useEffect(() => {
-    setCurrentPage(1);
-    loadFiles(1);
-  }, [colorOptions, themeOptions]);
+    resetBackground();
+    fetchDownloads();
+    fetchTags();
+  }, [resetBackground, fetchDownloads, fetchTags]);
+
+  useEffect(() => {
+    if (isIntersecting && totalCountRef.current > downloads.length) {
+      setOffset(prevOffset => prevOffset + LIMIT);
+    }
+  }, [downloads.length, isIntersecting]);
+
+  useEffect(() => {
+    setDownloads([]);
+    setOffset(0);
+    fetchDownloads();
+  }, [colorOptions, themeOptions, fetchDownloads]);
 
   return (
     <>
@@ -121,9 +122,10 @@ export default function DownloadsGrid() {
           </div>
         )}
         <div className="flex flex-wrap gap-4">
-          {markdownFiles.map((download) => <DownloadCard key={download.frontmatter.name} data={download} />)}
+          {downloads.map((download) => <DownloadCard key={download.meta.name} data={download} />)}
         </div>
       </div>
+      <div ref={loadingRef} />
     </>
   );
 }

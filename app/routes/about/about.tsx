@@ -11,7 +11,6 @@ export default function About() {
   const headers = ['The Early Years', 'The JMM Suite', 'Hello Shoko', 'Modern Shoko'];
 
   useEffect(() => {
-    // Reset backgroundImage and backgroundImageHeight to null.
     resetBackground();
   }, []);
 

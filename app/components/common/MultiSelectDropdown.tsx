@@ -49,7 +49,7 @@ const MultiSelectDropdown = ({ title, icon, options, setSelectedOptions }: Multi
       </button>
       {isOpen && (
         <div className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md border border-shoko-border bg-shoko-bg-alt shadow-lg">
-          {options.map(({ name }) => (
+          {options.map((name) => (
             <button
               key={name}
               type="button"

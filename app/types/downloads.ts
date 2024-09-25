@@ -16,12 +16,15 @@ export type IconNameProps = {
   [key: string]: React.JSX.Element;
 };
 
-export type Tag = {
-  name: string;
-  count: number;
+export type CategorizedTags = {
+  themes: string[];
+  colors: string[];
 };
 
-export type CategorizedTags = {
-  themes: Tag[];
-  colors: Tag[];
+export type DownloadCounts = {
+  legacy: number;
+  mediaPlayerPlugins: number;
+  renamer: number;
+  themes: number;
+  shokoServer: number;
 };

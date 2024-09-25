@@ -1,9 +1,9 @@
 import { contributors, honorable, staff } from '~/data/contributors';
 import UserCard from '~/components/common/UserCard';
-import { BlogPostContributorsProps } from '~/types/blog';
+import { PostContributorsProps } from '~/types/blog';
 import SectionHeader from '~/components/common/SectionHeader';
 
-const BlogPostContributors = ({ devs }: BlogPostContributorsProps) => {
+const PostContributors = ({ devs }: PostContributorsProps) => {
   const combinedRaw = [...contributors, ...honorable, ...staff];
   const combinedProcessed = combinedRaw
     .filter(person => devs.some(dev => dev.toLowerCase() === person.name.toLowerCase()))
@@ -34,4 +34,4 @@ const BlogPostContributors = ({ devs }: BlogPostContributorsProps) => {
   );
 };
 
-export default BlogPostContributors;
+export default PostContributors;

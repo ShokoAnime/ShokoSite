@@ -1,17 +1,15 @@
-import React from 'react';
-
-export type BlogCardProps = {
+export type PostCardProps = {
   file: string;
   image: string;
   title: string;
   date: string;
-  description: React.ReactNode | string;
+  description: string;
 };
 
-export type BlogPostContributorsProps = {
+export type PostContributorsProps = {
   devs: string[];
 };
 
-export type BlogTagsProps = {
+export type PostTagsProps = {
   tags: string[];
 };

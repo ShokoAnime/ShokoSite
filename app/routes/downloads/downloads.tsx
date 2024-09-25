@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from '@remix-run/react';
-import { getDownloadsCount } from '~/helpers/markdown';
+import { getDownloadsCount } from '~/lib/markdown';
 import PageHero from '~/components/layout/PageHero';
-import { DownloadListItemProps } from '~/types/downloads';
+import { DownloadCounts, DownloadListItemProps } from '~/types/downloads';
 import { Info } from 'lucide-react';
+import { useBackground } from '~/hooks/useBackground';
+import { ContentItem } from '~/types/content';
 
 const DownloadListItem = ({ name, description, count, link }: DownloadListItemProps) => {
   const pluralize = (word: string, count: number) => `${word}${count === 1 ? '' : 's'}`;
@@ -51,15 +53,22 @@ const DownloadListItem = ({ name, description, count, link }: DownloadListItemPr
 
 export default function Downloads() {
   const [downloadsList, setDownloadsList] = useState<{ [key: string]: number }>({});
-  const location = useLocation();
+  const { resetBackground } = useBackground();
 
   useEffect(() => {
-    const getDownloadTotalCount = async () => {
-      const data = await getDownloadsCount();
-      setDownloadsList(data);
+    const getCounts = async () => {
+      try {
+        const response = await fetch(`/api/getDownloadCounts`);
+        const data = await response.json() as DownloadCounts;
+        setDownloadsList(data);
+      } catch (error) {
+        console.error('Error fetching blog posts:', error);
+      }
     };
-    getDownloadTotalCount();
-  }, [location.pathname]);
+
+    resetBackground;
+    getCounts();
+  }, []);
 
   return (
     <>

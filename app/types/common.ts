@@ -10,20 +10,9 @@ export type ButtonProps = {
   to?: string;
 };
 
-export type ImageProps = {
-  src: string;
-  alt: string;
-  className?: string;
-};
-
-export type Option = {
-  name: string;
-  count: number;
-};
-
 export type MultiSelectDropdownProps = {
   title: string;
   icon: React.ReactNode;
-  options: Option[];
+  options: string[];
   setSelectedOptions: (selected: string[]) => void;
 };
