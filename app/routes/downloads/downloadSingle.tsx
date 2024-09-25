@@ -4,7 +4,7 @@ import { useLocation } from '@remix-run/react';
 import PageHero from '~/components/layout/PageHero';
 import Image from '~/components/common/Image';
 import { HeaderBuilderProps, IconNameProps } from '~/types/downloads';
-import { FaDiscord, FaGithub } from 'react-icons/fa';
+import { SiDiscord, SiGithub } from '@icons-pack/react-simple-icons';
 import { BookHeart, Download, ScrollText, Tags } from 'lucide-react';
 import { ContentItem } from '~/types/content';
 import MDXRenderer from '~/components/common/MarkdownParser';
@@ -54,8 +54,8 @@ export default function DownloadSingle() {
   }
 
   const iconName: IconNameProps = {
-    discord: <FaGithub size={24} />,
-    github: <FaDiscord size={24} />,
+    discord: <SiDiscord size={24} />,
+    github: <SiGithub size={24} />,
     changelog: <ScrollText />,
     docs: <BookHeart />,
   };
