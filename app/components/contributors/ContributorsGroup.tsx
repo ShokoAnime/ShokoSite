@@ -18,7 +18,7 @@ const ContributorsGroup = ({ title, description, position, data }: ContributorsG
 
     if (isStaff || isHonorable || isContributor) {
       return (
-        <div className="flex w-full max-w-[185px] items-center justify-center">
+        <div className="flex w-full max-w-[145px] items-center justify-center md:max-w-[167px] lg:max-w-[181px] xl:max-w-[184px]">
           <UserCard
             position="contributors"
             key={name}
@@ -36,7 +36,7 @@ const ContributorsGroup = ({ title, description, position, data }: ContributorsG
   };
 
   return (
-    <div className="flex flex-col gap-y-8">
+    <div className="mt-8 flex flex-col gap-8 lg:mt-16">
       <div className="flex flex-col gap-y-3">
         <SectionHeader title={title} type="h2" />
         <div className="flex text-center lg:text-start">{description}</div>

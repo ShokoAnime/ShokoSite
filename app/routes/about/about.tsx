@@ -15,7 +15,7 @@ export default function About() {
   }, []);
 
   return (
-    <div className="flex flex-col gap-16">
+    <div className="flex flex-col gap-8 lg:gap-16">
       <PageHero
         title="About Shoko"
         description="Spend some time learning about Shoko’s development over the years."

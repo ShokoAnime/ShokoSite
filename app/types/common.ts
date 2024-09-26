@@ -8,6 +8,7 @@ export type ButtonProps = {
   disabled?: boolean;
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   to?: string;
+  href?: string;
 };
 
 export type MultiSelectDropdownProps = {

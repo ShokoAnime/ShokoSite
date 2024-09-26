@@ -47,8 +47,8 @@ export default function BlogPost() {
   return (
     <>
       <PageHero title={postData.meta.title} date={postData.meta.date} />
-      <div className="mx-auto my-16 flex w-full max-w-[850px] flex-col justify-center gap-6">
-        <div className="shoko-post flex flex-col gap-6 text-center md:text-start">
+      <div className="mx-auto my-8 flex w-full max-w-[850px] flex-col justify-center gap-6 lg:my-16">
+        <div className="shoko-post flex flex-col gap-6 text-start">
           <MDXRenderer content={postData.content} />
         </div>
         {postData.meta.devs && (
