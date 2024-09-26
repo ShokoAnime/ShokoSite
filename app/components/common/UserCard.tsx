@@ -21,7 +21,7 @@ const UserCard = ({ position, className, name, joinDate, role, image, link }: Us
             <CircleUser />
           </div>
         )}
-      <div className="flex flex-col items-center gap-1">
+      <div className="flex flex-col items-center gap-4 text-center md:gap-1 md:text-start">
         <div className="font-header font-bold capitalize text-shoko-text">{name}</div>
         {position === 'contributors' && role && (
           <div className="flex h-12 flex-col items-center justify-end gap-1 text-sm font-bold capitalize text-shoko-text-75">

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from '@remix-run/react';
 import { BreadcrumbProps, PageHeroProps } from '~/types/layout';
 import { convertDate } from '~/lib/convertDate';
@@ -20,39 +20,43 @@ const PageHero = ({ title, description, date }: PageHeroProps) => {
     const formattedSegment = convertToProperName(segment);
 
     return (
-      <div className="flex gap-x-2">
-        {isLastSegment
-          ? (
-            <h4 className="hidden text-shoko-18 capitalize text-shoko-text md:inline-flex md:text-shoko-24">
-              {formattedSegment}
-            </h4>
-          )
-          : (
-            <>
-              <Link className="text-shoko-18 text-shoko-link md:text-shoko-24" to={path}>{formattedSegment}</Link>
-              <h4 className="text-shoko-18 text-shoko-text md:text-shoko-24">/</h4>
-            </>
-          )}
-      </div>
+      <>
+        <span className="mx-0.5 text-sm text-shoko-text sm:mx-1 sm:text-shoko-18 md:text-shoko-24">/</span>
+        <Link
+          className={`text-center text-sm sm:text-shoko-18 md:text-shoko-24 ${
+            isLastSegment ? 'font-semibold text-shoko-text' : 'text-shoko-link hover:underline'
+          }`}
+          to={path}
+        >
+          {formattedSegment}
+        </Link>
+      </>
     );
   };
 
   return (
-    <div className="mt-16 flex flex-col gap-16">
-      <div className="flex flex-col items-center justify-center gap-24">
-        <div className="flex max-w-[850px] flex-col items-center justify-center gap-y-4">
-          <div className="flex flex-col items-center justify-center ">
+    <div className="mt-8 flex flex-col gap-8 lg:mt-16 lg:gap-16">
+      <div className="flex flex-col items-center justify-center gap-6 sm:gap-8 lg:gap-12">
+        <div className="flex max-w-[90%] flex-col items-center justify-center gap-y-4 sm:max-w-[850px]">
+          <div className="flex flex-col items-center justify-center">
             {date && (
-              <div className="font-header text-shoko-24 font-semibold text-shoko-text-75">{convertDate(date)}</div>
+              <div className="font-header text-lg font-semibold text-shoko-text-75 sm:text-xl md:text-2xl">
+                {convertDate(date)}
+              </div>
             )}
-            <h1 className="text-center capitalize">{convertToProperName(title)}</h1>
+            <h1 className="text-center text-2xl capitalize sm:text-3xl md:text-4xl lg:text-5xl">
+              {convertToProperName(title)}
+            </h1>
           </div>
-          {description && <div className="text-center text-shoko-18 font-semibold md:text-shoko-24">{description}</div>}
-          <div className="flex flex-row flex-wrap items-center justify-center gap-x-2 md:justify-between">
-            <Link className="text-shoko-18 text-shoko-link md:text-shoko-24" to="/">
+          {description && (
+            <div className="text-center text-sm font-semibold sm:text-base md:text-lg">
+              {description}
+            </div>
+          )}
+          <div className="flex w-full flex-wrap items-center justify-center gap-x-0.5 gap-y-1 sm:gap-x-1">
+            <Link className="text-sm text-shoko-link hover:underline sm:text-shoko-18 md:text-shoko-24" to="/">
               Shoko
             </Link>
-            <h4 className="text-shoko-18 text-shoko-text md:text-shoko-24">/</h4>
             {breadcrumbs.map((segment, index) => <Breadcrumb key={index} segment={segment} index={index} />)}
           </div>
         </div>

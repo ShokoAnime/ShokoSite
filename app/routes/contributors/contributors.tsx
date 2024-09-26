@@ -9,7 +9,7 @@ function Contributors() {
         title="Contributors"
         description="From the Shoko team itself to our everyday users, everyone listed below has contributed to making Shoko better."
       />
-      <div className="mx-auto flex flex-col gap-y-16 p-16 2xl:px-0 2xl:py-16">
+      <div className="mx-auto mb-16 flex flex-col gap-16">
         <ContributorsGroup
           title="Shoko Staff"
           position="staff"

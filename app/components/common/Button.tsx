@@ -3,76 +3,83 @@ import cx from 'classnames';
 import { ButtonProps } from '~/types/common';
 
 const buttonStyle = {
-  primary: 'bg-shoko-link text-shoko-btn-text gap-x-2 px-4 py-3 hover:bg-shoko-btn-hover font-semibold',
-  outline:
-    'border border-shoko-link text-shoko-text gap-x-2 px-4 py-3 hover:text-shoko-text hover:bg-shoko-bg font-semibold',
-  round: 'bg-shoko-bg border border-shoko-border text-shoko-text-header hover:text-shoko-link gap-x-3 p-4',
+  primary: 'bg-shoko-link text-shoko-btn-text hover:bg-shoko-btn-hover',
+  outline: 'border border-shoko-link text-shoko-text hover:text-shoko-text hover:bg-shoko-bg',
+  round: 'bg-shoko-bg border border-shoko-border text-shoko-text-header hover:text-shoko-link',
   text: 'text-shoko-text-header hover:text-shoko-link',
 };
 
-const NormalButton = ({ buttonType, className, id, children, disabled, onClick }: ButtonProps) => {
+const baseButtonClasses = `
+  flex items-center justify-center
+  font-body font-semibold
+  transition-all duration-300 ease-in-out
+  focus:outline-none focus:ring-2 focus:ring-shoko-link focus:ring-opacity-50
+  disabled:opacity-50 disabled:cursor-not-allowed
+`;
+
+const sizeClasses = {
+  small: 'text-sm px-3 py-2 gap-x-1.5',
+  medium: 'text-base px-4 py-3 gap-x-2',
+  large: 'text-lg px-5 py-3.5 gap-x-2.5',
+};
+
+const Button = ({
+  buttonType = 'primary',
+  size = 'medium',
+  className,
+  id,
+  children,
+  disabled,
+  onClick,
+  to,
+  href,
+}: ButtonProps & { size?: 'small' | 'medium' | 'large' }) => {
+  const classes = cx(
+    baseButtonClasses,
+    buttonStyle[buttonType],
+    sizeClasses[size],
+    buttonType === 'round' ? 'rounded-full' : 'rounded-lg',
+    className,
+  );
+
+  const commonProps = {
+    id,
+    className: classes,
+    disabled,
+  };
+
+  if (href) {
+    return (
+      <a
+        {...commonProps}
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {children}
+      </a>
+    );
+  }
+
+  if (to) {
+    return (
+      <Link
+        {...commonProps}
+        to={to}
+      >
+        {children}
+      </Link>
+    );
+  }
+
   return (
     <button
+      {...commonProps}
       type="button"
-      id={id}
-      className={cx(
-        'flex items-center justify-center font-body transition-colors duration-500 ease-in-out focus:outline-none',
-        buttonStyle[buttonType],
-        buttonType === 'round' ? 'rounded-full' : 'rounded-lg',
-        className,
-      )}
-      disabled={disabled}
       onClick={onClick}
     >
       {children}
     </button>
-  );
-};
-
-const InternalButton = ({ buttonType, className, id, children, to }: ButtonProps) => {
-  return (
-    <Link
-      type="button"
-      id={id}
-      className={cx(
-        'flex items-center justify-center font-body transition-colors duration-500 ease-in-out focus:outline-none',
-        buttonStyle[buttonType],
-        buttonType === 'round' ? 'rounded-full' : 'rounded-lg',
-        className,
-      )}
-      to={to ?? '/'}
-    >
-      {children}
-    </Link>
-  );
-};
-
-const Button = ({ buttonType, className, id, children, disabled, onClick, to }: ButtonProps) => {
-  return (
-    to
-      ? (
-        <InternalButton
-          buttonType={buttonType}
-          className={className}
-          id={id}
-          disabled={disabled}
-          onClick={onClick}
-          to={to}
-        >
-          {children}
-        </InternalButton>
-      )
-      : (
-        <NormalButton
-          buttonType={buttonType}
-          className={className}
-          id={id}
-          disabled={disabled}
-          onClick={onClick}
-        >
-          {children}
-        </NormalButton>
-      )
   );
 };
 

@@ -12,7 +12,7 @@ const PostContributors = ({ devs }: PostContributorsProps) => {
   return (
     <>
       <div className="flex flex-col gap-y-3">
-        <SectionHeader title="Contributors" type="h2" />
+        <SectionHeader className="items-center md:items-start" title="Contributors" type="h2" />
         <div>
           This release was made possible by the following{' '}
           <span className="font-semibold text-shoko-highlight">{combinedProcessed.length}</span> people.

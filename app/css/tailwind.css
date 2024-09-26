@@ -118,13 +118,6 @@ ul {
   background-color: var(--shoko-highlight);
 }
 
-@media screen and (max-width: 425px) {
-  .shoko-post > h4::after {
-    left: 50%;
-    transform: translateX(-50%);
-  }
-}
-
 .shoko-post * img {
   border-radius: 0.5rem;
 }

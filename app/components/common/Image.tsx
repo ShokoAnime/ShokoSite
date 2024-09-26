@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Zoom from 'react-medium-image-zoom';
 import 'react-medium-image-zoom/dist/styles.css';
+import { useWindowSize } from '~/hooks/useWindowSize';
 
 type ImageProps = {
   src: string;
@@ -11,6 +12,7 @@ type ImageProps = {
 
 const Image: React.FC<ImageProps> = ({ src, alt, className = '', zoom = false }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
+  const { width } = useWindowSize();
 
   useEffect(() => {
     const img = new window.Image();
@@ -29,12 +31,14 @@ const Image: React.FC<ImageProps> = ({ src, alt, className = '', zoom = false })
     />
   );
 
+  const zoomMargin = width <= 768 ? 20 : 140;
+
   return (
     <div className="relative">
       {!imageLoaded && <div className="absolute inset-0 rounded-lg bg-shoko-bg-alt" />}
       {zoom
         ? (
-          <Zoom zoomMargin={140}>
+          <Zoom zoomMargin={zoomMargin}>
             {imageElement}
           </Zoom>
         )
