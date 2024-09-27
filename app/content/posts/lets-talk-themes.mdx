@@ -7,6 +7,7 @@ anime: "Lucky Star"
 tags: ["Shoko Server", "Web UI"]
 ---
 
+import FlexContainer from '../../components/common/FlexContainer'
 import Image from '../../components/common/Image'
 
 One of the oldest feature requests, going all the way back to when the program was still called JMM, was the
@@ -19,7 +20,7 @@ to merge Shoko Desktop features into the Server Web UI, theme support was once a
 be something added after the release of version 1.0.0, as referenced
 [here](https://github.com/ShokoAnime/Shoko-WebUI/issues/112).
 
-#### Hello Theme Support
+## Hello Theme Support
 
 Earlier in the year, we polled users of varying Shoko experience to gather feedback on the current Web UI design,
 aiming to identify user pain points and areas for improvement. Using the data we gathered, we decided to start a
@@ -43,8 +44,10 @@ out the system and share screenshots of their customized dashboards.
 Here are a few examples of the themes created by our beta testers. We're planning on doing more posts like this in the
 future to highlight upcoming features, so keep an eye on the blog, or at least the Shoko News widget on the Dashboard.
 
-<Image zoom={true} src='/images/blog/lets-talk-themes-theme-01.webp' alt='Example Theme 1'/>
-<Image zoom={true} src='/images/blog/lets-talk-themes-theme-02.webp' alt='Example Theme 2'/>
-<Image zoom={true} src='/images/blog/lets-talk-themes-theme-03.webp' alt='Example Theme 3'/>
-<Image zoom={true} src='/images/blog/lets-talk-themes-theme-04.webp' alt='Example Theme 4'/>
-<Image zoom={true} src='/images/blog/lets-talk-themes-theme-05.webp' alt='Example Theme 5'/>
+<FlexContainer>
+  <Image zoom={true} className='w-[250px] h-[150px]' src='/images/blog/lets-talk-themes-theme-01.webp' alt='Example Theme 1'/>
+  <Image zoom={true} className='w-[250px] h-[150px]' src='/images/blog/lets-talk-themes-theme-02.webp' alt='Example Theme 2'/>
+  <Image zoom={true} className='w-[250px] h-[150px]' src='/images/blog/lets-talk-themes-theme-03.webp' alt='Example Theme 3'/>
+  <Image zoom={true} className='w-[250px] h-[150px]' src='/images/blog/lets-talk-themes-theme-04.webp' alt='Example Theme 4'/>
+  <Image zoom={true} className='w-[250px] h-[150px]' src='/images/blog/lets-talk-themes-theme-05.webp' alt='Example Theme 5'/>
+</FlexContainer>

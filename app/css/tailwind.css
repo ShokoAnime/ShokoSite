@@ -16,6 +16,7 @@
     @apply text-shoko-text;
     @apply text-base;
     @apply font-body;
+    @apply font-medium;
     @apply leading-[1.6rem];
   }
 
@@ -23,13 +24,6 @@
     @apply text-shoko-text;
     @apply font-bold;
     @apply font-header;
-  }
-
-  h1 {
-    @apply text-[2rem];
-    @apply leading-[3rem];
-    @apply lg:text-[3rem];
-    @apply lg:leading-[4.5rem];
   }
 
   h2 {
@@ -99,16 +93,12 @@ ul {
   color: var(--shoko-link-hover);
 }
 
-.shoko-post > h4 {
+.shoko-post > h2 {
   position: relative;
-  padding-bottom: 0.5rem;
+  padding-bottom: 12px;
 }
 
-.shoko-post > h4 {
-  position: relative;
-}
-
-.shoko-post > h4::after {
+.shoko-post > h2::after {
   content: '';
   position: absolute;
   left: 0;
@@ -116,10 +106,6 @@ ul {
   width: 120px;
   height: 2px;
   background-color: var(--shoko-highlight);
-}
-
-.shoko-post * img {
-  border-radius: 0.5rem;
 }
 
 /* Webkit browsers (Chrome, Safari, newer versions of Edge) */

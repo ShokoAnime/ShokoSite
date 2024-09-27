@@ -35,12 +35,9 @@ unless you were using the hide episode feature _incorrectly_ in Shoko Server.
 
 Read on if you want to know more, or dive head-first into the release. 🏊
 
-#### Revamped Settings Ahead
+## Revamped Settings Ahead
 
-<div class="alert alert-warning downloads-alert" role="alert">
-  <i class="downloads-alert-icon fas fa-exclamation-triangle"></i>
-  Your plugin settings have been revamped and thus need reconfiguration.
-</div>
+**Your plugin settings have been revamped and thus need reconfiguration.**
 
 In this update, we've replaced many older settings with newer counterparts and added new settings for the newly added
 features. We've rewritten the _Metadata Settings_ section and the _Library Settings_ section, removed the _Tag Settings_
@@ -66,7 +63,7 @@ stages. In addition, we've had a slew of new options added to this section since
 Explore on your own or ask for help in our Discord while you wait for the new settings documentation to go live
 on [our site](https://docs.shokoanime.com/shokofin/configuration/). 📚
 
-#### Enter Virtual Reali– _File System_
+## Enter Virtual Reali– _File System_
 
 Say hello to the new **Virtual File System** (**VFS**) 🎉, which is now enabled by default for all installs. It allows
 you to disregard the underlying disk file structure while automagically meeting Jellyfin's requirements for file
@@ -77,14 +74,11 @@ entry, and offer better support for mixed type libraries¹. All this is possible
 file structure to create our own. Additionally, the VFS can be toggled on a per media library basis, giving you
 flexibility in how you manage your collections.
 
-<div class="alert alert-warning downloads-alert" role="alert">
-  <i class="downloads-alert-icon fas fa-exclamation-triangle"></i>
-  With the VFS now being automatically enabled for all libraries, it is recommended to recreate any existing libraries
-  that use Shokofin to speed up the transition to using the VFS. Otherwise Shokofin will start to migrate the existing
-  libraries to the VFS on the next library scan or metadata refresh. For those who wish to not use the VFS, make sure to
-  disable it in the plugin settings before the next scan or refresh event occurs to avoid any and/or destructive work
-  being done.
-</div>
+With the VFS now being automatically enabled for all libraries, it is recommended to recreate any existing libraries
+that use Shokofin to speed up the transition to using the VFS. Otherwise Shokofin will start to migrate the existing
+libraries to the VFS on the next library scan or metadata refresh. For those who wish to not use the VFS, make sure to
+disable it in the plugin settings before the next scan or refresh event occurs to avoid any and/or destructive work
+being done.
 
 You _can_ achieve the same end results without the VFS layer if you build a custom renamer for Shoko Server to match the
 logic we have in our VFS layer for your physical library, but that requires having **_a lot_** of domain knowledge for
@@ -111,7 +105,7 @@ of our control because we cannot get a good anchor point to use in the underlyin
 ¹ _We support it in the plugin when using the VFS, but the support for mixed libraries in the core of Jellyfin is still
 flaky at best._
 
-#### Seamless Fusion of Episodes and Seasons
+## Seamless Fusion of Episodes and Seasons
 
 We now calculate episode numbers relatively, which shouldn't affect most users under normal circumstances. However, if
 you're one of those people who hide episodes in Shoko for whatever reason, you'll be pleased to see a positive change in
@@ -122,7 +116,7 @@ _finally_ fixing the split for those long standing same year entries for the sam
 that the implementation of this feature is still in the early stages and may need further tweaking, so for now, it’s
 reserved for _the daredevils who lust after new toys to play with_ until we work out the kinks.
 
-#### Collections Stirred to Perfection
+## Collections Stirred to Perfection
 
 In order to create a seamless blend of different media types, we had to rethink and rework our collection support from
 the ground up. Imagine making a perfect smoothie — you need the right mix of ingredients, and sometimes, you have to
@@ -134,7 +128,7 @@ or all movies _and_ shows based on Shoko Groups. This can be used with the exist
 create show entities, in addition to supporting the sub-groups feature in Shoko Server, which allows you to nest
 multiple series into sub-groups. These groups and sub-groups will turn into nested collections in Jellyfin.
 
-#### Real-Time Sorcery with SignalR
+## Real-Time Sorcery with SignalR
 
 SignalR is a library for ASP.NET developers that simplifies adding real-time web functionality to applications. Now, the
 SignalR stream from Shoko Server can be used as an optional feature in the plugin. It can auto-connect on startup and
@@ -149,7 +143,7 @@ will not handle properly since there are no file events for when it happens.
 metadata in Jellyfin is as up-to-date as possible with what is stored in Shoko Server, without needing to manually
 refresh the entities.
 
-#### Enhanced Tags, Ratings, and Locations
+## Enhanced Tags, Ratings, and Locations
 
 The internals for processing tags have been overhauled. We now use a tag hierarchy to filter tags locally instead of the
 filtering previously done on the Shoko Server side. This avoids magical numbers in code and gives us more control for
@@ -165,7 +159,7 @@ Multiple sources for content ratings and production locations are already availa
 TMDB content ratings and production locations will arrive at a later date, after Shoko Server adds support for it. We've
 already added the settings to the UI to prepare your library for when it does. 🚀
 
-##### Content Ratings
+### Content Ratings
 
 Based on the tag hierarchy, we use the `/content indicators/*` and `/elements/*` tags to estimate the content rating for
 seasons and series based
@@ -185,7 +179,7 @@ The content ratings we support are:
 We also support overriding the content ratings using custom tags, by creating and using a tag conforming to the
 following regular expression:
 
-```js
+```txt
 /^\/?target audience\/(?:tv[_\-]?)?(?:g|y|y7|pg|14|ma|xxx)(?:[_\-]?(fv|d|s|l|v){1,5})?$/i
 ```
 
@@ -198,12 +192,12 @@ Shoko:
 - `/target audience/pgv` → `TV-PG` + `V` indicator.
 - `/TARGET AUDIENCE/TvPgSl` → `TV-PG` + `L` & `S` indicators.
 
-##### Production Locations
+### Production Locations
 
 Production locations are added based on the `/origin/*` tags in the tag hierarchy. This is a straightforward 1:N mapping
 for relevant tags to production locations.
 
-##### Series Type Overrides
+### Series Type Overrides
 
 We also added support for manually overriding the series type of a Shoko series using custom tags. This can be useful,
 for example, if you want to classify an AniDB movie series containing multiple movies as a _normal_ show in Jellyfin.
@@ -224,14 +218,14 @@ one of the following custom user tags:
 - `/series type/other` → `Other`
 - `/series type/others` → `Other`
 
-#### Additional Changes
+## Additional Changes
 
 Not everything made it into this blog post, so you can check out
 the [GitHub Release](https://github.com/ShokoAnime/Shokofin/releases/tag/v4.0.0), [our changelog](https://docs.shokoanime.com/changelog/shokofin/),
 or the [full changelog on GitHub](https://github.com/ShokoAnime/Shokofin/compare/3.0.1...4.0.0) if you crave more
 _minute details_ on all the changes that went into this release. 🫣
 
-#### What's Next?
+## What's Next?
 
 **We're not done yet!**
 
@@ -242,6 +236,6 @@ help address the "duplicate" images for movies within the same AniDB series entr
 Looking forward, our future plans also include genre and tag providers, people providers, and more! Check out
 the [To-Do list](https://github.com/orgs/ShokoAnime/projects/7) for more info if you're interested.
 
-#### Shokofin Download & Install
+## Shokofin Download & Install
 
 Check [our docs](https://docs.shokoanime.com/shokofin/install/) for install instructions.

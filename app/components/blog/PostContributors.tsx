@@ -15,7 +15,7 @@ const PostContributors = ({ devs }: PostContributorsProps) => {
         <SectionHeader className="items-center md:items-start" title="Contributors" type="h2" />
         <div>
           This release was made possible by the following{' '}
-          <span className="font-semibold text-shoko-highlight">{combinedProcessed.length}</span> people.
+          <span className="font-semibold text-shoko-highlight">{combinedProcessed.length}</span>people.
         </div>
       </div>
       <div className="flex w-full flex-wrap items-center gap-4">

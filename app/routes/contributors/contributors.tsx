@@ -34,7 +34,12 @@ function Contributors() {
                 The <strong>{contributors.length}</strong>{' '}
                 amazing users who contributed to the betterment of Shoko. Contributed in the past but don&apos;t see
                 your name?{' '}
-                <a className="font-semibold text-shoko-link underline" href="/" target="_blank" rel="noopener">
+                <a
+                  className="font-semibold text-shoko-link underline"
+                  href="https://github.com/ShokoAnime/ShokoSite/issues/new/choose"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Lets fix that.
                 </a>
               </div>
