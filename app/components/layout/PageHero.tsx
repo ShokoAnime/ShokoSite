@@ -38,7 +38,7 @@ const PageHero = ({ title, description, date }: PageHeroProps) => {
     <div className="mt-8 flex flex-col gap-8 lg:mt-16 lg:gap-16">
       <div className="flex flex-col items-center justify-center gap-6 sm:gap-8 lg:gap-12">
         <div className="flex max-w-[90%] flex-col items-center justify-center gap-y-4 sm:max-w-[850px]">
-          <div className="flex flex-col items-center justify-center">
+          <div className="flex flex-col items-center justify-center gap-1">
             {date && (
               <div className="font-header text-lg font-semibold text-shoko-text-75 sm:text-xl md:text-2xl">
                 {convertDate(date)}

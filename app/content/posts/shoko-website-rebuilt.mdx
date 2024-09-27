@@ -1,0 +1,67 @@
+---
+title: "Shoko Website Rebuilt"
+quick: "A fresh new look for the Shoko website."
+image: "shoko-website-rebuilt.webp"
+date: "2024-09-26"
+tags: [ "ShokoDocs", "Shoko Server", "Website" ]
+devs: [ "ElementalCrisis" ]
+---
+
+import Image from '../../components/common/Image'
+
+It's been over four years since our last [major update to the Shoko website](/blog/shoko-website-updated),
+where we transitioned from Jekyll to Hugo and introduced a new design. Since then, we’ve made minor cosmetic and
+code adjustments, but the core of the site has remained largely unchanged. Now, we’re unveiling a completely rebuilt
+Shoko website with a fresh design and improved functionality.
+
+## From Hugo to Remix
+
+One of the most significant changes is the switch from [Hugo](https://gohugo.io) to [Remix](https://remix.run) as our
+front-end framework. While Hugo served us well as a static site generator and was incredibly fast, Remix allows us to
+implement server-side rendering. This transition lets us add dynamic features like real-time routing and data
+fetching, which would have been more cumbersome with Hugo and client-side JavaScript. Remix better aligns with our
+current needs and is easier for our team to work with.
+
+## Dark Mode: All Day, Every Day
+
+In the previous version, dark mode was more of an afterthought and didn’t meet our expectations. With the new site,
+we’ve focused heavily on making dark mode the primary theme. In fact, it’s now the default, and we’ve decided not to
+offer a light theme unless specifically requested. This shift ensures a more cohesive and intentional design
+experience for dark mode users.
+
+## New Logo
+
+While the new logo has been live on our Discord server and the Web UI Beta for a while, it’s now officially part
+of the website. The logo was the product of numerous AI-generated attempts, and we’re pleased with the final result.
+It was especially important to us that the team reached a consensus on this version, as a previous commissioned
+logo was never used.
+
+A special thanks to **Queuecumbr** for refining the design, fixing imperfections, and turning it into a proper SVG file.
+
+## Why the Switch to AI Art?
+
+In July, we received a DMCA notice for images we had used on the site, specifically from a company representing VIZ
+Media. Upon reviewing the situation, we found that VIZ Media owned the rights to several anime series we had featured.
+Although we removed the requested images, we decided to be more proactive by replacing all artwork on the site with
+AI-generated images. This approach helps us avoid future copyright and licensing issues.
+
+Additionally, we’ll be blurring series posters in Shoko images, including user-submitted content, to further minimize
+any potential risks. We understand that this may not be the most popular decision, but it’s the safest course of action
+for the project. While we’re aware of "fair use" arguments, it’s not worth the potential legal and financial burdens.
+
+Using AI art is a convenient solution to these issues.
+
+## Shoko Docs Update Coming Soon
+
+Alongside the new website, we’re also preparing a major update to the Shoko Docs site. We're moving from our custom
+Hugo setup to [Starlight](https://starlight.astro.build). If all goes according to plan, the updated Shoko Docs will
+launch within the next week.
+
+Here’s a sneak peek of the new design and some of the upcoming content:
+<Image zoom={true} src="/images/blog/shoko-website-rebuilt-docs.webp" alt="Shoko Docs - New Design"/>
+
+## Shoko Version 5.0.0
+
+After over a year of development, Shoko Server version 5.00 is almost ready for release. Assuming we don’t encounter
+any critical bugs, we expect to launch it in the coming weeks. We’ll provide a full blog post covering all the new
+features and changes once it’s officially released.

@@ -17,3 +17,14 @@ export type MultiSelectDropdownProps = {
   options: string[];
   setSelectedOptions: (selected: string[]) => void;
 };
+
+export type ImageProps = {
+  src: string;
+  alt: string;
+  className?: string;
+  zoom?: boolean;
+};
+
+export type FlexContainerProps = {
+  children: React.ReactNode;
+};

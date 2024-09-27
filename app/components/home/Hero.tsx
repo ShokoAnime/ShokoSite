@@ -9,7 +9,7 @@ const Hero = () => {
   return (
     <div className="mx-auto my-8 flex max-w-[90%] flex-col justify-center gap-6 px-4 text-center sm:my-12 sm:max-w-[850px] sm:gap-8 lg:my-16">
       <div className="flex flex-col gap-3 sm:gap-4">
-        <h1 className="text-2xl font-bold sm:text-3xl md:text-4xl lg:text-5xl">
+        <h1 className="text-2xl font-bold sm:text-3xl md:text-4xl lg:text-5xl lg:leading-[3.5rem]">
           The All-in-One Cross-Platform Anime Management System Built For You
         </h1>
         <div className="text-lg font-semibold sm:text-xl md:text-2xl">

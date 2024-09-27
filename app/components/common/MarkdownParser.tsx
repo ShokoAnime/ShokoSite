@@ -1,16 +1,10 @@
-// @ts-expect-error - Not an issue.
 import Prism from 'prismjs';
 import React, { useEffect, useRef, useState } from 'react';
 import { evaluate } from '@mdx-js/mdx';
 import * as runtime from 'react/jsx-runtime';
 import Image from '../../components/common/Image';
-import 'prismjs/themes/prism-tomorrow.css';
-
-// Only import the languages we need to reduce bundle size.
-import 'prismjs/components/prism-javascript';
-import 'prismjs/components/prism-typescript';
-import 'prismjs/components/prism-jsx';
-import 'prismjs/components/prism-tsx';
+import FlexContainer from '~/components/common/FlexContainer';
+import '~/css/github-dark.css';
 
 type MDXRendererProps = {
   content: string;
@@ -53,7 +47,7 @@ const InlineCode = ({ children }: InlineCodeProps) => {
   );
 };
 
-const components = { Image, pre: CodeBlock, code: InlineCode };
+const components = { FlexContainer, Image, pre: CodeBlock, code: InlineCode };
 
 const MDXRenderer = ({ content }: MDXRendererProps) => {
   const [MDXContent, setMDXContent] = useState<React.ComponentType | null>(null);

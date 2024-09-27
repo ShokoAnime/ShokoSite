@@ -75,7 +75,7 @@ export default function DownloadSingle() {
             {downloadData.meta.images.slice(1, 5).map((image: { url: string, alt: string }, idx: number) => (
               <Image
                 key={idx}
-                className="h-[72px] w-[113px]"
+                className="h-[72px] w-[112px]"
                 src={image.url}
                 alt={image.alt}
                 zoom={true}
