@@ -18,7 +18,7 @@ const UserCard = ({ position, className, name, joinDate, role, image, link }: Us
         ? <img className="!mb-0 size-[4.6875rem] !rounded-full" src={image} alt={name} loading="lazy" />
         : (
           <div className="relative flex size-[4.6875rem] items-center justify-center rounded-full border-shoko-border bg-shoko-bg">
-            <CircleUser />
+            <CircleUser size={32} />
           </div>
         )}
       <div className="flex flex-col items-center gap-4 text-center md:gap-1 md:text-start">

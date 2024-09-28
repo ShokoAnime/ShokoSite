@@ -1,46 +1,81 @@
-import { useEffect, useState } from 'react';
-import { useBackground } from '~/hooks/useBackground';
+import { LoaderFunction, MetaFunction, json } from '@remix-run/node';
+import { useLoaderData } from '@remix-run/react';
+import { ContentItem } from '~/types/content';
 import PageNotFound from '~/components/layout/PageNotFound';
-import { useLocation } from '@remix-run/react';
 import PageHero from '~/components/layout/PageHero';
 import PostContributors from '~/components/blog/PostContributors';
 import PostTags from '~/components/blog/PostTags';
-import { ContentItem } from '~/types/content';
 import MDXRenderer from '~/components/common/MarkdownParser';
+import { useEffect } from 'react';
+import { useBackground } from '~/hooks/useBackground';
+import { sanitizeContent } from '~/lib/sanitizeContent';
+
+export const loader: LoaderFunction = async ({ params, request }) => {
+  const filename = params.id; // Assuming your route is like /blog/:slug
+
+  if (!filename) {
+    throw new Response('Not Found', { status: 404 });
+  }
+
+  try {
+    const url = new URL(request.url);
+    const baseUrl = `${url.protocol}//${url.host}`;
+    const response = await fetch(`${baseUrl}/api/getFile?type=blog&filename=${filename}`);
+
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+
+    const postData = await response.json() as ContentItem;
+    return json({ postData });
+  } catch (error) {
+    console.error('Error fetching blog post:', error);
+    throw new Response('Not Found', { status: 404 });
+  }
+};
+
+export const meta: MetaFunction = ({ data }: any) => {
+  if (!data || !data.postData) {
+    return [
+      { title: 'Post Not Found' },
+      { name: 'description', content: 'The requested blog post could not be found.' },
+    ];
+  }
+
+  const { postData } = data;
+  const ogImageUrl = `/api/ogImage?
+    title=${encodeURIComponent(postData.meta.title)}&
+    summary=${encodeURIComponent(postData.meta.description || '')}&
+    date=${encodeURIComponent(postData.meta.date)}&
+    pageUrl=${encodeURIComponent(`https://shokoanime.comg/bog/${postData.filename}`).replace('.mdx,', '')}&
+    backgroundImage=${encodeURIComponent(postData.meta.image)}`;
+
+  const sanitizedDescription = sanitizeContent(postData.meta.description);
+
+  return [
+    { title: postData.meta.title },
+    { name: 'description', content: sanitizedDescription },
+    { property: 'og:title', content: postData.meta.title },
+    { property: 'og:description', content: sanitizedDescription },
+    { property: 'og:image', content: ogImageUrl },
+    { property: 'og:type', content: 'article' },
+    { property: 'article:published_time', content: postData.meta.date },
+    { property: 'twitter:card', content: 'summary_large_image' },
+    { property: 'twitter:title', content: postData.meta.title },
+    { property: 'twitter:description', content: sanitizedDescription },
+    { property: 'twitter:image', content: ogImageUrl },
+  ];
+};
 
 export default function BlogPost() {
-  const [postData, setPostData] = useState<ContentItem>();
-  const [isLoading, setIsLoading] = useState(true);
+  const { postData } = useLoaderData<{ postData: ContentItem }>();
   const { setBackgroundImage } = useBackground();
-  const location = useLocation();
-
-  const filename = location.pathname.split('/').pop();
 
   useEffect(() => {
-    const fetchBlogPost = async () => {
-      setIsLoading(true);
-      try {
-        const response = await fetch(`/api/getFile?type=blog&filename=${filename}`);
+    if (postData) {
+      setBackgroundImage(`/images/blog/${postData.meta.image}`);
+    }
+  }, [postData]);
 
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-
-        const data = await response.json() as ContentItem;
-        setPostData(data);
-        setBackgroundImage(`/images/blog/${data.meta.image}`);
-        setIsLoading(false);
-      } catch (error) {
-        console.error('Error fetching blog posts:', error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchBlogPost();
-  }, [filename, setBackgroundImage]);
-
-  if (isLoading) return null;
-
-  if (postData === undefined) {
+  if (!postData) {
     return <PageNotFound />;
   }
 
@@ -53,7 +88,7 @@ export default function BlogPost() {
         </div>
         {postData.meta.devs && (
           <div className="flex flex-wrap gap-4">
-            {postData.meta.devs && <PostContributors devs={postData.meta.devs} />}
+            <PostContributors devs={postData.meta.devs} />
           </div>
         )}
         <PostTags tags={postData.meta.tags} />

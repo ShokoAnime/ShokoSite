@@ -83,7 +83,7 @@ const MDXRenderer = ({ content }: MDXRendererProps) => {
   }
 
   if (!MDXContent) {
-    return <div className="text-gray-500">Loading MDX content...</div>;
+    return <div className="text-center text-shoko-text-75">Loading, please wait...</div>;
   }
 
   return <MDXContent />;
