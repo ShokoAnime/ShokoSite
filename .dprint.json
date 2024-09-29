@@ -1,0 +1,26 @@
+{
+  "lineWidth": 120,
+  "useTabs": false,
+  "typescript": {
+    "exportDeclaration.sortNamedExports": "caseSensitive",
+    "importDeclaration.sortNamedImports": "caseSensitive",
+    "jsx.multiLineParens": "prefer",
+    "jsx.quoteStyle": "preferDouble",
+    "module.sortExportDeclarations": "maintain",
+    "module.sortImportDeclarations": "maintain",
+    "quoteProps": "asNeeded",
+    "quoteStyle": "alwaysSingle",
+    "semiColons": "always",
+    "typeLiteral.separatorKind.singleLine": "comma",
+    "indentWidth": 2
+  },
+   "json": {
+    "indentWidth": 2
+  },
+  "includes": [
+    "**/*.{js,jsx,ts,tsx}"
+  ],
+  "plugins": [
+    "https://plugins.dprint.dev/typescript-0.90.4.wasm"
+  ]
+}

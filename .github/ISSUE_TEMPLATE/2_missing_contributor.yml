@@ -1,0 +1,38 @@
+name: Missing Contributor
+description: Report a missing contributor to be added to the project
+labels: [Site Related]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        > ### Important Information
+        > - Please make sure the contributor is not already listed in our project.
+        > - All fields marked with an asterisk (*) are required.
+        > - Feel free to submit a PR with yourself added to the contributors.ts file located in /app/data if you don't want to create an issue.
+
+  - type: input
+    id: contributor-name
+    attributes:
+      label: Contributor Name*
+      description: The name of the contributor to be added
+      placeholder: e.g. "Jane Doe"
+    validations:
+      required: true
+
+  - type: input
+    id: github-avatar-url
+    attributes:
+      label: GitHub Avatar URL*
+      description: The URL of the contributor's GitHub avatar image
+      placeholder: e.g. "https://avatars.githubusercontent.com/u/12345678"
+    validations:
+      required: true
+
+  - type: input
+    id: github-profile-url
+    attributes:
+      label: GitHub Profile URL*
+      description: The URL of the contributor's GitHub profile
+      placeholder: e.g. "https://github.com/janedoe"
+    validations:
+      required: true
