@@ -53,7 +53,7 @@ export const meta: MetaFunction = ({ data }: any) => {
   const { downloadData } = data;
 
   const downloadTitle = downloadData.meta.name;
-  const downloadImage = `http://localhost:5173/${downloadData.meta.images[0].url}`;
+  const downloadImage = `https://shokoanime.com${downloadData.meta.images[0].url}`;
   const downloadVersion = downloadData.meta.version;
   const downloadDate = downloadData.meta.date;
   const sanitizedDescription = sanitizeContent(downloadData.content);
