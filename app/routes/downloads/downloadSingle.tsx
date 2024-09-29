@@ -1,4 +1,4 @@
-import { LoaderFunction, MetaFunction, json } from '@remix-run/node';
+import { LoaderFunction, MetaFunction, json } from '@remix-run/cloudflare';
 import { useLoaderData } from '@remix-run/react';
 import { ContentItem } from '~/types/content';
 import PageNotFound from '~/components/layout/PageNotFound';

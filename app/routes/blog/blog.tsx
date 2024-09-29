@@ -4,7 +4,7 @@ import PostCard from '~/components/blog/PostCard';
 import { useSentinel } from '~/hooks/useSentinel';
 import { ContentItem } from '~/types/content';
 import { useBackground } from '~/hooks/useBackground';
-import { MetaFunction } from '@remix-run/node';
+import { MetaFunction } from '@remix-run/cloudflare';
 
 export const meta: MetaFunction = () => {
   const pageTitle = 'Shoko Blog';

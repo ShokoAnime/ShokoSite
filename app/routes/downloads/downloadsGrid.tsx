@@ -1,4 +1,4 @@
-import { LoaderFunction, MetaFunction, json } from '@remix-run/node';
+import { LoaderFunction, MetaFunction, json } from '@remix-run/cloudflare';
 import { useLoaderData, useLocation } from '@remix-run/react';
 import { useCallback, useEffect, useState } from 'react';
 import { convertToProperName } from '~/lib/convertToProperName';
