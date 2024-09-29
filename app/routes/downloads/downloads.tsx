@@ -4,7 +4,7 @@ import PageHero from '~/components/layout/PageHero';
 import { DownloadCounts, DownloadListItemProps } from '~/types/downloads';
 import { Info } from 'lucide-react';
 import { useBackground } from '~/hooks/useBackground';
-import { MetaFunction } from '@remix-run/node';
+import { MetaFunction } from '@remix-run/cloudflare';
 
 export const meta: MetaFunction = () => {
   const pageTitle = 'Downloads';

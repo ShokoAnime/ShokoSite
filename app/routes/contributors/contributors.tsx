@@ -1,7 +1,7 @@
 import ContributorsGroup from '~/components/contributors/ContributorsGroup';
 import { contributors, honorable, staff } from '~/data/contributors';
 import PageHero from '~/components/layout/PageHero';
-import { MetaFunction } from '@remix-run/node';
+import { MetaFunction } from '@remix-run/cloudflare';
 
 export const meta: MetaFunction = () => {
   const pageTitle = 'Contributors';
