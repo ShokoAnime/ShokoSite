@@ -5,6 +5,7 @@ import { DownloadCounts, DownloadListItemProps } from '~/types/downloads';
 import { Info } from 'lucide-react';
 import { useBackground } from '~/hooks/useBackground';
 import { MetaFunction } from '@remix-run/cloudflare';
+import Button from '~/components/common/Button';
 
 export const meta: MetaFunction = () => {
   const pageTitle = 'Downloads';
@@ -42,12 +43,7 @@ const DownloadListItem = ({ name, description, count, link }: DownloadListItemPr
   );
 
   const countConfigs: Record<string, () => React.JSX.Element> = {
-    'Shoko Server': () => (
-      <div className="flex w-fit items-center gap-2 rounded border border-shoko-highlight p-3">
-        <Info />
-        <div className="font-semibold">Required</div>
-      </div>
-    ),
+    'Shoko Server': () => <div className="font-semibold text-shoko-highlight">Main Program</div>,
     'Media Player Plugins': () => <CountDisplay text={`${pluralize('Plugin', count)} Available`} />,
     'Web UI Themes': () => <CountDisplay text={`${pluralize('Theme', count)} Available`} />,
     'Renamer Plugins': () => <CountDisplay text={`${pluralize('Renamer', count)} Available`} />,
@@ -60,17 +56,29 @@ const DownloadListItem = ({ name, description, count, link }: DownloadListItemPr
   };
 
   return (
-    <div className="flex flex-col items-center gap-2 text-center lg:flex-row lg:text-start">
-      <div className="flex w-full justify-center font-semibold lg:max-w-[200px] lg:justify-start xl:max-w-[278px]">
+    <div className="mx-auto flex w-full flex-col items-center gap-4 border-0 border-shoko-divider text-center last:border-0 lg:flex-row lg:gap-16 lg:border-b lg:pb-4 lg:text-start">
+      <div className="flex w-full justify-center font-semibold lg:w-1/4 lg:justify-start">
         <CountBuilder />
       </div>
-      <div>
-        <div className="font-header text-shoko-20 font-bold">{name}</div>
+      <div className="w-full lg:w-2/4">
+        <div className="flex items-center justify-center gap-2 text-shoko-20 font-bold lg:justify-start">
+          {name}
+          {name === 'Shoko Server' ? <div className="text-shoko-14 text-shoko-highlight">Required!</div> : ''}
+        </div>
         <div className="text-shoko-text-75">{description}</div>
       </div>
-      <Link className="text-center font-semibold text-shoko-link lg:ml-auto lg:text-start" to={link}>
-        {`Download ${name} →`}
-      </Link>
+      {/*<Link className="w-1/4 text-center font-semibold text-shoko-link lg:text-end" to={link}>*/}
+      {/*  {`Download ${name} →`}*/}
+      {/*</Link>*/}
+      <div className="w-full lg:w-1/4">
+        <Button
+          buttonType="secondary"
+          href={link}
+          className="text-center font-semibold lg:text-end"
+        >
+          {`Download ${name}`}
+        </Button>
+      </div>
     </div>
   );
 };
