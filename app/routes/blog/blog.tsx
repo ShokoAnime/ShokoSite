@@ -10,7 +10,7 @@ export const meta: MetaFunction = () => {
   const pageTitle = 'Shoko Blog';
   const pageDescription =
     'Stay informed with the latest news about Shoko\'s development, third-party plugins, and other relevant topics.';
-  const pageImage = `https://shokoanime.com/images/banner/banner-2.jpg`;
+  const pageImage = `https://shokoanime.com/images/banners/banner-2.jpg`;
   const pageURL = 'https://shokoanime.com/blog';
 
   const ogImageUrl = `https://shokoanime.com/api/ogImage?title=${encodeURIComponent(`${pageTitle}`)}&summary=${

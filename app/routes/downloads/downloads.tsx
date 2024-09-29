@@ -10,7 +10,7 @@ export const meta: MetaFunction = () => {
   const pageTitle = 'Downloads';
   const pageDescription =
     'Browse through selection of programs, plugins, Web UI Themes and other tools available in the Shoko Suite.';
-  const pageImage = `https://shokoanime.com/images/banner/banner-7.jpg`;
+  const pageImage = `https://shokoanime.com/images/banners/banner-7.jpg`;
   const pageURL = 'https://shokoanime.com/downloads';
 
   const ogImageUrl = `https://shokoanime.com/api/ogImage?title=${encodeURIComponent(`${pageTitle}`)}&summary=${

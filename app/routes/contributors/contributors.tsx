@@ -7,7 +7,7 @@ export const meta: MetaFunction = () => {
   const pageTitle = 'Contributors';
   const pageDescription =
     'From the Shoko team itself to our everyday users, everyone listed below has contributed to making Shoko better.';
-  const pageImage = `https://shokoanime.com/images/banner/banner-11.jpg`;
+  const pageImage = `https://shokoanime.com/images/banners/banner-11.jpg`;
   const pageURL = 'https://shokoanime.com/contributors';
 
   const ogImageUrl = `https://shokoanime.com/api/ogImage?title=${encodeURIComponent(`${pageTitle}`)}&summary=${

@@ -8,7 +8,7 @@ import { MetaFunction } from '@remix-run/node';
 export const meta: MetaFunction = () => {
   const pageTitle = 'About Shoko';
   const pageDescription = 'Spend some time learning about Shoko\'s development over the years.';
-  const pageImage = `https://shokoanime.com/images/banner/banner-8.jpg`;
+  const pageImage = `https://shokoanime.com/images/banners/banner-8.jpg`;
   const pageURL = 'https://shokoanime.com/about';
 
   const ogImageUrl = `https://shokoanime.com/api/ogImage?title=${encodeURIComponent(`${pageTitle}`)}&summary=${

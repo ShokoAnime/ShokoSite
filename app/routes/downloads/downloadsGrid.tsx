@@ -74,7 +74,7 @@ export const meta: MetaFunction = ({ data }: any) => {
   const { downloadType } = data;
   const title = `${convertToProperName(downloadType)}`;
   const description = `Browse and download ${downloadType} for Shoko Anime.`;
-  const pageImage = `https://shokoanime.com/images/banner/banner-10.jpg`;
+  const pageImage = `https://shokoanime.com/images/banners/banner-10.jpg`;
   const pageURL = `https://shokoanime.com/downloads/${downloadType}`;
 
   const ogImageUrl = `https://shokoanime.com/api/ogImage?title=${encodeURIComponent(`${title}`)}&summary=${
