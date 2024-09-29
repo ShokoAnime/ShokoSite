@@ -3,7 +3,7 @@ import cx from 'classnames';
 import { ButtonProps } from '~/types/common';
 
 const buttonStyle = {
-  primary: 'bg-shoko-link text-shoko-btn-text hover:bg-shoko-btn-hover',
+  primary: 'bg-shoko-link text-shoko-btn-text hover:bg-shoko-btn-hover hover:text-shoko-btn-text',
   outline: 'border border-shoko-link text-shoko-text hover:text-shoko-text hover:bg-shoko-bg',
   round: 'bg-shoko-bg border border-shoko-border text-shoko-text-header hover:text-shoko-link',
   text: 'text-shoko-text-header hover:text-shoko-link',
