@@ -24,7 +24,7 @@ const PageWrapper = ({ children }: PageWrapperProps) => {
   const getRandomBanner = () => {
     const totalBanners = 12;
     const randomBanner = Math.floor(Math.random() * totalBanners) + 1;
-    return `/images/banners/banner-${randomBanner}.webp`;
+    return `/images/banners/banner-${randomBanner}.jpg`;
   };
 
   const backgroundGradient = useMemo(() => {
@@ -39,7 +39,7 @@ const PageWrapper = ({ children }: PageWrapperProps) => {
 
   useEffect(() => {
     if (currentURL === '/') {
-      return setBanner('/images/banners/main-banner.webp');
+      return setBanner('/images/banners/main-banner.jpg');
     }
 
     if (backgroundImage !== null) {

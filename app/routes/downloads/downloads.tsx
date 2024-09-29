@@ -4,6 +4,32 @@ import PageHero from '~/components/layout/PageHero';
 import { DownloadCounts, DownloadListItemProps } from '~/types/downloads';
 import { Info } from 'lucide-react';
 import { useBackground } from '~/hooks/useBackground';
+import { MetaFunction } from '@remix-run/node';
+
+export const meta: MetaFunction = () => {
+  const pageTitle = 'Downloads';
+  const pageDescription =
+    'Browse through selection of programs, plugins, Web UI Themes and other tools available in the Shoko Suite.';
+  const pageImage = `https://shokoanime.com/images/banner/banner-7.jpg`;
+  const pageURL = 'https://shokoanime.com/downloads';
+
+  const ogImageUrl = `https://shokoanime.com/api/ogImage?title=${encodeURIComponent(`${pageTitle}`)}&summary=${
+    encodeURIComponent(pageDescription)
+  }&pageUrl=${encodeURIComponent(pageURL)}&backgroundImage=${encodeURIComponent(`${pageImage}`)}`;
+
+  return [
+    { title: pageTitle },
+    { name: 'description', content: pageDescription },
+    { property: 'og:title', content: pageTitle },
+    { property: 'og:description', content: pageDescription },
+    { property: 'og:image', content: ogImageUrl },
+    { property: 'og:type', content: 'article' },
+    { property: 'twitter:card', content: 'summary_large_image' },
+    { property: 'twitter:title', content: pageTitle },
+    { property: 'twitter:description', content: pageDescription },
+    { property: 'twitter:image', content: ogImageUrl },
+  ];
+};
 
 const DownloadListItem = ({ name, description, count, link }: DownloadListItemProps) => {
   const pluralize = (word: string, count: number) => `${word}${count === 1 ? '' : 's'}`;

@@ -7,7 +7,7 @@ const InfoDetails = [
   {
     title: 'Why Use Shoko?',
     subtitle: 'Effortless Organization',
-    image: '/images/home/web-ui-series.webp',
+    image: '/images/home/web-ui-series.jpg',
     description: (
       <>
         <div>
@@ -27,7 +27,7 @@ const InfoDetails = [
   {
     title: 'Advanced Management Tools',
     subtitle: 'Streamlined File Maintenance',
-    image: '/images/home/web-ui-release-management.webp',
+    image: '/images/home/web-ui-release-management.jpg',
     description: (
       <>
         <div>

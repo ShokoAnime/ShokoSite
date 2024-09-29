@@ -1,55 +1,89 @@
-import { useEffect, useState } from 'react';
+import { LoaderFunction, MetaFunction, json } from '@remix-run/node';
+import { useLoaderData } from '@remix-run/react';
+import { ContentItem } from '~/types/content';
 import PageNotFound from '~/components/layout/PageNotFound';
-import { useLocation } from '@remix-run/react';
 import PageHero from '~/components/layout/PageHero';
 import Image from '~/components/common/Image';
+import MDXRenderer from '~/components/common/MarkdownParser';
 import { HeaderBuilderProps, IconNameProps } from '~/types/downloads';
 import { SiDiscord, SiGithub } from '@icons-pack/react-simple-icons';
 import { BookHeart, Download, ScrollText, Tags } from 'lucide-react';
-import { ContentItem } from '~/types/content';
-import MDXRenderer from '~/components/common/MarkdownParser';
+import { sanitizeContent } from '~/lib/sanitizeContent';
 
 const HeaderBuilder = ({ title, children }: HeaderBuilderProps) => (
-  <div className="flex items-center justify-between gap-y-6 border-b border-shoko-divider pb-3 ">
+  <div className="flex items-center justify-between gap-y-6 border-b border-shoko-divider pb-3">
     <div className="font-header text-shoko-24 font-bold">{title}</div>
     <div className="flex gap-6">{children}</div>
   </div>
 );
 
+export const loader: LoaderFunction = async ({ request }) => {
+  const location = new URL(request.url).pathname;
+  const locationSplit = location.split('/');
+  const type = locationSplit[locationSplit.length === 4 ? 2 : 2];
+  const filename = locationSplit[locationSplit.length === 4 ? 3 : 2];
+
+  if (!filename) {
+    throw new Response('Not Found', { status: 404 });
+  }
+
+  try {
+    const url = new URL(request.url);
+    const baseUrl = `${url.protocol}//${url.host}`;
+    const response = await fetch(`${baseUrl}/api/getFile?type=${type}&filename=${filename}`);
+
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+
+    const downloadData = await response.json() as ContentItem;
+    return json({ downloadData });
+  } catch (error) {
+    console.error('Error fetching download data:', error);
+    throw new Response('Not Found', { status: 404 });
+  }
+};
+
+export const meta: MetaFunction = ({ data }: any) => {
+  if (!data || !data.downloadData) {
+    return [
+      { title: 'Download Not Found' },
+      { name: 'description', content: 'The requested download could not be found.' },
+    ];
+  }
+
+  const { downloadData } = data;
+
+  const downloadTitle = downloadData.meta.name;
+  const downloadImage = `http://localhost:5173/${downloadData.meta.images[0].url}`;
+  const downloadVersion = downloadData.meta.version;
+  const downloadDate = downloadData.meta.date;
+  const sanitizedDescription = sanitizeContent(downloadData.content);
+  const sanitizedUrl = downloadData.filename.replace('.mdx', '');
+
+  const ogImageUrl = `https://shokoanime.com/api/ogImage?title=${encodeURIComponent(`${downloadTitle}`)}&summary=${
+    encodeURIComponent(sanitizedDescription)
+  }&date=${encodeURIComponent(`${downloadDate}`)}&version=${encodeURIComponent(downloadVersion)}&pageUrl=${
+    encodeURIComponent(`https://shokoanime.com/downloads/${sanitizedUrl}`)
+  }&backgroundImage=${encodeURIComponent(downloadImage)}`;
+
+  return [
+    { title: downloadData.meta.name },
+    { name: 'description', content: sanitizedDescription },
+    { property: 'og:title', content: downloadData.meta.name },
+    { property: 'og:description', content: sanitizedDescription },
+    { property: 'og:image', content: ogImageUrl },
+    { property: 'og:type', content: 'article' },
+    { property: 'article:published_time', content: downloadData.meta.date },
+    { property: 'twitter:card', content: 'summary_large_image' },
+    { property: 'twitter:title', content: downloadData.meta.name },
+    { property: 'twitter:description', content: sanitizedDescription },
+    { property: 'twitter:image', content: ogImageUrl },
+  ];
+};
+
 export default function DownloadSingle() {
-  const [downloadData, setDownloadData] = useState<ContentItem>();
-  const [isLoading, setIsLoading] = useState(true);
-  const location = useLocation();
+  const { downloadData } = useLoaderData<{ downloadData: ContentItem }>();
 
-  useEffect(() => {
-    const fetchDownload = async () => {
-      setIsLoading(true);
-
-      const locationSplit = location.pathname.split('/');
-      const type = locationSplit[locationSplit.length === 4 ? 2 : 2];
-      const filename = locationSplit[locationSplit.length === 4 ? 3 : 2];
-
-      try {
-        const response = await fetch(`/api/getFile?type=${type}&filename=${filename}`);
-
-        if (!response.ok) new Error(`HTTP error! status: ${response.status}`);
-
-        const data = await response.json() as ContentItem;
-        setDownloadData(data);
-        setIsLoading(false);
-      } catch (error) {
-        console.error('Error fetching blog posts:', error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchDownload();
-  }, []);
-
-  if (isLoading) return null;
-
-  if (downloadData === undefined) {
+  if (!downloadData) {
     return <PageNotFound />;
   }
 
@@ -75,7 +109,7 @@ export default function DownloadSingle() {
             {downloadData.meta.images.slice(1, 5).map((image: { url: string, alt: string }, idx: number) => (
               <Image
                 key={idx}
-                className="h-[72px] w-[112px]"
+                className="h-[72px] w-[111px]"
                 src={image.url}
                 alt={image.alt}
                 zoom={true}

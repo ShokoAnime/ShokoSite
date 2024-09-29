@@ -57,7 +57,7 @@ const WatchAnywhere = () => {
           watch your anime on the device of your choice, wherever you are.
         </div>
         <div className="flex items-center justify-center gap-2 text-start text-shoko-link md:text-center">
-          <a href="https://google.com" rel="noopener noreferrer" target="_blank">
+          <a href="https://docs.shokoanime.com" rel="noopener noreferrer" target="_blank">
             Learn how to bring Shoko to your preferred media player.
           </a>
           <ExternalLink size={20} className="hidden md:inline-flex" />

@@ -29,7 +29,7 @@ const Hero = () => {
         <Button
           buttonType="outline"
           size={width > 768 ? 'large' : 'medium'}
-          href="https://docs.shokoanime.com/getting-started/installing-shoko-server/"
+          href="https://docs.shokoanime.com"
           className="w-full sm:w-auto"
         >
           <BookHeart size={20} />

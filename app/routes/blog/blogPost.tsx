@@ -41,14 +41,18 @@ export const meta: MetaFunction = ({ data }: any) => {
   }
 
   const { postData } = data;
-  const ogImageUrl = `/api/ogImage?
-    title=${encodeURIComponent(postData.meta.title)}&
-    summary=${encodeURIComponent(postData.meta.description || '')}&
-    date=${encodeURIComponent(postData.meta.date)}&
-    pageUrl=${encodeURIComponent(`https://shokoanime.comg/bog/${postData.filename}`).replace('.mdx,', '')}&
-    backgroundImage=${encodeURIComponent(postData.meta.image)}`;
 
-  const sanitizedDescription = sanitizeContent(postData.meta.description);
+  const postTitle = postData.meta.title;
+  const postImage = `https://shokoanime.com/images/blog/${postData.meta.image}`;
+  const postDate = postData.meta.date;
+  const sanitizedDescription = sanitizeContent(postData.content);
+  const sanitizedUrl = postData.filename.replace('.mdx', '');
+
+  const ogImageUrl = `https://shokoanime.com/api/ogImage?title=${encodeURIComponent(`${postTitle}`)}&summary=${
+    encodeURIComponent(sanitizedDescription)
+  }&date=${encodeURIComponent(`${postDate}`)}&pageUrl=${
+    encodeURIComponent(`https://shokoanime.comg/blog/${sanitizedUrl}`)
+  }&backgroundImage=${encodeURIComponent(`${postImage}`)}`;
 
   return [
     { title: postData.meta.title },

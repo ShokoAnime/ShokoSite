@@ -7,7 +7,7 @@ const featureList = [
     icon: <DatabaseZap size={36} strokeWidth={1.25} />,
     title: 'Hash-Based Matching',
     description: 'Hash and compare files with AniDB for accurate episode and series identification.',
-    descriptionLink: { text: 'Learn how files are identified.', link: 'google.com' },
+    descriptionLink: { text: 'Learn how files are identified.', link: 'https://docs.shokoanime.com' },
   },
   {
     icon: <MonitorPlay size={36} strokeWidth={1.25} />,

@@ -1,6 +1,32 @@
 import ContributorsGroup from '~/components/contributors/ContributorsGroup';
 import { contributors, honorable, staff } from '~/data/contributors';
 import PageHero from '~/components/layout/PageHero';
+import { MetaFunction } from '@remix-run/node';
+
+export const meta: MetaFunction = () => {
+  const pageTitle = 'Contributors';
+  const pageDescription =
+    'From the Shoko team itself to our everyday users, everyone listed below has contributed to making Shoko better.';
+  const pageImage = `https://shokoanime.com/images/banner/banner-11.jpg`;
+  const pageURL = 'https://shokoanime.com/contributors';
+
+  const ogImageUrl = `https://shokoanime.com/api/ogImage?title=${encodeURIComponent(`${pageTitle}`)}&summary=${
+    encodeURIComponent(pageDescription)
+  }&pageUrl=${encodeURIComponent(pageURL)}&backgroundImage=${encodeURIComponent(`${pageImage}`)}`;
+
+  return [
+    { title: pageTitle },
+    { name: 'description', content: pageDescription },
+    { property: 'og:title', content: pageTitle },
+    { property: 'og:description', content: pageDescription },
+    { property: 'og:image', content: ogImageUrl },
+    { property: 'og:type', content: 'article' },
+    { property: 'twitter:card', content: 'summary_large_image' },
+    { property: 'twitter:title', content: pageTitle },
+    { property: 'twitter:description', content: pageDescription },
+    { property: 'twitter:image', content: ogImageUrl },
+  ];
+};
 
 function Contributors() {
   return (

@@ -4,6 +4,32 @@ import PostCard from '~/components/blog/PostCard';
 import { useSentinel } from '~/hooks/useSentinel';
 import { ContentItem } from '~/types/content';
 import { useBackground } from '~/hooks/useBackground';
+import { MetaFunction } from '@remix-run/node';
+
+export const meta: MetaFunction = () => {
+  const pageTitle = 'Shoko Blog';
+  const pageDescription =
+    'Stay informed with the latest news about Shoko\'s development, third-party plugins, and other relevant topics.';
+  const pageImage = `https://shokoanime.com/images/banner/banner-2.jpg`;
+  const pageURL = 'https://shokoanime.com/blog';
+
+  const ogImageUrl = `https://shokoanime.com/api/ogImage?title=${encodeURIComponent(`${pageTitle}`)}&summary=${
+    encodeURIComponent(pageDescription)
+  }&pageUrl=${encodeURIComponent(pageURL)}&backgroundImage=${encodeURIComponent(`${pageImage}`)}`;
+
+  return [
+    { title: pageTitle },
+    { name: 'description', content: pageDescription },
+    { property: 'og:title', content: pageTitle },
+    { property: 'og:description', content: pageDescription },
+    { property: 'og:image', content: ogImageUrl },
+    { property: 'og:type', content: 'article' },
+    { property: 'twitter:card', content: 'summary_large_image' },
+    { property: 'twitter:title', content: pageTitle },
+    { property: 'twitter:description', content: pageDescription },
+    { property: 'twitter:image', content: ogImageUrl },
+  ];
+};
 
 export default function Blog() {
   const [blogPosts, setBlogPosts] = useState<ContentItem[]>([]);

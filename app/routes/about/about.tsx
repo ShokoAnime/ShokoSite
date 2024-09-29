@@ -3,6 +3,31 @@ import PageHero from '~/components/layout/PageHero';
 import Divider from '~/components/layout/Divider';
 import { useEffect, useState } from 'react';
 import HistorySection from '~/components/about/HistorySection';
+import { MetaFunction } from '@remix-run/node';
+
+export const meta: MetaFunction = () => {
+  const pageTitle = 'About Shoko';
+  const pageDescription = 'Spend some time learning about Shoko\'s development over the years.';
+  const pageImage = `https://shokoanime.com/images/banner/banner-8.jpg`;
+  const pageURL = 'https://shokoanime.com/about';
+
+  const ogImageUrl = `https://shokoanime.com/api/ogImage?title=${encodeURIComponent(`${pageTitle}`)}&summary=${
+    encodeURIComponent(pageDescription)
+  }&pageUrl=${encodeURIComponent(pageURL)}&backgroundImage=${encodeURIComponent(`${pageImage}`)}`;
+
+  return [
+    { title: pageTitle },
+    { name: 'description', content: pageDescription },
+    { property: 'og:title', content: pageTitle },
+    { property: 'og:description', content: pageDescription },
+    { property: 'og:image', content: ogImageUrl },
+    { property: 'og:type', content: 'article' },
+    { property: 'twitter:card', content: 'summary_large_image' },
+    { property: 'twitter:title', content: pageTitle },
+    { property: 'twitter:description', content: pageDescription },
+    { property: 'twitter:image', content: ogImageUrl },
+  ];
+};
 
 export default function About() {
   const [tab, setTab] = useState('The Early Years');
