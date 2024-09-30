@@ -22,14 +22,20 @@ const PageHero = ({ title, description, date }: PageHeroProps) => {
     return (
       <>
         <span className="mx-0.5 text-sm text-shoko-text sm:mx-1 sm:text-shoko-18 md:text-shoko-24">/</span>
-        <Link
-          className={`text-center text-sm sm:text-shoko-18 md:text-shoko-24 ${
-            isLastSegment ? 'font-semibold text-shoko-text' : 'text-shoko-link hover:underline'
-          }`}
-          to={path}
-        >
-          {formattedSegment}
-        </Link>
+        {isLastSegment
+          ? (
+            <span className="text-center text-sm font-semibold text-shoko-text sm:text-shoko-18 md:text-shoko-24">
+              {formattedSegment}
+            </span>
+          )
+          : (
+            <Link
+              className="text-center text-sm text-shoko-link hover:underline sm:text-shoko-18 md:text-shoko-24"
+              to={path}
+            >
+              {formattedSegment}
+            </Link>
+          )}
       </>
     );
   };

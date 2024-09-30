@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from '@remix-run/react';
 import PageHero from '~/components/layout/PageHero';
 import { DownloadCounts, DownloadListItemProps } from '~/types/downloads';
-import { Info } from 'lucide-react';
 import { useBackground } from '~/hooks/useBackground';
 import { MetaFunction } from '@remix-run/cloudflare';
 import Button from '~/components/common/Button';
@@ -73,7 +71,7 @@ const DownloadListItem = ({ name, description, count, link }: DownloadListItemPr
       <div className="w-full lg:w-1/4">
         <Button
           buttonType="secondary"
-          href={link}
+          to={link}
           className="text-center font-semibold lg:text-end"
         >
           {`Download ${name}`}

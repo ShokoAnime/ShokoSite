@@ -1,4 +1,3 @@
-import React from 'react';
 import Button from '~/components/common/Button';
 import { BookHeart, Download } from 'lucide-react';
 import { useWindowSize } from '~/hooks/useWindowSize';
@@ -27,7 +26,7 @@ const Hero = () => {
           Download
         </Button>
         <Button
-          buttonType="outline"
+          buttonType="secondary"
           size={width > 768 ? 'large' : 'medium'}
           href="https://docs.shokoanime.com"
           className="w-full sm:w-auto"

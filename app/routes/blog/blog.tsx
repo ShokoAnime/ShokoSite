@@ -1,21 +1,20 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { MetaFunction } from '@remix-run/cloudflare';
 import PageHero from '~/components/layout/PageHero';
 import PostCard from '~/components/blog/PostCard';
 import { useSentinel } from '~/hooks/useSentinel';
 import { ContentItem } from '~/types/content';
-import { useBackground } from '~/hooks/useBackground';
-import { MetaFunction } from '@remix-run/cloudflare';
 
 export const meta: MetaFunction = () => {
   const pageTitle = 'Shoko Blog';
   const pageDescription =
     'Stay informed with the latest news about Shoko\'s development, third-party plugins, and other relevant topics.';
-  const pageImage = `https://shokoanime.com/images/banners/banner-2.jpg`;
+  const pageImage = 'https://shokoanime.com/images/banners/banner-2.jpg';
   const pageURL = 'https://shokoanime.com/blog';
 
-  const ogImageUrl = `https://shokoanime.com/api/ogImage?title=${encodeURIComponent(`${pageTitle}`)}&summary=${
+  const ogImageUrl = `https://shokoanime.com/api/ogImage?title=${encodeURIComponent(pageTitle)}&summary=${
     encodeURIComponent(pageDescription)
-  }&pageUrl=${encodeURIComponent(pageURL)}&backgroundImage=${encodeURIComponent(`${pageImage}`)}`;
+  }&pageUrl=${encodeURIComponent(pageURL)}&backgroundImage=${encodeURIComponent(pageImage)}`;
 
   return [
     { title: pageTitle },
@@ -37,20 +36,21 @@ export default function Blog() {
   const [offset, setOffset] = useState(0);
   const [loadingRef, isIntersecting] = useSentinel();
   const totalCountRef = useRef(0);
-  const { resetBackground } = useBackground();
 
-  const type = 'blog';
-  const limit = 12;
-  const sort = 'dateDescending';
+  const fetchBlogPosts = useCallback(async () => {
+    if (isLoading) return;
 
-  const fetchBlogPosts = async () => {
+    const type = 'blog';
+    const limit = 16;
+    const sort = 'dateDescending';
+
+    setIsLoading(true);
     try {
-      setIsLoading(true);
       const response = await fetch(
         `/api/getFiles?type=${type}&offset=${offset}&limit=${limit}&sort=${sort}`,
       );
 
-      if (!response.ok) new Error(`HTTP error! status: ${response.status}`);
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
       const data = await response.json() as { results: ContentItem[], totalCount: number };
 
@@ -61,15 +61,14 @@ export default function Blog() {
           !prevPosts.some(existingPost => existingPost.filename === newPost.filename)
         ),
       ]);
-
-      setIsLoading(false);
     } catch (error) {
       console.error('Error fetching blog posts:', error);
+    } finally {
+      setIsLoading(false);
     }
-  };
+  }, [offset, isLoading]);
 
   useEffect(() => {
-    resetBackground();
     fetchBlogPosts();
   }, []);
 

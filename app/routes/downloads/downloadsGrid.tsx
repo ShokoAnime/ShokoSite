@@ -111,7 +111,6 @@ export default function DownloadsGrid() {
   const [offset, setOffset] = useState(LIMIT);
   const location = useLocation();
   const [loadingRef, isIntersecting] = useSentinel();
-  const { resetBackground } = useBackground();
 
   const fetchMoreDownloads = useCallback(async () => {
     if (downloads.length >= downloadsData.totalCount) return;
@@ -143,10 +142,6 @@ export default function DownloadsGrid() {
       setIsLoading(false);
     }
   }, [downloadType, offset, colorOptions, themeOptions, downloads.length, downloadsData.totalCount]);
-
-  useEffect(() => {
-    resetBackground();
-  }, [resetBackground]);
 
   useEffect(() => {
     if (isIntersecting && !isLoading && downloads.length < downloadsData.totalCount) {
