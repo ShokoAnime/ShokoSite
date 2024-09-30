@@ -1,6 +1,5 @@
-import { ReactNode, useMemo } from 'react';
+import { ReactNode, useMemo, useState } from 'react';
 import { useLocation } from '@remix-run/react';
-import cx from 'classnames';
 import Header from '~/components/layout/Header';
 import Footer from '~/components/layout/Footer';
 import { useSetPageTitle } from '~/hooks/useSetPageTitle';
@@ -11,11 +10,13 @@ type PageWrapperProps = {
 };
 
 const PageWrapper = ({ children }: PageWrapperProps) => {
+  const [lastPage, setLastPage] = useState<string>();
   const { pathname: currentURL } = useLocation();
   const { backgroundImage, backgroundImageFull } = useBackground();
 
   const currentPage = useMemo(() => {
     const segments = currentURL.split('/').filter(Boolean);
+    setLastPage(segments[0]);
     return segments.length > 0 ? segments[segments.length - 1] : '';
   }, [currentURL]);
 
@@ -30,14 +31,18 @@ const PageWrapper = ({ children }: PageWrapperProps) => {
   const banner = useMemo(() => {
     if (currentURL === '/') {
       return '/images/banners/main-banner.jpg';
-    } else if (backgroundImage !== null) {
-      return backgroundImage;
     } else if (currentURL.includes('blog/') && !backgroundImageFull) {
+      return backgroundImage;
+    } else if (!currentURL.includes('blog/')) {
+      return getRandomBanner();
+    } else if (currentPage === lastPage) {
+      return getRandomBanner();
+    } else if (backgroundImage !== null) {
       return backgroundImage;
     } else {
       return getRandomBanner();
     }
-  }, [backgroundImage, backgroundImageFull, currentURL]);
+  }, [backgroundImage, currentURL]);
 
   const backgroundGradient = useMemo(() => ({
     backgroundImage: `linear-gradient(to bottom, 
@@ -55,10 +60,7 @@ const PageWrapper = ({ children }: PageWrapperProps) => {
     <div className="relative min-h-screen">
       {banner && (
         <div
-          className={cx(
-            'absolute inset-0 bg-cover bg-center bg-no-repeat',
-            backgroundImageFull ? 'h-dvh' : 'h-[850px]',
-          )}
+          className="absolute inset-0 h-[850px] bg-cover bg-center bg-no-repeat"
           style={backgroundGradient}
         />
       )}

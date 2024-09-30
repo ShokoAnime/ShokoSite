@@ -3,6 +3,15 @@ import { Links, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/reac
 import './css/tailwind.css';
 import PageWrapper from '~/components/layout/PageWrapper';
 
+export function links() {
+  return [
+    {
+      rel: 'icon',
+      href: '/favicon.ico',
+    },
+  ];
+}
+
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
