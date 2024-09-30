@@ -6,10 +6,10 @@ import PageHero from '~/components/layout/PageHero';
 import DownloadCard from '~/components/downloads/DownloadCard';
 import MultiSelectDropdown from '~/components/common/MultiSelectDropdown';
 import { Palette, SunMoon } from 'lucide-react';
-import { useBackground } from '~/hooks/useBackground';
 import { useSentinel } from '~/hooks/useSentinel';
 import { ContentItem } from '~/types/content';
 import { CategorizedTags } from '~/types/downloads';
+import PageNotFound from '~/components/layout/PageNotFound';
 
 type JsonContentItem = Omit<ContentItem, 'meta'> & {
   meta?: ContentItem['meta'];
@@ -27,15 +27,16 @@ export const loader: LoaderFunction = async ({ request }) => {
 
   try {
     const baseUrl = `${url.protocol}//${url.host}`;
-    const downloadsResponse = await fetch(
+    const response = await fetch(
       `${baseUrl}/api/getFiles?type=${downloadType}&offset=${offset}&limit=${LIMIT}&sort=${SORT}&tags=${
         [...colorOptions, ...themeOptions].join(', ')
       }`,
     );
 
-    if (!downloadsResponse.ok) throw new Error(`HTTP error! status: ${downloadsResponse.status}`);
+    // if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+    if (!response.ok) return json({ results: null, totalCount: 1 });
 
-    const downloadsData = await downloadsResponse.json() as { results: ContentItem[], totalCount: number };
+    const downloadsData = await response.json() as { results: ContentItem[], totalCount: number };
 
     let tagsData: CategorizedTags | null = null;
     if (downloadType === 'webui-themes') {
@@ -102,57 +103,64 @@ export default function DownloadsGrid() {
     downloadType: string;
   }>();
 
-  const [downloads, setDownloads] = useState<ContentItem[]>(() =>
-    downloadsData.results.filter((item): item is ContentItem => item.meta !== undefined)
-  );
+  const [downloads, setDownloads] = useState<ContentItem[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [colorOptions, setColorOptions] = useState<string[]>([]);
   const [themeOptions, setThemeOptions] = useState<string[]>([]);
-  const [offset, setOffset] = useState(LIMIT);
+  const [offset, setOffset] = useState(0);
   const location = useLocation();
   const [loadingRef, isIntersecting] = useSentinel();
 
-  const fetchMoreDownloads = useCallback(async () => {
-    if (downloads.length >= downloadsData.totalCount) return;
+  const fetchMoreDownloads = useCallback(
+    async (offsetParam = offset) => {
+      if (downloads.length >= downloadsData.totalCount) return;
 
-    try {
-      setIsLoading(true);
-      const response = await fetch(
-        `/api/getFiles?type=${downloadType}&offset=${offset}&limit=${LIMIT}&sort=${SORT}&tags=${
-          [...colorOptions, ...themeOptions].join(', ')
-        }`,
-      );
+      try {
+        setIsLoading(true);
+        const response = await fetch(
+          `/api/getFiles?type=${downloadType}&offset=${offsetParam}&limit=${LIMIT}&sort=${SORT}&tags=${
+            [...colorOptions, ...themeOptions].join(', ')
+          }`,
+        );
 
-      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
-      const data = await response.json() as { results: JsonContentItem[], totalCount: number };
+        const data = (await response.json()) as { results: JsonContentItem[], totalCount: number };
 
-      setDownloads(prevDownloads => [
-        ...prevDownloads,
-        ...data.results
-          .filter((item): item is ContentItem => item.meta !== undefined)
-          .filter((newDownload) =>
-            !prevDownloads.some(existingDownload => existingDownload.filename === newDownload.filename)
-          ),
-      ]);
-      setOffset(prevOffset => prevOffset + LIMIT);
-    } catch (error) {
-      console.error('Error fetching more download items:', error);
-    } finally {
-      setIsLoading(false);
-    }
-  }, [downloadType, offset, colorOptions, themeOptions, downloads.length, downloadsData.totalCount]);
+        setDownloads((prevDownloads) => [
+          ...prevDownloads,
+          ...data.results
+            .filter((item): item is ContentItem => item.meta !== undefined)
+            .filter(
+              (newDownload) =>
+                !prevDownloads.some((existingDownload) => existingDownload.filename === newDownload.filename),
+            ),
+        ]);
+        setOffset((prevOffset) => prevOffset + LIMIT);
+      } catch (error) {
+        console.error('Error fetching more download items:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    },
+    [downloadType, offset, colorOptions, themeOptions, downloads.length],
+  );
+
+  useEffect(() => {
+    setDownloads([]);
+    setOffset(0);
+    fetchMoreDownloads(0);
+  }, [colorOptions, themeOptions]);
 
   useEffect(() => {
     if (isIntersecting && !isLoading && downloads.length < downloadsData.totalCount) {
       fetchMoreDownloads();
     }
-  }, [isIntersecting, isLoading, downloads.length, downloadsData.totalCount, fetchMoreDownloads]);
+  }, [isIntersecting, downloads.length]);
 
-  useEffect(() => {
-    setDownloads(downloadsData.results.filter((item): item is ContentItem => item.meta !== undefined));
-    setOffset(LIMIT);
-  }, [colorOptions, themeOptions, downloadsData.results]);
+  if (downloads.length === 0) {
+    return <PageNotFound />;
+  }
 
   return (
     <>
@@ -181,7 +189,6 @@ export default function DownloadsGrid() {
         </div>
       </div>
       <div ref={loadingRef} />
-      {isLoading && <p>Loading more...</p>}
     </>
   );
 }

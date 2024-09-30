@@ -22,7 +22,7 @@ export const loader: LoaderFunction = async ({ params, request }) => {
     const baseUrl = `${url.protocol}//${url.host}`;
     const response = await fetch(`${baseUrl}/api/getFile?type=blog&filename=${filename}`);
 
-    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+    if (!response.ok) return json({ postData: null });
 
     const postData = await response.json() as ContentItem;
     return json({ postData });
