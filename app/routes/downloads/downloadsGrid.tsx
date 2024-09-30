@@ -158,7 +158,7 @@ export default function DownloadsGrid() {
     }
   }, [isIntersecting, downloads.length]);
 
-  if (downloads.length === 0) {
+  if (downloadsData === undefined) {
     return <PageNotFound />;
   }
 
