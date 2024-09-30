@@ -19,6 +19,7 @@ const Image = ({ src, alt, className = '', zoom = false }: ImageProps) => {
       src={src}
       alt={alt}
       loading="lazy"
+      decoding="async"
       className={`w-full max-w-[330px] rounded-lg shadow-custom transition-opacity duration-500 ease-in-out ${
         imageLoaded ? 'opacity-100' : 'opacity-0'
       } ${className}`}

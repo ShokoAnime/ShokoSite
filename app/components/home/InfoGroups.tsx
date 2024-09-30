@@ -13,9 +13,8 @@ const InfoDetails = [
         <div>
           Shoko streamlines your anime collection by hashing your files and matching them against AniDB’s comprehensive
           database. It automatically fills your collection with detailed information about each series and episode,
-          while also pulling in metadata from other sources. This ensures your collection is fully organized in just a
-          few minutes. With Shoko managing the setup and organization, you can focus on what really matters—choosing
-          your next anime to watch.
+          while also pulling in metadata from other sources. With Shoko managing the setup and organization, you can
+          focus on what really matters—choosing your next anime to watch.
         </div>
         <strong>
           Please be aware that Shoko does not offer any means to download files, stream files from streaming sites, or

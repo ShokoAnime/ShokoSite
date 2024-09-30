@@ -1,7 +1,7 @@
 import React from 'react';
 
 export type ButtonProps = {
-  buttonType: 'primary' | 'outline' | 'round' | 'text';
+  buttonType: 'primary' | 'secondary' | 'outline' | 'round' | 'text';
   children: React.ReactNode;
   className?: string;
   id?: string;

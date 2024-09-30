@@ -32,7 +32,7 @@ export const loader: LoaderFunction = async ({ request }) => {
     const baseUrl = `${url.protocol}//${url.host}`;
     const response = await fetch(`${baseUrl}/api/getFile?type=${type}&filename=${filename}`);
 
-    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+    if (!response.ok) return json({ downloadData: null });
 
     const downloadData = await response.json() as ContentItem;
     return json({ downloadData });

@@ -15,7 +15,15 @@ const UserCard = ({ position, className, name, joinDate, role, image, link }: Us
       style={{ transformOrigin: 'center', willChange: 'transform', position: 'relative' }}
     >
       {image !== 'NA'
-        ? <img className="!mb-0 size-[4.6875rem] !rounded-full" src={image} alt={name} loading="lazy" />
+        ? (
+          <img
+            className="!mb-0 size-[4.6875rem] !rounded-full"
+            src={image}
+            alt={name}
+            loading="lazy"
+            decoding="async"
+          />
+        )
         : (
           <div className="relative flex size-[4.6875rem] items-center justify-center rounded-full border-shoko-border bg-shoko-bg">
             <CircleUser size={32} />

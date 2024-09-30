@@ -1,7 +1,6 @@
-import { useBackground } from '~/hooks/useBackground';
 import PageHero from '~/components/layout/PageHero';
 import Divider from '~/components/layout/Divider';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import HistorySection from '~/components/about/HistorySection';
 import { MetaFunction } from '@remix-run/cloudflare';
 
@@ -31,13 +30,8 @@ export const meta: MetaFunction = () => {
 
 export default function About() {
   const [tab, setTab] = useState('The Early Years');
-  const { resetBackground } = useBackground();
 
   const headers = ['The Early Years', 'The JMM Suite', 'Hello Shoko', 'Modern Shoko'];
-
-  useEffect(() => {
-    resetBackground();
-  }, []);
 
   return (
     <div className="flex flex-col gap-8 lg:gap-16">
@@ -167,7 +161,7 @@ export default function About() {
             other Japanese media types such as manga or J-drama, which was not the program&apos;s intended purpose.
             Interestingly, the original name of the program was Anime Media Manager, but it was changed to Japanese
             Media Manager when one of the original staff members wanted to include support for manga. Due to personal
-            circumstances, that staff member
+            circumstances, that staff member left the project, and the program was never updated to support manga.
           </div>
           <div>
             After a long discussion on name choices, da3dsoul suggested the name Shoko, which ended up being the only

@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import { ReactNode, useMemo } from 'react';
 import { useLocation } from '@remix-run/react';
 import cx from 'classnames';
 import Header from '~/components/layout/Header';
@@ -7,19 +7,19 @@ import { useSetPageTitle } from '~/hooks/useSetPageTitle';
 import { useBackground } from '~/hooks/useBackground';
 
 type PageWrapperProps = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 const PageWrapper = ({ children }: PageWrapperProps) => {
-  const [banner, setBanner] = useState<string | null>(null);
+  const { pathname: currentURL } = useLocation();
   const { backgroundImage, backgroundImageFull } = useBackground();
-  const location = useLocation();
-  const currentURL = location.pathname;
 
-  const getCurrentPage = useMemo(() => {
+  const currentPage = useMemo(() => {
     const segments = currentURL.split('/').filter(Boolean);
     return segments.length > 0 ? segments[segments.length - 1] : '';
   }, [currentURL]);
+
+  useSetPageTitle(currentPage);
 
   const getRandomBanner = () => {
     const totalBanners = 12;
@@ -27,38 +27,38 @@ const PageWrapper = ({ children }: PageWrapperProps) => {
     return `/images/banners/banner-${randomBanner}.jpg`;
   };
 
-  const backgroundGradient = useMemo(() => {
-    return {
-      backgroundImage:
-        `linear-gradient(to bottom, rgba(23, 24, 31, 0.9), rgba(23, 24, 31, 0.9) 60%, rgba(23, 24, 31, 1) 80%
-        ${backgroundImage !== null ? '80%' : '100%'}), url(${banner})`,
-    };
-  }, [backgroundImage, banner]);
-
-  useSetPageTitle(getCurrentPage);
-
-  useEffect(() => {
+  const banner = useMemo(() => {
     if (currentURL === '/') {
-      return setBanner('/images/banners/main-banner.jpg');
+      return '/images/banners/main-banner.jpg';
+    } else if (backgroundImage !== null) {
+      return backgroundImage;
+    } else if (currentURL.includes('blog/') && !backgroundImageFull) {
+      return backgroundImage;
+    } else {
+      return getRandomBanner();
     }
-
-    if (backgroundImage !== null) {
-      return setBanner(backgroundImage);
-    }
-
-    if (currentURL.includes('blog/') && !backgroundImageFull) {
-      return setBanner(backgroundImage);
-    }
-
-    return setBanner(getRandomBanner());
   }, [backgroundImage, backgroundImageFull, currentURL]);
 
+  const backgroundGradient = useMemo(() => ({
+    backgroundImage: `linear-gradient(to bottom, 
+      rgba(23, 24, 31, 0.85), 
+      rgba(23, 24, 31, 0.88) 30%, 
+      rgba(23, 24, 31, 0.93) 50%, 
+      rgba(23, 24, 31, .96) 80%, 
+      rgba(23, 24, 31, .99) 90%, 
+      rgba(23, 24, 31, 1) 95%
+      ${backgroundImage !== null ? '80%' : '100%'}), 
+      url(${banner})`,
+  }), [backgroundImage, banner]);
+
   return (
-    <div className="relative" style={{ minHeight: '100vh' }}>
+    <div className="relative min-h-screen">
       {banner && (
         <div
-          className={cx(`absolute inset-0 bg-cover bg-center bg-no-repeat
-          ${backgroundImageFull ? 'h-dvh' : 'h-[900px]'}`)}
+          className={cx(
+            'absolute inset-0 bg-cover bg-center bg-no-repeat',
+            backgroundImageFull ? 'h-dvh' : 'h-[850px]',
+          )}
           style={backgroundGradient}
         />
       )}
