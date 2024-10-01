@@ -42,31 +42,28 @@ const PageWrapper = ({ children }: PageWrapperProps) => {
     } else {
       return getRandomBanner();
     }
-  }, [backgroundImage, currentURL, backgroundImageFull, currentPage, lastPage]);
+  }, [backgroundImage, currentURL]);
+
+  const backgroundGradient = useMemo(() => ({
+    backgroundImage: `linear-gradient(to bottom, 
+      rgba(23, 24, 31, 0.85), 
+      rgba(23, 24, 31, 0.88) 30%, 
+      rgba(23, 24, 31, 0.93) 50%, 
+      rgba(23, 24, 31, .96) 80%, 
+      rgba(23, 24, 31, .99) 90%, 
+      rgba(23, 24, 31, 1) 95%
+      ${backgroundImage !== null ? '80%' : '100%'}), 
+      url(${banner})`,
+  }), [backgroundImage, banner]);
 
   return (
     <div className="relative min-h-screen">
-      <div className="absolute inset-0 h-[850px] overflow-hidden">
-        <img
-          src={banner ?? '/images/banners/main-banner.jpg'}
-          alt="Page banner"
-          className="size-full object-cover"
-          loading="eager"
-        />
+      {banner && (
         <div
-          className="absolute inset-0"
-          style={{
-            background: `linear-gradient(to bottom, 
-              rgba(23, 24, 31, 0.85), 
-              rgba(23, 24, 31, 0.88) 30%, 
-              rgba(23, 24, 31, 0.93) 50%, 
-              rgba(23, 24, 31, .96) 80%, 
-              rgba(23, 24, 31, .99) 90%, 
-              rgba(23, 24, 31, 1) 95%
-              ${backgroundImage !== null ? '80%' : '100%'})`,
-          }}
+          className="absolute inset-0 h-[850px] bg-cover bg-center bg-no-repeat"
+          style={backgroundGradient}
         />
-      </div>
+      )}
       <Header />
       <div className="relative mx-auto flex h-full min-h-[calc(100vh-221px)] max-w-screen-2xl flex-col px-6">
         {children}
