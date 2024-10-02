@@ -1,0 +1,14 @@
+# Cache images for 30 days
+/images/*
+  Cache-Control: public, max-age=2592000, s-maxage=2592000
+
+# Cache CSS and JavaScript for 7 days
+/css/*
+  Cache-Control: public, max-age=604800, s-maxage=604800
+
+/js/*
+  Cache-Control: public, max-age=604800, s-maxage=604800
+
+# Cache HTML for 5 minutes
+/*
+  Cache-Control: public, max-age=300, s-maxage=300, stale-while-revalidate=60
