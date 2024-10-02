@@ -7,7 +7,7 @@ import { SingleMediaPlayerProps } from '~/types/home';
 const mediaPlayers = [
   {
     program: 'plex',
-    name: 'Shoko Metadata | ShokoRelay',
+    name: 'Shoko Metadata | Shoko Relay',
     type: 'Plex Agent & Scanner',
     link: '/downloads/media-player-plugins',
   },
