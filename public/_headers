@@ -8,7 +8,3 @@
 
 /js/*
   Cache-Control: public, max-age=604800, s-maxage=604800
-
-# Cache HTML for 5 minutes
-/*
-  Cache-Control: public, max-age=300, s-maxage=300, stale-while-revalidate=60
