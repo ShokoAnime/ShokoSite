@@ -68,8 +68,8 @@ export default function About() {
           <div>
             In the same year, a user on the MediaPortal forums announced the development of an anime plugin called My
             Anime. It generated significant interest among users, as MediaPortal had difficulty properly cataloging
-            anime, making such a plugin highly desirable. However, for reasons unknown, the the user abandoned the
-            project before a working version was released.
+            anime, making such a plugin highly desirable. However, for reasons unknown, the user abandoned the project
+            before a working version was released.
           </div>
           <div>
             Iwerndly, who had been closely following the plugin&apos;s development, stepped in and decided to create his
@@ -165,17 +165,17 @@ export default function About() {
           </div>
           <div>
             After a long discussion on name choices, da3dsoul suggested the name Shoko, which ended up being the only
-            name the entire staff agreed on. As development moved forward, Linux support became official, and the next
+            name that the entire staff agreed on. As development moved forward, Linux support became official, and the next
             major goal for the team was optimization. Over the next couple of years, Shoko saw vast improvements in its
             speed, database design, and architecture design. Refactoring the now 12+ year old codebase became a priority
-            to better resolve bugs and make Shoko more developer-friendly to encourage contribution.
+            to better resolve bugs, make Shoko more developer-friendly, and encourage contribution.
           </div>
           <div>
-            While work continued forward, the team decided that Shoko Desktop would eventually need to be replaced due
+            While the work continued, the team decided that Shoko Desktop would eventually need to be replaced due
             to its aging codebase and problematic design, which prevented making Shoko Desktop a more modern and fast
             Windows application. The team initially decided to begin work on what was being called{' '}
             <strong>Shoko Desktop 2</strong>{' '}
-            with EC leading the project and selected the same software stack as Shoko Desktop.
+            with EC leading the project and selecting the same software stack as Shoko Desktop.
           </div>
         </HistorySection>
       )}
@@ -184,19 +184,19 @@ export default function About() {
         <HistorySection
           title="Modern Shoko"
           years="2020 - Present"
-          programs={['Shoko Server', 'Shoko Server Web UI', 'Nakamori', 'ShokoMetadata', 'Shokofin', 'ShokoRelay']}
+          programs={['Shoko Server', 'Shoko Server Web UI', 'Nakamori', 'ShokoMetadata', 'Shokofin', 'Shoko Relay']}
         >
           <div>
-            Development on Shoko Desktop 2 had come to a near standstill due to issues and a lack of developer time
+            Development on Shoko Desktop 2 had come to a near standstill due to issues and a lack of the developer time
             needed for the project. The team decided to switch the codebase and use a web stack with Electron as a
-            wrapper to still provide a desktop application that would now be cross-platform. Development on Shoko
+            wrapper to still provide a desktop application (that would now be cross-platform). Development on Shoko
             Desktop 2 took a backseat as EC and Avael focused on the Server Web UI with development picking up again
             after version 1.00 of the Server Web UI was released.
           </div>
           <div>
             A proof of concept was released and received positively, providing users with minimal collection
-            interaction. Development continued with Shoko Desktop 2 seeing multiple design revisions, both public and
-            private, for a while. Eventually, the Shoko team, not wanting to support what was essentially two separate
+            interaction. Development continued for a while, with Shoko Desktop 2 seeing multiple design revisions, both
+            public and private. Eventually, the Shoko team, not wanting to support what was essentially two separate
             Web UIs, decided to merge the two projects together into a new Web UI encompassing features from Shoko
             Server and Shoko Desktop.
           </div>
@@ -210,7 +210,7 @@ export default function About() {
           <div>
             In the meantime, the team continued to work on the Web UI, with multiple design revisions made both publicly
             and privately. In mid-2022, a beta version of the new Web UI was publicly released. Development on both the
-            plugin and the Web UI continues to this day, with the Shoko team dedicated to improving and enhancing their
+            plugin and the Web UI continues to this day, with the Shoko team dedicated to improving and enhancing the
             software for their users.
           </div>
         </HistorySection>
