@@ -114,6 +114,7 @@ export const honorable: ContributorsProps[] = [
     name: 'Queuecumbr',
     avatar_url: 'https://avatars.githubusercontent.com/u/11492746?v=4',
     url: 'https://github.com/Queuecumbr',
+    honorable: true,
   },
 ];
 
