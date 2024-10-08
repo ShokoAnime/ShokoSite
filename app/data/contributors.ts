@@ -110,14 +110,14 @@ export const honorable: ContributorsProps[] = [
     url: 'https://github.com/funniray',
     honorable: true,
   },
-];
-
-export const contributors: ContributorsProps[] = [
   {
     name: 'Queuecumbr',
     avatar_url: 'https://avatars.githubusercontent.com/u/11492746?v=4',
     url: 'https://github.com/Queuecumbr',
   },
+];
+
+export const contributors: ContributorsProps[] = [
   {
     name: 'Terrails',
     avatar_url: 'https://avatars.githubusercontent.com/u/8273440?v=4',
@@ -402,5 +402,20 @@ export const contributors: ContributorsProps[] = [
     name: 'Momongaka',
     avatar_url: 'https://avatars.githubusercontent.com/u/43152492?v=4',
     url: 'https://github.com/Momongaka',
+  },
+  {
+    name: 'duriancrepe',
+    avatar_url: 'https://avatars.githubusercontent.com/u/94508990?v=4',
+    url: 'https://github.com/duriancrepe',
+  },
+  {
+    name: 'ale183',
+    avatar_url: 'https://avatars.githubusercontent.com/u/8809439?v=4',
+    url: 'https://github.com/ale183',
+  },
+  {
+    name: 'cxooda',
+    avatar_url: 'https://avatars.githubusercontent.com/u/174280289?v=4',
+    url: 'https://github.com/cxooda',
   },
 ];
