@@ -120,18 +120,18 @@ export default function Downloads() {
           count={downloadsList['mediaPlayerPlugins']}
           link="/downloads/media-player-plugins"
         />
-        {/*<DownloadListItem*/}
-        {/*  name="Web UI Themes"*/}
-        {/*  description="Browse our collection of user submitted themes to enhance the Web UI. "*/}
-        {/*  count={downloadsList['themes']}*/}
-        {/*  link="/downloads/webui-themes"*/}
-        {/*/>*/}
-        {/*<DownloadListItem*/}
-        {/*  name="Renamer Plugins"*/}
-        {/*  description="Plugins to replace Shoko’s built-in renamer functionality"*/}
-        {/*  count={downloadsList['renamer']}*/}
-        {/*  link="/downloads/renamer-plugins"*/}
-        {/*/>*/}
+        <DownloadListItem
+          name="Web UI Themes"
+          description="Browse our collection of user submitted themes to enhance the Web UI. "
+          count={downloadsList['themes']}
+          link="/downloads/webui-themes"
+        />
+        <DownloadListItem
+          name="Renamer Plugins"
+          description="Plugins to replace Shoko’s built-in renamer functionality"
+          count={downloadsList['renamer']}
+          link="/downloads/renamer-plugins"
+        />
         <DownloadListItem
           name="Legacy Apps"
           description="Deprecated apps that are listed for archival purposes only."

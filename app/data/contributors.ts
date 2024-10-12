@@ -105,7 +105,7 @@ export const honorable: ContributorsProps[] = [
     honorable: true,
   },
   {
-    name: 'funniray',
+    name: 'SnowKit',
     avatar_url: 'https://avatars.githubusercontent.com/u/16416198?v=4',
     url: 'https://github.com/funniray',
     honorable: true,
