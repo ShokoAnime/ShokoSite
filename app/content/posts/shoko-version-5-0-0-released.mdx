@@ -1,0 +1,90 @@
+---
+title: "Shoko Version 5.0.0 Released"
+quick: "New Web UI, Proper TMDB Support, Improved Queue Processor, and More!"
+image: "shoko-version-5-0-0.jpg"
+date: "2024-10-12"
+tags: [ "Shoko Server", "Shoko Desktop", ]
+devs: [ "Avael", "Baine", "Cazzar", "Da3dsoul", "duehoa1211", "ElementalCrisis", "fearnlj01", "SnowKit", "MaxPiva", "Mik1ll", "Mohan226", "Natyusha", "Queuecumbr", "Revam", "Terrails" ]
+---
+
+After over a year in development, we are excited to announce the release of **Shoko Version 5.0.0**! This release is,
+without a doubt, the biggest we've had in a long time, packed with numerous new features, improvements, and bug fixes.
+We've worked tirelessly to make Shoko better than ever, and we can't wait to share all the exciting changes with you.
+
+For a comprehensive list of all the changes in this release, please visit
+our [Changelog](https://docs.shokoanime.com/changelog/shoko-server). We highly recommend reviewing it to explore all the
+new features and improvements in detail. Below, we've highlighted some of the major changes.
+
+## Why The Long Wait?
+
+In the past, we've mentioned our intention to release updates more frequently. However, the primary focus of this
+release was to replace the [TVDB](https://www.thetvdb.com) metadata integration
+with [TMDB](https://www.themoviedb.org/?language=en-US). Although we had some limited support for TMDB before, it was
+never fully implemented. As work on this feature progressed, development on the Web UI accelerated as well, expanding
+the scope of this release from just TMDB support to a complete overhaul of the Web UI.
+
+## New Web UI
+
+One of the most significant changes in this release is the brand-new, improved Web UI. It now offers near feature parity
+with Shoko Desktop, allowing users to manage nearly every aspect of their collection directly from the Web UI.
+Initially, this wasn’t planned for this release, but as the scope grew and more time was dedicated to the Web UI, it
+became clear that achieving feature parity with Shoko Desktop was essential.
+
+Beyond feature parity, the Web UI has been redesigned for better usability and smoother navigation. We took the time to
+gather user feedback and incorporated it into the new design. While there’s always room for improvement, we encourage
+you to share your thoughts or suggestions. Since the Web UI can now be released independently of Shoko Server, users can
+enjoy new features and updates without waiting for a server release.
+
+We **strongly** recommend checking out the [Redesigned Shoko Docs](https://docs.shokoanime.com). These docs are
+specifically designed for the new Web UI and will help you get started, understand the latest features, and even
+discover some cool additions, like **theme support**.
+
+### How to Upgrade the Web UI
+
+To upgrade to the new Web UI, follow these steps:
+
+- Open settings in the Web UI.
+- Change the Web UI update channel to "stable" (if it’s not already set to that).
+- Click on "update available" to start the update.
+- After the update, the Web UI will log you out, but it will still display the old login page.
+- Open the Web UI in a new tab to access the new interface.
+
+## Queue Processor
+
+Improving the old queue system has been a long-standing task. The previous system only supported three specific workers,
+with one task running per worker. Often, this led to only one worker being active at a time since the other tasks were
+tied to that worker, causing delays in queue processing.
+
+The new Queue Processor is a complete rewrite of the old system. It removes the worker limitation, now supporting
+multiple workers, with the number of workers depending on your setup. It also allows for task prioritization, which
+Shoko automatically handles. This improvement has significantly sped up queue processing by ensuring tasks that could
+cause bottlenecks no longer block the entire queue. If Shoko encounters tasks with external dependencies that delay
+processing, the Queue Processor will automatically reallocate workers to other tasks, ensuring smooth and efficient
+queue progression.
+
+## TMDB Support
+
+We’ve been discussing full TMDB support since
+our [Shoko 2021 Project Update](https://shokoanime.com/blog/shoko-2021-project-update/). After months of work and
+testing, we are thrilled to announce that Shoko now fully supports TMDB metadata for both series and movies! Similar to
+the old TVDB linking system, Shoko will automatically attempt to link your series and movies to TMDB. In cases where
+automatic linking fails, a fallback system allows users to manually link the data.
+
+The TMDB integration supports one-to-one, one-to-many, and many-to-one relationships, providing more flexibility when
+handling discrepancies between AniDB and TMDB data.
+
+## Shoko Desktop Improvements
+
+While the Web UI is intended to be the primary way to interact with Shoko going forward, we understand that some users
+still prefer using Shoko Desktop. In the past, we mentioned that support for Shoko Desktop would eventually be dropped,
+and we even labeled it a legacy application. Although we’ve implemented a few fixes for Shoko Desktop in this release,
+we still encourage users to switch to the Web UI. Full support for Shoko Desktop will be discontinued in the near
+future.
+
+## Enough Reading—Get Shoko 5.0.0 Now!
+
+To download the latest release and view the detailed changelog, head over to
+our [Downloads Page](https://shokoanime.com/downloads/).
+
+We hope you enjoy the new features and improvements in this release. As always, we greatly appreciate your feedback and
+support. Happy organizing!

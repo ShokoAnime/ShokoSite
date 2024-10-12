@@ -1,0 +1,9 @@
+{
+  "name": "Shoko Blue",
+  "version": "1.2.0",
+  "author": "EC",
+  "description": "Hello V6. A Dark Blue theme that at one point was going to be the default them for the Shoko Web UI.",
+  "tags": ["Dark Theme", "Blue", "Black"],
+  "cssUrl": "https://shokoanime.com/webui-themes/shoko-blue.css",
+  "updateUrl": "https://shokoanime.com/webui-themes/shoko-blue.json"
+}
