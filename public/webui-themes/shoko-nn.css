@@ -1,0 +1,114 @@
+& {
+    /* COLOUR VARIABLES */
+    --ui-colour-accent:#ea005e;
+    --ui-colour-accent2:#a497b0;
+    --ui-colour-highlight:#94aad1;
+    --ui-colour-important:#00ab3f;
+    --ui-colour-danger:#cc0000;
+    --ui-colour-danger-hover:#a30000;
+    --ui-colour-warning:#f9c851;
+    --ui-colour-base:#1c1c1c;
+    --ui-colour-dark:#0f0f0f;
+    --ui-colour-dark2:#151515;
+    --ui-colour-hover:#2e2e2e;
+    --ui-colour-text:#dedede;
+    --ui-colour-text-hover:#ffffff;
+
+    /* COLOUR REASSIGNMENT */
+    --button-danger:var(--ui-colour-danger);
+    --button-danger-border:var(--ui-colour-dark);
+    --button-danger-hover:var(--ui-colour-danger-hover);
+    --button-danger-text:var(--ui-colour-dark);
+    --button-primary:var(--ui-colour-accent2);
+    --button-primary-border:var(--ui-colour-dark);
+    --button-primary-hover:var(--ui-colour-accent);
+    --button-primary-text:var(--ui-colour-dark);
+    --button-secondary:var(--ui-colour-dark2);
+    --button-secondary-border:var(--ui-colour-dark2);
+    --button-secondary-hover:var(--ui-colour-hover);
+    --button-secondary-text:var(--ui-colour-text-hover);
+    --header-background:var(--ui-colour-base);
+    --header-icon:var(--ui-colour-text);
+    --header-icon-primary:var(--ui-colour-accent);
+    --header-text:var(--ui-colour-text-hover);
+    --header-text-important:var(--ui-colour-important);
+    --header-user-background:var(--ui-colour-accent);
+    --header-user-text:var(--ui-colour-accent);
+    --panel-background:var(--ui-colour-base);
+    --panel-background-alt:var(--ui-colour-dark);
+    --panel-background-selected-row:var(--ui-colour-hover);
+    --panel-background-overlay:color-mix(in srgb, var(--ui-colour-dark) 90%, transparent);
+    --panel-background-poster-overlay:color-mix(in srgb, var(--ui-colour-dark) 70%, transparent);
+    --panel-background-transparent:color-mix(in srgb, var(--ui-colour-base) 70%, transparent);
+    --panel-border:var(--ui-colour-dark);
+    --panel-icon:var(--ui-colour-text);
+    --panel-icon-action:var(--ui-colour-highlight);
+    --panel-icon-danger:var(--ui-colour-danger);
+    --panel-icon-important:var(--ui-colour-important);
+    --panel-icon-warning:var(--ui-colour-warning);
+    --panel-input:var(--ui-colour-dark2);
+    --panel-menu-item-background:var(--ui-colour-dark);
+    --panel-menu-item-background-hover:var(--ui-colour-hover);
+    --panel-menu-item-text:var(--ui-colour-text-hover);  
+    --panel-table-header:var(--ui-colour-dark);
+    --panel-tags:var(--ui-colour-base);
+    --panel-text:var(--ui-colour-text);
+    --panel-text-danger:var(--ui-colour-danger);
+    --panel-text-important:var(--ui-colour-important);
+    --panel-text-other:var(--ui-colour-text);
+    --panel-text-primary:var(--ui-colour-highlight);
+    --panel-text-warning:var(--ui-colour-warning);
+    --panel-toggle-background:var(--ui-colour-dark);
+    --panel-toggle-background-alt:var(--ui-colour-dark2);
+    --panel-toggle-background-hover:var(--ui-colour-hover);
+    --panel-toggle-text:var(--ui-colour-text-hover);
+    --panel-toggle-text-alt:var(--ui-colour-text); 
+    --slider-background:var(--ui-colour-base);
+    --slider-background-alt:var(--ui-colour-base);
+    --slider-color:var(--ui-colour-dark);
+    --slider-color-alt:var(--ui-colour-dark);
+    --topnav-background:var(--ui-colour-base);
+    --topnav-border:var(--ui-colour-base);
+    --topnav-icon:var(--ui-colour-text);
+    --topnav-icon-important:var(--ui-colour-important);
+    --topnav-icon-primary:var(--ui-colour-accent);
+    --topnav-icon-warning:var(--ui-colour-warning);
+    --topnav-text:var(--ui-colour-text);
+    --topnav-text-primary:var(--ui-colour-accent);
+    --logo-skin:#eea47b;
+    --logo-outline:#000000;
+    --logo-face-shadow:#925648;
+    --logo-eye-ref1:#fafcf9;
+    --logo-eye-ref2:#efeefa;
+    --logo-eye-ref3:#f8e8ff;
+    --logo-eye-gradient1:#514271;
+    --logo-eye-gradient2:#c98ccb;
+    --logo-eye-gradient3:#f9c2ff;
+    --logo-hair-gradient1:#b8977f;
+    --logo-hair-gradient2:#eddeaf;
+    --logo-hair-gradient3:#ece1b8;
+}
+
+/* WHEN VARIABLES FAIL */
+/* remove top nav vertical padding */
+div.mx-auto.flex.w-full.items-center.justify-between.px-6.py-2{padding:0 1.5rem}
+
+/* reduce nav link vertical padding */
+div.mx-auto.flex.w-full.justify-between.px-6.py-4{padding-top:0 .5rem}
+
+/* invert main scrollbar colours */
+.shoko-scrollbar.scroll-gutter{scrollbar-color:var(--slider-background) var(--slider-color)}
+
+/* reduce common padding value */
+.p-6{padding:1rem}
+
+/* adjust sidepanel for padding change */
+div.border-panel-border.bg-panel-background.sticky.top-24.ml-6{top:5.35rem}
+
+/* make logs more compact */
+div.w-full.overflow-y-auto.rounded-lg.border-16.border-panel-input.bg-panel-input.contain-strict{
+    font-size:.9em;
+    border:none;
+    background-color:var(--ui-colour-base);
+}
+div.flex.gap-x-6.pt-2{padding-top:.2rem}
