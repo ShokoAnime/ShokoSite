@@ -93,9 +93,6 @@
 /* remove top nav vertical padding */
 div.mx-auto.flex.w-full.items-center.justify-between.px-6.py-2{padding:0 1.5rem}
 
-/* reduce nav link vertical padding */
-div.mx-auto.flex.w-full.justify-between.px-6.py-4{padding-top:0 .5rem}
-
 /* invert main scrollbar colours */
 .shoko-scrollbar.scroll-gutter{scrollbar-color:var(--slider-background) var(--slider-color)}
 

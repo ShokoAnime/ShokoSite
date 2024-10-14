@@ -58,7 +58,7 @@ const InternalLink = ({ title, route, isActive, onClick }: InternalLinksProps) =
     key={title}
     to={route}
     onClick={onClick}
-    className={cx('flex items-center gap-x-2 text-shoko-18', isActive && '!text-shoko-link')}
+    className={cx('flex items-center gap-x-2 text-shoko-18 transition-colors', isActive && '!text-shoko-link')}
   >
     {title}
   </Link>
@@ -70,7 +70,7 @@ const ExternalLink = ({ title, url, icon }: ExternalLinksProps) => (
     href={url}
     target="_blank"
     rel="noopener noreferrer"
-    className="flex items-center gap-x-2 text-shoko-18"
+    className="flex items-center gap-x-2 text-shoko-18 transition-colors"
   >
     {icon}
     <span>{title}</span>
@@ -160,7 +160,7 @@ const Header = () => {
               alt="Shoko Site"
               className="size-16"
             />
-            <Link to="/">
+            <Link to="/" className="transition-colors">
               Shoko
             </Link>
           </div>
