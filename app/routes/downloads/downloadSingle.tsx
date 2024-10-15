@@ -120,7 +120,7 @@ export default function DownloadSingle() {
         <div className="flex w-full max-w-[850px] flex-col gap-8">
           <HeaderBuilder title="Info">
             {downloadData.meta.resources.map((resource: { name: string, url: string }) => (
-              <a className="flex gap-2" key={resource.name} href={resource.url} target="_blank" rel="noreferrer">
+              <a className="flex gap-2 transition-colors" key={resource.name} href={resource.url} target="_blank" rel="noreferrer">
                 {iconName[resource.name.toLowerCase()]}
                 <span className="hidden md:inline-flex">{resource.name}</span>
               </a>
