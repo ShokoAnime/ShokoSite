@@ -23,12 +23,6 @@ const mediaPlayers = [
     type: 'Kodi Plugin',
     link: '/downloads/media-player-plugins',
   },
-  {
-    program: 'MediaPortal',
-    name: 'My Anime 3',
-    type: 'MediaPortal 1 Plugin',
-    link: '/downloads/media-player-plugins/my-anime-3',
-  },
 ];
 
 const SingleMediaPlayer = ({ program, name, type, link }: SingleMediaPlayerProps) => {
