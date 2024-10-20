@@ -9,7 +9,7 @@ import LatestNews from '~/components/home/LatestNews';
 export const meta: MetaFunction = () => {
   const pageTitle = 'Shoko | Anime Management System';
   const pageDescription =
-    'The all-in-one, feature-packed, cross-platform anime management system with support for Plex, Jellyfin, Kodi, and MediaPortal. Let Shoko handle your collection setup and organization so you can focus on what really matters—choosing your next anime to watch.';
+    'The all-in-one, feature-packed, cross-platform anime management system with support for Plex, Jellyfin, and Kodi. Let Shoko handle your collection setup and organization so you can focus on what really matters—choosing your next anime to watch.';
   const pageImage = `https://shokoanime.com/images/banners/main-banner.jpg`;
   const pageURL = 'https://shokoanime.com/';
 
