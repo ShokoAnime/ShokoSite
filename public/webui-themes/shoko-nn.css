@@ -94,7 +94,7 @@
 div.mx-auto.flex.w-full.items-center.justify-between.px-6.py-2{padding:0 1.5rem}
 
 /* invert main scrollbar colours */
-.shoko-scrollbar.scroll-gutter{scrollbar-color:var(--slider-background) var(--slider-color)}
+.scroll-gutter{scrollbar-color:var(--slider-background) var(--slider-color)}
 
 /* reduce common padding value */
 .p-6{padding:1rem}
