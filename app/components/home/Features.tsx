@@ -34,7 +34,7 @@ const SingleFeature = ({ icon, title, description, descriptionLink }: SingleFeat
     <div className="flex max-w-[330px] flex-col gap-4 text-center 2xl:text-start">
       <div className="flex items-center justify-center gap-x-3 2xl:justify-start">
         {icon}
-        <div className="jus text-shoko-18 font-semibold">
+        <div className="text-shoko-18 font-semibold">
           {title}
         </div>
       </div>
