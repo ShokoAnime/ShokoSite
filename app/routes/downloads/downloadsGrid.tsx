@@ -5,7 +5,7 @@ import { convertToProperName } from '~/lib/convertToProperName';
 import PageHero from '~/components/layout/PageHero';
 import DownloadCard from '~/components/downloads/DownloadCard';
 import MultiSelectDropdown from '~/components/common/MultiSelectDropdown';
-import { Palette, SunMoon } from 'lucide-react';
+import { Lightbulb, Palette, SunMoon } from 'lucide-react';
 import { useSentinel } from '~/hooks/useSentinel';
 import { ContentItem } from '~/types/content';
 import { CategorizedTags } from '~/types/downloads';
@@ -168,21 +168,51 @@ export default function DownloadsGrid() {
         title={convertToProperName(location.pathname.split('/').pop() ?? 'downloads')}
       />
       <div className="my-16 flex flex-col gap-6">
-        {tagsData && (
-          <div className="flex gap-4 pt-4">
-            <MultiSelectDropdown
-              title="Select Type"
-              icon={<SunMoon />}
-              options={tagsData.themes}
-              setSelectedOptions={setThemeOptions}
-            />
-            <MultiSelectDropdown
-              title="Select Colors"
-              icon={<Palette />}
-              options={tagsData.colors}
-              setSelectedOptions={setColorOptions}
-            />
+        {location.pathname.includes('legacy-apps') && (
+          <div className="flex items-center rounded-lg border border-yellow-700 bg-yellow-700/15 p-3">
+            <Lightbulb size="20" className="mr-2" />
+            Deprecated apps that are listed for archival purposes only.{' '}
+            <a
+              className="mx-1 text-shoko-link"
+              href="https://docs.shokoanime.com/getting-started/available-programs-plugins"
+              rel="nofollow noreferrer"
+              target="_blank"
+            >
+              Click Here
+            </a>
+            to Learn More.
           </div>
+        )}
+        {tagsData && (
+          <>
+            <div className="flex items-center rounded-lg border border-blue-700 bg-blue-700/15 p-3">
+              <Lightbulb size="20" className="mr-2" />
+              Submit Your Own Theme!
+              <a
+                className="mx-1 text-shoko-link"
+                href="https://docs.shokoanime.com/shoko-server/webui-themes"
+                rel="nofollow noreferrer"
+                target="_blank"
+              >
+                Click Here
+              </a>
+              to Learn How.
+            </div>
+            <div className="flex gap-4 pt-4">
+              <MultiSelectDropdown
+                title="Select Type"
+                icon={<SunMoon />}
+                options={tagsData.themes}
+                setSelectedOptions={setThemeOptions}
+              />
+              <MultiSelectDropdown
+                title="Select Colors"
+                icon={<Palette />}
+                options={tagsData.colors}
+                setSelectedOptions={setColorOptions}
+              />
+            </div>
+          </>
         )}
         <div className="flex flex-wrap justify-center gap-4 lg:justify-start">
           {downloads.map((download) => <DownloadCard key={download.meta.name} data={download} />)}
