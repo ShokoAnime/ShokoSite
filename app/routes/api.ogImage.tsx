@@ -73,7 +73,7 @@ export const loader: LoaderFunction = async ({ request }) => {
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'row' }}>
-          <img src={siteIcon} alt="Site Icon" style={{ width: 100, height: 100 }} />
+          <img src={siteIcon} alt="Site Icon" style={{ width: 117, height: 100 }} />
           <div style={{ display: 'flex', flexDirection: 'column', marginLeft: 20 }}>
             <div style={{ display: 'flex', fontSize: 42, fontFamily: 'Space Grotesk' }}>Shoko</div>
             <div style={{ display: 'flex', fontSize: 24, fontFamily: 'Figtree' }}>Anime Management System</div>
