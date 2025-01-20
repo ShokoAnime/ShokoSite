@@ -422,6 +422,16 @@ export const contributors: ContributorsProps[] = [
   {
     name: 'Arimil',
     avatar_url: 'https://avatars.githubusercontent.com/u/1839179?v=4',
-    url: 'https://github.com/Renari ',
+    url: 'https://github.com/Renari',
+  },
+  {
+    name: 'Ariane-B',
+    avatar_url: 'https://avatars.githubusercontent.com/u/6244273?v=4',
+    url: 'https://github.com/Ariane-B',
+  },
+  {
+    name: 'rts-kotori',
+    avatar_url: 'https://avatars.githubusercontent.com/u/138137644?v=4',
+    url: 'https://github.com/rts-kotori',
   },
 ];
