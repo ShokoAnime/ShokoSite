@@ -1,0 +1,9 @@
+{
+  "name": "Shoko AniBlackle",
+  "version": "1.0.0",
+  "author": "Mik1ll ",
+  "description": "Dark theme inspired by deriDIOt's AniDB style AniBlackle2.",
+  "tags": ["Dark Theme", "Grey", "Black", "Green"],
+  "cssUrl": "https://shokoanime.com/webui-themes/shoko-aniblackle.css",
+  "updateUrl": "https://shokoanime.com/webui-themes/shoko-aniblackle.json"
+}
