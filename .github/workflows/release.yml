@@ -142,16 +142,38 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Prepare files directory
+      - name: Upload releases.json to server
+        shell: pwsh
+        env:
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
         run: |
-          mkdir -p files
-          cp releases.json files/
-
-      - name: FTP Deploy
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./files/
-          server-dir: /files/
+          $user = $env:FTP_USERNAME
+          $password = $env:FTP_PASSWORD
+          $ftp_server = $env:FTP_SERVER
+          $current = $env:GITHUB_WORKSPACE
+          
+          # Read the releases.json file
+          $fileBytes = [System.IO.File]::ReadAllBytes("$current/releases.json")
+          
+          # Create FTP request
+          $request = [System.Net.WebRequest]::Create("$ftp_server/files/releases.json")
+          $request.Method = [System.Net.WebRequestMethods+Ftp]::UploadFile
+          $request.Credentials = New-Object System.Net.NetworkCredential($user, $password)
+          $request.UseBinary = $true
+          $request.ContentLength = $fileBytes.Length
+          
+          # Upload the file
+          try {
+              $requestStream = $request.GetRequestStream()
+              $requestStream.Write($fileBytes, 0, $fileBytes.Length)
+              $requestStream.Close()
+              $response = $request.GetResponse()
+              $response.Close()
+              Write-Host "Successfully uploaded releases.json"
+          }
+          catch {
+              Write-Error "Failed to upload releases.json: $_"
+              throw $_
+          }
