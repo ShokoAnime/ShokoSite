@@ -1,0 +1,147 @@
+name: Update Release Stats
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Runs at 00:00 UTC every day
+  workflow_dispatch:      # Allows manual trigger from the GitHub UI
+
+jobs:
+  update-stats:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/release-test'
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Create stats script
+        run: |
+          cat > update-stats.mjs << 'EOL'
+          import { writeFile } from "node:fs/promises";
+          import { env, exit } from "node:process";
+          
+          const {
+              GITHUB_API_URL = "https://api.github.com",
+              GITHUB_TOKEN
+          } = env;
+
+          // List of repositories to fetch stats for
+          const REPOSITORIES = [
+              "ShokoAnime/Shokofin",
+              "ShokoAnime/ShokoServer",
+              // Add more repositories here
+          ];
+          
+          const now = Date.now();
+          
+          async function fetchRepositoryStats(repository) {
+              const releases = [];
+              let pageCounter = 0;
+              let responseJson = [];
+          
+              try {
+                  do {
+                      if (pageCounter > 0) {
+                          await new Promise((resolve) => setTimeout(resolve, 100));
+                      }
+                      console.log(`Fetching page ${pageCounter + 1} for ${repository}…`);
+          
+                      const response = await fetch(
+                          `${GITHUB_API_URL}/repos/${repository}/releases?per_page=100&page=${++pageCounter}`,
+                          {
+                              headers: {
+                                  'Authorization': `Bearer ${GITHUB_TOKEN}`,
+                                  'Accept': 'application/vnd.github.v3+json',
+                                  'X-GitHub-Api-Version': '2022-11-28'
+                              }
+                          }
+                      );
+          
+                      if (!response.ok) {
+                          throw new Error(`GitHub API request failed for ${repository}: ${response.status} ${response.statusText}`);
+                      }
+          
+                      responseJson = await response.json();
+          
+                      for (const release of responseJson) {
+                          if (!release.assets || release.assets.length === 0) {
+                              console.log(`Skipping release ${release.tag_name} in ${repository} - no assets found`);
+                              continue;
+                          }
+          
+                          releases.push({
+                              version: release.tag_name.replace(/[vV]/, "").replace("-dev.", "."),
+                              tag: release.tag_name,
+                              releasedAt: new Date(release.published_at).toISOString(),
+                              pre: release.prerelease,
+                              downloadCount: release.assets[0].download_count,
+                              downloadUrl: release.assets[0].browser_download_url,
+                              url: release.html_url,
+                          });
+                      }
+                  } while (responseJson.length === 100);
+          
+                  return {
+                      fetchedAt: new Date(now).toISOString(),
+                      stats: {
+                          overallDownloads: releases.reduce((total, release) => total + release.downloadCount, 0),
+                          devDownloads: releases.filter((release) => release.pre)
+                              .reduce((total, release) => total + release.downloadCount, 0),
+                          stableDownloads: releases.filter((release) => !release.pre)
+                              .reduce((total, release) => total + release.downloadCount, 0),
+                      },
+                      stable: releases.find((release) => !release.pre),
+                      dev: releases.find((release) => release.pre),
+                      releases,
+                  };
+              } catch (error) {
+                  console.error(`Error fetching stats for ${repository}:`, error);
+                  return null;
+              }
+          }
+          
+          try {
+              const allStats = {};
+          
+              for (const repo of REPOSITORIES) {
+                  console.log(`Processing repository: ${repo}`);
+                  const repoName = repo.split('/')[1];  // Extract repo name from full path
+                  const stats = await fetchRepositoryStats(repo);
+          
+                  if (stats) {
+                      allStats[repoName] = stats;
+                  }
+              }
+          
+              await writeFile("./releases.json", JSON.stringify(allStats, null, 2));
+              console.log("Successfully updated releases.json");
+          
+          } catch (error) {
+              console.error("Error updating release stats:", error);
+              exit(1);
+          }
+          EOL
+
+      - name: Run stats script
+        run: node update-stats.mjs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Prepare files directory
+        run: |
+          mkdir -p files
+          cp releases.json files/
+
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./files/
+          server-dir: /files/
