@@ -41,8 +41,13 @@ jobs:
           } = env;
 
           const REPOSITORIES = [
-              "ShokoAnime/Shokofin",
               "ShokoAnime/ShokoServer",
+              "ShokoAnime/ShokoDesktop",
+              "ShokoAnime/Shokofin",
+              "ShokoAnime/Shokodi",
+              "Cazzar/ShokoMetadata.bundle",
+              "natyusha/ShokoRelay.bundle",
+              "bigretromike/nakamori",
           ];
           
           const now = Date.now();
