@@ -4,13 +4,23 @@ on:
   schedule:
     - cron: '0 0 * * *'  # Runs at 00:00 UTC every day
   workflow_dispatch:      # Allows manual trigger from the GitHub UI
+  push:
+    branches:
+      - release-test     # Added push trigger for testing
 
 jobs:
   update-stats:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/release-test'
-
+    
     steps:
+      - name: Check branch
+        run: |
+          echo "Current branch: ${{ github.ref }}"
+          if [[ "${{ github.ref }}" != "refs/heads/release-test" ]]; then
+            echo "This workflow should only run on release-test branch"
+            exit 1
+          fi
+
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -43,14 +53,14 @@ jobs:
               const releases = [];
               let pageCounter = 0;
               let responseJson = [];
-          
+              
               try {
                   do {
                       if (pageCounter > 0) {
                           await new Promise((resolve) => setTimeout(resolve, 100));
                       }
                       console.log(`Fetching page ${pageCounter + 1} for ${repository}…`);
-          
+                      
                       const response = await fetch(
                           `${GITHUB_API_URL}/repos/${repository}/releases?per_page=100&page=${++pageCounter}`,
                           {
@@ -61,19 +71,19 @@ jobs:
                               }
                           }
                       );
-          
+                      
                       if (!response.ok) {
                           throw new Error(`GitHub API request failed for ${repository}: ${response.status} ${response.statusText}`);
                       }
-          
+                      
                       responseJson = await response.json();
-          
+                      
                       for (const release of responseJson) {
                           if (!release.assets || release.assets.length === 0) {
                               console.log(`Skipping release ${release.tag_name} in ${repository} - no assets found`);
                               continue;
                           }
-          
+                          
                           releases.push({
                               version: release.tag_name.replace(/[vV]/, "").replace("-dev.", "."),
                               tag: release.tag_name,
@@ -85,7 +95,7 @@ jobs:
                           });
                       }
                   } while (responseJson.length === 100);
-          
+                  
                   return {
                       fetchedAt: new Date(now).toISOString(),
                       stats: {
@@ -107,20 +117,20 @@ jobs:
           
           try {
               const allStats = {};
-          
+              
               for (const repo of REPOSITORIES) {
                   console.log(`Processing repository: ${repo}`);
                   const repoName = repo.split('/')[1];  // Extract repo name from full path
                   const stats = await fetchRepositoryStats(repo);
-          
+                  
                   if (stats) {
                       allStats[repoName] = stats;
                   }
               }
-          
+              
               await writeFile("./releases.json", JSON.stringify(allStats, null, 2));
               console.log("Successfully updated releases.json");
-          
+              
           } catch (error) {
               console.error("Error updating release stats:", error);
               exit(1);
