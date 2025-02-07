@@ -44,6 +44,7 @@ jobs:
           const REPOSITORIES = [
               "ShokoAnime/Shokofin",
               "ShokoAnime/ShokoServer",
+              "ShokoAnime/ShokoServer",
               // Add more repositories here
           ];
           
@@ -140,7 +141,7 @@ jobs:
       - name: Run stats script
         run: node update-stats.mjs
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
 
       - name: Upload releases.json to server
         shell: pwsh
