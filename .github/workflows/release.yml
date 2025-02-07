@@ -41,13 +41,8 @@ jobs:
           } = env;
 
           const REPOSITORIES = [
-              "ShokoAnime/ShokoServer",
-              "ShokoAnime/ShokoDesktop",
               "ShokoAnime/Shokofin",
-              "ShokoAnime/Shokodi",
-              "Cazzar/ShokoMetadata.bundle",
-              "natyusha/ShokoRelay.bundle",
-              "bigretromike/nakamori",
+              "ShokoAnime/ShokoServer",
           ];
           
           const now = Date.now();
@@ -87,13 +82,23 @@ jobs:
                               continue;
                           }
                           
+                          // Calculate total download count across all assets
+                          const totalDownloadCount = release.assets.reduce((sum, asset) => sum + asset.download_count, 0);
+                          
+                          // Create asset information array
+                          const assets = release.assets.map(asset => ({
+                              name: asset.name,
+                              downloadCount: asset.download_count,
+                              downloadUrl: asset.browser_download_url
+                          }));
+                          
                           releases.push({
                               version: release.tag_name.replace(/[vV]/, "").replace("-dev.", "."),
                               tag: release.tag_name,
                               releasedAt: new Date(release.published_at).toISOString(),
                               pre: release.prerelease,
-                              downloadCount: release.assets[0].download_count,
-                              downloadUrl: release.assets[0].browser_download_url,
+                              downloadCount: totalDownloadCount,
+                              assets: assets,
                               url: release.html_url,
                           });
                       }
@@ -117,7 +122,7 @@ jobs:
                           tag: stableRelease.tag,
                           releasedAt: stableRelease.releasedAt,
                           downloadCount: stableRelease.downloadCount,
-                          downloadUrl: stableRelease.downloadUrl,
+                          assets: stableRelease.assets,
                           url: stableRelease.url
                       } : null,
                       dev: devRelease ? {
@@ -125,7 +130,7 @@ jobs:
                           tag: devRelease.tag,
                           releasedAt: devRelease.releasedAt,
                           downloadCount: devRelease.downloadCount,
-                          downloadUrl: devRelease.downloadUrl,
+                          assets: devRelease.assets,
                           url: devRelease.url
                       } : null
                   };
