@@ -6,7 +6,7 @@ on:
   workflow_dispatch:      # Allows manual trigger from the GitHub UI
   push:
     branches:
-      - release-test     # Added push trigger for testing
+      - release-test
 
 jobs:
   update-stats:
@@ -40,12 +40,14 @@ jobs:
               GITHUB_TOKEN
           } = env;
 
-          // List of repositories to fetch stats for
           const REPOSITORIES = [
+              "ShokoAnime/ShokoServer",
+              "ShokoAnime/ShokoDesktop",
               "ShokoAnime/Shokofin",
-              "ShokoAnime/ShokoServer",
-              "ShokoAnime/ShokoServer",
-              // Add more repositories here
+              "ShokoAnime/Shokodi",
+              "Cazzar/ShokoMetadata.bundle",
+              "natyusha/ShokoRelay.bundle",
+              "bigretromike/nakamori",
           ];
           
           const now = Date.now();
@@ -97,6 +99,10 @@ jobs:
                       }
                   } while (responseJson.length === 100);
                   
+                  // Find stable and dev releases
+                  const stableRelease = releases.find(release => !release.pre);
+                  const devRelease = releases.find(release => release.pre);
+                  
                   return {
                       fetchedAt: new Date(now).toISOString(),
                       stats: {
@@ -106,9 +112,22 @@ jobs:
                           stableDownloads: releases.filter((release) => !release.pre)
                               .reduce((total, release) => total + release.downloadCount, 0),
                       },
-                      stable: releases.find((release) => !release.pre),
-                      dev: releases.find((release) => release.pre),
-                      releases,
+                      stable: stableRelease ? {
+                          version: stableRelease.version,
+                          tag: stableRelease.tag,
+                          releasedAt: stableRelease.releasedAt,
+                          downloadCount: stableRelease.downloadCount,
+                          downloadUrl: stableRelease.downloadUrl,
+                          url: stableRelease.url
+                      } : null,
+                      dev: devRelease ? {
+                          version: devRelease.version,
+                          tag: devRelease.tag,
+                          releasedAt: devRelease.releasedAt,
+                          downloadCount: devRelease.downloadCount,
+                          downloadUrl: devRelease.downloadUrl,
+                          url: devRelease.url
+                      } : null
                   };
               } catch (error) {
                   console.error(`Error fetching stats for ${repository}:`, error);
@@ -121,7 +140,7 @@ jobs:
               
               for (const repo of REPOSITORIES) {
                   console.log(`Processing repository: ${repo}`);
-                  const repoName = repo.split('/')[1];  // Extract repo name from full path
+                  const repoName = repo.split('/')[1];
                   const stats = await fetchRepositoryStats(repo);
                   
                   if (stats) {
@@ -155,17 +174,14 @@ jobs:
           $ftp_server = $env:FTP_SERVER
           $current = $env:GITHUB_WORKSPACE
           
-          # Read the releases.json file
           $fileBytes = [System.IO.File]::ReadAllBytes("$current/releases.json")
           
-          # Create FTP request
           $request = [System.Net.WebRequest]::Create("$ftp_server/files/releases.json")
           $request.Method = [System.Net.WebRequestMethods+Ftp]::UploadFile
           $request.Credentials = New-Object System.Net.NetworkCredential($user, $password)
           $request.UseBinary = $true
           $request.ContentLength = $fileBytes.Length
           
-          # Upload the file
           try {
               $requestStream = $request.GetRequestStream()
               $requestStream.Write($fileBytes, 0, $fileBytes.Length)
