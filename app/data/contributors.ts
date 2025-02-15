@@ -434,4 +434,9 @@ export const contributors: ContributorsProps[] = [
     avatar_url: 'https://avatars.githubusercontent.com/u/138137644?v=4',
     url: 'https://github.com/rts-kotori',
   },
+  {
+    name: 'pokyunni',
+    avatar_url: 'https://avatars.githubusercontent.com/u/16944731?v=4',
+    url: 'https://github.com/pokyunn',
+  },
 ];
