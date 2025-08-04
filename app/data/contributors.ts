@@ -16,13 +16,6 @@ export const staff: ContributorsProps[] = [
     role: 'Web / Plugin Dev',
   },
   {
-    name: 'ElementalCrisis',
-    avatar_url: 'https://avatars.githubusercontent.com/u/9443295?v=4',
-    url: 'https://github.com/ElementalCrisis',
-    join_date: '2015',
-    role: 'Designer / Web Dev',
-  },
-  {
     name: 'revam',
     avatar_url: 'https://avatars.githubusercontent.com/u/7761729?v=4',
     url: 'https://github.com/revam',
@@ -74,6 +67,14 @@ export const staff: ContributorsProps[] = [
 ];
 
 export const honorable: ContributorsProps[] = [
+  {
+    name: 'ElementalCrisis',
+    avatar_url: 'https://avatars.githubusercontent.com/u/9443295?v=4',
+    url: 'https://github.com/ElementalCrisis',
+    // join_date: '2015',
+    // role: 'Designer / Web Dev',
+    honorable: true,
+  },
   {
     name: 'krbrs',
     avatar_url: 'https://avatars.githubusercontent.com/u/57227244?v=4',
