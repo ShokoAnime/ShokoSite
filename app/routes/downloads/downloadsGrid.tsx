@@ -1,6 +1,6 @@
-import { LoaderFunction, MetaFunction, json } from '@remix-run/cloudflare';
+import { LoaderFunction, MetaFunction } from '@remix-run/cloudflare';
 import { useLoaderData, useLocation } from '@remix-run/react';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState, useRef } from 'react';
 import { convertToProperName } from '~/lib/convertToProperName';
 import PageHero from '~/components/layout/PageHero';
 import DownloadCard from '~/components/downloads/DownloadCard';
@@ -10,6 +10,7 @@ import { useSentinel } from '~/hooks/useSentinel';
 import { ContentItem } from '~/types/content';
 import { CategorizedTags } from '~/types/downloads';
 import PageNotFound from '~/components/layout/PageNotFound';
+import { GitHubRelease } from '~/types/githubRelease';
 
 type JsonContentItem = Omit<ContentItem, 'meta'> & {
   meta?: ContentItem['meta'];
@@ -34,7 +35,7 @@ export const loader: LoaderFunction = async ({ request }) => {
     );
 
     // if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-    if (!response.ok) return json({ results: null, totalCount: 1 });
+    if (!response.ok) return { results: null, totalCount: 1 };
 
     const downloadsData = await response.json() as { results: ContentItem[], totalCount: number };
 
@@ -57,7 +58,7 @@ export const loader: LoaderFunction = async ({ request }) => {
       }
     }
 
-    return json({ downloadsData, tagsData, downloadType });
+    return { downloadsData, tagsData, downloadType };
   } catch (error) {
     console.error('Error fetching data:', error);
     throw new Response('Not Found', { status: 404 });
@@ -110,6 +111,7 @@ export default function DownloadsGrid() {
   const [offset, setOffset] = useState(0);
   const location = useLocation();
   const [loadingRef, isIntersecting] = useSentinel();
+  const isInitialMount = useRef(true);
 
   const fetchMoreDownloads = useCallback(
     async (offsetParam = offset) => {
@@ -126,6 +128,20 @@ export default function DownloadsGrid() {
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
         const data = (await response.json()) as { results: JsonContentItem[], totalCount: number };
+        for (const result of data.results) {
+          if (result.meta.githubRepository) {
+            const ghReleaseResponse = await fetch(`/api/getGitHubRelease/${result.meta.githubRepository}`);
+            if (ghReleaseResponse.ok) {
+              const ghRelease: GitHubRelease = await ghReleaseResponse.json();
+              result.meta.version = ghRelease.tag_name.startsWith("v") ? ghRelease.tag_name.slice(1) : ghRelease.tag_name;
+              result.meta.date = new Date(ghRelease.created_at).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+              });
+            }
+          }
+        }
 
         setDownloads((prevDownloads) => [
           ...prevDownloads,
@@ -147,9 +163,13 @@ export default function DownloadsGrid() {
   );
 
   useEffect(() => {
-    setDownloads([]);
-    setOffset(0);
-    fetchMoreDownloads(0);
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+    } else {
+      setDownloads([]);
+      setOffset(0);
+      fetchMoreDownloads(0);
+    }
   }, [colorOptions, themeOptions]);
 
   useEffect(() => {
