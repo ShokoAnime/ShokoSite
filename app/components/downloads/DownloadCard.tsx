@@ -1,3 +1,5 @@
+import Button from '~/components/common/Button';
+import { Download } from 'lucide-react';
 import { Link } from '@remix-run/react';
 import { convertNameToUrl } from '~/lib/convertNameToUrl';
 import Image from '~/components/common/Image';
@@ -55,7 +57,7 @@ const DownloadCard = ({ data }: DownloadCardProps) => {
           : (
             <div>
               <div className="text-shoko-14 font-semibold text-shoko-text-75">Version</div>
-              <div className="text-shoko-14 font-semibold">{data.meta.version}</div>
+              <div className="text-shoko-14 font-semibold">Version {data.meta.version}</div>
             </div>
           )}
         <div>

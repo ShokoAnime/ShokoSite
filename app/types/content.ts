@@ -1,3 +1,5 @@
+import React from 'react';
+
 export type Meta = {
   image: string;
   images: { url: string, alt: string }[];
