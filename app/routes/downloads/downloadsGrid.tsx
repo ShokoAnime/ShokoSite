@@ -1,4 +1,4 @@
-import { LoaderFunction, MetaFunction } from '@remix-run/cloudflare';
+import { LoaderFunction, MetaFunction, json } from '@remix-run/cloudflare';
 import { useLoaderData, useLocation } from '@remix-run/react';
 import { useCallback, useEffect, useState, useRef } from 'react';
 import { convertToProperName } from '~/lib/convertToProperName';
@@ -35,7 +35,7 @@ export const loader: LoaderFunction = async ({ request }) => {
     );
 
     // if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-    if (!response.ok) return { results: null, totalCount: 1 };
+    if (!response.ok) return json({ results: null, totalCount: 1 });
 
     const downloadsData = await response.json() as { results: ContentItem[], totalCount: number };
 
@@ -58,7 +58,7 @@ export const loader: LoaderFunction = async ({ request }) => {
       }
     }
 
-    return { downloadsData, tagsData, downloadType };
+    return json({ downloadsData, tagsData, downloadType });
   } catch (error) {
     console.error('Error fetching data:', error);
     throw new Response('Not Found', { status: 404 });
