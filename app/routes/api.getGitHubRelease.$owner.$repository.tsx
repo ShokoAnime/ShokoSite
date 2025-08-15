@@ -1,4 +1,4 @@
-import { LoaderFunction } from "@remix-run/cloudflare";
+import { LoaderFunction, json } from "@remix-run/cloudflare";
 import { GitHubRelease } from "../types/githubRelease";
 
 interface CacheEntry {
@@ -8,7 +8,7 @@ interface CacheEntry {
 
 const releaseCache: { [k: string]: CacheEntry } = {};
 
-const CACHE_DURATION_MS = 60 * 60 * 1000; // 1 Hour
+const CACHE_DURATION_MS = 24 * 60 * 60 * 1000; // 24 Hours
 
 export const loader: LoaderFunction = async ({ params }) => {
     const repository: string = `${params.owner}/${params.repository}`;
@@ -26,11 +26,16 @@ export const loader: LoaderFunction = async ({ params }) => {
             'X-GitHub-Api-Version': '2022-11-28',
         }
     };
-    const response = await fetch(url, reqOpts);
-    if (!response.ok)
-        return null;
+    try {
+        const response = await fetch(url, reqOpts);
+        if (!response.ok)
+            return new Response('Not Found', { status: 404 });
 
-    const release: GitHubRelease = await response.json();
-    releaseCache[key] = { release: release, timestamp: now };
-    return release;
+        const release: GitHubRelease = await response.json();
+        releaseCache[key] = { release: release, timestamp: now };
+        return json(release);
+    } catch (error) {
+        console.error("Error fetching github release: ", error);
+        return new Response('Not Found', { status: 404 });
+    }
 }

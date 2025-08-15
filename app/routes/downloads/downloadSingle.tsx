@@ -1,4 +1,4 @@
-import { LoaderFunction, MetaFunction } from '@remix-run/cloudflare';
+import { LoaderFunction, MetaFunction, json } from '@remix-run/cloudflare';
 import { useLoaderData } from '@remix-run/react';
 import { ContentItem } from '~/types/content';
 import PageNotFound from '~/components/layout/PageNotFound';
@@ -33,7 +33,7 @@ export const loader: LoaderFunction = async ({ request }) => {
     const baseUrl = `${url.protocol}//${url.host}`;
     const response = await fetch(`${baseUrl}/api/getFile?type=${type}&filename=${filename}`);
 
-    if (!response.ok) return { downloadData: null };
+    if (!response.ok) return json({ downloadData: null });
 
     const downloadData = await response.json() as ContentItem;
     if (downloadData.meta.githubRepository) {
@@ -48,7 +48,7 @@ export const loader: LoaderFunction = async ({ request }) => {
         });
       }
     }
-    return { downloadData };
+    return json({ downloadData });
   } catch (error) {
     console.error('Error fetching download data:', error);
     throw new Response('Not Found', { status: 404 });
