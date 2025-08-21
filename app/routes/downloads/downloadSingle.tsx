@@ -9,6 +9,7 @@ import { HeaderBuilderProps, IconNameProps } from '~/types/downloads';
 import { SiDiscord, SiGithub } from '@icons-pack/react-simple-icons';
 import { BookHeart, Download, ScrollText, Tags } from 'lucide-react';
 import { sanitizeContent } from '~/lib/sanitizeContent';
+import { GitHubRelease } from '~/types/githubRelease';
 
 const HeaderBuilder = ({ title, children }: HeaderBuilderProps) => (
   <div className="flex items-center justify-between gap-y-6 border-b border-shoko-divider pb-3">
@@ -35,6 +36,18 @@ export const loader: LoaderFunction = async ({ request }) => {
     if (!response.ok) return json({ downloadData: null });
 
     const downloadData = await response.json() as ContentItem;
+    if (downloadData.meta.githubRepository) {
+      const ghReleaseResponse = await fetch(`${baseUrl}/api/getGitHubRelease/${downloadData.meta.githubRepository}`);
+      if (ghReleaseResponse.ok) {
+        const ghRelease: GitHubRelease = await ghReleaseResponse.json();
+        downloadData.meta.version = ghRelease.tag_name.startsWith("v") ? ghRelease.tag_name.slice(1) : ghRelease.tag_name;
+        downloadData.meta.date = new Date(ghRelease.created_at).toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        });
+      }
+    }
     return json({ downloadData });
   } catch (error) {
     console.error('Error fetching download data:', error);
@@ -59,11 +72,9 @@ export const meta: MetaFunction = ({ data }: any) => {
   const sanitizedDescription = sanitizeContent(downloadData.content);
   const sanitizedUrl = downloadData.filename.replace('.mdx', '');
 
-  const ogImageUrl = `https://shokoanime.com/api/ogImage?title=${encodeURIComponent(`${downloadTitle}`)}&summary=${
-    encodeURIComponent(sanitizedDescription)
-  }&date=${encodeURIComponent(`${downloadDate}`)}&version=${encodeURIComponent(downloadVersion)}&pageUrl=${
-    encodeURIComponent(`https://shokoanime.com/downloads/${sanitizedUrl}`)
-  }&backgroundImage=${encodeURIComponent(downloadImage)}`;
+  const ogImageUrl = `https://shokoanime.com/api/ogImage?title=${encodeURIComponent(`${downloadTitle}`)}&summary=${encodeURIComponent(sanitizedDescription)
+    }&date=${encodeURIComponent(`${downloadDate}`)}&version=${encodeURIComponent(downloadVersion)}&pageUrl=${encodeURIComponent(`https://shokoanime.com/downloads/${sanitizedUrl}`)
+    }&backgroundImage=${encodeURIComponent(downloadImage)}`;
 
   return [
     { title: downloadData.meta.name },
