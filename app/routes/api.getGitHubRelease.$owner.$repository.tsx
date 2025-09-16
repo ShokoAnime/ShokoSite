@@ -19,7 +19,12 @@ export const loader: LoaderFunction = async ({ params }) => {
             }
         });
         if (!githubResponse.ok) {
-          console.error("Bad github API response:", githubResponse);
+          const text = await githubResponse.text();
+          console.error("Bad github API response:", {
+            status: githubResponse.status,
+            headers: Object.fromEntries(githubResponse.headers),
+            body: text
+          });
           return new Response('Not Found', {status: 404});
         }
 
