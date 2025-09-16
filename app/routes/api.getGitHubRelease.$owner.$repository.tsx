@@ -16,6 +16,7 @@ export const loader: LoaderFunction = async ({ params }) => {
             headers: {
                 'Accept': 'application/vnd.github+json',
                 'X-GitHub-Api-Version': '2022-11-28',
+                'User-Agent': 'request',
             }
         });
         if (!githubResponse.ok) {
