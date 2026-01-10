@@ -440,4 +440,34 @@ export const contributors: ContributorsProps[] = [
     avatar_url: 'https://avatars.githubusercontent.com/u/16944731?v=4',
     url: 'https://github.com/pokyunn',
   },
+  {
+    name: 'atajsic',
+    avatar_url: 'https://avatars.githubusercontent.com/u/570505?v=4',
+    url: 'https://github.com/atajsic',
+  },
+  {
+    name: 'Foowy',
+    avatar_url: 'https://avatars.githubusercontent.com/u/49217685?v=4',
+    url: 'https://github.com/Foowy',
+  },
+  {
+    name: 'SilentBot1',
+    avatar_url: 'https://avatars.githubusercontent.com/u/15065825?v=4',
+    url: 'https://github.com/SilentBot1',
+  },
+  {
+    name: 'pokyunn',
+    avatar_url: 'https://avatars.githubusercontent.com/u/16944731?v=4',
+    url: 'https://github.com/pokyunn',
+  },
+  {
+    name: 'lbux',
+    avatar_url: 'https://avatars.githubusercontent.com/u/30765968?v=4',
+    url: 'https://github.com/lbux',
+  },
+  {
+    name: 'vyressi',
+    avatar_url: 'https://avatars.githubusercontent.com/u/39210984?v=4',
+    url: 'https://github.com/vyressi',
+  },
 ];
