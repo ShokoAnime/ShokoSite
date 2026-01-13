@@ -470,4 +470,14 @@ export const contributors: ContributorsProps[] = [
     avatar_url: 'https://avatars.githubusercontent.com/u/39210984?v=4',
     url: 'https://github.com/vyressi',
   },
+  {
+    name: 'GlawenC',
+    avatar_url: 'https://avatars.githubusercontent.com/u/183620539?v=4',
+    url: 'https://github.com/GlawenC',
+  },
+  {
+    name: 'viart',
+    avatar_url: 'https://avatars.githubusercontent.com/u/488812?v=4',
+    url: 'https://github.com/viart',
+  },
 ];
