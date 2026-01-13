@@ -1,0 +1,71 @@
+---
+title: "Shokofin 6.0.0 Released"
+quick: "A feature-packed release with new major features, bug fixes, and more!"
+image: "shokofin-6-0-0-released.jpg"
+date: "2026-01-13"
+anime: "None"
+tags: [ "Shokofin" ]
+devs: [ "fearnlj01", "GlawenC", "krbrs", "Orski174", "Queuecumbr", "Revam", "viart" ]
+---
+
+It’s been 14 months since our last major release, and in that time we shipped six hot patches to keep pace with **Jellyfin** 10.10/10.11 and **Shoko Server** 5.0/5.1, hardened the plugin on libraries in the wild, all the while quietly working on the next major version in the background. Now that it’s time, we are happy to announce **Shokofin** 6.0.0, a feature-packed release that has been accumulating over the last year. A huge thank you to everyone who contributed to this release, be it bug reports, code contributions, documentation work, testing, or feedback!
+
+If you’re new to Shokofin, start with our [introduction post](/blog/introducing-shokofin-jellyfin-plugin), check the [docs](https://docs.shokoanime.com/jellyfin/installing-shokofin), or explore the [GitHub repo](https://github.com/ShokoAnime/Shokofin).
+
+Before proceeding with the update, be sure to update your Shoko Server instance to **5.2.1** and your Jellyfin instance to **10.11.5** or newer. It is recommended to recreate your plugin managed libraries after the update, but this is not a requirement, just a time-saving recommendation. With that out of the way, let’s get to it!
+
+## TMDb Arrives + Multi‑Structure Libraries
+
+Some of you may remember the promise made during the 5.0.0 release about the TMDb support coming in the next feature update. Well, it’s finally here!
+
+Along with the internal restructuring to support multiple structures within the same library as well as the ability to override the base structure per library, we also added a new structure alongside the existing **AniDB Anime** and **Shoko Groups** structures you can use; **TMDb Shows & Movies** structure. You can now set your preferred base structure, and override when you find out reality doesn’t fit neatly into a single model.
+
+This new structure brings more native handling for TMDb shows and movies, but also lets you intentionally map _TMDb shows as movies_[¹](#¹) or _TMDb movies as shows_ if that works better for your library, along with support for TMDb movie collections. In show libraries, movie collections can appear as shows/seasons/episodes, and in movie libraries, they can appear as proper Collections — provided you've enabled collections for movies in the plugin settings. We've also added support for selecting a preferred **alternate ordering**[²](#²) in Shoko to use per TMDb show in the plugin, if you've configured Shoko to download alternate orderings.
+
+In addition to the new structure, support for TMDb metadata is now available across all structures — studios, content ratings, production locations, tags, and genres — and you can decide which sources to apply. We’ve also aligned the naming of TMDb in the plugin settings UI to "TheMovieDb" to match with Jellyfin's UI.
+
+<span id="¹">¹ <i>Please don&apos;t actually try this for your own sanity&apos;s sake.</i></span>
+
+<span id="²">² <i>Or &quot;episode groups&quot; in native TMDb terminology.</i></span>
+
+## New Series Configuration Utility
+
+The new series configuration tab lets you shape behavior on per Shoko series basis. The UI includes a quick search/selection to find the exact series you intend to tweak. You can change structure, choose how seasons are ordered, decide where specials go (as specials, folded in after normal episodes, or as extras), and opt in or out of season merging, among other things. Season merging itself has also matured and graduated from experimental since the last release, now with better, more deterministic logic.
+
+## Titles, Descriptions, Artwork
+
+We've overhauled the way we handle titles, descriptions, and artwork. You can now configure these settings on a per-entity, per-library-structure basis. Per-entity-type overrides for titles, descriptions, and images are exposed in the settings, providing power when you want it, and sane defaults when you don't.
+
+For titles we've added support for setting multiple alternate/original titles with configurable ordering and fallbacks. This will allow you to display and search for more titles compared to previously, while also looking neat in the UI. We now also ignore placeholder episode names like "Episode X," "OVA," etc., to during title selection, and to let Jellyfin handle the fallback name if there are no episode titles available.
+
+For descriptions we've reworked the description cleanup from an on/off toggle to a more fine-grained selection of options. Select between Markdown (the default), plain-text, or no transformation at all. The new plain-text option is useful for users of clients which don't support Markdown parsing, such as Kodi. Additionally, we've separated the AniDB notes from the description, and added the ability to toggle if you want to append the AniDB notes to the description, enabled by default to match the previous behavior. Separating the notes allows us to to now fall through to the next description sources if the description is otherwise empty.
+
+Image selection is now more deliberate: you can now select preferred languages per image type (poster, banner/thumbnail, logo), and the automatic image search logic is now more fine-grained with even more settings. Text-less posters are enabled by default for new and upgraded installs. to match the old behavior.
+
+## New External URL Handling
+
+After updating the external url handling to the new framework we can now expose more links for all supported entities. That means we can link to all the AniDB, Shoko, and TMDb pages for all entities — without compromising on the number of links shown in the UI. Each link will include the ID of the linked entity in the name (e.g. "AniDB (a69)" for One Piece), so multiple links for the same provider will still be distinguishable. Before the new links can be shown, you first have to refresh the metadata for the entity or library, either with 'Add Missing Metadata' or 'Replace All Metadata' selected.
+
+## VFS, Now 100% Less "Virtual"
+
+Since 5.0, new installs have defaulted to a "physical" VFS for new installs. With 6.0 we've removed the old "virtual" option entirely, making the VFS is now physical on all installs. **Heads‑up!** If you’ve been using the plugin since before 5.0 and were still using the virtual mode up until now, your library will appear to reset on first refresh/scan when the VFS gets physically attached to it. Your files aren’t touched, but you will see a one‑time reconfiguration and regeneration of the library in the UI.
+
+After 6.0 with the VFS enabled, Jellyfin now _only_ sees your attached VFS root and any _ignored_ paths; the plugin will automatically detach and manage your underlying "managed/import folders" internally. This simplifies scans and real‑time monitoring of the libraries, and it keeps Jellyfin from peeking into paths we abstract away. You can add/remove folders per library and mark paths to be ignored by the plugin and live beside the VFS in the library — including dropping a `.shoko‑ignore` file on disk to automatically ignore newly discovered locations.
+
+We added guardrails to make VFS safer in the real world since the last major release. If any managed path is offline or faulted, we skip new generation to avoid wiping links. External sidecars are handled more gracefully end‑to‑end. Trickplay, subtitles, and external audio can be moved between the VFS and the underlying library as needed — including upgrading trickplay sets when the VFS holds a newer version. If a link is broken we now fail safely. External audio support was added by **@viart**. In a future update, local artwork files — posters, backdrops, series/season logos, and episode thumbnails — will get the same treatment, letting you move images between the VFS and your underlying library.
+
+Under the hood, directory walking and structure generation should be much faster (especially on NAS/remote storage), and post‑scan work has been split into multiple scheduled tasks so you can see progress and cancel pieces independently, in addition to it not blocking the scan from finishing. There’s also an experimental iterative generation mode that only links newly imported or changed files — it’s been stable and a big win on slower servers, but we’re still labeling it experimental for now until it has matured a bit more.
+
+## Multiple Versions Ordering
+
+Multiple versions support has been upgraded, and we now support ordering[³](#³) the versions by several different criteria. By default we order only by the 'date imported,' but you can change the ordering as an _advanced setting_ if you feel like it. Thanks to **@GlawenC** for doing the research needed to implement this feature and for providing the initial implementation.
+
+<span id="³">³ <i>We can only provide hints, and ultimately it&apos;s up to Jellyfin to decide the final order, as it sorts the list each time it retrieves it.</i></span>
+
+## Additional Changes
+
+Not everything made it into this blog post, so you can check out the [GitHub Release](https://github.com/ShokoAnime/Shokofin/releases/tag/v6.0.0), [our changelog](https://docs.shokoanime.com/changelog/shokofin/), or the [full changelog on GitHub](https://github.com/ShokoAnime/Shokofin/compare/5.0.0...6.0.0) if you crave more _minute details_ on all the changes that went into this release.
+
+## Shokofin Download & Install
+
+Check [our docs](https://docs.shokoanime.com/jellyfin/installing-shokofin) for install instructions.
