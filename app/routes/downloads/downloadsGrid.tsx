@@ -134,7 +134,7 @@ export default function DownloadsGrid() {
             if (ghReleaseResponse.ok) {
               const ghRelease: GitHubRelease = await ghReleaseResponse.json();
               result.meta.version = ghRelease.tag_name.startsWith("v") ? ghRelease.tag_name.slice(1) : ghRelease.tag_name;
-              result.meta.date = new Date(ghRelease.created_at).toLocaleDateString('en-US', {
+              result.meta.date = new Date(ghRelease.published_at || ghRelease.created_at).toLocaleDateString('en-US', {
                 year: 'numeric',
                 month: 'long',
                 day: 'numeric'

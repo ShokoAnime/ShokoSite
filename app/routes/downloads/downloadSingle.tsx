@@ -41,7 +41,7 @@ export const loader: LoaderFunction = async ({ request }) => {
       if (ghReleaseResponse.ok) {
         const ghRelease: GitHubRelease = await ghReleaseResponse.json();
         downloadData.meta.version = ghRelease.tag_name.startsWith("v") ? ghRelease.tag_name.slice(1) : ghRelease.tag_name;
-        downloadData.meta.date = new Date(ghRelease.created_at).toLocaleDateString('en-US', {
+        downloadData.meta.date = new Date(ghRelease.published_at || ghRelease.created_at).toLocaleDateString('en-US', {
           year: 'numeric',
           month: 'long',
           day: 'numeric'
