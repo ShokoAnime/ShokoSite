@@ -4,6 +4,6 @@
   "author": "revam",
   "description": "An inverse color scheme of the Dark Blue theme that at one point was going to be the default theme for the Shoko Web UI, with the logo colors from the Shoko NN.",
   "tags": ["Light Theme", "Yellow", "Purple"],
-  "cssUrl": "https://shokoanime.com/webui-themes/shoko-vanille-plum.css",
-  "updateUrl": "https://shokoanime.com/webui-themes/shoko-vanille-plum.json"
+  "cssUrl": "https://shokoanime.com/webui-themes/shoko-vanilla-plum.css",
+  "updateUrl": "https://shokoanime.com/webui-themes/shoko-vanilla-plum.json"
 }
