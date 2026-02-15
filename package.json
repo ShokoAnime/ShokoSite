@@ -16,7 +16,7 @@
     "@icons-pack/react-simple-icons": "^10.0.0",
     "@remix-run/cloudflare": "^2.12.1",
     "@remix-run/cloudflare-pages": "^2.12.1",
-    "@remix-run/node": "^2.12.1",
+    "@remix-run/node": "^2.17.2",
     "@remix-run/react": "^2.12.1",
     "@remix-run/serve": "^2.12.1",
     "@resvg/resvg-wasm": "^2.6.2",
