@@ -96,16 +96,8 @@ div.mx-auto.flex.w-full.items-center.justify-between.px-6.py-2{padding:0 1.5rem}
 /* invert main scrollbar colours */
 .scroll-gutter{scrollbar-color:var(--slider-background) var(--slider-color)}
 
-/* reduce common padding value */
+/* reduce common spacing values */
 .p-6{padding:1rem}
-
-/* adjust sidepanel for padding change */
-div.border-panel-border.bg-panel-background.sticky.top-24.ml-6{top:5.35rem}
-
-/* make logs more compact */
-div.w-full.overflow-y-auto.rounded-lg.border-16.border-panel-input.bg-panel-input.contain-strict{
-    font-size:.9em;
-    border:none;
-    background-color:var(--ui-colour-base);
-}
-div.flex.gap-x-6.pt-2{padding-top:.2rem}
+.-p-6{padding:-1rem}
+.m-6{margin:1rem}
+.-m-6{margin:-1rem}

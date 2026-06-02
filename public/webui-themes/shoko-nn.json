@@ -1,9 +1,9 @@
 {
   "name": "Shoko NN",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "author": "natyusha",
-  "description": "A dark grey theme which features a gyaru Shoko Ai and slightly reduced padding.",
-  "tags": ["Dark Theme", "Grey", "Black"],
+  "description": "A dark grey theme which features a gyaru Shoko Ai and slightly reduced spacing.",
+  "tags": ["Dark Theme", "Grey", "Black", "Relay"],
   "cssUrl": "https://shokoanime.com/webui-themes/shoko-nn.css",
   "updateUrl": "https://shokoanime.com/webui-themes/shoko-nn.json"
 }
