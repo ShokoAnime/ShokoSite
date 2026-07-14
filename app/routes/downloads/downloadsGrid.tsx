@@ -5,7 +5,7 @@ import { convertToProperName } from '~/lib/convertToProperName';
 import PageHero from '~/components/layout/PageHero';
 import DownloadCard from '~/components/downloads/DownloadCard';
 import MultiSelectDropdown from '~/components/common/MultiSelectDropdown';
-import { Lightbulb, Palette, SunMoon } from 'lucide-react';
+import { Lightbulb, Palette, Sparkles, SunMoon } from 'lucide-react';
 import { useSentinel } from '~/hooks/useSentinel';
 import { ContentItem } from '~/types/content';
 import { CategorizedTags } from '~/types/downloads';
@@ -48,12 +48,14 @@ export const loader: LoaderFunction = async ({ request }) => {
           (acc, tag) => {
             if (['Dark Theme', 'Light Theme', 'OLED Theme'].includes(tag)) {
               acc.themes.push(tag);
+            } else if (['Animated', 'Static'].includes(tag)) {
+              acc.animated.push(tag);
             } else {
               acc.colors.push(tag);
             }
             return acc;
           },
-          { themes: [], colors: [] },
+          { themes: [], colors: [], animated: [] },
         );
       }
     }
@@ -108,6 +110,7 @@ export default function DownloadsGrid() {
   const [isLoading, setIsLoading] = useState(false);
   const [colorOptions, setColorOptions] = useState<string[]>([]);
   const [themeOptions, setThemeOptions] = useState<string[]>([]);
+  const [animatedOptions, setAnimatedOptions] = useState<string[]>([]);
   const [offset, setOffset] = useState(0);
   const location = useLocation();
   const [loadingRef, isIntersecting] = useSentinel();
@@ -121,7 +124,7 @@ export default function DownloadsGrid() {
         setIsLoading(true);
         const response = await fetch(
           `/api/getFiles?type=${downloadType}&offset=${offsetParam}&limit=${LIMIT}&sort=${SORT}&tags=${
-            [...colorOptions, ...themeOptions].join(', ')
+            [...colorOptions, ...themeOptions, ...animatedOptions].join(', ')
           }`,
         );
 
@@ -159,7 +162,7 @@ export default function DownloadsGrid() {
         setIsLoading(false);
       }
     },
-    [downloadType, offset, colorOptions, themeOptions, downloads.length],
+    [downloadType, offset, colorOptions, themeOptions, animatedOptions, downloads.length],
   );
 
   useEffect(() => {
@@ -170,7 +173,7 @@ export default function DownloadsGrid() {
       setOffset(0);
       fetchMoreDownloads(0);
     }
-  }, [colorOptions, themeOptions]);
+  }, [colorOptions, themeOptions, animatedOptions]);
 
   useEffect(() => {
     if (isIntersecting && !isLoading && downloads.length < downloadsData.totalCount) {
@@ -231,6 +234,14 @@ export default function DownloadsGrid() {
                 options={tagsData.colors}
                 setSelectedOptions={setColorOptions}
               />
+              {tagsData.animated.length > 0 && (
+                <MultiSelectDropdown
+                  title="Select Animation"
+                  icon={<Sparkles />}
+                  options={tagsData.animated}
+                  setSelectedOptions={setAnimatedOptions}
+                />
+              )}
             </div>
           </>
         )}

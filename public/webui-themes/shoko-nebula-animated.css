@@ -1,0 +1,483 @@
+/* ============================================================
+   Shoko Nebula — animated deep-violet theme
+   by Kristijan1001
+
+   IMPORTANT: Shoko wraps this whole file inside
+       .theme-shoko-nebula-animated { ... }
+   and that class lives on <body>. So here:
+       &  ==  <body>
+   Keyframes can't live inside that wrapper, so near the bottom
+   we deliberately close it, declare the @keyframes at top level,
+   then reopen an empty block for Shoko's trailing brace.
+   ============================================================ */
+
+& {
+  /* ---------- buttons ---------- */
+  --button-danger: #FF5470;
+  --button-danger-border: #100a22;
+  --button-danger-hover: #ff7189;
+  --button-danger-text: #120c24;
+  --button-primary: #A855F7;
+  --button-primary-border: #100a22;
+  --button-primary-hover: #C084FC;
+  --button-primary-text: #120c24;
+  --button-secondary: #241a3f;
+  --button-secondary-border: #100a22;
+  --button-secondary-hover: #332552;
+  --button-secondary-text: #e6dbff;
+
+  /* ---------- header ---------- */
+  --header-background: #0f0920cc;
+  --header-icon: #e6dbff;
+  --header-icon-primary: #C084FC;
+  --header-text: #e6dbff;
+  --header-text-important: #2DD4BF;
+  --header-user-background: #A855F7;
+  --header-user-text: #120c24;
+
+  /* ---------- panels (translucent so the nebula shows through) ---------- */
+  --panel-background: #150e2bcc;
+  --panel-background-alt: #1b1436cc;
+  --panel-background-selected-row: #362a5ccc;
+  --panel-background-overlay: #1b1436f0;
+  --panel-background-poster-overlay: transparent;
+  --panel-background-transparent: #150e2b8c;
+  --panel-border: #3a2b66;
+  --panel-icon: #cdbdf0;
+  --panel-icon-action: #C084FC;
+  --panel-icon-danger: #FF5470;
+  --panel-icon-important: #2DD4BF;
+  --panel-icon-warning: #FBBF24;
+  --panel-input: #1e1740cc;
+  --panel-menu-item-background: #A855F726;
+  --panel-menu-item-background-hover: #3a2b66;
+  --panel-menu-item-text: #d9b8ff;
+  --panel-table-header: #181130e6;
+  --panel-tags: #2a2150;
+  --panel-text: #e6dbff;
+  --panel-text-danger: #FF5470;
+  --panel-text-important: #2DD4BF;
+  --panel-text-other: #F472B6;
+  --panel-text-primary: #C084FC;
+  --panel-text-warning: #FBBF24;
+  --panel-toggle-background: #A855F726;
+  --panel-toggle-background-alt: #130d26;
+  --panel-toggle-background-hover: #3a2b66;
+  --panel-toggle-text: #d9b8ff;
+  --panel-toggle-text-alt: #e6dbff;
+
+  /* ---------- sliders ---------- */
+  --slider-background: #211a3d;
+  --slider-background-alt: #130d26;
+  --slider-color: #A855F7;
+  --slider-color-alt: #F472B6;
+
+  /* ---------- top nav ---------- */
+  --topnav-background: #0f0920cc;
+  --topnav-border: #3a2b66;
+  --topnav-icon: #cdbdf0;
+  --topnav-icon-important: #2DD4BF;
+  --topnav-icon-primary: #C084FC;
+  --topnav-icon-warning: #FBBF24;
+  --topnav-text: #e6dbff;
+  --topnav-text-primary: #C084FC;
+
+  /* ---------- logo ---------- */
+  --logo-outline: #0a0618;
+  --logo-skin: #fdf5e8;
+  --logo-face-shadow: #c13bd6;
+  --logo-eye-ref1: #f0e4ff;
+  --logo-eye-ref2: #e8c8f5;
+  --logo-eye-ref3: #ffb2f0;
+  --logo-eye-gradient1: #6b2fae;
+  --logo-eye-gradient2: #a840ec;
+  --logo-eye-gradient3: #e77dfd;
+  --logo-hair-gradient1: #7c3aed;
+  --logo-hair-gradient2: #c026d3;
+  --logo-hair-gradient3: #f072d8;
+
+  /* ---------- Layer 0: animated nebula gradient ON <body> ---------- */
+  background-color: #0c0620;
+  background-image: linear-gradient(-45deg, #160a2e, #1a0733, #240a45, #100620, #2d0b52, #1a0733);
+  background-size: 400% 400%;
+  background-repeat: no-repeat;
+  /* background-attachment: fixed removed — body doesn't scroll, so it's
+     visually identical, but 'fixed' forces a slower background paint path. */
+  animation: nebula-drift 28s ease infinite;
+}
+
+/* ---------- Layer 1: twinkling parallax starfield (body::before) ---------- */
+&::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(1.4px 1.4px at 20px 30px,  #ffffff, transparent),
+    radial-gradient(1.6px 1.6px at 150px 180px,#e9d5ff, transparent),
+    radial-gradient(1.4px 1.4px at 90px 70px,  #ffffff, transparent),
+    radial-gradient(1.2px 1.2px at 25px 155px, #a5f3fc, transparent),
+    radial-gradient(1.5px 1.5px at 175px 45px, #f5d0fe, transparent),
+    radial-gradient(1px 1px at 50px 160px, #c4b5fd, transparent),
+    radial-gradient(1px 1px at 130px 140px,#ffffff, transparent),
+    radial-gradient(1px 1px at 110px 15px, #ffffff, transparent),
+    radial-gradient(1px 1px at 190px 110px,#ddd6fe, transparent),
+    radial-gradient(1px 1px at 60px 110px, #ffffff, transparent),
+    radial-gradient(1px 1px at 100px 190px,#fbcfe8, transparent);
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  will-change: opacity;
+  animation: star-drift 140s linear infinite, twinkle 6s ease-in-out infinite;
+}
+
+/* ---------- Layer 2: floating, colour-shifting gas clouds (body::after) ---------- */
+&::after {
+  content: "";
+  position: fixed;
+  inset: -20%;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(closest-side at 22% 28%, #c026d359, transparent),
+    radial-gradient(closest-side at 78% 68%, #7c3aed59, transparent),
+    radial-gradient(closest-side at 60% 12%, #4f46e544, transparent),
+    radial-gradient(closest-side at 12% 82%, #db277733, transparent);
+  filter: blur(34px);
+  will-change: transform, filter;
+  animation: cloud-float 34s ease-in-out infinite alternate,
+             cloud-hue   48s linear infinite;
+}
+
+/* ---------- App content sits above the scene ---------- */
+& #app-root {
+  position: relative;
+  z-index: 1;
+  background: transparent !important;
+  /* NOTE: do NOT add transform / will-change:transform / filter / contain
+     here. #app-root wraps the whole app, and any of those make it a
+     "containing block" for position:fixed elements — which breaks
+     fixed-positioned dropdown menus (e.g. the file-info actions menu),
+     making them land off-target / get clipped / feel unclickable. */
+}
+/* Cinematic entrance (transient blur, no lingering filter) */
+& #app-container {
+  animation: app-enter 0.9s cubic-bezier(.2,.7,.2,1) backwards;
+}
+/* Hide the random fanart backdrop on the Settings page (keeps the nebula).
+   The anime/series page backdrop (#series-background) is left untouched. */
+& #settings-background { display: none !important; }
+
+/* ---------- Layer 3: shooting stars drifting OVER the whole UI ---------- */
+& #app-root::before,
+& #app-root::after {
+  content: "";
+  position: fixed;
+  top: -10%;
+  left: -10%;
+  z-index: 60;
+  width: 160px;
+  height: 2px;
+  pointer-events: none;
+  border-radius: 50%;
+  /* bright head on the right = leading edge (matches down-right travel) */
+  background: linear-gradient(90deg, transparent, #c084fc 55%, #ffffff);
+  box-shadow: 6px 0 12px 1px #e9d5ffcc;
+  opacity: 0;
+  transform: rotate(35deg);
+}
+& #app-root::before { animation: shoot 11s ease-in 4s infinite; }
+& #app-root::after  { top: 22%; animation: shoot 15s ease-in 9s infinite; }
+
+/* ---------- Smooth transitions ---------- */
+& a, & button, & [role="button"], & input, & select, & img {
+  transition: color .2s ease, background-color .2s ease,
+              box-shadow .25s ease, border-color .2s ease,
+              text-shadow .2s ease, filter .25s ease, transform .18s ease;
+}
+
+/* ---------- GLOWY TEXT ---------- */
+& #app-root { text-shadow: 0 0 6px rgba(200, 160, 255, 0.32); }
+& h1, & h2, & h3 { text-shadow: 0 0 9px rgba(197, 150, 255, 0.55); }
+& a:hover { text-shadow: 0 0 12px rgba(192, 132, 252, 0.85); }
+
+/* ---------- GLOWY BUTTONS ---------- */
+& button, & [role="button"] { box-shadow: 0 0 8px #a855f733; }
+& button:hover, & [role="button"]:hover {
+  box-shadow: 0 0 20px #a855f7cc, 0 0 40px #c026d355;
+  transform: translateY(-1px);
+}
+& button:active, & [role="button"]:active { transform: translateY(0) scale(.97); }
+
+/* ---------- GLOWY INPUTS ---------- */
+& input, & select, & textarea { box-shadow: 0 0 8px #a855f722; }
+& input:hover, & select:hover, & textarea:hover { box-shadow: 0 0 12px #a855f755; }
+
+/* ---------- COVER ART ---------- */
+& img { border-radius: 6px; }
+& img:hover {
+  box-shadow: 0 0 24px #c084fccc, 0 0 55px #c026d377;
+  filter: saturate(1.15) brightness(1.06);
+  transform: scale(1.04);
+  position: relative;
+  z-index: 5;
+}
+
+/* ---------- GLOWING FOCUS RING ---------- */
+& *:focus-visible {
+  outline: 2px solid #c084fc !important;
+  outline-offset: 3px;
+  box-shadow: 0 0 16px #a855f7aa !important;
+}
+
+/* ---------- ANIMATED GRADIENT SCROLLBARS ---------- */
+& ::-webkit-scrollbar { width: 12px; height: 12px; }
+& ::-webkit-scrollbar-track { background: #0f0620; }
+& ::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #a855f7, #c026d3, #f472b6, #a855f7);
+  background-size: 100% 300%;
+  border-radius: 8px;
+  border: 2px solid #0f0620;
+  animation: scroll-glow 6s linear infinite;
+}
+& ::-webkit-scrollbar-thumb:hover { filter: brightness(1.25); }
+
+/* ---------- TEXT SELECTION ---------- */
+& ::selection { background: #a855f7; color: #100620; text-shadow: none; }
+
+/* ---------- FANCY TOAST / NOTIFICATIONS ---------- */
+& .Toastify__toast {
+  background: linear-gradient(135deg, #1c1338f2, #241a3ff2) !important;
+  border: 1px solid #a855f7 !important;
+  border-radius: 14px !important;
+  box-shadow: 0 8px 30px #0008, 0 0 22px #a855f755, inset 0 0 24px #7c3aed22 !important;
+  backdrop-filter: blur(10px);
+  padding: 4px 6px;
+  overflow: hidden;
+}
+& .Toastify__toast-body { color: #e6dbff !important; }
+/* kill the inner panel-coloured box so it doesn't look nested */
+& .Toastify__toast .bg-panel-background,
+& .Toastify__toast-body > div { background: transparent !important; box-shadow: none !important; }
+& .Toastify__progress-bar {
+  background: linear-gradient(90deg, #a855f7, #c026d3, #f472b6) !important;
+  height: 4px !important;
+  box-shadow: 0 0 10px #c084fccc;
+  border-radius: 4px;
+}
+& .Toastify__close-button { color: #d9b8ff !important; opacity: .8; }
+& .Toastify__close-button:hover { opacity: 1; filter: drop-shadow(0 0 6px #c084fc); }
+
+/* ---------- ANIMATED LOGO (top-left ShokoIcon) ---------- */
+& svg[viewBox="0 0 159.145 136.46"] {
+  transform-origin: 50% 50%;
+  cursor: pointer;
+  animation: logo-float 5s ease-in-out infinite,
+             logo-glow  3s ease-in-out infinite;
+}
+& svg[viewBox="0 0 159.145 136.46"]:hover {
+  animation: logo-spin 0.9s cubic-bezier(.34,1.56,.64,1),
+             logo-glow 3s ease-in-out infinite;
+}
+
+/* ---------- ANIMATED GRADIENT TITLES + WORDMARK ---------- */
+& .text-2xl.font-semibold,
+& .text-xl.font-semibold {
+  background: linear-gradient(90deg, #c084fc, #f472b6, #a855f7, #c084fc);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  text-shadow: none;
+  filter: drop-shadow(0 0 8px #a855f766);
+  animation: text-flow 6s linear infinite;
+}
+
+/* ---------- SHIMMERING PRIMARY BUTTONS ---------- */
+& .bg-button-primary {
+  background-image: linear-gradient(100deg, transparent 25%, #ffffff40 45%, transparent 65%);
+  background-size: 220% 100%;
+  background-repeat: no-repeat;
+  animation: btn-sheen 3.5s ease-in-out infinite;
+}
+
+/* ---------- COVER SHINE-SWEEP (on hover) ---------- */
+& .rounded-lg.border-panel-border.overflow-hidden::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+  background: linear-gradient(115deg, transparent 36%, #ffffff33 47%, #ffffff99 50%, #ffffff33 53%, transparent 64%);
+  transform: translateX(-120%);
+  opacity: 0;
+}
+& .rounded-lg.border-panel-border.overflow-hidden:hover::after {
+  animation: cover-sheen 0.85s ease-out;
+}
+
+/* ---------- POSTER BADGES (watched / count / group) — fancy glowing pills ----------
+   backdrop-filter removed: Collections renders 2-3 of these per card, and
+   backdrop-filter is one of the most expensive things to composite (samples
+   everything behind each element, every frame). With many badges live at
+   once this was causing the flash artifact on Collections. Background made
+   more opaque to compensate visually for losing the blur-based translucency. */
+& .bg-panel-background-overlay {
+  background: linear-gradient(135deg, #3a1b5af5, #1b1436fa) !important;
+  border: 1px solid #c084fc80 !important;
+  border-radius: 9999px !important;
+  margin: 6px;
+  box-shadow: 0 0 16px #a855f788, 0 0 32px #c026d340, inset 0 0 12px #7c3aed44;
+  text-shadow: 0 0 8px #c084fccc;
+}
+/* icons inside those badges glow in their own colour (teal check, etc.) */
+& .bg-panel-background-overlay svg {
+  filter: drop-shadow(0 0 6px currentColor);
+}
+/* corner count / watched-check chips (both top-left "2" and top-right check)
+   -> small perfect circle, same size as the poster edit button, and pulled
+   in from the edge a touch so they don't get clipped top/bottom */
+& .bg-panel-background-overlay.rounded-bl-md,
+& .bg-panel-background-overlay.rounded-br-md,
+& .bg-panel-background-overlay.rounded-tl-md,
+& .bg-panel-background-overlay.rounded-tr-md {
+  min-width: 0 !important;
+  min-height: 0 !important;
+  width: 1.75rem !important;
+  height: 1.75rem !important;
+  padding: 0 !important;
+  align-items: center;
+  justify-content: center;
+  margin: 6px !important;
+}
+& .bg-panel-background-overlay.rounded-bl-md svg,
+& .bg-panel-background-overlay.rounded-br-md svg,
+& .bg-panel-background-overlay.rounded-tl-md svg,
+& .bg-panel-background-overlay.rounded-tr-md svg {
+  width: 0.9rem !important;
+  height: 0.9rem !important;
+}
+/* the "2 Series" / "In Collection" bar -> a bit smaller, nudged down a touch */
+& .bg-panel-background-overlay.rounded-lg {
+  bottom: 0.35rem !important;
+  margin: 0 !important;
+  padding: 2px 10px !important;
+  font-size: 0.75rem !important;
+  line-height: 1.1rem !important;
+}
+
+/* ---------- POSTER EDIT BUTTON — glowing glass circle ---------- */
+& .bg-panel-background-poster-overlay button {
+  background: #1b1436e6 !important;
+  border: 1px solid #a855f7;
+  border-radius: 9999px;
+  color: #e6dbff !important;
+  box-shadow: 0 0 16px #a855f7aa, inset 0 0 12px #7c3aed44;
+  transition: box-shadow .2s ease, transform .2s ease, color .2s ease;
+}
+& .bg-panel-background-poster-overlay button:hover {
+  color: #ffffff !important;
+  box-shadow: 0 0 26px #c084fc, inset 0 0 16px #a855f766;
+  transform: scale(1.08);
+}
+
+/* ---------- CARD ENTRANCE STAGGER (poster grid) ---------- */
+& .content-center.gap-y-3 {
+  animation: card-in 0.55s cubic-bezier(.2,.7,.2,1) both;
+}
+& .content-center.gap-y-3:nth-child(1)  { animation-delay: 0s;   }
+& .content-center.gap-y-3:nth-child(2)  { animation-delay: .04s; }
+& .content-center.gap-y-3:nth-child(3)  { animation-delay: .08s; }
+& .content-center.gap-y-3:nth-child(4)  { animation-delay: .12s; }
+& .content-center.gap-y-3:nth-child(5)  { animation-delay: .16s; }
+& .content-center.gap-y-3:nth-child(6)  { animation-delay: .20s; }
+& .content-center.gap-y-3:nth-child(7)  { animation-delay: .24s; }
+& .content-center.gap-y-3:nth-child(8)  { animation-delay: .28s; }
+& .content-center.gap-y-3:nth-child(9)  { animation-delay: .32s; }
+& .content-center.gap-y-3:nth-child(n+10) { animation-delay: .36s; }
+
+/* ---------- ACCESSIBILITY: kill motion on request ---------- */
+@media (prefers-reduced-motion: reduce) {
+  &, &::before, &::after,
+  & #app-container, & #app-root::before, & #app-root::after,
+  & svg[viewBox="0 0 159.145 136.46"],
+  & .text-2xl.font-semibold, & .text-xl.font-semibold, & .bg-button-primary,
+  & .content-center.gap-y-3, & .rounded-lg.border-panel-border.overflow-hidden:hover::after,
+  & ::-webkit-scrollbar-thumb { animation: none !important; }
+}
+
+/* === break out of Shoko's .theme-… wrapper to declare keyframes === */
+}
+
+@keyframes nebula-drift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0.45; }
+  50%      { opacity: 0.95; }
+}
+@keyframes star-drift {
+  from { background-position: 0 0; }
+  to   { background-position: 0 -2000px; }
+}
+@keyframes cloud-float {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to   { transform: translate3d(-4%, -3%, 0) scale(1.14); }
+}
+@keyframes cloud-hue {
+  from { filter: blur(34px) hue-rotate(0deg); }
+  to   { filter: blur(34px) hue-rotate(360deg); }
+}
+@keyframes app-enter {
+  from { opacity: 0; filter: blur(14px); transform: scale(.985); }
+  to   { opacity: 1; filter: blur(0);    transform: scale(1); }
+}
+@keyframes shoot {
+  0%   { opacity: 0; transform: translate3d(0, 0, 0) rotate(35deg); }
+  2%   { opacity: 1; }
+  10%  { opacity: 1; }
+  16%  { opacity: 0; transform: translate3d(115vw, 80vh, 0) rotate(35deg); }
+  100% { opacity: 0; transform: translate3d(115vw, 80vh, 0) rotate(35deg); }
+}
+@keyframes scroll-glow {
+  0%   { background-position: 0 0; }
+  100% { background-position: 0 300%; }
+}
+@keyframes logo-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25%      { transform: translateY(-3px) rotate(-4deg); }
+  50%      { transform: translateY(0) rotate(0deg); }
+  75%      { transform: translateY(-3px) rotate(4deg); }
+}
+@keyframes logo-glow {
+  0%, 100% { filter: drop-shadow(0 0 4px #a855f766); }
+  50%      { filter: drop-shadow(0 0 13px #c084fcdd); }
+}
+@keyframes logo-spin {
+  from { transform: rotate(0deg) scale(1); }
+  50%  { transform: rotate(180deg) scale(1.18); }
+  to   { transform: rotate(360deg) scale(1); }
+}
+@keyframes text-flow {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+@keyframes btn-sheen {
+  0%   { background-position: 160% 0; }
+  100% { background-position: -60% 0; }
+}
+@keyframes cover-sheen {
+  0%   { transform: translateX(-120%); opacity: 0; }
+  12%  { opacity: 1; }
+  100% { transform: translateX(120%); opacity: 0; }
+}
+@keyframes card-in {
+  from { opacity: 0; transform: translateY(16px) scale(.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* reopen an empty block so Shoko's appended “}” closes cleanly */
+.theme-shoko-nebula-animated {
