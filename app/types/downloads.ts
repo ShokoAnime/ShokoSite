@@ -19,6 +19,7 @@ export type IconNameProps = {
 export type CategorizedTags = {
   themes: string[];
   colors: string[];
+  animated: string[];
 };
 
 export type DownloadCounts = {
