@@ -1,29 +1,34 @@
-export type Meta = {
-  image: string;
-  images: { url: string, alt: string }[];
+export type DownloadMeta = {
   title: string;
   name: string;
   subtitle: string;
-  download: string;
+  images: { url: string, alt: string }[];
   downloads: {
     text: string;
-    links: {
-      name: string;
-      url: string;
-    }[];
+    links: { name: string; url: string }[];
   }[];
-  resources: { name: string, url: string }[];
-  date: string;
-  anime: string;
-  tags: string[];
   version: string;
+  date: string;
+  resources?: { name: string, url: string }[];
+  tags?: string[];
   author?: string;
   devs?: string[];
-} | Record<string, never>;
+  githubRepository?: string;
+};
 
-export type ContentItem = {
+export type BlogMeta = {
+  title: string;
+  image: string;
+  date: string;
+  tags: string[];
+  devs?: string[];
+};
+
+export type Meta = DownloadMeta | BlogMeta;
+
+export type ContentItem<TMeta = Meta> = {
   filename: string;
-  meta: Meta | any;
+  meta: TMeta;
   content: string;
 };
 

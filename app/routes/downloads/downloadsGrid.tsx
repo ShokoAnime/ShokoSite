@@ -1,4 +1,4 @@
-import { LoaderFunction, MetaFunction, json } from '@remix-run/cloudflare';
+import { LoaderFunctionArgs, MetaFunction, json } from '@remix-run/cloudflare';
 import { useLoaderData, useLocation } from '@remix-run/react';
 import { useCallback, useEffect, useState, useRef } from 'react';
 import { convertToProperName } from '~/lib/convertToProperName';
@@ -7,19 +7,19 @@ import DownloadCard from '~/components/downloads/DownloadCard';
 import MultiSelectDropdown from '~/components/common/MultiSelectDropdown';
 import { Lightbulb, Palette, Sparkles, SunMoon } from 'lucide-react';
 import { useSentinel } from '~/hooks/useSentinel';
-import { ContentItem } from '~/types/content';
+import {ContentItem, DownloadMeta} from '~/types/content';
 import { CategorizedTags } from '~/types/downloads';
 import PageNotFound from '~/components/layout/PageNotFound';
 import { GitHubRelease } from '~/types/githubRelease';
 
 type JsonContentItem = Omit<ContentItem, 'meta'> & {
-  meta?: ContentItem['meta'];
+  meta?: ContentItem<DownloadMeta>['meta'];
 };
 
 const LIMIT = 12;
 const SORT = 'dateDescending';
 
-export const loader: LoaderFunction = async ({ request }) => {
+export const loader = async ({ request }: LoaderFunctionArgs) => {
   const url = new URL(request.url);
   const downloadType = url.pathname.split('/')[2];
   const offset = 0;
@@ -35,7 +35,7 @@ export const loader: LoaderFunction = async ({ request }) => {
     );
 
     // if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-    if (!response.ok) return json({ results: null, totalCount: 1 });
+    if (!response.ok) return json({ downloadsData: null, tagsData: null, downloadType });
 
     const downloadsData = await response.json() as { results: ContentItem[], totalCount: number };
 
@@ -67,8 +67,8 @@ export const loader: LoaderFunction = async ({ request }) => {
   }
 };
 
-export const meta: MetaFunction = ({ data }: any) => {
-  if (!data) {
+export const meta: MetaFunction<typeof loader> = ({ data }) => {
+  if (!data || !data.downloadType) {
     return [
       { title: 'Downloads Page Not Found' },
       { name: 'description', content: 'The requested downloads page could not be found.' },
@@ -106,24 +106,31 @@ export default function DownloadsGrid() {
     downloadType: string;
   }>();
 
-  const [downloads, setDownloads] = useState<ContentItem[]>([]);
+  const [downloads, setDownloads] = useState<ContentItem<DownloadMeta>[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [colorOptions, setColorOptions] = useState<string[]>([]);
   const [themeOptions, setThemeOptions] = useState<string[]>([]);
   const [animatedOptions, setAnimatedOptions] = useState<string[]>([]);
-  const [offset, setOffset] = useState(0);
   const location = useLocation();
   const [loadingRef, isIntersecting] = useSentinel();
   const isInitialMount = useRef(true);
 
+  const offsetRef = useRef(0);
+  const downloadsLengthRef = useRef(0);
+
+  useEffect(() => {
+    downloadsLengthRef.current = downloads.length;
+  }, [downloads.length]);
+
   const fetchMoreDownloads = useCallback(
-    async (offsetParam = offset) => {
-      if (downloads.length >= downloadsData.totalCount) return;
+    async (offsetParam?: number) => {
+      const currentOffset = offsetParam ?? offsetRef.current;
+      if (downloadsLengthRef.current >= downloadsData.totalCount) return;
 
       try {
         setIsLoading(true);
         const response = await fetch(
-          `/api/getFiles?type=${downloadType}&offset=${offsetParam}&limit=${LIMIT}&sort=${SORT}&tags=${
+          `/api/getFiles?type=${downloadType}&offset=${currentOffset}&limit=${LIMIT}&sort=${SORT}&tags=${
             [...colorOptions, ...themeOptions, ...animatedOptions].join(', ')
           }`,
         );
@@ -132,12 +139,13 @@ export default function DownloadsGrid() {
 
         const data = (await response.json()) as { results: JsonContentItem[], totalCount: number };
         for (const result of data.results) {
-          if (result.meta.githubRepository) {
-            const ghReleaseResponse = await fetch(`/api/getGitHubRelease/${result.meta.githubRepository}`);
+          const meta = result.meta;
+          if (meta?.githubRepository) {
+            const ghReleaseResponse = await fetch(`/api/getGitHubRelease/${meta.githubRepository}`);
             if (ghReleaseResponse.ok) {
               const ghRelease: GitHubRelease = await ghReleaseResponse.json();
-              result.meta.version = ghRelease.tag_name.startsWith("v") ? ghRelease.tag_name.slice(1) : ghRelease.tag_name;
-              result.meta.date = new Date(ghRelease.published_at || ghRelease.created_at).toLocaleDateString('en-US', {
+              meta.version = ghRelease.tag_name.startsWith("v") ? ghRelease.tag_name.slice(1) : ghRelease.tag_name;
+              meta.date = new Date(ghRelease.published_at || ghRelease.created_at).toLocaleDateString('en-US', {
                 year: 'numeric',
                 month: 'long',
                 day: 'numeric'
@@ -149,20 +157,20 @@ export default function DownloadsGrid() {
         setDownloads((prevDownloads) => [
           ...prevDownloads,
           ...data.results
-            .filter((item): item is ContentItem => item.meta !== undefined)
+            .filter((item): item is ContentItem<DownloadMeta> => item.meta !== undefined)
             .filter(
               (newDownload) =>
                 !prevDownloads.some((existingDownload) => existingDownload.filename === newDownload.filename),
             ),
         ]);
-        setOffset((prevOffset) => prevOffset + LIMIT);
+        offsetRef.current = currentOffset + LIMIT;
       } catch (error) {
         console.error('Error fetching more download items:', error);
       } finally {
         setIsLoading(false);
       }
     },
-    [downloadType, offset, colorOptions, themeOptions, animatedOptions, downloads.length],
+    [downloadType, colorOptions, themeOptions, animatedOptions, downloadsData.totalCount],
   );
 
   useEffect(() => {
@@ -170,16 +178,16 @@ export default function DownloadsGrid() {
       isInitialMount.current = false;
     } else {
       setDownloads([]);
-      setOffset(0);
+      offsetRef.current = 0;
       fetchMoreDownloads(0);
     }
-  }, [colorOptions, themeOptions, animatedOptions]);
+  }, [colorOptions, themeOptions, animatedOptions, fetchMoreDownloads]);
 
   useEffect(() => {
     if (isIntersecting && !isLoading && downloads.length < downloadsData.totalCount) {
       fetchMoreDownloads();
     }
-  }, [isIntersecting, downloads.length]);
+  }, [isIntersecting, downloads.length, downloadsData.totalCount, isLoading, fetchMoreDownloads]);
 
   if (downloadsData === undefined) {
     return <PageNotFound />;

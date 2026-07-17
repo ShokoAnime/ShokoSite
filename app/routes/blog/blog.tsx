@@ -3,7 +3,7 @@ import { MetaFunction } from '@remix-run/cloudflare';
 import PageHero from '~/components/layout/PageHero';
 import PostCard from '~/components/blog/PostCard';
 import { useSentinel } from '~/hooks/useSentinel';
-import { ContentItem } from '~/types/content';
+import {BlogMeta, ContentItem} from '~/types/content';
 
 export const meta: MetaFunction = () => {
   const pageTitle = 'Shoko Blog';
@@ -31,28 +31,28 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Blog() {
-  const [blogPosts, setBlogPosts] = useState<ContentItem[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [offset, setOffset] = useState(0);
+  const [blogPosts, setBlogPosts] = useState<ContentItem<BlogMeta>[]>([]);
   const [loadingRef, isIntersecting] = useSentinel();
+  const isLoadingRef = useRef(false);
+  const offsetRef = useRef(0);
   const totalCountRef = useRef(0);
 
   const fetchBlogPosts = useCallback(async () => {
-    if (isLoading) return;
+    if (isLoadingRef.current) return;
 
     const type = 'blog';
     const limit = 16;
     const sort = 'dateDescending';
 
-    setIsLoading(true);
+    isLoadingRef.current = true;
     try {
       const response = await fetch(
-        `/api/getFiles?type=${type}&offset=${offset}&limit=${limit}&sort=${sort}`,
+        `/api/getFiles?type=${type}&offset=${offsetRef.current}&limit=${limit}&sort=${sort}`,
       );
 
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
-      const data = await response.json() as { results: ContentItem[], totalCount: number };
+      const data = await response.json() as { results: ContentItem<BlogMeta>[], totalCount: number };
 
       totalCountRef.current = data.totalCount;
       setBlogPosts(prevPosts => [
@@ -64,20 +64,19 @@ export default function Blog() {
     } catch (error) {
       console.error('Error fetching blog posts:', error);
     } finally {
-      setIsLoading(false);
+      isLoadingRef.current = false;
     }
-  }, [offset, isLoading]);
-
-  useEffect(() => {
-    fetchBlogPosts();
   }, []);
 
   useEffect(() => {
+    fetchBlogPosts();
+  },[fetchBlogPosts]);
+
+  useEffect(() => {
     if (isIntersecting && totalCountRef.current > blogPosts.length) {
-      setOffset(prevOffset => prevOffset + 16);
       fetchBlogPosts();
     }
-  }, [blogPosts.length, isIntersecting]);
+  }, [blogPosts.length, isIntersecting, fetchBlogPosts]);
 
   return (
     <>

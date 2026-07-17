@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
 import PostCard from '~/components/blog/PostCard';
 import SectionHeader from '~/components/common/SectionHeader';
-import { ContentItem } from '~/types/content';
+import {BlogMeta, ContentItem} from '~/types/content';
 
 const LatestNews = () => {
-  const [blogPosts, setBlogPosts] = useState<ContentItem[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [blogPosts, setBlogPosts] = useState<ContentItem<BlogMeta>[]>([]);
 
   const type = 'blog';
   const offset = 0;
@@ -15,14 +14,13 @@ const LatestNews = () => {
   useEffect(() => {
     const fetchBlogPosts = async () => {
       try {
-        setIsLoading(true);
         const response = await fetch(
           `/api/getFiles?type=${type}&offset=${offset}&limit=${limit}&sort=${sort}`,
         );
 
         if (!response.ok) new Error(`HTTP error! status: ${response.status}`);
 
-        const data = await response.json() as { results: ContentItem[] };
+        const data = await response.json() as { results: ContentItem<BlogMeta>[] };
         setBlogPosts(data.results);
       } catch (error) {
         console.error('Error fetching blog posts:', error);

@@ -42,7 +42,7 @@ const PageWrapper = ({ children }: PageWrapperProps) => {
     } else {
       return getRandomBanner();
     }
-  }, [backgroundImage, currentURL]);
+  }, [backgroundImage, backgroundImageFull, currentPage, currentURL, lastPage]);
 
   const backgroundGradient = useMemo(() => ({
     backgroundImage: `linear-gradient(to bottom, 

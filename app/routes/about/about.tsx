@@ -43,7 +43,7 @@ export default function About() {
         {headers.map((header) => (
           <button
             key={header}
-            className={`font-header text-shoko-20 font-semibold lg:text-shoko-24 transition-colors hover:text-shoko-link ${
+            className={`font-header text-shoko-20 font-semibold transition-colors hover:text-shoko-link lg:text-shoko-24 ${
               tab === header ? 'text-shoko-link' : 'text-shoko-text'
             }`}
             onClick={() => setTab(header)}
