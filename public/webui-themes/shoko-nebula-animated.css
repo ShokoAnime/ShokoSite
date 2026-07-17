@@ -160,6 +160,12 @@
      fixed-positioned dropdown menus (e.g. the file-info actions menu),
      making them land off-target / get clipped / feel unclickable. */
 }
+/* ...and because #app-root is raised to z-index:1, the daily WebUI's
+   Headless-UI floating panels (dropdown menus, tooltips, dialogs) — which
+   portal into #headlessui-portal-root at body level with z-index:auto — end
+   up BEHIND the app and become unclickable. Lift the portaled panels above
+   #app-root so they work again. (Verified live in the daily WebUI.) */
+& #headlessui-portal-root [id^="headlessui-"] { z-index: 100 !important; }
 /* Cinematic entrance (transient blur, no lingering filter) */
 & #app-container {
   animation: app-enter 0.9s cubic-bezier(.2,.7,.2,1) backwards;
@@ -204,10 +210,21 @@
 /* ---------- GLOWY BUTTONS ---------- */
 & button, & [role="button"] { box-shadow: 0 0 8px #a855f733; }
 & button:hover, & [role="button"]:hover {
-  box-shadow: 0 0 20px #a855f7cc, 0 0 40px #c026d355;
+  /* kept within ~22px so it fits the scroll-area glow room and doesn't get
+     clipped into a hard square on edge buttons (e.g. Add Series) */
+  box-shadow: 0 0 16px #a855f7cc, 0 0 22px #c026d340;
   transform: translateY(-1px);
 }
 & button:active, & [role="button"]:active { transform: translateY(0) scale(.97); }
+
+/* fix: element glows were clipped at the edges of Shoko's inner scroll areas
+   (overflow-y-auto, 0 padding), so the search box (flush left) and Add Series
+   button (flush right) looked off-centre. Give those scroll areas inner
+   horizontal room for the glow; negative margin keeps layout unchanged. */
+& .flex.grow.flex-col.overflow-y-auto {
+  padding-inline: 22px !important;
+  margin-inline: -22px !important;
+}
 
 /* ---------- GLOWY INPUTS ---------- */
 & input, & select, & textarea { box-shadow: 0 0 8px #a855f722; }
