@@ -162,7 +162,7 @@ export const loader: LoaderFunction = async ({ request }) => {
   const pngData = resvg.render();
   const pngBuffer = pngData.asPng();
 
-  return new Response(pngBuffer, {
+  return new Response(pngBuffer as BodyInit, {
     headers: { 'Content-Type': 'image/png', 'Cache-Control': 'public, max-age=86400' },
   });
 };

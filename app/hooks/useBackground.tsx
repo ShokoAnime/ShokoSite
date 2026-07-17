@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { useBetween } from 'use-between';
 
 type BackgroundState = {
@@ -13,10 +13,10 @@ const useBackgroundState = (): BackgroundState => {
   const [backgroundImage, setBackgroundImage] = useState<string | null>(null);
   const [backgroundImageFull, setBackgroundImageFull] = useState<boolean>(false);
 
-  const resetBackground = () => {
+  const resetBackground = useCallback(() => {
     setBackgroundImage(null);
     setBackgroundImageFull(false);
-  };
+  }, []);
 
   return {
     backgroundImage,

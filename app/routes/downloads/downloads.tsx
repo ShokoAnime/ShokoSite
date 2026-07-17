@@ -98,7 +98,7 @@ export default function Downloads() {
 
     resetBackground();
     getCounts();
-  });
+  },[resetBackground]);
 
   return (
     <>

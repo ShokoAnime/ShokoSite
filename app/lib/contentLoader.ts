@@ -1,4 +1,4 @@
-import { ContentItem } from '~/types/content';
+import { ContentItem, Meta } from '~/types/content';
 import matter from 'gray-matter';
 
 const contentModules = import.meta.glob('/app/content/**/*.mdx', { query: 'raw', import: 'default' });
@@ -29,7 +29,7 @@ export async function getContentItems(type: string): Promise<ContentItem[]> {
 
       return {
         filename: path.split('/').pop() || '',
-        meta,
+        meta: meta as Meta,
         content: mdxContent,
       };
     });

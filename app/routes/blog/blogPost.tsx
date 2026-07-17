@@ -1,6 +1,6 @@
 import { LoaderFunctionArgs, MetaFunction, json } from '@remix-run/cloudflare';
 import { useLoaderData } from '@remix-run/react';
-import { ContentItem } from '~/types/content';
+import {BlogMeta, ContentItem} from '~/types/content';
 import PageNotFound from '~/components/layout/PageNotFound';
 import PageHero from '~/components/layout/PageHero';
 import PostContributors from '~/components/blog/PostContributors';
@@ -24,7 +24,7 @@ export const loader = async ({ params, request }: LoaderFunctionArgs) => {
 
     if (!response.ok) return json({ postData: null });
 
-    const postData = await response.json() as ContentItem;
+    const postData = await response.json() as ContentItem<BlogMeta>;
     return json({ postData });
   } catch (error) {
     console.error('Error fetching blog post:', error);
@@ -70,7 +70,7 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
 };
 
 export default function BlogPost() {
-  const { postData } = useLoaderData<{ postData: ContentItem }>();
+  const { postData } = useLoaderData<{ postData: ContentItem<BlogMeta> }>();
   const { setBackgroundImage } = useBackground();
 
   useEffect(() => {

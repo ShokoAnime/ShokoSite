@@ -12,7 +12,7 @@ const filterByTags = (items: ContentItem[], tagString: string[]): ContentItem[] 
 
   const tags = tagString[0].split(', ').map(tag => tag.trim());
 
-  return items.filter(({ meta }) => meta.tags?.length && tags.every(tag => meta.tags.includes(tag)));
+  return items.filter(({ meta }) => meta.tags?.length && tags.every(tag => meta?.tags?.includes(tag)));
 };
 
 export const loader: LoaderFunction = async ({ request }) => {

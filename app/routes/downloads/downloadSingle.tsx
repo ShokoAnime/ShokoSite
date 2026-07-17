@@ -1,6 +1,6 @@
 import { LoaderFunctionArgs, MetaFunction, json } from '@remix-run/cloudflare';
 import { useLoaderData } from '@remix-run/react';
-import { ContentItem } from '~/types/content';
+import {ContentItem, DownloadMeta} from '~/types/content';
 import PageNotFound from '~/components/layout/PageNotFound';
 import PageHero from '~/components/layout/PageHero';
 import Image from '~/components/common/Image';
@@ -35,7 +35,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 
     if (!response.ok) return json({ downloadData: null });
 
-    const downloadData = await response.json() as ContentItem;
+    const downloadData = await response.json() as ContentItem<DownloadMeta>;
     if (downloadData.meta.githubRepository) {
       const ghReleaseResponse = await fetch(`${baseUrl}/api/getGitHubRelease/${downloadData.meta.githubRepository}`);
       if (ghReleaseResponse.ok) {
@@ -92,7 +92,7 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
 };
 
 export default function DownloadSingle() {
-  const { downloadData } = useLoaderData<{ downloadData: ContentItem }>();
+  const { downloadData } = useLoaderData<{ downloadData: ContentItem<DownloadMeta> }>();
 
   if (!downloadData) {
     return <PageNotFound />;
@@ -130,7 +130,7 @@ export default function DownloadSingle() {
         </div>
         <div className="flex w-full max-w-[850px] flex-col gap-8">
           <HeaderBuilder title="Info">
-            {downloadData.meta.resources.map((resource: { name: string, url: string }) => (
+            {downloadData?.meta?.resources?.map((resource: { name: string, url: string }) => (
               <a className="flex gap-2 transition-colors" key={resource.name} href={resource.url} target="_blank" rel="noreferrer">
                 {iconName[resource.name.toLowerCase()]}
                 <span className="hidden md:inline-flex">{resource.name}</span>
@@ -145,7 +145,7 @@ export default function DownloadSingle() {
               <HeaderBuilder title="Tags" />
               <div className="flex items-center gap-2">
                 <Tags />
-                {downloadData.meta.tags.map((tag: string, index: number, arr: []) => (
+                {downloadData.meta.tags.map((tag: string, index: number, arr: string[]) => (
                   <div key={tag}>
                     {tag}
                     {index !== arr.length - 1 && ' |'}
@@ -163,7 +163,7 @@ export default function DownloadSingle() {
             </div>
           </HeaderBuilder>
           <div className="flex flex-col gap-4">
-            {downloadData.meta.downloads.map((download: { text: string, links: [] }, index: number) => (
+            {downloadData.meta.downloads.map((download, index: number) => (
               <div
                 key={index}
                 className="flex items-center justify-between border-b border-shoko-divider pb-4 font-semibold last:border-none last:pb-0"

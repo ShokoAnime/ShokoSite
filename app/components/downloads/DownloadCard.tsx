@@ -1,11 +1,11 @@
 import { Link } from '@remix-run/react';
 import { convertNameToUrl } from '~/lib/convertNameToUrl';
 import Image from '~/components/common/Image';
-import { ContentItem } from '~/types/content';
+import {ContentItem, DownloadMeta} from '~/types/content';
 import { sanitizeContent } from '~/lib/sanitizeContent';
 
 type DownloadCardProps = {
-  data: ContentItem;
+  data: ContentItem<DownloadMeta>;
 };
 
 const DownloadCard = ({ data }: DownloadCardProps) => {
@@ -27,7 +27,7 @@ const DownloadCard = ({ data }: DownloadCardProps) => {
         {data.meta.tags
           ? (
             <div className="text-shoko-14 font-semibold text-shoko-text-75">
-              {data.meta.tags.map((tag: string, index: number, arr: []) => (
+              {data.meta.tags.map((tag: string, index: number, arr: string[]) => (
                 <span key={tag}>
                   {tag}
                   {index !== arr.length - 1 && ', '}
@@ -63,10 +63,6 @@ const DownloadCard = ({ data }: DownloadCardProps) => {
           <div className="text-shoko-14 font-semibold">{data.meta.date}</div>
         </div>
       </div>
-      {/*<Button buttonType="primary">*/}
-      {/*  <Download />*/}
-      {/*  View Download*/}
-      {/*</Button>*/}
     </div>
   );
 };
