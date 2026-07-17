@@ -70,14 +70,14 @@ export default function Blog() {
 
   useEffect(() => {
     fetchBlogPosts();
-  }, []);
+  });
 
   useEffect(() => {
     if (isIntersecting && totalCountRef.current > blogPosts.length) {
       setOffset(prevOffset => prevOffset + 16);
       fetchBlogPosts();
     }
-  }, [blogPosts.length, isIntersecting]);
+  }, [blogPosts.length, fetchBlogPosts, isIntersecting]);
 
   return (
     <>

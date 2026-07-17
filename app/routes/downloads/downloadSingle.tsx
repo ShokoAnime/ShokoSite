@@ -1,4 +1,4 @@
-import { LoaderFunction, MetaFunction, json } from '@remix-run/cloudflare';
+import { LoaderFunctionArgs, MetaFunction, json } from '@remix-run/cloudflare';
 import { useLoaderData } from '@remix-run/react';
 import { ContentItem } from '~/types/content';
 import PageNotFound from '~/components/layout/PageNotFound';
@@ -18,7 +18,7 @@ const HeaderBuilder = ({ title, children }: HeaderBuilderProps) => (
   </div>
 );
 
-export const loader: LoaderFunction = async ({ request }) => {
+export const loader = async ({ request }: LoaderFunctionArgs) => {
   const location = new URL(request.url).pathname;
   const locationSplit = location.split('/');
   const type = locationSplit[locationSplit.length === 4 ? 2 : 2];
@@ -55,7 +55,7 @@ export const loader: LoaderFunction = async ({ request }) => {
   }
 };
 
-export const meta: MetaFunction = ({ data }: any) => {
+export const meta: MetaFunction<typeof loader> = ({ data }) => {
   if (!data || !data.downloadData) {
     return [
       { title: 'Download Not Found' },

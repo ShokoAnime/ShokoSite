@@ -14,7 +14,7 @@ const corsHeaders = {
   "Access-Control-Max-Age": "86400",
 };
 
-export const onRequest = async (context: EventContext<any, any, any>) => {
+export const onRequest = async (context: EventContext<unknown, string, unknown>) => {
   const { request } = context;
 
   if (request.method === "OPTIONS") {

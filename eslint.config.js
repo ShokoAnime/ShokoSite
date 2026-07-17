@@ -113,6 +113,14 @@ export default [
   {
     files: ['**/*.mdx'],
     ...mdx.flat,
+    settings: {
+      ...mdx.flat.settings,
+      // Without this, eslint-plugin-mdx doesn't recognize YAML frontmatter
+      // (---) at all — it parses it as regular MDX prose, and chokes with
+      // "Could not parse expression with acorn" on any frontmatter value
+      // containing a `{` (e.g. `download: { title: ..., href: ... }`).
+      'mdx/remark-config-path': fileURLToPath(new URL('./.remarkrc.cjs', import.meta.url)),
+    },
     plugins: {
       ...mdx.flat.plugins,
       react,

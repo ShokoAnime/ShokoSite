@@ -1,4 +1,4 @@
-import { LoaderFunction, MetaFunction, json } from '@remix-run/cloudflare';
+import { LoaderFunctionArgs, MetaFunction, json } from '@remix-run/cloudflare';
 import { useLoaderData, useLocation } from '@remix-run/react';
 import { useCallback, useEffect, useState, useRef } from 'react';
 import { convertToProperName } from '~/lib/convertToProperName';
@@ -19,7 +19,7 @@ type JsonContentItem = Omit<ContentItem, 'meta'> & {
 const LIMIT = 12;
 const SORT = 'dateDescending';
 
-export const loader: LoaderFunction = async ({ request }) => {
+export const loader = async ({ request }: LoaderFunctionArgs) => {
   const url = new URL(request.url);
   const downloadType = url.pathname.split('/')[2];
   const offset = 0;
@@ -35,7 +35,7 @@ export const loader: LoaderFunction = async ({ request }) => {
     );
 
     // if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-    if (!response.ok) return json({ results: null, totalCount: 1 });
+    if (!response.ok) return json({ downloadsData: null, tagsData: null, downloadType });
 
     const downloadsData = await response.json() as { results: ContentItem[], totalCount: number };
 
@@ -67,8 +67,8 @@ export const loader: LoaderFunction = async ({ request }) => {
   }
 };
 
-export const meta: MetaFunction = ({ data }: any) => {
-  if (!data) {
+export const meta: MetaFunction<typeof loader> = ({ data }) => {
+  if (!data || !data.downloadType) {
     return [
       { title: 'Downloads Page Not Found' },
       { name: 'description', content: 'The requested downloads page could not be found.' },
@@ -132,12 +132,13 @@ export default function DownloadsGrid() {
 
         const data = (await response.json()) as { results: JsonContentItem[], totalCount: number };
         for (const result of data.results) {
-          if (result.meta.githubRepository) {
-            const ghReleaseResponse = await fetch(`/api/getGitHubRelease/${result.meta.githubRepository}`);
+          const meta = result.meta;
+          if (meta?.githubRepository) {
+            const ghReleaseResponse = await fetch(`/api/getGitHubRelease/${meta.githubRepository}`);
             if (ghReleaseResponse.ok) {
               const ghRelease: GitHubRelease = await ghReleaseResponse.json();
-              result.meta.version = ghRelease.tag_name.startsWith("v") ? ghRelease.tag_name.slice(1) : ghRelease.tag_name;
-              result.meta.date = new Date(ghRelease.published_at || ghRelease.created_at).toLocaleDateString('en-US', {
+              meta.version = ghRelease.tag_name.startsWith("v") ? ghRelease.tag_name.slice(1) : ghRelease.tag_name;
+              meta.date = new Date(ghRelease.published_at || ghRelease.created_at).toLocaleDateString('en-US', {
                 year: 'numeric',
                 month: 'long',
                 day: 'numeric'
@@ -162,7 +163,7 @@ export default function DownloadsGrid() {
         setIsLoading(false);
       }
     },
-    [downloadType, offset, colorOptions, themeOptions, animatedOptions, downloads.length],
+    [downloadType, offset, colorOptions, themeOptions, animatedOptions, downloads.length, downloadsData.totalCount],
   );
 
   useEffect(() => {
@@ -173,13 +174,13 @@ export default function DownloadsGrid() {
       setOffset(0);
       fetchMoreDownloads(0);
     }
-  }, [colorOptions, themeOptions, animatedOptions]);
+  }, [colorOptions, themeOptions, animatedOptions, fetchMoreDownloads]);
 
   useEffect(() => {
     if (isIntersecting && !isLoading && downloads.length < downloadsData.totalCount) {
       fetchMoreDownloads();
     }
-  }, [isIntersecting, downloads.length]);
+  }, [isIntersecting, downloads.length, downloadsData.totalCount, fetchMoreDownloads, isLoading]);
 
   if (downloadsData === undefined) {
     return <PageNotFound />;

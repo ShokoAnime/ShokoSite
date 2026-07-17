@@ -1,4 +1,4 @@
-import { LoaderFunction, MetaFunction, json } from '@remix-run/cloudflare';
+import { LoaderFunctionArgs, MetaFunction, json } from '@remix-run/cloudflare';
 import { useLoaderData } from '@remix-run/react';
 import { ContentItem } from '~/types/content';
 import PageNotFound from '~/components/layout/PageNotFound';
@@ -10,7 +10,7 @@ import { useEffect } from 'react';
 import { useBackground } from '~/hooks/useBackground';
 import { sanitizeContent } from '~/lib/sanitizeContent';
 
-export const loader: LoaderFunction = async ({ params, request }) => {
+export const loader = async ({ params, request }: LoaderFunctionArgs) => {
   const filename = params.id; // Assuming your route is like /blog/:slug
 
   if (!filename) {
@@ -32,7 +32,7 @@ export const loader: LoaderFunction = async ({ params, request }) => {
   }
 };
 
-export const meta: MetaFunction = ({ data }: any) => {
+export const meta: MetaFunction<typeof loader> = ({ data }) => {
   if (!data || !data.postData) {
     return [
       { title: 'Post Not Found' },
@@ -77,7 +77,7 @@ export default function BlogPost() {
     if (postData) {
       setBackgroundImage(`/images/blog/${postData.meta.image}`);
     }
-  }, [postData]);
+  }, [postData, setBackgroundImage]);
 
   if (!postData) {
     return <PageNotFound />;
