@@ -5,7 +5,6 @@ import { ContentItem } from '~/types/content';
 
 const LatestNews = () => {
   const [blogPosts, setBlogPosts] = useState<ContentItem[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
 
   const type = 'blog';
   const offset = 0;
@@ -15,7 +14,6 @@ const LatestNews = () => {
   useEffect(() => {
     const fetchBlogPosts = async () => {
       try {
-        setIsLoading(true);
         const response = await fetch(
           `/api/getFiles?type=${type}&offset=${offset}&limit=${limit}&sort=${sort}`,
         );
