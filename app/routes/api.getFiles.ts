@@ -1,4 +1,4 @@
-import { LoaderFunction } from '@remix-run/cloudflare';
+import { LoaderFunction } from 'react-router';
 import { getContentItems } from '~/lib/contentLoader';
 import { ContentItem, ContentListResult, sort } from '~/types/content';
 

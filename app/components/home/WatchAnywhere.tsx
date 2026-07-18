@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from '@remix-run/react';
+import { Link } from 'react-router';
 import { ExternalLink } from 'lucide-react';
 import SectionHeader from '~/components/common/SectionHeader';
 import { SingleMediaPlayerProps } from '~/types/home';

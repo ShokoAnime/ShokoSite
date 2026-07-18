@@ -1,4 +1,4 @@
-import { LoaderFunction } from '@remix-run/cloudflare';
+import { LoaderFunction } from 'react-router';
 import { Resvg, initWasm } from '@resvg/resvg-wasm';
 import satori from 'satori';
 import wasmData from '~/lib/index_bg.wasm?url';

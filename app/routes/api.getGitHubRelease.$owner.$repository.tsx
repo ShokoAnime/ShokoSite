@@ -1,4 +1,4 @@
-import { LoaderFunction } from "@remix-run/cloudflare";
+import { LoaderFunction } from "react-router";
 
 const CACHE_DURATION = 60 * 60; // 1 hour
 const OWNERS = ['ShokoAnime', 'Cazzar', 'Mik1ll', 'bigretromike', 'natyusha',];

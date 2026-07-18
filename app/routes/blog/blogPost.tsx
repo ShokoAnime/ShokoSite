@@ -1,5 +1,4 @@
-import { LoaderFunctionArgs, MetaFunction, json } from '@remix-run/cloudflare';
-import { useLoaderData } from '@remix-run/react';
+import { useLoaderData } from 'react-router';
 import {BlogMeta, ContentItem} from '~/types/content';
 import PageNotFound from '~/components/layout/PageNotFound';
 import PageHero from '~/components/layout/PageHero';
@@ -10,7 +9,9 @@ import { useEffect } from 'react';
 import { useBackground } from '~/hooks/useBackground';
 import { sanitizeContent } from '~/lib/sanitizeContent';
 
-export const loader = async ({ params, request }: LoaderFunctionArgs) => {
+import type { Route } from './+types/blogPost';
+
+export const loader = async ({ params, request }: Route.LoaderArgs) => {
   const filename = params.id; // Assuming your route is like /blog/:slug
 
   if (!filename) {
@@ -22,17 +23,17 @@ export const loader = async ({ params, request }: LoaderFunctionArgs) => {
     const baseUrl = `${url.protocol}//${url.host}`;
     const response = await fetch(`${baseUrl}/api/getFile?type=blog&filename=${filename}`);
 
-    if (!response.ok) return json({ postData: null });
+    if (!response.ok) return { postData: null };
 
     const postData = await response.json() as ContentItem<BlogMeta>;
-    return json({ postData });
+    return { postData };
   } catch (error) {
     console.error('Error fetching blog post:', error);
     throw new Response('Not Found', { status: 404 });
   }
 };
 
-export const meta: MetaFunction<typeof loader> = ({ data }) => {
+export const meta: Route.MetaFunction = ({ data }) => {
   if (!data || !data.postData) {
     return [
       { title: 'Post Not Found' },

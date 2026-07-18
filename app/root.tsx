@@ -1,5 +1,5 @@
 import React from 'react';
-import { Links, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react';
+import { Links, Meta, Outlet, Scripts, ScrollRestoration } from 'react-router';
 import './css/tailwind.css';
 import PageWrapper from '~/components/layout/PageWrapper';
 

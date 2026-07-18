@@ -1,8 +1,8 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 
-import type { EntryContext } from '@remix-run/cloudflare';
-import { RemixServer } from '@remix-run/react';
+import type { EntryContext } from 'react-router';
+import { ServerRouter } from 'react-router';
 import { isbot } from 'isbot';
 import { renderToReadableStream } from 'react-dom/server.browser';
 
@@ -10,7 +10,7 @@ export default async function handleRequest(
   request: Request,
   responseStatusCode: number,
   responseHeaders: Headers,
-  remixContext: EntryContext,
+  reactRouterContext: EntryContext,
 ) {
   const abortController = new AbortController();
   const { signal } = abortController;
@@ -19,7 +19,7 @@ export default async function handleRequest(
   let didError = false;
 
   const body = await renderToReadableStream(
-    <RemixServer context={remixContext} url={request.url} />,
+    <ServerRouter context={reactRouterContext} url={request.url} />,
     {
       signal,
       onError(error: unknown) {

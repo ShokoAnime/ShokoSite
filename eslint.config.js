@@ -18,7 +18,7 @@ export default [
   // Ignores (replaces --ignore-path .gitignore from the old lint script —
   // this repo's .gitignore only has node_modules, per what you confirmed)
   {
-    ignores: ['node_modules/**'],
+    ignores: ['node_modules/**', '.react-router/**'],
   },
 
   js.configs.recommended,
@@ -65,13 +65,6 @@ export default [
       'no-multi-spaces': 'warn',
       'react/jsx-curly-newline': ['warn', { multiline: 'consistent', singleline: 'consistent' }],
       'react/jsx-max-props-per-line': ['warn', { maximum: 1, when: 'multiline' }],
-      'tailwindcss/classnames-order': ['warn', {
-        callees: ['classnames', 'clsx', 'ctl', 'cx'],
-        config: 'tailwind.config.ts',
-        prependCustom: true,
-        removeDuplicates: true,
-        whitespace: 'condense',
-      }],
       'tailwindcss/no-custom-classname': ['warn', {
         cssFiles: ['app/css/tailwind.css', 'app/css/github-dark.css'],
         callees: ['classnames', 'clsx', 'ctl', 'cx'],

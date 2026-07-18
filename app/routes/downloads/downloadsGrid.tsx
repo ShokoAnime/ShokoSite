@@ -1,5 +1,4 @@
-import { LoaderFunctionArgs, MetaFunction, json } from '@remix-run/cloudflare';
-import { useLoaderData, useLocation } from '@remix-run/react';
+import { useLoaderData, useLocation } from 'react-router';
 import { useCallback, useEffect, useState, useRef } from 'react';
 import { convertToProperName } from '~/lib/convertToProperName';
 import PageHero from '~/components/layout/PageHero';
@@ -12,6 +11,8 @@ import { CategorizedTags } from '~/types/downloads';
 import PageNotFound from '~/components/layout/PageNotFound';
 import { GitHubRelease } from '~/types/githubRelease';
 
+import type { Route } from './+types/downloadsGrid';
+
 type JsonContentItem = Omit<ContentItem, 'meta'> & {
   meta?: ContentItem<DownloadMeta>['meta'];
 };
@@ -19,7 +20,7 @@ type JsonContentItem = Omit<ContentItem, 'meta'> & {
 const LIMIT = 12;
 const SORT = 'dateDescending';
 
-export const loader = async ({ request }: LoaderFunctionArgs) => {
+export const loader = async ({ request }: Route.LoaderArgs) => {
   const url = new URL(request.url);
   const downloadType = url.pathname.split('/')[2];
   const offset = 0;
@@ -35,7 +36,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     );
 
     // if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-    if (!response.ok) return json({ downloadsData: null, tagsData: null, downloadType });
+    if (!response.ok) return { downloadsData: null, tagsData: null, downloadType };
 
     const downloadsData = await response.json() as { results: ContentItem[], totalCount: number };
 
@@ -60,14 +61,14 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
       }
     }
 
-    return json({ downloadsData, tagsData, downloadType });
+    return { downloadsData, tagsData, downloadType };
   } catch (error) {
     console.error('Error fetching data:', error);
     throw new Response('Not Found', { status: 404 });
   }
 };
 
-export const meta: MetaFunction<typeof loader> = ({ data }) => {
+export const meta: Route.MetaFunction = ({ data }) => {
   if (!data || !data.downloadType) {
     return [
       { title: 'Downloads Page Not Found' },
@@ -100,17 +101,7 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
 };
 
 export default function DownloadsGrid() {
-  const loaderData= useLoaderData<{
-    downloadsData: { results: JsonContentItem[], totalCount: number };
-    tagsData: CategorizedTags | null;
-    downloadType: string;
-  } | {status: number}>();
-
-  if (!('downloadsData' in loaderData)) {
-    return <PageNotFound/>;
-  }
-
-  const { downloadsData, tagsData, downloadType } = loaderData;
+  const { downloadsData, tagsData, downloadType } = useLoaderData<typeof loader>();
 
   const [downloads, setDownloads] = useState<ContentItem<DownloadMeta>[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -130,9 +121,9 @@ export default function DownloadsGrid() {
 
   const fetchMoreDownloads = useCallback(
     async (offsetParam?: number) => {
+      if (!downloadsData) return;
       const currentOffset = offsetParam ?? offsetRef.current;
-      if (!('downloadsData' in loaderData)) return;
-      if (downloadsLengthRef.current >= downloadsData?.totalCount) return;
+      if (downloadsLengthRef.current >= downloadsData.totalCount) return;
 
       try {
         setIsLoading(true);
@@ -177,7 +168,7 @@ export default function DownloadsGrid() {
         setIsLoading(false);
       }
     },
-    [downloadType, colorOptions, themeOptions, animatedOptions, downloadsData?.totalCount],
+    [downloadType, colorOptions, themeOptions, animatedOptions, downloadsData],
   );
 
   useEffect(() => {
@@ -191,13 +182,13 @@ export default function DownloadsGrid() {
   }, [colorOptions, themeOptions, animatedOptions, fetchMoreDownloads]);
 
   useEffect(() => {
-    if (isIntersecting && !isLoading && ('downloadsData' in loaderData) && downloads.length < downloadsData.totalCount) {
+    if (isIntersecting && !isLoading && downloadsData && downloads.length < downloadsData.totalCount) {
       fetchMoreDownloads();
     }
-  }, [isIntersecting, downloads.length, downloadsData?.totalCount, isLoading, fetchMoreDownloads]);
+  }, [isIntersecting, downloads.length, downloadsData, isLoading, fetchMoreDownloads]);
 
   if (!downloadsData) {
-    return <PageNotFound />;
+    return <PageNotFound/>;
   }
 
   return (

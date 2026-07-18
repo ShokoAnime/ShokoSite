@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PageHero from '~/components/layout/PageHero';
 import { DownloadCounts, DownloadListItemProps } from '~/types/downloads';
 import { useBackground } from '~/hooks/useBackground';
-import { MetaFunction } from '@remix-run/cloudflare';
+import { MetaFunction } from 'react-router';
 import Button from '~/components/common/Button';
 
 export const meta: MetaFunction = () => {

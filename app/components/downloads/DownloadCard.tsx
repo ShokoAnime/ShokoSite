@@ -1,4 +1,4 @@
-import { Link } from '@remix-run/react';
+import { Link } from 'react-router';
 import { convertNameToUrl } from '~/lib/convertNameToUrl';
 import Image from '~/components/common/Image';
 import {ContentItem, DownloadMeta} from '~/types/content';

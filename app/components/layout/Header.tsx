@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link, useLocation } from '@remix-run/react';
+import { Link, useLocation } from 'react-router';
 import cx from 'classnames';
 import { PanelLeftClose, PanelLeftOpen } from 'lucide-react';
 import {
