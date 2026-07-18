@@ -1,5 +1,4 @@
-import { LoaderFunctionArgs, MetaFunction, json } from '@remix-run/cloudflare';
-import { useLoaderData } from '@remix-run/react';
+import { useLoaderData } from 'react-router';
 import {ContentItem, DownloadMeta} from '~/types/content';
 import PageNotFound from '~/components/layout/PageNotFound';
 import PageHero from '~/components/layout/PageHero';
@@ -11,6 +10,8 @@ import { BookHeart, Download, ScrollText, Tags } from 'lucide-react';
 import { sanitizeContent } from '~/lib/sanitizeContent';
 import { GitHubRelease } from '~/types/githubRelease';
 
+import type { Route } from './+types/downloadSingle';
+
 const HeaderBuilder = ({ title, children }: HeaderBuilderProps) => (
   <div className="flex items-center justify-between gap-y-6 border-b border-shoko-divider pb-3">
     <div className="font-header text-shoko-24 font-bold">{title}</div>
@@ -18,7 +19,7 @@ const HeaderBuilder = ({ title, children }: HeaderBuilderProps) => (
   </div>
 );
 
-export const loader = async ({ request }: LoaderFunctionArgs) => {
+export const loader = async ({ request }: Route.LoaderArgs) => {
   const location = new URL(request.url).pathname;
   const locationSplit = location.split('/');
   const type = locationSplit[locationSplit.length === 4 ? 2 : 2];
@@ -33,7 +34,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     const baseUrl = `${url.protocol}//${url.host}`;
     const response = await fetch(`${baseUrl}/api/getFile?type=${type}&filename=${filename}`);
 
-    if (!response.ok) return json({ downloadData: null });
+    if (!response.ok) return { downloadData: null };
 
     const downloadData = await response.json() as ContentItem<DownloadMeta>;
     if (downloadData.meta.githubRepository) {
@@ -48,14 +49,14 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
         });
       }
     }
-    return json({ downloadData });
+    return { downloadData };
   } catch (error) {
     console.error('Error fetching download data:', error);
     throw new Response('Not Found', { status: 404 });
   }
 };
 
-export const meta: MetaFunction<typeof loader> = ({ data }) => {
+export const meta: Route.MetaFunction = ({ data }) => {
   if (!data || !data.downloadData) {
     return [
       { title: 'Download Not Found' },

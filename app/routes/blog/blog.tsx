@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { MetaFunction } from '@remix-run/cloudflare';
+import { MetaFunction } from 'react-router';
 import PageHero from '~/components/layout/PageHero';
 import PostCard from '~/components/blog/PostCard';
 import { useSentinel } from '~/hooks/useSentinel';

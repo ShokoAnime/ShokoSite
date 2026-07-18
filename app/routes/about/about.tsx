@@ -2,7 +2,7 @@ import PageHero from '~/components/layout/PageHero';
 import Divider from '~/components/layout/Divider';
 import { useState } from 'react';
 import HistorySection from '~/components/about/HistorySection';
-import { MetaFunction } from '@remix-run/cloudflare';
+import { MetaFunction } from 'react-router';
 
 export const meta: MetaFunction = () => {
   const pageTitle = 'About Shoko';

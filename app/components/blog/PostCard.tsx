@@ -1,4 +1,4 @@
-import { Link } from '@remix-run/react';
+import { Link } from 'react-router';
 import { PostCardProps } from '~/types/blog';
 import Image from '~/components/common/Image';
 import { convertDate } from '~/lib/convertDate';
