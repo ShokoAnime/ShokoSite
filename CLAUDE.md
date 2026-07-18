@@ -22,7 +22,7 @@ There is no test suite in this repo (no `test` script).
 
 ## Architecture
 
-React Router 8 in **framework mode** (SSR), deployed as a Cloudflare Pages site. Node/Vite dev via `react-router dev`; production request handling goes through `functions/[[path]].ts`, which wraps the built server bundle with `@react-router/cloudflare`'s `createPagesFunctionHandler`. That handler requires a `getLoadContext` returning a `RouterContextProvider` (react-router 8's middleware-context system) — currently just `new RouterContextProvider()` since no loader reads Cloudflare bindings (KV/D1/env) today. If that ever changes, populate the context there.
+React Router 8 in **framework mode** (SSR), deployed as a Cloudflare Pages site. React Router 8 requires Node `>=22.22.0`; Cloudflare Pages' build system does **not** read `package.json`'s `engines.node` (that's a Netlify convention) — the Node version it uses comes from `.nvmrc`/`.node-version` or a `NODE_VERSION` build environment variable, so keep `.nvmrc` in sync with any future Node floor bump or the deploy will fail even though local builds succeed. Node/Vite dev via `react-router dev`; production request handling goes through `functions/[[path]].ts`, which wraps the built server bundle with `@react-router/cloudflare`'s `createPagesFunctionHandler`. That handler requires a `getLoadContext` returning a `RouterContextProvider` (react-router 8's middleware-context system) — currently just `new RouterContextProvider()` since no loader reads Cloudflare bindings (KV/D1/env) today. If that ever changes, populate the context there.
 
 ### Routing
 
