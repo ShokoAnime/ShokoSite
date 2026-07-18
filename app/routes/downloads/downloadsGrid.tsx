@@ -21,9 +21,8 @@ type JsonContentItem = Omit<ContentItem, 'meta'> & {
 const LIMIT = 12;
 const SORT = 'dateDescending';
 
-export const loader = async ({ request }: Route.LoaderArgs) => {
-  const url = new URL(request.url);
-  const downloadType = url.pathname.split('/')[2];
+export const loader = async ({ url, params }: Route.LoaderArgs) => {
+  const downloadType = params.id;
   const offset = 0;
   const colorOptions: string[] = [];
   const themeOptions: string[] = [];

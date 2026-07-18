@@ -9,8 +9,7 @@ const getUniqueTags = async (type: string): Promise<string[]> => {
   return [...new Set(allTags)];
 };
 
-export const loader: LoaderFunction = async ({ request }) => {
-  const url = new URL(request.url);
+export const loader: LoaderFunction = async ({ url }) => {
   const type = url.searchParams.get('type') || 'blog';
 
   try {

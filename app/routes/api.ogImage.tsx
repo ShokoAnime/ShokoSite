@@ -5,7 +5,7 @@ import wasmData from '~/lib/index_bg.wasm?url';
 
 let wasmInitialized = false;
 
-export const loader: LoaderFunction = async ({ request }) => {
+export const loader: LoaderFunction = async ({ url }) => {
   if (!wasmInitialized) {
     const { default: resvgwasm } = await import(
       /* @vite-ignore */ `${wasmData}?module`
@@ -14,7 +14,6 @@ export const loader: LoaderFunction = async ({ request }) => {
     wasmInitialized = true;
   }
 
-  const url = new URL(request.url);
   const title = url.searchParams.get('title') || 'Default Title';
   const summary = url.searchParams.get('summary') || 'Default Summary';
   const date = url.searchParams.get('date') || '';

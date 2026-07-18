@@ -1,8 +1,7 @@
 import { LoaderFunction } from 'react-router';
 import { getContentItems } from '~/lib/contentLoader';
 
-export const loader: LoaderFunction = async ({ request }) => {
-  const url = new URL(request.url);
+export const loader: LoaderFunction = async ({ url }) => {
   const type = url.searchParams.get('type');
   const filename = url.searchParams.get('filename');
 
