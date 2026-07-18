@@ -54,15 +54,15 @@ export const loader = async ({ url }: Route.LoaderArgs) => {
   }
 };
 
-export const meta: Route.MetaFunction = ({ data }) => {
-  if (!data || !data.downloadData) {
+export const meta: Route.MetaFunction = ({ loaderData }) => {
+  if (!loaderData || !loaderData.downloadData) {
     return [
       { title: 'Download Not Found' },
       { name: 'description', content: 'The requested download could not be found.' },
     ];
   }
 
-  const { downloadData } = data;
+  const { downloadData } = loaderData;
 
   const downloadTitle = downloadData.meta.name;
   const downloadImage = `https://shokoanime.com${downloadData.meta.images[0].url}`;

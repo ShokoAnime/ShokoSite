@@ -32,15 +32,15 @@ export const loader = async ({ params, url }: Route.LoaderArgs) => {
   }
 };
 
-export const meta: Route.MetaFunction = ({ data }) => {
-  if (!data || !data.postData) {
+export const meta: Route.MetaFunction = ({ loaderData }) => {
+  if (!loaderData || !loaderData.postData) {
     return [
       { title: 'Post Not Found' },
       { name: 'description', content: 'The requested blog post could not be found.' },
     ];
   }
 
-  const { postData } = data;
+  const { postData } = loaderData;
 
   const postTitle = postData.meta.title;
   const postImage = `https://shokoanime.com/images/blog/${postData.meta.image}`;

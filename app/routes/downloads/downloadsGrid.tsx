@@ -68,15 +68,15 @@ export const loader = async ({ url, params }: Route.LoaderArgs) => {
   }
 };
 
-export const meta: Route.MetaFunction = ({ data }) => {
-  if (!data || !data.downloadType) {
+export const meta: Route.MetaFunction = ({ loaderData }) => {
+  if (!loaderData || !loaderData.downloadType) {
     return [
       { title: 'Downloads Page Not Found' },
       { name: 'description', content: 'The requested downloads page could not be found.' },
     ];
   }
 
-  const { downloadType } = data;
+  const { downloadType } = loaderData;
   const title = `${convertToProperName(downloadType)}`;
   const description = `Browse and download ${downloadType} for Shoko Anime.`;
   const pageImage = `https://shokoanime.com/images/banners/banner-10.jpg`;
