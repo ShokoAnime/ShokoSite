@@ -15,7 +15,7 @@ export const loader: LoaderFunction = async ({ request }) => {
 
   try {
     const uniqueTags = await getUniqueTags(type);
-    return { tags: uniqueTags };
+    return Response.json({ tags: uniqueTags });
   } catch (error) {
     console.error(`Error fetching tags for ${type}:`, error);
     throw new Response('Error fetching tags', { status: 500 });

@@ -1,4 +1,4 @@
-import { LoaderFunction, json } from '@remix-run/cloudflare';
+import { LoaderFunction } from '@remix-run/cloudflare';
 import { getContentItems } from '~/lib/contentLoader';
 
 async function countFilesInSubdirectories(): Promise<Record<string, number>> {
@@ -26,7 +26,7 @@ async function countFilesInSubdirectories(): Promise<Record<string, number>> {
 
 export const loader: LoaderFunction = async ({ request }) => {
   if (request.method !== 'GET') {
-    return json({ error: 'Method not allowed' }, { status: 405 });
+    return Response.json({ error: 'Method not allowed' }, { status: 405 });
   }
 
   try {
@@ -40,9 +40,9 @@ export const loader: LoaderFunction = async ({ request }) => {
       legacy: fileCounts['legacy-apps'] || 0,
     };
 
-    return json(result);
+    return Response.json(result);
   } catch (error) {
     console.error('Error processing file counts:', error);
-    return json({ error: 'Error processing file counts' }, { status: 500 });
+    return Response.json({ error: 'Error processing file counts' }, { status: 500 });
   }
 };
