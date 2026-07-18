@@ -65,13 +65,6 @@ export default [
       'no-multi-spaces': 'warn',
       'react/jsx-curly-newline': ['warn', { multiline: 'consistent', singleline: 'consistent' }],
       'react/jsx-max-props-per-line': ['warn', { maximum: 1, when: 'multiline' }],
-      /*'tailwindcss/classnames-order': ['warn', {
-        callees: ['classnames', 'clsx', 'ctl', 'cx'],
-        config: 'tailwind.config.ts',
-        prependCustom: true,
-        removeDuplicates: true,
-        whitespace: 'condense',
-      }],*/
       'tailwindcss/no-custom-classname': ['warn', {
         cssFiles: ['app/css/tailwind.css', 'app/css/github-dark.css'],
         callees: ['classnames', 'clsx', 'ctl', 'cx'],
