@@ -1,7 +1,7 @@
 import { ContentItem, Meta } from '~/types/content';
 import matter from 'gray-matter';
 
-const contentModules = import.meta.glob('/app/content/**/*.mdx', { query: 'raw', import: 'default' });
+const contentModules = import.meta.glob('/app/content/**/*.mdx', { query: '?raw', import: 'default' }) as Record<string, () => Promise<string>>;
 
 const contentPaths: Record<string, string> = {
   blog: '/app/content/posts',
@@ -24,7 +24,6 @@ export async function getContentItems(type: string): Promise<ContentItem[]> {
     .filter(([path]) => path.startsWith(basePath))
     .map(async ([path, importFn]) => {
       const rawContent = await importFn();
-      // @ts-expect-error - Not an issue.
       const { data: meta, content: mdxContent } = matter(rawContent);
 
       return {

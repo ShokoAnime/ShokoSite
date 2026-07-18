@@ -38,6 +38,8 @@
     "@mdx-js/mdx": "^3.0.1",
     "@mdx-js/rollup": "^3.0.1",
     "@remix-run/dev": "^2.17.5",
+    "@remix-run/fs-routes": "^2.17.5",
+    "@remix-run/route-config": "^2.17.5",
     "@types/mdx": "^2.0.13",
     "@types/prismjs": "^1.26.4",
     "@types/react": "^18.3.10",
@@ -67,6 +69,5 @@
   },
   "engines": {
     "node": ">=20.0.0"
-  },
-  "packageManager": "pnpm@8.9.2+sha1.5f2fa48d614263457cf5d7fb7be8b878da318d87"
+  }
 }

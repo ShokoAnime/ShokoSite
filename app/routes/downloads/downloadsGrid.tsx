@@ -100,11 +100,17 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
 };
 
 export default function DownloadsGrid() {
-  const { downloadsData, tagsData, downloadType } = useLoaderData<{
+  const loaderData= useLoaderData<{
     downloadsData: { results: JsonContentItem[], totalCount: number };
     tagsData: CategorizedTags | null;
     downloadType: string;
-  }>();
+  } | {status: number}>();
+
+  if (!('downloadsData' in loaderData)) {
+    return <PageNotFound/>;
+  }
+
+  const { downloadsData, tagsData, downloadType } = loaderData;
 
   const [downloads, setDownloads] = useState<ContentItem<DownloadMeta>[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -125,7 +131,8 @@ export default function DownloadsGrid() {
   const fetchMoreDownloads = useCallback(
     async (offsetParam?: number) => {
       const currentOffset = offsetParam ?? offsetRef.current;
-      if (downloadsLengthRef.current >= downloadsData.totalCount) return;
+      if (!('downloadsData' in loaderData)) return;
+      if (downloadsLengthRef.current >= downloadsData?.totalCount) return;
 
       try {
         setIsLoading(true);
@@ -170,7 +177,7 @@ export default function DownloadsGrid() {
         setIsLoading(false);
       }
     },
-    [downloadType, colorOptions, themeOptions, animatedOptions, downloadsData.totalCount],
+    [downloadType, colorOptions, themeOptions, animatedOptions, downloadsData?.totalCount],
   );
 
   useEffect(() => {
@@ -184,12 +191,12 @@ export default function DownloadsGrid() {
   }, [colorOptions, themeOptions, animatedOptions, fetchMoreDownloads]);
 
   useEffect(() => {
-    if (isIntersecting && !isLoading && downloads.length < downloadsData.totalCount) {
+    if (isIntersecting && !isLoading && ('downloadsData' in loaderData) && downloads.length < downloadsData.totalCount) {
       fetchMoreDownloads();
     }
-  }, [isIntersecting, downloads.length, downloadsData.totalCount, isLoading, fetchMoreDownloads]);
+  }, [isIntersecting, downloads.length, downloadsData?.totalCount, isLoading, fetchMoreDownloads]);
 
-  if (downloadsData === undefined) {
+  if (!downloadsData) {
     return <PageNotFound />;
   }
 

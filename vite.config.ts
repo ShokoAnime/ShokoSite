@@ -11,6 +11,7 @@ export default defineConfig({
   plugins: [
     wasmModuleWorkers(),
     mdx({
+      exclude: ['app/content/**/*.mdx'], //needed for v3_singleFetch: true
       remarkPlugins: [
         remarkFrontmatter,
         remarkMdxFrontmatter,
@@ -22,19 +23,9 @@ export default defineConfig({
         v3_fetcherPersist: true,
         v3_relativeSplatPath: true,
         v3_throwAbortReason: true,
-      },
-      routes(defineRoutes) {
-        return defineRoutes((route) => {
-          route('/about', 'routes/about/about.tsx');
-          route('/blog', 'routes/blog/blog.tsx');
-          route('/blog/:id', 'routes/blog/blogPost.tsx');
-          route('/contributors', 'routes/contributors/contributors.tsx');
-          route('/downloads', 'routes/downloads/downloads.tsx');
-          route('/downloads/:id', 'routes/downloads/downloadsGrid.tsx');
-          route('/downloads/:id/:subid', 'routes/downloads/downloadSingle.tsx');
-          route('/downloads/shoko-server', 'routes/downloads/downloadSingle.tsx', { id: 'shoko-server' });
-          route('*', 'routes/404.tsx', { id: '404' });
-        });
+        v3_routeConfig: true,
+        v3_singleFetch: true,
+        v3_lazyRouteDiscovery: true,
       },
     }),
     tsconfigPaths(),

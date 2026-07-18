@@ -37,7 +37,7 @@ export const loader: LoaderFunction = async ({ request }) => {
       totalCount: filteredItems.length,
     };
 
-    return result;
+    return Response.json(result);
   } catch (error) {
     console.error(`Error processing ${type} content:`, error);
     throw new Response('Error processing content', { status: 500 });

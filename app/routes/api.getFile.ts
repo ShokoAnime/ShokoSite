@@ -18,7 +18,7 @@ export const loader: LoaderFunction = async ({ request }) => {
       throw new Response('File not found', { status: 404 });
     }
 
-    return requestedItem;
+    return Response.json(requestedItem);
   } catch (error) {
     if (error instanceof Response) {
       throw error;
