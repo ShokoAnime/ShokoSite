@@ -62,7 +62,6 @@ const MDXRenderer = ({ content }: MDXRendererProps) => {
 
         const module = await evaluate(contentWithoutImports, {
           ...runtime,
-          // @ts-expect-error - Not an issue.
           useMDXComponents: () => components,
         });
 
