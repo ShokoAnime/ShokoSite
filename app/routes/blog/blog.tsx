@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { MetaFunction } from 'react-router';
 import PageHero from '~/components/layout/PageHero';
 import PostCard from '~/components/blog/PostCard';
+import Spinner from '~/components/common/Spinner';
 import { useSentinel } from '~/hooks/useSentinel';
 import {BlogMeta, ContentItem} from '~/types/content';
 
@@ -32,6 +33,7 @@ export const meta: MetaFunction = () => {
 
 export default function Blog() {
   const [blogPosts, setBlogPosts] = useState<ContentItem<BlogMeta>[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [loadingRef, isIntersecting] = useSentinel();
   const isLoadingRef = useRef(false);
   const offsetRef = useRef(0);
@@ -45,6 +47,7 @@ export default function Blog() {
     const sort = 'dateDescending';
 
     isLoadingRef.current = true;
+    setIsLoading(true);
     try {
       const response = await fetch(
         `/api/getFiles?type=${type}&offset=${offsetRef.current}&limit=${limit}&sort=${sort}`,
@@ -65,6 +68,7 @@ export default function Blog() {
       console.error('Error fetching blog posts:', error);
     } finally {
       isLoadingRef.current = false;
+      setIsLoading(false);
     }
   }, []);
 
@@ -96,7 +100,9 @@ export default function Blog() {
           />
         ))}
       </div>
-      <div ref={loadingRef} />
+      <div ref={loadingRef} className="flex w-full justify-center py-8">
+        {isLoading && <Spinner />}
+      </div>
     </>
   );
 }

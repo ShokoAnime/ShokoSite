@@ -4,6 +4,7 @@ import { convertToProperName } from '~/lib/convertToProperName';
 import PageHero from '~/components/layout/PageHero';
 import DownloadCard from '~/components/downloads/DownloadCard';
 import MultiSelectDropdown from '~/components/common/MultiSelectDropdown';
+import Spinner from '~/components/common/Spinner';
 import { Lightbulb, Palette, Sparkles, SunMoon } from 'lucide-react';
 import { useSentinel } from '~/hooks/useSentinel';
 import {ContentItem, DownloadMeta} from '~/types/content';
@@ -255,7 +256,9 @@ export default function DownloadsGrid() {
           {downloads.map((download) => <DownloadCard key={download.meta.name} data={download} />)}
         </div>
       </div>
-      <div ref={loadingRef} />
+      <div ref={loadingRef} className="flex w-full justify-center py-8">
+        {isLoading && <Spinner />}
+      </div>
     </>
   );
 }
