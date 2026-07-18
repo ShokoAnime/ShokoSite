@@ -45,15 +45,10 @@ const PageWrapper = ({ children }: PageWrapperProps) => {
   }, [backgroundImage, backgroundImageFull, currentPage, currentURL, lastPage]);
 
   const backgroundGradient = useMemo(() => ({
-    backgroundImage: `linear-gradient(to bottom, 
-      rgba(23, 24, 31, 0.85), 
-      rgba(23, 24, 31, 0.88) 30%, 
-      rgba(23, 24, 31, 0.93) 50%, 
-      rgba(23, 24, 31, .96) 80%, 
-      rgba(23, 24, 31, .99) 90%, 
-      rgba(23, 24, 31, 1) 95%
-      ${backgroundImage !== null ? '80%' : '100%'}), 
-      url(${banner})`,
+    backgroundImage:
+      `linear-gradient(rgba(23, 24, 31, 0.85), rgba(23, 24, 31, 0.88) 30%, rgba(23, 24, 31, 0.93) 50%, rgba(23, 24, 31, .96) 80%, rgba(23, 24, 31, .99) 90%, rgba(23, 24, 31, 1) 95% ${
+        backgroundImage !== null ? '80%' : '100%'
+      }), url(${banner})`,
   }), [backgroundImage, banner]);
 
   return (
@@ -62,6 +57,9 @@ const PageWrapper = ({ children }: PageWrapperProps) => {
         <div
           className="absolute inset-0 h-[850px] bg-cover bg-center bg-no-repeat"
           style={backgroundGradient}
+          // Browsers re-serialize this gradient/url() on parse (e.g. rgba(...,1) -> rgb(...), url() gets quoted),
+          // which always differs from the authored string React compares against during hydration.
+          suppressHydrationWarning
         />
       )}
       <Header />

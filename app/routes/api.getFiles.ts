@@ -15,8 +15,7 @@ const filterByTags = (items: ContentItem[], tagString: string[]): ContentItem[] 
   return items.filter(({ meta }) => meta.tags?.length && tags.every(tag => meta?.tags?.includes(tag)));
 };
 
-export const loader: LoaderFunction = async ({ request }) => {
-  const url = new URL(request.url);
+export const loader: LoaderFunction = async ({ url }) => {
   const type = url.searchParams.get('type') || 'blog';
   const offset = parseInt(url.searchParams.get('offset') || '0', 10);
   const limit = parseInt(url.searchParams.get('limit') || '10', 10);

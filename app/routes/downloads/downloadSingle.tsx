@@ -19,18 +19,16 @@ const HeaderBuilder = ({ title, children }: HeaderBuilderProps) => (
   </div>
 );
 
-export const loader = async ({ request }: Route.LoaderArgs) => {
-  const location = new URL(request.url).pathname;
-  const locationSplit = location.split('/');
-  const type = locationSplit[locationSplit.length === 4 ? 2 : 2];
-  const filename = locationSplit[locationSplit.length === 4 ? 3 : 2];
+export const loader = async ({ url }: Route.LoaderArgs) => {
+  const locationSplit = url.pathname.split('/');
+  const type = locationSplit[2];
+  const filename = locationSplit.length === 4 ? locationSplit[3] : locationSplit[2];
 
   if (!filename) {
     throw new Response('Not Found', { status: 404 });
   }
 
   try {
-    const url = new URL(request.url);
     const baseUrl = `${url.protocol}//${url.host}`;
     const response = await fetch(`${baseUrl}/api/getFile?type=${type}&filename=${filename}`);
 
@@ -56,15 +54,15 @@ export const loader = async ({ request }: Route.LoaderArgs) => {
   }
 };
 
-export const meta: Route.MetaFunction = ({ data }) => {
-  if (!data || !data.downloadData) {
+export const meta: Route.MetaFunction = ({ loaderData }) => {
+  if (!loaderData || !loaderData.downloadData) {
     return [
       { title: 'Download Not Found' },
       { name: 'description', content: 'The requested download could not be found.' },
     ];
   }
 
-  const { downloadData } = data;
+  const { downloadData } = loaderData;
 
   const downloadTitle = downloadData.meta.name;
   const downloadImage = `https://shokoanime.com${downloadData.meta.images[0].url}`;

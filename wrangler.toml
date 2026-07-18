@@ -1,0 +1,4 @@
+name = "shokosite"
+pages_build_output_dir = "build/client"
+compatibility_date = "2025-08-03"
+compatibility_flags = ["nodejs_compat_v2"]

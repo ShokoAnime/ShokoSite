@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Check, ChevronDown, ChevronUp, Square } from 'lucide-react';
 import { MultiSelectDropdownProps } from '~/types/common';
 
-const useOutsideClick = (ref: React.RefObject<HTMLElement>, handler: () => void) => {
+const useOutsideClick = (ref: React.RefObject<HTMLElement | null>, handler: () => void) => {
   useEffect(() => {
     const listener = (event: MouseEvent) => {
       if (!ref.current || ref.current.contains(event.target as Node)) {

@@ -11,7 +11,7 @@ import { sanitizeContent } from '~/lib/sanitizeContent';
 
 import type { Route } from './+types/blogPost';
 
-export const loader = async ({ params, request }: Route.LoaderArgs) => {
+export const loader = async ({ params, url }: Route.LoaderArgs) => {
   const filename = params.id; // Assuming your route is like /blog/:slug
 
   if (!filename) {
@@ -19,7 +19,6 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
   }
 
   try {
-    const url = new URL(request.url);
     const baseUrl = `${url.protocol}//${url.host}`;
     const response = await fetch(`${baseUrl}/api/getFile?type=blog&filename=${filename}`);
 
@@ -33,15 +32,15 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
   }
 };
 
-export const meta: Route.MetaFunction = ({ data }) => {
-  if (!data || !data.postData) {
+export const meta: Route.MetaFunction = ({ loaderData }) => {
+  if (!loaderData || !loaderData.postData) {
     return [
       { title: 'Post Not Found' },
       { name: 'description', content: 'The requested blog post could not be found.' },
     ];
   }
 
-  const { postData } = data;
+  const { postData } = loaderData;
 
   const postTitle = postData.meta.title;
   const postImage = `https://shokoanime.com/images/blog/${postData.meta.image}`;
