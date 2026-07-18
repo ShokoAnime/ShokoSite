@@ -4,6 +4,7 @@ import { DownloadCounts, DownloadListItemProps } from '~/types/downloads';
 import { useBackground } from '~/hooks/useBackground';
 import { MetaFunction } from 'react-router';
 import Button from '~/components/common/Button';
+import Spinner from '~/components/common/Spinner';
 
 export const meta: MetaFunction = () => {
   const pageTitle = 'Downloads';
@@ -83,16 +84,20 @@ const DownloadListItem = ({ name, description, count, link }: DownloadListItemPr
 
 export default function Downloads() {
   const [downloadsList, setDownloadsList] = useState<{ [key: string]: number }>({});
+  const [isLoading, setIsLoading] = useState(true);
   const { resetBackground } = useBackground();
 
   useEffect(() => {
     const getCounts = async () => {
       try {
+        setIsLoading(true);
         const response = await fetch(`/api/getDownloadCounts`);
         const data = await response.json() as DownloadCounts;
         setDownloadsList(data);
       } catch (error) {
         console.error('Error fetching blog posts:', error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -108,36 +113,46 @@ export default function Downloads() {
       />
 
       <div className="my-16 flex flex-col gap-6">
-        <DownloadListItem
-          name="Shoko Server"
-          description="The main program, required for everything else to properly work. "
-          count={downloadsList['shokoServer']}
-          link="/downloads/shoko-server"
-        />
-        <DownloadListItem
-          name="Media Player Plugins"
-          description="Plugins to get Shoko working with various media players programs."
-          count={downloadsList['mediaPlayerPlugins']}
-          link="/downloads/media-player-plugins"
-        />
-        <DownloadListItem
-          name="Web UI Themes"
-          description="Browse our collection of user submitted themes to enhance the Web UI. "
-          count={downloadsList['themes']}
-          link="/downloads/webui-themes"
-        />
-        <DownloadListItem
-          name="Renamer Plugins"
-          description="Plugins to replace Shoko’s built-in renamer functionality"
-          count={downloadsList['renamer']}
-          link="/downloads/renamer-plugins"
-        />
-        <DownloadListItem
-          name="Legacy Apps"
-          description="Deprecated apps that are listed for archival purposes only."
-          count={downloadsList['legacy']}
-          link="/downloads/legacy-apps"
-        />
+        {isLoading
+          ? (
+            <div className="flex w-full justify-center py-8">
+              <Spinner />
+            </div>
+          )
+          : (
+            <>
+              <DownloadListItem
+                name="Shoko Server"
+                description="The main program, required for everything else to properly work. "
+                count={downloadsList['shokoServer']}
+                link="/downloads/shoko-server"
+              />
+              <DownloadListItem
+                name="Media Player Plugins"
+                description="Plugins to get Shoko working with various media players programs."
+                count={downloadsList['mediaPlayerPlugins']}
+                link="/downloads/media-player-plugins"
+              />
+              <DownloadListItem
+                name="Web UI Themes"
+                description="Browse our collection of user submitted themes to enhance the Web UI. "
+                count={downloadsList['themes']}
+                link="/downloads/webui-themes"
+              />
+              <DownloadListItem
+                name="Renamer Plugins"
+                description="Plugins to replace Shoko’s built-in renamer functionality"
+                count={downloadsList['renamer']}
+                link="/downloads/renamer-plugins"
+              />
+              <DownloadListItem
+                name="Legacy Apps"
+                description="Deprecated apps that are listed for archival purposes only."
+                count={downloadsList['legacy']}
+                link="/downloads/legacy-apps"
+              />
+            </>
+          )}
       </div>
     </>
   );
