@@ -1,0 +1,12 @@
+[
+  {
+    "id": "e73c1e23-111a-4cf0-bab8-054b738c5101",
+    "type": "manifest",
+    "url": "https://raw.githubusercontent.com/ShokoAnime/Shoko.Plugin.Anilist/metadata/manifest.json"
+  },
+  {
+    "id": "72a6ff39-2bff-534c-9216-d03cd38e7346",
+    "type": "manifest",
+    "url": "https://raw.githubusercontent.com/ShokoAnime/Shoko.Plugin.OfflineImporter/metadata/manifest.json"
+  }
+]
