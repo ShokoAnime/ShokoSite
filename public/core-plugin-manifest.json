@@ -8,5 +8,15 @@
     "id": "72a6ff39-2bff-534c-9216-d03cd38e7346",
     "type": "manifest",
     "url": "https://raw.githubusercontent.com/ShokoAnime/Shoko.Plugin.OfflineImporter/metadata/manifest.json"
+  },
+  {
+    "id": "85d0c34f-240f-4da3-8512-d0b45118a9f4",
+    "type": "manifest",
+    "url": "https://raw.githubusercontent.com/ShokoAnime/Shoko.Plugin.Tmdb/metadata/manifest.json"
+  },
+  {
+    "id": "8c8d75f2-cd0c-5c0b-9a9e-8c2c6d3e5f1a",
+    "type": "manifest",
+    "url": "https://raw.githubusercontent.com/ShokoAnime/Shoko.Plugin.WebAOM/metadata/manifest.json"
   }
 ]
