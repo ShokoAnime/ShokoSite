@@ -38,7 +38,7 @@ The `app/routes/api.*.ts` routes (`getFiles`, `getFile`, `getAllTags`, `getDownl
 
 ### Plugin feeds
 
-`/core-plugin-manifest.json` and `/community-plugin-manifest.json` are the Shoko server's default plugin repositories. Each is a YAML list of plugin manifest URLs in `app/content/plugin-feeds/<name>.yaml`, served by `app/routes/plugins/pluginManifest.ts` through `app/lib/pluginFeed.server.ts`: it fetches every manifest and serves one JSON list with every package inlined (reference entries are dropped), with an `ETag` and `If-None-Match` support. The built feed stays in the Workers edge cache for 5 minutes, so a plugin release shows up within that without a deploy; each manifest's last good copy is kept for 7 days and served when it cannot be fetched. Adding a plugin is one line in the YAML, once, when it first releases. The Node dev server has no edge cache and builds the feed on every request.
+`/core-plugin-manifest.json` and `/community-plugin-manifest.json` are the Shoko server's default plugin repositories. Each is a YAML list of plugin manifest URLs in `app/content/plugin-feeds/<name>.yaml`, served by `app/routes/plugins/pluginManifest.ts` through `app/lib/pluginFeed.server.ts`: it fetches every manifest and serves one JSON list with every package inlined, with an `ETag` and `If-None-Match` support. The built feed stays in the Workers edge cache for 5 minutes, so a plugin release shows up within that without a deploy; each manifest's last good copy is kept for 7 days and served when it cannot be fetched. Adding a plugin is one line in the YAML, once, when it first releases. The Node dev server has no edge cache and builds the feed on every request.
 
 ### OG image generation
 

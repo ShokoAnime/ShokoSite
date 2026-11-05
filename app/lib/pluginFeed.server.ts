@@ -51,15 +51,13 @@ function readFeedUrls(name: string): string[] {
 
 /**
  * Takes the packages out of a fetched manifest: one package, or a list of
- * them. Reference entries pointing at other manifests are dropped, as the
- * feed serves every package inlined.
+ * them. An entry without an ID, a name or releases is left out.
  */
 function readPackages(manifest: unknown): PackageManifest[] {
   const entries = Array.isArray(manifest) ? manifest : [manifest];
   return entries.filter((entry): entry is PackageManifest =>
     typeof entry === 'object' && entry !== null
     && typeof (entry as PackageManifest).id === 'string'
-    && (entry as PackageManifest).type !== 'manifest'
     && typeof (entry as PackageManifest).name === 'string'
     && Array.isArray((entry as PackageManifest).releases)
   );
