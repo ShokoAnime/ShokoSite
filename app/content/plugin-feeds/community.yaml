@@ -1,0 +1,5 @@
+# The community plugin feed, served at /community-plugin-manifest.json.
+#
+# Each entry is the URL of a plugin's own manifest, served the same way as
+# the core feed (see core.yaml).
+plugins: []

@@ -11,5 +11,7 @@ export default [
   route('/downloads/:id', 'routes/downloads/downloadsGrid.tsx'),
   route('/downloads/:id/:subid', 'routes/downloads/downloadSingle.tsx'),
   route('/downloads/shoko-server', 'routes/downloads/downloadSingle.tsx', { id: 'shoko-server' }),
+  route('/core-plugin-manifest.json', 'routes/plugins/pluginManifest.ts', { id: 'core-plugin-manifest' }),
+  route('/community-plugin-manifest.json', 'routes/plugins/pluginManifest.ts', { id: 'community-plugin-manifest' }),
   route('*', 'routes/404.tsx', { id: '404' }),
 ] satisfies RouteConfig;
