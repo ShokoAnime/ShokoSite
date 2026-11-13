@@ -40,6 +40,12 @@ The `app/routes/api.*.ts` routes (`getFiles`, `getFile`, `getAllTags`, `getDownl
 
 `/core-plugin-manifest.json` and `/community-plugin-manifest.json` are the Shoko server's default plugin repositories. Each is a YAML list of plugin manifest URLs in `app/content/plugin-feeds/<name>.yaml`, served by `app/routes/plugins/pluginManifest.ts` through `app/lib/pluginFeed.server.ts`: it fetches every manifest and serves one JSON list with every package inlined, with an `ETag` and `If-None-Match` support. The built feed stays in the Workers edge cache for 5 minutes, so a plugin release shows up within that without a deploy; each manifest's last good copy is kept for 7 days and served when it cannot be fetched. Adding a plugin is one line in the YAML, once, when it first releases. The Node dev server has no edge cache and builds the feed on every request.
 
+### Static assets, caching, and feeds
+
+`public/_routes.json` keeps static files (`/assets/*`, `/images/*`, `/fonts/*`, `/webui-themes/*`, `/favicon.ico`) from invoking the Pages Function, and `public/_headers` gives them their cache and CORS headers (one block per path — a repeated path stops the earlier block applying). Everything else, including every feed, is built by the Function.
+
+**Never add a cache rule that covers feeds** — no `*.json`/`*.xml` pattern in `public/_headers` or in a Cloudflare Cache Rule, no feed path in `_routes.json`'s `exclude`, and no static copy of a feed under `public/`. The plugin feeds (`/core-plugin-manifest.json`, `/community-plugin-manifest.json`) and any blog feed must stay generated, with their own short `Cache-Control` and `ETag`; a long-lived cached or static copy is how a feed got stuck serving old content for a week. Add new feed paths to this list.
+
 ### OG image generation
 
 `app/routes/api.ogImage.tsx` renders social preview images at request time using `satori` (JSX → SVG) + `@resvg/resvg-wasm` (SVG → PNG). The resvg wasm binary is loaded through `vite-plugin-wasm-module-workers`, which is why the build script has an extra step copying `*.wasm` from `build/client/assets` into `build/server/assets` — without it the Cloudflare Pages Function can't resolve the wasm module at runtime.
