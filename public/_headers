@@ -1,6 +1,10 @@
+# Static files skip the Pages Function (see _routes.json), so the CORS header
+# that functions/[[path]].ts adds to everything else is set here instead.
+
 # Cache images for 30 days
 /images/*
   Cache-Control: public, max-age=2592000, s-maxage=2592000
+  Access-Control-Allow-Origin: *
 
 # Cache CSS and JavaScript for 7 days
 /css/*
@@ -8,3 +12,15 @@
 
 /js/*
   Cache-Control: public, max-age=604800, s-maxage=604800
+
+/assets/*
+  Access-Control-Allow-Origin: *
+
+/fonts/*
+  Access-Control-Allow-Origin: *
+
+/webui-themes/*
+  Access-Control-Allow-Origin: *
+
+/favicon.ico
+  Access-Control-Allow-Origin: *
