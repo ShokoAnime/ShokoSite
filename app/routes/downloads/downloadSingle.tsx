@@ -7,8 +7,8 @@ import MDXRenderer from '~/components/common/MarkdownParser';
 import { HeaderBuilderProps, IconNameProps } from '~/types/downloads';
 import { SiDiscord, SiGithub } from '@icons-pack/react-simple-icons';
 import { BookHeart, Download, ScrollText, Tags } from 'lucide-react';
-import { sanitizeContent } from '~/lib/sanitizeContent';
-import { GitHubRelease } from '~/types/githubRelease';
+import { applyLatestRelease } from '~/lib/githubRelease';
+import { downloadCard, downloadId, ogImageUrl } from '~/lib/ogCard';
 
 import type { Route } from './+types/downloadSingle';
 
@@ -32,22 +32,11 @@ export const loader = async ({ url }: Route.LoaderArgs) => {
     const baseUrl = `${url.protocol}//${url.host}`;
     const response = await fetch(`${baseUrl}/api/getFile?type=${type}&filename=${filename}`);
 
-    if (!response.ok) return { downloadData: null };
+    if (!response.ok) return { downloadData: null, type };
 
     const downloadData = await response.json() as ContentItem<DownloadMeta>;
-    if (downloadData.meta.githubRepository) {
-      const ghReleaseResponse = await fetch(`${baseUrl}/api/getGitHubRelease/${downloadData.meta.githubRepository}`);
-      if (ghReleaseResponse.ok) {
-        const ghRelease: GitHubRelease = await ghReleaseResponse.json();
-        downloadData.meta.version = ghRelease.tag_name.startsWith("v") ? ghRelease.tag_name.slice(1) : ghRelease.tag_name;
-        downloadData.meta.date = new Date(ghRelease.published_at || ghRelease.created_at).toLocaleDateString('en-US', {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric'
-        });
-      }
-    }
-    return { downloadData };
+    await applyLatestRelease(downloadData.meta, baseUrl);
+    return { downloadData, type };
   } catch (error) {
     console.error('Error fetching download data:', error);
     throw new Response('Not Found', { status: 404 });
@@ -62,31 +51,24 @@ export const meta: Route.MetaFunction = ({ loaderData }) => {
     ];
   }
 
-  const { downloadData } = loaderData;
+  const { downloadData, type } = loaderData;
 
-  const downloadTitle = downloadData.meta.name;
-  const downloadImage = `https://shokoanime.com${downloadData.meta.images[0].url}`;
-  const downloadVersion = downloadData.meta.version;
-  const downloadDate = downloadData.meta.date;
-  const sanitizedDescription = sanitizeContent(downloadData.content);
-  const sanitizedUrl = downloadData.filename.replace('.mdx', '');
-
-  const ogImageUrl = `https://shokoanime.com/api/ogImage?title=${encodeURIComponent(`${downloadTitle}`)}&summary=${encodeURIComponent(sanitizedDescription)
-    }&date=${encodeURIComponent(`${downloadDate}`)}&version=${encodeURIComponent(downloadVersion)}&pageUrl=${encodeURIComponent(`https://shokoanime.com/downloads/${sanitizedUrl}`)
-    }&backgroundImage=${encodeURIComponent(downloadImage)}`;
+  const card = downloadCard(type, downloadData);
+  const sanitizedDescription = card.summary;
+  const ogImage = ogImageUrl('download', downloadId(type, downloadData), card);
 
   return [
     { title: downloadData.meta.name },
     { name: 'description', content: sanitizedDescription },
     { property: 'og:title', content: downloadData.meta.name },
     { property: 'og:description', content: sanitizedDescription },
-    { property: 'og:image', content: ogImageUrl },
+    { property: 'og:image', content: ogImage },
     { property: 'og:type', content: 'article' },
     { property: 'article:published_time', content: downloadData.meta.date },
     { property: 'twitter:card', content: 'summary_large_image' },
     { property: 'twitter:title', content: downloadData.meta.name },
     { property: 'twitter:description', content: sanitizedDescription },
-    { property: 'twitter:image', content: ogImageUrl },
+    { property: 'twitter:image', content: ogImage },
   ];
 };
 

@@ -7,7 +7,7 @@ import PostTags from '~/components/blog/PostTags';
 import MDXRenderer from '~/components/common/MarkdownParser';
 import { useEffect } from 'react';
 import { useBackground } from '~/hooks/useBackground';
-import { sanitizeContent } from '~/lib/sanitizeContent';
+import { blogCard, ogImageUrl } from '~/lib/ogCard';
 
 import type { Route } from './+types/blogPost';
 
@@ -42,30 +42,22 @@ export const meta: Route.MetaFunction = ({ loaderData }) => {
 
   const { postData } = loaderData;
 
-  const postTitle = postData.meta.title;
-  const postImage = `https://shokoanime.com/images/blog/${postData.meta.image}`;
-  const postDate = postData.meta.date;
-  const sanitizedDescription = sanitizeContent(postData.content);
-  const sanitizedUrl = postData.filename.replace('.mdx', '');
-
-  const ogImageUrl = `https://shokoanime.com/api/ogImage?title=${encodeURIComponent(`${postTitle}`)}&summary=${
-    encodeURIComponent(sanitizedDescription)
-  }&date=${encodeURIComponent(`${postDate}`)}&pageUrl=${
-    encodeURIComponent(`https://shokoanime.comg/blog/${sanitizedUrl}`)
-  }&backgroundImage=${encodeURIComponent(`${postImage}`)}`;
+  const card = blogCard(postData);
+  const sanitizedDescription = card.summary;
+  const ogImage = ogImageUrl('blog', postData.filename.replace('.mdx', ''), card);
 
   return [
     { title: postData.meta.title },
     { name: 'description', content: sanitizedDescription },
     { property: 'og:title', content: postData.meta.title },
     { property: 'og:description', content: sanitizedDescription },
-    { property: 'og:image', content: ogImageUrl },
+    { property: 'og:image', content: ogImage },
     { property: 'og:type', content: 'article' },
     { property: 'article:published_time', content: postData.meta.date },
     { property: 'twitter:card', content: 'summary_large_image' },
     { property: 'twitter:title', content: postData.meta.title },
     { property: 'twitter:description', content: sanitizedDescription },
-    { property: 'twitter:image', content: ogImageUrl },
+    { property: 'twitter:image', content: ogImage },
   ];
 };
 

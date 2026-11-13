@@ -2,28 +2,10 @@ import { LoaderFunction } from 'react-router';
 import { Resvg, initWasm } from '@resvg/resvg-wasm';
 import satori from 'satori';
 import wasmData from '~/lib/index_bg.wasm?url';
+import { ogCardHash } from '~/lib/ogCard';
+import { resolveOgCard } from '~/lib/ogCard.server';
 
 let wasmInitialized = false;
-
-const siteOrigin = 'https://shokoanime.com';
-const defaultBackground = `${siteOrigin}/images/banners/main-banner.jpg`;
-
-/** Cap on each text parameter, so a crafted URL can't force huge renders. */
-const maxLength = { title: 120, summary: 320, date: 32, version: 32 } as const;
-
-/** Only allow URLs on our own origin; anything else falls back to `fallback`. */
-function siteUrl(value: string | null, fallback: string): string {
-  try {
-    const parsed = new URL(value ?? '');
-    return parsed.origin === siteOrigin ? parsed.href : fallback;
-  } catch {
-    return fallback;
-  }
-}
-
-function param(url: URL, name: keyof typeof maxLength, fallback = ''): string {
-  return (url.searchParams.get(name) || fallback).slice(0, maxLength[name]);
-}
 
 /** The Workers edge cache; `undefined` in the Node dev server. */
 function edgeCache(): Cache | undefined {
@@ -31,13 +13,34 @@ function edgeCache(): Cache | undefined {
 }
 
 export const loader: LoaderFunction = async ({ url }) => {
+  const type = url.searchParams.get('type');
+  const id = url.searchParams.get('id');
+  if (!type || !id) {
+    throw new Response('Missing type or id', { status: 400 });
+  }
+
   // Pages Function responses are not edge-cached by default, so repeat
   // requests for the same card would otherwise be rendered again each time.
   const cache = edgeCache();
-  const cacheKey = new Request(url.href);
-  const cached = await cache?.match(cacheKey);
+  const requestKey = new Request(url.href);
+  const cached = await cache?.match(requestKey);
   // Copy it: a response read from the cache has immutable headers.
   if (cached) return new Response(cached.body, cached);
+
+  // Only cards that exist in site content can be rendered; nothing in the URL
+  // is drawn onto the image.
+  const card = await resolveOgCard(type, id, url.origin);
+  if (!card) {
+    throw new Response('Not Found', { status: 404 });
+  }
+
+  // The same card is always cached under its canonical URL, whatever `v` the
+  // request carried, so varying `v` can't force new renders.
+  const canonical = new URL(url.pathname, url.origin);
+  canonical.search = new URLSearchParams({ type, id, v: ogCardHash(card) }).toString();
+  const canonicalKey = new Request(canonical.href);
+  const canonicalCached = await cache?.match(canonicalKey);
+  if (canonicalCached) return new Response(canonicalCached.body, canonicalCached);
 
   if (!wasmInitialized) {
     const { default: resvgwasm } = await import(
@@ -47,12 +50,7 @@ export const loader: LoaderFunction = async ({ url }) => {
     wasmInitialized = true;
   }
 
-  const title = param(url, 'title', 'Default Title');
-  const summary = param(url, 'summary', 'Default Summary');
-  const date = param(url, 'date');
-  const version = param(url, 'version');
-  const pageUrl = siteUrl(url.searchParams.get('pageUrl'), siteOrigin);
-  const backgroundImage = siteUrl(url.searchParams.get('backgroundImage'), defaultBackground);
+  const { title, summary, date = '', version = '', pageUrl, background: backgroundImage } = card;
 
   const siteIcon = 'https://shokoanime.com/images/common/shoko-icon.png';
 
@@ -196,6 +194,9 @@ export const loader: LoaderFunction = async ({ url }) => {
   const response = new Response(pngBuffer as BodyInit, {
     headers: { 'Content-Type': 'image/png', 'Cache-Control': 'public, max-age=86400, s-maxage=604800' },
   });
-  await cache?.put(cacheKey, response.clone());
+  await cache?.put(canonicalKey, response.clone());
+  // Also remember this exact URL, but only when it is the canonical one, so
+  // junk URLs can't fill the cache.
+  if (canonical.href === url.href) await cache?.put(requestKey, response.clone());
   return response;
 };

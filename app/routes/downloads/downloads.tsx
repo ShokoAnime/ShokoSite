@@ -3,31 +3,27 @@ import PageHero from '~/components/layout/PageHero';
 import { DownloadCounts, DownloadListItemProps } from '~/types/downloads';
 import { useBackground } from '~/hooks/useBackground';
 import { MetaFunction } from 'react-router';
+import { ogImageUrl, pageCards } from '~/lib/ogCard';
 import Button from '~/components/common/Button';
 import Spinner from '~/components/common/Spinner';
 
 export const meta: MetaFunction = () => {
-  const pageTitle = 'Downloads';
-  const pageDescription =
-    'Browse through selection of programs, plugins, Web UI Themes and other tools available in the Shoko Suite.';
-  const pageImage = `https://shokoanime.com/images/banners/banner-7.jpg`;
-  const pageURL = 'https://shokoanime.com/downloads';
-
-  const ogImageUrl = `https://shokoanime.com/api/ogImage?title=${encodeURIComponent(`${pageTitle}`)}&summary=${
-    encodeURIComponent(pageDescription)
-  }&pageUrl=${encodeURIComponent(pageURL)}&backgroundImage=${encodeURIComponent(`${pageImage}`)}`;
+  const card = pageCards.downloads;
+  const pageTitle = card.title;
+  const pageDescription = card.summary;
+  const ogImage = ogImageUrl('page', 'downloads', card);
 
   return [
     { title: pageTitle },
     { name: 'description', content: pageDescription },
     { property: 'og:title', content: pageTitle },
     { property: 'og:description', content: pageDescription },
-    { property: 'og:image', content: ogImageUrl },
+    { property: 'og:image', content: ogImage },
     { property: 'og:type', content: 'article' },
     { property: 'twitter:card', content: 'summary_large_image' },
     { property: 'twitter:title', content: pageTitle },
     { property: 'twitter:description', content: pageDescription },
-    { property: 'twitter:image', content: ogImageUrl },
+    { property: 'twitter:image', content: ogImage },
   ];
 };
 

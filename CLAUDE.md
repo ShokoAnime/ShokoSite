@@ -42,6 +42,8 @@ The `app/routes/api.*.ts` routes (`getFiles`, `getFile`, `getAllTags`, `getDownl
 
 ### OG image generation
 
+Pages link to a card by `?type=<page|blog|download|category>&id=<id>&v=<hash>`, never by passing text. `app/lib/ogCard.ts` holds the card builders (shared by the route `meta` functions and the image route) and `app/lib/ogCard.server.ts` rebuilds a card from site content for the request; unknown ids are a 404, and `v` is only a cache-buster (renders are cached in the edge cache under the card's canonical URL). A new page that wants a preview image adds an entry to `pageCards` and links with `ogImageUrl()`.
+
 `app/routes/api.ogImage.tsx` renders social preview images at request time using `satori` (JSX → SVG) + `@resvg/resvg-wasm` (SVG → PNG). The resvg wasm binary is loaded through `vite-plugin-wasm-module-workers`, which is why the build script has an extra step copying `*.wasm` from `build/client/assets` into `build/server/assets` — without it the Cloudflare Pages Function can't resolve the wasm module at runtime.
 
 ### Styling
