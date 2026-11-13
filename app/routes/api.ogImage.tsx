@@ -5,7 +5,40 @@ import wasmData from '~/lib/index_bg.wasm?url';
 
 let wasmInitialized = false;
 
+const siteOrigin = 'https://shokoanime.com';
+const defaultBackground = `${siteOrigin}/images/banners/main-banner.jpg`;
+
+/** Cap on each text parameter, so a crafted URL can't force huge renders. */
+const maxLength = { title: 120, summary: 320, date: 32, version: 32 } as const;
+
+/** Only allow URLs on our own origin; anything else falls back to `fallback`. */
+function siteUrl(value: string | null, fallback: string): string {
+  try {
+    const parsed = new URL(value ?? '');
+    return parsed.origin === siteOrigin ? parsed.href : fallback;
+  } catch {
+    return fallback;
+  }
+}
+
+function param(url: URL, name: keyof typeof maxLength, fallback = ''): string {
+  return (url.searchParams.get(name) || fallback).slice(0, maxLength[name]);
+}
+
+/** The Workers edge cache; `undefined` in the Node dev server. */
+function edgeCache(): Cache | undefined {
+  return typeof caches === 'undefined' ? undefined : (caches as unknown as { default: Cache }).default;
+}
+
 export const loader: LoaderFunction = async ({ url }) => {
+  // Pages Function responses are not edge-cached by default, so repeat
+  // requests for the same card would otherwise be rendered again each time.
+  const cache = edgeCache();
+  const cacheKey = new Request(url.href);
+  const cached = await cache?.match(cacheKey);
+  // Copy it: a response read from the cache has immutable headers.
+  if (cached) return new Response(cached.body, cached);
+
   if (!wasmInitialized) {
     const { default: resvgwasm } = await import(
       /* @vite-ignore */ `${wasmData}?module`
@@ -14,13 +47,12 @@ export const loader: LoaderFunction = async ({ url }) => {
     wasmInitialized = true;
   }
 
-  const title = url.searchParams.get('title') || 'Default Title';
-  const summary = url.searchParams.get('summary') || 'Default Summary';
-  const date = url.searchParams.get('date') || '';
-  const version = url.searchParams.get('version') || '';
-  const pageUrl = url.searchParams.get('pageUrl') || 'https://shokoanime.com';
-  const backgroundImage = url.searchParams.get('backgroundImage')
-    || 'https://shokoanime.com/images/banners/main-banner.jpg';
+  const title = param(url, 'title', 'Default Title');
+  const summary = param(url, 'summary', 'Default Summary');
+  const date = param(url, 'date');
+  const version = param(url, 'version');
+  const pageUrl = siteUrl(url.searchParams.get('pageUrl'), siteOrigin);
+  const backgroundImage = siteUrl(url.searchParams.get('backgroundImage'), defaultBackground);
 
   const siteIcon = 'https://shokoanime.com/images/common/shoko-icon.png';
 
@@ -161,7 +193,9 @@ export const loader: LoaderFunction = async ({ url }) => {
   const pngData = resvg.render();
   const pngBuffer = pngData.asPng();
 
-  return new Response(pngBuffer as BodyInit, {
-    headers: { 'Content-Type': 'image/png', 'Cache-Control': 'public, max-age=86400' },
+  const response = new Response(pngBuffer as BodyInit, {
+    headers: { 'Content-Type': 'image/png', 'Cache-Control': 'public, max-age=86400, s-maxage=604800' },
   });
+  await cache?.put(cacheKey, response.clone());
+  return response;
 };
