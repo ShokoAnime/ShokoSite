@@ -2,29 +2,25 @@ import ContributorsGroup from '~/components/contributors/ContributorsGroup';
 import { contributors, honorable, staff } from '~/data/contributors';
 import PageHero from '~/components/layout/PageHero';
 import { MetaFunction } from 'react-router';
+import { ogImageUrl, pageCards } from '~/lib/ogCard';
 
 export const meta: MetaFunction = () => {
-  const pageTitle = 'Contributors';
-  const pageDescription =
-    'From the Shoko team itself to our everyday users, everyone listed below has contributed to making Shoko better.';
-  const pageImage = `https://shokoanime.com/images/banners/banner-11.jpg`;
-  const pageURL = 'https://shokoanime.com/contributors';
-
-  const ogImageUrl = `https://shokoanime.com/api/ogImage?title=${encodeURIComponent(`${pageTitle}`)}&summary=${
-    encodeURIComponent(pageDescription)
-  }&pageUrl=${encodeURIComponent(pageURL)}&backgroundImage=${encodeURIComponent(`${pageImage}`)}`;
+  const card = pageCards.contributors;
+  const pageTitle = card.title;
+  const pageDescription = card.summary;
+  const ogImage = ogImageUrl('page', 'contributors', card);
 
   return [
     { title: pageTitle },
     { name: 'description', content: pageDescription },
     { property: 'og:title', content: pageTitle },
     { property: 'og:description', content: pageDescription },
-    { property: 'og:image', content: ogImageUrl },
+    { property: 'og:image', content: ogImage },
     { property: 'og:type', content: 'article' },
     { property: 'twitter:card', content: 'summary_large_image' },
     { property: 'twitter:title', content: pageTitle },
     { property: 'twitter:description', content: pageDescription },
-    { property: 'twitter:image', content: ogImageUrl },
+    { property: 'twitter:image', content: ogImage },
   ];
 };
 

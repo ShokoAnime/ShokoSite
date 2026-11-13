@@ -3,28 +3,25 @@ import Divider from '~/components/layout/Divider';
 import { useState } from 'react';
 import HistorySection from '~/components/about/HistorySection';
 import { MetaFunction } from 'react-router';
+import { ogImageUrl, pageCards } from '~/lib/ogCard';
 
 export const meta: MetaFunction = () => {
-  const pageTitle = 'About Shoko';
-  const pageDescription = 'Spend some time learning about Shoko\'s development over the years.';
-  const pageImage = `https://shokoanime.com/images/banners/banner-8.jpg`;
-  const pageURL = 'https://shokoanime.com/about';
-
-  const ogImageUrl = `https://shokoanime.com/api/ogImage?title=${encodeURIComponent(`${pageTitle}`)}&summary=${
-    encodeURIComponent(pageDescription)
-  }&pageUrl=${encodeURIComponent(pageURL)}&backgroundImage=${encodeURIComponent(`${pageImage}`)}`;
+  const card = pageCards.about;
+  const pageTitle = card.title;
+  const pageDescription = card.summary;
+  const ogImage = ogImageUrl('page', 'about', card);
 
   return [
     { title: pageTitle },
     { name: 'description', content: pageDescription },
     { property: 'og:title', content: pageTitle },
     { property: 'og:description', content: pageDescription },
-    { property: 'og:image', content: ogImageUrl },
+    { property: 'og:image', content: ogImage },
     { property: 'og:type', content: 'article' },
     { property: 'twitter:card', content: 'summary_large_image' },
     { property: 'twitter:title', content: pageTitle },
     { property: 'twitter:description', content: pageDescription },
-    { property: 'twitter:image', content: ogImageUrl },
+    { property: 'twitter:image', content: ogImage },
   ];
 };
 

@@ -13,6 +13,8 @@ const contentPaths: Record<string, string> = {
   'legacy-apps': '/app/content/downloads/legacy-apps',
 };
 
+export const isContentType = (type: string): boolean => Object.hasOwn(contentPaths, type);
+
 export async function getContentItems(type: string): Promise<ContentItem[]> {
   if (!(type in contentPaths)) {
     throw new Error(`Invalid content type: ${type}`);

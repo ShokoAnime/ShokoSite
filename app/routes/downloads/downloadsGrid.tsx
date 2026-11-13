@@ -1,6 +1,7 @@
 import { useLoaderData, useLocation } from 'react-router';
 import { useCallback, useEffect, useState, useRef } from 'react';
 import { convertToProperName } from '~/lib/convertToProperName';
+import { categoryCard, ogImageUrl } from '~/lib/ogCard';
 import PageHero from '~/components/layout/PageHero';
 import DownloadCard from '~/components/downloads/DownloadCard';
 import MultiSelectDropdown from '~/components/common/MultiSelectDropdown';
@@ -77,26 +78,22 @@ export const meta: Route.MetaFunction = ({ loaderData }) => {
   }
 
   const { downloadType } = loaderData;
-  const title = `${convertToProperName(downloadType)}`;
-  const description = `Browse and download ${downloadType} for Shoko Anime.`;
-  const pageImage = `https://shokoanime.com/images/banners/banner-10.jpg`;
-  const pageURL = `https://shokoanime.com/downloads/${downloadType}`;
-
-  const ogImageUrl = `https://shokoanime.com/api/ogImage?title=${encodeURIComponent(`${title}`)}&summary=${
-    encodeURIComponent(description)
-  }&pageUrl=${encodeURIComponent(pageURL)}&backgroundImage=${encodeURIComponent(`${pageImage}`)}`;
+  const card = categoryCard(downloadType);
+  const title = card.title;
+  const description = card.summary;
+  const ogImage = ogImageUrl('category', downloadType, card);
 
   return [
     { title: title },
     { name: 'description', content: description },
     { property: 'og:title', content: title },
     { property: 'og:description', content: description },
-    { property: 'og:image', content: ogImageUrl },
+    { property: 'og:image', content: ogImage },
     { property: 'og:type', content: 'article' },
     { property: 'twitter:card', content: 'summary_large_image' },
     { property: 'twitter:title', content: title },
     { property: 'twitter:description', content: description },
-    { property: 'twitter:image', content: ogImageUrl },
+    { property: 'twitter:image', content: ogImage },
   ];
 };
 

@@ -1,4 +1,5 @@
 import type { MetaFunction } from 'react-router';
+import { ogImageUrl, pageCards } from '~/lib/ogCard';
 import Hero from '~/components/home/Hero';
 import Features from '~/components/home/Features';
 import Divider from '~/components/layout/Divider';
@@ -7,27 +8,22 @@ import WatchAnywhere from '~/components/home/WatchAnywhere';
 import LatestNews from '~/components/home/LatestNews';
 
 export const meta: MetaFunction = () => {
-  const pageTitle = 'Shoko | Anime Management System';
-  const pageDescription =
-    'The all-in-one, feature-packed, cross-platform anime management system with support for Plex, Jellyfin, and Kodi. Let Shoko handle your collection setup and organization so you can focus on what really matters—choosing your next anime to watch.';
-  const pageImage = `https://shokoanime.com/images/banners/main-banner.jpg`;
-  const pageURL = 'https://shokoanime.com/';
-
-  const ogImageUrl = `https://shokoanime.com/api/ogImage?title=${encodeURIComponent(`${pageTitle}`)}&summary=${
-    encodeURIComponent(pageDescription)
-  }&pageUrl=${encodeURIComponent(pageURL)}&backgroundImage=${encodeURIComponent(`${pageImage}`)}`;
+  const card = pageCards.home;
+  const pageTitle = card.title;
+  const pageDescription = card.summary;
+  const ogImage = ogImageUrl('page', 'home', card);
 
   return [
     { title: pageTitle },
     { name: 'description', content: pageDescription },
     { property: 'og:title', content: pageTitle },
     { property: 'og:description', content: pageDescription },
-    { property: 'og:image', content: ogImageUrl },
+    { property: 'og:image', content: ogImage },
     { property: 'og:type', content: 'article' },
     { property: 'twitter:card', content: 'summary_large_image' },
     { property: 'twitter:title', content: pageTitle },
     { property: 'twitter:description', content: pageDescription },
-    { property: 'twitter:image', content: ogImageUrl },
+    { property: 'twitter:image', content: ogImage },
   ];
 };
 
