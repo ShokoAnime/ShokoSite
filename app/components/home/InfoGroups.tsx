@@ -32,7 +32,7 @@ const InfoDetails = [
         <div>
           Shoko provides robust tools for maintaining your anime collection. Detect and manage duplicate, missing, or
           corrupted files effortlessly. Automatically rename and move files using metadata and custom plugins. Easily
-          link unrecognized files to correct entries. With support for multiple TMDB links per series, Shoko ensures
+          link unrecognized files to correct entries. With links to TMDB and other metadata sources, Shoko ensures
           your collection stays organized and accurate.
         </div>
       </>
