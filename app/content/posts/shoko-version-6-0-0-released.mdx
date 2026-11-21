@@ -238,6 +238,10 @@ that others build on. At the same time, each plugin still loads in its own conte
 private to it, so two plugins can use different versions of the same library without stepping on each other. A plugin
 can even be nothing but a list of dependencies, bundling a set of plugins into one install.
 
+The Offline Importer already builds on this. Its version 2.0.0 publishes its own `Shoko.Plugin.OfflineImporter.Abstractions`
+package, so other plugins can run its matching, search its release group list and read or change its rules. It also
+has a REST API that can test how a path would match without importing anything.
+
 To get started, check out the new [Writing Plugins guide](https://docs.shokoanime.com/writing-plugins/) in our docs, and if you maintain a 5.x
 plugin, the [migration guide](https://docs.shokoanime.com/writing-plugins/migrating-from-5x).
 
