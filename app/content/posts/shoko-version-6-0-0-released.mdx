@@ -1,0 +1,284 @@
+---
+title: "Shoko Version 6.0.0 Released"
+quick: "A rebuilt plugin system you install from the Web UI, metadata from any source, scheduled actions, and much more!"
+image: "shoko-version-6-0-0.jpg"
+date: "2026-11-27"
+tags: [ "Shoko Server", "Web UI" ]
+devs: [ "Avael", "Baine", "Cazzar", "Da3dsoul", "DrSilverFox", "fearnlj01", "Foowy", "Kcronshaw", "khangp0000", "Krbrs", "MarkCiliaVincenti", "Mik1ll", "Mohan226", "Natyusha", "Oghara", "pokyunn", "Revam", "SilentBot1" ]
+---
+
+We're thrilled to announce that **Shoko Server 6.0.0** is finally here! This is the biggest release we've ever put out,
+with well over a thousand changes since version 5.3. Once again, the star of the show is the plugin system, rebuilt so
+that almost every part of Shoko can now be extended, replaced or added to by a plugin, and installed with a few clicks
+from the Web UI.
+
+It doesn't come alone, either. **Web UI 2.6.0** ships with the server, **[Shokofin 6.1](#shokofin-6-1)** brings
+Shoko Server 6.0 and Jellyfin 12 support to Jellyfin, and our docs got a big refresh, with new
+how-to guides and concept pages for both the server and Shokofin, and a brand-new section for plugin developers. One thing doesn't make the jump: **Shoko Desktop no longer works with the server**,
+since the API it relied on was removed.
+
+For a comprehensive list of all the changes in this release, please visit
+our [Changelog](https://docs.shokoanime.com/changelog/shoko-server). Below, we've highlighted the changes we think you'll
+care about most, plus [a few things you need to know before upgrading](#before-you-upgrade). 👇
+
+## Plugins All the Way Down
+
+In earlier versions, plugins could mostly rename and move your files. In 6.0, almost every part of Shoko can be provided
+or extended by a plugin, and the server's own features are built the same way.
+
+It starts with your files. Plugins can hash them (the built-in hasher now covers ED2K, MD5, CRC32, SHA1, SHA256 and
+SHA512), work out which episodes they belong to, and rename and move them. That second part is the big one: AniDB is
+now just one **release provider** among others, and you can use several of them, in the order you pick. Renamers carry
+on as **relocation providers**, with presets you can save and switch between.
+
+Then there's everything Shoko knows about your shows. A plugin can add a **whole metadata source**, with series, movies,
+collections, people, studios, tags, relations and suggestions that are first-class citizens, just like AniDB's. Plugins
+can also add images to any entry, whichever source it came from, and offer alternate episode orderings for **any**
+series.
+
+And plugins fit into Shoko itself. A plugin's settings get a page in the Web UI, built automatically from the plugin's
+own settings. Its work runs on Shoko's job queue, right alongside the server's own, and it can add scheduled actions,
+keep its own database, and offer its own API routes and live updates for other apps to use.
+
+## A Plugin Catalog in the Web UI
+
+No more copying files into a folder by hand! Shoko now has a plugin catalog, fed by package repositories. The server
+ships with two of them. The **Shoko Core Repository**, with our own plugins, is turned on. The **Shoko Community
+Repository** is where curated third-party plugins from the community will show up, so it's off until you opt into it.
+It's still empty for now. You can also add any other plugin repository yourself.
+
+Under **Settings → Plugin Management** you can browse the catalog, install a plugin, check for updates and apply them,
+manage your repositories, and uninstall plugins you no longer need. When a plugin needs other plugins, they are installed
+along with it, and dependencies nothing uses anymore can be cleaned up.
+
+Shoko can also keep your plugins up to date by itself: by default, it installs plugin upgrades every time it starts,
+before loading them. You can turn this off, pin a plugin to a version, or let Shoko upgrade plugins while it runs.
+
+**When a plugin breaks**, Shoko no longer quietly skips it or falls over. Instead, it stops in a failure mode that tells
+you which plugin failed and why, with the web server still up, and waits there until an admin (or an agent, if that's
+your cup of tea nowadays) disables, replaces or uninstalls the plugin and restarts. That's deliberate: carrying on in a
+broken state may or may not be more dangerous than stopping, depending on which plugins you have and what they do, so
+Shoko stops and lets you decide, instead of leaving you staring at a dead server or guessing for you.
+
+## Moving Out of the Core
+
+To make room for all of this, a few things moved out of the core and into plugins of their own:
+
+- **TMDB** is now a plugin, developed and released on its own.
+- **WebAOM**, the classic renamer, moved out of the core into a plugin. Your existing WebAOM presets move over to it.
+- **Legacy Plex support** is now a plugin too, so if you don't use it, you can turn it off completely. It stays
+  around for existing setups, but if you use Plex, keep an eye out for **Shoko Relay** by Natyusha, an upcoming
+  community plugin that turns Shoko into a proper Plex metadata provider (and more). Plex is
+  [removing its legacy agents in 2026](https://forums.plex.tv/t/announcement-custom-metadata-providers/934384), which the old Python-based ShokoMetadata.bundle and ShokoRelay.bundle rely on, in favour of
+  web-based metadata providers. A provider has to be a web service Plex can talk to, so Shoko itself is the natural
+  place for it, and that is exactly what Shoko Relay does.
+
+Official builds include TMDB, WebAOM and Legacy Plex, along with the new **Offline Importer**, which works out a file's
+anime and episodes from its file name, instead of looking the file up through AniDB's UDP API. They can be updated on their own, without waiting for a server release.
+
+We're also happy to introduce a new **AniList** plugin, available from the plugin catalog, for those who want AniList as
+another metadata source. It takes care of AniList metadata and linking, finally answering our long-standing
+[AniList support request](https://github.com/ShokoAnime/ShokoServer/issues/738). List syncing is not part of it, as our official plugin
+won't sign in to AniList on your behalf. If you'd like list syncing, it's up for grabs: anyone in the community can build
+it as a plugin of their own, either on top of the official plugin's links or in their own way.
+
+## Metadata From Anywhere
+
+With metadata sources now being plugins, everything they bring is stored the same way, whichever source it came from.
+That's most visible in two places: images, and titles and descriptions.
+
+**Images** no longer sit in separate tables per source. Every image now lives in one image system, where any image can
+be linked to any series, episode, group or other entry. Images can come from three places:
+
+- **Image providers.** Every metadata source brings the images for its own entries, just like AniDB and TMDB always
+  have.
+- **Secondary image providers.** A plugin can also add images from its own source to entries of _any_ source, AniDB's
+  included. Say a plugin pulls logos and artwork from a dedicated art site: they show up on your shows even when the
+  rest of their metadata comes from somewhere else. You decide which sources and kinds of entries each one may add to.
+- **Your own uploads.** Upload a poster, backdrop or logo for anything, and it always wins over the rest.
+
+Along the way, the image types were streamlined, and the image pickers can show originals that haven't been downloaded
+yet.
+
+**Titles and descriptions** got the same treatment. They used to be scattered across a different table for each source;
+now every title and description, from every source, lives in one place. Each source brings its own, plugins can add
+theirs to any entry, and you choose which sources and languages Shoko should prefer. Because it's all one system, you
+can also add, disable or remove texts, and set your own title or description on top of anything Shoko shows. In
+practice that will mostly be your series and episodes, which you can rename right from the Web UI.
+
+You can also pick the preferred ordering of a series when a source offers more than one.
+
+## Releases, Done Right
+
+AniDB is no longer the only way Shoko can match your files automatically. Unrecognized files can be searched through any release provider, and manual linking grew into a full release editor:
+you can change every part of a file's release info, including releases Shoko has already stored. Release Management was rebuilt too: it compares a series' releases by your preferences,
+shows what differs, and can clean up the ones you don't want.
+
+## A Queue That Keeps Up
+
+Shoko has a new job queue, built just for Shoko, and Quartz is gone. It copes far better with a full queue: checking
+whether a job is already waiting is instant no matter how many jobs are queued, short jobs never touch the database, and
+jobs held back by an AniDB ban or a lost network connection wait without tying up a worker. Jobs you ask for jump the
+line, jobs report their progress and can be cancelled, waiting jobs can be removed, and a watchdog flags jobs that get
+stuck. And this time it's open to plugins too: they can queue and chain their own jobs on the same queue the server
+uses.
+
+## Run It Now, or Later
+
+The queue runs the work; scheduled actions decide when. Every recurring task in Shoko, and every one a plugin adds, is
+now a scheduled action. Under **Settings → Scheduled Actions** you can see them all, run them now, cancel a run, check
+their progress and last run, and change when they fire: on an interval, daily, weekly, monthly, at start-up or when the
+queue is cleared. The old "Run Import" has been split into its parts, so you can run just the step you need.
+
+<span id="security" />
+## Security Fixes Worth Upgrading For
+
+This release closes some big holes, so it's worth upgrading for this alone:
+
+- **APIv1 has been removed.** It had no authentication at all, so anyone who could reach your server could change its
+  settings, users and folders, and even delete files, without signing in. If you stay on 5.x for now, don't expose your
+  server outside your home network.
+- **Security fixes**: restricted tags are now checked everywhere, routes that change the server are limited to admins,
+  and live connections are closed when their API key expires or is removed. This includes the fix for
+  [GHSA-xpwh-jh8w-7fhh](https://github.com/ShokoAnime/ShokoServer/security/advisories/GHSA-xpwh-jh8w-7fhh).
+- **A setup token** you can set to keep anyone else on your network from finishing your setup, or from reaching your
+  server while it's stuck in failure mode.
+- **Forgot your password?** You can now reset it by putting a `password-reset.json` file in Shoko's data folder:
+
+  ```json
+  { "username": "Default", "password": "your new password" }
+  ```
+
+  Start the server, and it sets the new password, signs that user out everywhere, deletes the file and shuts down.
+  Start it again and sign in. Our [FAQ](https://docs.shokoanime.com/faq#reset-your-password) has the steps, and where to find the data folder on each
+  platform.
+
+## Under the Hood
+
+- **An airing schedule**, with channels, delays, hiatuses and estimated air times, and a calendar the server works out
+  by season.
+- **Big speedups** for the dashboard and filters on large collections, and the memory used by the caches cut by more
+  than half.
+- **OpenTelemetry export**, off by default, for those who run their own monitoring: point Shoko at your
+  collector and it sends traces, metrics and logs for requests, jobs, the database, AniDB and plugins.
+- **Error reporting to your own Sentry-compatible service**, such as a self-hosted Sentry, GlitchTip or Bugsink, with
+  its own sample rate and the plugins whose errors it gets. Errors from third-party plugins are no longer sent to the
+  Shoko team's Sentry. Our [error reporting and telemetry guide](https://docs.shokoanime.com/shoko-server/how-to/set-up-error-reporting-and-telemetry)
+  shows how to set up both.
+
+<span id="before-you-upgrade" />
+## Before You Upgrade
+
+A major release means a few breaking changes. Please read these before upgrading, and for the full walkthrough, check
+out our [Upgrading to Shoko 6](https://docs.shokoanime.com/getting-started/upgrading-to-shoko-6) guide:
+
+- **The first start after upgrading _may_ take a while.** Shoko moves a lot of your data into its new shape on that
+  first start: release info, images, every title and overview, and your TMDB data. On a large collection that can take
+  quite some time, so grab a drink, keep an eye on the progress shown while it starts, and don't stop the server
+  halfway through. (Yes, the banner is about this.) As always, back up your database before you upgrade.
+- **Web UI 2.6.0 ships with Shoko Server 6.0.** The 2.5.x Web UI is for Shoko Server 5.x and won't work with 6.0, so
+  let the server install 2.6.0 if you manage the Web UI yourself.
+- **Upgrades are only supported from version 5.** If you're on something older, upgrade to 5.x first.
+- **Shoko now runs on .NET 10.** If you use a build that needs the .NET runtime installed, you need the .NET 10
+  runtime.
+- **Using Jellyfin? Update Shokofin first.** Shokofin 6.0.x doesn't work with Shoko Server 6.0. Shokofin 6.1 works
+  with both 5.3.3 and 6.0, so update Shokofin to 6.1, then update the server.
+- **Plugins need updating.** Plugins built for older versions won't load, and Shoko will stop in failure mode until you
+  update, disable or remove them.
+- **TMDB and WebAOM are now plugins.** Official builds include both. If you build Shoko yourself, or had either plugin
+  disabled when you upgraded, install it from the plugin catalog (**Settings → Plugin Management → Browse**; both are in
+  the Shoko Core Repository) and restart. Your existing TMDB links, metadata and artwork, and your WebAOM renamer
+  settings, are kept either way; new TMDB artwork, like logos, is fetched as each show is refreshed.
+- **Shoko Desktop no longer works with Shoko 6.0**, since it relied on APIv1, which was removed
+  ([see above](#security)). The Web UI is the way to manage your collection from here on, and for playing videos on
+  your own computer, have a look at [Shoko Companion](#shoko-companion) below.
+- **Trakt support was removed from the core.** Between Trakt's API limits and nobody wanting to keep maintaining it in
+  the core, it was time to let it go. If you'd like to take up the torch, it's a great fit for a community plugin.
+- **Import folders are now called managed folders.** Nothing about how they work changed. "Import folder" kept being
+  mistaken for a folder Shoko only imports files from, so we went with a more neutral name.
+- **APIv3 file streaming now requires you to be signed in**, and some APIv3 shapes changed. If you use a third-party app
+  or script, check that it supports Shoko 6.0.
+
+<span id="shoko-companion" />
+## Playing Videos Without Shoko Desktop
+
+With Shoko Desktop gone, we know some of you are missing a way to play videos straight from your collection on your own
+computer. That's what **[Shoko Companion](https://github.com/ShokoAnime/Shoko.Companion)** is for. It's a small tray app for Windows, Linux and macOS that plays
+your videos in [mpv](https://mpv.io/) when you click a play link, and reports your progress back to Shoko, so resume
+positions and watched states stay in sync. It can also open a file's folder on your machine, and show what you're
+watching in Discord.
+
+Shoko Companion is still in testing, and the Web UI doesn't have a way to open videos in it yet.
+
+<span id="shokofin-6-1" />
+## Shokofin 6.1
+
+Shokofin, our Jellyfin plugin, gets a release of its own today. **Shokofin 6.1** supports Shoko Server 6.0 and
+**Jellyfin 12**, alongside 10.10 and 10.11, and works with Shoko Server 5.3.3 too, so you can update it before the
+server. On top of that, it places specials where Shoko places them, fills Jellyfin 12's "More Like This" from Shoko's
+suggestions, adds new playlist and VFS options, and fixes a long list of bugs, many of them in the watch state sync.
+Check out the [Shokofin 6.1.0 release post](/blog/shokofin-6-1-0-released) for more, or its
+[release notes](https://github.com/ShokoAnime/Shokofin/releases/tag/v6.1.0) for everything that changed.
+
+## For Plugin Developers
+
+Plugins are now built against the new `Shoko.Abstractions` package, which replaces `Shoko.Plugin.Abstractions`, so
+existing plugins need to be rebuilt. Renamers carry on as relocation providers (`IRenamer` and `IRenamerConfig` became
+`IRelocationProvider` and `IRelocationPreset`), and the events `IShokoEventHandler` used to hold now live on the
+services that own them, such as `IVideoService`, `IVideoReleaseService` and `IMetadataService`, so inject those to keep
+listening. The new contract comes with READMEs for every service, events for nearly every change,
+and services that let a plugin do almost everything the API can. The job queue is published to NuGet as `Shoko.QueueProcessor`, so your plugin can run its own jobs, and the
+`shoko-build` tool with `Shoko.BuildTools.Targets` builds, stamps, packs and publishes your plugin and keeps its
+repository manifest in step.
+
+One of the biggest changes is that **plugins can now build on each other**. A plugin declares the plugins it depends on,
+with version ranges, as required or optional, and gets direct access to their types: the server shares a dependency's
+own assemblies with the plugins that depend on it, so one plugin can lay a foundation of shared contracts and services
+that others build on. At the same time, each plugin still loads in its own context, keeping the NuGet packages it ships
+private to it, so two plugins can use different versions of the same library without stepping on each other. A plugin
+can even be nothing but a list of dependencies, bundling a set of plugins into one install.
+
+The Offline Importer already builds on this. Its version 2.0.0 publishes its own `Shoko.Plugin.OfflineImporter.Abstractions`
+package, so other plugins can run its matching, search its release group list and read or change its rules. It also
+has a REST API that can test how a path would match without importing anything.
+
+To get started, check out the new [Writing Plugins guide](https://docs.shokoanime.com/writing-plugins/) in our docs, and if you maintain a 5.x
+plugin, the [migration guide](https://docs.shokoanime.com/writing-plugins/migrating-from-5x).
+
+## A Fresh Coat for the Docs
+
+Our docs got a big refresh to go with the release: the Shoko Server pages were updated for 6.0, with a new
+[Upgrading to Shoko 6](https://docs.shokoanime.com/getting-started/upgrading-to-shoko-6) guide, the Shokofin pages were
+reworked, and there's a brand-new [Writing Plugins](https://docs.shokoanime.com/writing-plugins/) section for anyone who wants to build their own
+plugin, from getting started to publishing it in a plugin repository.
+
+There are new guides for the server itself too. If you're new to Shoko, or have always wondered what it's doing with
+your files, these are a good place to start:
+
+- [How Files Are Imported](https://docs.shokoanime.com/shoko-server/concepts/how-files-are-imported): everything that happens between a file landing in a
+  folder and it showing up as an episode.
+- [Managed Folders & Drop Folders](https://docs.shokoanime.com/shoko-server/concepts/managed-folders-and-drop-folders): what each folder type does, and how
+  Shoko notices new and missing files.
+- [Recognized & Unrecognized Files](https://docs.shokoanime.com/shoko-server/concepts/recognized-and-unrecognized-files), and
+  [Fix an Unrecognized File](https://docs.shokoanime.com/shoko-server/how-to/fix-an-unrecognized-file) for when one won't match.
+- [Groups & Series](https://docs.shokoanime.com/shoko-server/concepts/groups-and-series): how Shoko turns AniDB anime into series, episodes and groups.
+- [Import a Large Collection](https://docs.shokoanime.com/shoko-server/how-to/import-a-large-collection): bringing in an existing library for the first time,
+  with as few AniDB bans as possible.
+
+## Thank You
+
+A release this big doesn't happen without a lot of help. A huge thank you to everyone who lent us their code, experience
+and feedback across the server, the Web UI and the plugins this cycle, and to everyone who braved the daily builds and
+reported what broke. And a special thanks to the community members who answer questions and guide new users alongside
+our team. You make Shoko a much friendlier place to be, and speaking of which, if you haven't yet, come say hi on our
+community [Discord server](https://discord.gg/vpeHDsg). It's the best place to ask questions, share your
+setup, show off a plugin you've made, or just hang out.
+
+## Get Shoko Version 6.0.0 Now
+
+To download the latest release, head over to our [Downloads Page](https://shokoanime.com/downloads/), or grab it from
+the [GitHub release](https://github.com/ShokoAnime/ShokoServer/releases/tag/v6.0.0). For every change in this release,
+check out the [full changelog](https://docs.shokoanime.com/changelog/shoko-server).
+
+We hope you enjoy the new features and improvements in this release. As always, we greatly appreciate your feedback and
+support. Happy organizing!

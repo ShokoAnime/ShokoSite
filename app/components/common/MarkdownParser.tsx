@@ -58,7 +58,7 @@ const MDXRenderer = ({ content }: MDXRendererProps) => {
 
     const parseMDX = async () => {
       try {
-        const contentWithoutImports = content.replace(/import.*?from.*?[\r\n]/g, '');
+        const contentWithoutImports = content.replace(/^import\s.*?\sfrom\s.*(?:\r?\n|$)/gm, '');
 
         const module = await evaluate(contentWithoutImports, {
           ...runtime,

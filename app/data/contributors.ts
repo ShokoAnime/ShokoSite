@@ -475,4 +475,49 @@ export const contributors: ContributorsProps[] = [
     avatar_url: 'https://avatars.githubusercontent.com/u/488812?v=4',
     url: 'https://github.com/viart',
   },
+  {
+    name: 'Kcronshaw',
+    avatar_url: 'https://avatars.githubusercontent.com/u/73120503?v=4',
+    url: 'https://github.com/Kcronshaw',
+  },
+  {
+    name: 'khangp0000',
+    avatar_url: 'https://avatars.githubusercontent.com/u/48165825?v=4',
+    url: 'https://github.com/khangp0000',
+  },
+  {
+    name: 'DrSilverFox',
+    avatar_url: 'https://avatars.githubusercontent.com/u/300354832?v=4',
+    url: 'https://github.com/DrSilverFox',
+  },
+  {
+    name: 'MarkCiliaVincenti',
+    avatar_url: 'https://avatars.githubusercontent.com/u/25120736?v=4',
+    url: 'https://github.com/MarkCiliaVincenti',
+  },
+  {
+    name: 'Oghara',
+    avatar_url: 'https://avatars.githubusercontent.com/u/18651071?v=4',
+    url: 'https://github.com/Oghara',
+  },
+  {
+    name: 'beecifer',
+    avatar_url: 'https://avatars.githubusercontent.com/u/199978134?v=4',
+    url: 'https://github.com/beecifer',
+  },
+  {
+    name: 'crowquillx',
+    avatar_url: 'https://avatars.githubusercontent.com/u/58858875?v=4',
+    url: 'https://github.com/crowquillx',
+  },
+  {
+    name: 'lichie567',
+    avatar_url: 'https://avatars.githubusercontent.com/u/90825386?v=4',
+    url: 'https://github.com/lichie567',
+  },
+  {
+    name: 'Victor9401',
+    avatar_url: 'https://avatars.githubusercontent.com/u/1770937?v=4',
+    url: 'https://github.com/Victor9401',
+  },
 ];

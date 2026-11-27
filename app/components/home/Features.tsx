@@ -1,4 +1,4 @@
-import { DatabaseZap, ExternalLink, MonitorPlay, PenLine, View } from 'lucide-react';
+import { DatabaseZap, ExternalLink, PenLine, Puzzle, View } from 'lucide-react';
 import SectionHeader from '~/components/common/SectionHeader';
 import { SingleFeatureProps } from '~/types/home';
 
@@ -6,20 +6,24 @@ const featureList = [
   {
     icon: <DatabaseZap size={36} strokeWidth={1.25} />,
     title: 'Hash-Based Matching',
-    description: 'Hash and compare files with AniDB for accurate episode and series identification.',
-    descriptionLink: { text: 'Learn how files are identified.', link: 'https://docs.shokoanime.com' },
+    description:
+      'Hash your files and match them through AniDB, or any other release provider a plugin adds, for accurate episode and series identification.',
+    descriptionLink: {
+      text: 'Learn how files are identified.',
+      link: 'https://docs.shokoanime.com/shoko-server/concepts/recognized-and-unrecognized-files',
+    },
   },
   {
-    icon: <MonitorPlay size={36} strokeWidth={1.25} />,
-    title: 'Media Player Support',
+    icon: <Puzzle size={36} strokeWidth={1.25} />,
+    title: 'Plugins',
     description:
-      'Integration with multiple media player programs allows you to watch your collection wherever you\'d like.\n',
+      'Extend Shoko with plugins for metadata sources, release providers, renamers and more, installed right from the Web UI.',
   },
   {
     icon: <View size={36} strokeWidth={1.25} />,
     title: 'Sync Watch States',
     description:
-      'Automatically track, sync and update watch states for the anime you watch with local and supported community sites.',
+      'Automatically track, sync and update watch states for the anime you watch with AniDB\'s MyList, your media players and any service a plugin adds.',
   },
   {
     icon: <PenLine size={36} strokeWidth={1.25} />,
