@@ -1,0 +1,59 @@
+---
+title: "Shokofin 6.1.0 Released"
+quick: "Shoko Server 6.0 and Jellyfin 12 support, specials where Shoko places them, and a long list of fixes!"
+image: "shokofin-6-1-0-released.jpg"
+date: "2026-11-27"
+anime: "None"
+tags: [ "Shokofin" ]
+devs: [ "beecifer", "crowquillx", "lichie567", "Queuecumbr", "Revam", "Victor9401" ]
+---
+
+**Shokofin 6.1.0** is out today, alongside [Shoko Server 6.0.0](/blog/shoko-version-6-0-0-released). It brings support for
+**Shoko Server 6.0** and **Jellyfin 12**, places specials where Shoko places them, adds a Shoko-powered "More Like This"
+for Jellyfin 12, gives playlists and the VFS a set of new options, and fixes a long list of bugs, many of them in the user
+data and watch state sync. A big thank you to everyone who contributed, and especially to the four people making their
+first contribution to Shokofin in this release!
+
+**Update Shokofin before Shoko Server.** Shokofin 6.1.0 works with both Shoko Server 5.3.3 and 6.0.0, but Shokofin
+6.0.x doesn't work with Shoko Server 6.0, so update Shokofin first, then the server. Shokofin 6.1.0 needs at least
+Jellyfin 10.10.7, 10.11.11 or 12.
+
+## Ready for Shoko Server 6.0 and Jellyfin 12
+
+Shokofin now speaks Shoko Server 6.0: its new images, including ones that haven't been downloaded yet, dates that are
+only partly known, and its new live update events. It works with Shoko Server 5.3.3 too, so you can update it before
+the server. Thanks to **@crowquillx**, it also supports **Jellyfin 12**, alongside 10.10 and 10.11.
+
+On Jellyfin 12, Shokofin can also fill **"More Like This"** with Shoko's own suggestions.
+
+## Specials, Playlists and the VFS
+
+- **Specials where Shoko places them.** Specials can be placed where Shoko knows they belong, next to the last visible
+  episode, and the specials season uses the first season's images.
+- **Playlists.** Playlists can be made for combinations of series and movies, and a per-series include tag picks what
+  goes in. Playlists follow your ordering and specials settings, grouping is now off by default, and playlists are no
+  longer duplicated every time they're rebuilt.
+- **The VFS.** External files in sub-directories are found too, your watch data follows your media when VFS paths
+  change, new VFS libraries are set up without a manual library scan, and you can show the source file names instead of
+  the VFS file names. Thanks to **@Victor9401** for the sub-directory support.
+- **TMDB structure options.** Use Shoko's titles and images for series in the TMDB structure, or always use the episode
+  title as the movie title for TMDB movies. Thanks to **@lichie567**.
+
+## Fixes
+
+The biggest batch of fixes went into the user data and watch state sync, thanks to **@Queuecumbr**: the sync logic
+itself, Jellyfin 10.11, importing episodes with multiple versions, and migrating user data. Thanks also to **@beecifer**
+for fixing TMDB movie and season files. On top of that, titles are picked in the right language, seasons and groups
+merge as they should, multiple versions are sorted in the order their labels describe, and file events wait until their
+episodes and series exist.
+
+## Additional Changes
+
+Not everything made it into this blog post, so check out the
+[GitHub Release](https://github.com/ShokoAnime/Shokofin/releases/tag/v6.1.0),
+[our changelog](https://docs.shokoanime.com/changelog/shokofin/), or the
+[full changelog on GitHub](https://github.com/ShokoAnime/Shokofin/compare/v6.0.5...v6.1.0) for all the details.
+
+## Shokofin Download & Install
+
+Check [our docs](https://docs.shokoanime.com/jellyfin/installing-shokofin) for install instructions.
